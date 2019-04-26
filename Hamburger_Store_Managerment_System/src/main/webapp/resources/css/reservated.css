@@ -1,0 +1,270 @@
+.ticket {
+	position: relative;
+	top: 24px;
+	/*    color: #333333; */
+	color: #fff !important;
+	z-index: 3;
+}
+
+.ticket a {
+	color: #fff;
+}
+
+.seats {
+	max-width: 1024px;
+	padding: 0;
+	width: 100%;
+	margin: 0 auto;
+	flex-shrink: 0;
+	position: relative;
+	top: -110px;
+}
+
+.left-box, .right-box {
+	display: inline-flex;
+	/*    flex-direction: column; */
+	flex-direction: column;
+	align-items: stretch;
+	/*    min-height: 360px; */
+	min-height: 620px;
+	max-height: 620px;
+	min-width: 500px;
+	max-width: 500px; box-shadow : 0 1px 1.5px 0 rgba( 0, 0, 0, 0, 12);
+	background-color: #eeeeee;
+	margin-bottom: 40px;
+	vertical-align: middle;
+	padding: 15px 10px;
+	box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0, 12);
+}
+
+.right-box {
+	/* 	position:relative;
+	top:123px;*/
+	/* 	min-height:555px;  */
+	padding: 20px 0 0 100px;
+}
+
+.left-box {
+	height: 620px;
+	overflow-y: auto;
+}
+
+.right-box>ul {
+	position: relative;
+	list-style: none;
+	font-size: 1em;
+	right: 70px;
+	min-width: 420px;
+}
+
+.right-box>li {
+	float: left;
+}
+
+.right-box>ul>li>button {
+	width: 90px;
+	float: left;
+}
+
+.right-box>.burgerList {
+	display: none;
+	list-style-type: none;
+	flex-wrap: wrap;
+}
+
+.right-box>.chickenList {
+	display: none;
+	list-style-type: none;
+	flex-wrap: wrap;
+}
+
+.right-box>.sideMenuList {
+	display: none;
+	list-style-type: none;
+	flex-wrap: wrap;
+}
+
+.right-box>.drinkMenuList {
+	display: none;
+	list-style-type: none;
+	flex-wrap: wrap;
+}
+
+.burgerList>li>img {
+	width: 150px;
+	height: 100px;
+	cursor:pointer;
+}
+
+.burgerList>li {
+	width: 150px;
+	margin-right: 30px;
+	font-size: 17px;
+}
+
+.burgerList>li:nth-child(even) {
+	position: relative;
+	left: 30px;
+}
+
+.sideMenuList>li>img {
+	width: 150px;
+	height: 100px;
+	cursor:pointer;
+}
+
+.sideMenuList>li {
+	width: 150px;
+	margin-right: 30px;
+	font-size: 17px;
+}
+
+.sideMenuList>li:nth-child(even) {
+	position: relative;
+	left: 30px;
+}
+
+.drinkMenuList>li>img {
+	width: 150px;
+	height: 100px;
+	cursor:pointer;
+}
+
+.drinkMenuList>li {
+	width: 150px;
+	margin-right: 30px;
+	font-size: 17px;
+}
+
+.drinkMenuList>li:nth-child(even) {
+	position: relative;
+	left: 30px;
+}
+
+.chickenList>li>img {
+	width: 150px;
+	height: 100px;
+	cursor:pointer;
+}
+
+.chickenList>li {
+	width: 150px;
+	margin-right: 30px;
+	font-size: 17px;
+}
+
+.chickenList>li:nth-child(even) {
+	position: relative;
+	left: 30px;
+}
+#orderList > ul{
+	position:relative;
+	left:-30px;
+}
+#orderList>ul>ul>li {
+	list-style: none;
+	display: flex;
+}
+
+#orderList>ul> ul> li> img {
+	width: 200px;
+	height: 120px;
+	margin-top: 5px;
+}
+
+#orderList>ul>ul>button {
+	position: relative;
+}
+.menuName{
+	position : relative;
+	left: 30px;
+}
+.menuPrice{
+	position : relative;
+	left: 30px;
+}
+.menuCount{
+	position : relative;
+	left: 30px;
+}
+.tnb-container {
+	position: fixed;
+	z-index: 10000;
+	left: 0;
+	bottom: 26px;
+	width: 100%;
+	min-width: 996px;
+	height: 128px;
+	background-color: #1d1d1c;
+}
+
+.tnb-reset {
+	position: absolute;
+	top: -25px;
+	left: 0;
+	width: 100%;
+	height: 25px;
+}
+
+.tnb {
+	margin: 0 auto;
+	width: 996px;
+	height: 108px;
+	padding: 10px 0;
+	position: relative;
+}
+
+.info {
+	width: 210px;
+	float: left;
+	height: 108px;
+	padding-right: 2px;
+	position: relative;
+	left: -60px;
+	color: #cccccc;
+	/* font-size: 12px; */
+	font-size: 1em;
+}
+
+.btn-right, .btn-left {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	width: 106px;
+	height: 108px;
+	background: #333333;
+	border-radius: 20px;
+	font-size: 1.2em;
+	font-weight: 700;
+	padding-top: 40px;
+	text-shadow: 1px 1px #000;
+	/*    font-size: 12px;*/
+	border: 1px solid #fff;
+	/*    background-image: url(../images/NEXT4_26874.png);*/
+
+	/*    background: no-repeat;*/
+	/*    background-size: cover;*/
+}
+
+.btn-left {
+	position: absolute;
+	left: 0;
+	/*    background-image: url(../images/BACK4_26875.png);*/
+	/*    background-image: url(../images/left.png);*/
+}
+
+.header {
+	display: block;
+	margin-top: 20px;
+}
+
+.data {
+	width: 100px;
+	list-style-type: none;
+	display: inline-block;
+	text-align: right;
+	position: relative;
+	left: 95px;
+	top: -23px;
+	font-weight: 700;
+}

@@ -48,7 +48,16 @@
           </c:choose>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/board/boardList"></a>
+            <a class="nav-link js-scroll-trigger" href="#">후기게시판</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/seatReservation/seatAppointment">테이크아웃</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">무인주문</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">포스기(관리자)</a>
           </li>
         </ul>
       </div>

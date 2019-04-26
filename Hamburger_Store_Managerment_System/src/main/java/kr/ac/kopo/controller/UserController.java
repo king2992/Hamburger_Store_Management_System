@@ -29,7 +29,7 @@ public class UserController {
 	@RequestMapping(value="/signUp", method=RequestMethod.POST)
 	String signUp(User user) {
 		service.signUp(user);
-		return "../";
+		return "../index";
 	}
 	@RequestMapping(value="/idCk", method=RequestMethod.POST)
 	@ResponseBody
@@ -51,7 +51,7 @@ public class UserController {
 	  userLogin(HttpSession session, User user) { 
 	  if (service.login(user)) {
 	  session.setAttribute("user", user.getUserId());
-	  return "redirect:index"; 
+	  return "redirect:../"; 
 	   } 
 	   else
 	  { 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ticket">
+	<insert id="ticketAdd" parameterType="map">
+		insert into ticketing ( user_id,seat_name, reserved_date, ticket_price, finish_time, reserved_time)
+		 values (#{userId}, #{seatName}, #{reservedDate}, #{ticketPrice}, #{finishTime}, #{reservedTime})
+	</insert>
+	
+	<!-- 티켓목록 -->
+	<select id="ticketList" resultType="Ticketing">
+		select id, GROUP_CONCAT(seat_name) AS seat_name, reserved_date, sum(ticket_price) as ticket_price, reserved_time from ticketing  
+		where user_id=#{userId} group by reserved_date order by reserved_date 
+	</select>
+	
+	<select id="seatList" resultType="Seat">
+		SELECT * FROM  seat 
+	</select>
+	
+	<insert id="seatInsert" parameterType="map">
+		insert into ticketing ( id,seat_name, reserved_date, ticket_price)
+		 values (null, null,null,null)
+	</insert> 
+	
+	<delete id="ticketDelete">
+		DELETE FROM ticketing
+		WHERE finish_time=#{time1}
+	</delete>
+	
+	<select id="reservedTimeList" resultType="Ticketing">
+		SELECT seat_name, reserved_date, reserved_time FROM  ticketing 
+	</select>
+	
+	<insert id="reservationTimeList" parameterType="map">
+		insert into reservation_time (seat_name, reserved_date, ticket_price, finish_time, reserved_time,time_key)
+		values (#{seatName}, #{reservedDate}, #{ticketPrice}, #{finishTime}, #{reservedTime}, #{timeKey})
+	</insert>
+	<select id="reservationTime" resultType="reservedTime">
+		SELECT * FROM reservation_time
+	</select>
+	<select id="timeKeyList" resultType="reservedTime">
+		SELECT seat_name FROM reservation_time where time_key=#{timeKey};
+	</select>
+</mapper>
+ 
