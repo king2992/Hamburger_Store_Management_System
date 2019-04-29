@@ -1,6 +1,5 @@
 package kr.ac.kopo.dao;
 
-import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -11,7 +11,6 @@ public class Comment {
 	private int coOrd; // 대댓글순서
 	private int coDepth; // 대댓글깊이
 	
-	
 	@Override
 	public String toString() {
 		return "Comment [coNumber=" + coNumber + ", number=" + number + ", id=" + id + ", content=" + content
@@ -66,8 +65,5 @@ public class Comment {
 	public void setCoDepth(int coDepth) {
 		this.coDepth = coDepth;
 	}
-	
-	
-	
 	
 }

@@ -1,25 +1,19 @@
 package kr.ac.kopo.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.StringTokenizer;
-import java.util.logging.Logger;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.scheduling.config.CronTask;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import kr.ac.kopo.model.Seat;
 import kr.ac.kopo.model.Ticketing;
@@ -32,7 +26,7 @@ public class TicketingController {
 	@Autowired
 	TicketingService ticketservice;
 	
-	//Ticketing(¿¹¸Å À¯Àú Å×ÀÌºí ) ¿¹¸Å ³»¿ª INSERT
+	//Ticketing(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ INSERT
 	@ResponseBody
 	@RequestMapping(value = "/ticketingSuccess", method = { RequestMethod.POST, RequestMethod.GET })
 	int ticketingAdd(@RequestParam(value = "userId", required = false) String userId,
@@ -49,7 +43,7 @@ public class TicketingController {
 		map.put("reservedDate", reservedDate);
 		StringTokenizer st = new StringTokenizer(seatName, ",");
 		StringTokenizer price = new StringTokenizer(ticketPrice, ",");
-		// countTokens() ÀÚ¸¥ ÅäÅ«ÀÇ °³¼ö
+		// countTokens() ï¿½Ú¸ï¿½ ï¿½ï¿½Å«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		while (st.hasMoreTokens()) {
 			while (price.hasMoreTokens()) {
 				String seatNameTokens = st.nextToken();
@@ -62,7 +56,7 @@ public class TicketingController {
 		}
 		return 1;
 	}
-	//¿¹¾à °ü¸®ÀÚ¿ë Å×ÀÌºí INSERT
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ INSERT
 	@ResponseBody
 	@RequestMapping(value = "/reservationTimeInsert", method = { RequestMethod.POST, RequestMethod.GET })
 	int reservationTimeInsert(
@@ -81,7 +75,7 @@ public class TicketingController {
 		map.put("timeKey", timeKey);
 		StringTokenizer st = new StringTokenizer(seatName, ",");
 		StringTokenizer price = new StringTokenizer(ticketPrice, ",");
-		// countTokens() ÀÚ¸¥ ÅäÅ«ÀÇ °³¼ö
+		// countTokens() ï¿½Ú¸ï¿½ ï¿½ï¿½Å«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		while (st.hasMoreTokens()) {
 			while (price.hasMoreTokens()) {
 				String seatNameTokens = st.nextToken();
@@ -95,14 +89,14 @@ public class TicketingController {
 		
 		return 1;
 	}
-	//³¯Â¥,½Ã°£¿¡ ¸Â°Ô ¿¹¾àµÇ¾îÀÖ´Â ÁÂ¼® Ç¥½Ã¸¦ À§ÇÑ where time_key=#{timeKey} ºñ±³ÈÄ ¿¹¾à µÅ ÀÖ´Â ÁÂ¼® »Ì¾Æ¿Â´Ù.
+	//ï¿½ï¿½Â¥,ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Â°ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ö´ï¿½ ï¿½Â¼ï¿½ Ç¥ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½ where time_key=#{timeKey} ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Â¼ï¿½ ï¿½Ì¾Æ¿Â´ï¿½.
 	@ResponseBody
 	@RequestMapping(value = "/timeKey", method = { RequestMethod.POST, RequestMethod.GET })
 	public List<reservedTime> timeKeyList(@RequestParam(value = "timeKey", required = false) String timeKey) {
 		
 		return ticketservice.timeKey(timeKey);
 	}
-	//ÁÂ¼® Á¤º¸ Ãâ·Â
+	//ï¿½Â¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	  @RequestMapping(value="/seatAppointment") 
 	  String seatReservation( Model model) { 
 		
@@ -113,26 +107,26 @@ public class TicketingController {
 	  return "/seatReservation/seatAppointment"; }
 	 
 	
-	/* ÇÊ¿ä ¾ø´Â µí ÇÏ´Ù . ³ªÁß¿¡ »èÁ¦ ¿¹Á¤
+	/* ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï´ï¿½ . ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @RequestMapping(value = "reservedTime")
 	 * 
 	 * @ResponseBody public List<Ticketing> reservedTimeList() { return
 	 * ticketservice.reservedTimeList(); }
 	 */
-	//ÁÂ¼® Á¤º¸ ajax
+	//ï¿½Â¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ajax
 	@RequestMapping(value = "seatList", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Seat> seatAjax() {
 		System.out.println();
 		return ticketservice.seatList();
 	}
-	//¿¹¸Å ¹öÆ°À» ´©¸£¸é "°áÁ¦°¡ ÁøÇà ÁßÀÔ´Ï´Ù." - È­¸é Ãâ·Â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½." - È­ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/ticketingSuccess2")
 	String ticketSuccess2() {
 
 		return "/seatReservation/ticketingSuccess2";
 	}
-	//¿¹¸Å ÇöÈ² È®ÀÎ ÆäÀÌÁö
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È² È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/ticketingSuccessCheck", method = RequestMethod.GET)
 	String ticketingSuccessCheck(String id, Model model) {
 
@@ -143,8 +137,8 @@ public class TicketingController {
 	}
 
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-ddHH:mm");
-	//½ºÄÉÁÙ·¯ ÇÊ¿ä¾øÀ» ½Ã »èÁ¦ ¿¹Á¤
-	@Scheduled(cron = "*/10 * * * * *") // 1½Ã°£ ÁÖ±â 1000*60*60 (1000 = 1ÃÊ)
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	@Scheduled(cron = "*/10 * * * * *") // 1ï¿½Ã°ï¿½ ï¿½Ö±ï¿½ 1000*60*60 (1000 = 1ï¿½ï¿½)
 	public void doSomething() {
 
 		Date time = new Date();

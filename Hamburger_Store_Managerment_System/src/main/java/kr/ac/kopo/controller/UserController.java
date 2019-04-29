@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.model.User;
@@ -21,7 +20,7 @@ import kr.ac.kopo.service.UserService;
 public class UserController {
 	@Autowired
 	UserService service;
-	//х╦©Ь╟║ют
+	//х╦О©╫О©╫О©╫О©╫О©╫О©╫
 	@RequestMapping(value="/signUp", method=RequestMethod.GET)
 	String signUp() {
 		return "/user/signUp";

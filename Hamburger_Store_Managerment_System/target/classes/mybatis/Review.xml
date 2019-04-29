@@ -32,14 +32,6 @@
 		FROM review
 		WHERE number=#{number}
 	</select>
-
-	<!-- parameterType="X" 쓸 필요 없음 -->
-<!-- 	<update id="delete"> -->
-<!-- 		UPDATE review -->
-<!-- 		SET show = 'n' -->
-<!-- 		WHERE group_num = #{groupNum} -->
-<!-- 	</update> -->
-	
 	<delete id="delete">
 		DELETE FROM review
 		WHERE group_num=#{groupNum}
@@ -105,20 +97,5 @@
    		SET	group_ord = group_ord+1
    		WHERE group_num = #{groupNum} AND group_ord > #{groupOrd}
    	</update>
-<!--    	게시물 첨부파일 추가 -->
-   	<insert id="addAttach">
-   		INSERT INTO attach(fullname,number)
-   		VALUES (#{fullName},review.CURRVAL)
-   	</insert>
-<!--    	게시글의 첨부파일 업데이트 처리(입력처리) -->
-   	<insert id="updateAttach">
-		INSERT INTO attach (fullname,number)
-		VALUES (#{fullName}, #{number})   	
-   	</insert>
-   	
-   	<delete id="">
-   		DELETE FROM attach
-   		WHERE fullname = #{fullName}
-   	</delete>
    	
 </mapper>

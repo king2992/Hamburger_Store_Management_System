@@ -1,6 +1,5 @@
 package kr.ac.kopo.service;
 
-import java.util.HashMap;
 
 import kr.ac.kopo.model.User;
 

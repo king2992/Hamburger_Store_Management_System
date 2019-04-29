@@ -14,6 +14,7 @@
 	<typeAlias type="kr.ac.kopo.model.reservedTime" alias="reservedTime"/>
 	<typeAlias type="kr.ac.kopo.model.Review" alias="Review"/>
 	<typeAlias type="kr.ac.kopo.model.Comment" alias="Comment"/>
+	<typeAlias type="kr.ac.kopo.model.File" alias="File"/>
 </typeAliases>
 
 <mappers>
@@ -21,6 +22,7 @@
 	<mapper resource="mybatis/Ticketing.xml"/> 
 	<mapper resource="mybatis/Seat.xml"/>
 	<mapper resource="mybatis/Review.xml"/>
-	<mapper resource="mybatis/Comment.xml"></mapper>
+	<mapper resource="mybatis/Comment.xml" />
+	<mapper resource="mybatis/File.xml" />
 </mappers>
 </configuration>
