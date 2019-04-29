@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+
+	<update id="ref">
+		UPDATE review
+		SET ref=ref+1
+		where number=#{number}
+	</update>
+
+	<update id="reLike">
+		UPDATE review
+		SET reLike=reLike + 1
+		where
+		number=#{number}
+	</update>
+
+	<!-- 데이터베이스=#{스프링} -->
+	<select id="reviewList" resultType="Review">
+		SELECT *
+<!-- 		SELECT문에 서브쿼리를 실행 댓글갯수를 가져옴 Spring 필드에만 존재하고 DB에는 존재하지 않는 컬럼 -->
+		FROM review 
+		<include refid="search"></include>
+		<include refid="title_contents"></include>
+		ORDER BY number DESC, group_ord ASC LIMIT #{offset}, #{pager}
+<!-- 	정렬시 답글번호를 내림차순, 답글순서는 오름차순 -->
+	</select>
+
+	<select id="update" resultType="Review">
+		SELECT *
+		FROM review
+		WHERE number=#{number}
+	</select>
+
+	<!-- parameterType="X" 쓸 필요 없음 -->
+<!-- 	<update id="delete"> -->
+<!-- 		UPDATE review -->
+<!-- 		SET show = 'n' -->
+<!-- 		WHERE group_num = #{groupNum} -->
+<!-- 	</update> -->
+	
+	<delete id="delete">
+		DELETE FROM review
+		WHERE number=#{number}
+	</delete>
+
+	<!-- Now(),Sysdate 함수 현재시간 출력 -->
+	<insert id="reviewAdd">
+		INSERT INTO review (id,title,contents,file,date,reLike,ref)
+		VALUES (#{id},#{title},#{contents},#{file},NOW(),0,0)
+<!-- 		NVL = IFNULL 쿼리와 동일 값이 NULL일 경우 대체 값을 삽입 -->
+<!-- 		글 등록시 답글번호와 원글의 값은 같아야 됨 - 글번호가 높은 글에 +1 을 한다 (최신글) - ex 여러명이 동시에 답글 등록시  -->
+<!-- 	SELECT IFNULL(필드명, "대체할 값") FROM 테이블명  -->
+<!-- 		서브쿼리를 줄때 테이블에 별칭을 설정함. 주 쿼리 테이블명과 같아서 오류발생 -->
+<!-- 	<selectKey keyColumn="number" keyProperty="number" resultType="Integer" order="AFTER"> -->
+<!-- 		SELECT LAST_INSERT_ID() -->
+<!-- 	</selectKey> -->
+	</insert>
+
+	<update id="reviewUp">
+		UPDATE review
+		SET title=#{title},
+		contents=#{contents}, file=#{file}
+		WHERE number=#{number}
+	</update>
+<!-- 제목,내용,작성자 -->
+	<sql id="search">
+<!-- 	동적 쿼리 sql 태그는 조각 , 아이디에 쿼리주소를 저장해서 다른 쿼리에서 사용 가능 -->
+		<where>
+			<if test="keyword !='' and keyword !=null and search !='title_contents'">
+<!-- 				조건:키워드가 없거나 그리고 키워드가 널이 아니거나 검색 value 가 title_contents가 아닐때 쿼리를 실행한다 -->
+				${search} LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+<!-- 			CONCAT은 문자열합%,페이저 키워드,% 문자열을 합해줌// 개똥같은 XML-->
+			</if>
+		</where>
+	</sql>
+<!-- 제목+내용 -->
+	<sql id="title_contents">
+		<where>
+				<if test="search == 'title_contents'">
+<!-- 				조건 : 검색 value 가 title_contents 같다면 쿼리를 실행 -->
+					title LIKE CONCAT(CONCAT('%', #{keyword}),'%') OR
+					contents LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+				</if>
+		</where>
+	</sql>
+	 
+	<select id="total" resultType="Integer">
+      SELECT COUNT(*)
+      FROM review
+      <include refid="search"></include>
+      <include refid="title_contents"></include>
+   	</select>
+   	
+</mapper>

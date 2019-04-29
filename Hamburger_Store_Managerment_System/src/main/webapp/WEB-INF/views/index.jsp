@@ -48,7 +48,7 @@
           </c:choose>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">후기게시판</a>
+            <a class="nav-link js-scroll-trigger" href="/review/reviewList">후기게시판</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/seatReservation/seatAppointment">테이크아웃</a>
