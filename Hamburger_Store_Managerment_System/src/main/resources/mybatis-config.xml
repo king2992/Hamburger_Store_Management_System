@@ -8,7 +8,6 @@
 
 <typeAliases>
 	<typeAlias type="kr.ac.kopo.model.User" alias="User"/>
-	<typeAlias type="kr.ac.kopo.util.Pager" alias="Pager"/>
 	<typeAlias type="kr.ac.kopo.model.Ticketing" alias="Ticketing"/>
 	<typeAlias type="kr.ac.kopo.model.Seat" alias="Seat"/>
 	<typeAlias type="kr.ac.kopo.model.reservedTime" alias="reservedTime"/>
