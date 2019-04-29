@@ -20,4 +20,6 @@ public interface ReviewService {
 
 	void like(int number);
 
+	void reply(Review review);
+
 }

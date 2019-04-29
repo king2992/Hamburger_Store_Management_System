@@ -58,4 +58,14 @@ public class ReviewDaoImpl implements ReviewDao {
 		return total;
 	}
 
+	@Override
+	public void replyUpdate(Review review) {
+		db.update("review.replyUpdate",review);
+	}
+
+	@Override
+	public void reply(Review review) {
+		db.insert("review.reply",review);
+	}
+	
 }

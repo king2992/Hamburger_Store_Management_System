@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ReviewBoard List</title>
+ <link rel="shortcut icon" type="image/x-icon" href="/resources/images/etc/check.ico" />
  <style>
  button { border-style:none; width: 70px; height:35px; background-color:#2d70be; font-weight:bold; color:#fff; cursor: pointer;}
  </style>

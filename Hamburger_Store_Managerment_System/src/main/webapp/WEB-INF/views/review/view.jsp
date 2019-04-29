@@ -28,6 +28,18 @@ button {border-style:none; width: 70px; height:35px; font-weight:bold; color:#ff
 </style>
 <link rel="shortcut icon" type="image/x-icon" href="/resources/images/etc/check.ico" />
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script id="fileTemplate" type="text/x-handlebars-template">
+	<li data-src="{{fileName}}">
+		<span class="mailbox-attachment-icon has-img">
+			<img src="{{imgSrc}}" alt="Attachment">
+		</span>
+		<div class="mailbox-attachment-info">
+			<a href="{{originalFileUrl}}" class="mailbox-attachment-name">
+				<i class="fa fa-paperclip"></i> {{originalFileName}}
+			</a>
+		</div>
+	</li>
+</script>
 <script type="text/javascript">
 	$(".delBtn").on("click", function ()
 		// 첨부파일명들을 배열에 저장
@@ -43,6 +55,7 @@ button {border-style:none; width: 70px; height:35px; font-weight:bold; color:#ff
 			});
 		}
 		
+	
 </script>
 </head>
 <body>
@@ -91,7 +104,24 @@ button {border-style:none; width: 70px; height:35px; font-weight:bold; color:#ff
       <span><button class="listbutton"><a href="like?number=${view.number}">좋아요</a></button></span>
       <span><button class="listbutton"><a href="reviewUp?number=${view.number}">수정</a></button></span>
       <span><button class="delBtn"><a href="delete?groupNum=${view.groupNum}">삭제</a></button></span>
+      <span><button class="listbutton"><a href="reply?groupNum=${view.groupNum}&groupOrd=${view.groupOrd}&groupDepth=${view.groupDepth}">답글</a></button></span>
    </div>
-
+<!--    업로드 파일 정보 영역 -->
+	<div class="box-footer uploadFiles">
+		<ul class="mailbox-attachments clearfix uploadedFileList"></ul>
+	</div>
+<!--    댓글          -->
+<div class="container">
+   <form name="insertForm">
+  <div class="input-group">
+  	<input type="hidden" class="board_no" name="number" value="${view.number}"/>
+	<textarea class="comment_contents" id="content" name="content" rows="10" cols="10" placeholder="덧글을 입력하세요" autofocus></textarea>
+	<button class="add_button" type="button" name="commentBtn">등록</button>
+   </div>
+   </form>
+</div>
+		<div class="commentList"></div>
+<!--     댓글 끝     -->
 </body>
+<script type="text/javascript" src="/resources/js/comment.js"></script>
 </html>

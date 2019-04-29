@@ -23,4 +23,8 @@ public interface ReviewDao {
 
 	int total(Paging paging);
 
+	void replyUpdate(Review review);
+
+	void reply(Review review);
+
 }

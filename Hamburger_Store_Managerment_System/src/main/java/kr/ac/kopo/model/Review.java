@@ -1,5 +1,6 @@
 package kr.ac.kopo.model;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +16,20 @@ public class Review {
 	private int reLike;
 	private int ref;
 	MultipartFile attach;
+	private int coNum; //댓글 갯수
+	private int groupNum; // 답글 번호
+	private int groupOrd; // 답글 순서
+	private int groupDepth; //답글 깊이
+	private String[] files; // 첨부파일 
+	private int fileCnt; // 파일갯수
+	
+	@Override
+	public String toString() {
+		return "Review [number=" + number + ", title=" + title + ", contents=" + contents + ", file=" + file + ", id="
+				+ id + ", date=" + date + ", reLike=" + reLike + ", ref=" + ref + ", attach=" + attach + ", coNum="
+				+ coNum + ", groupNum=" + groupNum + ", groupOrd=" + groupOrd + ", groupDepth=" + groupDepth
+				+ ", files=" + Arrays.toString(files) + ", fileCnt=" + fileCnt + "]";
+	}
 	
 	public int getNumber() {
 		return number;
@@ -69,6 +84,42 @@ public class Review {
 	}
 	public void setAttach(MultipartFile attach) {
 		this.attach = attach;
+	}
+	public int getCoNum() {
+		return coNum;
+	}
+	public void setCoNum(int coNum) {
+		this.coNum = coNum;
+	}
+	public int getGroupNum() {
+		return groupNum;
+	}
+	public void setGroupNum(int groupNum) {
+		this.groupNum = groupNum;
+	}
+	public int getGroupOrd() {
+		return groupOrd;
+	}
+	public void setGroupOrd(int groupOrd) {
+		this.groupOrd = groupOrd;
+	}
+	public int getGroupDepth() {
+		return groupDepth;
+	}
+	public void setGroupDepth(int groupDepth) {
+		this.groupDepth = groupDepth;
+	}
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+	public int getFileCnt() {
+		return fileCnt;
+	}
+	public void setFileCnt(int fileCnt) {
+		this.fileCnt = fileCnt;
 	}
 	
 	
