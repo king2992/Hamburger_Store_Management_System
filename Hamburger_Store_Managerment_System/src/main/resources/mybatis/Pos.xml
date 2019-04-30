@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pos">
+	<select id="getList" resultType="Pos">
+		SELECT * FROM  pos
+	</select>
+	<delete id="delete">
+		DELETE FROM pos WHERE p_number=#{pNumber}
+	</delete>
+	<insert id="add" parameterType="Pos">
+		INSERT INTO pos (p_name,p_price,p_account,p_total,p_menu)
+		VALUES (#{pName},#{pPrice},#{pAccount},#{pTotal},#{pMenu})
+	</insert>
+	<update id="update" parameterType="Pos">
+		UPDATE pos SET p_name = #{pName}, p_price = #{pPrice} , p_account = #{pAccount} , p_total = #{pTotal},p_menu = #{pMenu}
+		WHERE p_number = #{pNumber}
+	</update>
+	<select id="item" resultType="Pos">
+		SELECT * FROM pos WHERE p_number=#{pNumber}
+	</select>
+	<!-- <select id="chicken" resultType="Pos">
+		select * from pos where p_menu = 'chicken'
+	</select>
+	<select id="burger" resultType="Pos">
+		select * from pos where p_menu = 'burger'
+	</select>
+	<select id="side" resultType="Pos">
+		select * from pos where p_menu = 'side'
+	</select>
+	<select id="drink" resultType="Pos">
+		select * from pos where p_menu = 'drink'
+	</select> -->
+		<select id="total" resultType="Integer">
+			SELECT COUNT(*)
+			FROM pos
+		</select>
+
+</mapper>
