@@ -57,7 +57,14 @@ public class PosController {
 		posservice.update(item);
 		return "redirect:posmanagement";
 	}
-
+	@RequestMapping(value = "/OrderManagement", method = RequestMethod.GET)
+	String OrderManagement() {
+		return path + "OrderManagement";
+	}
+	@RequestMapping(value = "/ReservationManagement", method = RequestMethod.GET)
+	String ReservationManagement() {
+		return path + "ReservationManagement";
+	}
 	/*
 	 * @RequestMapping(value = "chicken") String chicken(Model model, Paging paging)
 	 * { List<Pos> list = posservice.chicken(paging);

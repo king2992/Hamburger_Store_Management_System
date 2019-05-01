@@ -1,4 +1,57 @@
-
+ document.addEventListener('DOMContentLoaded', function() {
+	  var calendarEl = document.getElementById('calendar');
+	  var timeList = document.getElementById('timeList');
+	  var reservedTimeList = document.getElementById("reservedTimeList");
+	  var calendar = new FullCalendar.Calendar(calendarEl, {
+	    plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], 
+	    selectable: true,
+	    header: {
+	      right: 'prev,next today'  
+	    },
+	     dateClick: function(info) {
+	    	 
+	     var dateInnerHTML = document.getElementById('dateInnerHTML');
+	     var reservedDate2 = document.getElementById('reservedDate2');
+	     var dateCheck = document.getElementById('dateCheck');
+	     var reservedTimeListChilds = reservedTimeList.childNodes;
+	     
+	     dateInnerHTML.innerHTML = info.dateStr ; 
+	     dateCheck.innerHTML = info.dateStr ;
+	     
+	     reservedDate2.setAttribute("value", dateInnerHTML.innerHTML);
+	     function dateAnimate(){
+	 		$("#dateInnerHTML").animate({
+	 			"color" : "black", "font-size" : "18px"
+	 		},1000) .animate({"color":"white", "font-size": "16px"},1000);
+	 		}
+	     $(".dateAlert").hide();
+		   $('#myModal').show();
+		   dateAnimate();
+	    } ,
+	    select: function(info) {
+	    }
+	  });
+	  calendar.render();
+  });
+	 
+function timeAdd(){
+	 
+	var time = document.getElementById("time");
+	var finishTime = document.getElementById("finishTime");
+	var timeModal = document.getElementById("timeModal");
+	var reservedTime = document.getElementById("reservedTime");
+	time.innerHTML = event.target.innerHTML;
+	reservedTime.setAttribute("value", event.target.innerHTML);
+	timeModal.innerHTML = event.target.innerHTML;
+	
+ 	function timeAnimate(){
+ 		$("#time").animate({
+ 			"color" : "black", "font-size" : "18px"
+ 		},1000) .animate({"color":"white","font-size": "16px"},1000);
+ 	}
+ 	timeAnimate();
+ 	$(".modal").hide();
+}
 function goTicketing() {//예매 테이블로 값이 들어가는 부분
 	var formValue = document.formValue;
 	var obj = new Object();
@@ -18,39 +71,13 @@ function goTicketing() {//예매 테이블로 값이 들어가는 부분
 		success : function(data) {
 			if (data == 1) {
 				location.href = "/seatReservation/ticketingSuccess2";
-
 			}
 		}
-
 	});
-	var reservationList = new Object();
-	
-	reservationList.seatName = formValue.seatName.value;
-	reservationList.reservedDate = formValue.reservedDate.value;
-	reservationList.finishTime = formValue.finishTime.value;
-	reservationList.reservedTime = formValue.reservedTime.value;
-	reservationList.ticketPrice = formValue.ticketPrice.value;
-	reservationList.timeKey = formValue.reservedDate.value + formValue.reservedTime.value;
-/** 삭제예정
-   $.ajax({
-		
-		url : "/seatReservation/reservationTimeInsert",
-		type : "POST",
-		data : reservationList,
-		dataType : "json",
-		success : function(data){
-		}
-	});
-	*/
 }
-
-var today = new Date();
-var date = new Date();
-var spanArray = new Array;
-var seatPriceArray = new Array;
-var priceSum = 0;
-var priceArray = new Array;
-
+function close_pop() {
+    $('#myModal').hide();
+};
 function burgerListBlock(){
 	$(".burgerList").css("display", "flex");
 	
@@ -106,235 +133,121 @@ function drinkMenuListBlock(){
 	}
 }
 
-//function leftBoxDisplayNone(e){
-//	$("#calendar").css("display", "none");
-//	console.log("gd");
-//	var orderListUl = document.getElementById("orderListUl");
-//	var imgCloneNode = event.target.cloneNode(true); //선택한 놈을 복사
-//	
-//	var orderListLi = document.createElement("li");
-//	orderListLi.setAttribute("class", "orderListLiClass");
-//	
-//	orderListLi.innerHTML = "<button type='button' onclick='menuDelete()'>" + "X" + "</button>";
-//
-//	orderListUl.appendChild(orderListLi).appendChild(imgCloneNode);
-//}
 
-
-
-function menuDelete(){
-	event.target.parentNode.remove();
-
-}
-window.onload = function(){
-	var chicken = document.getElementById("chickenList");
-	var burger = document.getElementById("burgerList");
-	var sideMenu = document.getElementById("sideMenuList");
-	var drink = document.getElementById("drinkMenuList");
-	var menuPriceArray = new Array();
-	var menuNameArray = new Array();
-	chicken.addEventListener('click', function(event){
-		
-		var menuName = event.target.getAttribute("value");
-		var menuPrice = event.target.getAttribute("data-code");
-		
-		$(".menuName").each(function(){
-			menuNameArray.push($(this).attr("value"));
+$(document).ready(function() {
+	$(".dateAlert").hide();
+	//총 주문 금액
+	function totalPrice() {
+		var total = 0;
+		$('.menu-price').each(function(index) {
+			var price = Number($(this).text());
+			var cnt = Number($(this).parents('.order-item').find('.menuCnt').text());
+			total = total + ( price * cnt );
 		});
-		
-		var i = 0;
+		priceSumAnimate();
+		$('#priceSum').text(total);
+		var li = document.createElement("li");
+		.0
+		var span = document.createElement("span");
+		span.innerHTML = total;
+		li.innerHTML = "주문금액 : ";
+		$(".reservedCheck").append(li);
+		li.append(span);
+	}
+	function dateAlert(){
+			$(".dateAlert").show();
+			if($("#dateInnerHTML").text() == ""){
+			$(".dateAlert").animate({
+				top : 52, left : 10, "color" : "blue", "opacity":"0.7", 'font-size' : "18px", "font-family":"'Hind', sans-serif"
+			},1000) .animate({top:"50px",left:"10","color" : "black","font-size" : "10px", "opacity":"1.0","font-size": "16px","font-family":"'Hind', sans-serif" },dateAlert);
+			}else{
+				$(".dateAlert").finish();
+				$(".dateAlert").hide();
+			}
+	}
+	function priceSumAnimate(){
+		$("#priceSum").animate({
+			"color" : "black",'font-size' : "18px"
+		},500) .animate({"color":"white","font-size" : "16px"},500);
+	}
+	$(document).on('click', '.menu-item', function() {
+		if($("#dateInnerHTML").text() == ""){
+			dateAlert();
+		}else{
+			$('#calendar').hide(); // 달력 안보이기
+			priceSumAnimate();
+			var uniqId = $(this).data('id');
+			var menuName = $(this).attr('value');
+			var menuPrice = $(this).data('code');
+			var menuCnt = $(this).data('cnt');
+			var menuImgUrl = $(this).attr('src');
+			var cnt = $('[data-id="'+uniqId+'"]').find('.menuCnt').text();
 			
-//		while(i <= menuNameArray.length){
-//			if(menuNameArray[i] == menuName){
-//				alert("이미 등록 된 상품입니다.");
-//				break;
-//			}else{
-//				chickenAdd();
-//			}
-//			i++;
-//		}
-		
-		for(var i = 0; i <= menuNameArray.length; i++ ){
-			if(menuNameArray[i] == menuName){
-				alert("이미 등록 된 상품입니다.");
+			if($('[data-id="'+uniqId+'"]').length == 1){
+				addMenu(uniqId, menuName, menuPrice, menuCnt, menuImgUrl);	
+			}else{
+				setMenuCnt($('[data-id="'+uniqId+'"]'), 1);
 			}
 		}
+	});
+	// left-box로 누른 상품 추가
+	function addMenu(uniqId, menuName, menuPrice, menuCnt, menuImgUrl) {
 		
+		var menuHtml = '<li class="order-item" data-id="' + uniqId + '">' +
+						' <button type="button" class="xButton">X</button>' +
+						'	<img src="' + menuImgUrl + '" class="order-img"/>' +
+						'	<span>' + menuName + '</span>' +
+						'	<span class="menu-price">' + menuPrice + '</span>' +
+						'	<div>' +
+						'		<span>수량 : <i class="menuCnt">1</i></span>' +
+						'		<button type="button" class="btnAddMenuCnt">+</button>' +
+						'		<button type="button" class="btnDelMenuCnt">-</button>' +
+						'	</div>' +
+						'</li>';
+		$('#orderListUl').append(menuHtml);
 		
-		
-		function chickenAdd(){
-			
-		
-				if(event.target.tagName == "IMG"){
-					
-					$("#calendar").css("display", "none");
-					
-					var orderListUl = document.getElementById("orderListUl");
-					
-					var imgSrc = event.target.getAttribute("src"); 
-					
-					var imgTag = document.createElement("img");
-					imgTag.setAttribute("src", imgSrc);
-					
-					var orderListLiParent = document.createElement("ul");
-					orderListLiParent.innerHTML = "<button type='button' onclick='menuDelete()'>" + "X" + "</button>";
-					var orderListLi = document.createElement("li");
-					orderListLi.setAttribute("class", "orderListLiClass");
-					
-					var menuNameNode = document.createElement("li");
-					menuNameNode.innerHTML = "상품명 : " + menuName;
-					menuNameNode.setAttribute("class","menuName");
-					menuNameNode.setAttribute("value", menuName);
-					
-					var menuPriceNode = document.createElement("li");
-					menuPriceNode.innerHTML = "가격 : " + menuPrice;
-					menuPriceNode.setAttribute("class", "menuPrice");
-					menuPriceNode.setAttribute("value", menuPrice);
-					
-					menuPriceArray.push(menuPrice);
-					
-					var menuCount = document.createElement("li");
-					menuCount.innerHTML = "수량 : " + "1" ;
-					menuCount.setAttribute("class","menuCount");
-					menuCount.setAttribute("value", "1");
-					
-					orderListUl.appendChild(orderListLiParent);
-					orderListLiParent.appendChild(orderListLi).appendChild(imgTag);
-					orderListLiParent.appendChild(menuNameNode);
-					orderListLiParent.appendChild(menuPriceNode);
-					orderListLiParent.appendChild(menuCount);
-				}
+		totalPrice();
+	}
+	function setMenuCnt($item, num, menuName) {
+		var $itemCnt = $item.find('.menuCnt');
+		var totCnt = Number($itemCnt.text());
+				
+		var cnt = totCnt + num;
+		if(cnt > 0) {	
+			$itemCnt.text(cnt);
 		}
-	},false);
-	burger.addEventListener('click', function(event){
-		if(event.target.tagName == "IMG"){
-			var menuName = event.target.getAttribute("value");
-			var menuPrice = event.target.getAttribute("data-code");
-			
-			$("#calendar").css("display", "none");
-			
-			var orderListUl = document.getElementById("orderListUl");
-			
-			var imgSrc = event.target.getAttribute("src"); 
-			
-			var imgTag = document.createElement("img");
-			imgTag.setAttribute("src", imgSrc);
-			
-			var orderListLiParent = document.createElement("ul");
-			orderListLiParent.innerHTML = "<button type='button' onclick='menuDelete()'>" + "X" + "</button>";
-			var orderListLi = document.createElement("li");
-			orderListLi.setAttribute("class", "orderListLiClass");
-			
-			var menuNameNode = document.createElement("li");
-			menuNameNode.innerHTML = "상품명 : " + menuName;
-			menuNameNode.setAttribute("class","menuName");
-			menuNameNode.setAttribute("value", menuName);
-			
-			var menuPriceNode = document.createElement("li");
-			menuPriceNode.innerHTML = "가격 : " + menuPrice;
-			menuPriceNode.setAttribute("class", "menuPrice");
-			menuPriceNode.setAttribute("value", menuPrice);
-			
-			menuPriceArray.push(menuPrice);
-			
-			var menuCount = document.createElement("li");
-			menuCount.innerHTML = "수량 : " + "1" ;
-			menuCount.setAttribute("class","menuCount");
-			menuCount.setAttribute("value", "1");
-			
-			orderListUl.appendChild(orderListLiParent);
-			orderListLiParent.appendChild(orderListLi).appendChild(imgTag);
-			orderListLiParent.appendChild(menuNameNode);
-			orderListLiParent.appendChild(menuPriceNode);
-			orderListLiParent.appendChild(menuCount);
-		}
-	},false);	
-	sideMenu.addEventListener('click', function(event){
-		if(event.target.tagName == "IMG"){
-			var menuName = event.target.getAttribute("value");
-			var menuPrice = event.target.getAttribute("data-code");
-			
-			$("#calendar").css("display", "none");
-			
-			var orderListUl = document.getElementById("orderListUl");
-			
-			var imgSrc = event.target.getAttribute("src"); 
-			
-			var imgTag = document.createElement("img");
-			imgTag.setAttribute("src", imgSrc);
-			
-			var orderListLiParent = document.createElement("ul");
-			orderListLiParent.innerHTML = "<button type='button' onclick='menuDelete()'>" + "X" + "</button>";
-			var orderListLi = document.createElement("li");
-			orderListLi.setAttribute("class", "orderListLiClass");
-			
-			var menuNameNode = document.createElement("li");
-			menuNameNode.innerHTML = "상품명 : " + menuName;
-			menuNameNode.setAttribute("class","menuName");
-			menuNameNode.setAttribute("value", menuName);
-			
-			var menuPriceNode = document.createElement("li");
-			menuPriceNode.innerHTML = "가격 : " + menuPrice;
-			menuPriceNode.setAttribute("class", "menuPrice");
-			menuPriceNode.setAttribute("value", menuPrice);
-			
-			menuPriceArray.push(menuPrice);
-			
-			var menuCount = document.createElement("li");
-			menuCount.innerHTML = "수량 : " + "1" ;
-			menuCount.setAttribute("class","menuCount");
-			menuCount.setAttribute("value", "1");
-			
-			orderListUl.appendChild(orderListLiParent);
-			orderListLiParent.appendChild(orderListLi).appendChild(imgTag);
-			orderListLiParent.appendChild(menuNameNode);
-			orderListLiParent.appendChild(menuPriceNode);
-			orderListLiParent.appendChild(menuCount);
-		}
-	},false);
-	drink.addEventListener('click', function(event){
-		if(event.target.tagName == "IMG"){
-			var menuName = event.target.getAttribute("value");
-			var menuPrice = event.target.getAttribute("data-code");
-			
-			$("#calendar").css("display", "none");
-			
-			var orderListUl = document.getElementById("orderListUl");
-			
-			var imgSrc = event.target.getAttribute("src"); 
-			
-			var imgTag = document.createElement("img");
-			imgTag.setAttribute("src", imgSrc);
-			
-			var orderListLiParent = document.createElement("ul");
-			orderListLiParent.innerHTML = "<button type='button' onclick='menuDelete()'>" + "X" + "</button>";
-			var orderListLi = document.createElement("li");
-			orderListLi.setAttribute("class", "orderListLiClass");
-			
-			var menuNameNode = document.createElement("li");
-			menuNameNode.innerHTML = "상품명 : " + menuName;
-			menuNameNode.setAttribute("class","menuName");
-			menuNameNode.setAttribute("value", menuName);
-			
-			var menuPriceNode = document.createElement("li");
-			menuPriceNode.innerHTML = "가격 : " + menuPrice;
-			menuPriceNode.setAttribute("class", "menuPrice");
-			menuPriceNode.setAttribute("value", menuPrice);
-			
-			menuPriceArray.push(menuPrice);
-			
-			var menuCount = document.createElement("li");
-			menuCount.innerHTML = "수량 : " + "1" ;
-			menuCount.setAttribute("class","menuCount");
-			menuCount.setAttribute("value", "1");
-			
-			orderListUl.appendChild(orderListLiParent);
-			orderListLiParent.appendChild(orderListLi).appendChild(imgTag);
-			orderListLiParent.appendChild(menuNameNode);
-			orderListLiParent.appendChild(menuPriceNode);
-			orderListLiParent.appendChild(menuCount);
-		}
-	},false);	
+		var li = document.createElement("li");
+		 li.setAttribute("id", menuName);
+		 console.log($("#"+menuName+"").length);
+		 
+		 $("#"+menuName+"").text("수량 :" + cnt);
+		totalPrice();
+	}
+	//수량 1 증가
+	$(document).on('click', '.btnAddMenuCnt', function(e) {
+		e.preventDefault();
+		setMenuCnt($(this).parents('.order-item'), 1,$(this).parents('.order-item').data("id"));
+	});
+	//수량 1 감소
+	$(document).on('click', '.btnDelMenuCnt', function(e) {
+		e.preventDefault();
+		setMenuCnt($(this).parents('.order-item'), -1,$(this).parents('.order-item').data("id"));
+	});
+	//추가 된 상품 삭제
+	$(document).on('click', '.xButton', function(e){
+		$(this).parents('.order-item').remove();
+		priceSumAnimate();
+		totalPrice();
+	});
+	
+	$("#am").hide();
+	$("#pm").hide();
+});
+function amView(){
+	$("#am").show();
+	$("#pm").hide();
 }
-
-
+function pmView(){
+	$("#pm").show();
+	$("#am").hide();
+}
