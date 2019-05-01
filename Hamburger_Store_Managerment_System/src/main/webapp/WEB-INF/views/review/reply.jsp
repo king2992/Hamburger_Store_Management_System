@@ -27,7 +27,7 @@
 </head>
 <body>
 	<!-- input 태그의 속성값이 file이면 enctype을 사용해서 multipart써줘야 서버가 인식을한다. -->
-	<form method="post" action="reply" enctype="multipart/form-data">
+	<form method="post" action="reply">
 		<input type="hidden" name="groupNum" value="${reply.groupNum}">
 		<input type="hidden" name="groupOrd" value="${reply.groupOrd}">
 		<input type="hidden" name="groupDepth" value="${reply.groupDepth}">
@@ -42,10 +42,10 @@
 			<textarea id="summernote" name="contents" rows="10" cols="140"></textarea>
 		</div>
 		
-		<div>
+<!-- 		<div>
 			<label>첨부파일:</label>
 			<input type="file" name="attach" multiple="multiple">
-		</div>
+		</div> -->
 		<div>
 			<input class="reply" type="submit" value="등록">
 		</div>					

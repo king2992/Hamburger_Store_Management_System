@@ -64,9 +64,9 @@ button {border-style:none; width: 70px; height:35px; font-weight:bold; color:#ff
          <span>번호:</span>
          <span>${view.number}</span>
       </div>
-      <div>commentContent
+      <div>
          <span>작성자:</span>
-         <span>${view.id}</span>
+         <span>${view.userId}</span>
       </div>
       <div>
         <span>제목:</span>
@@ -76,7 +76,6 @@ button {border-style:none; width: 70px; height:35px; font-weight:bold; color:#ff
       <div>
       	<span>내용:</span>
       	<span>${view.contents}</span>
-      
       </div>
       
       <div>
@@ -105,7 +104,7 @@ button {border-style:none; width: 70px; height:35px; font-weight:bold; color:#ff
       <span><button class="listbutton"><a href="reviewList">목록</a></button></span>   
       <span><button class="listbutton"><a href="like?number=${view.number}">좋아요</a></button></span>
       <span><button class="listbutton"><a href="reviewUp?number=${view.number}">수정</a></button></span>
-      <span><button class="delBtn"><a href="delete?groupNum=${view.groupNum}">삭제</a></button></span>
+      <span><button class="delBtn"><a href="delete?number=${view.number}">삭제</a></button></span>
       <span><button class="listbutton"><a href="reply?groupNum=${view.groupNum}&groupOrd=${view.groupOrd}&groupDepth=${view.groupDepth}">답글</a></button></span>
    </div>
 <!--    업로드 파일 정보 영역 -->

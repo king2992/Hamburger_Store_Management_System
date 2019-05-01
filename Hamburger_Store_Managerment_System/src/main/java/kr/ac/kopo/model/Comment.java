@@ -4,18 +4,13 @@ public class Comment {
 
 	private int coNumber;
 	private int number;
-	private String id;
+	private String userId;
 	private String content;
 	private String coDate;
 	private int coGroup; // 대댓글번호
 	private int coOrd; // 대댓글순서
 	private int coDepth; // 대댓글깊이
 	
-	@Override
-	public String toString() {
-		return "Comment [coNumber=" + coNumber + ", number=" + number + ", id=" + id + ", content=" + content
-				+ ", coDate=" + coDate + ", coGroup=" + coGroup + ", coOrd=" + coOrd + ", coDepth=" + coDepth + "]";
-	}
 	
 	public int getCoNumber() {
 		return coNumber;
@@ -29,11 +24,12 @@ public class Comment {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	public String getId() {
-		return id;
+	
+	public String getUserId() {
+		return userId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getContent() {
 		return content;

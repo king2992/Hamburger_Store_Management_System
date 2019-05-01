@@ -30,7 +30,7 @@ function commentList(){
 //            	대댓글일 경우 출력폼
             	if (value.coDepth == 1) {
             		a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom:10px;">';
-            		a += '<div class="commentInfo'+value.coNumber+'">'+'작성일: '+value.coDate+'/ 작성자: '+value.id;
+            		a += '<div class="commentInfo'+value.coNumber+'">'+'작성일: '+value.coDate+'/ 작성자: '+value.userId;
             		a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정</a>';
             		a += '<a onclick="commentDelete('+value.coNumber+');">삭제</a></div>';
             		a += '<div class="commentContent'+value.coNumber+'"> <p>'+value.content+'</p>';
@@ -38,7 +38,7 @@ function commentList(){
             	// 댓글일 경우
             	else {
                 a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 10px;">';
-                a += '<div class="commentInfo'+value.coNumber+'">'+'작성일 : '+value.coDate+' / 작성자 : '+value.id;
+                a += '<div class="commentInfo'+value.coNumber+'">'+'작성일 : '+value.coDate+' / 작성자 : '+value.userId;
                 a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정 </a>';
                 a += '<a onclick="commentReply('+value.coGroup+');">답글</a>';
                 a += '<a onclick="commentDelete('+value.coNumber+');"> 삭제 </a> </div>';

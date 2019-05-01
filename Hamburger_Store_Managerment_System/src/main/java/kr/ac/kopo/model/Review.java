@@ -9,7 +9,7 @@ public class Review {
 	private String title;
 	private String contents;
 	//private String file;
-	private String id;
+	private String userId;
 	private Date date;
 	private int reLike;
 	private int ref;
@@ -20,7 +20,6 @@ public class Review {
 	private int groupDepth; //답글 깊이
 	private String[] files; // 첨부파일 
 	private int fileCnt; // 파일갯수
-	
 	
 	public int getNumber() {
 		return number;
@@ -40,11 +39,11 @@ public class Review {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public Date getDate() {
 		return date;
@@ -100,6 +99,5 @@ public class Review {
 	public void setFileCnt(int fileCnt) {
 		this.fileCnt = fileCnt;
 	}
-	
-	
+
 }
