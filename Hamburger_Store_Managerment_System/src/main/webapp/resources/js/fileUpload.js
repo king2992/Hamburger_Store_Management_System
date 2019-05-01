@@ -2,11 +2,6 @@
  * 
  */
 
-
-//var source = $("#fileTemplate").html;
-//var fileTemplate = Handlebars.compile(source);
-//$(fileTemplate(promotionData)).appendTo(welDiv);
-
 // Handlebars 파일템플릿 컴파일
 var fileTemplate = Handlebars.compile($("#fileTemplate").html());
 
@@ -34,6 +29,7 @@ fileDropDiv.on("drop", function(event) {
 	formData.append("file", file);
 	// 파일 업로드 ajax 통신 메서드 호출
 	uploadFile(formData);
+	filesSubmit(formData);
 });
 
 $(document).on('dragenter dragover drop', '.content-wrapper', function(event) {
@@ -55,12 +51,13 @@ $(document).on('drop', '.fileDrop', function(event) {
 	formData.append("file", file);
 	// 파일 업로드 ajax 통신 메서드 호출
 	uploadFile(formData);
+
 });
 
 // 파일 업로드 ajax 통신
 function uploadFile(formData) {
 	$.ajax({
-		url : "/review/file/upload",
+		url : "/file/upload",
 		data : formData,
 		dataType : "text",
 		// processData : 데이터를 일반적인 query string 으로 변환처리할 것인지 결정
@@ -74,6 +71,7 @@ function uploadFile(formData) {
 		success : function (data) {
 			printFiles(data);// 첨부파일 출력 메서드 호출
 			$(".noAttach").remove();
+		
 		}
 	});
 }
@@ -96,12 +94,18 @@ function printFiles(data) {
 		that.find(".fa-paperclip").attr("class", "fa fa-camera");
 	}
 }
-
+$("#writeForm").submit(function(event) {
+	console.log("여긴 될 거 같은데");
+	event.preventDefault();
+	var that = $(this);
+	filesSubmit(that);
+});
 // 게시글 입력/수정 submit 처리시에 첨부파일 정보도 함깨 처리
 function filesSubmit(that) {
+	alert("여기 호출 안 되는듯");
 	var str = "";
 	$(".uploadedFileList .delBtn").each(function (index) {
-		str += "<input type='hidden' name='files[" + index + "]' value='" + $(this).attr("href") + "'>"
+		 str += "<input type='hidden' name='files[" + index + "]' value='" + $(this).attr("href") + "'>"
 	});
 	that.append(str);
 	that.get(0).submit();
@@ -109,13 +113,13 @@ function filesSubmit(that) {
 
 // 파일 삭제(입력페이지) : 첨부파일만 삭제처리
 function deleteFileWrtPage(that) {
-	var url = "/review/file/delete";
+	var url = "/file/delete";
 	deleteFile(url, that);
 }
 
 // 파일삭제(수정페이지) : 서버에 저장된 첨부파일과 DB에 저장된 첨부파일 정보 삭제처리
 function deleteFileModPage(that, number) {
-	var url = "/review/file/delete/" + number;
+	var url = "/file/delete/" + number;
 	deleteFile(url, that);
 }
 
@@ -128,7 +132,14 @@ function deleteFile(url, that) {
 		dataType : "text",
 		success : function (result) {
 			if (result === "DELETED") {
-				alert("삭제되었습니다.");
+				Swal.fire({
+					  position: 'top-end',
+					  type: 'success',
+					  title: 'AttachFile Deleted!',
+					  showConfirmButton: false,
+					  timer: 1500
+					})
+			//	alert("삭제되었습니다.");
 				that.parents("li").remove();
 			}
 		}
@@ -145,16 +156,16 @@ function getFileInfo(fileName) {
 	
 	// 이미지 파일이면
 	if (checkImageType(fileName)) {
-		imgSrc = "/review/file/display?fileName=" + fileName; // 썸네일 이미지 링크
+		imgSrc = "/file/display?fileName=" + fileName; // 썸네일 이미지 링크
 		uuidFileName = fileName.substr(14);
 		var originalImg = fileName.substr(0, 12) + fileName.substr(14);
 		// 원본 이미지 요청 링크
-		originalFileUrl = "/review/file/display>fileName=" + originalImg;
+		originalFileUrl = "/file/display?fileName=" + originalImg;
 	} else {
 		imgSrc = "/resources/upload/files/file-icon.gif"; // 파일 아이콘 이미지 링크
 		uuidFileName = fileName.substr(12);
 		// 파일 다운로드 요청 링크
-		originalFileUrl = "/review/file/display>fileName=" + fileName;
+		originalFileUrl = "/file/display?fileName=" + fileName;
 	}
 	originalFileName = uuidFileName.substr(uuidFileName.indexOf("_") + 1);
 	
@@ -167,12 +178,6 @@ function checkImageType(fileName) {
 	return fileName.match(pattern);
 }
 
-$("#writeForm").submit(function(event) {
-	event.preventDefault();
-	var that = $(this);
-	filesSubmit(that);
-});
-
 // 파일 삭제 버튼 클릭 이벤트
 $(document).on("click", ".delBtn", function(event) {
 	event.preventDefault();
@@ -181,7 +186,7 @@ $(document).on("click", ".delBtn", function(event) {
 });
 
 function getFiles(number) {
-	$.getJSON("/review/file/list/" + number, function (list) {
+	$.getJSON("/file/list/" + number, function (list) {
 		if (list.length === 0) {
 			$(".uploadedFileList").html("<span class='noAttach'>첨부파일이 없습니다.</span>");
 		}
@@ -194,25 +199,16 @@ function getFiles(number) {
 // 첨부파일 삭제 버튼 클릭 이밴트
 $(document).on("click", ".delBtn", function(event) {
 	event.preventDefault();
-	if (confirm("삭제하시겠습니까? 삭제된 파일은 복구할 수 없습니다.")) {
 		var that = $(this);
 		deleteFileModPage(that, number);
-	}
 });
 
-// 첨부파일 목록
+// //첨부파일 목록
 //getFiles(number);
-
-$(document).ready(function() {
-	var number = $('#number').val();
-	if(number) {
-		getFiles(number);
-	}
-});
-
-// 수정처리 시 첨부파일 정보도 함께 처리
-$("#form1").submit(function (event) {
-	event.preventDefault();
-	var that = $(this);
-	filesSubmit(that);
-});
+//
+//$(document).ready(function() {
+//	var number = $('#number').val();
+//	if(number) {
+//		getFiles(number);
+//	}
+//});

@@ -1,7 +1,5 @@
 package kr.ac.kopo.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
@@ -26,13 +23,7 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
-//후기게시판 목록
-	/**
-	 * 후기게시판 목록
-	 * @param model
-	 * @param paging
-	 * @return
-	 */
+	//	후기게시판 목록
 	@RequestMapping("/reviewList")	
 	String reviewList(Model model, Paging paging) {		
 		List<Review> reviewList = reviewService.reviewList(paging);
@@ -44,42 +35,18 @@ public class ReviewController {
 		return "review/reviewList";
 	}
 	
-	/**
-	 * 글쓰기
-	 * @return
-	 */
+
+	// 글쓰기
 	@RequestMapping("/reviewAdd")	
 	String reviewAdd() {		
 		return "review/reviewAdd";
 	}
 	
-	/**
-	 * 글쓰기 저장
-	 * @param reviewAdd
-	 * @param session
-	 * @return
-	 * @throws Exception
-	 */
-	@ResponseBody
 	@RequestMapping(value="/reviewAdd", method=RequestMethod.POST)	
 	String reviewAdd(Review reviewAdd, HttpSession session) throws Exception {	
 		reviewAdd.setId((String)session.getAttribute("user"));
-//		첨부 부분
-			if(reviewAdd.getAttach() != null) {
-			
-			String file = reviewAdd.getAttach().getOriginalFilename();
-			
-			try {
-				reviewAdd.getAttach().transferTo(new File(uploadpath + file));
-				
-				reviewAdd.setFile(file);
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 			reviewService.reviewAdd(reviewAdd);
+			
 		return "redirect:reviewList";
 	}
 	
@@ -100,20 +67,20 @@ public class ReviewController {
 		
 		reviewUp.setId((String)session.getAttribute("user"));
 		
-		if(reviewUp.getAttach() != null) {
-			
-			String file = reviewUp.getAttach().getOriginalFilename();
-			
-			try {
-				reviewUp.getAttach().transferTo(new File(uploadpath + file));
-				
-				reviewUp.setFile(file);
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+//		if(reviewUp.getAttach() != null) {
+//			
+//			String file = reviewUp.getAttach().getOriginalFilename();
+//			
+//			try {
+//				reviewUp.getAttach().transferTo(new File(uploadpath + file));
+//				
+//				reviewUp.setFile(file);
+//			} catch (IllegalStateException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
 		reviewService.reviewUp(reviewUp);
 		return "redirect:reviewList";
 	}
@@ -166,20 +133,20 @@ public class ReviewController {
 		
 		review.setId((String)session.getAttribute("user"));
 		
-		if(review.getAttach() != null) {
-			
-			String file = review.getAttach().getOriginalFilename();
-			
-			try {
-				review.getAttach().transferTo(new File(uploadpath + file));
-				
-				review.setFile(file);
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+//		if(review.getAttach() != null) {
+//			
+//			String file = review.getAttach().getOriginalFilename();
+//			
+//			try {
+//				review.getAttach().transferTo(new File(uploadpath + file));
+//				
+//				review.setFile(file);
+//			} catch (IllegalStateException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
 		reviewService.reply(review);
 		return "redirect:reviewList";
 	}

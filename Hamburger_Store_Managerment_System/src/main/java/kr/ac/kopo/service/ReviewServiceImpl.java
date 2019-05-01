@@ -33,12 +33,15 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDao.reviewAdd(reviewAdd);
 		String[] files = reviewAdd.getFiles();
 		
-		if (files == null)
+		if (files == null) {
+			System.out.println("없어");
 			return;
-		
+		}
 		// 게시글 첨부파일 입력처리
-		for (String fileName : files)
+		for (String fileName : files) {
 			fileDao.addFile(fileName);
+		System.out.println("dldldldlldldldlldldldldldll");
+		}
 	}
 
 	@Override

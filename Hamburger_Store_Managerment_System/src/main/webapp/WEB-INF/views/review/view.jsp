@@ -89,11 +89,13 @@ button {border-style:none; width: 70px; height:35px; font-weight:bold; color:#ff
          <span>${view.reLike}</span>
       </div>
       
-      <div>
-         <span>첨부파일:</span>
-         <span><a href="/upload/${view.file}" target="_blank">${view.file}</a></span>
-      </div>
+<!--       <div> -->
+<!--          <span>첨부파일:</span> -->
+<%--          <span><a href="/upload/${view.file}" target="_blank">${view.file}</a></span> --%>
+<!--       </div> -->
       
+           <input type="hidden" name="number" value="${view.number}">
+     
       <div>
          <span>작성일:</span>
          <span><fmt:formatDate value="${view.date}" pattern="yyyy-MM-dd hh:mm:ss"/></span>

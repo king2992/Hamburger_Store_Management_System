@@ -16,6 +16,7 @@ public class FileDaoImpl implements FileDao {
 
 	@Override
 	public void addFile(String fileName) throws Exception {
+		System.out.println("야야야야ㅑ야야야ㅑ야야야야야야야야야ㅑ야야야야야야야야");
 		db.insert("file.addFile",fileName);
 	}
 
@@ -25,19 +26,19 @@ public class FileDaoImpl implements FileDao {
 	}
 
 	@Override
+	public void deleteFile(String fileName) throws Exception {
+		db.delete("file.deleteFile",fileName);
+	}
+
+	@Override
 	public void deleteFiles(int number) throws Exception {
 		db.delete("file.deleteFiles",number);
 	}
 
-	//@Override
-	//public void deleteFile(String fileName) throws Exception {
-		//db.delete("file.deleteFile",fileName);
-	//}
-
 	@Override
 	public void replaceFile(String fileName, int number) throws Exception {
-		Map<String, Object> map = new HashMap<>();
-		map.put("fileName", fileName);
+		Map<String,Object> map = new HashMap<>();
+		map.put("fileName",fileName);
 		map.put("number", number);
 		db.insert("file.replaceFile",map);
 	}
@@ -45,11 +46,6 @@ public class FileDaoImpl implements FileDao {
 	@Override
 	public void updateFileCnt(int number) throws Exception {
 		db.update("file.updateFileCnt",number);
-	}
-
-	@Override
-	public void deleteFile(Map<String, Object> map) {
-		db.delete("file.deleteFile",map);
 	}
 
 }

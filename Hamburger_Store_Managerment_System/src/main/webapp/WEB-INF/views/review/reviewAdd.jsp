@@ -35,7 +35,7 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 <script type="text/javascript" src="/resources/js/summernote.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
 <script id="fileTemplate" type="text/x-handlebars-template">
-	<li>
+	<li style="list-style: none; margin: 0 0 0 0; padding: 0 0 0 0; border: 0; float:left;">
 		<span class="mailbox-attachment-icon has-img">
 			<img src="{{imgSrc}}" alt="Attachment">
 		</span>
@@ -44,18 +44,27 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 				<i class="fa fa-paperclip"></i> {{originalFileName}}
 			</a>
 			<a href="{{fileName}}" class="btn btn-default btn-xs pull-right delBtn">
-				<i class="fa fa-fw fa-remove"></i>
+				<i class="fa fa-fw fa-remove">삭제</i>
 			</a>
 		</div>
 	</li>
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script type="text/javascript" src="/resources/js/fileUpload.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<style type="text/css">
+.uploadedFileList li{
+	margin-right:20px !important;
+}
+</style>
 </head>
 <body>
 	<!-- input 태그의 속성값이 file이면 enctype을 사용해서 multipart써줘야 서버가 인식을한다. -->
-	<form id="writeForm" method="post" action="reviewAdd" enctype="multipart/form-data">
-		<input type="hidden" id="number" name="number">
+	<form id="writeForm" method="post" action="reviewAdd" >
+<!-- 		<input type="hidden" id="number" name="number" > -->
 	<div>
 		<div>
 			<label>제목</label>
@@ -67,9 +76,8 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 		</div>
 
 		<div>
-			<label>첨부파일:</label>
-			<input type="file" name="attach" multiple="multiple">
-		</div>
+			<input class="add" type="submit" value="등록">
+		</div>	
 <!-- 		첨부파일 영역 추가 -->
 		<div class="form-group">
 			<div class="fileDrop">
@@ -80,10 +88,10 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 		<div class="box-footer">
 			<ul class="uploadedFileList"></ul>
 		</div>
-		<div>
-			<button class="delBtn" type="reset"><i></i>초기화</button>
+		<div style="clear:both;">
+			<button class="resetBtn" type="reset"><i></i>초기화</button>
 			<button class="addBtn" type="submit"><i></i>저장</button>
-		</div>					
+		</div>	
 	</form>
 
 </body>

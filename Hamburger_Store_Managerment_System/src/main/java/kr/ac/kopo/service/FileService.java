@@ -4,7 +4,10 @@ import java.util.List;
 
 public interface FileService {
 	
-	List<String> getArticleFiles(int number) throws Exception;
+    // 파일 목록
+    List<String> getArticleFiles(int number) throws Exception;
 
-	void deleteFile(String fileName, int number);
+    // 파일 삭제
+    void deleteFile(String fileName, int number) throws Exception;
+
 }

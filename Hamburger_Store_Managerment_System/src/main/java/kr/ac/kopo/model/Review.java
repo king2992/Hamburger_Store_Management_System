@@ -1,21 +1,19 @@
 package kr.ac.kopo.model;
 
-import java.util.Arrays;
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class Review {
 	
 	private int number;
 	private String title;
 	private String contents;
-	private String file;
+	//private String file;
 	private String id;
 	private Date date;
 	private int reLike;
 	private int ref;
-	MultipartFile attach;
+	// MultipartFile attach;
 	private int coNum; //댓글 갯수
 	private int groupNum; // 답글 번호
 	private int groupOrd; // 답글 순서
@@ -23,13 +21,6 @@ public class Review {
 	private String[] files; // 첨부파일 
 	private int fileCnt; // 파일갯수
 	
-	@Override
-	public String toString() {
-		return "Review [number=" + number + ", title=" + title + ", contents=" + contents + ", file=" + file + ", id="
-				+ id + ", date=" + date + ", reLike=" + reLike + ", ref=" + ref + ", attach=" + attach + ", coNum="
-				+ coNum + ", groupNum=" + groupNum + ", groupOrd=" + groupOrd + ", groupDepth=" + groupDepth
-				+ ", files=" + Arrays.toString(files) + ", fileCnt=" + fileCnt + "]";
-	}
 	
 	public int getNumber() {
 		return number;
@@ -48,12 +39,6 @@ public class Review {
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
 	}
 	public String getId() {
 		return id;
@@ -78,12 +63,6 @@ public class Review {
 	}
 	public void setRef(int ref) {
 		this.ref = ref;
-	}
-	public MultipartFile getAttach() {
-		return attach;
-	}
-	public void setAttach(MultipartFile attach) {
-		this.attach = attach;
 	}
 	public int getCoNum() {
 		return coNum;
