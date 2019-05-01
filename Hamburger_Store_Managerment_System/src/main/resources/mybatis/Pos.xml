@@ -5,7 +5,7 @@
 	<select id="getList" resultType="Pos">
 		SELECT * FROM  pos
 	</select>
-	<delete id="delete">
+	<delete id="pDelete">
 		DELETE FROM pos WHERE p_number=#{pNumber}
 	</delete>
 	<insert id="add" parameterType="Pos">

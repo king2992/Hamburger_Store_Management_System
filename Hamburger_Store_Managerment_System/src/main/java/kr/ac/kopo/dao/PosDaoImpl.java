@@ -29,10 +29,10 @@ public class PosDaoImpl implements PosDao {
 		return sql.selectList("pos.getList",paging);
 	}
 
-	@Override
-	public void delete(int pNumber) {
-		sql.delete("pos.delete",pNumber);
-	}
+	//@Override
+	//public void delete(int pNumber) {
+		//sql.delete("pos.delete",pNumber);
+	//}
 
 	@Override
 	public void add(Pos item) {
@@ -61,5 +61,10 @@ public class PosDaoImpl implements PosDao {
 	 * @Override public List<Pos> drink(Paging paging) { return
 	 * sql.selectList("pos.drink",paging); }
 	 */
+
+	@Override
+	public int pDelete(int pNumber) {
+		return sql.delete("pos.pDelete",pNumber);
+	}
 
 }

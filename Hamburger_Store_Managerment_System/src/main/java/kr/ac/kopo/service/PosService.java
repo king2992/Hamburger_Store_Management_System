@@ -9,13 +9,15 @@ public interface PosService {
 
 	List<Pos> getList(Paging paging);
 
-	void delete(int pNumber);
+//	void delete(int pNumber);
 
 	void add(Pos item);
 
 	Pos positem(int pNumber);
 
 	void update(Pos item);
+
+	int pDelete(int pNumber);
 
 	/*
 	 * List<Pos> chicken(Paging paging);

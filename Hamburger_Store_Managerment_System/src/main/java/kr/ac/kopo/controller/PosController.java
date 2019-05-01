@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
@@ -29,11 +31,10 @@ public class PosController {
 		
 		return path + "posmanagement";
 	}
-	@RequestMapping(value="/delete")
-	String delete(int pNumber) {
-		posservice.delete(pNumber);
-		
-		return "redirect:posmanagement";
+	@ResponseBody
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	int delete(int pNumber) {
+		return posservice.pDelete(pNumber);
 	}
 	@RequestMapping(value="/add")
 	String add() {

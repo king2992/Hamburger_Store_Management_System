@@ -23,10 +23,10 @@ public class PosServiceImpl implements PosService {
 		return posdao.getList(paging);
 	}
 
-	@Override
-	public void delete(int pNumber) {
-		posdao.delete(pNumber);
-	}
+	//@Override
+	//public void delete(int pNumber) {
+	//	posdao.delete(pNumber);
+	//}
 
 	@Override
 	public void add(Pos item) {
@@ -41,6 +41,11 @@ public class PosServiceImpl implements PosService {
 	@Override
 	public void update(Pos item) {
 		posdao.update(item);
+	}
+
+	@Override
+	public int pDelete(int pNumber) {
+		return posdao.pDelete(pNumber);
 	}
 
 	/*

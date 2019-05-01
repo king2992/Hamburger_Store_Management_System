@@ -11,7 +11,7 @@ public interface PosDao {
 
 	List<Pos> getList(Paging paging);
 
-	void delete(int pNumber);
+	//void delete(int pNumber);
 
 	void add(Pos item);
 
@@ -27,6 +27,8 @@ public interface PosDao {
 	 * 
 	 * List<Pos> drink(Paging paging);
 	 */
+
+	int pDelete(int pNumber);
 	
 
 }

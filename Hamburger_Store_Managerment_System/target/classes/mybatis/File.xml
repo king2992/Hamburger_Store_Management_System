@@ -4,36 +4,36 @@
 <mapper namespace="file">
 	
 	<insert id="addFile">
-		INSERT INTO board_file (file_name, number)
-		VALUES (#{fileName}, LAST_INSERT_ID())
-	</insert>
-	
-	<select id="getArticleFiles" resultType="string">
-		SELECT file_name
-		FROM board_file
-		WHERE number = #{number}
-		ORDER BY reg_date
-	</select>
-	
-	<delete id="deleteFiles">'
-		DELETE FROM board_file
-		WHERE number = #{number}
-	</delete>
-	
-	<delete id="deleteFile">
-		DELETE FROM board_file
-		WHERE file_name = #{fileName}
-	</delete>
-	
-	<insert id="replaceFile">
-		INSERT INTO board_file(file_name, number)
-		VALUES (#{fileName}, #{number})
-	</insert>
-	
-	<update id="updateFileCnt">
-		UPDATE board_file
-		SET file_cnt = (SELECT COUNT(number) FROM review WHERE number = #{number})
-		WHERE number = #{number}
-	</update>
+        INSERT INTO board_file (file_name, number) 
+        VALUES (#{fileName}, LAST_INSERT_ID())
+    </insert>
+
+    <select id="getArticleFiles" resultType="string">
+        SELECT file_name
+        FROM board_file
+        WHERE number = #{number}
+        ORDER BY reg_date
+    </select>
+
+    <delete id="deleteFile">
+        DELETE FROM board_file
+        WHERE file_name = #{fileName}
+    </delete>
+
+    <delete id="deleteFiles">
+        DELETE FROM board_file
+        WHERE number = #{number}
+    </delete>
+
+    <insert id="replaceFile">
+        INSERT INTO board_file (file_name, number)
+        VALUES (#{fileName}, #{number})
+    </insert>
+
+    <update id="updateFileCnt">
+        UPDATE review
+        SET file_cnt = (SELECT COUNT(number) FROM board_file WHERE number = #{number})
+        WHERE number = #{number}
+    </update>
 	
 </mapper>
