@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>header</title>
+<title>커뮤니티 게시판</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
@@ -19,54 +19,8 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script	src="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.js"></script>
+<!-- <script	src="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.js"></script> -->
 <script src="/resources/js/mainR.js"></script>
-
-<!--	메세지 세션	-->
-<c:if test="${sessionScope.message ne null}">
-	<script>
-		$(document).ready(function() {
-			sessionMessage();
-
-			function sessionMessage() {
-				var message = "${sessionScope.message}";
-				if (message != '') {
-					Swal({
-						position : 'top-end',
-						type : 'success',
-						title : message,
-						showConfirmButton : false,
-						timer : 1500
-					})
-				}
-			}
-		});
-	</script>
-	<c:remove var="message" scope="session" />
-</c:if>
-
-<!--	에러 세션	-->
-<c:if test="${sessionScope.error ne null}">
-	<script>
-		$(document).ready(function() {
-			sessionError();
-
-			function sessionError() {
-				var error = "${sessionScope.error}";
-				if (error != '') {
-					Swal({
-						position : 'top-end',
-						type : 'error',
-						title : error,
-						showConfirmButton : false,
-						timer : 1500
-					})
-				}
-			}
-		});
-	</script>
-	<c:remove var="error" scope="session" />
-</c:if>
 
 <!-- 접속현황 -->
  <c:if test="${sessionScope.user ne null }">
@@ -104,15 +58,6 @@
 					href='<c:url value="/study/list"/>'> <i
 						class="fas fa-book menu-icon"></i>
 				</a></li>
-			<%-- 	<c:if test="${user ne null }">
-					<li class="nav-item"><a class="nav-link"
-						href='<c:url value="/group/list"/>'> <i
-							class="fa fa-user-plus menu-icon"></i>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"> <i
-							class="fa fa-envelope menu-icon modal_open" data=messageModal></i>
-					</a></li>
-				</c:if> --%>
 			</ul>
 
 			<ul class="nav navbar-nav menu-infobtn">
@@ -126,7 +71,7 @@
 							href="#">정보수정</a> <a class="dropdown-item modal_open modal_menu"
 							data="passModal" href="#">비밀번호변경</a> <a
 							class="dropdown-item modal_open modal_menu" data="logoutModal"
-							href="<c:url value='//logout'/>">로그아웃</a> <a
+							href="<c:url value='/user/userLogout'/>">로그아웃</a> <a
 							class="dropdown-item modal_open modal_menu" data="secessionModal"
 							href="#">회원탈퇴</a>
 					</div></li>
