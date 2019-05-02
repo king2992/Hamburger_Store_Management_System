@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
-
+ 
 @Repository
 public class ReviewDaoImpl implements ReviewDao {
 

@@ -5,7 +5,7 @@ import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
 
 public interface ReviewService {
-
+ 
 	List<Review> reviewList(Paging paging);
 
 	void reviewAdd(Review reviewAdd) throws Exception;

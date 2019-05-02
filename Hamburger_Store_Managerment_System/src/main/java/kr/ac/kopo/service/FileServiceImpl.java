@@ -10,7 +10,7 @@ import kr.ac.kopo.dao.FileDao;
 
 @Service
 public class FileServiceImpl implements FileService {
-
+ 
 	@Autowired
 	private FileDao fileDao;
 

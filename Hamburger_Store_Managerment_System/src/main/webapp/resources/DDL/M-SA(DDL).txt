@@ -1,142 +1,142 @@
--- ÈÄ±â
+-- ï¿½Ä±ï¿½ 
 CREATE TABLE `review` (
-	`number`      INT           NOT NULL COMMENT '±Û¹øÈ£', -- ±Û¹øÈ£
-	`user_id`     VARCHAR(40)   NULL     COMMENT '¾ÆÀÌµð', -- ¾ÆÀÌµð
-	`title`       VARCHAR(255)  NULL     COMMENT 'Á¦¸ñ', -- Á¦¸ñ
-	`contents`    VARCHAR(2000) NULL     COMMENT '³»¿ë', -- ³»¿ë
-	`file`        VARCHAR(255)  NULL     COMMENT 'Ã·ºÎ', -- Ã·ºÎ
-	`date`        DATETIME      NULL     COMMENT 'ÀÛ¼ºÀÏ', -- ÀÛ¼ºÀÏ
-	`reLike`      INT           NULL     COMMENT 'ÁÁ¾Æ¿ä', -- ÁÁ¾Æ¿ä
-	`ref`         INT           NOT NULL COMMENT 'Á¶È¸', -- Á¶È¸
-	`group_num`   INT           NULL     DEFAULT 1 COMMENT '´ä±Û¹øÈ£', -- ´ä±Û¹øÈ£
-	`group_ord`   INT           NULL     DEFAULT 0 COMMENT '´ä±Û¼ø¼­', -- ´ä±Û¼ø¼­
-	`group_depth` INT           NULL     DEFAULT 0 COMMENT '´ä±Û±íÀÌ', -- ´ä±Û±íÀÌ
-	`file_cnt`    INT           NULL     COMMENT 'ÆÄÀÏ°¹¼ö' -- ÆÄÀÏ°¹¼ö
+	`number`      INT           NOT NULL COMMENT 'ï¿½Û¹ï¿½È£', -- ï¿½Û¹ï¿½È£
+	`user_id`     VARCHAR(40)   NULL     COMMENT 'ï¿½ï¿½ï¿½Ìµï¿½', -- ï¿½ï¿½ï¿½Ìµï¿½
+	`title`       VARCHAR(255)  NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½
+	`contents`    VARCHAR(2000) NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½
+	`file`        VARCHAR(255)  NULL     COMMENT 'Ã·ï¿½ï¿½', -- Ã·ï¿½ï¿½
+	`date`        DATETIME      NULL     COMMENT 'ï¿½Û¼ï¿½ï¿½ï¿½', -- ï¿½Û¼ï¿½ï¿½ï¿½
+	`reLike`      INT           NULL     COMMENT 'ï¿½ï¿½ï¿½Æ¿ï¿½', -- ï¿½ï¿½ï¿½Æ¿ï¿½
+	`ref`         INT           NOT NULL COMMENT 'ï¿½ï¿½È¸', -- ï¿½ï¿½È¸
+	`group_num`   INT           NULL     DEFAULT 1 COMMENT 'ï¿½ï¿½Û¹ï¿½È£', -- ï¿½ï¿½Û¹ï¿½È£
+	`group_ord`   INT           NULL     DEFAULT 0 COMMENT 'ï¿½ï¿½Û¼ï¿½ï¿½ï¿½', -- ï¿½ï¿½Û¼ï¿½ï¿½ï¿½
+	`group_depth` INT           NULL     DEFAULT 0 COMMENT 'ï¿½ï¿½Û±ï¿½ï¿½ï¿½', -- ï¿½ï¿½Û±ï¿½ï¿½ï¿½
+	`file_cnt`    INT           NULL     COMMENT 'ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½' -- ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½
 )
-COMMENT 'ÈÄ±â';
+COMMENT 'ï¿½Ä±ï¿½';
 
--- ÈÄ±â
+-- ï¿½Ä±ï¿½
 ALTER TABLE `review`
-	ADD CONSTRAINT `PK_review` -- ÈÄ±â ±âº»Å°
+	ADD CONSTRAINT `PK_review` -- ï¿½Ä±ï¿½ ï¿½âº»Å°
 		PRIMARY KEY (
-			`number` -- ±Û¹øÈ£
+			`number` -- ï¿½Û¹ï¿½È£
 		);
 
 ALTER TABLE `review`
-	MODIFY COLUMN `number` INT NOT NULL AUTO_INCREMENT COMMENT '±Û¹øÈ£';
+	MODIFY COLUMN `number` INT NOT NULL AUTO_INCREMENT COMMENT 'ï¿½Û¹ï¿½È£';
 
 ALTER TABLE `review`
 	AUTO_INCREMENT = 0;
 
--- ´ñ±Û
+-- ï¿½ï¿½ï¿½
 CREATE TABLE `comment` (
-	`co_number` INT           NOT NULL COMMENT '´ñ±Û¹øÈ£', -- ´ñ±Û¹øÈ£
-	`user_id`   VARCHAR(40)   NULL     COMMENT '¾ÆÀÌµð', -- ¾ÆÀÌµð
-	`number`    INT           NULL     COMMENT '±Û¹øÈ£', -- ±Û¹øÈ£
-	`content`   VARCHAR(1000) NULL     COMMENT '´ñ±Û³»¿ë', -- ´ñ±Û³»¿ë
-	`co_date`   DATETIME      NULL     COMMENT '´ñ±ÛÀÏÀÚ', -- ´ñ±ÛÀÏÀÚ
-	`co_group`  INT           NULL     DEFAULT 0 COMMENT '´ë´ñ±Û¹øÈ£', -- ´ë´ñ±Û¹øÈ£
-	`co_ord`    INT           NULL     DEFAULT 0 COMMENT '´ë´ñ±Û¼ø¼­', -- ´ë´ñ±Û¼ø¼­
-	`co_depth`  INT           NULL     DEFAULT 1 COMMENT '´ë´ñ±Û±íÀÌ' -- ´ë´ñ±Û±íÀÌ
+	`co_number` INT           NOT NULL COMMENT 'ï¿½ï¿½Û¹ï¿½È£', -- ï¿½ï¿½Û¹ï¿½È£
+	`user_id`   VARCHAR(40)   NULL     COMMENT 'ï¿½ï¿½ï¿½Ìµï¿½', -- ï¿½ï¿½ï¿½Ìµï¿½
+	`number`    INT           NULL     COMMENT 'ï¿½Û¹ï¿½È£', -- ï¿½Û¹ï¿½È£
+	`content`   VARCHAR(1000) NULL     COMMENT 'ï¿½ï¿½Û³ï¿½ï¿½ï¿½', -- ï¿½ï¿½Û³ï¿½ï¿½ï¿½
+	`co_date`   DATETIME      NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	`co_group`  INT           NULL     DEFAULT 0 COMMENT 'ï¿½ï¿½ï¿½Û¹ï¿½È£', -- ï¿½ï¿½ï¿½Û¹ï¿½È£
+	`co_ord`    INT           NULL     DEFAULT 0 COMMENT 'ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½
+	`co_depth`  INT           NULL     DEFAULT 1 COMMENT 'ï¿½ï¿½ï¿½Û±ï¿½ï¿½ï¿½' -- ï¿½ï¿½ï¿½Û±ï¿½ï¿½ï¿½
 )
-COMMENT '´ñ±Û';
+COMMENT 'ï¿½ï¿½ï¿½';
 
--- ´ñ±Û
+-- ï¿½ï¿½ï¿½
 ALTER TABLE `comment`
-	ADD CONSTRAINT `PK_comment` -- ´ñ±Û ±âº»Å°
+	ADD CONSTRAINT `PK_comment` -- ï¿½ï¿½ï¿½ ï¿½âº»Å°
 		PRIMARY KEY (
-			`co_number` -- ´ñ±Û¹øÈ£
+			`co_number` -- ï¿½ï¿½Û¹ï¿½È£
 		);
 
 ALTER TABLE `comment`
-	MODIFY COLUMN `co_number` INT NOT NULL AUTO_INCREMENT COMMENT '´ñ±Û¹øÈ£';
+	MODIFY COLUMN `co_number` INT NOT NULL AUTO_INCREMENT COMMENT 'ï¿½ï¿½Û¹ï¿½È£';
 
--- È¸¿ø
+-- È¸ï¿½ï¿½
 CREATE TABLE `user` (
-	`user_id`       VARCHAR(40) NOT NULL COMMENT '¾ÆÀÌµð', -- ¾ÆÀÌµð
-	`user_password` VARCHAR(40) NOT NULL COMMENT 'ºñ¹Ð¹øÈ£' -- ºñ¹Ð¹øÈ£
+	`user_id`       VARCHAR(40) NOT NULL COMMENT 'ï¿½ï¿½ï¿½Ìµï¿½', -- ï¿½ï¿½ï¿½Ìµï¿½
+	`user_password` VARCHAR(40) NOT NULL COMMENT 'ï¿½ï¿½Ð¹ï¿½È£' -- ï¿½ï¿½Ð¹ï¿½È£
 )
-COMMENT 'È¸¿ø';
+COMMENT 'È¸ï¿½ï¿½';
 
--- È¸¿ø
+-- È¸ï¿½ï¿½
 ALTER TABLE `user`
-	ADD CONSTRAINT `PK_user` -- È¸¿ø ±âº»Å°
+	ADD CONSTRAINT `PK_user` -- È¸ï¿½ï¿½ ï¿½âº»Å°
 		PRIMARY KEY (
-			`user_id` -- ¾ÆÀÌµð
+			`user_id` -- ï¿½ï¿½ï¿½Ìµï¿½
 		);
 
--- ÆÄÀÏ¾÷·Îµå
+-- ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½
 CREATE TABLE `board_file` (
-	`file_name` VARCHAR(150) NOT NULL COMMENT 'ÆÄÀÏÀÌ¸§', -- ÆÄÀÏÀÌ¸§
-	`number`    INT          NULL     COMMENT '±Û¹øÈ£', -- ±Û¹øÈ£
-	`reg_date`  DATETIME     NULL     COMMENT 'µî·ÏÀÏÀÚ' -- µî·ÏÀÏÀÚ
+	`file_name` VARCHAR(150) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½', -- ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+	`number`    INT          NULL     COMMENT 'ï¿½Û¹ï¿½È£', -- ï¿½Û¹ï¿½È£
+	`reg_date`  DATETIME     NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½' -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 )
-COMMENT 'ÆÄÀÏ¾÷·Îµå';
+COMMENT 'ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½';
 
--- ÆÄÀÏ¾÷·Îµå
+-- ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½
 ALTER TABLE `board_file`
-	ADD CONSTRAINT `PK_board_file` -- ÆÄÀÏ¾÷·Îµå ±âº»Å°
+	ADD CONSTRAINT `PK_board_file` -- ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½ ï¿½âº»Å°
 		PRIMARY KEY (
-			`file_name` -- ÆÄÀÏÀÌ¸§
+			`file_name` -- ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
 		);
 
--- Æ÷½º±â
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE TABLE `pos` (
-	`p_number`  INT          NOT NULL COMMENT '»óÇ°¹øÈ£', -- »óÇ°¹øÈ£
-	`p_name`    VARCHAR(150) NULL     COMMENT '»óÇ°ÀÌ¸§', -- »óÇ°ÀÌ¸§
-	`p_price`   INT          NULL     COMMENT '»óÇ°°¡', -- »óÇ°°¡
-	`p_account` INT          NULL     COMMENT '»óÇ°°¹¼ö', -- »óÇ°°¹¼ö
-	`p_total`   INT          NULL     COMMENT '»óÇ°ÃÑÇÕ°è', -- »óÇ°ÃÑÇÕ°è
-	`p_menu`    VARCHAR(150) NULL     COMMENT '»óÇ°¸Þ´º' -- »óÇ°¸Þ´º
+	`p_number`  INT          NOT NULL COMMENT 'ï¿½ï¿½Ç°ï¿½ï¿½È£', -- ï¿½ï¿½Ç°ï¿½ï¿½È£
+	`p_name`    VARCHAR(150) NULL     COMMENT 'ï¿½ï¿½Ç°ï¿½Ì¸ï¿½', -- ï¿½ï¿½Ç°ï¿½Ì¸ï¿½
+	`p_price`   INT          NULL     COMMENT 'ï¿½ï¿½Ç°ï¿½ï¿½', -- ï¿½ï¿½Ç°ï¿½ï¿½
+	`p_account` INT          NULL     COMMENT 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+	`p_total`   INT          NULL     COMMENT 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Õ°ï¿½', -- ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Õ°ï¿½
+	`p_menu`    VARCHAR(150) NULL     COMMENT 'ï¿½ï¿½Ç°ï¿½Þ´ï¿½' -- ï¿½ï¿½Ç°ï¿½Þ´ï¿½
 )
-COMMENT 'Æ÷½º±â';
+COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
--- Æ÷½º±â
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ALTER TABLE `pos`
-	ADD CONSTRAINT `PK_pos` -- Æ÷½º±â ±âº»Å°
+	ADD CONSTRAINT `PK_pos` -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»Å°
 		PRIMARY KEY (
-			`p_number` -- »óÇ°¹øÈ£
+			`p_number` -- ï¿½ï¿½Ç°ï¿½ï¿½È£
 		);
 
 ALTER TABLE `pos`
-	MODIFY COLUMN `p_number` INT NOT NULL AUTO_INCREMENT COMMENT '»óÇ°¹øÈ£';
+	MODIFY COLUMN `p_number` INT NOT NULL AUTO_INCREMENT COMMENT 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 
--- ÈÄ±â
+-- ï¿½Ä±ï¿½
 ALTER TABLE `review`
-	ADD CONSTRAINT `FK_user_TO_review` -- È¸¿ø -> ÈÄ±â
+	ADD CONSTRAINT `FK_user_TO_review` -- È¸ï¿½ï¿½ -> ï¿½Ä±ï¿½
 		FOREIGN KEY (
-			`user_id` -- ¾ÆÀÌµð
+			`user_id` -- ï¿½ï¿½ï¿½Ìµï¿½
 		)
-		REFERENCES `user` ( -- È¸¿ø
-			`user_id` -- ¾ÆÀÌµð
+		REFERENCES `user` ( -- È¸ï¿½ï¿½
+			`user_id` -- ï¿½ï¿½ï¿½Ìµï¿½
 		);
 
--- ´ñ±Û
+-- ï¿½ï¿½ï¿½
 ALTER TABLE `comment`
-	ADD CONSTRAINT `FK_user_TO_comment` -- È¸¿ø -> ´ñ±Û
+	ADD CONSTRAINT `FK_user_TO_comment` -- È¸ï¿½ï¿½ -> ï¿½ï¿½ï¿½
 		FOREIGN KEY (
-			`user_id` -- ¾ÆÀÌµð
+			`user_id` -- ï¿½ï¿½ï¿½Ìµï¿½
 		)
-		REFERENCES `user` ( -- È¸¿ø
-			`user_id` -- ¾ÆÀÌµð
+		REFERENCES `user` ( -- È¸ï¿½ï¿½
+			`user_id` -- ï¿½ï¿½ï¿½Ìµï¿½
 		);
 
--- ´ñ±Û
+-- ï¿½ï¿½ï¿½
 ALTER TABLE `comment`
-	ADD CONSTRAINT `FK_review_TO_comment` -- ÈÄ±â -> ´ñ±Û
+	ADD CONSTRAINT `FK_review_TO_comment` -- ï¿½Ä±ï¿½ -> ï¿½ï¿½ï¿½
 		FOREIGN KEY (
-			`number` -- ±Û¹øÈ£
+			`number` -- ï¿½Û¹ï¿½È£
 		)
-		REFERENCES `review` ( -- ÈÄ±â
-			`number` -- ±Û¹øÈ£
+		REFERENCES `review` ( -- ï¿½Ä±ï¿½
+			`number` -- ï¿½Û¹ï¿½È£
 		);
 
--- ÆÄÀÏ¾÷·Îµå
+-- ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½
 ALTER TABLE `board_file`
-	ADD CONSTRAINT `FK_review_TO_board_file` -- ÈÄ±â -> ÆÄÀÏ¾÷·Îµå
+	ADD CONSTRAINT `FK_review_TO_board_file` -- ï¿½Ä±ï¿½ -> ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½
 		FOREIGN KEY (
-			`number` -- ±Û¹øÈ£
+			`number` -- ï¿½Û¹ï¿½È£
 		)
-		REFERENCES `review` ( -- ÈÄ±â
-			`number` -- ±Û¹øÈ£
+		REFERENCES `review` ( -- ï¿½Ä±ï¿½
+			`number` -- ï¿½Û¹ï¿½È£
 		);

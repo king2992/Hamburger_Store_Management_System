@@ -1,7 +1,7 @@
 package kr.ac.kopo.dao;
 
 import java.util.List;
-
+ 
 public interface FileDao {
 	
     // 파일 추가

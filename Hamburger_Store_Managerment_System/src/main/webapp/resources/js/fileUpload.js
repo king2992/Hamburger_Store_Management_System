@@ -4,7 +4,7 @@
 
 // Handlebars 파일템플릿 컴파일
 var fileTemplate = Handlebars.compile($("#fileTemplate").html());
-
+ 
 // 첨부파일 drag & drop 영역 선택자
 var fileDropDiv = $(".fileDrop");
 
