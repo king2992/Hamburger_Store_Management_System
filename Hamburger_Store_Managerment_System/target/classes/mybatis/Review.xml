@@ -53,8 +53,7 @@
 
 	<update id="reviewUp">
 		UPDATE review
-		SET title=#{title},
-		contents=#{contents}, file=#{file}
+		SET title=#{title}, contents=#{contents}
 		WHERE number=#{number}
 	</update>
 <!-- 제목,내용,작성자 -->

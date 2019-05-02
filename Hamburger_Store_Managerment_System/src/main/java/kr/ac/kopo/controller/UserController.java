@@ -28,7 +28,7 @@ public class UserController {
 	@RequestMapping(value="/signUp", method=RequestMethod.POST)
 	String signUp(User user) {
 		service.signUp(user);
-		return "../index";
+		return "/";
 	}
 	@RequestMapping(value="/idCk", method=RequestMethod.POST)
 	@ResponseBody

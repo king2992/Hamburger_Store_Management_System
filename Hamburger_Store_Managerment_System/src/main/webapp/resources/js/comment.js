@@ -10,9 +10,24 @@ $('[name=commentBtn]').click(function(){
 
 	commentInsert(insertData);
 	
-	
-	
+var coDate = new Date();
+var yyyy = today.getFullYear();
+var mm = today.getMonth()+1;
+var dd = today.getDate();
+
+if (dd < 10) {
+	dd = '0' + dd
+}
+
+if (mm < 10) {
+	mm = '0' + mm
+}
+
+today = mm + '/' +dd+ '/' +yyyy;
+document.write(coDate);
 });
+
+var userId = "${view.userId}";
 
 function commentList(){
 	console.log('댓글리스트 출력');
@@ -29,6 +44,7 @@ function commentList(){
             $.each(data.result, function(index, value){
 //            	대댓글일 경우 출력폼
             	if (value.coDepth == 1) {
+            		a += '<img src="resources/">';
             		a += '<div class="comment_content" style="border-bottom:1px solid darkgray; margin-bottom:10px;">';
             		a += '<div class="commentInfo'+value.coNumber+'">'+'작성일: '+value.coDate+'/ 작성자: '+value.userId;
             		a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정</a>';
@@ -118,7 +134,3 @@ function commentDelete(coNumber){
 $(document).ready(function(){
     commentList(); 
 });
-
-
-
-

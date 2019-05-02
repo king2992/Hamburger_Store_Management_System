@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-	<form id="form1" method="post" action="reviewUp" enctype="multipart/form-data">
+	<form id="form1" method="post" action="reviewUp">
 		<input type="hidden" id="number" name="number" value="${reviewUp.number}">
 		<div>
 			<label>제목:</label>
@@ -54,12 +54,7 @@
 				<br/>
 				<p class="text-center"><i class="fa fa-paperclip"></i>첨부파일을 드래그 해주세요.</p>
 			</div>
-		</div>
-<!-- 		<div> -->
-<!-- 			<label>첨부파일:</label> -->
-<%-- 			<input type="file" name="attach" multiple="multiple">(${reviewUp.file}) --%>
-<!-- 		</div> -->
-		
+		</div>		
 		<div>
 			<input class="add" id="btnUpdate" type="submit" value="수정">
 		</div>					
