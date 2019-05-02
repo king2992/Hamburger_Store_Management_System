@@ -17,7 +17,7 @@ import java.util.Calendar;
 import java.util.UUID;
 
 public class UploadFileUtils {
- 
+  
     @SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
 

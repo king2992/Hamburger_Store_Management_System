@@ -1,4 +1,4 @@
--- �ı� 
+-- �ı�  
 CREATE TABLE `review` (
 	`number`      INT           NOT NULL COMMENT '�۹�ȣ', -- �۹�ȣ
 	`user_id`     VARCHAR(40)   NULL     COMMENT '���̵�', -- ���̵�

@@ -1,7 +1,7 @@
 package kr.ac.kopo.model;
 
 import java.util.Date;
- 
+  
 
 public class Review {
 	
