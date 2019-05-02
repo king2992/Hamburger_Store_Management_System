@@ -1,0 +1,142 @@
+-- 후기
+CREATE TABLE `review` (
+	`number`      INT           NOT NULL COMMENT '글번호', -- 글번호
+	`user_id`     VARCHAR(40)   NULL     COMMENT '아이디', -- 아이디
+	`title`       VARCHAR(255)  NULL     COMMENT '제목', -- 제목
+	`contents`    VARCHAR(2000) NULL     COMMENT '내용', -- 내용
+	`file`        VARCHAR(255)  NULL     COMMENT '첨부', -- 첨부
+	`date`        DATETIME      NULL     COMMENT '작성일', -- 작성일
+	`reLike`      INT           NULL     COMMENT '좋아요', -- 좋아요
+	`ref`         INT           NOT NULL COMMENT '조회', -- 조회
+	`group_num`   INT           NULL     DEFAULT 1 COMMENT '답글번호', -- 답글번호
+	`group_ord`   INT           NULL     DEFAULT 0 COMMENT '답글순서', -- 답글순서
+	`group_depth` INT           NULL     DEFAULT 0 COMMENT '답글깊이', -- 답글깊이
+	`file_cnt`    INT           NULL     COMMENT '파일갯수' -- 파일갯수
+)
+COMMENT '후기';
+
+-- 후기
+ALTER TABLE `review`
+	ADD CONSTRAINT `PK_review` -- 후기 기본키
+		PRIMARY KEY (
+			`number` -- 글번호
+		);
+
+ALTER TABLE `review`
+	MODIFY COLUMN `number` INT NOT NULL AUTO_INCREMENT COMMENT '글번호';
+
+ALTER TABLE `review`
+	AUTO_INCREMENT = 0;
+
+-- 댓글
+CREATE TABLE `comment` (
+	`co_number` INT           NOT NULL COMMENT '댓글번호', -- 댓글번호
+	`user_id`   VARCHAR(40)   NULL     COMMENT '아이디', -- 아이디
+	`number`    INT           NULL     COMMENT '글번호', -- 글번호
+	`content`   VARCHAR(1000) NULL     COMMENT '댓글내용', -- 댓글내용
+	`co_date`   DATETIME      NULL     COMMENT '댓글일자', -- 댓글일자
+	`co_group`  INT           NULL     DEFAULT 0 COMMENT '대댓글번호', -- 대댓글번호
+	`co_ord`    INT           NULL     DEFAULT 0 COMMENT '대댓글순서', -- 대댓글순서
+	`co_depth`  INT           NULL     DEFAULT 1 COMMENT '대댓글깊이' -- 대댓글깊이
+)
+COMMENT '댓글';
+
+-- 댓글
+ALTER TABLE `comment`
+	ADD CONSTRAINT `PK_comment` -- 댓글 기본키
+		PRIMARY KEY (
+			`co_number` -- 댓글번호
+		);
+
+ALTER TABLE `comment`
+	MODIFY COLUMN `co_number` INT NOT NULL AUTO_INCREMENT COMMENT '댓글번호';
+
+-- 회원
+CREATE TABLE `user` (
+	`user_id`       VARCHAR(40) NOT NULL COMMENT '아이디', -- 아이디
+	`user_password` VARCHAR(40) NOT NULL COMMENT '비밀번호' -- 비밀번호
+)
+COMMENT '회원';
+
+-- 회원
+ALTER TABLE `user`
+	ADD CONSTRAINT `PK_user` -- 회원 기본키
+		PRIMARY KEY (
+			`user_id` -- 아이디
+		);
+
+-- 파일업로드
+CREATE TABLE `board_file` (
+	`file_name` VARCHAR(150) NOT NULL COMMENT '파일이름', -- 파일이름
+	`number`    INT          NULL     COMMENT '글번호', -- 글번호
+	`reg_date`  DATETIME     NULL     COMMENT '등록일자' -- 등록일자
+)
+COMMENT '파일업로드';
+
+-- 파일업로드
+ALTER TABLE `board_file`
+	ADD CONSTRAINT `PK_board_file` -- 파일업로드 기본키
+		PRIMARY KEY (
+			`file_name` -- 파일이름
+		);
+
+-- 포스기
+CREATE TABLE `pos` (
+	`p_number`  INT          NOT NULL COMMENT '상품번호', -- 상품번호
+	`p_name`    VARCHAR(150) NULL     COMMENT '상품이름', -- 상품이름
+	`p_price`   INT          NULL     COMMENT '상품가', -- 상품가
+	`p_account` INT          NULL     COMMENT '상품갯수', -- 상품갯수
+	`p_total`   INT          NULL     COMMENT '상품총합계', -- 상품총합계
+	`p_menu`    VARCHAR(150) NULL     COMMENT '상품메뉴' -- 상품메뉴
+)
+COMMENT '포스기';
+
+-- 포스기
+ALTER TABLE `pos`
+	ADD CONSTRAINT `PK_pos` -- 포스기 기본키
+		PRIMARY KEY (
+			`p_number` -- 상품번호
+		);
+
+ALTER TABLE `pos`
+	MODIFY COLUMN `p_number` INT NOT NULL AUTO_INCREMENT COMMENT '상품번호';
+
+-- 후기
+ALTER TABLE `review`
+	ADD CONSTRAINT `FK_user_TO_review` -- 회원 -> 후기
+		FOREIGN KEY (
+			`user_id` -- 아이디
+		)
+		REFERENCES `user` ( -- 회원
+			`user_id` -- 아이디
+		);
+
+-- 댓글
+ALTER TABLE `comment`
+	ADD CONSTRAINT `FK_user_TO_comment` -- 회원 -> 댓글
+		FOREIGN KEY (
+			`user_id` -- 아이디
+		)
+		REFERENCES `user` ( -- 회원
+			`user_id` -- 아이디
+		);
+
+-- 댓글
+ALTER TABLE `comment`
+	ADD CONSTRAINT `FK_review_TO_comment` -- 후기 -> 댓글
+		FOREIGN KEY (
+			`number` -- 글번호
+		)
+		REFERENCES `review` ( -- 후기
+			`number` -- 글번호
+		);
+
+-- 파일업로드
+ALTER TABLE `board_file`
+	ADD CONSTRAINT `FK_review_TO_board_file` -- 후기 -> 파일업로드
+		FOREIGN KEY (
+			`number` -- 글번호
+		)
+		REFERENCES `review` ( -- 후기
+			`number` -- 글번호
+		);

@@ -20,7 +20,7 @@ import kr.ac.kopo.service.FileService;
 import kr.ac.kopo.util.UploadFileUtils;
 
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/review/file")
 public class FileController {
 	
 	@Autowired

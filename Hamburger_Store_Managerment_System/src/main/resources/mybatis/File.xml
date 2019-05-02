@@ -4,8 +4,8 @@
 <mapper namespace="file">
 	
 	<insert id="addFile">
-        INSERT INTO board_file (file_name, number) 
-        VALUES (#{fileName}, LAST_INSERT_ID())
+        INSERT INTO board_file (file_name, number,reg_date) 
+        VALUES (#{fileName}, LAST_INSERT_ID(),NOW())
     </insert>
 
     <select id="getArticleFiles" resultType="string">

@@ -43,7 +43,7 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="/reviewAdd", method=RequestMethod.POST)	
-	String reviewAdd(Review reviewAdd, HttpSession session) throws Exception {	
+	String reviewAdd(Review reviewAdd, HttpSession session) throws Exception{	
 		reviewAdd.setUserId((String)session.getAttribute("user"));
 			reviewService.reviewAdd(reviewAdd);
 			

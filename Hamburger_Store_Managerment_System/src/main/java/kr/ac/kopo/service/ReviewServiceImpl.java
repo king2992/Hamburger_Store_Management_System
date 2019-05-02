@@ -19,6 +19,7 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Autowired
 	private FileDao fileDao;
+	
 	@Override
 	public List<Review> reviewList(Paging paging) {
 		int total = (int) reviewDao.total(paging);
@@ -34,13 +35,11 @@ public class ReviewServiceImpl implements ReviewService {
 		String[] files = reviewAdd.getFiles();
 		
 		if (files == null) {
-			System.out.println("없어");
 			return;
 		}
 		// 게시글 첨부파일 입력처리
 		for (String fileName : files) {
 			fileDao.addFile(fileName);
-		System.out.println("dldldldlldldldlldldldldldll");
 		}
 	}
 

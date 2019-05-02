@@ -16,7 +16,6 @@ public class FileDaoImpl implements FileDao {
 
 	@Override
 	public void addFile(String fileName) throws Exception {
-		System.out.println("야야야야ㅑ야야야ㅑ야야야야야야야야야ㅑ야야야야야야야야");
 		db.insert("file.addFile",fileName);
 	}
 

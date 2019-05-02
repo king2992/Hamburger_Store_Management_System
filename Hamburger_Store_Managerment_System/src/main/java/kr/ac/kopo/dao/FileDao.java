@@ -5,7 +5,7 @@ import java.util.List;
 public interface FileDao {
 	
     // 파일 추가
-    void addFile(String fileName) throws Exception;
+    void addFile(String fullName) throws Exception;
 
     // 파일 목록
     List<String> getArticleFiles(int number) throws Exception;

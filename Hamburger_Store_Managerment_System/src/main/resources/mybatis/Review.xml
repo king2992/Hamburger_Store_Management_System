@@ -88,8 +88,8 @@
 <!-- @transactional 두개 쿼리 실행  	 -->
 <!-- 답글 계층형 쿼리 -->
    	<insert id="reply">
-   		INSERT INTO review (user_id,title,contents,files,date,reLike,ref,group_num,group_ord,group_depth)
-		VALUES (#{userId},#{title},#{contents},#{files},NOW(),0,0,#{groupNum},#{groupOrd}+1,#{groupDepth}+1)
+   		INSERT INTO review (user_id,title,contents,date,reLike,ref,group_num,group_ord,group_depth)
+		VALUES (#{userId},#{title},#{contents},NOW(),0,0,#{groupNum},#{groupOrd}+1,#{groupDepth}+1)
 <!-- 		답글 등록시 답글순서+1,답글깊이+1을 추가 -->
    	</insert>
    	
