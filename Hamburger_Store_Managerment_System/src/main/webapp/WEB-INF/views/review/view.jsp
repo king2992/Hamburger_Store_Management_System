@@ -273,14 +273,37 @@
                     <span>개의 댓글이 있습니다.</span>
                 </div> --%>
                 <div class="comment_inputwarp">
-                <input type="hidden" class="board_no" name="number" value="${view.number}"/>
+
+					<div class="container">
+							<form name="insertForm">
+								<div class="input-group">
+								<input type="hidden" class="board_no" name="number" value="${view.number}" />
+									<input type="text" class="comment_text" id="content" name="content"  placeholder="덧글을 입력하세요" autofocus>
+								<button class="btn btn-danger boardBtn" type="button" name="commentBtn">등록</button>
+							</div>
+					</form>
+					 <script type="text/javascript" src="/resources/js/comment.js"></script>
+				</div>
+			<div class="commentList"></div>
+
+									<%-- <input type="hidden" class="board_no" name="number" value="${view.number}"/>
                     <input type="text" class="comment_text">
                     <button class="btn btn-danger boardBtn" data="comment_write" name="commentBtn">작성</button>
                 </div>
 
                 <div class="comment_list">
+                
+                rows="10" cols="10"
+                 --%>
+                
+                
+                <!--    댓글          -->
 
-                    <c:forEach items="${value}" var="comment">
+<!--     댓글 끝     -->
+                
+               
+
+                    <%-- <c:forEach items="${value}" var="comment">
                         <div class="comment_content">
                             <c:if test="${value.coDepth > 0 }">
                                 <c:set var="wid" value="${value.coDepth*15 }"></c:set>
@@ -298,24 +321,24 @@
                                 </p>
                                 <p>${value.coDate }</p>
                             </div>
-                           <div class="comment_button btn btn-info" data="close">
-                            <a href="" onclick="commentReply+'value.coGroup'"> 답글작성</a>
+                           <div class="comment_button btn btn-info" data="close">답글작성
+                            <!-- <a href="" onclick="commentReply+'value.coGroup'"> 답글작성</a> -->
                             </div>
-                           <%--  <input type="hidden" id="comment_type" value="${comment.type }">
+                            <input type="hidden" id="comment_type" value="${comment.type }">
                             <input type="hidden" id="comment_id" value="${comment.id }">
                             <input type="hidden" id="comment_gNo" value="${comment.gNo }">
                             <input type="hidden" id="comment_step" value="${comment.step }">
-                            <input type="hidden" id="comment_indent" value="${comment.indent }"> --%>
+                            <input type="hidden" id="comment_indent" value="${comment.indent }">
                             <div class="comment_rewrite"></div>
                         </div>
                     </c:forEach>
-
+ --%>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/resources/js/comment.js"></script>
+
 
 </div>
 <div class="rightmenu" style="float:left;">
