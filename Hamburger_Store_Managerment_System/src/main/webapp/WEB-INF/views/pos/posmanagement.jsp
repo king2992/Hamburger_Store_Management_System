@@ -34,36 +34,47 @@
 </style>
 <script type="text/javascript">
 	$(document).ready( function() { 
-		
+		//var sum = 1;
 		$(document).on( "click", ".pNameClick", function() {
 			var td1 = document.createElement("td");
 			var td2 = document.createElement("td");
 			var td3 = document.createElement("td");
 			var td4 = document.createElement("td");
 			var tr1 = document.createElement("tr");
+			var menuName = $(this).attr("value");
 			tr1.setAttribute("class", "menuListTr");
 			tr1.style = "cursor:pointer";
 			td1.innerHTML = $(this).attr("data-number");
 			td2.innerHTML = $(this).attr("value");
+			td2.setAttribute("name",menuName);
+			td2.setAttribute("data-menuName", $(this).attr("value"));
+			td3.setAttribute("id", menuName);
 			td3.innerHTML = $(this).attr("data-cnt");
 			td3.setAttribute("class", "menuListCnt");
 			td4.innerHTML = $(this).attr("data-price");
 			td4.setAttribute("class", "item-price");
 			td4.setAttribute("data-price",$(this).attr("data-price"));
-			$("#orderList").append(tr1);
-			tr1.append(td1);
-			tr1.append(td2);
-			tr1.append(td3);
-			tr1.append(td4);
 			
+				if($("[name='"+menuName+"']").length == 0 ){
+					$("#orderList").append(tr1);
+					tr1.append(td1);
+					tr1.append(td2);
+					tr1.append(td3);
+					tr1.append(td4);
+				}else{
+					var sum = 1;
+					sumCount(menuName);
+					sumPrice(menuName);
+				}
+				
+				
 			var pNumber = $(this).attr('data-number');
-			console.log(pNumber);
-			
+						
 			if ($(".menuDelete").length < 1) {
 				$('.deleteUpdate').append('<li class="menuDelete" id="menuDelete" >메뉴삭제</li>');
 			}
 			$("#menuDelete").attr("onclick", "pDelete('"+pNumber+"')");
-			menuItemPriceTotal($(this).attr("data-price"));
+			 menuItemPriceTotal();
 		});
 
 	$('.pNameClick').each( function(index, value) {
@@ -72,29 +83,40 @@
 				$(this).siblings().attr("id", "none");
 					});
 		});
-				
+	
+	function sumCount(menuName){
+		var sum = Number($("[name='"+menuName+"']").siblings(".menuListCnt").text());
+		sum = sum + 1;
+		$("[name='"+menuName+"']").siblings(".menuListCnt").text(sum);
+	}	
+	function sumPrice(menuName){
+		var cnt = document.getElementById(menuName).innerHTML;
+		var price = $("[name='"+menuName+"']").siblings(".item-price").data("price");
+		var priceSum = Number(cnt) * Number(price);
+		$("[name='"+menuName+"']").siblings(".item-price").text(priceSum);
+	}
 	function allRemove(){
 		$('#orderList').remove();
 		}
 	
 	});
 	function menuCntUp(){
-		var pric = $("#menuListSelected").find(".item-price").text();
+		var price = $("#menuListSelected").find(".item-price").text();
 		var tot = $("#menuListSelected").find(".menuListCnt").text();
 		var cnt = Number(tot) + 1;
 		$("#menuListSelected").find(".menuListCnt").text(cnt);
 		menuItemTotal(cnt);
-		menuItemPriceTotal(pric);
+		 menuItemPriceTotal()
 	}
 	function menuCntDown(){
-		var pric = $("#menuListSelected").find(".item-price").text();
+		var price = $("#menuListSelected").find(".item-price").text();
 		var tot = $("#menuListSelected").find(".menuListCnt").text();
 		var cnt = Number(tot) - 1;
 		if($("#menuListSelected").find(".menuListCnt").text() > 1){
 			$("#menuListSelected").find(".menuListCnt").text(cnt);	
 		}
 		menuItemTotal(cnt);
-		menuItemPriceTotal(pric);
+		 menuItemPriceTotal()
 	}
 	function menuItemTotal(cnt){
 		var itemPrice = $("#menuListSelected").find(".item-price").attr("data-price");
@@ -104,14 +126,23 @@
 			$("#menuListSelected").find(".item-price").text(itemPrice);		
 		}
 	}
-	var total = 0;
-	function menuItemPriceTotal(price){
-		
-// 		$(".item-price").each(function(index){
-			total = Number(total) + Number(price);
-// 		});
-		console.log(total);
+	
+	
+	
+	function menuItemPriceTotal(){
+		var total = 0;
+		var tot = 0;
+ 		$(".item-price").each(function(index){
+ 			total += Number($(this).text());
+			//total = Number(total) + Number($(this).text());
+		});
+ 		pTotal(total);
 	}
+	function pTotal(total){
+		$(".pTotal").text(total);
+	}
+	
+	
 	$(document).on( "click", ".menuListTr", function() {
 		
 		$('.menuListTr').each( function(index) { 
@@ -145,9 +176,11 @@
 	}
 	function allRemove(){
 		$(".orderList").empty();
+		menuItemPriceTotal();
 	}
 	function menuRemove(){
 		$("#menuListSelected").remove();
+		menuItemPriceTotal();
 	}
 	
 	
@@ -213,7 +246,7 @@
 						<table>
 							<thead>
 								<tr>
-									<th colspan="2">총 금액 :<span claas="pTotal"
+									<th colspan="2">총 금액 :<span class="pTotal"
 										data-total="${item.pTotal}">${item.pTotal}</span></th>
 								</tr>
 							</thead>
