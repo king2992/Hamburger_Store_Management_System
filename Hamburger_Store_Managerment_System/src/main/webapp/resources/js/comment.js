@@ -29,7 +29,7 @@ function commentList(){
             $.each(data.result, function(index, value){
 //            	대댓글일 경우 출력폼
             	if (value.coDepth == 1) {
-            		a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom:10px;">';
+            		a += '<div class="comment_content" style="border-bottom:1px solid darkgray; margin-bottom:10px;">';
             		a += '<div class="commentInfo'+value.coNumber+'">'+'작성일: '+value.coDate+'/ 작성자: '+value.userId;
             		a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정</a>';
             		a += '<a onclick="commentDelete('+value.coNumber+');">삭제</a></div>';
@@ -37,8 +37,8 @@ function commentList(){
             	} 
             	// 댓글일 경우
             	else {
-                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 10px;">';
-                a += '<div class="commentInfo'+value.coNumber+'">'+'작성일 : '+value.coDate+' / 작성자 : '+value.userId;
+                a += '<div class="comment_content">';
+                a += '<div class="comment_info'+value.coNumber+'">'+'작성일 : '+value.coDate+' / 작성자 : '+value.userId;
                 a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정 </a>';
                 a += '<a onclick="commentReply('+value.coGroup+');">답글</a>';
                 a += '<a onclick="commentDelete('+value.coNumber+');"> 삭제 </a> </div>';
