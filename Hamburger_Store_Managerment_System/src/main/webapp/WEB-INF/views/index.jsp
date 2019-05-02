@@ -57,7 +57,7 @@
             <a class="nav-link js-scroll-trigger" href="#">무인주문</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/pos/OrderManagement">포스기(관리자)</a>
+            <a class="nav-link js-scroll-trigger" href="/pos/posmanagement">포스기(관리자)</a>
           </li>
         </ul>
       </div>

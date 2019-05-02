@@ -729,7 +729,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 --------------------------------------------------------------------------------------------------*/
 .fc-view-container {
   position: relative;
-  width:400px;
+/*   width:400px; */
   /* height:500px; */
    }
 

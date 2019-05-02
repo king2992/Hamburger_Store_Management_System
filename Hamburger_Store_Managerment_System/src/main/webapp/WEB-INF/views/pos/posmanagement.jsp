@@ -34,6 +34,7 @@
 </style>
 <script type="text/javascript">
 	$(document).ready( function() { 
+		
 		$(document).on( "click", ".pNameClick", function() {
 			var td1 = document.createElement("td");
 			var td2 = document.createElement("td");
@@ -41,6 +42,7 @@
 			var td4 = document.createElement("td");
 			var tr1 = document.createElement("tr");
 			tr1.setAttribute("class", "menuListTr");
+			tr1.style = "cursor:pointer";
 			td1.innerHTML = $(this).attr("data-number");
 			td2.innerHTML = $(this).attr("value");
 			td3.innerHTML = $(this).attr("data-cnt");
@@ -61,6 +63,7 @@
 				$('.deleteUpdate').append('<li class="menuDelete" id="menuDelete" >메뉴삭제</li>');
 			}
 			$("#menuDelete").attr("onclick", "pDelete('"+pNumber+"')");
+			menuItemPriceTotal($(this).attr("data-price"));
 		});
 
 	$('.pNameClick').each( function(index, value) {
@@ -76,18 +79,22 @@
 	
 	});
 	function menuCntUp(){
+		var pric = $("#menuListSelected").find(".item-price").text();
 		var tot = $("#menuListSelected").find(".menuListCnt").text();
 		var cnt = Number(tot) + 1;
 		$("#menuListSelected").find(".menuListCnt").text(cnt);
 		menuItemTotal(cnt);
+		menuItemPriceTotal(pric);
 	}
 	function menuCntDown(){
+		var pric = $("#menuListSelected").find(".item-price").text();
 		var tot = $("#menuListSelected").find(".menuListCnt").text();
 		var cnt = Number(tot) - 1;
 		if($("#menuListSelected").find(".menuListCnt").text() > 1){
 			$("#menuListSelected").find(".menuListCnt").text(cnt);	
 		}
 		menuItemTotal(cnt);
+		menuItemPriceTotal(pric);
 	}
 	function menuItemTotal(cnt){
 		var itemPrice = $("#menuListSelected").find(".item-price").attr("data-price");
@@ -96,17 +103,34 @@
 		if($("#menuListSelected").find(".item-price").text() == 0 ){
 			$("#menuListSelected").find(".item-price").text(itemPrice);		
 		}
+	}
+	var total = 0;
+	function menuItemPriceTotal(price){
 		
+// 		$(".item-price").each(function(index){
+			total = Number(total) + Number(price);
+// 		});
+		console.log(total);
 	}
 	$(document).on( "click", ".menuListTr", function() {
-		$('.menuListTr').each( function(index) {
+		
+		$('.menuListTr').each( function(index) { 
 			$(this).click( function() {
+				$(this).css("background-color", "#FBF2EF");
 				$(this).attr("id", "menuListSelected");
+				
 				$(this).siblings().attr("id", "none");
 			})
 		})
 	});
-	
+	$(document).on( "mouseenter", ".menuListTr", function() {
+		event.target.parentNode.setAttribute("style", "background-color:#FBF5EF");
+	});
+	$(document).on( "mouseleave", ".menuListTr", function() {
+		if(event.target.parentNode.getAttribute("id") != "menuListSelected" ){
+			event.target.parentNode.setAttribute("style", "background-color:white");
+		}
+	});
 	function pDelete(pNumber) {
 		$.ajax({
 			url : '/pos/delete',
@@ -122,6 +146,11 @@
 	function allRemove(){
 		$(".orderList").empty();
 	}
+	function menuRemove(){
+		$("#menuListSelected").remove();
+	}
+	
+	
 </script>
 </head>
 <body>
@@ -206,8 +235,8 @@
 					</div>
 					<div class="crud-width">
 						<ul class="crud">
-							<li>지정취소</li>
-							<li onclick="allRemove()">전체취소</li>
+							<li onclick="menuRemove()"><a href="#">지정취소</a></li>
+							<li onclick="allRemove()"><a href="#">전체취소</a></li>
 							<li>수정입력</li>
 							<li onclick="menuCntUp()" style="cursor:pointer;">+</li>
 							<li onclick="menuCntDown()" style="cursor:pointer;">-</li>
@@ -218,42 +247,40 @@
 				<section class="right-section">
 					<table class="right-table">
 						<tr>
-							<th><a href="#" class="">치킨 메뉴</a></th>
-							<th><a href="#" class="">버거 메뉴</a></th>
-							<th><a href="#" class="">사이드 메뉴</a></th>
-							<th><a href="#" class="">음료류</a></th>
+							<th class="chickenMenu"><a href="#" >치킨 메뉴</a></th>
+							<th class="burgerMenu"><a href="#">버거 메뉴</a></th>
+							<th class="sideMenu"><a href="#" >사이드 메뉴</a></th>
+							<th class="drinkMenu"><a href="#" >음료류</a></th>
 						</tr>
 					</table>
-					<ul class="ul">
-						<c:choose>
-							<c:when test="${list.size() > 0}">
-								<c:forEach var="item" items="${list}">
-									<input type="hidden" class="hiddenNumber"
-										value="${item.pNumber}" style="display: none;">
-									<li class="pNameClick" value="${item.pName}"
-										data-price="${item.pPrice}" data-number="${item.pNumber}"
-										data-cnt="1"><a href="#"><p class="pName">${item.pName}</p>
-											<p class="pPrice">${item.pPrice}</p></a></li>
+<ul class="ul">
+	<c:choose>
+		<c:when test="${list.size() > 0}">
+			<c:forEach var="item" items="${list}">
+				<input type="hidden" class="hiddenNumber" value="${item.pNumber}" style="display: none; cursor:pointer;">
+				<li style="cursor:pointer;" class="pNameClick" value="${item.pName}" data-price="${item.pPrice}" data-number="${item.pNumber}"
+					data-cnt="1" ><p class="pName" name="${item.pMenu}">${item.pName}</p>
+						<p class="pPrice">${item.pPrice}</p></li>
+				
+				<!-- <tr> -->
+				<%-- 	<td class="pNameClick" value="${item.pName}"
+				data-price="${item.pPrice}" data-number="${item.pNumber}"
+				data-cnt="1"><a href="#">
+					<p class="pName">${item.pName}</p>
+					<p class="pPrice">${item.pPrice}</p>
+			</a></td> --%>
+				<!-- 	<td>불고기세트</td>
+			<td>불고기세트</td>
+			<td>불고기세트</td>
+			<td>불고기세트</td> -->
+				<!-- </tr> -->
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
 
-									<!-- <tr> -->
-									<%-- 	<td class="pNameClick" value="${item.pName}"
-									data-price="${item.pPrice}" data-number="${item.pNumber}"
-									data-cnt="1"><a href="#">
-										<p class="pName">${item.pName}</p>
-										<p class="pPrice">${item.pPrice}</p>
-								</a></td> --%>
-									<!-- 	<td>불고기세트</td>
-								<td>불고기세트</td>
-								<td>불고기세트</td>
-								<td>불고기세트</td> -->
-									<!-- </tr> -->
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-
-							</c:otherwise>
-						</c:choose>
-					</ul>
+		</c:otherwise>
+	</c:choose>
+</ul>
 
 				</section>
 				<footer>
