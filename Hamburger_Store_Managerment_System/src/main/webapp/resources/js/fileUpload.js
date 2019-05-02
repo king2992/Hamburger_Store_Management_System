@@ -198,6 +198,7 @@ $(document).on("click", ".delBtn", function(event) {
 		deleteFileModPage(that, number);
 });
 
+
 //첨부파일 목록
 
 //getFiles(number);

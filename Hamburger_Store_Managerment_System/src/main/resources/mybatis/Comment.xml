@@ -19,7 +19,7 @@
 <!-- 	좌: DB 우: 스프링 데이터값이 일치하는값을 찾는다 -->
 	<update id="commentUpdate">
 		UPDATE comment
-		SET co_date = #{coDate} AND content=#{content}
+		SET co_date = now() AND content=#{content}
 		WHERE co_number=#{coNumber}
 	</update>
 	
