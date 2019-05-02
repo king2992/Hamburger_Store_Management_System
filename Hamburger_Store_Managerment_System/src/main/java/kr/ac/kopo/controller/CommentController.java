@@ -37,7 +37,7 @@ public class CommentController {
 			JSONObject value = new JSONObject();
 			value.put("coNumber", list.get(i).getCoNumber());
 			value.put("number", list.get(i).getNumber());
-			value.put("id", list.get(i).getId());
+			value.put("userId", list.get(i).getUserId());
 			value.put("content", list.get(i).getContent());
 			value.put("coDate", list.get(i).getCoDate());
 			value.put("coGroup", list.get(i).getCoGroup());
@@ -60,7 +60,7 @@ public class CommentController {
         Comment comm = new Comment();//인스턴스 생성
         comm.setNumber(number);//설정
         comm.setContent(content);//설정
-        comm.setId((String) session.getAttribute("user"));
+        comm.setUserId((String) session.getAttribute("user"));
         return commentService.commentInsert(comm);
     }
   //댓글 수정  
@@ -91,7 +91,7 @@ public class CommentController {
         comm.setNumber(number);
         comm.setCoGroup(coGroup);
         comm.setContent(content);
-        comm.setId((String) session.getAttribute("user"));
+        comm.setUserId((String) session.getAttribute("user"));
         return commentService.commentReply(comm);
         
     }

@@ -44,7 +44,7 @@ public class ReviewController {
 	
 	@RequestMapping(value="/reviewAdd", method=RequestMethod.POST)	
 	String reviewAdd(Review reviewAdd, HttpSession session) throws Exception {	
-		reviewAdd.setId((String)session.getAttribute("user"));
+		reviewAdd.setUserId((String)session.getAttribute("user"));
 			reviewService.reviewAdd(reviewAdd);
 			
 		return "redirect:reviewList";
@@ -65,7 +65,7 @@ public class ReviewController {
 	@RequestMapping(value ="/reviewUp", method = RequestMethod.POST)
 	String reviewUp(Review reviewUp, HttpSession session) throws Exception{
 		
-		reviewUp.setId((String)session.getAttribute("user"));
+		reviewUp.setUserId((String)session.getAttribute("user"));
 		
 //		if(reviewUp.getAttach() != null) {
 //			
@@ -131,7 +131,7 @@ public class ReviewController {
 	
 	String reply(Review review, HttpSession session) {
 		
-		review.setId((String)session.getAttribute("user"));
+		review.setUserId((String)session.getAttribute("user"));
 		
 //		if(review.getAttach() != null) {
 //			

@@ -4,7 +4,7 @@
 <mapper namespace="comment">
 
 	<select id="commentList" resultType="Comment">
-		SELECT co_number, number, id, content, DATE_FORMAT(co_date, '%Y-%m-%d') as coDate , co_group, co_ord, co_depth 
+		SELECT co_number, number, user_id, content, DATE_FORMAT(co_date, '%Y-%m-%d') as coDate , co_group, co_ord, co_depth 
 		FROM comment
 		where number = #{number}
 		order by co_group DESC, co_ord ASC
@@ -12,8 +12,8 @@
 	
 <!-- 	파라메터타입은 comment 선언은 안해줘두 되는것같다 -->
 	<insert id="commentInsert">
-		INSERT INTO comment (number,id,content,co_date,co_group,co_ord,co_depth)
-		VALUES (#{number},#{id},#{content},NOW(),(SELECT IFNULL(MAX(co_number),0)+1 FROM comment co),0,0)
+		INSERT INTO comment (number,user_id,content,co_date,co_group,co_ord,co_depth)
+		VALUES (#{number},#{userId},#{content},NOW(),(SELECT IFNULL(MAX(co_number),0)+1 FROM comment co),0,0)
 	</insert>
 	
 <!-- 	좌: DB 우: 스프링 데이터값이 일치하는값을 찾는다 -->
@@ -30,8 +30,8 @@
 	</delete>
 	
 	<insert id="commentReply">
-		INSERT INTO comment (number,id,content,co_date,co_group,co_ord,co_depth)
-		VALUES (#{number},#{id},#{content},NOW(),#{coGroup},#{coOrd}+1,1)
+		INSERT INTO comment (number,user_id,content,co_date,co_group,co_ord,co_depth)
+		VALUES (#{number},#{userId},#{content},NOW(),#{coGroup},#{coOrd}+1,1)
 	</insert>
 	
 	<update id="commentReplyUp">
