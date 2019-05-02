@@ -96,7 +96,7 @@
        <div class="container">
            <div class="seats" style="position: relative; top: 35px;"> 
                 <div class="left-box">
-                	<div id="orderList">
+                	<div id="orderList"> 
                 		<ul id="orderListUl"></ul>
                 	</div>
                 	<div id="calendar">
