@@ -193,7 +193,7 @@
                     </div>
                         </div>
                     <div class="panel">
-                        <a href="#login_form" class="btn-right" >주 문</a>
+                        <a href="#login_form" class="btn-right" id="orderModal" >주 문</a>
                     </div>
                     <div>
                         <a href="" class="btn-left">이 전</a>
@@ -269,16 +269,17 @@
 		<form action="/seatReservation/ticketingSuccess" method="POST"
 			id="formSubmit" name="formValue">
 			<p id="pId">${sessionScope.user}님 이 내용으로 주문 하시겠습니까 ?</p>
-			<span>이름 : <input type="text"></span>
-			<span>전화번호 : <input type="text"></span>
 			<ul style="list-style: none;" class="reservedCheck">
+				 <li value=""><span>이름 : <input type="text"></span></li>
+				 <li value=""><span>전화번호 : <input type="text"></span></li>
 				 <li value="">날짜 : <span id="dateCheck"></span></li>
 				 <li value="">시간 : <span id="timeModal"></span></li>
+				 <li value="">결제 금액 : <span id="payment"></span></li>
 			</ul>
 				<input type="hidden" name="id" value="${sessionScope.user}">
-				<input type="hidden" id="ticketPrice2" name="ticketPrice" value="" /> 
-				<input type="hidden" id="reservedDate2" name="reservedDate" value="" />
-				<input type="hidden" id="reservedTime" name="reservedTime" value="" />  
+				<input type="hidden" id="formMenuPrice" name="formMenuPrice" value="" /> 
+				<input type="hidden" id="formReservedDate" name="formReservedDate" value="" />
+				<input type="hidden" id="formReservedTime" name="formReservedTime" value="" />
 			<div>
 				<a href="#" id="msg_process"   value="예매" onclick="goTicketing()" />주문</a>
 			</div>

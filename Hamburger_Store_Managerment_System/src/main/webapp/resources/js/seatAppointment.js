@@ -75,63 +75,63 @@ function goTicketing() {//예매 테이블로 값이 들어가는 부분
 		}
 	});
 }
-function close_pop() {
-    $('#myModal').hide();
-};
-function burgerListBlock(){
-	$(".burgerList").css("display", "flex");
-	
+	function close_pop() {
+	    $('#myModal').hide();
+	};
+	function burgerListBlock(){
+		$(".burgerList").css("display", "flex");
+		
+			if($(".chickenList").css("display") == "flex"){
+				$(".chickenList").css("display", "none");	
+				
+			}else if($(".sideMenuList").css("display") == "flex"){
+				$(".sideMenuList").css("display", "none");	
+				
+			}else if($(".drinkMenuList").css("display") == "flex"){
+				$(".drinkMenuList").css("display", "none");	
+			}
+	}
+	function sideMenuListBlock(){
+		$(".sideMenuList").css("display", "flex");
+		
 		if($(".chickenList").css("display") == "flex"){
-			$(".chickenList").css("display", "none");	
+			$(".chickenList").css("display", "none");
 			
-		}else if($(".sideMenuList").css("display") == "flex"){
-			$(".sideMenuList").css("display", "none");	
+		}else if($(".burgerList").css("display") == "flex"){
+			$(".burgerList").css("display", "none");	
 			
 		}else if($(".drinkMenuList").css("display") == "flex"){
 			$(".drinkMenuList").css("display", "none");	
+			
 		}
-}
-function sideMenuListBlock(){
-	$(".sideMenuList").css("display", "flex");
-	
-	if($(".chickenList").css("display") == "flex"){
-		$(".chickenList").css("display", "none");
-		
-	}else if($(".burgerList").css("display") == "flex"){
-		$(".burgerList").css("display", "none");	
-		
-	}else if($(".drinkMenuList").css("display") == "flex"){
-		$(".drinkMenuList").css("display", "none");	
-		
 	}
-}
-function chickenBlock(){
-	$(".chickenList").css("display", "flex");
-	
-	if($(".sideMenuList").css("display") == "flex"){
-		$(".sideMenuList").css("display", "none");	
+	function chickenBlock(){
+		$(".chickenList").css("display", "flex");
 		
-	}else if($(".burgerList").css("display") == "flex"){
-		$(".burgerList").css("display", "none");	
-		
-	}else if($(".drinkMenuList").css("display") == "flex"){
-		$(".drinkMenuList").css("display", "none");	
-		
+		if($(".sideMenuList").css("display") == "flex"){
+			$(".sideMenuList").css("display", "none");	
+			
+		}else if($(".burgerList").css("display") == "flex"){
+			$(".burgerList").css("display", "none");	
+			
+		}else if($(".drinkMenuList").css("display") == "flex"){
+			$(".drinkMenuList").css("display", "none");	
+			
+		}
 	}
-}
-function drinkMenuListBlock(){
-	$(".drinkMenuList").css("display", "flex");
-	
-	if($(".sideMenuList").css("display") == "flex"){
-		$(".sideMenuList").css("display", "none");
+	function drinkMenuListBlock(){
+		$(".drinkMenuList").css("display", "flex");
 		
-	}else if($(".burgerList").css("display") == "flex"){
-		$(".burgerList").css("display", "none");	
-		
-	}else if($(".chickenList").css("display") == "flex"){
-		$(".chickenList").css("display", "none");	
+		if($(".sideMenuList").css("display") == "flex"){
+			$(".sideMenuList").css("display", "none");
+			
+		}else if($(".burgerList").css("display") == "flex"){
+			$(".burgerList").css("display", "none");	
+			
+		}else if($(".chickenList").css("display") == "flex"){
+			$(".chickenList").css("display", "none");	
+		}
 	}
-}
 
 
 $(document).ready(function() {
@@ -146,13 +146,6 @@ $(document).ready(function() {
 		});
 		priceSumAnimate();
 		$('#priceSum').text(total);
-		var li = document.createElement("li");
-		.0
-		var span = document.createElement("span");
-		span.innerHTML = total;
-		li.innerHTML = "주문금액 : ";
-		$(".reservedCheck").append(li);
-		li.append(span);
 	}
 	function dateAlert(){
 			$(".dateAlert").show();
@@ -242,12 +235,17 @@ $(document).ready(function() {
 	
 	$("#am").hide();
 	$("#pm").hide();
-});
-function amView(){
-	$("#am").show();
-	$("#pm").hide();
-}
-function pmView(){
-	$("#pm").show();
-	$("#am").hide();
-}
+	
+	$(document).on('click', '#orderModal', function(){
+		var priceSum = $("#priceSum").text();
+		$("#payment").text(priceSum);
+	});
+		});
+	function amView(){
+		$("#am").show();
+		$("#pm").hide();
+	}
+	function pmView(){
+		$("#pm").show();
+		$("#am").hide();
+	}

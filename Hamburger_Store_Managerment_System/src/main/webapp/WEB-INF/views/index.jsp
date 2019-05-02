@@ -51,7 +51,7 @@
             <a class="nav-link js-scroll-trigger" href="/review/reviewList">후기게시판</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/seatReservation/seatAppointment">테이크아웃</a>
+            <a class="nav-link js-scroll-trigger" href="/takeOutReservation/takeOutUserReservation">테이크아웃</a>
           </li>
            <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#">무인주문</a>
