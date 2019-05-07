@@ -35,26 +35,26 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/user/signUp">회원가입</a>
+            <a class="nav-link js-scroll-trigger" href="/user/signUp">SignUp</a>
           </li>
           <li class="nav-item">
               <c:choose>
                   <c:when test="${sessionScope.user eq null }">
-            <a class="nav-link js-scroll-trigger" href="/user/signIn">로그인</a>
+            <a class="nav-link js-scroll-trigger" href="/user/signIn">Login</a>
           </c:when>
           <c:otherwise>
-              <a class="nav-link js-scroll-trigger" href="/user/userLogout">로그아웃</a>
+              <a class="nav-link js-scroll-trigger" href="/user/userLogout">LogOut</a>
             </c:otherwise>
           </c:choose>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/review/reviewList">후기게시판</a>
+            <a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/takeOutReservation/takeOutUserReservation">테이크아웃</a>
+            <a class="nav-link js-scroll-trigger" href="/takeOutReservation/takeOutUserReservation">Take_Out</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">무인주문</a>
+            <a class="nav-link js-scroll-trigger" href="/kiosk/screen">Web 주문기(사용자)</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/pos/posmanagement">포스기(관리자)</a>
