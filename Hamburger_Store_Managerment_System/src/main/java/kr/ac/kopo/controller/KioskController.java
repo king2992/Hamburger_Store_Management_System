@@ -9,7 +9,6 @@ public class KioskController {
 
 	@RequestMapping("/screen")
 	String screen()	{
-		return "kiosk"
-				+ "/screen";
+		return "kiosk/screen";
 	}
 }
