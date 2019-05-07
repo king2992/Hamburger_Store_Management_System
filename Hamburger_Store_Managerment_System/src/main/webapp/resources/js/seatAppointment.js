@@ -1,4 +1,5 @@
- document.addEventListener('DOMContentLoaded', function() {
+$("#menuModal").hide();
+document.addEventListener('DOMContentLoaded', function() {
 	  var calendarEl = document.getElementById('calendar');
 	  var timeList = document.getElementById('timeList');
 	  var reservedTimeList = document.getElementById("reservedTimeList");
@@ -8,88 +9,63 @@
 	    header: {
 	      right: 'prev,next today'  
 	    },
-	     dateClick: function(info) {
-	    	 
-	     var dateInnerHTML = document.getElementById('dateInnerHTML');
-	     var reservedDate2 = document.getElementById('reservedDate2');
-	     var dateCheck = document.getElementById('dateCheck');
-	     var reservedTimeListChilds = reservedTimeList.childNodes;
-	     
-	     dateInnerHTML.innerHTML = info.dateStr ; 
-	     dateCheck.innerHTML = info.dateStr ;
-	     
-	     reservedDate2.setAttribute("value", dateInnerHTML.innerHTML);
-	     function dateAnimate(){
-	 		$("#dateInnerHTML").animate({
-	 			"color" : "black", "font-size" : "18px"
-	 		},1000) .animate({"color":"white", "font-size": "16px"},1000);
-	 		}
-	     $(".dateAlert").hide();
-		   $('#myModal').show();
-		   dateAnimate();
-	    } ,
+			     dateClick: function(info) {
+			    	 
+			     $("#dateInnerHTML").text(info.dateStr); // 날짜 선택 시 하단에 선택 한 날짜 출력
+			     $("#dateCheck").text(info.dateStr); // 날짜 선택 시 주문 확인창에 선택 한 날짜 출력
+			     $("#formReservedDate").val(info.dateStr);
+			     function dateAnimate(){ // 날짜 선택 시 하단 날짜 출력 부분 애니메이션 효과
+			 		$("#dateInnerHTML").animate({
+			 			"color" : "black", "font-size" : "18px"
+			 		},1000) .animate({"color":"white", "font-size": "16px"},1000);
+			 		}
+			     
+			     $(".dateAlert").hide(); 
+			     
+				 $('#myModal').show();
+				 $("#am").show();
+				 $("#pm").hide(); 
+				 dateAnimate();
+				   
+			    } ,
+			    
 	    select: function(info) {
+	    	
 	    }
+			    
 	  });
-	  calendar.render();
+	  calendar.render(); // 달력 출력
   });
 	 
 function timeAdd(){
-	 
-	var time = document.getElementById("time");
-	var finishTime = document.getElementById("finishTime");
-	var timeModal = document.getElementById("timeModal");
-	var reservedTime = document.getElementById("reservedTime");
-	time.innerHTML = event.target.innerHTML;
-	reservedTime.setAttribute("value", event.target.innerHTML);
-	timeModal.innerHTML = event.target.innerHTML;
+	$("#time").text($(event.target).text()); // 선택 한 시간이 하단에 출력 
+	$("#timeModal").text($(event.target).text());// 선택 한 시간이 주문 확인 모달창에 출력
+
+	$("#formReservedTime").val($(event.target).text());
 	
- 	function timeAnimate(){
+ 	function timeAnimate(){ // 시간 출력 되면서 애니메이션 효과
  		$("#time").animate({
  			"color" : "black", "font-size" : "18px"
  		},1000) .animate({"color":"white","font-size": "16px"},1000);
  	}
  	timeAnimate();
- 	$(".modal").hide();
-}
-function goTicketing() {//예매 테이블로 값이 들어가는 부분
-	var formValue = document.formValue;
-	var obj = new Object();
-	
-	obj.id = formValue.id.value;
-	obj.seatName = formValue.seatName.value;
-	obj.ticketPrice = formValue.ticketPrice.value;
-	obj.reservedDate = formValue.reservedDate.value;
-	obj.finishTime = formValue.finishTime.value;
-	obj.reservedTime = formValue.reservedTime.value;
-	console.log(obj);
-	$.ajax({
-		url : "/seatReservation/ticketingSuccess",
-		type : "POST",
-		data : obj,
-		dataType : "json",
-		success : function(data) {
-			if (data == 1) {
-				location.href = "/seatReservation/ticketingSuccess2";
-			}
-		}
-	});
+ 	$(".modal").hide(); // 시간 모달창 닫기
 }
 	function close_pop() {
 	    $('#myModal').hide();
 	};
 	function burgerListBlock(){
-		$(".burgerList").css("display", "flex");
-		
-			if($(".chickenList").css("display") == "flex"){
-				$(".chickenList").css("display", "none");	
-				
-			}else if($(".sideMenuList").css("display") == "flex"){
-				$(".sideMenuList").css("display", "none");	
-				
-			}else if($(".drinkMenuList").css("display") == "flex"){
-				$(".drinkMenuList").css("display", "none");	
-			}
+	$(".burgerList").css("display", "flex");
+	
+		if($(".chickenList").css("display") == "flex"){
+			$(".chickenList").css("display", "none");	
+			
+		}else if($(".sideMenuList").css("display") == "flex"){
+			$(".sideMenuList").css("display", "none");	
+			
+		}else if($(".drinkMenuList").css("display") == "flex"){
+			$(".drinkMenuList").css("display", "none");	
+		}
 	}
 	function sideMenuListBlock(){
 		$(".sideMenuList").css("display", "flex");
@@ -133,8 +109,8 @@ function goTicketing() {//예매 테이블로 값이 들어가는 부분
 		}
 	}
 
-
 $(document).ready(function() {
+	
 	$(".dateAlert").hide();
 	//총 주문 금액
 	function totalPrice() {
@@ -146,7 +122,9 @@ $(document).ready(function() {
 		});
 		priceSumAnimate();
 		$('#priceSum').text(total);
+		$("#formMenuPrice").val(total);
 	}
+	//날짜를 선택 안하고 메뉴를 선택했을 시 "날짜를 선택해 주세요." 라는 애니메이션
 	function dateAlert(){
 			$(".dateAlert").show();
 			if($("#dateInnerHTML").text() == ""){
@@ -158,11 +136,13 @@ $(document).ready(function() {
 				$(".dateAlert").hide();
 			}
 	}
+	//주문 금액이 바뀔 때 마다 호출하는 애니메이션
 	function priceSumAnimate(){
 		$("#priceSum").animate({
 			"color" : "black",'font-size' : "18px"
 		},500) .animate({"color":"white","font-size" : "16px"},500);
 	}
+	// right-box에 메뉴를 선택했을 시 
 	$(document).on('click', '.menu-item', function() {
 		if($("#dateInnerHTML").text() == ""){
 			dateAlert();
@@ -177,9 +157,9 @@ $(document).ready(function() {
 			var cnt = $('[data-id="'+uniqId+'"]').find('.menuCnt').text();
 			
 			if($('[data-id="'+uniqId+'"]').length == 1){
-				addMenu(uniqId, menuName, menuPrice, menuCnt, menuImgUrl);	
+				addMenu(uniqId, menuName, menuPrice, menuCnt, menuImgUrl); // left-box에 동일반 메뉴가 없으면 메뉴를 추가	
 			}else{
-				setMenuCnt($('[data-id="'+uniqId+'"]'), 1);
+				setMenuCnt($('[data-id="'+uniqId+'"]'), 1); // left-box에 동일한 메뉴가 있으면 수량을 증가 
 			}
 		}
 	});
@@ -189,7 +169,7 @@ $(document).ready(function() {
 		var menuHtml = '<li class="order-item" data-id="' + uniqId + '">' +
 						' <button type="button" class="xButton">X</button>' +
 						'	<img src="' + menuImgUrl + '" class="order-img"/>' +
-						'	<span>' + menuName + '</span>' +
+						'	<span class="orderMenuName">' + menuName + '</span>' +
 						'	<span class="menu-price">' + menuPrice + '</span>' +
 						'	<div>' +
 						'		<span>수량 : <i class="menuCnt">1</i></span>' +
@@ -197,9 +177,9 @@ $(document).ready(function() {
 						'		<button type="button" class="btnDelMenuCnt">-</button>' +
 						'	</div>' +
 						'</li>';
-		$('#orderListUl').append(menuHtml);
+		$('#orderListUl').append(menuHtml);// 좌측에 선택한 메뉴 추가 
 		
-		totalPrice();
+		totalPrice(); // 상품이 추가 될 때 주문 총 금액 변경 하는 함수 호출
 	}
 	function setMenuCnt($item, num, menuName) {
 		var $itemCnt = $item.find('.menuCnt');
@@ -233,12 +213,18 @@ $(document).ready(function() {
 		totalPrice();
 	});
 	
-	$("#am").hide();
-	$("#pm").hide();
-	
 	$(document).on('click', '#orderModal', function(){
 		var priceSum = $("#priceSum").text();
 		$("#payment").text(priceSum);
+		
+		$(".orderMenuName").each(function(item,index){
+			menuNameArray.push($(this).text());
+		});
+		$(".menuCnt").each(function(item,index){
+			cntArray.push($(this).text());
+		});
+		console.log(menuNameArray);
+		console.log(cntArray);
 	});
 		});
 	function amView(){
@@ -248,4 +234,60 @@ $(document).ready(function() {
 	function pmView(){
 		$("#pm").show();
 		$("#am").hide();
+	}
+	var cntArray = new Array(); // 주문 할 때 메뉴 수량 넘길 배열
+	var menuNameArray = new Array();// 주문 할 때 메뉴 이름 넘길 배열
+	
+	function takeOutReservedGo() { //예매 테이블로 값이 들어가는 부분
+		var formValue = document.formValue;
+		
+		var userId = formValue.userId.value;
+		var reservedName = formValue.reservedName.value;
+		var reservedPhone = formValue.reservedPhone.value;
+		var reservedDate = formValue.formReservedDate.value;
+		var reservedTime = formValue.formReservedTime.value;
+		var totalPrice = Number(formValue.formMenuPrice.value);
+
+		$.ajax({
+			url : "/takeOutReservation/takeOutReservedListInsert",
+			type : "GET",
+			data : {"userId":userId, "reservedName":reservedName,"reservedPhone":reservedPhone,
+				"reservedDate":reservedDate,"reservedTime":reservedTime,"totalPrice":totalPrice},
+			dataType : "JSON",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+			success : function(data) {
+				if (data == 1) {
+					location.href = "/takeOutReservation/ticketingSuccess";
+				}
+			}
+		});
+		
+		$.ajax({
+			url : "/takeOutReservation/takeOutReservedMenuInsert",
+			type : "GET",
+			data : {"cntArray" : cntArray, "menuNameArray" : menuNameArray},
+			dataType : "JSON",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			success : function(data){
+				alert("성공");
+			}
+			
+		});
+	}
+	function menuModal(){
+		$("#menuModal").show();
+	}
+	function menuModalClose(){
+		$("#menuModal").hide();
+	}
+	function menuAdd(){
+		var menuCategory = $("[name=menuCategory").val();
+		var menuName = $("[name=menuName").val();
+		var menuPrice = $("[name=menuPrice").val();
+		var menuImg = $("[name=menuImg").val();
+		
+		$.ajax({
+			url : "/",
+		});
+		//메뉴 등록 ajax 하고 있었다.
 	}

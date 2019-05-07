@@ -85,6 +85,27 @@
                  border: 1px solid #888; 
                  width: 30%; /* Could be more or less, depending on screen size */                           
             } 
+             .addModal {
+                 display: none; /* Hidden by default */ 
+               /* Stay in place */ 
+                 z-index: 10000; /* Sit on top */ 
+                 left: 0; */
+                 top: 0; */
+                 width: 50%; /* Full width */ 
+                 height: 100%; /* Full height */ 
+                 overflow: auto; /* Enable scroll if needed */ 
+                 background-color: rgb(0,0,0); /* Fallback color */ 
+                 background-color: rgba(0,0,0,0.4); /* Black w/ opacity */ 
+             } 
+        
+             /* Modal Content/Box */ 
+            .addModal-content { 
+                 background-color: #fefefe; 
+                 margin: 15% auto; /* 15% from the top and centered */ 
+                 padding: 20px; 
+                 border: 1px solid #888; 
+                 width: 30%; /* Could be more or less, depending on screen size */                           
+            } 
 
 
 </style>
@@ -92,7 +113,7 @@
 <body>
 	
  <section class="window-height" id="error" style="background-image: url(/resources/img/background/village-burger-bar-3799973_1920.jpg);">
-         <div><p class="ticket" ><a href="/">Hamburger Take Out</a></p></div>
+         <div><p class="ticket" ><a href="/">Hamburger Take Out</a><button type="button" onclick="menuModal()" style="width:80px; height:40px; font-size:15px; line-height:40px; margin-left:20px;">메뉴 등록</button></p></div>
        <div class="container">
            <div class="seats" style="position: relative; top: 35px;"> 
                 <div class="left-box">
@@ -256,6 +277,23 @@
   </div>
 
 </div>
+	<!-- The Modal -->
+<div id="menuModal" class="addModal" style="position:relative;">
+  <!-- Modal content -->
+  <div class="addModal-content">
+  	<div><button type="button" onclick="menuModalClose()" style="position:relative; left:450px;">닫기</button></div>
+ 	<select name="menuCategory">
+					<option value="chicken">chicken</option>
+					<option value="burger">burger</option>
+					<option value="side">side</option>
+					<option value="drink">drink</option>
+	</select>
+ 	<div><span>메뉴 이름<input type="text" name="menuName"></span></div>
+ 	<div><span>메뉴 가격<input type="text" name="menuPrice"></span></div>
+ 	<div><span>메뉴 이미지<input type="file" name="menuImg"></span></div>
+ 	<div><button type="button" onclick="menuAdd()">메뉴 등록</button></div>
+  </div>
+  </div>
     <!--End Modal-->
 
 
@@ -266,22 +304,22 @@
 	<div class="popup">
 		<h2>주문자 정보</h2>
 		<h3>주문 하시는 분의 정보를 입력해주세요.</h3>
-		<form action="/seatReservation/ticketingSuccess" method="POST"
-			id="formSubmit" name="formValue">
-			<p id="pId">${sessionScope.user}님 이 내용으로 주문 하시겠습니까 ?</p>
+		<form action="/seatReservation/ticketingSuccess" method="POST" id="formSubmit" name="formValue">
 			<ul style="list-style: none;" class="reservedCheck">
-				 <li value=""><span>이름 : <input type="text"></span></li>
-				 <li value=""><span>전화번호 : <input type="text"></span></li>
-				 <li value="">날짜 : <span id="dateCheck"></span></li>
-				 <li value="">시간 : <span id="timeModal"></span></li>
-				 <li value="">결제 금액 : <span id="payment"></span></li>
+				 <li><span>아이디 : <input type="text" name="userId" value="${sessionScope.user}"></span></li>
+				 <li><span>이름 : <input type="text" name="reservedName"></span></li>
+				 <li><span>전화번호 : <input type="text" name="reservedPhone"></span></li>
+				 <li>날짜 : <span id="dateCheck"></span></li>
+				 <li>시간 : <span id="timeModal"></span></li>
+				 <li>결제 금액 : <span id="payment"></span></li>
 			</ul>
-				<input type="hidden" name="id" value="${sessionScope.user}">
+				<input type="hidden" value="${sessionScope.user}">
 				<input type="hidden" id="formMenuPrice" name="formMenuPrice" value="" /> 
 				<input type="hidden" id="formReservedDate" name="formReservedDate" value="" />
 				<input type="hidden" id="formReservedTime" name="formReservedTime" value="" />
 			<div>
-				<a href="#" id="msg_process"   value="예매" onclick="goTicketing()" />주문</a>
+<!-- 				<a href="#" id="msg_process" onclick="takeOutReservedGo()"/>주문</a> -->
+				<button id="msg_process" type="button" onclick="takeOutReservedGo();">주문</button>
 			</div>
 			<a class="close" href="#close"></a>
 		</form>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="takeOutReservedList" >
+	<insert id="insert" parameterType="TakeOutReserved">
+		
+		insert into takeout_reserved_list
+		(user_id, reserved_name, reserved_phone, reserved_date, reserved_time, total_price)
+		values
+		(#{userId},#{reservedName},#{reservedPhone},#{reservedDate},#{reservedTime},#{totalPrice})
+		
+	</insert>
+	<insert id="menuInsert" parameterType="map">
+		insert into takeout_reserved_menu (takeout_id,menu_name, menu_cnt)
+		values ((SELECT max(takeout_id) from takeout_reserved_list),#{menuName}, #{menuCnt})	
+	</insert>
+
+</mapper>

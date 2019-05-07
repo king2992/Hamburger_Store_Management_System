@@ -12,6 +12,7 @@
 	<typeAlias type="kr.ac.kopo.model.Review" alias="Review"/>
 	<typeAlias type="kr.ac.kopo.model.Comment" alias="Comment"/>
 	<typeAlias type="kr.ac.kopo.model.Pos" alias="Pos" />
+	<typeAlias type="kr.ac.kopo.model.TakeOutReserved" alias="TakeOutReserved" />
 </typeAliases>
 
 <mappers>
@@ -20,5 +21,6 @@
 	<mapper resource="mybatis/Comment.xml" />
 	<mapper resource="mybatis/File.xml" />
 	<mapper resource="mybatis/Pos.xml" />
+	<mapper resource="mybatis/TakeOutReservedList.xml" />
 </mappers>
 </configuration>
