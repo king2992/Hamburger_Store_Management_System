@@ -2,6 +2,7 @@ package kr.ac.kopo.dao;
 
 import java.util.List;
 
+import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
 
@@ -29,6 +30,9 @@ public interface PosDao {
 	 */
 
 	int pDelete(int pNumber);
+
+	void orders(Orders order);
+
 	
 
 }

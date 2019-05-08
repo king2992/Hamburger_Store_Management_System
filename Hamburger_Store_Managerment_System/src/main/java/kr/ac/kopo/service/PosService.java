@@ -2,6 +2,7 @@ package kr.ac.kopo.service;
 
 import java.util.List;
 
+import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
 
@@ -18,6 +19,10 @@ public interface PosService {
 	void update(Pos item);
 
 	int pDelete(int pNumber);
+
+	void orders(Orders order);
+
+
 
 	/*
 	 * List<Pos> chicken(Paging paging);

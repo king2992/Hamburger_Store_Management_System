@@ -82,16 +82,80 @@
                  margin: 15% auto; /* 15% from the top and centered */ 
                  padding: 20px; 
                  border: 1px solid #888; 
+                 width: 30%; /* Could be more or less, depending on screen size */     
+                 position:relative;
+                 bottom:200px;                      
+            } 
+             .addModal {
+                 display: none; /* Hidden by default */ 
+               /* Stay in place */ 
+                 z-index: 10000; /* Sit on top */ 
+                 left: 0; */
+                 top: 0; */
+                 width: 50%; /* Full width */ 
+                 height: 100%; /* Full height */ 
+                 overflow: auto; /* Enable scroll if needed */ 
+                 background-color: rgb(0,0,0); /* Fallback color */ 
+                 background-color: rgba(0,0,0,0.4); /* Black w/ opacity */ 
+             } 
+        
+             /* Modal Content/Box */ 
+            .addModal-content { 
+                 background-color: #fefefe; 
+                 margin: 15% auto; /* 15% from the top and centered */ 
+                 padding: 20px; 
+                 border: 1px solid #888; 
                  width: 30%; /* Could be more or less, depending on screen size */                           
             } 
+            [data-tooltip-text]:hover {
+	position: relative;
+}
 
+[data-tooltip-text]:after {
+	-webkit-transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
+	-moz-transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
+	transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
 
+	background-color: rgba(0, 0, 0, 0.8);
+
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+	-moz-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+	box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+	
+  -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+  color: #FFFFFF;
+	font-size: 12px;
+	margin-bottom: 10px;
+	padding: 7px 12px;
+	position: absolute;
+	width: auto;
+	min-width: 50px;
+	max-width: 300px;
+	word-wrap: break-word;
+
+	z-index: 9999;
+
+	opacity: 0;
+	left: -9999px;
+  top: 90%;
+	
+	content: attr(data-tooltip-text);
+}
+
+[data-tooltip-text]:hover:after {
+	top: 130%;
+	left: 0;
+	opacity: 1;
+}
 </style>
 </head>
 <body>
 	
  <section class="window-height" id="error" style="background-image: url(/resources/img/background/village-burger-bar-3799973_1920.jpg);">
-         <div><p class="ticket" ><a href="/">Hamburger Take Out</a></p></div>
+         <div><p class="ticket" ><a href="/">Hamburger Take Out</a><button type="button" onclick="menuModal()" style="width:80px; height:40px; font-size:15px; line-height:40px; margin-left:20px;">메뉴 등록</button></p></div>
        <div class="container">
            <div class="seats" style="position: relative; top: 35px;"> 
                 <div class="left-box">
@@ -107,51 +171,60 @@
                </div>
        <div class="right-box">
        <ul>
-       		<li><button type="button" onclick="chickenBlock()">치킨 메뉴</button></li> 
-   			<li><button type="button" onclick="burgerListBlock()">버거 메뉴</button></li>
-   			<li><button type="button" onclick="sideMenuListBlock()">사이드 메뉴</button></li>
-   			<li><button type="button" onclick="drinkMenuListBlock()">음료류</button></li>
+       		<li><button type="button" class="chickenMenuLoad">치킨 메뉴</button></li> 
+   			<li><button type="button" class="burgerMenuLoad">버거 메뉴</button></li>
+   			<li><button type="button" class="sideMenuLoad">사이드 메뉴</button></li>
+   			<li><button type="button" class="drinkMenuLoad">음료류</button></li>
    		</ul>
        	<ul class="chickenList" id="chickenList">
-  			<li><img src="/resources/img/chickenMenu/chiPao.jpg" class="menu-item" data-id="chiPao0" value="치파오" data-code="9800" data-cnt="1">치파오</li>
-  			<li><img src="/resources/img/chickenMenu/chiPaOChicken.jpg" class="menu-item" data-id="chiPaOChicken0" value="치파오 치킨" data-code="8900" data-cnt="1">치파오 치킨</li>
-  			<li><img src="/resources/img/chickenMenu/jjimHatDag.jpg" class="menu-item" data-id="jjimHatDag0" value="찜햇닭" data-code="10500" data-cnt="1">찜햇닭</li>
-  			<li><img src="/resources/img/chickenMenu/JjimHatDagGangJung.jpg" class="menu-item" data-id="JjimHatDagGangJung0" value="찜햇닭 강정" data-code="9900" data-cnt="1">찜햇닭 강정</li>
-  			<li><img src="/resources/img/chickenMenu/JjimHatDagWing.jpg" class="menu-item" data-id="JjimHatDagWing0" value="찜햇닭 윙" data-code="11000" data-cnt="1">찜햇닭 윙</li>
-  			<li><img src="/resources/img/chickenMenu/masillaChicken.jpg" class="menu-item" data-id="masillaChicken0" value="마실라 치킨" data-code="9500" data-cnt="1">마실라 치킨</li>
-  			<li><img src="/resources/img/chickenMenu/masillaTender.jpg" class="menu-item" data-id="masillaTender0" value="마실라 텐더" data-code="8500" data-cnt="1">마실라 텐더</li>
-  			<li><img src="/resources/img/chickenMenu/masillaWing.jpg" class="menu-item" data-id="masillaWing0" value="마실라 윙" data-code="9200" data-cnt="1">마실라 윙</li>
+       	<c:choose>
+       	<c:when test="${chicken.size() > 0 }">
+       		<c:forEach items="${chicken}" var="chicken">
+       					<li><button type="button" onclick="menuListDel()" style="width : 20px; height:20px;">X</button><img src="/upload/${chicken.menuImg}" class="menu-item" data-id="${chicken.dataId}" data-num="${chicken.menuId }" value="${chicken.menuName}" data-code="${chicken.menuPrice }" data-cnt="1">${chicken.menuName }</li>
+       		</c:forEach>
+       		</c:when>
+       			<c:otherwise>
+       				<p>메뉴가 없슴돠.</p>
+       			</c:otherwise>
+       		</c:choose>
        	</ul>
-       	<ul class="burgerList" id="burgerList">
-       			<li><img src="/resources/img/burger/increderble.jpg" class="menu-item" data-id="burger1"value="언빌리버블버거" data-code="4500" data-cnt="1">언빌리버블버거</li>
-       			<li><img src="/resources/img/burger/20180220459667.jpg" class="menu-item" data-id="burger2" value="인크레더블버거" data-code="5700"data-cnt="1" >인크레더블버거</li>
-       			<li><img src="/resources/img/burger/20180416932721.jpg" class="menu-item" data-id="burger3" value="마살라" data-code="5200"data-cnt="1" >마살라 버거</li>
-       			<li><img src="/resources/img/burger/20180704461546.jpg" class="menu-item" data-id="burger4" value="치즈베이컨버거" data-code="6200" data-cnt="1">치즈베이컨버거</li>
-       			<li><img src="/resources/img/burger/20181026165774.jpg" class="menu-item" data-id="burger5" value="치킨커틀렛버거" data-code="6400"data-cnt="1" >치킨커틀렛버거</li>
-       			<li><img src="/resources/img/burger/20190328995768.jpg" class="menu-item" data-id="burger6" value="딥치즈버거" data-code="5500"data-cnt="1" >딥치즈버거</li>
-       			<li><img src="/resources/img/burger/20170227485176.jpg" class="menu-item" data-id="burger7" value="불싸이버거" data-code="4800" data-cnt="1">불싸이버거</li>
-       			<li><img src="/resources/img/burger/20170412442355.jpg" class="menu-item" data-id="burger8" value="불갈비치킨버거" data-code="5800" data-cnt="1">불갈비치킨버거</li>
+       		<ul class="burgerList" id="burgerList">
+       	<c:choose>
+       	<c:when test="${burger.size() > 0 }">
+       		<c:forEach items="${burger}" var="burger">
+       					<li><button type="button" onclick="menuListDel()" style="width : 20px; height:20px;">X</button><img src="/upload/${burger.menuImg}" class="menu-item" data-id="${burger.dataId}" value="${burger.menuName}" data-code="${burger.menuPrice }" data-cnt="1" data-num="${burger.menuId }">${burger.menuName} </li>
+       		</c:forEach>
+       		</c:when>
+       			<c:otherwise>
+       				<p>메뉴가 없슴돠.</p>
+       			</c:otherwise>
+       		</c:choose>
        	</ul>
-       	<ul class="sideMenuList" id="sideMenuList">
-       			<li><img src="/resources/img/sideMenu/20170331173889.jpg" class="menu-item" data-id="sideMenu1" value="에그랩(2종)" data-code="2700" data-cnt="1">에그랩(2종)</li>
-       			<li><img src="/resources/img/sideMenu/20170821851383.jpg" class="menu-item" data-id="sideMenu2" value="콘배지샐러드" data-code="2000" data-cnt="1">콘배지샐러드</li>
-       			<li><img src="/resources/img/sideMenu/20171120319875.jpg" class="menu-item" data-id="sideMenu3" value="배지샐러드" data-code="2200" data-cnt="1">배지샐러드</li>
-       			<li><img src="/resources/img/sideMenu/20171120979582.jpg" class="menu-item" data-id="sideMenu4" value="라이스&치킨너겟" data-code="1800" data-cnt="1">라이스&치킨너겟</li>
-       			<li><img src="/resources/img/sideMenu/20180704788027.jpg" class="menu-item" data-id="sideMenu5" value="어니언치즈감자" data-code="1500" data-cnt="1">어니언치즈감자</li>
-       			<li><img src="/resources/img/sideMenu/20180903624821.jpg" class="menu-item" data-id="sideMenu6" value="치즈감자" data-code="1500" data-cnt="1">치즈감자</li>
-       			<li><img src="/resources/img/sideMenu/20180903730621.jpg" class="menu-item" data-id="sideMenu7" value="치즈할라피뇨너겟" data-code="2000" data-cnt="1">치즈할라피뇨너겟</li>
-       			<li><img src="/resources/img/sideMenu/20181026154178.jpg" class="menu-item" data-id="sideMenu8" value="할라피뇨너겟" data-code="2200" data-cnt="1">할라피뇨너겟</li>
+       		<ul class="sideMenuList" id="sideMenuList">
+       	<c:choose>
+       	<c:when test="${side.size() > 0 }">
+       		<c:forEach items="${side}" var="side">
+       					<li><button type="button" onclick="menuListDel()" style="width : 20px; height:20px;">X</button><img src="/upload/${side.menuImg}" class="menu-item" data-id="${side.dataId}" value="${side.menuName}" data-code="${side.menuPrice }" data-cnt="1" data-num="${side.menuId }">${side.menuName }</li>
+       		</c:forEach>
+       		</c:when>
+       			<c:otherwise>
+       				<p>메뉴가 없슴돠.</p>
+       			</c:otherwise>
+       		</c:choose>
        	</ul>
        		<ul class="drinkMenuList" id="drinkMenuList">
-       			<li><img src="/resources/img/drink/20150223992319.jpg" class="menu-item" data-id="drink1" value="음료1" data-code="1500" data-cnt="1">음료1</li>
-       			<li><img src="/resources/img/drink/20161129735987.jpg" class="menu-item" data-id="drink2" value="음료2" data-code="1800" data-cnt="1">음료2</li>
-       			<li><img src="/resources/img/drink/20170825874361.jpg" class="menu-item" data-id="drink3" value="음료3" data-code="2000" data-cnt="1">음료3</li>
-       			<li><img src="/resources/img/drink/20180220231170.jpg" class="menu-item" data-id="drink4" value="음료4" data-code="1600" data-cnt="1">음료4</li>
-       			<li><img src="/resources/img/drink/20180220239529.jpg" class="menu-item" data-id="drink5" value="음료5" data-code="1800" data-cnt="1">음료5</li>
-       			<li><img src="/resources/img/drink/20180416547805.jpg" class="menu-item" data-id="drink6" value="음료6" data-code="2200" data-cnt="1">음료6</li>
-       			<li><img src="/resources/img/drink/20181113571936.jpg" class="menu-item" data-id="drink7" value="음료7" data-code="1500" data-cnt="1">음료6</li>
-       			<li><img src="/resources/img/drink/20181113609096.jpg" class="menu-item" data-id="drink8" value="음료8" data-code="2500" data-cnt="1">음료6</li>
-       		</ul>	
+       	<c:choose>
+       	<c:when test="${drink.size() > 0 }">
+       		<c:forEach items="${drink}" var="drink">
+       					<li><button type="button" onclick="menuListDel()" style="width : 20px; height:20px;">X</button><img src="/upload/${drink.menuImg}" class="menu-item" data-id="${drink.dataId}" value="${drink.menuName}" data-code="${drink.menuPrice }" data-cnt="1" data-num="${drink.menuId }">${drink.menuName }</li>
+       		</c:forEach>
+       		</c:when>
+       			<c:otherwise>
+       				<p>메뉴가 없슴돠.</p>
+       			</c:otherwise>
+       		</c:choose>
+       	</ul>
+     	
        </div>
     </div>
     <div id="reservedTimeList" >
@@ -218,6 +291,9 @@
            <div><p style="text-align: center;"><span style="font-size: 14pt;"><b>시간을 선택해주세요.<span style="font-size: 24pt;"></span></b></span></p><button type="button" onclick="amView()">오전</button><button type="button" onclick="pmView()">오후</button></div>
            <div id="am">
             <p style="text-align: center; line-height: 1.5;"><br />오전</p>
+	             <div class="divDirectInput">
+	            <button type="button" class="directInput" data-tooltip-text="시간을 직접 입력 할 때 에는 정확한 시간을 입력해주세요 . ex) 오후09시,21시,21:00 ">직접 입력</button>
+	            </div>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >01:00</button></span></p>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >02:00</button></span></p>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >03:00</button></span></p>
@@ -230,12 +306,15 @@
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >10:00</button></span></p>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >11:00</button></span></p>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >12:00</button></span></p>
-            <button type="button">직접 입력</button>
             <p style="text-align: center; line-height: 1.5;"><br /></p>
             <p><br /></p>
             </div>
             <div id="pm">
+           
             <p style="text-align: center; line-height: 1.5;"><br />오후</p>
+	             <div class="divDirectInput">
+	            <button type="button" class="directInput" data-tooltip-text="시간을 직접 입력 할 때 에는 정확한 시간을 입력해주세요 . ex) 오후09시,21시,21:00 ">직접 입력</button> 
+	            </div>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >13:00</button></span></p>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >14:00</button></span></p>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >15:00</button></span></p>
@@ -248,13 +327,32 @@
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >22:00</button></span></p>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >23:00</button></span></p>
             <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;"><button  id="" onClick="timeAdd();" >24:00</button></span></p>
-            <button type="button">직접 입력</button>
             <p style="text-align: center; line-height: 1.5;"><br /></p>
             <p><br /></p>
             </div>
   </div>
 
 </div>
+	<!-- The Modal -->
+<div id="menuModal" class="addModal" style="position:relative;">
+  <!-- Modal content -->
+  <div class="addModal-content">
+  	<div><button type="button" onclick="menuModalClose()" style="position:relative; left:450px;">닫기</button></div>
+  	<form id="menuAddForm" enctype="multipart/form-data" method="post" action="/takeOutReservation/menuAdd">
+	 	<select name="menuCategory">
+						<option value="chicken">chicken</option>
+						<option value="burger">burger</option>
+						<option value="side">side</option>
+						<option value="drink">drink</option>
+		</select>
+	 	<div><span>메뉴 이름<input type="text" name="menuName"></span></div>
+	 	<div><span>메뉴 가격<input type="text" name="menuPrice"></span></div>
+	 	<div><span>메뉴 이미지<input type="file" name="file"></span></div>
+	 	<div><button type="submit" >메뉴 등록</button></div>
+ 	</form>
+ 	
+  </div>
+  </div>
     <!--End Modal-->
 
 
@@ -265,22 +363,22 @@
 	<div class="popup">
 		<h2>주문자 정보</h2>
 		<h3>주문 하시는 분의 정보를 입력해주세요.</h3>
-		<form action="/seatReservation/ticketingSuccess" method="POST"
-			id="formSubmit" name="formValue">
-			<p id="pId">${sessionScope.user}님 이 내용으로 주문 하시겠습니까 ?</p>
+		<form action="/seatReservation/ticketingSuccess" method="POST" id="formSubmit" name="formValue">
 			<ul style="list-style: none;" class="reservedCheck">
-				 <li value=""><span>이름 : <input type="text"></span></li>
-				 <li value=""><span>전화번호 : <input type="text"></span></li>
-				 <li value="">날짜 : <span id="dateCheck"></span></li>
-				 <li value="">시간 : <span id="timeModal"></span></li>
-				 <li value="">결제 금액 : <span id="payment"></span></li>
+				 <li><span>아이디 : <input type="text" name="userId" value="${sessionScope.user}"></span></li>
+				 <li><span>이름 : <input type="text" name="reservedName"></span></li>
+				 <li><span>전화번호 : <input type="text" name="reservedPhone"></span></li>
+				 <li>날짜 : <span id="dateCheck"></span></li>
+				 <li>시간 : <span id="timeModal"></span></li>
+				 <li>결제 금액 : <span id="payment"></span></li>
 			</ul>
-				<input type="hidden" name="id" value="${sessionScope.user}">
+				<input type="hidden" value="${sessionScope.user}">
 				<input type="hidden" id="formMenuPrice" name="formMenuPrice" value="" /> 
 				<input type="hidden" id="formReservedDate" name="formReservedDate" value="" />
 				<input type="hidden" id="formReservedTime" name="formReservedTime" value="" />
 			<div>
-				<a href="#" id="msg_process"   value="예매" onclick="goTicketing()" />주문</a>
+<!-- 				<a href="#" id="msg_process" onclick="takeOutReservedGo()"/>주문</a> -->
+				<button id="msg_process" type="button" onclick="takeOutReservedGo();">주문</button>
 			</div>
 			<a class="close" href="#close"></a>
 		</form>

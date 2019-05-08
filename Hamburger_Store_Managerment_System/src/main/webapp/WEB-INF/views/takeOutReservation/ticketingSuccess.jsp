@@ -12,7 +12,6 @@
     		var ticketingSuccessCheck = document.getElementById('ticketingSuccessCheck');
     		var ticketingSuccess = document.getElementById('ticketingSuccess');
     		
-    		
     		setTimeout(function(){
     			ticketingSuccess.innerHTML = "<h1>"+"결제완료."+"</h1>";
     			ticketingSuccessCheck.innerHTML = 
@@ -21,7 +20,6 @@
     			"</a>" + 
     			"<div>" + "<a href='/'>" + "홈으로" + "</a>" + "</div>"
     			;
-    			
     		},3000);
     	}
     </script>
@@ -31,11 +29,10 @@
 
 <div id="ticketingSuccess">
 <h1>결제중입니다.</h1>
-<img src="/resources/images/ggg.gif">
+<img src="/resources/images/ordering.gif">
 </div>
 
 <div id="ticketingSuccessCheck">
-<a href="/seatReservation/ticketingSuccessCheck?id=${sessionScope.user}">예매 현황 보러 가기</a>
 </div>
 </body>
 </html>

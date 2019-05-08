@@ -67,25 +67,25 @@
 }
 
 .right-box>.burgerList {
-	display: none;
+	display:flex;
 	list-style-type: none;
 	flex-wrap: wrap;
 }
 
 .right-box>.chickenList {
-	display: none;
+	display:flex;
 	list-style-type: none;
 	flex-wrap: wrap;
 }
 
 .right-box>.sideMenuList {
-	display: none;
+	display:flex;
 	list-style-type: none;
 	flex-wrap: wrap;
 }
 
 .right-box>.drinkMenuList {
-	display: none;
+	display:flex;
 	list-style-type: none;
 	flex-wrap: wrap;
 }
