@@ -9,20 +9,13 @@
 <title>포스기(관리자)</title>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link href="/resources/css/pos.css" type="text/css" rel="stylesheet">
-<script type="text/javascript">
-	$(window).load(function() {
-
-		$('.portfolio-filter>th>a').on('click', function() {
-			$('.portfolio-filter>th>a').removeClass('active');
-			$(this).addClass('active');
-			/*     var selector = $(this).attr('data-filter'); */
-			/*   $portfolio.isotope({
-			      filter: selector
-			  }); */
-			return false;
-		});
-	});
-</script>
+<link rel="stylesheet" href="/resources/css/mainR.css">
+<link rel="stylesheet" href="/resources/css/sub.css"> 
+<script src="/resources/js/mainR.js"></script> 
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>   
 <style>
 /*     .active {
     background-color: #EC5538 ;
@@ -31,6 +24,10 @@
 .selected {
 	background-color: black;
 }
+#pMenuClick{
+	display:none;
+}
+
 </style>
 <script type="text/javascript">
 	$(document).ready( function() { 
@@ -159,7 +156,7 @@
 	});
 	$(document).on( "mouseleave", ".menuListTr", function() {
 		if(event.target.parentNode.getAttribute("id") != "menuListSelected" ){
-			event.target.parentNode.setAttribute("style", "background-color:white");
+			event.target.parentNode.setAttribute("style", "background-color:");
 		}
 	});
 	function pDelete(pNumber) {
@@ -184,11 +181,81 @@
 	}
 	
 	
+		$('.pNameClick').each(function(index,item){
+			$('.chickenMenu').on("click",function(){
+				
+				var chicken = $(this).data("menu","chicken");
+				var burger = $(this).data("menu","burger");
+				var side = $(this).data("menu","side");
+				var drink = $(this).data("menu","drink");	
+				alert(chicken);
+				
+			})
+				
+				
+			
+		});
+		
+
+	
+	/* function chicken(){
+		$.ajax({
+			url : '/pos/menu',
+			type:'post',
+			data : {
+				"pMenu" : pMenu
+			},
+			succsss : function(data){
+				console.log(data);
+				alert('0');
+			}
+		});
+		$(".chickenMenu").attr("onclick", "pDelete('"+pNumber+"')");
+		 menuItemPriceTotal();
+	});
+	} */
 </script>
 </head>
 <body>
 	<div id="container">
-		<header id="header">
+			<nav class="navbar navbar-expand-sm navbar-dark fixed-top1 layout-menu">
+			<!-- Brand -->
+			<a class="navbar-brand menu-title" href='<c:url value="/"/>'> <span
+				class="menu-pre">store</span><span class="menu-last">management</span>
+			</a>
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					href='<c:url value="/"/>'> <i class="fa fa-home menu-icon"></i>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href='<c:url value="/review/reviewList"/>'> <i
+						class="fa fa-edit menu-icon"></i>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href='<c:url value="/study/list"/>'> <i
+						class="fas fa-book menu-icon"></i>
+				</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav menu-infobtn">
+				<li class="dropdown"><a href="#"
+					class="dropdown-toggle menu-dropicon" data-toggle="dropdown"
+					role="button" aria-haspopup="true" aria-expaneded="false"> <i
+						class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+				</a>
+					<div class="dropdown-menu menu-dropmenu">
+						<a class="dropdown-item modal_open modal_menu" data="modifyModal"
+							href="#">정보수정</a> <a class="dropdown-item modal_open modal_menu"
+							data="passModal" href="#">비밀번호변경</a> <a
+							class="dropdown-item modal_open modal_menu" data="logoutModal"
+							href="<c:url value='/user/userLogout'/>">로그아웃</a> <a
+							class="dropdown-item modal_open modal_menu" data="secessionModal"
+							href="#">회원탈퇴</a>
+					</div></li>
+			</ul>
+		</nav>
+		<%-- <header id="header">
 			<div id="wrap-center">
 				<nav class="navi">
 					<ul>
@@ -200,7 +267,7 @@
 					</ul>
 				</nav>
 			</div>
-		</header>
+		</header> --%>
 		<div class="margin">
 			<div style="width: 100%; height: 100%;">
 				<section class="left-section">
@@ -246,11 +313,11 @@
 						<table>
 							<thead>
 								<tr>
-									<th colspan="2">총 금액 :<span class="pTotal"
-										data-total="${item.pTotal}">${item.pTotal}</span></th>
+									<th colspan="2">총 금액  <span class="pTotal"
+										></span></th>
 								</tr>
 							</thead>
-							<tbody>
+							<!-- <tbody>
 								<tr>
 									<td>주문금액</td>
 									<td>0</td>
@@ -263,14 +330,14 @@
 									<td>할인금액</td>
 									<td>0</td>
 								</tr>
-							</tbody>
+							</tbody> -->
 						</table>
 					</div>
 					<div class="crud-width">
 						<ul class="crud">
 							<li onclick="menuRemove()"><a href="#">지정취소</a></li>
 							<li onclick="allRemove()"><a href="#">전체취소</a></li>
-							<li>수정입력</li>
+							<!-- <li>수정입력</li> -->
 							<li onclick="menuCntUp()" style="cursor:pointer;">+</li>
 							<li onclick="menuCntDown()" style="cursor:pointer;">-</li>
 						</ul>
@@ -280,10 +347,10 @@
 				<section class="right-section">
 					<table class="right-table">
 						<tr>
-							<th class="chickenMenu"><a href="#" >치킨 메뉴</a></th>
-							<th class="burgerMenu"><a href="#">버거 메뉴</a></th>
-							<th class="sideMenu"><a href="#" >사이드 메뉴</a></th>
-							<th class="drinkMenu"><a href="#" >음료류</a></th>
+							<th class="chickenMenu">치킨 메뉴</th>
+							<th class="burgerMenu">버거 메뉴</th>
+							<th class="sideMenu" >사이드 메뉴</th>
+							<th class="drinkMenu" >음료류</th>
 						</tr>
 					</table>
 <ul class="ul">
@@ -291,9 +358,12 @@
 		<c:when test="${list.size() > 0}">
 			<c:forEach var="item" items="${list}">
 				<input type="hidden" class="hiddenNumber" value="${item.pNumber}" style="display: none; cursor:pointer;">
+		<%-- 		<input type="hidden" class="pMenu" value="${item.pMenu}"> --%>
 				<li style="cursor:pointer;" class="pNameClick" value="${item.pName}" data-price="${item.pPrice}" data-number="${item.pNumber}"
-					data-cnt="1" ><p class="pName" name="${item.pMenu}">${item.pName}</p>
-						<p class="pPrice">${item.pPrice}</p></li>
+					data-cnt="1" data-menu="${item.pMenu}"><p class="pName" name="${item.pMenu}">${item.pName}</p>
+						<p class="pPrice">${item.pPrice}</p>
+						<p id="pMenuClick">${item.pMenu}
+						</li>
 				
 				<!-- <tr> -->
 				<%-- 	<td class="pNameClick" value="${item.pName}"
@@ -320,16 +390,15 @@
 					<div class="pay">
 						<ul class="deleteUpdate">
 							<li>카드결제</li>
-							<li>현금결제</li>
-							<li><a href="#" class="trigger">메뉴등록</a></li>
-							<!-- <li><a href="#">메뉴삭제</a></li> -->
+							<li class="triggercash" onclick="triggercash()">현금결제</li>
+							<li><a href="#" id="trigger">메뉴등록</a></li>
+							<!-- <li><a href="#">메뉴삭제</a></li>  -->
 							<%-- <li><a href="update?pNumber=${item.pNumber}">메뉴수정</a></li> --%>
 						</ul>
 					</div>
 				</footer>
 			</div>
 		</div>
-
 	</div>
 	<!-- 팝업 될 레이어 -->
 	<div class="modal">
@@ -352,10 +421,28 @@
 			</form>
 		</div>
 	</div>
+	<!-- 현금결제 레이어 -->
+	<div class="modalcash"> 
+    <div class="modal-contentcash"> 
+        <span class="close-buttoncash">&times;</span> 
+        <h1 class="titlecash">현금결제</h1> 
+        <form action="/pos/orders" class="formcash" id="frm"method="POST">
+        	
+          <label for="total" class="labelcash" >총 금액</label> 
+          <input type="text" name="payTotal2"  value=""  class="inputcash" readonly="readonly"> 
+          <label class="labelcash">받은 금액 입력란</label> 
+          <input type="text" name="payTotal" placeholder="받은 금액" class="inputcash" required="required"> 
+          <input type="button" id="cancelcash" value="취소"> 
+          <input type="button" id="submitcash" onclick ="send()" value="보내기"> 
+        </form> 
+    </div> 
+</div>
+	
+	
 
 	<script type="text/javascript">
 		var modal = document.querySelector(".modal");
-		var trigger = document.querySelector(".trigger");
+		var trigger = document.querySelector("#trigger");
 		var closeButton = document.querySelector(".close-button");
 		var cancelButton = document.querySelector("#cancel");
 
@@ -376,5 +463,60 @@
 		cancel.addEventListener("click", toggleModal);
 		window.addEventListener("click", windowOnClick);
 	</script>
+	
+	
+	
+	<script type="text/javascript"> 
+    var modalcash = document.querySelector(".modalcash"); 
+    var triggercash = document.querySelector(".triggercash"); 
+    var closeButtoncash = document.querySelector(".close-buttoncash"); 
+    var cancelButtoncash = document.querySelector("#cancelcash");
+
+   //console.log(modal);
+
+   function toggleModalcash() { 
+        modalcash.classList.toggle("show-modalcash"); 
+        $('input[name=payTotal2]').val($('.pTotal').text());
+    }
+
+   function windowOnClickcash(event) { 
+        if (event.target === modalcash) { 
+            toggleModalcash(); 
+        } 
+    }
+	 function send(){
+	   var payTotal = $('input[name=payTotal2]').val();
+	   var input = $('input[name=payTotal]').val();
+	  
+	   
+	   
+	   if( payTotal == input ){
+	  /*   	document.getElementById('submitcash').onclick=function(){ */
+	    		   alert('결제완료');
+	    		   $('#fpNumber').val('3');
+	   	    	document.getElementById('frm').submit();
+	   	    	return false;
+	   	   /*  location.reload(); */
+	   	 /*    return true; */
+	   	   /*  	$('.modalcash').hide(); */
+	   	    
+	  /*   	} */
+		   
+	   }
+	   if(payTotal != input){
+		   alert('일치하지 않습니다. 다시 확인해주십시오.');
+		   return true;
+		   
+	   }
+   }
+
+   triggercash.addEventListener("click", toggleModalcash); 
+    closeButtoncash.addEventListener("click", toggleModalcash); 
+    cancelButtoncash.addEventListener("click", toggleModalcash); 
+    window.addEventListener("click", windowOnClickcash); 
+    
+   
+    
+</script>
 </body>
 </html>

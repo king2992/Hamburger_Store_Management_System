@@ -19,6 +19,12 @@
 	<select id="item" resultType="Pos">
 		SELECT * FROM pos WHERE p_number=#{pNumber}
 	</select>
+	
+	<insert id="orders" parameterType="Orders">
+		INSERT INTO orders( reg_date, pay_total )
+		VALUES( NOW(), #{ payTotal } ) 
+	</insert>
+	
 	<!-- <select id="chicken" resultType="Pos">
 		select * from pos where p_menu = 'chicken'
 	</select>

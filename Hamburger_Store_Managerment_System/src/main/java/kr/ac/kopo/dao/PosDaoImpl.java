@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
 
@@ -66,5 +67,11 @@ public class PosDaoImpl implements PosDao {
 	public int pDelete(int pNumber) {
 		return sql.delete("pos.pDelete",pNumber);
 	}
+
+	@Override
+	public void orders(Orders order) {
+		sql.insert("pos.orders",order);
+	}
+
 
 }

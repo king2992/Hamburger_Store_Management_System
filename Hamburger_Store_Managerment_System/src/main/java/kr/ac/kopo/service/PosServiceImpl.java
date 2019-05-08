@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.dao.PosDao;
+import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
 
@@ -47,6 +48,13 @@ public class PosServiceImpl implements PosService {
 	public int pDelete(int pNumber) {
 		return posdao.pDelete(pNumber);
 	}
+
+	@Override
+	public void orders(Orders order) {
+		posdao.orders(order);
+	}
+
+
 
 	/*
 	 * @Override public List<Pos> chicken(Paging paging) { int total = (int)

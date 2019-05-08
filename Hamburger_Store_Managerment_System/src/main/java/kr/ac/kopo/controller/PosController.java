@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
 import kr.ac.kopo.service.PosService;
@@ -64,6 +65,17 @@ public class PosController {
 	String ReservationManagement() {
 		return path + "ReservationManagement";
 	}
+	@RequestMapping(value="/orders",method=RequestMethod.GET)
+	String orders() {
+		return path + "orders";
+	}
+	@RequestMapping(value="/orders",method=RequestMethod.POST)
+	String orders(Orders order) {
+		posservice.orders(order);
+		return "redirect:posmanagement";
+	}
+	
+	
 	/*
 	 * @RequestMapping(value = "chicken") String chicken(Model model, Paging paging)
 	 * { List<Pos> list = posservice.chicken(paging);
@@ -89,5 +101,5 @@ public class PosController {
 	 * 
 	 * model.addAttribute("list", list); return path + "posmanagement"; }
 	 */
-	
+
 }
