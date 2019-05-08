@@ -32,8 +32,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link href='/resources/fullcalendar-4.0.2/packages/core/main.css' rel='stylesheet' />
 <link href='/resources/fullcalendar-4.0.2/packages/daygrid/main.css' rel='stylesheet' />
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/seatAppointment.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/seatAppointment.css">
 <script src="http://localhost:84/socket.io/socket.io.js"></script>
 <script>
 			var userId = "${sessionScope.user}";
