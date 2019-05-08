@@ -8,12 +8,11 @@
 <link rel="stylesheet" type="text/css" href="${path}/resources/kiosk/css/screen.css">
 <script type="text/javascript" src="${path}/resources/kiosk/js/main.js"></script>
 <body>
-	<%-- <div class="header_div">
-		<img src="${path}/resources/kiosk/images/Hamburger_kiosk_first_screen.jpg">
-	</div> --%>
-<!-- 	카테고리 영역 -->
-	<div class="image_out_div"></div>
+<!-- 배경 이미지 영역 -->
+	<div class="body_image">
+<!-- 	카테고리 바깥 영역 -->
 	<div class="kategorie_div">
+<!-- 	카테고리 안쪽 영역 -->
 		<nav>
 			<ul class="List_ul">
 				<li><button class="ListBtn" type="button" onclick="#">추천메뉴</button></li>
@@ -24,10 +23,11 @@
 			</ul>
 		</nav>
 	</div>
-<!-- 	주문메뉴 영역 -->
-	<div class="side_left"></div>
+<!-- 	주문메뉴  큰 영역  -->
 	<div class="order_div">
+<!-- 	주문메뉴 list 영역 -->
 		<div class="center-wrap">
+<!-- 		메뉴 ul -->
 			<ul class="menu_list">
 				<li><img class="buger" src="${path}/resources/img/burger/20170227485176.jpg"></li>
 				<li><img class="buger" src="${path}/resources/img/burger/20170412442355.jpg"></li>
@@ -39,11 +39,17 @@
 				<li><img class="buger" src="${path}/resources/img/burger/increderble.jpg"></li>
 			</ul>
 			<div class="order_history_div">
-		<h1>주문내역 H1 태그 위치확인</h1>
-	</div>
+				<ul class="order_history_ul">
+					<li>주문내역</li>
+					<li>수량내역</li>
+					<li>금액내역</li>
+				</ul>
+			</div>
+			<div class="order">
+				
+			</div>
 		</div>
-	
-	</div> 
-	
+	</div>
+	</div>
 </body>
 </html>
