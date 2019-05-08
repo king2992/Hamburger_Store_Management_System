@@ -1,4 +1,8 @@
 $("#menuModal").hide();
+$(".chickenList").hide();
+$(".burgerList").hide();
+$(".sideMenuList").hide();
+$(".drinkMenuList").hide();
 document.addEventListener('DOMContentLoaded', function() {
 	  var calendarEl = document.getElementById('calendar');
 	  var timeList = document.getElementById('timeList');
@@ -54,60 +58,7 @@ function timeAdd(){
 	function close_pop() {
 	    $('#myModal').hide();
 	};
-	function burgerListBlock(){
-	$(".burgerList").css("display", "flex");
 	
-		if($(".chickenList").css("display") == "flex"){
-			$(".chickenList").css("display", "none");	
-			
-		}else if($(".sideMenuList").css("display") == "flex"){
-			$(".sideMenuList").css("display", "none");	
-			
-		}else if($(".drinkMenuList").css("display") == "flex"){
-			$(".drinkMenuList").css("display", "none");	
-		}
-	}
-	function sideMenuListBlock(){
-		$(".sideMenuList").css("display", "flex");
-		
-		if($(".chickenList").css("display") == "flex"){
-			$(".chickenList").css("display", "none");
-			
-		}else if($(".burgerList").css("display") == "flex"){
-			$(".burgerList").css("display", "none");	
-			
-		}else if($(".drinkMenuList").css("display") == "flex"){
-			$(".drinkMenuList").css("display", "none");	
-			
-		}
-	}
-	function chickenBlock(){
-		$(".chickenList").css("display", "flex");
-		
-		if($(".sideMenuList").css("display") == "flex"){
-			$(".sideMenuList").css("display", "none");	
-			
-		}else if($(".burgerList").css("display") == "flex"){
-			$(".burgerList").css("display", "none");	
-			
-		}else if($(".drinkMenuList").css("display") == "flex"){
-			$(".drinkMenuList").css("display", "none");	
-			
-		}
-	}
-	function drinkMenuListBlock(){
-		$(".drinkMenuList").css("display", "flex");
-		
-		if($(".sideMenuList").css("display") == "flex"){
-			$(".sideMenuList").css("display", "none");
-			
-		}else if($(".burgerList").css("display") == "flex"){
-			$(".burgerList").css("display", "none");	
-			
-		}else if($(".chickenList").css("display") == "flex"){
-			$(".chickenList").css("display", "none");	
-		}
-	}
 
 $(document).ready(function() {
 	
@@ -227,6 +178,57 @@ $(document).ready(function() {
 		console.log(cntArray);
 	});
 		});
+
+	$(document).on('click', '.chickenMenuLoad', function(){
+		$(".chickenList").show();
+		$(".burgerList").hide();
+		$(".sideMenuList").hide();
+		$(".drinkMenuList").hide();
+	});
+	$(document).on('click', '.burgerMenuLoad', function(){
+		$(".chickenList").hide();
+		$(".burgerList").show();
+		$(".sideMenuList").hide();
+		$(".drinkMenuList").hide();	
+	});
+	$(document).on('click', '.sideMenuLoad', function(){
+		$(".chickenList").hide();
+		$(".burgerList").hide();
+		$(".sideMenuList").show();
+		$(".drinkMenuList").hide();	
+	});
+	$(document).on('click', '.drinkMenuLoad', function(){
+		$(".chickenList").hide();
+		$(".burgerList").hide();
+		$(".sideMenuList").hide();
+		$(".drinkMenuList").show();	
+	});
+	$(document).on('click', '.directInput', function(){
+		var input = document.createElement("input");
+		var button = document.createElement("button");
+		input.setAttribute("id", "수진이");
+		button.setAttribute("type", "button");
+		button.setAttribute("id", "재원이");
+		button.innerHTML = "선택";
+			if($(".divDirectInput > button").size() <= 2){
+				$(".divDirectInput").append(input).append(button);	
+			}else{
+				$("#수진이").remove();
+				$("#재원이").remove();
+			}
+	});
+	$(document).on('click', '#재원이', function(){
+		var 우형이 = $("#수진이").val();
+		$("#time").text(우형이);
+		$("#timeModal").text(우형이);
+		$(".modal").hide();
+		function timeAnimate(){ // 시간 출력 되면서 애니메이션 효과
+	 		$("#time").animate({
+	 			"color" : "black", "font-size" : "18px"
+	 		},1000) .animate({"color":"white","font-size": "16px"},1000);
+	 	}
+		timeAnimate();
+	})
 	function amView(){
 		$("#am").show();
 		$("#pm").hide();
@@ -280,14 +282,21 @@ $(document).ready(function() {
 	function menuModalClose(){
 		$("#menuModal").hide();
 	}
-	function menuAdd(){
-		var menuCategory = $("[name=menuCategory").val();
-		var menuName = $("[name=menuName").val();
-		var menuPrice = $("[name=menuPrice").val();
-		var menuImg = $("[name=menuImg").val();
-		
+	
+	function menuListDel(){
+		var menuNum = Number($(event.target).next().data("num"));
+		console.log(menuNum);
 		$.ajax({
-			url : "/",
-		});
-		//메뉴 등록 ajax 하고 있었다.
+			url : "/takeOutReservation/menuListDel",
+			data : {"menuId" : menuNum},
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			success : function(data){
+				if(data == 1){
+					window.location.reload(true);
+				}
+				
+			}
+		})
 	}
+	
+	

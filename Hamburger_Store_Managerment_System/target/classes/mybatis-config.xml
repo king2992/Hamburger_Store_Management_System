@@ -2,25 +2,26 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-<settings>
-<setting name="mapUnderscoreToCamelCase" value="true"/>
-</settings>
+	<settings>
+	<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
 
-<typeAliases>
-	<typeAlias type="kr.ac.kopo.model.User" alias="User"/>
-	<typeAlias type="kr.ac.kopo.model.reservedTime" alias="reservedTime"/>
-	<typeAlias type="kr.ac.kopo.model.Review" alias="Review"/>
-	<typeAlias type="kr.ac.kopo.model.Comment" alias="Comment"/>
-	<typeAlias type="kr.ac.kopo.model.Pos" alias="Pos" />
-	<typeAlias type="kr.ac.kopo.model.TakeOutReserved" alias="TakeOutReserved" />
-</typeAliases>
+	<typeAliases>
+		<typeAlias type="kr.ac.kopo.model.User" alias="User"/>
+		<typeAlias type="kr.ac.kopo.model.reservedTime" alias="reservedTime"/>
+		<typeAlias type="kr.ac.kopo.model.Review" alias="Review"/>
+		<typeAlias type="kr.ac.kopo.model.Comment" alias="Comment"/>
+		<typeAlias type="kr.ac.kopo.model.Pos" alias="Pos" />
+		<typeAlias type="kr.ac.kopo.model.TakeOutReserved" alias="TakeOutReserved" />
+		<typeAlias type="kr.ac.kopo.model.Menu" alias="Menu" />
+	</typeAliases>
 
-<mappers>
-	<mapper resource="mybatis/User.xml"/>
-	<mapper resource="mybatis/Review.xml"/>
-	<mapper resource="mybatis/Comment.xml" />
-	<mapper resource="mybatis/File.xml" />
-	<mapper resource="mybatis/Pos.xml" />
-	<mapper resource="mybatis/TakeOutReservedList.xml" />
-</mappers>
+	<mappers>
+		<mapper resource="mybatis/User.xml"/>
+		<mapper resource="mybatis/Review.xml"/>
+		<mapper resource="mybatis/Comment.xml" />
+		<mapper resource="mybatis/File.xml" />
+		<mapper resource="mybatis/Pos.xml" />
+		<mapper resource="mybatis/TakeOutReservedList.xml" />
+	</mappers>
 </configuration>
