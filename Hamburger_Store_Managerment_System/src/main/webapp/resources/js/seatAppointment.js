@@ -229,6 +229,9 @@ $(document).ready(function() {
 	 	}
 		timeAnimate();
 	})
+	$(document).on('click', '.timeModalClose', function(){
+		$(".modal").hide();
+	});
 	function amView(){
 		$("#am").show();
 		$("#pm").hide();
@@ -259,11 +262,15 @@ $(document).ready(function() {
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 			success : function(data) {
 				if (data == 1) {
+					takeOutReservedMenuInsert();
 					location.href = "/takeOutReservation/ticketingSuccess";
 				}
 			}
 		});
 		
+		
+	}
+	function takeOutReservedMenuInsert(){
 		$.ajax({
 			url : "/takeOutReservation/takeOutReservedMenuInsert",
 			type : "GET",
