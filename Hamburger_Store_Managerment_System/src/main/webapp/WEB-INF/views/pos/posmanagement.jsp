@@ -15,6 +15,8 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="sweetalert2.all.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>   
 <style>
 /*     .active {
@@ -27,7 +29,18 @@
 #pMenuClick{
 	display:none;
 }
-
+.nmg,#nmg{display:none;}
+.document{
+    width: 127px;
+    height: 48px;
+    text-align: center;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    }
+#submitcash{
+	display:none;
+}
 </style>
 <script type="text/javascript">
 	$(document).ready( function() { 
@@ -389,7 +402,7 @@
 				<footer>
 					<div class="pay">
 						<ul class="deleteUpdate">
-							<li>카드결제</li>
+							<li onclick="card()">카드결제</li>
 							<li class="triggercash" onclick="triggercash()">현금결제</li>
 							<li><a href="#" id="trigger">메뉴등록</a></li>
 							<!-- <li><a href="#">메뉴삭제</a></li>  -->
@@ -429,16 +442,43 @@
         <form action="/pos/orders" class="formcash" id="frm"method="POST">
         	
           <label for="total" class="labelcash" >총 금액</label> 
-          <input type="text" name="payTotal2"  value=""  class="inputcash" readonly="readonly"> 
+          <input type="text" name="payTotal"  value="" id="payTotal2"  class="inputcash" readonly="readonly"> 
           <label class="labelcash">받은 금액 입력란</label> 
-          <input type="text" name="payTotal" placeholder="받은 금액" class="inputcash" required="required"> 
+          <input type="text" name="payTotal2" placeholder="받은 금액" id="payTotal" class="inputcash" required="required">
+          <input type="button" class="document" onclick="nmg()" value="거스름돈 출력">
+          <label class="labelcash nmg">거스름돈</label>
+          <input type="text" id="nmg" name="nmg" readonly="readonly"> 
           <input type="button" id="cancelcash" value="취소"> 
           <input type="button" id="submitcash" onclick ="send()" value="보내기"> 
         </form> 
     </div> 
 </div>
 	
-	
+	<script type="text/javascript">
+	$(document).on("click",".document",function nmg(){
+		var payTotal = document.getElementById('payTotal').value;
+		var payTotal2 = document.getElementById('payTotal2').value;
+		
+		document.getElementById('nmg').value = payTotal - payTotal2;
+		
+		if(payTotal < payTotal2){
+			alert('받은 금액을 다시 확인해주십시오.');
+		}
+		
+		if(payTotal >= payTotal2){
+		
+		$('#nmg').css('display','block');
+		$('.nmg').css('display','block');
+		$('.modal-contentcash').css('height','430px');
+		$('.document').css('display','none');
+		$('#submitcash').css('display','inline-block');
+		}
+		
+		
+	});
+		
+		
+	</script>
 
 	<script type="text/javascript">
 		var modal = document.querySelector(".modal");
@@ -476,7 +516,7 @@
 
    function toggleModalcash() { 
         modalcash.classList.toggle("show-modalcash"); 
-        $('input[name=payTotal2]').val($('.pTotal').text());
+        $('input[name=payTotal]').val($('.pTotal').text());
     }
 
    function windowOnClickcash(event) { 
@@ -485,29 +525,32 @@
         } 
     }
 	 function send(){
-	   var payTotal = $('input[name=payTotal2]').val();
-	   var input = $('input[name=payTotal]').val();
+		
+		 
+	   var payTotal = $('input[name=payTotal]').val();
+	   var input = $('input[name=payTotal2]').val();
+	   var nmg = $('input[name=nmg]').val();
 	  
+	   var sum = input - nmg;
 	   
-	   
-	   if( payTotal == input ){
-	  /*   	document.getElementById('submitcash').onclick=function(){ */
-	    		   alert('결제완료');
-	    		   $('#fpNumber').val('3');
+	    if( payTotal == sum){
+	
+	    	alert('결제완료'); 
+	    	  /*  Swal.fire({
+				  position: 'top-end',
+				  type: 'success',
+				  title: '결제가 완료되었습니다.',
+				  showConfirmButton: false,
+				  timer: 1500000000000
+				}); */
 	   	    	document.getElementById('frm').submit();
 	   	    	return false;
-	   	   /*  location.reload(); */
-	   	 /*    return true; */
-	   	   /*  	$('.modalcash').hide(); */
-	   	    
-	  /*   	} */
-		   
 	   }
-	   if(payTotal != input){
+	     if(payTotal != sum){
 		   alert('일치하지 않습니다. 다시 확인해주십시오.');
-		   return true;
-		   
+		   return true;  
 	   }
+	  
    }
 
    triggercash.addEventListener("click", toggleModalcash); 
@@ -517,6 +560,47 @@
     
    
     
+</script>
+<script>
+	function card(){
+		let timerInterval
+		Swal.fire({
+		  title: '결제중입니다.',
+		  html: 'I will close in <strong></strong> seconds.',
+		  timer: 2000,
+		  onBeforeOpen: ()=> {
+		    Swal.showLoading()
+		    timerInterval = setInterval(() => {
+		      Swal.getContent().querySelector('strong')
+		        .textContent = Swal.getTimerLeft()
+		    }, 100)
+		  },
+		  onClose: ()=> {
+		    clearInterval(timerInterval)
+		  }
+		}).then((result)=> {
+		  if (
+		    // Read more about handling dismissals
+		    result.dismiss === Swal.DismissReason.timer
+		    
+		  ) {
+		    console.log('I was closed by the timer')
+		    card2();
+		  }
+		})
+		function card2(){
+			Swal.fire({
+			  position: 'top-end',
+			  type: 'success',
+			  title: '결제가 완료되었습니다.',
+			  showConfirmButton: false,
+			  timer: 1500
+			  
+			});
+			
+					}
+	}
+
 </script>
 </body>
 </html>
