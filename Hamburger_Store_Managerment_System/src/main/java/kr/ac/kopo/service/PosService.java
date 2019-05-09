@@ -1,37 +1,24 @@
 package kr.ac.kopo.service;
 
+import java.util.HashMap;
 import java.util.List;
 
+import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
-import kr.ac.kopo.model.Paging;
-import kr.ac.kopo.model.Pos;
 
 public interface PosService {
 
-	List<Pos> getList(Paging paging);
+	List<Menu> getList();
 
-//	void delete(int pNumber);
+	void add(Menu item);
 
-	void add(Pos item);
+	Menu positem(int menuId);
 
-	Pos positem(int pNumber);
-
-	void update(Pos item);
-
-	int pDelete(int pNumber);
-
-	void orders(Orders order);
+	int pDelete(int menuId);
 
 
+	void ordersMenuAdd(HashMap<String, Object> map);
 
-	/*
-	 * List<Pos> chicken(Paging paging);
-	 * 
-	 * List<Pos> burger(Paging paging);
-	 * 
-	 * List<Pos> side(Paging paging);
-	 * 
-	 * List<Pos> drink(Paging paging);
-	 */
+	void orders(HashMap<String, Object> map);
 
 }

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="takeOutReservedList" >
-<!-- useGeneratedKeys="true" keyProperty="takeoutId" -->
-	<insert id="insert" parameterType="TakeOutReserved" >
+
+	<insert id="insert" >
 		insert into takeout_reserved_list
 		(user_id, reserved_name, reserved_phone, reserved_date, reserved_time, total_price)
 		values

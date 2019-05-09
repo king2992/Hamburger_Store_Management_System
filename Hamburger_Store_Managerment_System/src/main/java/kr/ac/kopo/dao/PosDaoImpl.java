@@ -1,11 +1,13 @@
 package kr.ac.kopo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
@@ -17,61 +19,42 @@ public class PosDaoImpl implements PosDao {
 	@Autowired
 	SqlSession sql;
 	
+
 	@Override
-	public int total(Paging paging) {
-		
-		int total = sql.selectOne("pos.total",paging);
-		
-		return total;
+	public List<Menu> getList( ) {
+		return sql.selectList("pos.getList");
 	}
 
 	@Override
-	public List<Pos> getList(Paging paging) {
-		return sql.selectList("pos.getList",paging);
-	}
-
-	//@Override
-	//public void delete(int pNumber) {
-		//sql.delete("pos.delete",pNumber);
-	//}
-
-	@Override
-	public void add(Pos item) {
+	public void add(Menu item) {
 		sql.insert("pos.add",item);
 	}
 
 	@Override
-	public Pos positem(int pNumber) {
-		return sql.selectOne("pos.positem",pNumber);
+	public Menu positem(int menuId) {
+		return sql.selectOne("pos.positem",menuId);
 	}
 
 	@Override
-	public void update(Pos item) {
+	public void update(Menu item) {
 		sql.update("pos.update",item);
 	}
-	/*
-	 * @Override public List<Pos> chicken(Paging paging) { return
-	 * sql.selectList("pos.chicken",paging); }
-	 * 
-	 * @Override public List<Pos> burger(Paging paging) { return
-	 * sql.selectList("pos.burger",paging); }
-	 * 
-	 * @Override public List<Pos> side(Paging paging) { return
-	 * sql.selectList("pos.side",paging); }
-	 * 
-	 * @Override public List<Pos> drink(Paging paging) { return
-	 * sql.selectList("pos.drink",paging); }
-	 */
 
 	@Override
-	public int pDelete(int pNumber) {
-		return sql.delete("pos.pDelete",pNumber);
+	public int pDelete(int menuId) {
+		return sql.delete("pos.pDelete",menuId);
+	}
+
+	
+	
+	@Override
+	public void orderMenuAdd(HashMap<String, Object> map) {
+		sql.insert("pos.orderMenuAdd", map);
 	}
 
 	@Override
-	public void orders(Orders order) {
-		sql.insert("pos.orders",order);
+	public void orders(HashMap<String, Object> map) {
+		sql.insert("pos.orders",map);		
 	}
-
 
 }

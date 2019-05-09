@@ -40,7 +40,41 @@
     }
 #submitcash{
 	display:none;
+ 
 }
+[data-tooltip-text]:hover {
+	position: relative;
+}
+
+[data-tooltip-text]:hover:after {
+	background-color: #000000;
+	background-color: rgba(0, 0, 0, 0.8);
+
+	-webkit-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+	-moz-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+	box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	color: #FFFFFF;
+	font-size: 12px;
+	content: attr(data-tooltip-text);
+
+    margin-bottom: 10px;
+	top: 100px;
+	left: 0;    
+	padding: 7px 12px;
+	position: absolute;
+	width: auto;
+	min-width: 50px;
+	max-width: 600px;
+	word-wrap: break-word;
+
+	z-index: 9999;
+} 
+
 </style>
 <script type="text/javascript">
 	$(document).ready( function() { 
@@ -58,6 +92,7 @@
 			td2.innerHTML = $(this).attr("value");
 			td2.setAttribute("name",menuName);
 			td2.setAttribute("data-menuName", $(this).attr("value"));
+			td2.setAttribute("class","menuListName");
 			td3.setAttribute("id", menuName);
 			td3.innerHTML = $(this).attr("data-cnt");
 			td3.setAttribute("class", "menuListCnt");
@@ -78,12 +113,12 @@
 				}
 				
 				
-			var pNumber = $(this).attr('data-number');
+			var menuId = $(this).attr('data-number');
 						
 			if ($(".menuDelete").length < 1) {
 				$('.deleteUpdate').append('<li class="menuDelete" id="menuDelete" >메뉴삭제</li>');
 			}
-			$("#menuDelete").attr("onclick", "pDelete('"+pNumber+"')");
+			$("#menuDelete").attr("onclick", "pDelete('"+menuId+"')");
 			 menuItemPriceTotal();
 		});
 
@@ -157,27 +192,37 @@
 		
 		$('.menuListTr').each( function(index) { 
 			$(this).click( function() {
-				$(this).css("background-color", "#FBF2EF");
+				$(this).css("background-color", "red");
 				$(this).attr("id", "menuListSelected");
-				
 				$(this).siblings().attr("id", "none");
+				
 			})
 		})
 	});
 	$(document).on( "mouseenter", ".menuListTr", function() {
-		event.target.parentNode.setAttribute("style", "background-color:#FBF5EF");
+		
+			
+			console.log($(event.target).parent().css("background-color"));
+		if($(event.target).parent().css("background-color") == "rgb(255, 0, 0)"){
+			event.target.parentNode.setAttribute("style", "background-color:red");
+		}else if($(event.target).parent().css("background-color") != "rgb(255, 0, 0)"){
+			event.target.parentNode.setAttribute("style", "background-color:blue");
+		}
+		
 	});
 	$(document).on( "mouseleave", ".menuListTr", function() {
+		
 		if(event.target.parentNode.getAttribute("id") != "menuListSelected" ){
-			event.target.parentNode.setAttribute("style", "background-color:");
+			event.target.parentNode.setAttribute("style", "background-color: #FBF2EF");
 		}
+		
 	});
-	function pDelete(pNumber) {
+	function pDelete(menuId) {
 		$.ajax({
 			url : '/pos/delete',
 			type : "post",
 			data : {
-				"pNumber" : pNumber
+				"menuId" : menuId
 			},
 			success : function(data) {
 				location.reload();
@@ -193,40 +238,18 @@
 		menuItemPriceTotal();
 	}
 	
-	
-		$('.pNameClick').each(function(index,item){
-			$('.chickenMenu').on("click",function(){
-				
-				var chicken = $(this).data("menu","chicken");
-				var burger = $(this).data("menu","burger");
-				var side = $(this).data("menu","side");
-				var drink = $(this).data("menu","drink");	
-				alert(chicken);
-				
-			})
-				
-				
+	$('.pNameClick').each(function(index,item){
+		$('.chickenMenu').on("click",function(){
 			
-		});
-		
-
+			var chicken = $(this).data("menu","chicken");
+			var burger = $(this).data("menu","burger");
+			var side = $(this).data("menu","side");
+			var drink = $(this).data("menu","drink");	
+			alert(chicken);
+		})
+    });
 	
-	/* function chicken(){
-		$.ajax({
-			url : '/pos/menu',
-			type:'post',
-			data : {
-				"pMenu" : pMenu
-			},
-			succsss : function(data){
-				console.log(data);
-				alert('0');
-			}
-		});
-		$(".chickenMenu").attr("onclick", "pDelete('"+pNumber+"')");
-		 menuItemPriceTotal();
-	});
-	} */
+	
 </script>
 </head>
 <body>
@@ -268,19 +291,7 @@
 					</div></li>
 			</ul>
 		</nav>
-		<%-- <header id="header">
-			<div id="wrap-center">
-				<nav class="navi">
-					<ul>
-						<li>POPS</li>
-						<li>작업일시 :<jsp:useBean id="toDay" class="java.util.Date" />
-							<fmt:formatDate value='${toDay}' pattern='yyyyMMdd' var="nowDate" /></li>
-						<li>사용자 : 관리자</li>
-						<li>닫기</li>
-					</ul>
-				</nav>
-			</div>
-		</header> --%>
+	
 		<div class="margin">
 			<div style="width: 100%; height: 100%;">
 				<section class="left-section">
@@ -298,27 +309,7 @@
 								</tr>
 							</thead>
 							<tbody class="orderList" id="orderList">
-								<%-- 		<c:choose>
-									<c:when test="${list.size() > 0}">
-										<c:forEach var="item" items="${list}">
-											<tr>
-												<td>${item.pNumber}</td>
-												<td>${item.pName}</td>
-												<td>${item.pAccount}</td> 
-												<td>${item.pPrice}</td>
-											</tr>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<td></td>
-									</c:otherwise>
-								</c:choose> --%>
-								<!-- <tr class="tr-none"> -->
-								<!-- 									<td id="pPrice"></td> -->
-								<!-- 									<td></td> -->
-								<!-- 									<td></td> -->
-								<!-- 									<td></td> -->
-								<!-- </tr> -->
+								
 							</tbody>
 						</table>
 					</div>
@@ -330,29 +321,15 @@
 										></span></th>
 								</tr>
 							</thead>
-							<!-- <tbody>
-								<tr>
-									<td>주문금액</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td>서비스</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td>할인금액</td>
-									<td>0</td>
-								</tr>
-							</tbody> -->
-						</table>
+												</table>
 					</div>
 					<div class="crud-width">
 						<ul class="crud">
-							<li onclick="menuRemove()"><a href="#">지정취소</a></li>
-							<li onclick="allRemove()"><a href="#">전체취소</a></li>
+							<li onclick="menuRemove()"  ><a href="#" data-tooltip-text="상품을 선택 후 눌러주세요.">지정취소</a></li>
+							<li onclick="allRemove()"  ><a href="#" data-tooltip-text="전체 상품을 취소합니다.">전체취소</a></li>
 							<!-- <li>수정입력</li> -->
-							<li onclick="menuCntUp()" style="cursor:pointer;">+</li>
-							<li onclick="menuCntDown()" style="cursor:pointer;">-</li>
+							<li onclick="menuCntUp()"  style="cursor:pointer;" data-tooltip-text="상품을 선택 후 눌러주세요. ">+</li>
+							<li onclick="menuCntDown()"   style="cursor:pointer;" data-tooltip-text="상품을 선택 후 눌러주세요.">-</li>
 						</ul>
 					</div>
 
@@ -370,26 +347,15 @@
 	<c:choose>
 		<c:when test="${list.size() > 0}">
 			<c:forEach var="item" items="${list}">
-				<input type="hidden" class="hiddenNumber" value="${item.pNumber}" style="display: none; cursor:pointer;">
-		<%-- 		<input type="hidden" class="pMenu" value="${item.pMenu}"> --%>
-				<li style="cursor:pointer;" class="pNameClick" value="${item.pName}" data-price="${item.pPrice}" data-number="${item.pNumber}"
-					data-cnt="1" data-menu="${item.pMenu}"><p class="pName" name="${item.pMenu}">${item.pName}</p>
-						<p class="pPrice">${item.pPrice}</p>
-						<p id="pMenuClick">${item.pMenu}
+				<input type="hidden" class="hiddenNumber" value="${item.menuId}" style="display: none; cursor:pointer;">
+		
+				<li style="cursor:pointer;" class="pNameClick" value="${item.menuName}" data-price="${item.menuPrice}" data-number="${item.menuId}"
+					data-cnt="1" data-menu="${item.menuCategory}"><p class="pName" name="${item.menuCategory}">${item.menuName}</p>
+						<p class="pPrice">${item.menuPrice}</p>
+						<p id="pMenuClick">${item.menuCategory}
 						</li>
 				
-				<!-- <tr> -->
-				<%-- 	<td class="pNameClick" value="${item.pName}"
-				data-price="${item.pPrice}" data-number="${item.pNumber}"
-				data-cnt="1"><a href="#">
-					<p class="pName">${item.pName}</p>
-					<p class="pPrice">${item.pPrice}</p>
-			</a></td> --%>
-				<!-- 	<td>불고기세트</td>
-			<td>불고기세트</td>
-			<td>불고기세트</td>
-			<td>불고기세트</td> -->
-				<!-- </tr> -->
+			
 			</c:forEach>
 		</c:when>
 		<c:otherwise>
@@ -405,8 +371,7 @@
 							<li onclick="card()">카드결제</li>
 							<li class="triggercash" onclick="triggercash()">현금결제</li>
 							<li><a href="#" id="trigger">메뉴등록</a></li>
-							<!-- <li><a href="#">메뉴삭제</a></li>  -->
-							<%-- <li><a href="update?pNumber=${item.pNumber}">메뉴수정</a></li> --%>
+							
 						</ul>
 					</div>
 				</footer>
@@ -418,17 +383,17 @@
 		<div class="modal-content">
 			<span class="close-button">&times;</span>
 			<h1 class="title">메뉴등록</h1>
-			<form action="/pos/add" method="POST">
-				<select name="pMenu">
+			<form action="/pos/add" method="POST" enctype="multipart/form-data">
+				<select name="menuCategory">
 					<option value="chicken">chicken</option>
 					<option value="burger">burger</option>
 					<option value="side">side</option>
 					<option value="drink">drink</option>
-				</select> <label for="pName">MENU</label> <input type="text" name="pName"
+				</select> <label for="menuName">MENU</label> <input type="text" name="menuName"
 					placeholder="상품명을 입력해주세요." required="required"> <label></label>
-				<textarea name="pPrice" placeholder="상품가격을 입력해주세요."
+				<textarea name="menuPrice" placeholder="상품가격을 입력해주세요."
 					required="required"></textarea>
-
+					<input type="file" name="file">
 				<input type="button" id="cancel" value="취소"> <input
 					type="submit" id="submit" value="보내기">
 			</form>
@@ -485,6 +450,8 @@
 		var trigger = document.querySelector("#trigger");
 		var closeButton = document.querySelector(".close-button");
 		var cancelButton = document.querySelector("#cancel");
+		var menuNameArray = new Array();
+		var menuCntArray = new Array();
 
 		//console.log(modal);
 
@@ -517,6 +484,16 @@
    function toggleModalcash() { 
         modalcash.classList.toggle("show-modalcash"); 
         $('input[name=payTotal]').val($('.pTotal').text());
+        
+        //추가 돼 있는 상품에 이름을 배열에 담는다
+        $(".menuListName").each(function(index, item){
+        	menuNameArray.push($(this).text());
+        })
+        //추가 돼 있는 상품에 갯수를 배열에 담는다
+        $(".menuListCnt").each(function(index, item){
+        	menuCntArray.push($(this).text());
+        })
+        
     }
 
    function windowOnClickcash(event) { 
@@ -530,20 +507,27 @@
 	   var payTotal = $('input[name=payTotal]').val();
 	   var input = $('input[name=payTotal2]').val();
 	   var nmg = $('input[name=nmg]').val();
-	  
 	   var sum = input - nmg;
 	   
 	    if( payTotal == sum){
-	
 	    	alert('결제완료'); 
-	    	  /*  Swal.fire({
-				  position: 'top-end',
-				  type: 'success',
-				  title: '결제가 완료되었습니다.',
-				  showConfirmButton: false,
-				  timer: 1500000000000
-				}); */
-	   	    	document.getElementById('frm').submit();
+	    	$.ajax({
+	     		url : "/pos/orders",
+	     		data : {"payTotal" : payTotal},
+	     		dataType : "JSON",
+	     		type : "POST",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+				success : function(data) {
+					if(data == 1){
+						console.log("재미없었어");
+						선규();
+					}
+				}
+	     	});
+	    	 
+	   	    	//document.getElementById('frm').submit();
+	   	    	
+				
 	   	    	return false;
 	   }
 	     if(payTotal != sum){
@@ -552,6 +536,19 @@
 	   }
 	  
    }
+	 function 선규(){
+			$.ajax({
+	     		url : "/pos/menuAdd",
+	     		data : {"menuNameArray" : menuNameArray, "menuCntArray" : menuCntArray},
+	     		dataType : "JSON",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+				success : function(data) {
+					if(data == 1){
+						window.location.reload();
+					}
+				}
+	     	});
+	 }
 
    triggercash.addEventListener("click", toggleModalcash); 
     closeButtoncash.addEventListener("click", toggleModalcash); 
@@ -572,7 +569,7 @@
 		    Swal.showLoading()
 		    timerInterval = setInterval(() => {
 		      Swal.getContent().querySelector('strong')
-		        .textContent = Swal.getTimerLeft()
+		        .textContent = Swal.getTimerLeft() 
 		    }, 100)
 		  },
 		  onClose: ()=> {

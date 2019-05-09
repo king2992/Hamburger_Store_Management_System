@@ -1,24 +1,25 @@
 package kr.ac.kopo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
+import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
 
 public interface PosDao {
 
-	int total(Paging paging);
 
-	List<Pos> getList(Paging paging);
+	List<Menu> getList();
 
 	//void delete(int pNumber);
 
-	void add(Pos item);
+	void add(Menu item);
 
-	Pos positem(int pNumber);
+	Menu positem(int menuId);
 
-	void update(Pos item);
+	void update(Menu item);
 	/*
 	 * List<Pos> chicken(Paging paging);
 	 * 
@@ -29,9 +30,11 @@ public interface PosDao {
 	 * List<Pos> drink(Paging paging);
 	 */
 
-	int pDelete(int pNumber);
+	int pDelete(int menuId);
 
-	void orders(Orders order);
+	void orders(HashMap<String, Object> map);
+
+	void orderMenuAdd(HashMap<String, Object> map);
 
 	
 
