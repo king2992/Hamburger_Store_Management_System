@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			    	 var regDate = info.dateStr;
 			    	 var list = "";
 			    	 var reservedContainer = $(".reservedContainer");
+			    	 var reservedCheckList = $(".reservedCheckList");
 			    	 $.ajax({
 			    		url : "/pos/dateSort",
 			    		type : "GET",
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			    				list += "</tr>";
 			    			})
 			    			reservedContainer.html(list);
+			    			reservedCheckList.html("");
 			    		}
 			    	 });
 			    	 console.log(info.dateStr);
