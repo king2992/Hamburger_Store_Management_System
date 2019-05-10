@@ -3,42 +3,35 @@ package kr.ac.kopo.model;
 
 public class Orders {
 
-	int orderid;
+	int orderId;
 	String regDate;
-	int pNumber;
 	int payTotal;
+	String regTime;
 
 	public String getRegDate() {
 		return regDate;
 	}
-
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-
-	public int getOrderid() {
-		return orderid;
+	public int getOrderId() {
+		return orderId;
 	}
 
-	public void setOrderid(int orderid) {
-		this.orderid = orderid;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
-
-
-	public int getpNumber() {
-		return pNumber;
-	}
-
-	public void setpNumber(int pNumber) {
-		this.pNumber = pNumber;
-	}
-
 	public int getPayTotal() {
 		return payTotal;
 	}
-
 	public void setPayTotal(int payTotal) {
 		this.payTotal = payTotal;
 	}
-
+	public String getRegTime() {
+		return regTime;
+	}
+	public void setRegTime(String regTime) {
+		this.regTime = regTime;
+	}
+	
 }

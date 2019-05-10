@@ -11,6 +11,7 @@ import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
+import kr.ac.kopo.model.ordersMenuList;
 
 @Service
 public class PosServiceImpl implements PosService {
@@ -44,6 +45,18 @@ public class PosServiceImpl implements PosService {
 	@Override
 	public void orders(HashMap<String, Object> map) {
 		posdao.orders(map);
+	}
+	@Override
+	public List<Orders> reservedList() {
+		return posdao.reservedList();
+	}
+	@Override
+	public List<ordersMenuList> reservedListCheck(int orderId) {
+		return posdao.reservedListCheck(orderId);
+	}
+	@Override
+	public List<Orders> dateSort(String regDate) {
+		return posdao.dateSort(regDate);
 	}
 
 }

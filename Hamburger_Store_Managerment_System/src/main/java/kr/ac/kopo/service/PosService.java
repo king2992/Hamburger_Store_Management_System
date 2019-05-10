@@ -5,6 +5,7 @@ import java.util.List;
 
 import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
+import kr.ac.kopo.model.ordersMenuList;
 
 public interface PosService {
 
@@ -20,5 +21,11 @@ public interface PosService {
 	void ordersMenuAdd(HashMap<String, Object> map);
 
 	void orders(HashMap<String, Object> map);
+
+	List<Orders> reservedList();
+
+	List<ordersMenuList> reservedListCheck(int orderId);
+
+	List<Orders> dateSort(String regDate);
 
 }

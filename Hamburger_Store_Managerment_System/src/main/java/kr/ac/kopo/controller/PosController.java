@@ -1,6 +1,8 @@
 package kr.ac.kopo.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,14 +16,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
-import kr.ac.kopo.model.Paging;
-import kr.ac.kopo.model.Pos;
+import kr.ac.kopo.model.ordersMenuList;
 import kr.ac.kopo.service.PosService;
 
 @Controller
 @RequestMapping("/pos")
 public class PosController {
 	final String path = "pos/";
+	Date date = new Date();
+	Date time = new Date();
+	
+	SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat timeformat = new SimpleDateFormat("a hh:mm:ss");
 	
 	@Autowired
 	PosService posservice;
@@ -68,6 +74,7 @@ public class PosController {
 	}
 	@RequestMapping(value="/orders",method=RequestMethod.GET)
 	String orders() {
+		
 		return path + "orders";
 	}
 	@ResponseBody
@@ -76,6 +83,9 @@ public class PosController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("payTotal", payTotal);
+		map.put("regDate", dateformat.format(date));
+		map.put("regTime", timeformat.format(time));
+
 		posservice.orders(map);
 		return 1;
 	}
@@ -85,7 +95,6 @@ public class PosController {
 	int menuAdd(@RequestParam(value="menuNameArray[]") String menuNameArray[],
 			@RequestParam(value="menuCntArray[]") String menuCntArray[]) {
 		
-				System.out.println("박수진박수쳐~~~~");
 				
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			
@@ -97,5 +106,24 @@ public class PosController {
 			
 		return 1;
 	}
-	
+	@RequestMapping(value="/reservedList", method=RequestMethod.GET)
+	String reservedList(Model model) {
+		
+		List<Orders> orders = posservice.reservedList();
+		model.addAttribute("orders",orders);
+		
+		return "/pos/reservedList";
+	}
+	@ResponseBody
+	@RequestMapping(value="/reservedListCheck", method=RequestMethod.GET)
+	Object reservedListCheck(@RequestParam(value="orderId") int orderId) {
+			List<ordersMenuList> ordersmenulist = posservice.reservedListCheck(orderId); 
+		return ordersmenulist; 
+	}
+	@ResponseBody
+	@RequestMapping(value="/dateSort", method=RequestMethod.GET)
+	Object dateSort(@RequestParam(value="regDate") String regDate) {
+		List<Orders> dateSort = posservice.dateSort(regDate); 
+		return dateSort;
+	}
 }

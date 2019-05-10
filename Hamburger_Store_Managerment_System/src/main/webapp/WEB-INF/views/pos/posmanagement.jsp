@@ -265,7 +265,7 @@
 					href='<c:url value="/"/>'> <i class="fa fa-home menu-icon"></i>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/review/reviewList"/>'> <i
+					href='<c:url value="/pos/reservedList"/>'> <i
 						class="fa fa-edit menu-icon"></i>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"

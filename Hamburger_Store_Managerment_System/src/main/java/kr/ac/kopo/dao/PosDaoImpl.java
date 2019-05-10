@@ -11,6 +11,7 @@ import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
+import kr.ac.kopo.model.ordersMenuList;
 
 
 @Repository
@@ -55,6 +56,21 @@ public class PosDaoImpl implements PosDao {
 	@Override
 	public void orders(HashMap<String, Object> map) {
 		sql.insert("pos.orders",map);		
+	}
+
+	@Override
+	public List<Orders> reservedList() {
+		return sql.selectList("pos.ordersList");
+	}
+
+	@Override
+	public List<ordersMenuList> reservedListCheck(int orderId) {
+		return sql.selectList("pos.reservedListCheck", orderId);
+	}
+
+	@Override
+	public List<Orders> dateSort(String regDate) {
+		return sql.selectList("pos.dateSort", regDate);
 	}
 
 }
