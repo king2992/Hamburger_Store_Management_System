@@ -67,20 +67,6 @@ public class ReviewController {
 		
 		reviewUp.setUserId((String)session.getAttribute("user"));
 		
-//		if(reviewUp.getAttach() != null) {
-//			
-//			String file = reviewUp.getAttach().getOriginalFilename();
-//			
-//			try {
-//				reviewUp.getAttach().transferTo(new File(uploadpath + file));
-//				
-//				reviewUp.setFile(file);
-//			} catch (IllegalStateException e) {
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
 		reviewService.reviewUp(reviewUp);
 		return "redirect:reviewList";
 	}
