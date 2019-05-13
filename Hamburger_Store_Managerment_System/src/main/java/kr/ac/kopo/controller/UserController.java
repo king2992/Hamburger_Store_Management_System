@@ -46,7 +46,8 @@ public class UserController {
 	}
 	
 	
-	  @RequestMapping(value="/signIn", method=RequestMethod.POST) String
+	  @RequestMapping(value="/signIn", method=RequestMethod.POST) 
+	  String
 	  userLogin(HttpSession session, User user) { 
 	  if (service.login(user)) {
 	  session.setAttribute("user", user.getUserId());
@@ -55,7 +56,7 @@ public class UserController {
 	   else
 	  { 
 	  } 
-	  return "redirect:/user/signIn"; }
+	  return "redirect:/../"; }
 	 
 	
 	@RequestMapping("/userLogout")
