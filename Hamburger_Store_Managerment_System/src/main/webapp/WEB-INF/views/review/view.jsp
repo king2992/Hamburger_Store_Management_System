@@ -7,7 +7,7 @@
   
 <head>
     <meta charset="UTF-8">
-    <title>header</title>
+    <title>${view.title}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -215,6 +215,11 @@
                 <div class="view_content">
                     ${view.contents}
                 </div>
+                <div>
+      				<c:forEach var="file" items="${fileList }">
+      					<img src="${path}/resources/upload/images/${file }"/>
+      				</c:forEach>
+      			</div>
                 <%-- <c:choose>
                     <c:when test="${view.reLike eq 'true' }">
                         <div class="view_like" data="like">

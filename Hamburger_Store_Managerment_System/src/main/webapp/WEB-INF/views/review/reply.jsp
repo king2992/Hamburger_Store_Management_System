@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>header</title>
+    <title>답글</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">

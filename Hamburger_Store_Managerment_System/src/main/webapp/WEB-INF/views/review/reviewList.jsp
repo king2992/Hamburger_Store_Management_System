@@ -140,7 +140,7 @@
 
 			<div class="content_subject">
 				<div class="content_subjectleft">
-					<img src="../resources/images/studying.png"> <span>후기게시판</span>
+					<img src="../resources/images/studying.png"> <span>커뮤니티 게시판</span>
 				</div>
 				<div class="content_subjectright">
 					<form id="searchfrm">
