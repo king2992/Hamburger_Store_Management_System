@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
+import kr.ac.kopo.service.FileService;
 import kr.ac.kopo.service.ReviewService;
   
 @Controller
@@ -22,6 +23,9 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private FileService fileService;
 	
 	//	후기게시판 목록
 	@RequestMapping("/reviewList")	
@@ -52,9 +56,12 @@ public class ReviewController {
 	
 //수정
 	@RequestMapping(value ="/reviewUp")
-	String reviewUp(int number, Model model) {
+	String reviewUp(int number, Model model) throws Exception {
 		
 		Review reviewUp = reviewService.update(number);
+		
+		List<String> fileList = fileService.getArticleFiles(number);
+		model.addAttribute("fileList",fileList);
 		
 		model.addAttribute("reviewUp", reviewUp);
 		
@@ -81,11 +88,13 @@ public class ReviewController {
 	}
 //뷰	
 	@RequestMapping("/view")
-	String view(int number, Model model) {
+	String view(int number, Model model) throws Exception {
 		
 		reviewService.ref(number);
 
 		Review view = reviewService.update(number);
+		List<String> fileList = fileService.getArticleFiles(number);
+		model.addAttribute("fileList",fileList);
 		
 		model.addAttribute("view", view);
 		
@@ -119,20 +128,6 @@ public class ReviewController {
 		
 		review.setUserId((String)session.getAttribute("user"));
 		
-//		if(review.getAttach() != null) {
-//			
-//			String file = review.getAttach().getOriginalFilename();
-//			
-//			try {
-//				review.getAttach().transferTo(new File(uploadpath + file));
-//				
-//				review.setFile(file);
-//			} catch (IllegalStateException e) {
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
 		reviewService.reply(review);
 		return "redirect:reviewList";
 	}

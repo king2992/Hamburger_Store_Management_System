@@ -2,12 +2,12 @@ package kr.ac.kopo.model;
 
 public class Paging {
 //	첫 페이지를 1 5글 씩 보여지겟다 토탈은 실수형으로 
-   int page = 1;
-   final int pager = 10;
-   float total;
+   private int page = 1;
+   private final int pager = 10;
+   private float total;
    //검색 추가
-   String search;
-   String keyword;
+   private String search;
+   private String keyword;
    
    public String getHtml() {
 

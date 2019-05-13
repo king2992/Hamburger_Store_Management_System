@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>header</title>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
@@ -24,7 +24,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script src="/resources/js/summernote.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <!--     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.js"></script> -->
     <script src="/resources/js/mainR.js"></script>

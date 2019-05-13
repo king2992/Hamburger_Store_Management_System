@@ -11,6 +11,11 @@ public class Comment {
 	private int coOrd; // 대댓글순서
 	private int coDepth; // 대댓글깊이
 	
+	@Override
+	public String toString() {
+		return "Comment [coNumber=" + coNumber + ", number=" + number + ", userId=" + userId + ", content=" + content
+				+ ", coDate=" + coDate + ", coGroup=" + coGroup + ", coOrd=" + coOrd + ", coDepth=" + coDepth + "]";
+	}
 	
 	public int getCoNumber() {
 		return coNumber;

@@ -93,6 +93,5 @@ public class CommentController {
         comm.setContent(content);
         comm.setUserId((String) session.getAttribute("user"));
         return commentService.commentReply(comm);
-        
     }
 }

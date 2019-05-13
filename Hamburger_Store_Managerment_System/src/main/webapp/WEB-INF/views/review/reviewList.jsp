@@ -71,7 +71,7 @@
 							href="#">정보수정</a> <a class="dropdown-item modal_open modal_menu"
 							data="passModal" href="#">비밀번호변경</a> <a
 							class="dropdown-item modal_open modal_menu" data="logoutModal"
-							href="<c:url value='/user/userLogout'/>">로그아웃</a> <a
+							href="<c:url value='${path}/user/userLogout'/>">로그아웃</a> <a
 							class="dropdown-item modal_open modal_menu" data="secessionModal"
 							href="#">회원탈퇴</a>
 					</div></li>
@@ -107,9 +107,9 @@
 
 				<ul>
 					<li class="rightmenu_list" data="freeboard"><i
-						class="fas fa-angle-right"></i><span>자유게시판</span></li>
+						class="fas fa-angle-right"></i><span><a href="${path}/takeOutReservation/takeOutUserReservation">Take_Out 예약 하기</a></span></li>
 					<li class="rightmenu_list" data="study"><i
-						class="fas fa-angle-right"></i><span>스터디룸</span></li>
+						class="fas fa-angle-right"></i><span><a href="${path}/kiosk/screen">Web 상품 주문 하기</a></span></li>
 				<%-- 	<c:if test="${user ne null }">
 						<li class="rightmenu_list" data="group"><i
 							class="fas fa-angle-right"></i><span>스터디그룹</span></li>
