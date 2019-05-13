@@ -155,7 +155,7 @@
 <body>
 	
  <section class="window-height" id="error" style="background-image: url(/resources/img/background/village-burger-bar-3799973_1920.jpg);">
-         <div><p class="ticket" ><a href="/">Hamburger Take Out</a><button type="button" onclick="menuModal()" style="width:80px; height:40px; font-size:15px; line-height:40px; margin-left:20px;">메뉴 등록</button></p></div>
+         <div><p class="ticket" ><a href="/">Hamburger Take Out</a><i>${sessionScope.places}</i><button type="button" onclick="menuModal()" style="width:80px; height:40px; font-size:15px; line-height:40px; margin-left:20px;">메뉴 등록</button></p></div>
        <div class="container">
            <div class="seats" style="position: relative; top: 35px;"> 
                 <div class="left-box">

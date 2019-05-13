@@ -59,6 +59,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/pos/posmanagement">포스기(관리자)</a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/store/storeFind">매장 찾기</a>
+          </li>
         </ul>
       </div>
     </div>

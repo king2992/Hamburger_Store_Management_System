@@ -7,10 +7,14 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.fileupload.FileUpload;
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +32,9 @@ public class TakeOutUserReservedController {
 	@Autowired
 	TakeOutUserReservedService service;
 	@RequestMapping("/takeOutUserReservation")
-	String seatAppointment( Model model) {
+	String seatAppointment( Model model,String places, HttpSession session) {
+		System.out.println(places);
+		session.setAttribute("places", places);
 		
 		List<Menu> chickenList = service.chickenList();
 		List<Menu> burger = service.burgerList();

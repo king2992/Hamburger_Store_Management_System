@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			    		type : "GET",
 			    		data : {"regDate":regDate},
 			    		success : function(data){
-			    			console.log(data);
 			    			$.each(data, function(index, item){
 			    				list += "<tr>";
 			    				list += "<td class='reservedOrderId'>" +item.orderId+"</td>";
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			    			reservedCheckList.html("");
 			    		}
 			    	 });
-			    	 console.log(info.dateStr);
 			    } ,
 			    
 	    select: function(info) {
@@ -55,8 +53,6 @@ $(document).ready(function(){
 			data : {"orderId" : orderId},
 			success : function(data){
 					$.each(data, function(index,item){
-						console.log(data.length);
-
 						list +="<li class='ajaxMenuName'>상품명 : "+item.menuName+"</li><li>수량 : "+item.menuCnt+"</li>";
 					})
 					reservedCheckList.html(list);
@@ -67,12 +63,15 @@ $(document).ready(function(){
 	$(document).on('click', '.orderReady', function(){
 		var orderReadyHtml = "";
 		orderReadyHtml += "조리완료<button type='button' class='orderCancle'>취소</button>";
+		$(event.target).parent().siblings().parent().css("background", "gray");
 		$(event.target).parent().html(orderReadyHtml);
+		
 		
 	});
 	$(document).on('click', '.orderCancle', function(){
 		var orderCancleHtml = "";
 		orderCancleHtml += "상품 준비 중 <button type='button' class='orderReady'>조리완료</button>";
+		$(event.target).parent().siblings().parent().css("background", "white");
 		$(event.target).parent().html(orderCancleHtml);
 	})
 	
