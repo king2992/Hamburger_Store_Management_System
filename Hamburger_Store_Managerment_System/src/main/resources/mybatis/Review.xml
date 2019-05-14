@@ -29,7 +29,7 @@
 
 	<select id="update" resultType="Review">
 		SELECT *
-		FROM review
+		FROM review 
 		WHERE number=#{number}
 	</select>
 
