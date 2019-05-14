@@ -121,6 +121,12 @@ public class PosController {
 		return ordersmenulist; 
 	}
 	@ResponseBody
+	@RequestMapping(value="/reservedListStatus", method= {RequestMethod.GET,RequestMethod.POST})
+	int reservedListStatus(@RequestParam(value="orderId") int orderId) {
+		posservice.reservedListStatus(orderId);
+		return 1;
+	}
+	@ResponseBody
 	@RequestMapping(value="/dateSort", method=RequestMethod.GET)
 	Object dateSort(@RequestParam(value="regDate") String regDate) {
 		List<Orders> dateSort = posservice.dateSort(regDate); 

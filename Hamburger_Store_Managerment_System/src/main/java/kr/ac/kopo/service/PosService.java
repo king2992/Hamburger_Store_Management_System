@@ -28,4 +28,6 @@ public interface PosService {
 
 	List<Orders> dateSort(String regDate);
 
+	void reservedListStatus(int orderId);
+
 }

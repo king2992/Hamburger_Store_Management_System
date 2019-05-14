@@ -210,7 +210,8 @@ $(document).ready(function() {
 		button.setAttribute("type", "button");
 		button.setAttribute("id", "재원이");
 		button.innerHTML = "선택";
-			if($(".divDirectInput > button").size() <= 2){
+		console.log($(".divDirectInput > button").size());
+			if($(".divDirectInput > button").size() <= 0){
 				$(".divDirectInput").append(input).append(button);	
 			}else{
 				$("#수진이").remove();
@@ -224,8 +225,8 @@ $(document).ready(function() {
 		$(".modal").hide();
 		function timeAnimate(){ // 시간 출력 되면서 애니메이션 효과
 	 		$("#time").animate({
-	 			"color" : "black", "font-size" : "18px"
-	 		},1000) .animate({"color":"white","font-size": "16px"},1000);
+	 			"color" : "white", "font-size" : "18px"
+	 		},1000) .animate({"color":"black","font-size": "16px"},1000);
 	 	}
 		timeAnimate();
 	})

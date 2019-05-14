@@ -142,7 +142,8 @@
              border: 1px solid #97d6eb; 
         } 
         input[name=userId]{margin-bottom:25px; margin-top:30px;}
-        
+        input[name=userPhone]{margin-bottom:25px; margin-top:30px;}
+        input[name=userName]{margin-bottom:25px; margin-top:30px;}
         
         /* signup */
         
@@ -301,17 +302,14 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/takeOutReservation/takeOutUserReservation">Take_Out</a>
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a>
           </li>
            <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/kiosk/screen">Web 주문기(사용자)</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/pos/posmanagement">포스기(관리자)</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/store/storeFind">매장 찾기</a>
           </li>
         </ul>
       </div>
@@ -363,11 +361,17 @@
 			<h1 class="title">M-SA</h1>
 			<p class="mSa">Mobile-Substation Automation</p>
 			<form action="/user/signUp" method="POST" name="signUp" enctype="multipart/form-data">
-			 <input type="text" class="input" name="userId" placeholder="ID" required="required">
-			  <input type="password" class="input" name="userPassword" placeholder="password" required="required">
-				<input type="button" id="cancelup" value="취소"> 
+				 <input type="text" class="input" name="userId" placeholder="ID"  id="userId"><button type="button" onClick="idCk()" class="btn btn-primary">중복체크</button>
+				 <p id="idCheck"></p>
+				 <input type="password" class="input" name="userPassword" placeholder="password" id="userPassword">
+				 <p id="pwCheck"></p>
+				 <input type="text" class="input" name="userName" placeholder="your name" id="userName" >
+				 <p id="nameCheck"></p>
+				 <input type="text" class="input" name="userPhone" placeholder="phone number" id="userPhone" >
+				 <p id="phoneCheck"></p>
+			 <input type="button" id="cancelup" value="취소"> 
 				<!-- <input type="submit" id="submit" value="보내기"> -->
-				<input type="submit" id="submitup" value="가입하기">
+				<input type="button" id="submitup" value="가입하기" onclick="signUpGoData()">
 			</form>
 		</div>
 	</div>
@@ -422,6 +426,110 @@
 	closeButtonup.addEventListener("click", toggleModalup);
 	cancelup.addEventListener("click", toggleModalup);
 	window.addEventListener("click", windowOnClickup);
+
+
+	var idCkCnt = 0;
+	function idCk(){
+		var userId = $("#userId").val(); 
+		
+		$.ajax({
+			type : 'POST',
+			url : "/user/idCk",
+			dataType : "json",
+			data : userId,
+			contentType: "application/json; charset=UTF-8",
+			success : function(data){
+				if(data.cnt > 0){
+					alert("이미 사용중인 아이디 입니다.")
+					$("#userId").focus();
+				}else {
+					alert("사용가능한 아이디입니다.")
+					$("#userPassword").focus();
+					idCkCnt = 1;
+				}
+			}
+		});
+	}
+	function signUpGoData(){
+		var form = document.signUp;
+		var userId = document.userId;
+		var userPw = document.userPassword;
+		var userPhone = document.userPhone;
+		var userName = document.userName;
+		
+		if(form.userId.value == ""){
+			$("#idCheck").text("아이디는 8~16자로 입력해주세요.");
+			$("#userId").focus();
+		}
+		else if(form.userPassword.value == ""){
+			$("#pwCheck").text("비밀번호를 입력해 주세요");
+			$("#userPassword").focus();
+		}else if(form.userName.value == ""){
+			$("#nameCheck").text("이름을 입력해 주세요");
+			$("#userName").focus();
+		}else if(form.userPhone.value == ""){
+			$("#phoneCheck").text("전화번호를 입력해 주세요");
+			$("#userPhone").focus();
+		}
+		else if(form.userId.value != "" && form.userPassword.value != ""){
+			
+			if(idCkCnt == 1){
+				alert("회원가입을 환영합니다.")	
+				form.submit();	
+			}else if(idCkCnt == 0){
+				alert("아이디 중복체크를 해주시기 바랍니다.")
+			}
+			
+		}
+	}
+
+	$(document).ready(function(){
+		var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
+		
+		$(document).on('keydown', '#userId', function(){
+			var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
+			var userId = $("#userId").val();
+			console.log(userId.length);
+			if(userId.length <= 7){
+				$("#idCheck").text("아이디는 8~16자로 입력해주세요.");
+			}else{
+				$("#idCheck").text("ok");	
+			}
+			
+		})
+		$(document).on('keydown', '#userPassword', function(){
+			var userPassword = $("#userPassword").val();
+			console.log(userPassword.length);
+			if(userId.length <= 7){
+				$("#pwCheck").text("비밀번호는 8~16자로 입력해주세요.");
+			}else{
+				$("#pwCheck").text("ok");	
+			}
+			
+		})
+		
+		$(document).on('keydown', '#userName', function(){
+			var userName = $("#userName").val();
+			
+		})
+		$(document).on('keyup', '#userPhone', function(e){
+			var userPhone = $("#userPhone").val();
+			var regexp = /^[0-9]*$/
+				if(userPhone.length <= 11){
+					$("#phoneCheck").text("숫자만 입력해주세요.");
+				}
+				if( !regexp.test(userPhone) ) {
+					//$(this).val(userPhone.replace(regexp,''));
+					$("#phoneCheck").text("숫자만 입력해주세요.");
+					$("#userPhone").val("");	
+				
+				}else if(userPhone.length == 11){
+					$("#phoneCheck").text("OK");
+				}
+		})
+		
+	})
+	
 	</script>
 
 

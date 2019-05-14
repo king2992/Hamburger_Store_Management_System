@@ -30,15 +30,26 @@
 	<c:choose>
 		<c:when test="${orders.size() > 0 }">
 			<c:forEach items="${orders}" var="orders">
-			
+			<c:choose>
+			<c:when test="${orders.status eq 'Ready'}">
 			<tr>
-				<td class="reservedOrderId">${orders.orderId}</td>
+				<td class="reservedOrderId" id="${orders.orderId}" data-check="${orders.status}">${orders.orderId}</td>
 				<td>${orders.regDate} ${orders.regTime} </td>
 				<td>${orders.payTotal}</td>
 				<td data-tooltip-text="예약내역 확인하기"><button type='button' class="reservedCheck">예약 메뉴 확인</button></td>
-				<td>상품 준비 중 <button type="button" class="orderReady">조리완료</button></td>
+				<td>${orders.status}<button type="button" class="orderReady">조리완료</button></td>
 			</tr>
-			
+			</c:when>
+			<c:otherwise>
+			<tr style="background-color:gray">
+				<td class="reservedOrderId" id="${orders.orderId}" data-check="${orders.status}">${orders.orderId}</td>
+				<td>${orders.regDate} ${orders.regTime} </td>
+				<td>${orders.payTotal}</td>
+				<td data-tooltip-text="예약내역 확인하기"><button type='button' class="reservedCheck">예약 메뉴 확인</button></td>
+				<td>${orders.status}</td>
+			</tr>
+			</c:otherwise>
+			</c:choose>
 			</c:forEach>
 		</c:when>
 		<c:otherwise>

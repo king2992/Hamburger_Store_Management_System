@@ -3,12 +3,24 @@ package kr.ac.kopo.model;
 public class User {
 	String userId;
 	String userPassword;
+	String userPhone;
+	String userName;
 	int userCommentStatus;
 	int userBoardStatus;
 	int boardNum;
 	
-	
-	
+	public String getUserPhone() {
+		return userPhone;
+	}
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public int getBoardNum() {
 		return boardNum;
 	}

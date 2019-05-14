@@ -113,13 +113,13 @@
 }
 
 .burgerList>li>img {
-	width: 150px;
+	width: 120px;
 	height: 100px;
 	cursor:pointer;
 }
 
 .burgerList>li {
-	width: 150px;
+	width: 120px;
 	margin-right: 30px;
 	font-size: 17px;
 }
@@ -130,13 +130,13 @@
 }
 
 .sideMenuList>li>img {
-	width: 150px;
+	width: 120px;
 	height: 100px;
 	cursor:pointer;
 }
 
 .sideMenuList>li {
-	width: 150px;
+	width: 120px;
 	margin-right: 30px;
 	font-size: 17px;
 }
@@ -147,13 +147,13 @@
 }
 
 .drinkMenuList>li>img {
-	width: 150px;
+	width: 120px;
 	height: 100px;
 	cursor:pointer;
 }
 
 .drinkMenuList>li {
-	width: 150px;
+	width: 120px;
 	margin-right: 30px;
 	font-size: 17px;
 }
@@ -164,13 +164,13 @@
 }
 
 .chickenList>li>img {
-	width: 150px;
+	width: 120px;
 	height: 100px;
 	cursor:pointer;
 }
 
 .chickenList>li {
-	width: 150px;
+	width: 120px;
 	margin-right: 30px;
 	font-size: 17px;
 }

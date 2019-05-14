@@ -19,7 +19,7 @@
 	
 	<insert id="orders" parameterType="map">
 		INSERT INTO orders(reg_date, pay_total, reg_time  )
-		VALUES(  #{regDate}, #{ payTotal },#{regTime} ) 
+		VALUES(  #{regDate}, #{payTotal},#{regTime} ) 
 	</insert>
 	
 	<insert id="orderMenuAdd" parameterType="map">
@@ -38,4 +38,9 @@
 	<select id="dateSort" resultType="Orders">
 		select * from orders where reg_date = #{regDate} order by order_id desc
 	</select>
+	<update id="reservedListStatus">
+		update orders
+		set status = "Complete"
+		where order_id =#{orderId}
+	</update>
 </mapper>

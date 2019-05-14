@@ -420,7 +420,8 @@
 </div>
 	
 	<script type="text/javascript">
-	$(document).on("click",".document",function nmg(){
+	$(document).ready(function() {
+	$(document).on("click",".document",function(){
 		var payTotal = document.getElementById('payTotal').value;
 		var payTotal2 = document.getElementById('payTotal2').value;
 		
@@ -438,11 +439,8 @@
 		$('.document').css('display','none');
 		$('#submitcash').css('display','inline-block');
 		}
-		
-		
 	});
-		
-		
+	});
 	</script>
 
 	<script type="text/javascript">
@@ -464,7 +462,6 @@
 				toggleModal();
 			}
 		}
-
 		trigger.addEventListener("click", toggleModal);
 		closeButton.addEventListener("click", toggleModal);
 		cancel.addEventListener("click", toggleModal);

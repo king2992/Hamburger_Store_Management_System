@@ -58,5 +58,9 @@ public class PosServiceImpl implements PosService {
 	public List<Orders> dateSort(String regDate) {
 		return posdao.dateSort(regDate);
 	}
+	@Override
+	public void reservedListStatus(int orderId) {
+		posdao.reservedListStatus(orderId);
+	}
 
 }

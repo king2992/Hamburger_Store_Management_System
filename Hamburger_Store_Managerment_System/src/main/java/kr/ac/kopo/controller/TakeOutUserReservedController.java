@@ -51,8 +51,10 @@ public class TakeOutUserReservedController {
 	
 	@ResponseBody
 	@RequestMapping(value="/takeOutReservedListInsert", method= {RequestMethod.GET,RequestMethod.POST})
-	int takeOutReservedListInsert(TakeOutReserved takeoutreserved) {
-	
+	int takeOutReservedListInsert(TakeOutReserved takeoutreserved, HttpSession session) {
+		String places = (String)session.getAttribute("places");
+		
+		session.removeAttribute(places);
 		service.takeOutReservedListInsert(takeoutreserved);
 				
 		return 1;
@@ -60,7 +62,7 @@ public class TakeOutUserReservedController {
 	@ResponseBody
 	@RequestMapping(value = "/takeOutReservedMenuInsert",method= {RequestMethod.GET,RequestMethod.POST})
 	int takeOutReservedMenuInsert(@RequestParam(value="cntArray[]") String cntArray[],
-			@RequestParam(value="menuNameArray[]") String menuNameArray[] ) {
+			@RequestParam(value="menuNameArray[]") String menuNameArray[], HttpSession session ) {
 			
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			
@@ -69,6 +71,8 @@ public class TakeOutUserReservedController {
 				map.put("menuCnt", cntArray[i]);
 				service.takeOutReservedMenuInsert(map);
 			}
+			String places = (String)session.getAttribute("places");
+			session.removeAttribute(places);
 			
 		return 1;
 	}

@@ -7,7 +7,15 @@ public class Orders {
 	String regDate;
 	int payTotal;
 	String regTime;
-
+	String status;
+	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getRegDate() {
 		return regDate;
 	}

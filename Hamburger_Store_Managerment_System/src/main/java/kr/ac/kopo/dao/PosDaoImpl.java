@@ -73,4 +73,9 @@ public class PosDaoImpl implements PosDao {
 		return sql.selectList("pos.dateSort", regDate);
 	}
 
+	@Override
+	public void reservedListStatus(int orderId) {
+		sql.update("pos.reservedListStatus", orderId);
+	}
+
 }

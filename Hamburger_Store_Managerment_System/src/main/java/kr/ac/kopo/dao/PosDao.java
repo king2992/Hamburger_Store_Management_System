@@ -43,6 +43,8 @@ public interface PosDao {
 
 	List<Orders> dateSort(String regDate);
 
+	void reservedListStatus(int orderId);
+
 	
 
 }

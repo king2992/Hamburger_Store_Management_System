@@ -6,30 +6,40 @@ document.addEventListener('DOMContentLoaded', function() {
 	    header: {
 	      right: 'prev,next today'  
 	    },
-			     dateClick: function(info) {
-			    	 var regDate = info.dateStr;
-			    	 var list = "";
-			    	 var reservedContainer = $(".reservedContainer");
-			    	 var reservedCheckList = $(".reservedCheckList");
-			    	 $.ajax({
-			    		url : "/pos/dateSort",
-			    		type : "GET",
-			    		data : {"regDate":regDate},
-			    		success : function(data){
-			    			$.each(data, function(index, item){
+		     dateClick: function(info) {
+		    	 var regDate = info.dateStr;
+		    	 var list = "";
+		    	 var reservedContainer = $(".reservedContainer");
+		    	 var reservedCheckList = $(".reservedCheckList");
+		    	 $.ajax({
+		    		url : "/pos/dateSort",
+		    		type : "GET",
+		    		data : {"regDate":regDate},
+		    		success : function(data){
+		    			$.each(data, function(index, item){
+		    				if(item.status == "Ready"){
 			    				list += "<tr>";
 			    				list += "<td class='reservedOrderId'>" +item.orderId+"</td>";
 			    				list += "<td>" + item.regDate +" "+item.regTime + "</td>";
 			    				list += "<td>" + item.payTotal + "</td>";
 			    				list += "<td data-tooltip-text='예약내역 확인하기'>" +'<button type="button" class="reservedCheck">'+"예약 메뉴 확인"+"</button>" +"</td>";
-			    				list += "<td>"+"상품 준비 중"+"<button type='button' class='orderReady'>"+"조리완료"+"</button>"+"</td>";
+			    				list += "<td>"+item.status+"<button type='button' class='orderReady'>"+"조리완료"+"</button>"+"</td>";
 			    				list += "</tr>";
-			    			})
-			    			reservedContainer.html(list);
-			    			reservedCheckList.html("");
-			    		}
-			    	 });
-			    } ,
+		    				}else {
+		    					list += "<tr style='background-color:gray'>";
+			    				list += "<td class='reservedOrderId'>" +item.orderId+"</td>";
+			    				list += "<td>" + item.regDate +" "+item.regTime + "</td>";
+			    				list += "<td>" + item.payTotal + "</td>";
+			    				list += "<td data-tooltip-text='예약내역 확인하기'>" +'<button type="button" class="reservedCheck">'+"예약 메뉴 확인"+"</button>" +"</td>";
+			    				list += "<td>" +item.status+ "</td>";
+			    				list += "</tr>";
+		    				}
+		    			})
+		    			reservedContainer.html(list);
+		    			reservedCheckList.html("");
+		    		}
+		    	 });
+		    } ,
 			    
 	    select: function(info) {
 	    	
@@ -61,18 +71,26 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('click', '.orderReady', function(){
+		var orderId = $(event.target).parent().siblings(".reservedOrderId").text();
 		var orderReadyHtml = "";
-		orderReadyHtml += "조리완료<button type='button' class='orderCancle'>취소</button>";
+		orderReadyHtml += "Complete";
 		$(event.target).parent().siblings().parent().css("background", "gray");
 		$(event.target).parent().html(orderReadyHtml);
 		
-		
+		$.ajax({
+			url : "/pos/reservedListStatus",
+			data : {"orderId":orderId},
+			success : function(data){
+			}
+		})
 	});
-	$(document).on('click', '.orderCancle', function(){
-		var orderCancleHtml = "";
-		orderCancleHtml += "상품 준비 중 <button type='button' class='orderReady'>조리완료</button>";
-		$(event.target).parent().siblings().parent().css("background", "white");
-		$(event.target).parent().html(orderCancleHtml);
-	})
+	
+//	$(document).on('click', '.orderCancle', function(){
+//		var orderCancleHtml = "";
+//		orderCancleHtml += "상품 준비 중 <button type='button' class='orderReady'>조리완료</button>";
+//		$(event.target).parent().siblings().parent().css("background", "white");
+//		$(event.target).parent().html(orderCancleHtml);
+//	})
+	
 	
 });
