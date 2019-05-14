@@ -22,15 +22,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			    				list += "<td class='reservedOrderId'>" +item.orderId+"</td>";
 			    				list += "<td>" + item.regDate +" "+item.regTime + "</td>";
 			    				list += "<td>" + item.payTotal + "</td>";
-			    				list += "<td data-tooltip-text='예약내역 확인하기'>" +'<button type="button" class="reservedCheck">'+"예약 메뉴 확인"+"</button>" +"</td>";
-			    				list += "<td>"+item.status+"<button type='button' class='orderReady'>"+"조리완료"+"</button>"+"</td>";
+			    				list += "<td data-tooltip-text='예약내역 확인하기'>" +'<button type="button" class="reservedCheck btn btn-concrete">'+"예약 메뉴 확인"+"</button>" +"</td>";
+			    				list += "<td>"+item.status+ "<button type='button' class='orderReady button'>"+"조리완료"+"</button>"+"</td>";
 			    				list += "</tr>";
 		    				}else {
 		    					list += "<tr style='background-color:gray'>";
 			    				list += "<td class='reservedOrderId'>" +item.orderId+"</td>";
 			    				list += "<td>" + item.regDate +" "+item.regTime + "</td>";
 			    				list += "<td>" + item.payTotal + "</td>";
-			    				list += "<td data-tooltip-text='예약내역 확인하기'>" +'<button type="button" class="reservedCheck">'+"예약 메뉴 확인"+"</button>" +"</td>";
+			    				list += "<td data-tooltip-text='예약내역 확인하기'>" + '<button type="button" class="reservedCheck btn btn-concrete">'+"예약 메뉴 확인"+"</button>" +"</td>";
 			    				list += "<td>" +item.status+ "</td>";
 			    				list += "</tr>";
 		    				}
@@ -91,6 +91,5 @@ $(document).ready(function(){
 //		$(event.target).parent().siblings().parent().css("background", "white");
 //		$(event.target).parent().html(orderCancleHtml);
 //	})
-	
 	
 });
