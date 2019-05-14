@@ -5,14 +5,16 @@
 <head>
     <meta charset="utf-8">
     <title>키워드로 장소검색하고 목록으로 표출하기</title>
+       <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <style>
+html, body{width:100%; height:100%;}
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+.map_wrap {position:relative;width:100%;height:100%;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:273px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
+#menu_wrap .option{text-align: center; position: absolute; left:0; top:0; z-index:10; transition: left 0.5s; transform:translateX(0px); transition-duration:200ms;}
 #menu_wrap .option p {margin:10px 0;}  
 #menu_wrap .option button {margin-left:5px;}
 #placesList li {list-style: none;}
@@ -42,7 +44,91 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+.searchbox{
+margin-left:5px;
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 274px;
+    height: 48px;
+    border-bottom: 1px solid transparent;
+    padding: 12px 100px 11px 64px;
+    transition-property: background,box-shadow;
+    transition-duration: 0.3s;
+}
+.searchbox-shadow{box-shadow:none; border-radius: 8px 8px 0 0;}
+.searchbox-searchbutton-containerz{    position: absolute;
+    right: 54px;
+    top: 0;}
+   
+.searchbox-searchbutton{
+	    display: block;
+    padding: 12px 15px;
+        background: transparent;
+    border: 0;
+    border-radius: 0;
+    font: inherit;
+    list-style: none;
+    margin: 0;
+    outline: 0;
+    overflow: visible;
+    padding: 0;
+    vertical-align: baseline;
+}
+.searchbox-searchbutton::before{
+	cursor:pointer;
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('/resources/images/search.png');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+.omnibox-tooltip{
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1003;
+    left: 50%;
+    top: 150%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 4px 8px;
+    font-size: 11px;
+    line-height: 19px;
+    background: #494949;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.submit{
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    height: auto;
+    width: 70%;
+    position: absolute;
+    z-index: 1;
+    background-color: transparent;
+    color: #000;
+    transition: all 0.218s ease 0s;
+    opacity: 1;
+    text-align: left;
+    left: 0px;
+    padding:10px;
+    font-family: Roboto, Arial, sans-serif;
+}
+.searchbox-searchbutton-container{
+	position:absolute;
+	top:15px;
+	right:15px;
+}
 </style>
+
 </head>
 <body>
 <div class="map_wrap">
@@ -50,10 +136,16 @@
 
     <div id="menu_wrap" class="bg_white">
         <div class="option">
-            <div>
+            <div id="singlebox">
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
+                <div class="searchbox-shadow searchbox">
+                 <input type="text" value="" id="keyword" size="15" class="submit" placeholder="M-SA 지도 검색"> 
+                    </div>
+                    <div class="searchbox-searchbutton-container">
+                    <button type="submit" class="searchbox-searchbutton"></button> 
+                    <span class="omnibox-tooltip">검색</span>
+                    </div>
+                    
                 </form>
             </div>
         </div>
@@ -64,6 +156,16 @@
 </div>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b3276e3a88923d0a46399dfdb53b602&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript">
+$('.searchbox-searchbutton').mouseover(function(){
+			$('.omnibox-tooltip').css('display','block');
+		});
+$('.searchbox-searchbutton').mouseout(function(){
+	$('.omnibox-tooltip').css('display','none');
+});
+
+</script>
+
 <script>
 // 마커를 담을 배열입니다
 var markers = [];

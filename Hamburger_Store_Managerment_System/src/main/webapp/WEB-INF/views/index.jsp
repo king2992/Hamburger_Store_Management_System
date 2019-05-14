@@ -408,20 +408,20 @@
 
 	//console.log(modal);
 
-	function toggleModal() {
+	function toggleModalup() {
 		modalup.classList.toggle("show-modalup");
 	}
 
-	function windowOnClick(event) {
+	function windowOnClickup(event) {
 		if (event.target === modalup) {
-			toggleModal();
+			toggleModalup();
 		}
 	}
 
-	triggerup.addEventListener("click", toggleModal);
-	closeButtonup.addEventListener("click", toggleModal);
-	cancelup.addEventListener("click", toggleModal);
-	window.addEventListener("click", windowOnClick);
+	triggerup.addEventListener("click", toggleModalup);
+	closeButtonup.addEventListener("click", toggleModalup);
+	cancelup.addEventListener("click", toggleModalup);
+	window.addEventListener("click", windowOnClickup);
 	</script>
 
 

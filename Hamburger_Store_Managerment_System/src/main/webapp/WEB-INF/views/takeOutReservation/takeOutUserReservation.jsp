@@ -236,6 +236,7 @@ html{
 
 		<hr width="30%;">
 		<p class="reservation">RESERVATION</p>
+		<p class="reservation">${sessionScope.places}</p>
 		<hr width="30%;">
 		<ul class="value-document">
 			<li><span>날짜</span><span id="dateInnerHTML"></span></li>
