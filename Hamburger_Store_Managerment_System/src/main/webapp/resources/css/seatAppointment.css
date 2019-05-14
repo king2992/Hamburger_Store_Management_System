@@ -16,7 +16,7 @@
           /*   position:relative; */
             
         }
-
+       
         a#login_pop:hover {
             border-color: #eee;
         }
@@ -178,5 +178,26 @@
    position:relative;
 }
 
+hr{border:2px solid #e3e3e3; }
 
+.reservation {text-align:center; font-weight: 700; font-size:25px; }
 
+html {
+    background-color: #e7ebed;
+}
+
+/* 상단 메뉴 수정 */
+.layout-topheader {
+    height: 125px;
+}
+
+.layout-menu {
+	z-index:99;
+ /*    top: 5%; */
+    background-color: #080607;
+  /*   padding: 0; */
+}
+
+.menu_active {
+    color: white;
+}

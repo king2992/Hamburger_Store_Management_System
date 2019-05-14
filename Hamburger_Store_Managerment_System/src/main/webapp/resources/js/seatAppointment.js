@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			     $("#formReservedDate").val(info.dateStr);
 			     function dateAnimate(){ // 날짜 선택 시 하단 날짜 출력 부분 애니메이션 효과
 			 		$("#dateInnerHTML").animate({
-			 			"color" : "black", "font-size" : "18px"
-			 		},1000) .animate({"color":"white", "font-size": "16px"},1000);
+			 			"color" : "#e3e3e3", "font-size" : "18px"
+			 		},1000) .animate({"color":"#333333", "font-size": "16px"},1000);
 			 		}
 			     
 			     $(".dateAlert").hide(); 
@@ -49,8 +49,8 @@ function timeAdd(){
 	
  	function timeAnimate(){ // 시간 출력 되면서 애니메이션 효과
  		$("#time").animate({
- 			"color" : "black", "font-size" : "18px"
- 		},1000) .animate({"color":"white","font-size": "16px"},1000);
+ 			"color" : "#e3e3e3", "font-size" : "18px"
+ 		},1000) .animate({"color":"#333333","font-size": "16px"},1000);
  	}
  	timeAnimate();
  	$(".modal").hide(); // 시간 모달창 닫기
@@ -90,8 +90,8 @@ $(document).ready(function() {
 	//주문 금액이 바뀔 때 마다 호출하는 애니메이션
 	function priceSumAnimate(){
 		$("#priceSum").animate({
-			"color" : "black",'font-size' : "18px"
-		},500) .animate({"color":"white","font-size" : "16px"},500);
+			"color" : "#e3e3e3",'font-size' : "18px"
+		},500) .animate({"color":"#333333","font-size" : "16px"},500);
 	}
 	// right-box에 메뉴를 선택했을 시 
 	$(document).on('click', '.menu-item', function() {
