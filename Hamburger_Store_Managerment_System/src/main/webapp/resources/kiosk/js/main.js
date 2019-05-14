@@ -20,6 +20,14 @@ $(document).ready(function(){
 		$(".center-wrap > div > ul").hide();
 		$(".center-wrap > div > ul").eq(list).show();
 	});
+	
+	$('img').click(function(){
+		$each(function(index){
+			var a = '';
+			
+			a += '<';
+		})
+	});
 });
 
 

@@ -12,7 +12,7 @@
 <!-- 배경 이미지 영역 -->
 	<div class="body_image">
 <!-- 	카테고리 바깥 영역 -->
-	<div>
+	<div> 
 <!-- 	카테고리 안쪽 영역 -->
 		<nav>
 			<ul class="tab_btn">
@@ -123,7 +123,9 @@
 			<div class="order_list_wrap">
 			<div class="order_list_div">
 				<p>메뉴를 선택해주세요.</p>
+				<div>
 				<h1 style="color:white;">주문내역</h1>
+				</div>
 			</div>
 <!-- 			결제/취소 영역 -->
 			<div class="order_payment_div">
