@@ -1,19 +1,6 @@
 /**
  Web Kiosk First Screen * 
  */
-
-function chicken() {
-	alert("치킨리스트");
-}
-
-function coffee() {
-	alert("커피리스트");
-}
-
-function side() {
-	alert("사이드리스트");
-}
-
 function payment() {
 	alert("결제완료");
 }
@@ -21,21 +8,18 @@ function payment() {
 function cancel() {
 	alert("결제취소");
 }
-
+// Tab 메뉴
 $(document).ready(function(){
-    $('#hamburger_list_btn').click(function(){
-     if($('.hamburger_list').css("display") == 'none'){
-         $('.hamburger_list').css("display", "block");
-     } else {
-         $('.hamburger_list').css("display", "none");
-     }
-    });
-    
-    $('#chicken_list_btn').click(function(){
-   	 if($('.chicken_list').css("display") == 'none') {
-   		 $('.chicken_list').css("display", "block");
-   	 } else {
-   		 $('.chicken_list').css("display","none");
-   	 }
-    });   
+	
+	$('.hide').hide();
+	$('.tab_btn li').click(function(){
+		$('.hide').show();
+		var list = $(this).index();
+		$('.tab_btn li').removeClass("on");
+		$(this).addClass("on");
+		$(".center-wrap > div > ul").hide();
+		$(".center-wrap > div > ul").eq(list).show();
+	});
 });
+
+
