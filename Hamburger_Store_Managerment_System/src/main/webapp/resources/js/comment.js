@@ -52,7 +52,7 @@ function commentList(){
             		a += '<a onclick="commentDelete('+value.coNumber+');">삭제</a></div>';
             		a += '<div class="commentContent'+value.coNumber+'"> <p>'+value.content+'</p>';
             		a += '</div>';
-            	} 
+            	}
             	// 댓글일 경우
             	else {
                 a += '<div class="comment_content">';

@@ -21,13 +21,23 @@ $(document).ready(function(){
 		$(".center-wrap > div > ul").eq(list).show();
 	});
 	
-	$('img').click(function(){
-		$each(function(index){
+	$('.tab_cont li img').click(function(){
+		
+		var array = [
+			{name : 'chipao', price : '20000'},
+			{name : 'baba', price : '19000'}
+		];
+		
+		$.each(array, function(index,value){
 			var a = '';
 			
-			a += '<';
-		})
+			a += '<p style="white">'+value.name+'</p>';
+			a += '<p style="white">'+value.price+'</p>';
+		});
+		
+		
 	});
+	$('.order_list_view').html(a);
 });
 
 

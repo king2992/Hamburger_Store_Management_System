@@ -123,7 +123,7 @@
 			<div class="order_list_wrap">
 			<div class="order_list_div">
 				<p>메뉴를 선택해주세요.</p>
-				<div>
+				<div class="order_list_view">
 				<h1 style="color:white;">주문내역</h1>
 				</div>
 			</div>
