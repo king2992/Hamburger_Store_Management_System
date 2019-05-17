@@ -12,15 +12,17 @@
 <!-- 배경 이미지 영역 -->
 	<div class="body_image">
 <!-- 	카테고리 바깥 영역 -->
-	<div> 
+	<div class="background-image"> 
 <!-- 	카테고리 안쪽 영역 -->
 		<nav>
+		
 			<ul class="tab_btn">
-				<li><button class="ListBtn" type="button">전체 메뉴</button></li>
-				<li><button class="ListBtn" type="button">치킨 메뉴</button></li>
-				<li><button class="ListBtn" type="button">버거 메뉴</button></li>
-				<li><button class="ListBtn" type="button">사이드 메뉴</button></li>
-				<li><button class="ListBtn" type="button">음료류</button></li>
+			 <!--    <li><h1>M-SA</h1></li> -->
+				<li><button class="ListBtn btn1" type="button">전체 메뉴</button></li>
+				<li><button class="ListBtn btn2" type="button">치킨 메뉴</button></li>
+				<li><button class="ListBtn btn3" type="button">버거 메뉴</button></li>
+				<li><button class="ListBtn btn4" type="button">사이드 메뉴</button></li>
+				<li><button class="ListBtn btn5" type="button">음료류</button></li>
 			</ul>
 		</nav>
 	</div>
@@ -28,6 +30,8 @@
 	<div class="order_div">
 <!-- 	주문메뉴 list 영역 -->
 		<div class="center-wrap">
+		<h2>주문하실 메뉴를 선택하신 후 <span class="title-span">장바구니에 담아</span></h2>
+		<h2>한번에 주문<span class="title-span">하실 수 있습니다.</span></h2>
 <!-- 		메뉴 ul -->
 <!-- 			전체메뉴 -->
 			<div>
@@ -129,14 +133,30 @@
 			</div>
 <!-- 			결제/취소 영역 -->
 			<div class="order_payment_div">
-				<button class="paymentBtn" type="button" onclick="payment()">결제</button>
-				<button class="cancelBtn" type="button" onclick="cancel()">결제취소</button>
 				<table class="total_table">
 					<tr>
-						<td>총 합계 금액 :&nbsp;&nbsp;</td>
+						<td>총 금액 :&nbsp;&nbsp;</td>
 						<td><input class="total_pay" type="text">&nbsp;원</td>
 					</tr>
 				</table>
+				
+           			 <div class="button_base b03_skewed_slide_in">
+               	 <div>결제취소</div>
+                <div></div>
+                <div onclick="cancel()">결제취소</div>
+            </div>
+        
+				<!-- <button class="paymentBtn" type="button" onclick="payment()">결제</button> -->
+				   <div class="back">
+           			 <div class="button_base b03_skewed_slide_in">
+               	 <div>결제하기</div>
+                <div></div>
+                <div onclick="payment()">결제하기</div>
+                
+            </div>
+        </div>
+				<!-- <button class="cancelBtn" type="button" onclick="cancel()">결제취소</button> -->
+			
 			</div>
 			</div>
 		</div>

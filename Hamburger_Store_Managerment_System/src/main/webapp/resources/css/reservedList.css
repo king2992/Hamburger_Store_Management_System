@@ -72,6 +72,33 @@ body{min-width: 1024px;}
 .navbar-expand-sm .navbar-nav .dropdown-menu {
     position: absolute;
 }}
+
+@media (max-width:1024px){
+	#calendar{
+		position:relative;
+	/* 	width:500px;
+		height:600px; */
+	/* 	width:50%;
+		height:50%;
+		top:0;
+		left:0; */
+	}
+}
+
+@media (min-width:1050px){
+	#calendar{
+		position:absolute;
+		width: 21%;
+		height:21%;
+		float: left;
+		top:115px;
+		left: 10px;
+	/* 	width:50%;
+		height:50%;
+		top:0;
+		left:0; */
+	}
+}
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -156,12 +183,12 @@ transition: border .25s linear, color .25s linear, background-color .25s linear;
 
 #calendar{
 /* 	display:none; */
-	float: left;
-    position: absolute;
-    top: 115px;
-    width: 21%;
-    left: 10px;
-    height: 21%;
+/* 	float: left; */
+  /*   position: absolute; */
+  /*   top: 115px; */
+    width: 21%; 
+/*     left: 10px; */
+   height: 21%; 
 }
 
 
@@ -226,5 +253,14 @@ transition: border .25s linear, color .25s linear, background-color .25s linear;
     -webkit-transform: rotateX(0deg);
     -moz-transform: rotateX(0deg);
 }
+.reservedCheckList{
+	margin-bottom:50px;
+}
 
-
+.reservedCheckList > li{
+	display:inline-block;
+	border:1px solid #e3e3e3;
+	padding:20px;
+	width:160px;
+	
+}
