@@ -345,11 +345,11 @@
 			<h1 class="title">M-SA</h1>
 			<p class="mSa">Mobile-Substation Automation</p>
 			<form action="/user/signIn" method="POST" name="signIn" enctype="multipart/form-data">
-			 <input type="text" class="input" name="userId" placeholder="ID" required="required">
-			  <input type="password" class="input" name="userPassword" placeholder="password" required="required">
+			 <input type="text" class="input" name="userId" id="signInId" placeholder="ID" required="required">
+			  <input type="password" class="input" name="userPassword"id="signInPassword" placeholder="password" required="required">
 				<input type="button" id="cancel" value="취소"> 
 				<!-- <input type="submit" id="submit" value="보내기"> -->
-				<input type="submit" id="submit" value="로그인">
+				<input type=submit id="submit" value="로그인">
 			</form>
 		</div>
 	</div>
@@ -360,7 +360,7 @@
 			<span class="close-buttonup">&times;</span>
 			<h1 class="title">M-SA</h1>
 			<p class="mSa">Mobile-Substation Automation</p>
-			<form action="/user/signUp" method="POST" name="signUp" enctype="multipart/form-data">
+			<form action="/user/signUp" method="POST" name="signUp" id="signIn" enctype="multipart/form-data">
 				 <input type="text" class="input" name="userId" placeholder="ID"  id="userId"><button type="button" onClick="idCk()" class="btn btn-primary">중복체크</button>
 				 <p id="idCheck"></p>
 				 <input type="password" class="input" name="userPassword" placeholder="password" id="userPassword">
@@ -440,10 +440,10 @@
 			contentType: "application/json; charset=UTF-8",
 			success : function(data){
 				if(data.cnt > 0){
-					alert("이미 사용중인 아이디 입니다.")
+					$("#idCheck").text("이미 사용중인 아이디 입니다.");
 					$("#userId").focus();
 				}else {
-					alert("사용가능한 아이디입니다.")
+					$("#idCheck").text("사용 가능 한 아이디 입니다.");
 					$("#userPassword").focus();
 					idCkCnt = 1;
 				}
@@ -489,8 +489,7 @@
 		$(document).on('keydown', '#userId', function(){
 			var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
 			var userId = $("#userId").val();
-			console.log(userId.length);
-			if(userId.length <= 7){
+			if(userId.length < 7){
 				$("#idCheck").text("아이디는 8~16자로 입력해주세요.");
 			}else{
 				$("#idCheck").text("ok");	
@@ -499,8 +498,8 @@
 		})
 		$(document).on('keydown', '#userPassword', function(){
 			var userPassword = $("#userPassword").val();
-			console.log(userPassword.length);
-			if(userId.length <= 7){
+			
+			if(userPassword.length < 7){
 				$("#pwCheck").text("비밀번호는 8~16자로 입력해주세요.");
 			}else{
 				$("#pwCheck").text("ok");	

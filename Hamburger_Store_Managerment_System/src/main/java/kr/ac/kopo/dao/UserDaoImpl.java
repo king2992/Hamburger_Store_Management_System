@@ -1,6 +1,7 @@
 package kr.ac.kopo.dao;
 
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,10 +22,12 @@ SqlSession sql;
 	@Override
 	public boolean login(User user) {
 		if(sql.selectOne("user.userLogin", user) == null)
+			
 			return false;
 			
 		return true;
 	}
+
 	
 
 }

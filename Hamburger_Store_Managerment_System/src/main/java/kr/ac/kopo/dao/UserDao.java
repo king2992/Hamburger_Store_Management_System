@@ -1,6 +1,8 @@
 package kr.ac.kopo.dao;
 
 
+import java.util.Map;
+
 import kr.ac.kopo.model.User;
 
 public interface UserDao {
@@ -10,6 +12,8 @@ public interface UserDao {
 	int idCk(String userId);
 
 	boolean login(User user);
+
+
 
 
 }

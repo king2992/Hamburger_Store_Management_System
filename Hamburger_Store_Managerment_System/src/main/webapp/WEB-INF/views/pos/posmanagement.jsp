@@ -522,8 +522,6 @@
 				}
 	     	});
 	    	 
-	   	    	//document.getElementById('frm').submit();
-	   	    	
 				
 	   	    	return false;
 	   }
@@ -562,7 +560,7 @@
 		  title: '결제중입니다.',
 		  html: 'I will close in <strong></strong> seconds.',
 		  timer: 2000,
-		  onBeforeOpen: ()=> {
+		  onBeforeOpen: ()=> { 
 		    Swal.showLoading()
 		    timerInterval = setInterval(() => {
 		      Swal.getContent().querySelector('strong')

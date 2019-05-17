@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.model.User;
@@ -39,24 +40,18 @@ public class UserController {
 		map.put("cnt", count);
 		return map;
 	}
-	
-	@RequestMapping(value="/signIn", method=RequestMethod.GET)
-	String userLogin() {
-		return "/user/signIn";
-	}
-	
-	
+		
 	  @RequestMapping(value="/signIn", method=RequestMethod.POST) 
-	  String
-	  userLogin(HttpSession session, User user) { 
+	  String userLogin(HttpSession session, User user) { 
 	  if (service.login(user)) {
 	  session.setAttribute("user", user.getUserId());
 	  return "redirect:../"; 
 	   } 
 	   else
-	  { 
-	  } 
-	  return "redirect:/../"; }
+	  {
+	  }
+	  return "redirect:../";
+	   }
 	 
 	
 	@RequestMapping("/userLogout")
