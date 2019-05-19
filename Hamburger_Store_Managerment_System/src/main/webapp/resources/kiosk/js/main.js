@@ -2,11 +2,23 @@
  Web Kiosk First Screen * 
  */
 function payment() {
-	alert("결제완료");
+	Swal.fire({
+		  position: 'top-end',
+		  type: 'success',
+		  title: '결제 완료!',
+		  showConfirmButton: false,
+		  timer: 1500
+		});
 }
 
 function cancel() {
-	alert("결제취소");
+	Swal.fire({
+		  position: 'top-end',
+		  type: 'success',
+		  title: '결제 취소!',
+		  showConfirmButton: false,
+		  timer: 1500
+		});
 }
 // Tab 메뉴
 $(document).ready(function(){
@@ -21,23 +33,14 @@ $(document).ready(function(){
 		$(".center-wrap > div > ul").eq(list).show();
 	});
 	
-	$('.tab_cont li img').click(function(){
-		
-		var array = [
-			{name : 'chipao', price : '20000'},
-			{name : 'baba', price : '19000'}
-		];
-		
-		$.each(array, function(index,value){
-			var a = '';
-			
-			a += '<p style="white">'+value.name+'</p>';
-			a += '<p style="white">'+value.price+'</p>';
-		});
-		
-		
-	});
-	$('.order_list_view').html(a);
+// 동적으로 생성하는 주문 내역			
+		$(function() {
+			$('.tab_cont li img').on('click', function(){
+				$('.table_tr2').append('<th>우아우아아아ㅏ아아아</th>')
+				$('.table_tr2').append('<th>1</th>');
+				$('.table_tr2').append('<th>10000</th>');
+			})
+		})
 });
 
 

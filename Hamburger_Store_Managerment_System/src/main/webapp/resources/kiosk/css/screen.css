@@ -175,5 +175,5 @@ nav ul li:first-child { border-left:none; }
     -moz-transition: left 0.30000000000000004s ease;
 }
 
-
-
+.table_list { width: 100%; }
+.table_tr2 { width: 100%; }
