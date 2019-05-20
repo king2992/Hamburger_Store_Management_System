@@ -24,6 +24,7 @@
   <!-- Custom styles for this template -->
   <link href="/resources/css/grayscale.min.css" rel="stylesheet">
 
+
 <style>
  #submit{ 
          width: 127px; 
@@ -88,6 +89,7 @@
          width: 500px; 
          height: 600px; 
          border-radius: 0.5rem; 
+         display: inline-block;
      } 
      .close-button { 
          float: right; 
@@ -114,6 +116,7 @@
          font-size: 45px; 
          font-weight:700;
          margin-bottom:0;
+         margin-top:50px;
      /*     color: #ececec;  */
      } 
      .mSa{margin-top:0; color: #a8a5a5;}
@@ -160,7 +163,7 @@
          margin-top: 20px; 
          cursor: pointer; 
      }
-    #submitup,#cancelup{margin-top:70px;}
+/*     #submitup,#cancelup{margin-top:70px;} */
       
      #submitup:hover{ 
          color: #fff; 
@@ -208,7 +211,7 @@
           background:#ececec; 
   /*        padding: 1rem 1.5rem;  */
          width: 500px; 
-         height: 600px; 
+  /*        height: 600px;  */
          border-radius: 0.5rem; 
      } 
      .close-buttonup { 
@@ -266,10 +269,28 @@
         } 
         input[name=userId]{margin-bottom:25px; margin-top:30px;}
         
-        
-        
-        
-        
+     .check{
+    box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
+    padding: 10px;
+    font-family: 'Varela Round';
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: .15rem;
+    border: 0;
+    background-color: #64a19d;
+    border-radius: 10px;
+    color:#fff;
+    float:right;
+    position: relative;
+    right:70px;
+    top:6px;
+     }   
+     #userId{
+     width:220px;
+     }
+     #idCheck{
+     	font-size:12px;
+     }
 </style>
 </head>
 
@@ -361,7 +382,8 @@
 			<h1 class="title">M-SA</h1>
 			<p class="mSa">Mobile-Substation Automation</p>
 			<form action="/user/signUp" method="POST" name="signUp" id="signIn" enctype="multipart/form-data">
-				 <input type="text" class="input" name="userId" placeholder="ID"  id="userId"><button type="button" onClick="idCk()" class="btn btn-primary">중복체크</button>
+			<button type="button" onClick="idCk()" class="check">중복체크</button>
+				 <input type="text" class="input" name="userId" placeholder="ID"  id="userId">
 				 <p id="idCheck"></p>
 				 <input type="password" class="input" name="userPassword" placeholder="password" id="userPassword">
 				 <p id="pwCheck"></p>

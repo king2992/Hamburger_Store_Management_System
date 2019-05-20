@@ -130,17 +130,20 @@
 		</div>
 <!-- 			주문/갯수/금액 내역 영역 -->
 			<div class="order_list_wrap">
+			<p class="p">메뉴를 선택해주세요.</p>
 			<div class="order_list_div">
-				<p style="color:red">메뉴를 선택해주세요.</p>
+				
 				<table class="table_list">
+				<thead>
 					<tr>
 						<th>상품이름</th>
 						<th>주문수량</th>
 						<th>주문가격</th>
 					</tr>
-					<tr class="table_tr2">
-						
-					</tr>
+					</thead>
+					<tbody class="table_tr2">
+					
+					</tbody>
 				</table>
 				
 			</div>
@@ -151,6 +154,7 @@
 						<td>총 금액 :&nbsp;&nbsp;</td>
 						<td><input class="total_pay" type="text">&nbsp;원</td>
 					</tr>
+					
 				</table>
 				
            			 <div class="button_base b03_skewed_slide_in">

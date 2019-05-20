@@ -36,9 +36,13 @@ $(document).ready(function(){
 // 동적으로 생성하는 주문 내역			
 		$(function() {
 			$('.tab_cont li img').on('click', function(){
+				
 				$('.table_tr2').append('<th>우아우아아아ㅏ아아아</th>')
 				$('.table_tr2').append('<th>1</th>');
 				$('.table_tr2').append('<th>10000</th>');
+				$('.table_tr2').append('<tr>');
+				
+	
 			})
 		})
 });
