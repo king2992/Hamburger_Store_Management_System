@@ -98,7 +98,7 @@
 				<td>${orders.payTotal}</td>
 				<td data-tooltip-text="예약내역 확인하기"><button type='button' class="reservedCheck btn btn-concrete">예약 메뉴 확인</button></td>
 				<td>상품 준비 중<button type="button" class="orderReady button">조리완료</button></td>
-			</tr>
+			</tr> 
 			</c:when>
 			<c:otherwise>
 			<tr style="background-color:gray">
