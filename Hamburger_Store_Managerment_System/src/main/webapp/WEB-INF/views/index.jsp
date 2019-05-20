@@ -110,7 +110,7 @@
          transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
      } 
     .tr-none{display:none;}
-    #trigger{color:#fff;}
+    /* #trigger{color:#fff;} */
  h1{ 
          font-family: 'Oswald', sans-serif; 
          font-size: 45px; 
@@ -234,7 +234,7 @@
      } 
     .tr-none{display:none;}
     
-    #triggerup{color:#fff;}
+/*     #triggerup{color:#fff;} */
  h1{ 
          font-family: 'Oswald', sans-serif; 
          font-size: 45px; 

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				    				list += "<td>"+"상품 준비 중"+ "<button type='button' class='orderReady button'>"+"조리완료"+"</button>"+"</td>";
 				    				list += "</tr>";
 			    				}else {
-			    					list += "<tr style='background-color:gray'>";
+			    					list += "<tr style='background-color:#eeeeee'>";
 			    					list += "<td>" + "매장" + "</td>";
 				    				list += "<td class='reservedOrderId'>" +item.orderId+"</td>";
 				    				list += "<td>" + item.regDate +" "+item.regTime + "</td>";
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		    	 					takeoutList += "<td>"+"상품 준비 중"+ "<button type='button' class='orderReady button'>"+"조리완료"+"</button>"+"</td>";
 		    	 					takeoutList += "</tr>";
 		    	 				}else {
-		    	 					takeoutList += "<tr style='background-color:gray'>";
+		    	 					takeoutList += "<tr style='background-color:#eeeeee'>";
 		    	 					takeoutList += "<td>" + "테이크아웃" + "</td>";
 		    	 					takeoutList += "<td class='reservedTakeoutId'>" +item.takeoutId+"</td>";
 		    	 					takeoutList += "<td>" + item.reservedDate +" "+item.reservedTime + "</td>";
@@ -134,7 +134,7 @@ $(document).ready(function(){
 		var orderId = $(event.target).parent().siblings(".reservedOrderId").text();
 		var orderReadyHtml = "";
 		orderReadyHtml += "Complete";
-		$(event.target).parent().siblings().parent().css("background", "gray");
+		$(event.target).parent().siblings().parent().css("background", "#eeeeee");
 		$(event.target).parent().html(orderReadyHtml);
 		
 		$.ajax({
@@ -148,7 +148,7 @@ $(document).ready(function(){
 		var takeoutId = $(event.target).data("takeoutid");
 		var takeoutReadyHtml = "";
 		takeoutReadyHtml += "Complete";
-		$(event.target).parent().siblings().parent().css("background", "gray");
+		$(event.target).parent().siblings().parent().css("background", "#eeeeee");
 		$(event.target).parent().html(takeoutReadyHtml);
 		$.ajax({
 			url : "/pos/takeoutReservedListStatus",

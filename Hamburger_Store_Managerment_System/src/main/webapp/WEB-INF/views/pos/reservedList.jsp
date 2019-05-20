@@ -63,8 +63,12 @@
 					</div></li>
 			</ul>
 		</nav>
-		<button type="button" id="storeReserved">매장 예약 내역</button><button type="button" id="takeoutReserved">테이크아웃 예약 내역</button>
+		
 	<div id="wrap-center">
+	<div class="button-center">
+	<button type="button" class="buttonin" id="storeReserved"><span>매장 예약 내역</span></button>
+	<button type="button" class="buttonin" id="takeoutReserved"><span>테이크아웃 예약 내역</span></button>
+	</div>
 		<ul class="reservedCheckList">
 		</ul>
 	<div class="button_base b04_3d_tick dal">
