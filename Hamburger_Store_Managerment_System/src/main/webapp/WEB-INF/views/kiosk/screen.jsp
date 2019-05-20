@@ -5,9 +5,14 @@
 <meta charset="UTF-8">
 <title>Kiosk First Web Screen</title>
 </head>
-<link rel="stylesheet" type="text/css" href="${path}/resources/kiosk/css/screen.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="${path}/resources/kiosk/js/main.js"></script>
+<link rel="stylesheet" type="text/css" href="${path}/resources/kiosk/css/screen.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
 <body>
 <!-- 배경 이미지 영역 -->
 	<div class="body_image">
@@ -126,10 +131,18 @@
 <!-- 			주문/갯수/금액 내역 영역 -->
 			<div class="order_list_wrap">
 			<div class="order_list_div">
-				<p>메뉴를 선택해주세요.</p>
-				<div class="order_list_view">
-				<h1 style="color:white;">주문내역</h1>
-				</div>
+				<p style="color:red">메뉴를 선택해주세요.</p>
+				<table class="table_list">
+					<tr>
+						<th>상품이름</th>
+						<th>주문수량</th>
+						<th>주문가격</th>
+					</tr>
+					<tr class="table_tr2">
+						
+					</tr>
+				</table>
+				
 			</div>
 <!-- 			결제/취소 영역 -->
 			<div class="order_payment_div">
