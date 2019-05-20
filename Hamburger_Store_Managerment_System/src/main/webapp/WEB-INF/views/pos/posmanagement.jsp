@@ -79,6 +79,10 @@
 <script type="text/javascript">
 	$(document).ready( function() { 
 		//var sum = 1;
+		$(".chicken").show();
+		$(".burger").hide();
+		$(".side").hide();
+		$(".drink").hide();
 		$(document).on( "click", ".pNameClick", function() {
 			var td1 = document.createElement("td");
 			var td2 = document.createElement("td");
@@ -238,17 +242,40 @@
 		menuItemPriceTotal();
 	}
 	
-	$('.pNameClick').each(function(index,item){
-		$('.chickenMenu').on("click",function(){
+// 	$('.pNameClick').each(function(index,item){
+// 		$('.chickenMenu').on("click",function(){
 			
-			var chicken = $(this).data("menu","chicken");
-			var burger = $(this).data("menu","burger");
-			var side = $(this).data("menu","side");
-			var drink = $(this).data("menu","drink");	
-			alert(chicken);
-		})
-    });
-	
+// 			var chicken = $(this).data("menu","chicken");
+// 			var burger = $(this).data("menu","burger");
+// 			var side = $(this).data("menu","side");
+// 			var drink = $(this).data("menu","drink");	
+// 			alert(chicken);
+// 		})
+//     });
+	$(document).on("click", ".chickenMenu", function(){
+		$(".chicken").show();
+		$(".burger").hide();
+		$(".side").hide();
+		$(".drink").hide();
+	})
+	$(document).on("click", ".burgerMenu", function(){
+		$(".chicken").hide();
+		$(".burger").show();
+		$(".side").hide();
+		$(".drink").hide();
+	})
+	$(document).on("click", ".sideMenu", function(){
+		$(".chicken").hide();
+		$(".burger").hide();
+		$(".side").show();
+		$(".drink").hide();
+	})
+	$(document).on("click", ".drinkMenu", function(){
+		$(".chicken").hide();
+		$(".burger").hide();
+		$(".side").hide();
+		$(".drink").show();
+	})
 	
 </script>
 </head>
@@ -262,7 +289,7 @@
 			<!-- Links -->
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/"/>'> <i class="fa fa-home menu-icon"></i>
+					href='<c:url value="/pos/posmanagement"/>'> <i class="fa fa-home menu-icon"></i>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href='<c:url value="/pos/reservedList"/>'> <i
@@ -343,23 +370,67 @@
 							<th class="drinkMenu" >음료류</th>
 						</tr>
 					</table>
-<ul class="ul">
+<ul class="ul chicken">
 	<c:choose>
-		<c:when test="${list.size() > 0}">
-			<c:forEach var="item" items="${list}">
+		<c:when test="${chicken.size() > 0}">
+			<c:forEach var="item" items="${chicken}">
 				<input type="hidden" class="hiddenNumber" value="${item.menuId}" style="display: none; cursor:pointer;">
-		
 				<li style="cursor:pointer;" class="pNameClick" value="${item.menuName}" data-price="${item.menuPrice}" data-number="${item.menuId}"
 					data-cnt="1" data-menu="${item.menuCategory}"><p class="pName" name="${item.menuCategory}">${item.menuName}</p>
 						<p class="pPrice">${item.menuPrice}</p>
 						<p id="pMenuClick">${item.menuCategory}
 						</li>
-				
-			
 			</c:forEach>
 		</c:when>
 		<c:otherwise>
-
+		</c:otherwise>
+	</c:choose>
+</ul>
+<ul class="ul burger">
+	<c:choose>
+		<c:when test="${burger.size() > 0}">
+			<c:forEach var="item" items="${burger}">
+				<input type="hidden" class="hiddenNumber" value="${item.menuId}" style="display: none; cursor:pointer;">
+				<li style="cursor:pointer;" class="pNameClick" value="${item.menuName}" data-price="${item.menuPrice}" data-number="${item.menuId}"
+					data-cnt="1" data-menu="${item.menuCategory}"><p class="pName" name="${item.menuCategory}">${item.menuName}</p>
+						<p class="pPrice">${item.menuPrice}</p>
+						<p id="pMenuClick">${item.menuCategory}
+						</li>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+		</c:otherwise>
+	</c:choose>
+</ul>
+<ul class="ul side">
+	<c:choose>
+		<c:when test="${sideMenu.size() > 0}">
+			<c:forEach var="item" items="${sideMenu}">
+				<input type="hidden" class="hiddenNumber" value="${item.menuId}" style="display: none; cursor:pointer;">
+				<li style="cursor:pointer;" class="pNameClick" value="${item.menuName}" data-price="${item.menuPrice}" data-number="${item.menuId}"
+					data-cnt="1" data-menu="${item.menuCategory}"><p class="pName" name="${item.menuCategory}">${item.menuName}</p>
+						<p class="pPrice">${item.menuPrice}</p>
+						<p id="pMenuClick">${item.menuCategory}
+						</li>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+		</c:otherwise>
+	</c:choose>
+</ul>
+<ul class="ul drink">
+	<c:choose>
+		<c:when test="${drinkMenu.size() > 0}">
+			<c:forEach var="item" items="${drinkMenu}">
+				<input type="hidden" class="hiddenNumber" value="${item.menuId}" style="display: none; cursor:pointer;">
+				<li style="cursor:pointer;" class="pNameClick" value="${item.menuName}" data-price="${item.menuPrice}" data-number="${item.menuId}"
+					data-cnt="1" data-menu="${item.menuCategory}"><p class="pName" name="${item.menuCategory}">${item.menuName}</p>
+						<p class="pPrice">${item.menuPrice}</p>
+						<p id="pMenuClick">${item.menuCategory}
+						</li>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
 		</c:otherwise>
 	</c:choose>
 </ul>
@@ -368,8 +439,8 @@
 				<footer>
 					<div class="pay">
 						<ul class="deleteUpdate">
-							<li onclick="card()">카드결제</li>
-							<li class="triggercash" onclick="triggercash()">현금결제</li>
+							<li class="cardCash" onclick="card()">카드결제</li>
+							<li class="triggercash">현금결제</li>
 							<li><a href="#" id="trigger">메뉴등록</a></li>
 							
 						</ul>
@@ -418,7 +489,6 @@
         </form> 
     </div> 
 </div>
-	
 	<script type="text/javascript">
 	$(document).ready(function() {
 	$(document).on("click",".document",function(){
@@ -448,6 +518,8 @@
 		var trigger = document.querySelector("#trigger");
 		var closeButton = document.querySelector(".close-button");
 		var cancelButton = document.querySelector("#cancel");
+		var cardCash = document.querySelector(".cardCash");
+		
 		var menuNameArray = new Array();
 		var menuCntArray = new Array();
 
@@ -466,6 +538,8 @@
 		closeButton.addEventListener("click", toggleModal);
 		cancel.addEventListener("click", toggleModal);
 		window.addEventListener("click", windowOnClick);
+		
+		
 	</script>
 	
 	
@@ -477,8 +551,9 @@
     var cancelButtoncash = document.querySelector("#cancelcash");
 
    //console.log(modal);
-
+	
    function toggleModalcash() { 
+	   console.log("여기냐 ???");
         modalcash.classList.toggle("show-modalcash"); 
         $('input[name=payTotal]').val($('.pTotal').text());
         
@@ -490,7 +565,6 @@
         $(".menuListCnt").each(function(index, item){
         	menuCntArray.push($(this).text());
         })
-        
     }
 
    function windowOnClickcash(event) { 
@@ -499,8 +573,6 @@
         } 
     }
 	 function send(){
-		
-		 
 	   var payTotal = $('input[name=payTotal]').val();
 	   var input = $('input[name=payTotal2]').val();
 	   var nmg = $('input[name=nmg]').val();
@@ -516,20 +588,16 @@
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 				success : function(data) {
 					if(data == 1){
-						console.log("재미없었어");
 						선규();
 					}
 				}
 	     	});
-	    	 
-				
 	   	    	return false;
 	   }
 	     if(payTotal != sum){
 		   alert('일치하지 않습니다. 다시 확인해주십시오.');
 		   return true;  
 	   }
-	  
    }
 	 function 선규(){
 			$.ajax({
@@ -544,55 +612,46 @@
 				}
 	     	});
 	 }
-
-   triggercash.addEventListener("click", toggleModalcash); 
+    triggercash.addEventListener("click", toggleModalcash); 
     closeButtoncash.addEventListener("click", toggleModalcash); 
     cancelButtoncash.addEventListener("click", toggleModalcash); 
     window.addEventListener("click", windowOnClickcash); 
-    
-   
-    
 </script>
-<script>
+ <script>
 	function card(){
 		let timerInterval
 		Swal.fire({
 		  title: '결제중입니다.',
 		  html: 'I will close in <strong></strong> seconds.',
-		  timer: 2000,
+		  timer: 2000, 
 		  onBeforeOpen: ()=> { 
 		    Swal.showLoading()
 		    timerInterval = setInterval(() => {
 		      Swal.getContent().querySelector('strong')
 		        .textContent = Swal.getTimerLeft() 
 		    }, 100)
-		  },
-		  onClose: ()=> {
+		  }, 
+		  onClose: ()=> { 
 		    clearInterval(timerInterval)
 		  }
 		}).then((result)=> {
 		  if (
-		    // Read more about handling dismissals
 		    result.dismiss === Swal.DismissReason.timer
-		    
 		  ) {
-		    console.log('I was closed by the timer')
 		    card2();
 		  }
 		})
 		function card2(){
 			Swal.fire({
-			  position: 'top-end',
+			  position: 'center',
 			  type: 'success',
 			  title: '결제가 완료되었습니다.',
 			  showConfirmButton: false,
 			  timer: 1500
-			  
 			});
 			
-					}
+		}
 	}
-
-</script>
+ </script> 
 </body>
 </html>

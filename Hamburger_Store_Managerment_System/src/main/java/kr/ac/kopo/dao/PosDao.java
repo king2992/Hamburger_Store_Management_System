@@ -7,12 +7,13 @@ import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
+import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.ordersMenuList;
 
 public interface PosDao {
 
 
-	List<Menu> getList();
 
 	//void delete(int pNumber);
 
@@ -44,6 +45,22 @@ public interface PosDao {
 	List<Orders> dateSort(String regDate);
 
 	void reservedListStatus(int orderId);
+
+	List<Menu> chickenList();
+
+	List<Menu> burgerList();
+
+	List<Menu> sideMenuList();
+
+	List<Menu> drinkMenuList();
+
+	List<TakeOutReserved> takeoutReservedList();
+
+	List<TakeoutReservedMenu> takeoutReservedCheck(int takeoutId);
+
+	void takeoutReservedListStatus(int takeoutId);
+
+	List<TakeOutReserved> takeoutDateSort(String reservedDate);
 
 	
 

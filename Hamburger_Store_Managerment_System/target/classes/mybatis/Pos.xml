@@ -2,8 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="pos">
-	<select id="getList" resultType="Menu">
-		SELECT * FROM  menu
+	<select id="chickenList" resultType="Menu">
+		SELECT * FROM  menu where menu_category = "chicken"
+	</select>
+	<select id="burgerList" resultType="Menu">
+		SELECT * FROM  menu where menu_category = "burger"
+	</select>
+	<select id="sideMenuList" resultType="Menu">
+		SELECT * FROM  menu where menu_category = "side"
+	</select>
+	<select id="drinkMenuList" resultType="Menu">
+		SELECT * FROM  menu where menu_category = "drink"
 	</select>
 	<delete id="pDelete">
 		DELETE FROM menu WHERE menu_id=#{menuId}
@@ -32,15 +41,29 @@
 	<select id="ordersList" resultType="Orders">
 		select * from orders order by order_id desc
 	</select>
+	<select id="takeoutReservedList" resultType="TakeOutReserved">
+		select * from takeout_reserved_list order by takeout_id desc
+	</select>
 	<select id="reservedListCheck" resultType="ordersMenuList">
 		select * from orders_menu_list where order_id = #{orderId}
 	</select>
 	<select id="dateSort" resultType="Orders">
 		select * from orders where reg_date = #{regDate} order by order_id desc
 	</select>
+	<select id="takeoutDateSort" resultType="TakeOutReserved">
+		select * from takeout_reserved_list where reserved_date = #{reservedDate} order by takeout_id desc
+	</select>
 	<update id="reservedListStatus">
 		update orders
 		set status = "Complete"
 		where order_id =#{orderId}
+	</update>
+	<select id="takeoutReservedCheck" resultType="TakeoutReservedMenu">
+		select * from takeout_reserved_menu where takeout_id = #{takeoutId}
+	</select>
+	<update id="takeoutReservedListStatus">
+		update 	takeout_reserved_list 
+		set status = "Complete"
+		where takeout_id = #{takeoutId}
 	</update>
 </mapper>

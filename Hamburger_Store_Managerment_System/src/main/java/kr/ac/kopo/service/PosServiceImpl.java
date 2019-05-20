@@ -11,6 +11,8 @@ import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Pos;
+import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.ordersMenuList;
 
 @Service
@@ -19,10 +21,6 @@ public class PosServiceImpl implements PosService {
 	@Autowired
 	PosDao posdao;
 
-	@Override
-	public List<Menu> getList( ) {
-		return posdao.getList();
-	}
 	@Override
 	public void add(Menu item) {
 		posdao.add(item);
@@ -61,6 +59,38 @@ public class PosServiceImpl implements PosService {
 	@Override
 	public void reservedListStatus(int orderId) {
 		posdao.reservedListStatus(orderId);
+	}
+	@Override
+	public List<Menu> getChickenList() {
+		return posdao.chickenList();
+	}
+	@Override
+	public List<Menu> getBurgerList() {
+		return posdao.burgerList();
+	}
+	@Override
+	public List<Menu> getSideMenuList() {
+		return posdao.sideMenuList();
+	}
+	@Override
+	public List<Menu> getDrinkMenuList() {
+		return posdao.drinkMenuList();
+	}
+	@Override
+	public List<TakeOutReserved> takeoutReservedList() {
+		return posdao.takeoutReservedList();
+	}
+	@Override
+	public List<TakeoutReservedMenu> takeoutReservedCheck(int takeoutId) {
+		return posdao.takeoutReservedCheck(takeoutId);
+	}
+	@Override
+	public void takeoutReservedListStatus(int takeoutId) {
+		posdao.takeoutReservedListStatus(takeoutId);
+	}
+	@Override
+	public List<TakeOutReserved> takeoutDateSort(String reservedDate) {
+		return posdao.takeoutDateSort(reservedDate);
 	}
 
 }

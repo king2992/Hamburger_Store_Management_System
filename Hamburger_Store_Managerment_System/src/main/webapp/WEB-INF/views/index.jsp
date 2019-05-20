@@ -367,7 +367,7 @@
 				 <p id="pwCheck"></p>
 				 <input type="text" class="input" name="userName" placeholder="your name" id="userName" >
 				 <p id="nameCheck"></p>
-				 <input type="text" class="input" name="userPhone" placeholder="phone number" id="userPhone" >
+				 <input type="text" class="input" name="userPhone" placeholder="phone number" id="userPhone" style="ime-mode:disabled;" >
 				 <p id="phoneCheck"></p>
 			 <input type="button" id="cancelup" value="취소"> 
 				<!-- <input type="submit" id="submit" value="보내기"> -->
@@ -511,7 +511,7 @@
 			var userName = $("#userName").val();
 			
 		})
-		$(document).on('keyup', '#userPhone', function(e){
+		$(document).on('keydown', '#userPhone', function(e){
 			var userPhone = $("#userPhone").val();
 			var regexp = /^[0-9]*$/
 				if(userPhone.length <= 11){

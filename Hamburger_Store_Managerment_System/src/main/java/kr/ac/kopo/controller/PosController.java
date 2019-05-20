@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.Orders;
+import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.ordersMenuList;
 import kr.ac.kopo.service.PosService;
 
@@ -34,9 +36,15 @@ public class PosController {
 	
 	@RequestMapping(value="/posmanagement")
 	String pos(Model model) {
-		List<Menu> list = posservice.getList();
+		List<Menu> chicken = posservice.getChickenList();
+		List<Menu> burger = posservice.getBurgerList();
+		List<Menu> sideMenu = posservice.getSideMenuList();
+		List<Menu> drinkMenu = posservice.getDrinkMenuList();
 		
-		model.addAttribute("list",list);
+		model.addAttribute("chicken",chicken);
+		model.addAttribute("burger",burger);
+		model.addAttribute("sideMenu",sideMenu);
+		model.addAttribute("drinkMenu",drinkMenu);
 		
 		return path + "posmanagement";
 	}
@@ -112,6 +120,9 @@ public class PosController {
 		List<Orders> orders = posservice.reservedList();
 		model.addAttribute("orders",orders);
 		
+		List<TakeOutReserved> takeout = posservice.takeoutReservedList();
+		model.addAttribute("takeout", takeout);
+		
 		return "/pos/reservedList";
 	}
 	@ResponseBody
@@ -127,9 +138,29 @@ public class PosController {
 		return 1;
 	}
 	@ResponseBody
+	@RequestMapping(value="takeoutReservedCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	Object takeoutReservedCheck(@RequestParam(value="takeoutId") int takeoutId) {
+			List<TakeoutReservedMenu> takeoutReservedMenu = posservice.takeoutReservedCheck(takeoutId);
+		return takeoutReservedMenu;
+	}
+	@ResponseBody
+	@RequestMapping(value="/takeoutReservedListStatus")
+	int takeoutReservedListStatus(@RequestParam(value="takeoutId") int takeoutId) {
+			posservice.takeoutReservedListStatus(takeoutId);
+		return 1;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/dateSort", method=RequestMethod.GET)
 	Object dateSort(@RequestParam(value="regDate") String regDate) {
 		List<Orders> dateSort = posservice.dateSort(regDate); 
 		return dateSort;
 	}
+	@ResponseBody
+	@RequestMapping(value="/takeoutDateSort", method=RequestMethod.GET)
+	Object takeoutDateSort(@RequestParam(value="reservedDate") String reservedDate) {
+		List<TakeOutReserved> takeoutreserved = posservice.takeoutDateSort(reservedDate); 
+		return takeoutreserved;
+	}
+	
 }

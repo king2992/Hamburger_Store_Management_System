@@ -34,7 +34,7 @@
 			<!-- Links -->
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/"/>'> <i class="fa fa-home menu-icon"></i>
+					href='<c:url value="/pos/posmanagement"/>'> <i class="fa fa-home menu-icon"></i>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href='<c:url value="/pos/reservedList"/>'> <i
@@ -63,20 +63,21 @@
 					</div></li>
 			</ul>
 		</nav>
-		
+		<button type="button" id="storeReserved">매장 예약 내역</button><button type="button" id="takeoutReserved">테이크아웃 예약 내역</button>
 	<div id="wrap-center">
 		<ul class="reservedCheckList">
 		</ul>
-	
 	<div class="button_base b04_3d_tick dal">
+	<div></div>
 	<div>달력출력(날짜)</div>
     <div>달력출력(날짜)</div>
 	</div>	
 	<div class="right-box">
-	<h1>예약 내역</h1>
+	<h1 class="reservedList-title">매장 예약 내역</h1>
 	
 	<table class="reserved-table">
 			<tr>
+				<th>구 분</th>
 				<th>주문번호</th>
 				<th>주문날짜</th>
 				<th>주문금액</th>
@@ -91,6 +92,7 @@
 				<c:choose>
 			<c:when test="${orders.status eq 'Ready'}">
 			<tr>
+				<td>매장</td>
 				<td class="reservedOrderId">${orders.orderId}</td>
 				<td>${orders.regDate} ${orders.regTime} </td>
 				<td>${orders.payTotal}</td>
@@ -100,11 +102,12 @@
 			</c:when>
 			<c:otherwise>
 			<tr style="background-color:gray">
+				<td>매장</td>
 				<td class="reservedOrderId" id="${orders.orderId}" data-check="${orders.status}">${orders.orderId}</td>
 				<td>${orders.regDate} ${orders.regTime} </td>
 				<td>${orders.payTotal}</td>
 				<td data-tooltip-text="예약내역 확인하기"><button type='button' class="reservedCheck btn btn-concrete">예약 메뉴 확인</button></td>
-				<td>${orders.status}</td>
+				<td>준비 완료</td>
 			</tr>
 			</c:otherwise>
 			</c:choose>
@@ -116,7 +119,58 @@
 	</c:choose>
 	</tbody>
 	</table>
+	<table class="takeoutReserved-table">
+			<tr>
+				<th>구 분</th>
+				<th>주문번호</th>
+				<th>주문날짜</th>
+				<th>주문금액</th>
+				<th>예약상세</th>
+				<th>예약자 명</th>
+				<th>예약자 연락처</th>
+				<th>상태</th>
+			</tr>
+			<tbody class="takeoutReservedContainer">
+			<c:choose>
+		<c:when test="${takeout.size() > 0 }">
+			<c:forEach items="${takeout}" var="takeout">
+				<c:choose>
+			<c:when test="${takeout.status eq 'Ready'}">
+			<tr>
+				<td>테이크아웃</td>
+				<td class="reservedTakeoutId">${takeout.takeoutId}</td>
+				<td>${takeout.reservedDate} ${takeout.reservedTime} </td>
+				<td>${takeout.totalPrice}</td>
+				<td data-tooltip-text="예약내역 확인하기"><button type='button' class="takeoutReservedCheck btn btn-concrete" data-takeoutid="${takeout.takeoutId}">예약 메뉴 확인</button></td>
+				<td>${takeout.reservedName}</td>
+				<td>${takeout.reservedPhone}</td>
+				<td>상품 준비 중<button type="button" class="takeoutOrderReady button" data-takeoutid="${takeout.takeoutId}">조리완료</button></td>
+			</tr>
+			</c:when>
+			<c:otherwise>
+			<tr style="background-color:gray">
+				<td>테이크아웃</td>
+				<td class="reservedTakeoutId" id="${takeout.takeoutId}" data-check="${takeout.status}">${takeout.takeoutId}</td>
+				<td>${takeout.reservedDate} ${takeout.reservedTime} </td>
+				<td>${takeout.totalPrice}</td>
+				<td data-tooltip-text="예약내역 확인하기" ><button type='button' class="takeoutReservedCheck btn btn-concrete" data-takeoutid="${takeout.takeoutId}" >예약 메뉴 확인</button></td>
+				<td>${takeout.reservedName}</td>
+				<td>${takeout.reservedPhone}</td>
+				<td>준비 완료</td>
+			</tr>
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<p>예약 내역이 없습니다.</p>
+		</c:otherwise>
+	</c:choose>
+			</tbody>
+		</table>
 	</div>
+	
+		
 	
 		
 </div>
