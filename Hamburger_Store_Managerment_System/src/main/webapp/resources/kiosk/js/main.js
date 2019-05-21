@@ -102,7 +102,7 @@ $(document).ready(function(){
 			$('.tab_cont li img').on('click', function() {
 				var menuname = $(event.target).data('menuname');
 				var price = $(event.target).data('price');
-				$('.table_tr2').append('<tr>'+'<td>'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<p class="up_down">1</p>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td>'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
+				$('.table_tr2').append('<tr>'+'<td>'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="up_down">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td>'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
 				console.log(menuname);
 				console.log(price);
 			});

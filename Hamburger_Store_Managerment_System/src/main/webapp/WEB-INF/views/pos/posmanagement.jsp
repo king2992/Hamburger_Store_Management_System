@@ -83,17 +83,18 @@
 	content: attr(data-tooltip-text);
 
     margin-bottom: 10px;
-	top: 100px;
+	top: 70px;
 	left: 0;    
 	padding: 7px 12px;
 	position: absolute;
-	width: auto;
+	width: 200px;
 	min-width: 50px;
 	max-width: 600px;
 	word-wrap: break-word;
 
 	z-index: 9999;
 } 
+.deleteUpdate li {cursor: pointer;}
 
 </style>
 </head>
