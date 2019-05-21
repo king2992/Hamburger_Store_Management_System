@@ -623,7 +623,7 @@
 	     if(payTotal != sum){
 		   alert('일치하지 않습니다. 다시 확인해주십시오.');
 		   return true;  
-	   }
+	   }  
 	     
    }
 	 function msgAnimate(){
