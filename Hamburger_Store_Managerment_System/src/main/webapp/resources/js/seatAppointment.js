@@ -5,7 +5,7 @@
 	$(".burgerList").hide();
 	$(".sideMenuList").hide();
 	$(".drinkMenuList").hide();
-
+	$("#orderListUl").hide();
 
 document.addEventListener('DOMContentLoaded', function() {
 	  var calendarEl = document.getElementById('calendar');
@@ -103,6 +103,7 @@ $(document).ready(function() {
 			dateAlert();
 		}else{
 			$('#calendar').hide(); // 달력 안보이기
+			$("#orderListUl").show();
 			priceSumAnimate();
 			var uniqId = $(this).data('id');
 			var menuName = $(this).attr('value');
@@ -121,17 +122,21 @@ $(document).ready(function() {
 	// left-box로 누른 상품 추가
 	function addMenu(uniqId, menuName, menuPrice, menuCnt, menuImgUrl) {
 		
-		var menuHtml = '<li class="order-item" data-id="' + uniqId + '">' +
-						' <button type="button" class="xButton">X</button>' +
-						'	<img src="' + menuImgUrl + '" class="order-img"/>' +
-						'	<span class="orderMenuName">' + menuName + '</span>' +
+		var menuHtml =  '<tr class="order-item" data-id="' + uniqId + '">' +
+						'<td><img src="' + menuImgUrl + '" class="order-img"/>' +
+						'<span class="orderMenuName">' + menuName + '</span>' + 
+						'</td>' +
+						'<td style="line-height:130px;">' +
 						'	<span class="menu-price">' + menuPrice + '</span>' +
-						'	<div>' +
-						'		<span>수량 : <i class="menuCnt">1</i></span>' +
-						'		<button type="button" class="btnAddMenuCnt">+</button>' +
-						'		<button type="button" class="btnDelMenuCnt">-</button>' +
-						'	</div>' +
-						'</li>';
+						'</td>' +
+						'<td style="padding-top:62px;">' +
+						'<span style="display:block;">수량 : <i class="menuCnt">1</i></span>' +
+						'<button type="button" class="btnAddMenuCnt btncnt">+</button>' +
+						'<button type="button" class="btnDelMenuCnt btncnt">-</button>' +
+						'</td>' +
+						'<td style="padding-top:62px;"><button type="button" class="xButton btn-3d red">삭제</button></td>' 
+						'</tr>';
+						
 		$('#orderListUl').append(menuHtml);// 좌측에 선택한 메뉴 추가 
 		
 		totalPrice(); // 상품이 추가 될 때 주문 총 금액 변경 하는 함수 호출
@@ -210,20 +215,20 @@ $(document).ready(function() {
 	$(document).on('click', '.directInput', function(){
 		var input = document.createElement("input");
 		var button = document.createElement("button");
-		input.setAttribute("id", "수진이");
+		input.setAttribute("id", "directinput");
 		button.setAttribute("type", "button");
-		button.setAttribute("id", "재원이");
+		button.setAttribute("id", "directbutton");
 		button.innerHTML = "선택";
 		console.log($(".divDirectInput > button").size());
 			if($(".divDirectInput > button").size() <= 0){
 				$(".divDirectInput").append(input).append(button);	
 			}else{
-				$("#수진이").remove();
-				$("#재원이").remove();
+				$("#directinput").remove();
+				$("#directbutton").remove();
 			}
 	});
-	$(document).on('click', '#재원이', function(){
-		var 우형이 = $("#수진이").val();
+	$(document).on('click', '#directbutton', function(){
+		var 우형이 = $("#directinput").val();
 		$("#time").text(우형이);
 		$("#timeModal").text(우형이);
 		$(".modal").hide();

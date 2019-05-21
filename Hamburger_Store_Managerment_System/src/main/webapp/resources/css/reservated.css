@@ -1,3 +1,4 @@
+ul li{list-style-type: none;}
 .ticket {
 	position: relative;
 	top: 24px;
@@ -188,15 +189,17 @@
 	display: flex;
 }
 
-#orderList>ul> ul> li> img {
-	width: 200px;
-	height: 120px;
+#orderList>#orderListUl img {
+	width: 100px;
+	height: 100px;
 	margin-top: 5px;
 }
 
 #orderList>ul>ul>button {
 	position: relative;
 }
+/* .order-item{float: left; margin-right:70px;} */
+.order-item img {width:100px; height:100px;}
 .menuName{
 	position : relative;
 	left: 30px;
@@ -452,5 +455,107 @@ width:300px;
 .fc-row {margin-right:0 !important; }
 .fc-scroller{overflow:auto !important; height:384px !important;}
 
+.buttonblack {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
 
+.buttonblack:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.directInput{
+  margin-left:11px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right:2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+#directinput{padding:5px; margin-right:5px;}
+
+#directbutton{
+  display: inline-block;
+  padding: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #555555;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 9px #999;
+  vertical-align: top;
+}
+#directbutton:hover{background-color: #555555;}
+#directbutton:active {
+  background-color: #555555;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.btncnt{
+	border-radius: 5px;
+	background:#E8601B;
+	  padding: 4px 10px;
+	  margin-right:5px;  
+  font-size: 12px;
+  color:#fff;
+  border:none;
+}
+.center{margin:0 auto; width:125px;}
+.xButton{
+	 /*    border: none;
+    border-radius: 5px;
+    display: block;
+    padding: 0 8px; */
+}
+.orderMenuName{display: block;}
 /* .right-p{display:flex; flex-direction: column;} */
+
+.table{width:100%; text-align: center;}
+.table th{background: #fbfbfb;}
+
+/* .table td span{line-height: 130px;} */
+
+/* 3D Button */
+.btn-3d {
+	position: relative;
+	display: inline-block;
+	font-size: 16px;
+	/* padding: 20px 60px; */
+	color: white;
+	/* margin: 20px 10px 10px; */
+	border-radius: 6px;
+	text-align: center;
+	transition: top .01s linear;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+.btn-3d.red:hover   {background-color: #e74c3c;}
+.btn-3d:active {
+	top: 9px;
+}
+/* 3D button colors */
+.btn-3d.red {
+	background-color: #e74c3c;
+	box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 8px 0 0 #C24032,
+        0 8px 0 1px rgba(0,0,0,0.4),
+				0 8px 8px 1px rgba(0,0,0,0.5);
+				border:none;
+}
+.btn-3d.red:active {
+	box-shadow: 0 0 0 1px #c63702 inset,
+				0 0 0 2px rgba(255,255,255,0.15) inset,
+				0 0 0 1px rgba(0,0,0,0.4);
+}
+.reservedCheck .span{width:100px; margin-right:20px; font-weight: 600;}

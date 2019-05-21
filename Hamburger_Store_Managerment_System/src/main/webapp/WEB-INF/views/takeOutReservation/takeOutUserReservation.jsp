@@ -93,7 +93,10 @@
 html{
 	font-size: 100% !important;
 }
-
+.space{text-align: center; font-size: 20px; font-weight: 700; color: #555555;}
+.reservedCheck li{
+	margin-top:30px;
+}
 /* The Modal (background) */
 .modal {
 	 display: none;  /* Hidden by default */
@@ -187,6 +190,21 @@ html{
 	left: 0;
 	opacity: 1;
 }
+.input{
+width: 300px;
+    /* height: 30px; */
+    line-height: 30px;
+    background-color: #efefef;
+    border-radius: 10px;
+    border: 1px solid #dedede;
+    padding: 10px;
+    /* margin-top: 3px; */
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: #3a3a3a;
+    margin: 0 auto;
+    display: block;
+}
 </style>
 </head>
 <body>
@@ -242,7 +260,14 @@ html{
 		<div class="seats" style="position: relative; top: 35px;">
 			<div class="left-box">
 				<div id="orderList">
-					<ul id="orderListUl"></ul>
+					<table id="orderListUl" class="table">
+					 <tr>
+					 <th>상품정보</th>
+					 <th>가격</th>
+					 <th>수량</th>
+					 <th>삭제</th>
+					 </tr>
+					 </table>
 				</div>
 				<div id="calendar">
 					<div class="dateAlert"
@@ -300,8 +325,7 @@ html{
 					<c:choose>
 						<c:when test="${side.size() > 0 }">
 							<c:forEach items="${side}" var="side">
-								<li><button type="button" onclick="menuListDel()"
-										style="width: 20px; height: 20px;">X</button>
+								<li>
 									<img src="/upload/${side.menuImg}" class="menu-item"
 									data-id="${side.dataId}" value="${side.menuName}"
 									data-code="${side.menuPrice }" data-cnt="1"
@@ -317,8 +341,7 @@ html{
 					<c:choose>
 						<c:when test="${drink.size() > 0 }">
 							<c:forEach items="${drink}" var="drink">
-								<li><button type="button" onclick="menuListDel()"
-										style="width: 20px; height: 20px;">X</button>
+								<li>
 									<img src="/upload/${drink.menuImg}" class="menu-item"
 									data-id="${drink.dataId}" value="${drink.menuName}"
 									data-code="${drink.menuPrice }" data-cnt="1"
@@ -359,7 +382,7 @@ html{
   <div class="content-display"> 
            <div><p style="text-align: center;"><span style="font-size: 14pt;"><b>시간을 선택해주세요.<span style="font-size: 24pt;"></span></b></span></p>
           <!--  <button type="button" onclick="amView()">오전</button><button type="button" onclick="pmView()">오후</button> -->
-            <button type="button" class="directInput" data-tooltip-text="시간을 직접 입력 할 때 에는 정확한 시간을 입력해주세요 . ex) 오후09시,21시,21:00 ">직접 입력</button>
+            <button type="button" class="directInput button buttonblack" data-tooltip-text="시간을 직접 입력 할 때 에는 정확한 시간을 입력해주세요 . ex) 오후09시,21시,21:00 ">직접 입력</button>
               <div class="divDirectInput">
 	           
 	            </div>
@@ -439,20 +462,20 @@ html{
 		<form action="/seatReservation/ticketingSuccess" method="POST"
 			id="formSubmit" name="formValue">
 			<ul style="list-style: none;" class="reservedCheck">
-				<li>${sessionScope.places}<input type="hidden" name="frcName" value="${sessionScope.places}"></li>
-				<li><span>아이디 : <input type="text" name="userId" value="${sessionScope.user}"></span></li>
-				<li><span>이름 : <input type="text" name="reservedName"></span></li>
-				<li><span>전화번호 : <input type="text" name="reservedPhone"></span></li>
-				<li>날짜 : <span id="dateCheck"></span></li>
-				<li>시간 : <span id="timeModal"></span></li>
-				<li>결제 금액 : <span id="payment"></span></li>
+				<li class="space">${sessionScope.places}<input type="hidden" name="frcName" value="${sessionScope.places}"></li>
+				<li><span class="span">아이디  <input type="text" name="userId" readonly="readonly" value="${sessionScope.user}" class="input"></span></li>
+				<li><span class="span">이름  <input type="text" name="reservedName" class="input"></span></li>
+				<li><span class="span">전화번호  <input type="text" name="reservedPhone" class="input"></span></li>
+				<li><span class="span">날짜</span>  <span id="dateCheck"></span></li>
+				<li><span class="span">시간 </span> <span id="timeModal"></span></li>
+				<li><span class="span">금액</span>  <span id="payment"></span></li>
 			</ul>
 			 <input type="hidden" id="formMenuPrice" name="formMenuPrice" value="" /> 
 			 <input type="hidden" id="formReservedDate" name="formReservedDate" value="" />
 			 <input type="hidden" id="formReservedTime" name="formReservedTime" value="" />
-			<div>
+			<div class="center">
 				<button id="msg_process" type="button"
-					onclick="takeOutReservedGo();">주문</button>
+					onclick="takeOutReservedGo();" class="snip1535 center">주문</button>
 			</div>
 			<a class="close" href="#close"></a>
 		</form>

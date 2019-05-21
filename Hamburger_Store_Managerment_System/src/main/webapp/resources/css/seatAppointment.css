@@ -43,14 +43,16 @@
                 visibility: visible;
                 opacity: 1;
             }
-
+	.popup h2 , .popup h3{text-align: center; font-weight: 700; }
+	.popup h2{color: rgb(133,42,42);}
+	.popup h3 {margin-bottom: 30px; color: #ffa940;}
         .popup {
             background-color: #fff;
             border: 3px solid #fff;
             display: inline-block;
             left: 50%;
             opacity: 0;
-            padding: 15px;
+            padding: 50px;
             position: fixed;
             text-align: justify;
             top: 40%;
