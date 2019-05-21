@@ -64,7 +64,7 @@ function swal2() {
 		)
 };
 // 접근 불가 alert
-function swl3() {
+function swal3() {
 	Swal.fire({
 		  type: 'error',
 		  title: 'Oops...',
@@ -73,7 +73,7 @@ function swl3() {
 		});
 };
 
-function swl4() {
+function swal4() {
 	Swal.fire({
 		  type: 'error',
 		  title: 'Oops...',
@@ -98,11 +98,11 @@ $(document).ready(function(){
 // + = .p_btn
 // - = .m_btn
 // x = .menu_del	
-		$(function() {
+		$(function(){
 			$('.tab_cont li img').on('click', function() {
-				var menuname = $(event.target).data('menuname');
-				var price = $(event.target).data('price');
-				$('.table_tr2').append('<tr>'+'<td>'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="up_down">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td>'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
+				var menuname = $(this).data('menuname');
+				var price = $(this).data('price');
+				$('.table_tr2').append('<tr>'+'<td>'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td>'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
 				console.log(menuname);
 				console.log(price);
 			});
@@ -110,36 +110,57 @@ $(document).ready(function(){
 		
 // 주문 내역 삭제 
 		$(document).on('click', ".menu_del", function(){
-			$(event.target).parent().parent().remove();
+			$(this).parent().parent().remove();
 			swal2();
 		});
 // 갯수 + / - 
-	$(function(){
-		// 갯수 감소
-		$('.m_btn').click(function(e){
-			e.preventDefault();
-			var stat = $('.up_down').text();
-			var num = parseInt(stat,10);
-				num--;
-			if (num <= 0) {
-				swl3();
-				num = 1;
-			}
-			$('.up_down').text(num);
-		});
-		// 갯수 증가
-		$('.p_btn').click(function(e){
-			e.preventDefault();
-			var stat = $('.up_down').text();
-			var num = parseInt(stat,10);
-				num++;
-			if(num > 5) {
-				swal4();
-				num = 5;
-			}
-			$('.up_down').text(num);
-		})
-	});
+		 
+			  $(document).on('click','.p_btn', function(){
+				  
+				 console.log('>>>>>>>>>>요기다')
+				  var plus = $('.cnt').text();
+				  var num = parseInt(plus,10);
+				  
+				  num++;
+				  if (num<=0) {
+					  swal3();
+					  num = 1;
+				  }
+				  $('.cnt').text(num);
+				  
+			  })
+		  
+		  
+//		$(function() {
+//			$('.m_btn').on('click', function(){
+//				var expense = $('.up_down').val();
+//				expense = (Number(expense)-1);
+//				if (expense >= 10) {
+//					$('.up_down').val(expense);
+//				}
+//			});
+//			
+//		$(function() {
+//			$('.p_btn').on('click', function() {
+//				var expense = $('.up_down').val();
+//				expense = (Number(expense)+1);
+//				if ($('.up_down') < 10) {
+//					$('.up_down').val(expense);
+//				}
+//			});
+//		}); 
+//	});
+//		  $(function(){
+//			 $('.p_btn').on('click', function() {
+//				 $('.cnt').text(parseInt($('.cnt').text()) + 1);
+//			 });
+//		  });
+//		  
+//		  $(function() {
+//			$('.p_btn').on('click', function(){
+//				var stat = $('.cnt').
+//			})  
+//		  })
 });
 
 
