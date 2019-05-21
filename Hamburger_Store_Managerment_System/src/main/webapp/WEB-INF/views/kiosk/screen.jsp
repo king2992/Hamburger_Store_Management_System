@@ -22,7 +22,6 @@
 		<nav>
 		
 			<ul class="tab_btn">
-			 <!--    <li><h1>M-SA</h1></li> -->
 				<li><button class="ListBtn btn1" type="button">전체 메뉴</button></li>
 				<li><button class="ListBtn btn2" type="button">치킨 메뉴</button></li>
 				<li><button class="ListBtn btn3" type="button">버거 메뉴</button></li>
@@ -61,7 +60,7 @@
 					<li><img data-menuname="치즈할라피뇨 너겟" data-price="10000" src="${path}/resources/img/sideMenu/20170821851383.jpg"><p>치즈할라피뇨 너겟</p></li>
 					<li><img data-menuname="치즈감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120319875.jpg"><p>치즈감자</p></li>
 					<li><img data-menuname="어니언치즈 감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120979582.jpg"><p>어니언치즈 감자</p></li>
-					<li><img data-menuname="라이스&치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&치즈너겟</p></li>
+					<li><img data-menuname="라이스&치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&amp;치즈너겟</p></li>
 					<li><img data-menuname="콘베지 샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903624821.jpg"><p>콘베지 샐러드</p></li>
 					<li><img data-menuname="베지 샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903730621.jpg"><p>베지샐러드</p></li>
 					<li><img data-menuname="에그랩(2종)" data-price="10000" src="${path}/resources/img/sideMenu/20181026154178.jpg"><p>에그랩(2종)</p></li>
@@ -108,7 +107,7 @@
 					<li><img data-menuname="치즈할라피뇨 너겟" data-price="10000" src="${path}/resources/img/sideMenu/20170821851383.jpg"><p>치즈할라피뇨 너겟</p></li>
 					<li><img data-menuname="치즈감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120319875.jpg"><p>치즈감자</p></li>
 					<li><img data-menuname="어니언치즈 감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120979582.jpg"><p>어니언치즈 감자</p></li>
-					<li><img data-menuname="라이스&치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&치즈너겟</p></li>
+					<li><img data-menuname="라이스&치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&amp;치즈너겟</p></li>
 					<li><img data-menuname="콘베지 샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903624821.jpg"><p>콘베지 샐러드</p></li>
 					<li><img data-menuname="베지 샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903730621.jpg"><p>베지샐러드</p></li>
 					<li><img data-menuname="에그랩(2종)" data-price="10000" src="${path}/resources/img/sideMenu/20181026154178.jpg"><p>에그랩(2종)</p></li>
@@ -136,9 +135,9 @@
 				<table class="table_list">
 				<thead>
 					<tr>
-						<th>상품이름</th>
-						<th>주문수량</th>
-						<th>주문가격</th>
+						<th>주문내역</th>
+						<th>수량(개)</th>
+						<th>금액(원)</th>
 					</tr>
 					</thead>
 					<tbody class="table_tr2">
@@ -156,14 +155,11 @@
 					</tr>
 					
 				</table>
-				
            			 <div class="button_base b03_skewed_slide_in">
                	 <div>결제취소</div>
                 <div></div>
                 <div onclick="cancel()">결제취소</div>
             </div>
-        
-				<!-- <button class="paymentBtn" type="button" onclick="payment()">결제</button> -->
 				   <div class="back">
            			 <div class="button_base b03_skewed_slide_in">
                	 <div>결제하기</div>
@@ -172,8 +168,6 @@
                 
             </div>
         </div>
-				<!-- <button class="cancelBtn" type="button" onclick="cancel()">결제취소</button> -->
-			
 			</div>
 			</div>
 		</div>

@@ -100,10 +100,6 @@ nav ul li:first-child { border-left:none; }
     border: 0;
     font-size: 18px;
     position: relative;
-    /* top: 50%; */
-  /*   left: 20%; */
-/*     margin-top: -25px; */
-  /*   margin-left: -100px; */
     top:95px;
     width: 160px;
     height: 50px;
@@ -116,13 +112,10 @@ nav ul li:first-child { border-left:none; }
     display: inline-block;
 }
 
-
 .button_base:hover {
     cursor: pointer;
 }
 
-
-/* ### ### ### 03 */
 .b03_skewed_slide_in {
     overflow: hidden;
     border: #ff6e40 solid 1px;
@@ -184,3 +177,5 @@ nav ul li:first-child { border-left:none; }
 .table_list thead tr th{width:120px; border:1px solid #ff6e40; border-collapse: collapse; padding:5px;}
 .table_list tbody th{border:1px solid #ff6e40; border-collapse: collapse; width:120px; padding:5px;}
 .table_tr2 { width: 100%; text-align: center;}
+.p_btn, .m_btn, .menu_del { width: 20px; height: 20px;}
+.menu_del { position:relative; left:67px;}
