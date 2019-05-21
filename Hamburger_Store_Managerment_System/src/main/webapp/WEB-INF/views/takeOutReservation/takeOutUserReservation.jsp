@@ -17,6 +17,9 @@
 <link href="/resources/css/icomoon.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://localhost:84/socket.io/socket.io.js"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 <!--   <link href="/resources/css/main.css" rel="stylesheet">  
 <!--   <link href="/resources/css/responsive.css" rel="stylesheet">  -->
 <!-- 모달  -->

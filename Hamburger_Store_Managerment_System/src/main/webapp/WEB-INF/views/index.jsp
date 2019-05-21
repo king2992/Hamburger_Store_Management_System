@@ -327,16 +327,13 @@
             <a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/kiosk/screen">Web 주문기(사용자)</a>
+            <a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/pos/posmanagement">포스기(관리자)</a>
+            <a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Order Display</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/order/Page">WebSocket</a>
+            <a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a>
           </li>
         </ul>
       </div>
