@@ -191,7 +191,6 @@ html{
 </head>
 <body>
 
-
 	<div id="container">
 		<nav
 			class="navbar navbar-expand-sm navbar-dark fixed-top1 layout-menu"
@@ -230,10 +229,6 @@ html{
 				</div></li>
 		</ul>
 		</nav>
-
-		<!-- <div><p class="ticket" ><a href="/">Hamburger Take Out</a><button type="button" onclick="menuModal()" style="width:80px; height:40px; font-size:15px; line-height:40px; margin-left:20px;">메뉴 등록</button></p></div> -->
-		<!--     <div class="container"> -->
-
 		<hr width="30%;">
 		<p class="reservation">RESERVATION</p>
 		<p class="reservation">${sessionScope.places}</p>
@@ -345,86 +340,7 @@ html{
 		<div class="orderListMsg">
 			<ul id="msg">
 			</ul>
-			<!--     	<button id="msg_process">전송</button> -->
 		</div>
-		<!-- <div class="tnb" style="height: 160px;">
-			<div class="tnb-container">
-				<div class="tnb-reset"></div>
-				<div class="tnb step1">
-					<div style="text-align: right; margin-left: 100px;">
-						<div class="info date">
-							<ul class="date">
-								<li class="header">날짜</li>
-								<li id="dateInnerHTML" class="data"></li>
-							</ul>
-							<ul class="date">
-								<li class="header"
-									style="position: absolute; top: 30px; left: 180px;">시간</li>
-								<li id="time" class="data"></li>
-							</ul>
-						</div>
-						<div class="info seat">
-							<ul class="date">
-								<li class="header" style="">-</li>
-								<li id="seatNumber" class="data"></li>
-							</ul>
-						</div>
-						<div class="info price">
-							<ul class="date">
-								<li class="header" style="">총금액</li>
-								<li id="priceSum" class="data"></li>
-							</ul>
-
-						</div>
-					</div>
-					<div class="panel">
-						<a href="#login_form" class="btn-right" id="orderModal">주 문</a>
-					</div>
-					<div>
-						<a href="" class="btn-left">이 전</a>
-					</div>
-				</div>
-			</div>
-
-		</div>
- -->
-		<!--          <script src="js/jquery.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/jquery.prettyPhoto.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-
-  <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/main.js"></script> -->
-
-   				
-		<!--  </div> -->
-
- 		<!-- 	<div class="side">
-                    <a href="" alt="logo" class="logo"><img src></a>
-                    <div class="top-menu">
-                        <ul class="menu-ul">
-                            <li>
-                                <img src="s1.png" class="s1">
-                                <span class="a1">날짜</span><span id="dateInnerHTML" class=""></span>
-                            </li>
-                            <li>
-                               <span class="a1">시간</span><span id="time"></span>
-                            </li>
-                             <li>
-                                <span class="a1">메뉴</span><span id="seatNumber"></span>
-                            </li>
-                            <li>
-                                <span class="a1">총 금액</span><span id="priceSum"></span>
-                            </li>
-                           
-                        </ul>
-                    </div>
- -->
-
-
-
-
-
 	</div>
 
 	<!--/#error-->
@@ -449,57 +365,37 @@ html{
 	            </div>
            </div>
            
-            <!-- <p style="text-align: center; line-height: 1.5;" class="ampm">오전</p> -->
-        <!--    <div id="am"> -->
            <div class="left-am">
-	          
-  <div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >01:00</a></div>
- <div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >07:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >13:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >19:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >02:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >08:00</a></div>
-<!--             <div class="right-p"> -->
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >14:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >20:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >03:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >09:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >15:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >21:00</a></div>
-           <!--  <p style="text-align: center; line-height: 1.5;"><br /></p> -->
-       <!--      </div> -->
-            
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >01:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >07:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >13:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >19:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >02:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >08:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >14:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >20:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >03:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >09:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >15:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >21:00</a></div>
             </div>
-        <!--     </div> -->
-      <!--       <div id="pm"> -->
-  <!--         <p style="text-align: center; line-height: 1.5;" class="ampm pm">오후</p> -->
-          <div class="right-pm">
-            
-	             <!-- <div class="divDirectInput">
-	            <button type="button" class="directInput" data-tooltip-text="시간을 직접 입력 할 때 에는 정확한 시간을 입력해주세요 . ex) 오후09시,21시,21:00 ">직접 입력</button> 
-	            </div> -->
-           <!-- <p style="text-align: center; line-height: 1.5;"> --><!-- </p> -->
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >04:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >10:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >16:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >22:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >05:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >11:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >17:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >23:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >06:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >12:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >18:00</a></div>
-<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >24:00</a></div>
-      <!--       <p style="text-align: center; line-height: 1.5;"><br /></p> -->
-       <!--      <p><br /></p> -->
-          <!--   </div> -->
+            <div class="right-pm">
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >04:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >10:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >16:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >22:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >05:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >11:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >17:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >23:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >06:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >12:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >18:00</a></div>
+				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >24:00</a></div>
             </div>
-            </div>
-            </div>
-  </div>
-
-<!-- </div>  -->
+           </div>
+          </div>
+         </div>
 	<!-- The Modal -->
 	<div id="menuModal" class="addModal" style="position: relative;">
 		<!-- Modal content -->
@@ -534,8 +430,6 @@ html{
 	</div>
 	<!--End Modal-->
 
-
-
 	<!-- 숨겨왔던 나의 수줍은 모달-->
 	<a href="#x" class="overlay" id="login_form"></a>
 
@@ -545,30 +439,23 @@ html{
 		<form action="/seatReservation/ticketingSuccess" method="POST"
 			id="formSubmit" name="formValue">
 			<ul style="list-style: none;" class="reservedCheck">
-				<li><span>아이디 : <input type="text" name="userId"
-						value="${sessionScope.user}"></span></li>
+				<li>${sessionScope.places}<input type="hidden" name="frcName" value="${sessionScope.places}"></li>
+				<li><span>아이디 : <input type="text" name="userId" value="${sessionScope.user}"></span></li>
 				<li><span>이름 : <input type="text" name="reservedName"></span></li>
 				<li><span>전화번호 : <input type="text" name="reservedPhone"></span></li>
 				<li>날짜 : <span id="dateCheck"></span></li>
 				<li>시간 : <span id="timeModal"></span></li>
 				<li>결제 금액 : <span id="payment"></span></li>
 			</ul>
-			<input type="hidden" value="${sessionScope.user}"> <input
-				type="hidden" id="formMenuPrice" name="formMenuPrice" value="" /> <input
-				type="hidden" id="formReservedDate" name="formReservedDate" value="" />
-			<input type="hidden" id="formReservedTime" name="formReservedTime"
-				value="" />
+			 <input type="hidden" id="formMenuPrice" name="formMenuPrice" value="" /> 
+			 <input type="hidden" id="formReservedDate" name="formReservedDate" value="" />
+			 <input type="hidden" id="formReservedTime" name="formReservedTime" value="" />
 			<div>
-				<!-- 				<a href="#" id="msg_process" onclick="takeOutReservedGo()"/>주문</a> -->
 				<button id="msg_process" type="button"
 					onclick="takeOutReservedGo();">주문</button>
 			</div>
 			<a class="close" href="#close"></a>
 		</form>
 	</div>
-
-
-
-
 </body>
 </html>

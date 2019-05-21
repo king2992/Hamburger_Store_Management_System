@@ -163,7 +163,13 @@ $('.searchbox-searchbutton').mouseover(function(){
 $('.searchbox-searchbutton').mouseout(function(){
 	$('.omnibox-tooltip').css('display','none');
 });
-
+window.onload = function(){
+	var login = "${sessionScope.user}";
+		if(login == ""){
+			alert("로그인 후에 이용해주세요.");
+			location.href = "/";
+		}
+	}
 </script>
 
 <script>

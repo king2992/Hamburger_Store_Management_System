@@ -17,7 +17,34 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="sweetalert2.all.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>   
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+ <script src="http://localhost:84/socket.io/socket.io.js"></script>
+<script>
+	var userId = "${sessionScope.user}";
+	$(document).ready(function() {
+		var socket = io("http://localhost:84");
+		//msg에서 키를 누를떄
+		$("#msg").keydown(function(key) {
+			//해당하는 키가 엔터키(13) 일떄
+			if (key.keyCode == 13) {
+				//msg_process를 클릭해준다.
+				msg_process.click();
+			}
+		});
+		//msg_process를 클릭할 때
+		$("#submitcash").click(function() {
+			//소켓에 send_msg라는 이벤트로 input에 #msg의 벨류를 담고 보내준다.
+			socket.emit("send_msg", $("#msg").text());
+			//#msg에 벨류값을 비워준다.
+			$("#msg").text("");
+		});
+		//소켓 서버로 부터 send_msg를 통해 이벤트를 받을 경우 
+		socket.on('send_msg', function(msg) {
+			//div 태그를 만들어 텍스트를 msg로 지정을 한뒤 #chat_box에 추가를 시켜준다.
+			$('<div></div>').text('새로운 주문이 있습니다.').appendTo("#chat_box");
+		});
+	});
+</script>   
 <style>
 /*     .active { 
     background-color: #EC5538 ;
@@ -300,7 +327,7 @@
 						class="fas fa-book menu-icon"></i>
 				</a></li>
 			</ul>
-
+			<div id="chat_box" style = "color : white;"></div>
 			<ul class="nav navbar-nav menu-infobtn">
 				<li class="dropdown"><a href="#"
 					class="dropdown-toggle menu-dropicon" data-toggle="dropdown"
@@ -434,7 +461,6 @@
 		</c:otherwise>
 	</c:choose>
 </ul>
-
 				</section>
 				<footer>
 					<div class="pay">
@@ -442,7 +468,6 @@
 							<li class="cardCash" onclick="card()">카드결제</li>
 							<li class="triggercash">현금결제</li>
 							<li><a href="#" id="trigger">메뉴등록</a></li>
-							
 						</ul>
 					</div>
 				</footer>
@@ -587,6 +612,7 @@
 	     		type : "POST",
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 				success : function(data) {
+					msgAnimate();
 					if(data == 1){
 						선규();
 					}
@@ -598,7 +624,13 @@
 		   alert('일치하지 않습니다. 다시 확인해주십시오.');
 		   return true;  
 	   }
+	     
    }
+	 function msgAnimate(){
+		  $("#chat_box").animate({
+	 			"color" : "#e3e3e3", "font-size" : "18px"
+	 		},1000) .animate({"color":"#333333", "font-size": "16px"},1000);
+	 }
 	 function 선규(){
 			$.ajax({
 	     		url : "/pos/menuAdd",

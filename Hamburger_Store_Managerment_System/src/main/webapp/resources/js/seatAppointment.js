@@ -1,8 +1,12 @@
-$("#menuModal").hide();
-$(".chickenList").hide();
-$(".burgerList").hide();
-$(".sideMenuList").hide();
-$(".drinkMenuList").hide();
+
+
+	$("#menuModal").hide();
+	$(".chickenList").hide();
+	$(".burgerList").hide();
+	$(".sideMenuList").hide();
+	$(".drinkMenuList").hide();
+
+
 document.addEventListener('DOMContentLoaded', function() {
 	  var calendarEl = document.getElementById('calendar');
 	  var timeList = document.getElementById('timeList');
@@ -253,12 +257,12 @@ $(document).ready(function() {
 		var reservedDate = formValue.formReservedDate.value;
 		var reservedTime = formValue.formReservedTime.value;
 		var totalPrice = Number(formValue.formMenuPrice.value);
-
+		var frcName = formValue.frcName.value;
 		$.ajax({
 			url : "/takeOutReservation/takeOutReservedListInsert",
 			type : "GET",
 			data : {"userId":userId, "reservedName":reservedName,"reservedPhone":reservedPhone,
-				"reservedDate":reservedDate,"reservedTime":reservedTime,"totalPrice":totalPrice},
+				"reservedDate":reservedDate,"reservedTime":reservedTime,"totalPrice":totalPrice, "frcName" : frcName},
 			dataType : "JSON",
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 			success : function(data) {

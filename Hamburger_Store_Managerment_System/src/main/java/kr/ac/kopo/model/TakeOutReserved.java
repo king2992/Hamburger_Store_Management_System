@@ -9,8 +9,15 @@ public class TakeOutReserved {
 	String reservedDate;
 	String reservedTime;
 	String status;
+	String frcName;
 	
 	
+	public String getFrcName() {
+		return frcName;
+	}
+	public void setFrcName(String frcName) {
+		this.frcName = frcName;
+	}
 	public String getStatus() {
 		return status;
 	}

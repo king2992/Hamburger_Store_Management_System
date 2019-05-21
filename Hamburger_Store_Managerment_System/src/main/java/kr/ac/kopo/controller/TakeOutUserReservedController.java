@@ -33,7 +33,6 @@ public class TakeOutUserReservedController {
 	TakeOutUserReservedService service;
 	@RequestMapping("/takeOutUserReservation")
 	String seatAppointment( Model model,String places, HttpSession session) {
-		System.out.println(places);
 		session.setAttribute("places", places);
 		
 		List<Menu> chickenList = service.chickenList();
@@ -53,9 +52,8 @@ public class TakeOutUserReservedController {
 	@RequestMapping(value="/takeOutReservedListInsert", method= {RequestMethod.GET,RequestMethod.POST})
 	int takeOutReservedListInsert(TakeOutReserved takeoutreserved, HttpSession session) {
 		String places = (String)session.getAttribute("places");
-		
-		session.removeAttribute(places);
 		service.takeOutReservedListInsert(takeoutreserved);
+		session.removeAttribute(places);
 				
 		return 1;
 	}

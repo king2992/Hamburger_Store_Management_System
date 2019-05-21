@@ -5,9 +5,9 @@
 
 	<insert id="insert" >
 		insert into takeout_reserved_list
-		(user_id, reserved_name, reserved_phone, reserved_date, reserved_time, total_price)
+		(user_id, reserved_name, reserved_phone, reserved_date, reserved_time, total_price, frc_name)
 		values
-		(#{userId},#{reservedName},#{reservedPhone},#{reservedDate},#{reservedTime},#{totalPrice})
+		(#{userId},#{reservedName},#{reservedPhone},#{reservedDate},#{reservedTime},#{totalPrice},#{frcName})
 	</insert>
 	
 	<insert id="menuInsert" parameterType="map">
