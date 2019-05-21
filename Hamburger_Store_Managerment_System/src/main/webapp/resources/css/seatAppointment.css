@@ -188,7 +188,7 @@ html {
     background-color: #e7ebed;
 }
 
-/* 상단 메뉴 수정 */
+/* �긽�떒 硫붾돱 �닔�젙 */
 .layout-topheader {
     height: 125px;
 }
@@ -203,3 +203,46 @@ html {
 .menu_active {
     color: white;
 }
+
+/* scroll time */
+  #containerScroll,#containerScroll2 {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #000;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  display: inline-block;
+  margin: 0 auto;
+}
+ 
+.item {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 5em;
+  scroll-snap-align: center;
+}
+.item:nth-child(3n+1) {
+  background: #fff6be;
+}
+.item:nth-child(3n+2) {
+  background: #ffa1ac;
+}
+.item:nth-child(3n) {
+  background: #cbbcf6;
+}
+
+.sb02::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(112, 110, 110, 0.3);background-color: #F5F5F5;}
+.sb02::-webkit-scrollbar{width: 6px;background-color: #F5F5F5;}
+.sb02::-webkit-scrollbar-thumb{background-color: #b8b5b5;}
+#hours{
+	position:relative;
+	
+	margin-left:20px;
+}
+#minutes{
+	position:relative;
+	margin-left:10px;
+}
+

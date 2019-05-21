@@ -6,7 +6,7 @@
 	$(".sideMenuList").hide();
 	$(".drinkMenuList").hide();
 	$("#orderListUl").hide();
-
+	
 document.addEventListener('DOMContentLoaded', function() {
 	  var calendarEl = document.getElementById('calendar');
 	  var timeList = document.getElementById('timeList');
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			     $(".dateAlert").hide(); 
 			     
 				 $('#myModal').show();
-				 $("#am").show();
-				 $("#pm").hide(); 
+				 $("#hours").text("1시");
+				 $("#minutes").text("1분"); 
 				 dateAnimate();
 				   
 			    } ,
@@ -65,7 +65,18 @@ function timeAdd(){
 	
 
 $(document).ready(function() {
-	
+	$("#containerScroll").scroll(function(){var height = $(this).scrollTop();if(height == 0 && height < 148){$("#hours").text("1시");}else if(height == 148){$("#hours").text("2시");}else if(height == 296){$("#hours").text("3시");}else if(height == 444){$("#hours").text("4시");}else if(height == 592){$("#hours").text("5시");}else if(height == 740){$("#hours").text("6시");}else if(height == 888){$("#hours").text("7시");}else if(height == 1036){$("#hours").text("8시");}else if(height == 1184){$("#hours").text("9시");}else if(height == 1332){$("#hours").text("10시");}else if(height == 1480){$("#hours").text("11시");}else if(height == 1628){$("#hours").text("12시");}})
+	$("#containerScroll2").scroll(function(){var height = $(this).scrollTop();if(height == 0 && height < 148){$("#minutes").text("1분");}else if(height == 148){$("#minutes").text("2분");}else if(height == 296){$("#minutes").text("3분");}else if(height == 444){$("#minutes").text("4분");}else if(height == 592){$("#minutes").text("5분");}else if(height == 740){$("#minutes").text("6분");}else if(height == 888){$("#minutes").text("7분");}else if(height == 1036){$("#minutes").text("8분");}else if(height == 1184){$("#minutes").text("9분");}else if(height == 1332){$("#minutes").text("10분");}else if(height == 1480){$("#minutes").text("11분");}else if(height == 1628){$("#minutes").text("12분");}else if(height == 1776){$("#minutes").text("13분");}else if(height == 1924){$("#minutes").text("14분");}else if(height == 2072){$("#minutes").text("15분");}else if(height == 2220){$("#minutes").text("16분");}else if(height == 2368){$("#minutes").text("17분");}else if(height == 2516){$("#minutes").text("18분");}else if(height == 2664){$("#minutes").text("19분");}else if(height == 2812){$("#minutes").text("20분");}else if(height == 2960){$("#minutes").text("21분");}else if(height == 3108){$("#minutes").text("22분");}else if(height == 3256){$("#minutes").text("23분");}else if(height == 3404){$("#minutes").text("24분");}else if(height == 3552){$("#minutes").text("25분");}else if(height == 3700){$("#minutes").text("26분");}else if(height == 3848){$("#minutes").text("27분");}else if(height == 3996){$("#minutes").text("28분");}else if(height == 4144){$("#minutes").text("29분");}else if(height == 4292){$("#minutes").text("30분");}else if(height == 4440){$("#minutes").text("31분");}else if(height == 4588){$("#minutes").text("32분");}else if(height == 4736){$("#minutes").text("33분");}else if(height == 4884){$("#minutes").text("34분");}else if(height == 5032){$("#minutes").text("35분");}else if(height == 5180){$("#minutes").text("36분");}else if(height == 5328){$("#minutes").text("37분");}else if(height == 5476){$("#minutes").text("38분");}else if(height == 5624){$("#minutes").text("39분");}else if(height == 5772){$("#minutes").text("40분");}else if(height == 5920){$("#minutes").text("41분");}else if(height == 6068){$("#minutes").text("42분");}else if(height == 6216){$("#minutes").text("43분");}else if(height == 6364){$("#minutes").text("44분");}else if(height == 6512){$("#minutes").text("45분");}else if(height == 6660){$("#minutes").text("46분");}else if(height == 6808){$("#minutes").text("47분");}else if(height == 6956){$("#minutes").text("48분");}else if(height == 7104){$("#minutes").text("49분");}else if(height == 7252){$("#minutes").text("50분");}else if(height == 7400){$("#minutes").text("51분");}else if(height == 7548){$("#minutes").text("52분");}else if(height == 7696){$("#minutes").text("53분");}else if(height == 7844){$("#minutes").text("54분");}else if(height == 7992){$("#minutes").text("55분");}else if(height == 8140){$("#minutes").text("56분");}else if(height == 8288){$("#minutes").text("57분");}else if(height == 8436){$("#minutes").text("58분");}else if(height == 8584){$("#minutes").text("59분");}})
+	$(document).on('click', "#timeSelect", function(){
+		var hours = $("#hours").text();
+		var minutes = $("#minutes").text();
+		
+		$("#timeModalHours").text(hours);
+		$("#timeModalMinutes").text(minutes);
+		
+		timeAnimate();
+		$("#myModal").hide();
+	})
 	$(".dateAlert").hide();
 	//총 주문 금액
 	function totalPrice() {
@@ -212,36 +223,19 @@ $(document).ready(function() {
 		$(".sideMenuList").hide();
 		$(".drinkMenuList").show();	
 	});
-	$(document).on('click', '.directInput', function(){
-		var input = document.createElement("input");
-		var button = document.createElement("button");
-		input.setAttribute("id", "directinput");
-		button.setAttribute("type", "button");
-		button.setAttribute("id", "directbutton");
-		button.innerHTML = "선택";
-		console.log($(".divDirectInput > button").size());
-			if($(".divDirectInput > button").size() <= 0){
-				$(".divDirectInput").append(input).append(button);	
-			}else{
-				$("#directinput").remove();
-				$("#directbutton").remove();
-			}
-	});
-	$(document).on('click', '#directbutton', function(){
-		var 우형이 = $("#directinput").val();
-		$("#time").text(우형이);
-		$("#timeModal").text(우형이);
-		$(".modal").hide();
-		function timeAnimate(){ // 시간 출력 되면서 애니메이션 효과
-	 		$("#time").animate({
-	 			"color" : "white", "font-size" : "18px"
-	 		},1000) .animate({"color":"black","font-size": "16px"},1000);
-	 	}
-		timeAnimate();
-	})
+
+	function timeAnimate(){ // 시간 출력 되면서 애니메이션 효과
+ 		$("#hours").animate({
+ 			"color" : "white", "font-size" : "18px"
+ 		},1000) .animate({"color":"black","font-size": "16px"},1000);
+ 		$("#minutes").animate({
+ 			"color" : "white", "font-size" : "18px"
+ 		},1000) .animate({"color":"black","font-size": "16px"},1000);
+ 	}
 	$(document).on('click', '.timeModalClose', function(){
 		$(".modal").hide();
 	});
+	
 	function amView(){
 		$("#am").show();
 		$("#pm").hide();
@@ -260,7 +254,8 @@ $(document).ready(function() {
 		var reservedName = formValue.reservedName.value;
 		var reservedPhone = formValue.reservedPhone.value;
 		var reservedDate = formValue.formReservedDate.value;
-		var reservedTime = formValue.formReservedTime.value;
+		//var reservedTime = formValue.formReservedTime.value;
+		var reservedTime = $("#timeModalHours").text() + $("#timeModalMinutes").text();
 		var totalPrice = Number(formValue.formMenuPrice.value);
 		var frcName = formValue.frcName.value;
 		$.ajax({

@@ -15,6 +15,8 @@
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/css/font-awesome.min.css" rel="stylesheet">
 <link href="/resources/css/icomoon.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://localhost:84/socket.io/socket.io.js"></script>
 <!--   <link href="/resources/css/main.css" rel="stylesheet">  
 <!--   <link href="/resources/css/responsive.css" rel="stylesheet">  -->
 <!-- 모달  -->
@@ -35,8 +37,7 @@
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="sweetalert2.all.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
 
@@ -54,14 +55,12 @@
 <script src='/resources/fullcalendar-4.0.2/packages/daygrid/main.js'></script>
 <script src='/resources/fullcalendar-4.0.2/packages/timegrid/main.js'></script>
 <script src='/resources/fullcalendar-4.0.2/packages/interaction/main.js'></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link href='/resources/fullcalendar-4.0.2/packages/core/main.css'
 	rel='stylesheet' />
 <link href='/resources/fullcalendar-4.0.2/packages/daygrid/main.css'
 	rel='stylesheet' />
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/seatAppointment.css">
-<script src="http://localhost:84/socket.io/socket.io.js"></script>
 <script>
 	var userId = "${sessionScope.user}";
 	$(document).ready(function() {
@@ -253,7 +252,7 @@ width: 300px;
 		<hr width="30%;">
 		<ul class="value-document">
 			<li><span>날짜</span><span id="dateInnerHTML"></span></li>
-			<li><span>시간</span><span id="time"></span></li>
+			<li><span>시간</span><span id="hours"></span><span id="minutes"></span></li>
 			<li><span>총금액</span><span id="priceSum"></span></li>
 		</ul>
 		
@@ -380,41 +379,95 @@ width: 300px;
 	 <div id="myModal" class="modal">
   <div class="modal-content">
   <div class="content-display"> 
-           <div><p style="text-align: center;"><span style="font-size: 14pt;"><b>시간을 선택해주세요.<span style="font-size: 24pt;"></span></b></span></p>
-          <!--  <button type="button" onclick="amView()">오전</button><button type="button" onclick="pmView()">오후</button> -->
+  <h2 style="text-align: center; margin-top:40px;">시간을 선택해주세요</h2>
+         <!--   <div><p style="text-align: center;"><span style="font-size: 14pt;"><b>시간을 선택해주세요.<span style="font-size: 24pt;"></span></b></span></p>
+           <button type="button" onclick="amView()">오전</button><button type="button" onclick="pmView()">오후</button>
             <button type="button" class="directInput button buttonblack" data-tooltip-text="시간을 직접 입력 할 때 에는 정확한 시간을 입력해주세요 . ex) 오후09시,21시,21:00 ">직접 입력</button>
               <div class="divDirectInput">
 	           
 	            </div>
-           </div>
+           </div> -->
            
            <div class="left-am">
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >01:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >07:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >13:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >19:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >02:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >08:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >14:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >20:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >03:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >09:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >15:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >21:00</a></div>
+				 <div id="containerScroll" class="sb02 hours" >
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                    <div class="item">4</div>
+                    <div class="item">5</div>
+                    <div class="item">6</div>
+                    <div class="item">7</div>
+                    <div class="item">8</div>
+                    <div class="item">9</div>
+                    <div class="item">10</div>
+                    <div class="item">11</div>
+                    <div class="item">12</div>
+         <!--    </div> -->
             </div>
-            <div class="right-pm">
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >04:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >10:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >16:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >22:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >05:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >11:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >17:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >23:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >06:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >12:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >18:00</a></div>
-				<div class="button-4"><div class="eff-4"></div><a id="" onClick="timeAdd();" >24:00</a></div>
+            <!-- <div class="right-pm"> -->
+				<div id="containerScroll2" class="sb02 minutes" >
+                    <div class="item">01</div>
+                    <div class="item">02</div>
+                    <div class="item">03</div>
+                    <div class="item">04</div>
+                    <div class="item">05</div>
+                    <div class="item">06</div>
+                    <div class="item">07</div>
+                    <div class="item">08</div>
+                    <div class="item">09</div>
+                    <div class="item">10</div>
+                    <div class="item">11</div>
+                    <div class="item">12</div>
+                    <div class="item">13</div>
+                    <div class="item">14</div>
+                     <div class="item">15</div>
+                     <div class="item">16</div>
+                     <div class="item">17</div>
+                   <div class="item">18</div>
+                   <div class="item">19</div>
+                    <div class="item">20</div>
+                     <div class="item">21</div>
+                    <div class="item">22</div>
+                    <div class="item">23</div>
+                    <div class="item">24</div>
+                    <div class="item">25</div>
+                    <div class="item">26</div>
+                    <div class="item">27</div>
+                    <div class="item">28</div>
+                    <div class="item">29</div>
+                    <div class="item">30</div>
+                     <div class="item">31</div>
+                    <div class="item">32</div>
+                    <div class="item">33</div>
+                    <div class="item">34</div>
+                    <div class="item">35</div>
+                    <div class="item">36</div>
+                    <div class="item">37</div>
+                    <div class="item">38</div>
+                    <div class="item">39</div>
+                    <div class="item">40</div>
+                     <div class="item">41</div>
+                    <div class="item">42</div>
+                    <div class="item">43</div>
+                    <div class="item">44</div>
+                    <div class="item">45</div>
+                    <div class="item">46</div>
+                    <div class="item">47</div>
+                    <div class="item">48</div>
+                    <div class="item">49</div>
+                    <div class="item">50</div>
+                     <div class="item">51</div>
+                    <div class="item">52</div>
+                    <div class="item">53</div>
+                    <div class="item">54</div>
+                    <div class="item">55</div>
+                    <div class="item">56</div>
+                    <div class="item">57</div>
+                    <div class="item">58</div>
+                    <div class="item">59</div>
+                    
+            </div>
+             <button type="button" id="timeSelect">선택</button>
             </div>
            </div>
           </div>
@@ -467,7 +520,7 @@ width: 300px;
 				<li><span class="span">이름  <input type="text" name="reservedName" class="input"></span></li>
 				<li><span class="span">전화번호  <input type="text" name="reservedPhone" class="input"></span></li>
 				<li><span class="span">날짜</span>  <span id="dateCheck"></span></li>
-				<li><span class="span">시간 </span> <span id="timeModal"></span></li>
+				<li><span class="span">시간 </span><span id="timeModalHours"></span><span id="timeModalMinutes"></span></li>
 				<li><span class="span">금액</span>  <span id="payment"></span></li>
 			</ul>
 			 <input type="hidden" id="formMenuPrice" name="formMenuPrice" value="" /> 
