@@ -332,6 +332,12 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/pos/posmanagement">포스기(관리자)</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Order Display</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/order/Page">WebSocket</a>
+          </li>
         </ul>
       </div>
     </div>

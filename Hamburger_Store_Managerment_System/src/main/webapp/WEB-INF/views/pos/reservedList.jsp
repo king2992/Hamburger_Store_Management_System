@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 내역</title>
+<script src="http://localhost:84/socket.io/socket.io.js"></script>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="/resources/js/reservedList.js"></script>
  <script src='/resources/fullcalendar-4.0.2/packages/core/main.js'></script>
@@ -21,8 +22,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="sweetalert2.all.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>   
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
  <link href="/resources/css/reservedList.css" type="text/css" rel="stylesheet">
+ 
 </head>
 <body>
 <div id="container">
@@ -87,7 +89,6 @@
 				<th>주문금액</th>
 				<th>예약상세</th>
 				<th>상태</th>
-		<!-- 		<th>상태변경</th> -->
 			</tr>
 			<tbody class="reservedContainer">
 	<c:choose>
@@ -98,20 +99,20 @@
 			<tr>
 				<td>매장</td>
 				<td class="reservedOrderId">${orders.orderId}</td>
-				<td>${orders.regDate} ${orders.regTime} </td>
+				<td class="regTime">${orders.regDate} ${orders.regTime} </td>
 				<td>${orders.payTotal}</td>
 				<td data-tooltip-text="예약내역 확인하기"><button type='button' class="reservedCheck btn btn-concrete">예약 메뉴 확인</button></td>
-				<td>상품 준비 중<button type="button" class="orderReady button">조리완료</button></td>
+				<td>상품 준비 중<button type="button" class="orderReady button" id="reservedCheck" data-orderid="${orders.orderId}">조리완료</button></td>
 			</tr> 
 			</c:when>
 			<c:otherwise>
 			<tr style="background-color:gray">
 				<td>매장</td>
 				<td class="reservedOrderId" id="${orders.orderId}" data-check="${orders.status}">${orders.orderId}</td>
-				<td>${orders.regDate} ${orders.regTime} </td>
+				<td class="regTime">${orders.regDate} ${orders.regTime} </td>
 				<td>${orders.payTotal}</td>
-				<td data-tooltip-text="예약내역 확인하기"><button type='button' class="reservedCheck btn btn-concrete">예약 메뉴 확인</button></td>
-				<td>준비 완료</td>
+				<td data-tooltip-text="예약내역 확인하기"><button type='button' id="reservedCheck" data-orderid="${orders.orderId}" class="reservedCheck btn btn-concrete">예약 메뉴 확인</button></td>
+				<td>Complete</td>
 			</tr>
 			</c:otherwise>
 			</c:choose>
@@ -147,7 +148,7 @@
 				<td>${takeout.totalPrice}</td>
 				<td data-tooltip-text="예약내역 확인하기"><button type='button' class="takeoutReservedCheck btn btn-concrete" data-takeoutid="${takeout.takeoutId}">예약 메뉴 확인</button></td>
 				<td>${takeout.reservedName}</td>
-				<td>${takeout.reservedPhone}</td>
+				<td><a href="tel:${takeout.reservedPhone}">${takeout.reservedPhone}</a></td>
 				<td>상품 준비 중<button type="button" class="takeoutOrderReady button" data-takeoutid="${takeout.takeoutId}">조리완료</button></td>
 			</tr>
 			</c:when>
@@ -159,8 +160,8 @@
 				<td>${takeout.totalPrice}</td>
 				<td data-tooltip-text="예약내역 확인하기" ><button type='button' class="takeoutReservedCheck btn btn-concrete" data-takeoutid="${takeout.takeoutId}" >예약 메뉴 확인</button></td>
 				<td>${takeout.reservedName}</td>
-				<td>${takeout.reservedPhone}</td>
-				<td>준비 완료</td>
+				<td><a href="tel:${takeout.reservedPhone}">${takeout.reservedPhone}</a></td>
+				<td>Complete</td>
 			</tr>
 			</c:otherwise>
 			</c:choose>
@@ -185,40 +186,6 @@
 		
 	
 </body>
-<style>
-/* [data-tooltip-text]:hover {
-	position: relative;
-}
-
-[data-tooltip-text]:hover:after {
-	background-color: #000000;
-	background-color: rgba(0, 0, 0, 0.8);
-
-	-webkit-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
-	-moz-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
-	box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
-
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-
-	color: #FFFFFF;
-	font-size: 12px;
-	content: attr(data-tooltip-text);
-
-  margin-bottom: 10px;
-	top: 130%;
-	left: 0;    
-	padding: 20px 40px;
-	position: absolute;
-	width: auto;
-	min-width: 50px;
-	max-width: 300px;
-/* 	word-wrap: break-word; */
-
-	/* z-index: 9999;
-}  */
-</style>
 <script type="text/javascript">
 	$('.b04_3d_tick').click(function(){
 		/* $('#calendar').show(); */

@@ -25,12 +25,7 @@ import kr.ac.kopo.service.PosService;
 @RequestMapping("/pos")
 public class PosController {
 	final String path = "pos/";
-	Date date = new Date();
-	Date time = new Date();
-	
-	SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat timeformat = new SimpleDateFormat("a hh:mm:ss");
-	
+
 	@Autowired
 	PosService posservice;
 	
@@ -85,14 +80,18 @@ public class PosController {
 		
 		return path + "orders";
 	}
+	Date date = new Date();
+	Date time = new Date();
+	SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat timeformat = new SimpleDateFormat("a hh:mm:ss");
 	@ResponseBody
 	@RequestMapping(value="/orders",method=RequestMethod.POST)
-	int orders(@RequestParam(value="payTotal") int payTotal ) {
+	int orders(@RequestParam(value="payTotal") int payTotal , @RequestParam(value="regTime") String regTime) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("payTotal", payTotal);
 		map.put("regDate", dateformat.format(date));
-		map.put("regTime", timeformat.format(time));
+		map.put("regTime", regTime);
 
 		posservice.orders(map);
 		return 1;
@@ -162,5 +161,4 @@ public class PosController {
 		List<TakeOutReserved> takeoutreserved = posservice.takeoutDateSort(reservedDate); 
 		return takeoutreserved;
 	}
-	
 }

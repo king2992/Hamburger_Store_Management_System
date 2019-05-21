@@ -28,7 +28,7 @@
 	
 	<insert id="orders" parameterType="map">
 		INSERT INTO orders(reg_date, pay_total, reg_time  )
-		VALUES(  #{regDate}, #{payTotal},#{regTime} ) 
+		VALUES(  #{regDate}, #{payTotal}, #{regTime} ) 
 	</insert>
 	
 	<insert id="orderMenuAdd" parameterType="map">
