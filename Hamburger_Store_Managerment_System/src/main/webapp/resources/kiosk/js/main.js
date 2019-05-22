@@ -1,5 +1,5 @@
 /**
- Web Kiosk First Screen * 
+ * Web Kiosk First Screen *
  */
 
 // 주문 결제 완료 alert
@@ -27,7 +27,7 @@ function payment() {
 	    console.log('주문 결제가 완료 되었습니다.')
 	  }
 	});
-// swal() 생성	
+// swal() 생성
 	function swal() {
 	Swal.fire({
 		
@@ -97,70 +97,41 @@ $(document).ready(function(){
 // 동적으로 생성하는 주문 내역
 // + = .p_btn
 // - = .m_btn
-// x = .menu_del	
+// x = .menu_del
 		$(function(){
 			$('.tab_cont li img').on('click', function() {
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
-				$('.table_tr2').append('<tr>'+'<td>'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td>'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
+				$('.table_tr2').append('<tr>'+'<td id="menuname'+menuname+'">'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td>'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
 				console.log(menuname);
 				console.log(price);
 			});
 		});
 		
-// 주문 내역 삭제 
+// 주문 내역 삭제
+		
 		$(document).on('click', ".menu_del", function(){
 			$(this).parent().parent().remove();
 			swal2();
 		});
-// 갯수 + / - 
-		 
-			  $(document).on('click','.p_btn', function(){
-				  
-				 console.log('>>>>>>>>>>요기다')
-				  var plus = $('.cnt').text();
-				  var num = parseInt(plus,10);
-				  
-				  num++;
-				  if (num<=0) {
-					  swal3();
-					  num = 1;
-				  }
-				  $('.cnt').text(num);
-				  
-			  })
-		  
-		  
-//		$(function() {
-//			$('.m_btn').on('click', function(){
-//				var expense = $('.up_down').val();
-//				expense = (Number(expense)-1);
-//				if (expense >= 10) {
-//					$('.up_down').val(expense);
-//				}
-//			});
-//			
-//		$(function() {
-//			$('.p_btn').on('click', function() {
-//				var expense = $('.up_down').val();
-//				expense = (Number(expense)+1);
-//				if ($('.up_down') < 10) {
-//					$('.up_down').val(expense);
-//				}
-//			});
-//		}); 
-//	});
-//		  $(function(){
-//			 $('.p_btn').on('click', function() {
-//				 $('.cnt').text(parseInt($('.cnt').text()) + 1);
-//			 });
-//		  });
-//		  
-//		  $(function() {
-//			$('.p_btn').on('click', function(){
-//				var stat = $('.cnt').
-//			})  
-//		  })
+// 갯수 + / -
+		
+		$(document).on('click','.p_btn', function(){
+			var item = $(this).siblings("span").text();
+				item ++;
+			var tot = item;
+			$(this).siblings("span").text(tot);
+		});
+		$(document).on('click','.m_btn', function(){
+			var item = $(this).siblings("span").text();
+			if(item > 1 ){
+				item --;
+			}
+			var tot = item;
+			$(this).siblings("span").text(tot);
+		});
+
+	
 });
 
 

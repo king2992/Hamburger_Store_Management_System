@@ -131,7 +131,6 @@
 			<div class="order_list_wrap">
 			<p class="p">메뉴를 선택해주세요.</p>
 			<div class="order_list_div">
-				
 				<table class="table_list">
 				<thead>
 					<tr>
@@ -144,7 +143,6 @@
 						
 					</tbody>
 				</table>
-				
 			</div>
 <!-- 			결제/취소 영역 -->
 			<div class="order_payment_div">
@@ -153,7 +151,6 @@
 						<td>총 금액 :&nbsp;&nbsp;</td>
 						<td><input class="total_pay" type="text">&nbsp;원</td>
 					</tr>
-					
 				</table>
            			 <div class="button_base b03_skewed_slide_in">
                	 <div>결제취소</div>
