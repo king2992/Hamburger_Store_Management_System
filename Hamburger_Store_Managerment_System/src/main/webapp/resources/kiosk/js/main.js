@@ -130,8 +130,6 @@ $(document).ready(function(){
 			var tot = item;
 			$(this).siblings("span").text(tot);
 		});
-
-	
 });
 
 
