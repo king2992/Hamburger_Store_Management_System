@@ -252,7 +252,8 @@ html {
 
 
 .documentPopup{
-		 display: none;  /* Hidden by default */
+		  display: none;   /* Hidden by default */
+ 	
  	position: fixed;  /* Stay in place */
 	 z-index: 10000;  /* Sit on top */
 	 left: 0; 
@@ -290,7 +291,7 @@ html {
 .totalTable thead {width:100%; border-bottom:2px dotted #555555;}
 .totalTable thead th{width:30%; padding: 6px; text-align: center;}
 .documentUl > li > span:nth-child(1){font-weight: 600; font-size: 17px; width: 100px; margin-right: 10px;}
-.documentBtnCenter{width:120px; margin: 0 auto;}
+.documentBtnCenter{width:246px; margin: 0 auto;}
 .documentBtnCenter button{
 
 background:#1AAB8A;
@@ -351,3 +352,9 @@ background:#1AAB8A;
 /* .btn.green {box-shadow: 0px 4px 0px #87a86f;}
 .btn.green:active {box-shadow: 0 0 #87a86f; background-color: #87a86f;} */
 
+  .show-modal { 
+         opacity: 1; 
+         visibility: visible; 
+         transform: scale(1.0); 
+         transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+     } 

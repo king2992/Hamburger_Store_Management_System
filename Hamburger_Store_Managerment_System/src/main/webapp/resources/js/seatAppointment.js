@@ -6,6 +6,7 @@
 	$(".sideMenuList").hide();
 	$(".drinkMenuList").hide();
 	$("#orderListUl").hide();
+	$(".documentPopup").hide();
 	
 document.addEventListener('DOMContentLoaded', function() {
 	  var calendarEl = document.getElementById('calendar');
@@ -202,6 +203,9 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click', '#orderModal', function(){
+		
+		$('.overlay').show();
+		$('popup').css('display','block');
 		var priceSum = $("#priceSum").text();
 		$("#payment").text(priceSum);
 		

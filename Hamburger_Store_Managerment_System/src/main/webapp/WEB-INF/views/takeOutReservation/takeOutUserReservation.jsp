@@ -537,8 +537,8 @@ width: 300px;
 			 <input type="hidden" id="formReservedTime" name="formReservedTime" value="" />
 			<div class="center">
 				<button id="msg_process" type="button"
-					class="snip1535 center">주문</button>
-					<!-- onclick="takeOutReservedGo();" --> 
+					 class="snip1535 center">주문</button>  <!-- onclick="takeOutReservedGo();" -->
+					 
 			</div>
 			<a class="close" href="#close"></a>
 		</form>
@@ -582,15 +582,20 @@ width: 300px;
 			</table>
 			<div class="documentBtnCenter">
 				<button id="" type="button"
-					onclick="documentClose()" class="documentClose">출력</button>
+					onclick="takeOutReservedGo()" class="documentClose">출력</button>
+			   <button type="button" id="cancel" class="documentClose">취소</button> 
 			</div>
-			<a class="close" href="#close"></a>
+		<!-- 	<a class="close" href="#close"></a> -->
 	</div>
 	</div>
 	<script>
-	$('#msg_process').click(function() {
-		$('.documentPopup').css('display','block');
-		$('.popup').css('display','none');
+	$(document).on('click','#msg_process',function() {
+		/* $('.documentPopup').css('display','block');
+		$('.popup').css('display','none'); */
+		/* $('.documentPopup').show(); */
+		$('.popup').hide();
+		$('.overlay').hide();
+		$('.documentPopup').show();
 		
 		var documentPayment = $('#priceSum').text();
 		var documentTimeCheck = $('#dateInnerHTML').text();
@@ -616,7 +621,7 @@ width: 300px;
 	});
 	
 	$('.documentClose').click(function(){
-		$('.documentPopup').css('display','none');
+		$('.documentPopup').hide();
 	});
 	
 	</script>
