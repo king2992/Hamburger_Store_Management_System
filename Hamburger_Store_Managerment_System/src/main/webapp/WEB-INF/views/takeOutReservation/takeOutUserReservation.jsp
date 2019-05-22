@@ -134,6 +134,10 @@ html{
 	bottom: 200px;  */
 }
 
+.content-display{margin: 0 auto;}
+.timeCenter{margin-top: 40px;}
+
+
 .addModal {
 	display: none; /* Hidden by default */
 	/* Stay in place */
@@ -391,7 +395,7 @@ width: 300px;
 	            </div>
            </div> -->
            
-           <div class="left-am">
+           <div class="timenCenter">
 				 <div id="containerScroll" class="sb02 hours" >
                     <div class="item">1</div>
                     <div class="item">2</div>
@@ -470,7 +474,9 @@ width: 300px;
                     <div class="item">59</div>
                     
             </div>
-             <button type="button" id="timeSelect">선택</button>
+            <div class="timeBtnCenter">
+             <button type="button" id="timeSelect" class="btn-two green rounded">선택</button>
+             </div>
             </div>
            </div>
           </div>
@@ -531,10 +537,88 @@ width: 300px;
 			 <input type="hidden" id="formReservedTime" name="formReservedTime" value="" />
 			<div class="center">
 				<button id="msg_process" type="button"
-					onclick="takeOutReservedGo();" class="snip1535 center">주문</button>
+					class="snip1535 center">주문</button>
+					<!-- onclick="takeOutReservedGo();" --> 
 			</div>
 			<a class="close" href="#close"></a>
 		</form>
 	</div>
+	
+	<!-- 영수증 -->
+	<div class="documentPopup">
+		<div class="documentCenter">
+		<h2>[ 영수증 ]</h2>
+			<ul style="list-style: none;" class="documentUl">
+				<li><span>[ 매장명 ]</span><span>${sessionScope.places}</span></li>
+				<!-- <li><span>[ 주 &nbsp;&nbsp;&nbsp;소 ]</span><span>주소</span></li> -->
+				<li><span>[ 발행일 ]</span><span id="documentTimeCheck"></span></li>
+				<li><span>[ 영수증 ]</span><span id="documentTimeCheck"><span id="documentTimeModalHours"></span></span></li>
+				<li><span>[주문번호]</span><span></span></li>
+			</ul>
+			<table class="menuTable">
+				<thead>
+					<tr>
+						<th>메뉴명</th>
+						<th>수 량</th>
+						<th>금 액</th>
+					</tr>
+				</thead>
+				<tbody class="documentTable">
+				<!-- 	<tr>
+						<th><span id="documentMenuName"></span></th>
+						<th><span id="documentCnt"></span></th>
+						<th><span id="documentPrice"></span></th>
+					</tr> -->
+				</tbody>
+			</table>
+			<table class="totalTable">
+			<thead>
+				<tr>
+					<th style="letter-spacing: 5px;">합계 금액</th>
+					 <th></th>
+					<th><span id="documentPayment"></span></th>
+				</tr>
+				</thead>
+			</table>
+			<div class="documentBtnCenter">
+				<button id="" type="button"
+					onclick="documentClose()" class="documentClose">출력</button>
+			</div>
+			<a class="close" href="#close"></a>
+	</div>
+	</div>
+	<script>
+	$('#msg_process').click(function() {
+		$('.documentPopup').css('display','block');
+		$('.popup').css('display','none');
+		
+		var documentPayment = $('#priceSum').text();
+		var documentTimeCheck = $('#dateInnerHTML').text();
+		var documentHours = $('#timeModalHours').text();
+		var documentMinutes = $('#timeModalMinutes').text();
+		var documentTime = documentTimeCheck + " - " + documentHours + " " + documentMinutes;
+		
+	
+		
+		$('#documentTimeModalHours').text(documentTime);
+		$('#documentPayment').text(documentPayment);
+		$('#documentTimeCheck').text(documentTimeCheck);
+		
+		
+	  /*   var ordermenuName = $('.orderMenuName').text(); */
+     	
+		/* var price = $('.menu-price').text(); */
+		
+ 		/*  $('#documentMenuName').text(ordermenuName);  */
+/* 		$('#documentCnt').text(cnt); */
+		/* $('#documentPrice').text(price);  */
+		/* $('#menuName').text(menuName); */
+	});
+	
+	$('.documentClose').click(function(){
+		$('.documentPopup').css('display','none');
+	});
+	
+	</script>
 </body>
 </html>

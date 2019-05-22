@@ -205,6 +205,10 @@ html {
 }
 
 /* scroll time */
+.timenCenter{margin-top: 40px;}
+.timeBtnCenter{width:100px; margin:0 auto;}
+#timeSelect{width:100px; margin:0 auto;}
+
   #containerScroll,#containerScroll2 {
   width: 150px;
   height: 150px;
@@ -212,7 +216,7 @@ html {
   overflow: auto;
   scroll-snap-type: y mandatory;
   display: inline-block;
-  margin: 0 auto;
+  margin-bottom:40px;
 }
  
 .item {
@@ -245,4 +249,105 @@ html {
 	position:relative;
 	margin-left:10px;
 }
+
+
+.documentPopup{
+		 display: none;  /* Hidden by default */
+ 	position: fixed;  /* Stay in place */
+	 z-index: 10000;  /* Sit on top */
+	 left: 0; 
+	 top: 0;  
+	 width: 100%;  /* Full width */
+	  height: 100%; */ /* Full height */
+	 /* overflow: auto;   *//* Enable scroll if needed */
+	 background-color: rgb(0, 0, 0); /* Fallback color */
+	 background-color: rgba(0, 0, 0, 0.4);  /* Black w/ opacity */
+/* 	 position:absolute; */
+	 margin:0 auto;
+}
+.documentCenter{
+ 	  	background-color: #fefefe;
+    margin: 10% auto;  
+	padding: 25px;
+	border: 1px solid #888;
+/* 	height:40px; */
+/* 	min-width:40px; */
+	/* width:100%; */
+	width: 685px; 
+	height:475px;
+	 border-radius: 10px;
+	 transition: opacity .5s, top .5s;
+	  box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
+	  
+	/*  transform: translate(-50%, -50%); */
+}
+.documentCenter h2{text-align: center; margin-top: 20px;}
+.documentUl{margin-top:30px;}
+.menuTable  {width:90%; text-align: center; margin-left: 40px; border-bottom:2px dotted #555555;}
+.menuTable thead {width:100%; border-top:2px dotted #555555; border-bottom:2px dotted #555555;}
+.menuTable thead th{width:30%; padding: 6px; letter-spacing:5px; }
+.totalTable  {width:90%;  margin-left: 40px; text-align: justify; margin-bottom: 40px;}
+.totalTable thead {width:100%; border-bottom:2px dotted #555555;}
+.totalTable thead th{width:30%; padding: 6px; text-align: center;}
+.documentUl > li > span:nth-child(1){font-weight: 600; font-size: 17px; width: 100px; margin-right: 10px;}
+.documentBtnCenter{width:120px; margin: 0 auto;}
+.documentBtnCenter button{
+
+background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:45px;
+  font-size:20px;
+  padding:0 2em;
+  border-radius:5px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.documentBtnCenter button:hover {
+	background:#fff;
+  color:#1AAB8A;
+}
+.documentBtnCenter button:before,.documentBtnCenter button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.documentBtnCenter button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.documentBtnCenter button:hover:before,.documentBtnCenter button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+/* Button two - I have no creativity for names */
+.btn-two {
+	color: white;	
+	padding: 15px 25px;
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,0.21);
+	border-bottom-color: rgba(0,0,0,0.34);
+	text-shadow:0 1px 0 rgba(0,0,0,0.15);
+	box-shadow: 0px 4px #74a3b0;
+	background-color:#74a3b0;
+}
+.btn-two:active {
+	top: 1px;
+	border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+	box-shadow: box-shadow: 0px 4px #74a3b0;
+	position: relative;
+	background-color:#74a3b0;
+}
+/* .btn.green {box-shadow: 0px 4px 0px #87a86f;}
+.btn.green:active {box-shadow: 0 0 #87a86f; background-color: #87a86f;} */
 

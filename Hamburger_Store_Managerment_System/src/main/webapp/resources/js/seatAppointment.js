@@ -126,7 +126,8 @@ $(document).ready(function() {
 			if($('[data-id="'+uniqId+'"]').length == 1){
 				addMenu(uniqId, menuName, menuPrice, menuCnt, menuImgUrl); // left-box에 동일반 메뉴가 없으면 메뉴를 추가	
 			}else{
-				setMenuCnt($('[data-id="'+uniqId+'"]'), 1); // left-box에 동일한 메뉴가 있으면 수량을 증가 
+				setMenuCnt($('[data-id="'+uniqId+'"]'), 1, menuName); // left-box에 동일한 메뉴가 있으면 수량을 증가 
+				
 			}
 		}
 	});
@@ -151,7 +152,22 @@ $(document).ready(function() {
 		$('#orderListUl').append(menuHtml);// 좌측에 선택한 메뉴 추가 
 		
 		totalPrice(); // 상품이 추가 될 때 주문 총 금액 변경 하는 함수 호출
+		
+		var documentOrder =  '<tr data-id="' + uniqId + '">' +
+							 '<td>' +
+							 '<span id="documentMenuName">' + menuName + '</span>' + 
+							 '</td>' +
+							 '<td>' +
+							 '<span id="order'+menuName+'">1</span>' +
+							 '</td>' +
+							 '<td>' +
+							 '	<span id="documentPrice">' + menuPrice + '</span>' +
+							 '</td>' +
+							 '</tr>';	
+	
+		$('.documentTable').append(documentOrder);			
 	}
+	
 	function setMenuCnt($item, num, menuName) {
 		var $itemCnt = $item.find('.menuCnt');
 		var totCnt = Number($itemCnt.text());
@@ -162,9 +178,10 @@ $(document).ready(function() {
 		}
 		var li = document.createElement("li");
 		 li.setAttribute("id", menuName);
-		 console.log($("#"+menuName+"").length);
 		 
 		 $("#"+menuName+"").text("수량 :" + cnt);
+		 $("#order"+menuName+"").text(cnt);
+		 
 		totalPrice();
 	}
 	//수량 1 증가
@@ -258,6 +275,11 @@ $(document).ready(function() {
 		var reservedTime = $("#timeModalHours").text() + $("#timeModalMinutes").text();
 		var totalPrice = Number(formValue.formMenuPrice.value);
 		var frcName = formValue.frcName.value;
+		
+		
+		
+		
+		
 		$.ajax({
 			url : "/takeOutReservation/takeOutReservedListInsert",
 			type : "GET",
