@@ -137,7 +137,7 @@ $(document).ready(function(){
 			$(this).siblings("span").text(tot);
 // 수량 감소 시 금액
 			var price = $('.tab_cont li img').data('price');
-//			var minus = ;
+			var minus = item * price;
 			var priceItem = $(this).parent().siblings('.listPrice');
 			priceItem.html(minus + "<button class='menu_del'>X</button>");
 		});
