@@ -68,33 +68,33 @@ function swal3() {
 	Swal.fire({
 		  type: 'error',
 		  title: 'Oops...',
-		  text: 'Something went wrong!',
-		  footer: '<a href>Why do I have this issue?</a>'
+		  text: '더이상 수량을 증가 시킬 수 없습니다!',
+		  footer: '<a href>메뉴로  돌아가기</a>'
 		});
 };
 
 function swal4() {
 	Swal.fire({
 		  type: 'error',
-		  title: 'Oops...',
-		  text: 'Something went wrong!',
-		  footer: '<a href>Why do I have this issue?</a>'
+		  title: '잠깐만...........',
+		  text: '1개 이상은 시켜야지 시키야',
+		  footer: '<a href>메뉴로 돌아가기</a>'
 		});
 };
 
 // Tab 메뉴
 $(document).ready(function(){
 	$('.hide').hide();
-	$('.tab_btn li').click(function(){
-		$('.hide').show();
-		var list = $(this).index();
-		$('.tab_btn li').removeClass("on");
-		$(this).addClass("on");
-		$(".center-wrap > div > ul").hide();
-		$(".center-wrap > div > ul").eq(list).show();
+		$('.tab_btn li').click(function(){
+			$('.hide').show();
+			var list = $(this).index();
+			$('.tab_btn li').removeClass("on");
+			$(this).addClass("on");
+			$(".center-wrap > div > ul").hide();
+			$(".center-wrap > div > ul").eq(list).show();
 	});
 	
-// 동적으로 생성하는 주문 내역
+// 주문 내역 
 // + = .p_btn
 // - = .m_btn
 // x = .menu_del
@@ -102,26 +102,32 @@ $(document).ready(function(){
 			$('.tab_cont li img').on('click', function() {
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
-				$('.table_tr2').append('<tr>'+'<td id="menuname'+menuname+'">'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td>'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
-				console.log(menuname);
-				console.log(price);
+				$('.table_tr2').append('<tr>'+'<td id="menuname'+menuname+'">'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td class="listPrice">'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
 			});
 		});
 		
 // 주문 내역 삭제
-		
-		$(document).on('click', ".menu_del", function(){
+		$(document).on('click', '.menu_del', function(){
 			$(this).parent().parent().remove();
 			swal2();
 		});
-// 갯수 + / -
-		
-		$(document).on('click','.p_btn', function(){
+// 수량 + 
+		$(document).on('click','.p_btn', function(){	
 			var item = $(this).siblings("span").text();
+			if (item < 50){
 				item ++;
+			} else {(item > 10)
+			swal3();
+			}
 			var tot = item;
 			$(this).siblings("span").text(tot);
+// 수량 증가 시 금액 
+			var price = $('.tab_cont li img').data('price');
+			var sum = item * price;
+			var priceItem = $(this).parent().siblings(".listPrice");
+			priceItem.html(sum + "<button class='menu_del'>X</button>");
 		});
+// 수량 -		
 		$(document).on('click','.m_btn', function(){
 			var item = $(this).siblings("span").text();
 			if(item > 1 ){
@@ -129,6 +135,11 @@ $(document).ready(function(){
 			}
 			var tot = item;
 			$(this).siblings("span").text(tot);
+// 수량 감소 시 금액
+			var price = $('.tab_cont li img').data('price');
+//			var minus = ;
+			var priceItem = $(this).parent().siblings('.listPrice');
+			priceItem.html(minus + "<button class='menu_del'>X</button>");
 		});
 });
 

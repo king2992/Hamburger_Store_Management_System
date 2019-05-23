@@ -3,6 +3,7 @@ $(document).ready(function() {
 		
 		socket.on('orderDisplay', function(orderId) {
 			console.log(orderId)
-			$('<li></li>').text(orderId).appendTo("#orderList");
+			/*$('<li></li>').text(orderId).appendTo("#orderList");*/
+			$('<li></li>').text(orderId).appendTo("#orderListFinish");
 		});
 	});

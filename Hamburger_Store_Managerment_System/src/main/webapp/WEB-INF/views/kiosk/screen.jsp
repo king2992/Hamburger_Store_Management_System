@@ -20,7 +20,6 @@
 	<div class="background-image"> 
 <!-- 	카테고리 안쪽 영역 -->
 		<nav>
-		
 			<ul class="tab_btn">
 				<li><button class="ListBtn btn1" type="button">전체 메뉴</button></li>
 				<li><button class="ListBtn btn2" type="button">치킨 메뉴</button></li>
