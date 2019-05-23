@@ -371,7 +371,7 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		$(".setSideList").show();
 		$(".setDrinkList").hide();
 		$(".setSelect").hide();
-		totalPrice();
+		totalPrice(); 
 	})
 	$(document).on('click', '.setDrinkUpdate', function(){
 		$(this).parent().parent().remove();
