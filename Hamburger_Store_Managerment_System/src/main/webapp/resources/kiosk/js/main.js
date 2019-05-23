@@ -63,7 +63,7 @@ function swal2() {
 		  
 		)
 };
-// 접근 불가 alert
+// 50개 이상 되면 alert
 function swal3() {
 	Swal.fire({
 		  type: 'error',
@@ -72,7 +72,6 @@ function swal3() {
 		  footer: '<a href>메뉴로  돌아가기</a>'
 		});
 };
-
 function swal4() {
 	Swal.fire({
 		  type: 'error',
@@ -81,7 +80,6 @@ function swal4() {
 		  footer: '<a href>메뉴로 돌아가기</a>'
 		});
 };
-
 // Tab 메뉴
 $(document).ready(function(){
 	$('.hide').hide();
@@ -93,7 +91,6 @@ $(document).ready(function(){
 			$(".center-wrap > div > ul").hide();
 			$(".center-wrap > div > ul").eq(list).show();
 	});
-	
 // 주문 내역 
 // + = .p_btn
 // - = .m_btn
@@ -105,7 +102,6 @@ $(document).ready(function(){
 				$('.table_tr2').append('<tr>'+'<td id="menuname'+menuname+'">'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td class="listPrice">'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
 			});
 		});
-		
 // 주문 내역 삭제
 		$(document).on('click', '.menu_del', function(){
 			$(this).parent().parent().remove();
@@ -127,7 +123,7 @@ $(document).ready(function(){
 			var priceItem = $(this).parent().siblings(".listPrice");
 			priceItem.html(sum + "<button class='menu_del'>X</button>");
 		});
-// 수량 -		
+// 수량 -
 		$(document).on('click','.m_btn', function(){
 			var item = $(this).siblings("span").text();
 			if(item > 1 ){
@@ -140,7 +136,30 @@ $(document).ready(function(){
 			var minus = item * price;
 			var priceItem = $(this).parent().siblings('.listPrice');
 			priceItem.html(minus + "<button class='menu_del'>X</button>");
+			
+			var total = priceItem
 		});
+// 주문 총 금액		
+		$(function(){
+			var total = $('.')
+			$('.total_pay').html(total);
+//			$('.total_pay').on('click', function(){
+//				var price = $('.table_tr2').children('td').data('price');
+//				
+//			console.log(price);
+//			});
+		});
+//		$('.total_pay').text();		
+//	$(function() {
+//		var sum;
+//		console.log(sum);
+//	$('.table_tr2').find('.listPrice').each(function(){
+//		sum += Number($(this).parents('tr').find('.listPrice').text());
+//		});
+//	});
+//		var sum = $('.listPrice').text();
+//			$('.total_pay').append('');
+
 });
 
 
