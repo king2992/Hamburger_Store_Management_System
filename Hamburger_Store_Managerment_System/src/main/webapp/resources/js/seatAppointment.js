@@ -293,7 +293,7 @@ function setSideAdd(uniqId, menuName, menuPrice, menuImgUrl) {
 						'	<span class="menu-price">' + menuPrice + '</span>' +
 						'</td>' +
 						'<td style="padding-top:62px;">' +
-						'<span style="display:none;">수량 : <i class="menuCnt"></i></span>' +
+						'<span style="display:none;">수량 : <i class="menuCnt">1</i></span>' +
 						'</td>' +
 						'<td style="padding-top:62px;"><button type="button" class="setSideUpdate btn-3d red">변경</button></td>'+ 
 						'</tr>';
@@ -312,6 +312,9 @@ function setSideAdd(uniqId, menuName, menuPrice, menuImgUrl) {
 							 '<td>' +
 							 '	<span id="documentPrice">' + menuPrice + '</span>' +
 							 '</td>' +
+							 '<td style="padding-top:62px;">' +
+								'<span style="display:none;">수량 : <i class="menuCnt">1</i></span>' +
+								'</td>' +
 							 '</tr>';	
 	
 		$('.documentTable').append(documentOrder);			
@@ -326,7 +329,7 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 					'	<span class="menu-price">' + menuPrice + '</span>' +
 					'</td>' +
 					'<td style="padding-top:62px;">' +
-					'<span style="display:none;">수량 : <i class="menuCnt"></i></span>' +
+					'<span style="display:none;">수량 : <i class="menuCnt">1</i></span>' +
 					'</td>' +
 					'<td style="padding-top:62px;"><button type="button" class="setDrinkUpdate btn-3d red">변경</button></td>'+ 
 					'</tr>';
@@ -345,6 +348,9 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 						 '<td>' +
 						 '	<span id="documentPrice">' + menuPrice + '</span>' +
 						 '</td>' +
+						 '<td style="padding-top:62px;">' +
+							'<span style="display:none;">수량 : <i class="menuCnt">1</i></span>' +
+							'</td>' +
 						 '</tr>';	
 
 	$('.documentTable').append(documentOrder);	
