@@ -148,6 +148,7 @@
 				<table class="total_table">
 					<tr>
 						<td>총 금액 :&nbsp;&nbsp;</td>
+<!-- 			총액 금액 영역 -->
 						<td><input class="total_pay" type="text">&nbsp;원</td>
 					</tr>
 				</table>
