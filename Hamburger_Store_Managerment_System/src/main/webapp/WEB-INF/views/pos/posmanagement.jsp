@@ -126,6 +126,53 @@
 		        }
 		    });
 		});
+	$(document).ready(function(){
+		   var fileTarget = $('.filebox2 .upload-hidden2');
+
+		    fileTarget.on('change', function(){
+		        if(window.FileReader){
+		            // 파일명 추출
+		            var filename = $(this)[0].files[0].name;
+		        } 
+
+		        else {
+		            // Old IE 파일명 추출
+		            var filename = $(this).val().split('/').pop().split('\\').pop();
+		        };
+
+		        $(this).siblings('.upload-name2').val(filename);
+		    });
+
+		    //preview image 
+		    var imgTarget = $('.preview-image2 .upload-hidden2');
+
+		    imgTarget.on('change', function(){
+		        var parent = $(this).parent();
+		        parent.children('.upload-display2').remove();
+
+		        if(window.FileReader){
+		            //image 파일만
+		            if (!$(this)[0].files[0].type.match(/image\//)) return;
+		            
+		            var reader = new FileReader();
+		            reader.onload = function(e){
+		                var src = e.target.result;
+		                parent.prepend('<div class="upload-display2"><div class="upload-thumb-wrap2"><img src="'+src+'" class="upload-thumb2"></div></div>');
+		            }
+		            reader.readAsDataURL($(this)[0].files[0]);
+		        }
+
+		        else {
+		            $(this)[0].select();
+		            $(this)[0].blur();
+		            var imgSrc = document.selection.createRange().text;
+		            parent.prepend('<div class="upload-display2"><div class="upload-thumb-wrap2"><img class="upload-thumb2"></div></div>');
+
+		            var img = $(this).siblings('.upload-display2').find('img');
+		            img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";        
+		        }
+		    });
+		});
 		        
 	$(function() {
 		  var select = $("select#menuCategory");
@@ -309,15 +356,8 @@
 	<!-- 팝업 될 레이어 -->
 	<div class="modal">
 		<div class="modal-content">
-			<span class="close-button">&times;</span>
 			<h1 class="title">메뉴등록</h1>
 			<form action="/pos/add" method="POST" enctype="multipart/form-data">
-			<!-- 	<select name="menuCategory">
-					<option value="chicken">chicken</option>
-					<option value="burger">burger</option>
-					<option value="side">side</option>
-					<option value="drink">drink</option>
-				</select> -->
 				
 				<div id="select_box">
   				<label for="menuCategory">chicken</label>
@@ -329,64 +369,49 @@
   				</select>
 				</div>
 				
-				
-				
-				 <label for="menuName">MENU</label> <input type="text" name="menuName"
+				 <label for="menu">MENU</label> <input type="text" name="menuName"
 					placeholder="상품명을 입력해주세요." required="required"> <label></label>
 				<textarea name="menuPrice" placeholder="상품가격을 입력해주세요."
 					required="required"></textarea>
 					
 					<!-- <input type="file" name="file"> -->
 					 <div class="filebox bs3-primary preview-image">
-            <input class="upload-name" value="파일선택" disabled="disabled" style="width: 280px;" name="file">
-
+            <input class="upload-name" value="파일선택" disabled="disabled" style="width: 280px;" >
             <label for="input_file" style="vertical-align: sub;">업로드</label> 
-          <input type="file" id="input_file" class="upload-hidden"> 
+            <input type="file" id="input_file" class="upload-hidden" name="file"> 
         </div>
-					
-					
-				<input type="button" id="cancel" value="취소"> <input
-					type="submit" id="submit" value="보내기">
+				<input type="button" id="cancel" value="취소"> 
+				<input type="submit" id="submit" value="보내기">
 			</form>
 		</div>
 	</div>
 	<!-- 셋트 관리 모달 -->
 	<div class="setModal">
 		<div class="set-modal-content">
-<!-- 			<span class="set-close-button">&times;</span> -->
 			<h1 class="title">세트메뉴관리</h1>
-			<form action="/pos/setMenuAdd" method="POST" enctype="multipart/form-data">
-			<!-- 	<select name="menuCategory">
-					<option value="setSide">setSide</option>
-					<option value="setDrink">setDrink</option>
-				</select>  -->
-				
+		<form action="/pos/setMenuAdd" method="POST" enctype="multipart/form-data">
+			
 				<div id="select_box">
   				<label for="menuCategory">setSide</label>
-  				<select id="menuCategory" title="select menuCategory" name="menuCategory">
-    			<option value="setSide" selected="selected">setSide</option>
-    			<option value="setDrink">setDrink</option>
-  				</select>
+	  				<select id="menuCategory" name="menuCategory" title="select menuCategory">
+		    			<option value="setSide" selected="selected">setSide</option>
+		    			<option value="setDrink">setDrink</option>
+	  				</select>
 				</div>
 				
-				<label for="menuName">MENU</label> <input type="text" name="menuName"
-					placeholder="상품명을 입력해주세요." required="required"> <label></label>
-				<textarea name="menuPrice" placeholder="상품가격을 입력해주세요."
-					required="required"></textarea>
+				<label for="menuName">MENU</label>
+				 <input type="text" name="menuName" placeholder="상품명을 입력해주세요." required="required">
+				  <label></label>
+				<textarea name="menuPrice" placeholder="상품가격을 입력해주세요." required="required"></textarea>
 					
-					
-					<!-- <input type="file" name="file"> -->
-			 <div class="filebox bs3-primary preview-image">
-							<input class="upload-name" value="파일선택" disabled="disabled" style="width: 280px;" name="file">
-
-							<label for="input_file" style="vertical-align: sub;">업로드</label> 
-						  <input type="file" id="input_file" class="upload-hidden"> 
-						</div>
-					
-					
-				<input type="button" id="cancel" class="set-cancel" value="취소"> <input
-					type="submit" id="submit" value="보내기">
-			</form>
+			 <div class="filebox2 bs3-primary2 preview-image2">
+				<input class="upload-name2" value="파일선택" disabled="disabled" style="width: 280px;" >
+	            <label for="input_file2" style="vertical-align: sub;">업로드</label> 
+	            <input type="file" id="input_file2" class="upload-hidden2" name="file"> 
+        		</div>
+				<input type="button" id="cancel" value="취소"> 
+				<input type="submit" id="submit" value="보내기">
+		</form>
 		</div>
 	</div>
 

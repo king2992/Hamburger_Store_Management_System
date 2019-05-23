@@ -313,8 +313,7 @@ width: 300px;
 					<c:choose>
 						<c:when test="${burger.size() > 0 }">
 							<c:forEach items="${burger}" var="burger">
-								<li><button type="button" onclick="menuListDel()"
-										style="width: 20px; height: 20px;">X</button>
+								<li>
 									<img src="/upload/${burger.menuImg}" class="menu-item"
 									data-id="${burger.dataId}" value="${burger.menuName}"
 									data-code="${burger.menuPrice }" data-cnt="1"

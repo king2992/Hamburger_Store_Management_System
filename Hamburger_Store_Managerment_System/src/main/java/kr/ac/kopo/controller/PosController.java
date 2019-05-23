@@ -69,18 +69,18 @@ public class PosController {
 		return "redirect:posmanagement";
 	}
 	@RequestMapping(value="/setMenuAdd", method=RequestMethod.POST)
-	String setMenuAdd(setSideDrink item) {
-		String fileName = item.getFile().getOriginalFilename();
+	String setMenuAdd(setSideDrink setsidedrink) {
+		String setFileName = setsidedrink.getFile().getOriginalFilename();
 		String path = "C://upload/";
-		String dataId = item.getMenuName();
+		String setDataId = setsidedrink.getMenuName();
 			try {
-				item.getFile().transferTo(new File(path + fileName));
-				item.setMenuImg(fileName);
-				item.setDataId(dataId);
+				setsidedrink.getFile().transferTo(new File(path + setFileName));
+				setsidedrink.setMenuImg(setFileName);
+				setsidedrink.setDataId(setDataId);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-		posservice.setMenuAdd(item);
+		posservice.setMenuAdd(setsidedrink);
 		return "redirect:posmanagement";
 	}
 	@RequestMapping(value = "/OrderManagement", method = RequestMethod.GET)

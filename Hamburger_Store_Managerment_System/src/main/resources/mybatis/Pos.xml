@@ -22,8 +22,8 @@
 		VALUES (#{menuName},#{menuPrice},#{menuCategory},#{menuImg},#{dataId})
 	</insert>
 	<insert id="setMenuAdd" parameterType="setSideDrink">
-		INSERT INTO set_side_drink (menu_name, menu_price, menu_category, menu_img,data_id)
-		VALUES (#{menuName},#{menuPrice},#{menuCategory},#{menuImg},#{dataId})
+		INSERT INTO set_side_drink (menu_name, menu_price, menu_category, menu_img, data_id)
+		VALUES (#{menuName},#{menuPrice},#{menuCategory},#{menuImg}, #{dataId})
 	</insert>
 	<select id="item" resultType="Menu">
 		SELECT * FROM menu WHERE menu_id=#{menuId}
