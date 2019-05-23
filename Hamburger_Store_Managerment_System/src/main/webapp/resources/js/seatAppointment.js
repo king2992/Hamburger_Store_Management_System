@@ -425,7 +425,7 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		}
 	});
 	$(document).on('click', '.setMenuDel', function(e){
-		$(this).parents('.order-item').remove();
+		$(this).parents('.order-item').remove(); 
 		var menuName = $(this).data("menuname");
 		var orderMenuName = $("#orderset"+menuName+"");
 		
