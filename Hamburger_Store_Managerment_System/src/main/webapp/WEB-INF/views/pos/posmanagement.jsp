@@ -78,6 +78,64 @@
 .deleteUpdate li {cursor: pointer;}
 
 </style>
+	<script>
+	$(document).ready(function(){
+		   var fileTarget = $('.filebox .upload-hidden');
+
+		    fileTarget.on('change', function(){
+		        if(window.FileReader){
+		            // 파일명 추출
+		            var filename = $(this)[0].files[0].name;
+		        } 
+
+		        else {
+		            // Old IE 파일명 추출
+		            var filename = $(this).val().split('/').pop().split('\\').pop();
+		        };
+
+		        $(this).siblings('.upload-name').val(filename);
+		    });
+
+		    //preview image 
+		    var imgTarget = $('.preview-image .upload-hidden');
+
+		    imgTarget.on('change', function(){
+		        var parent = $(this).parent();
+		        parent.children('.upload-display').remove();
+
+		        if(window.FileReader){
+		            //image 파일만
+		            if (!$(this)[0].files[0].type.match(/image\//)) return;
+		            
+		            var reader = new FileReader();
+		            reader.onload = function(e){
+		                var src = e.target.result;
+		                parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
+		            }
+		            reader.readAsDataURL($(this)[0].files[0]);
+		        }
+
+		        else {
+		            $(this)[0].select();
+		            $(this)[0].blur();
+		            var imgSrc = document.selection.createRange().text;
+		            parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+
+		            var img = $(this).siblings('.upload-display').find('img');
+		            img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";        
+		        }
+		    });
+		});
+		        
+	$(function() {
+		  var select = $("select#menuCategory");
+
+		  select.change(function() {
+		    var select_name = $(this).children("option:selected").text();
+		    $(this).siblings("label").text(select_name);
+		  });
+		});
+</script>
 </head>
 <body>
 	<div id="container">
@@ -254,16 +312,39 @@
 			<span class="close-button">&times;</span>
 			<h1 class="title">메뉴등록</h1>
 			<form action="/pos/add" method="POST" enctype="multipart/form-data">
-				<select name="menuCategory">
+			<!-- 	<select name="menuCategory">
 					<option value="chicken">chicken</option>
 					<option value="burger">burger</option>
 					<option value="side">side</option>
 					<option value="drink">drink</option>
-				</select> <label for="menuName">MENU</label> <input type="text" name="menuName"
+				</select> -->
+				
+				<div id="select_box">
+  				<label for="menuCategory">chicken</label>
+  				<select id="menuCategory" title="select menuCategory" name="menuCategory">
+    			<option value="chicken" selected="selected">chicken</option>
+    			<option value="burger">burger</option>
+    			<option value="side">side</option>
+   				 <option value="drink">drink</option>
+  				</select>
+				</div>
+				
+				
+				
+				 <label for="menuName">MENU</label> <input type="text" name="menuName"
 					placeholder="상품명을 입력해주세요." required="required"> <label></label>
 				<textarea name="menuPrice" placeholder="상품가격을 입력해주세요."
 					required="required"></textarea>
-					<input type="file" name="file">
+					
+					<!-- <input type="file" name="file"> -->
+					 <div class="filebox bs3-primary preview-image">
+            <input class="upload-name" value="파일선택" disabled="disabled" style="width: 280px;" name="file">
+
+            <label for="input_file" style="vertical-align: sub;">업로드</label> 
+          <input type="file" id="input_file" class="upload-hidden"> 
+        </div>
+					
+					
 				<input type="button" id="cancel" value="취소"> <input
 					type="submit" id="submit" value="보내기">
 			</form>
@@ -275,19 +356,40 @@
 <!-- 			<span class="set-close-button">&times;</span> -->
 			<h1 class="title">세트메뉴관리</h1>
 			<form action="/pos/setMenuAdd" method="POST" enctype="multipart/form-data">
-				<select name="menuCategory">
+			<!-- 	<select name="menuCategory">
 					<option value="setSide">setSide</option>
 					<option value="setDrink">setDrink</option>
-				</select> <label for="menuName">MENU</label> <input type="text" name="menuName"
+				</select>  -->
+				
+				<div id="select_box">
+  				<label for="menuCategory">setSide</label>
+  				<select id="menuCategory" title="select menuCategory" name="menuCategory">
+    			<option value="setSide" selected="selected">setSide</option>
+    			<option value="setDrink">setDrink</option>
+  				</select>
+				</div>
+				
+				<label for="menuName">MENU</label> <input type="text" name="menuName"
 					placeholder="상품명을 입력해주세요." required="required"> <label></label>
 				<textarea name="menuPrice" placeholder="상품가격을 입력해주세요."
 					required="required"></textarea>
-					<input type="file" name="file">
+					
+					
+					<!-- <input type="file" name="file"> -->
+			 <div class="filebox bs3-primary preview-image">
+							<input class="upload-name" value="파일선택" disabled="disabled" style="width: 280px;" name="file">
+
+							<label for="input_file" style="vertical-align: sub;">업로드</label> 
+						  <input type="file" id="input_file" class="upload-hidden"> 
+						</div>
+					
+					
 				<input type="button" id="cancel" class="set-cancel" value="취소"> <input
 					type="submit" id="submit" value="보내기">
 			</form>
 		</div>
 	</div>
+
 	<!-- 현금결제 레이어 -->
 	<div class="modalcash"> 
     <div class="modal-contentcash"> 
