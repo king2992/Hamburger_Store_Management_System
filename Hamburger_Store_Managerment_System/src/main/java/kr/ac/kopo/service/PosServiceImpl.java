@@ -14,6 +14,7 @@ import kr.ac.kopo.model.Pos;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.ordersMenuList;
+import kr.ac.kopo.model.setSideDrink;
 
 @Service
 public class PosServiceImpl implements PosService {
@@ -91,6 +92,10 @@ public class PosServiceImpl implements PosService {
 	@Override
 	public List<TakeOutReserved> takeoutDateSort(String reservedDate) {
 		return posdao.takeoutDateSort(reservedDate);
+	}
+	@Override
+	public void setMenuAdd(setSideDrink item) {
+		posdao.setMenuAdd(item);
 	}
 
 }

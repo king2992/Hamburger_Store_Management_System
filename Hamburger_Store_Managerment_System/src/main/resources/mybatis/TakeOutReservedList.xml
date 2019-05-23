@@ -37,4 +37,10 @@
 	<delete id="menuListDel">
 		delete from menu where menu_id = #{menuId}
 	</delete>
+	<select id="setSideList" resultType="setSideDrink">
+		select * from set_side_drink where menu_category ="setSide"
+	</select>
+	<select id="setDrinkList" resultType="setSideDrink">
+		select * from set_side_drink where menu_category ="setDrink"
+	</select>
 </mapper>

@@ -133,11 +133,12 @@ $(document).ready(function(){
 	var socket = io("http://localhost:84");
 	$(document).on('click', '.orderReady', function(){
 		var orderId = $(event.target).parent().siblings(".reservedOrderId").text();
+		var item = $(event.target).parent().siblings().parent() ;
 		var orderReadyHtml = "";
 		orderReadyHtml += "Complete";
 		$(event.target).parent().siblings().parent().css("background", "#eeeeee");
 		$(event.target).parent().html(orderReadyHtml);
-			
+		$(".reservedContainer").append(item);
 		
 			//msg_process를 클릭할 때
 		socket.emit("orderDisplay", orderId);
@@ -146,15 +147,21 @@ $(document).ready(function(){
 			url : "/pos/reservedListStatus",
 			data : {"orderId":orderId},
 			success : function(data){
+				
 			}
 		})
 	});
+	function cloneNode(){
+		
+	}
 	$(document).on('click', '.takeoutOrderReady', function(){
 		var takeoutId = $(event.target).data("takeoutid");
 		var takeoutReadyHtml = "";
+		var item = $(event.target).parent().siblings().parent();
 		takeoutReadyHtml += "Complete";
 		$(event.target).parent().siblings().parent().css("background", "#eeeeee");
 		$(event.target).parent().html(takeoutReadyHtml);
+		$(".takeoutReservedContainer").append(item);
 		$.ajax({
 			url : "/pos/takeoutReservedListStatus",
 			data : {"takeoutId":takeoutId},

@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 내역</title>
-<script src="http://localhost:84/socket.io/socket.io.js"></script>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="/resources/js/reservedList.js"></script>
  <script src='/resources/fullcalendar-4.0.2/packages/core/main.js'></script>
@@ -24,7 +23,7 @@
 <script src="sweetalert2.all.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
  <link href="/resources/css/reservedList.css" type="text/css" rel="stylesheet">
- 
+ <script src="http://localhost:84/socket.io/socket.io.js"></script>
 </head>
 <body>
 <div id="container">
@@ -119,7 +118,6 @@
 			</c:forEach>
 		</c:when>
 		<c:otherwise>
-			<p>예약 내역이 없습니다.</p>
 		</c:otherwise>
 	</c:choose>
 	</tbody>
@@ -168,23 +166,14 @@
 			</c:forEach>
 		</c:when>
 		<c:otherwise>
-			<p>예약 내역이 없습니다.</p>
 		</c:otherwise>
 	</c:choose>
 			</tbody>
 		</table>
 	</div>
-	
-		
-	
-		
 </div>
 </div>
-
-	
 		<div id="calendar"></div>
-		
-	
 </body>
 <script type="text/javascript">
 	$('.b04_3d_tick').click(function(){

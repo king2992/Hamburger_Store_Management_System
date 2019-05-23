@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.setSideDrink;
 import kr.ac.kopo.service.TakeOutUserReservedService;
 
 @Controller
@@ -39,12 +40,15 @@ public class TakeOutUserReservedController {
 		List<Menu> burger = service.burgerList();
 		List<Menu> side = service.sideList();
 		List<Menu> drink = service.drinkList();
+		List<setSideDrink> setSide = service.setSideList();
+		List<setSideDrink> setDrink = service.setDrinkList();
 		
 		model.addAttribute("chicken", chickenList);
 		model.addAttribute("burger", burger);
 		model.addAttribute("side", side);
 		model.addAttribute("drink", drink);
-		
+		model.addAttribute("setSide", setSide);
+		model.addAttribute("setDrink", setDrink);
 		return "/takeOutReservation/takeOutUserReservation";
 	}
 	

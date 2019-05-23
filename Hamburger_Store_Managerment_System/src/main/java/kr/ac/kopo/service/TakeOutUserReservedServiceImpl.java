@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.ac.kopo.dao.TakeOutUserReservedDao;
 import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.setSideDrink;
 @Service
 public class TakeOutUserReservedServiceImpl implements TakeOutUserReservedService {
 	@Autowired
@@ -52,6 +53,16 @@ public class TakeOutUserReservedServiceImpl implements TakeOutUserReservedServic
 	@Override
 	public void menuListDel(int menuId) {
 		dao.menuListDel(menuId); 
+	}
+
+	@Override
+	public List<setSideDrink> setSideList() {
+		return dao.setSideList();
+	}
+
+	@Override
+	public List<setSideDrink> setDrinkList() {
+		return dao.setDrinkList();
 	}
 
 

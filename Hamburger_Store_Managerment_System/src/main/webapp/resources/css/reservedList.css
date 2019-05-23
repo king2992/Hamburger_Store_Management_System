@@ -133,7 +133,7 @@ body{min-width: 1024px;}
 /* .right-box{width:50%; margin-right:70px;}
 .right-box h1{margin-bottom:1em;}
 .left-box{width:50%;} */
-.reservedContainer tr{background-color:gray !important;}
+.reservedContainer tr{background-color:white !important;}
 .right-box > h1{margin-bottom:30px;}
 .reserved-table{width:100%; border:1px solid #e3e3e3; background: transparent; text-align: center; border-collapse: collapse; padding:10px;
 line-height: 50px; margin-bottom:50px;}

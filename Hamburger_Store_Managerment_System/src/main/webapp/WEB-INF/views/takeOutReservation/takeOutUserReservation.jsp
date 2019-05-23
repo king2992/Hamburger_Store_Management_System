@@ -306,7 +306,6 @@ width: 300px;
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<p>메뉴가 없슴돠.</p>
 						</c:otherwise>
 					</c:choose>
 				</ul>
@@ -323,9 +322,27 @@ width: 300px;
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<p>메뉴가 없슴돠.</p>
 						</c:otherwise>
 					</c:choose>
+				</ul>
+				<ul class="setList" id="setList">
+					<c:choose>
+						<c:when test="${burger.size() > 0 }">
+							<c:forEach items="${burger}" var="burger">
+								<li>
+									<img src="/upload/${burger.menuImg}" class="set-item"
+									data-id="set${burger.dataId}" value="${burger.menuName} 세트"
+									data-code="${burger.menuPrice }" data-cnt="1"
+									data-num="${burger.menuId }">${burger.menuName} 세트</li>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+				<ul class="setSelect">
+					<li><button type="button" class="setButton">세트</button></li>
+					<li><button type="button" class="singleButton">단품</button></li>
 				</ul>
 				<ul class="sideMenuList" id="sideMenuList">
 					<c:choose>
@@ -339,7 +356,6 @@ width: 300px;
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<p>메뉴가 없슴돠.</p>
 						</c:otherwise>
 					</c:choose>
 				</ul>
@@ -355,11 +371,39 @@ width: 300px;
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<p>메뉴가 없슴돠.</p>
 						</c:otherwise>
 					</c:choose>
 				</ul>
-
+				<ul class="setSideList" id="sideMenuList">
+					<c:choose>
+						<c:when test="${setSide.size() > 0 }">
+							<c:forEach items="${setSide}" var="setSide">
+								<li>
+									<img src="/upload/${setSide.menuImg}" class="set-side-item"
+									 value="${setSide.menuName}" data-id="${setSide.dataId }"
+									data-code="${setSide.menuPrice }" data-cnt="1"
+									data-num="${setSide.sdId }">${setSide.menuName }</li>
+							</c:forEach>
+						</c:when>
+						<c:otherwise> 
+						</c:otherwise>
+					</c:choose>
+				</ul> 
+				<ul class="setDrinkList" id="sideMenuList">
+					<c:choose>
+						<c:when test="${setDrink.size() > 0 }">
+							<c:forEach items="${setDrink}" var="setDrink">
+								<li>
+									<img src="/upload/${setDrink.menuImg}" class="set-drink-item"
+									 value="${setDrink.menuName}" data-id="${setDrink.dataId }"
+									data-code="${setDrink.menuPrice }" data-cnt="1"
+									data-num="${setDrink.sdId }">${setDrink.menuName }</li>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+						</c:otherwise>
+					</c:choose>
+				</ul>
 			</div>
 				<div class="order-center">
 					<a href="#login_form" class="snip1535" id="orderModal">주 문</a>

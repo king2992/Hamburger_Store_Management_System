@@ -14,6 +14,7 @@ import kr.ac.kopo.model.Pos;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.ordersMenuList;
+import kr.ac.kopo.model.setSideDrink;
 
 
 @Repository
@@ -113,6 +114,11 @@ public class PosDaoImpl implements PosDao {
 	@Override
 	public List<TakeOutReserved> takeoutDateSort(String reservedDate) {
 		 return sql.selectList("pos.takeoutDateSort", reservedDate);
+	}
+
+	@Override
+	public void setMenuAdd(setSideDrink item) {
+		sql.insert("pos.setMenuAdd", item);
 	}
 
 }

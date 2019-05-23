@@ -5,6 +5,7 @@ import java.util.List;
 
 import kr.ac.kopo.model.Menu;
 import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.setSideDrink;
 
 public interface TakeOutUserReservedDao {
 
@@ -23,6 +24,10 @@ public interface TakeOutUserReservedDao {
 	List<Menu> drinkList();
 
 	void menuListDel(int menuId);
+
+	List<setSideDrink> setSideList();
+
+	List<setSideDrink> setDrinkList();
 
 	
 

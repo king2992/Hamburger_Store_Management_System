@@ -19,6 +19,7 @@ import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.ordersMenuList;
+import kr.ac.kopo.model.setSideDrink;
 import kr.ac.kopo.service.PosService;
 
 @Controller
@@ -65,6 +66,21 @@ public class PosController {
 				e.printStackTrace();
 			}
 		posservice.add(item);
+		return "redirect:posmanagement";
+	}
+	@RequestMapping(value="/setMenuAdd", method=RequestMethod.POST)
+	String setMenuAdd(setSideDrink item) {
+		String fileName = item.getFile().getOriginalFilename();
+		String path = "C://upload/";
+		String dataId = item.getMenuName();
+			try {
+				item.getFile().transferTo(new File(path + fileName));
+				item.setMenuImg(fileName);
+				item.setDataId(dataId);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		posservice.setMenuAdd(item);
 		return "redirect:posmanagement";
 	}
 	@RequestMapping(value = "/OrderManagement", method = RequestMethod.GET)

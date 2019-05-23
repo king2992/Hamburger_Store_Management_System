@@ -10,6 +10,7 @@ import kr.ac.kopo.model.Pos;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.ordersMenuList;
+import kr.ac.kopo.model.setSideDrink;
 
 public interface PosDao {
 
@@ -61,6 +62,8 @@ public interface PosDao {
 	void takeoutReservedListStatus(int takeoutId);
 
 	List<TakeOutReserved> takeoutDateSort(String reservedDate);
+
+	void setMenuAdd(setSideDrink item);
 
 	
 
