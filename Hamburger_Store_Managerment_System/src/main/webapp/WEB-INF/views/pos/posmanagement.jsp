@@ -249,7 +249,7 @@
 						<table>
 							<thead>
 								<tr>
-									<th colspan="2">총 금액  <span class="pTotal"
+									<th colspan="2">총 금액  <span class="pTotal" id="pTotal"
 										></span></th>
 								</tr>
 							</thead>

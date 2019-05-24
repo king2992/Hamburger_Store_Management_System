@@ -348,6 +348,24 @@ background:#1AAB8A;
 	position: relative;
 	background-color:#74a3b0;
 }
+/* Button two - I have no creativity for names */
+.btn-three {
+	color: white;	
+	padding: 15px 25px;
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,0.21);
+	border-bottom-color: rgba(0,0,0,0.34);
+	text-shadow:0 1px 0 rgba(0,0,0,0.15);
+	box-shadow: 0px 4px #848484;
+	background-color:#A4A4A4;
+}
+.btn-three:active {
+	top: 1px;
+	border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+	box-shadow: box-shadow: 0px 4px #A4A4A4;
+	position: relative;
+	background-color:#74a3b0;
+}
 /* .btn.green {box-shadow: 0px 4px 0px #87a86f;}
 .btn.green:active {box-shadow: 0 0 #87a86f; background-color: #87a86f;} */
 
@@ -357,3 +375,10 @@ background:#1AAB8A;
          transform: scale(1.0); 
          transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
      } 
+     
+    .timeWrapper{
+    position : relative ;
+    left : 66px; 
+    bottom : 25px;
+    }
+

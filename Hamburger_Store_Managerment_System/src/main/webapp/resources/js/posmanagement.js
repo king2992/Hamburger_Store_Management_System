@@ -39,6 +39,7 @@
 			$('.document').css('display','none');
 			$('#submitcash').css('display','inline-block');
 			}
+			
 		});
 		
 		$(document).on('click', "#setAdd", function(){
@@ -182,6 +183,22 @@
 	   //console.log(modal);
 		
 	   function toggleModalcash() { 
+		   var orderListChild = document.getElementById("orderList");
+		   
+		   if(orderListChild.childElementCount == 0){
+				card2();
+				return;
+			}
+		   function card2(){
+				Swal.fire({
+				  position: 'center',
+				  type: 'error',
+				  title: '상품을 선택 해 주세요.',
+				  showConfirmButton: false,
+				  timer: 1000
+				});
+				
+			}
 	        modalcash.classList.toggle("show-modalcash"); 
 	        $('input[name=payTotal]').val($('.pTotal').text());
 	        
@@ -193,48 +210,104 @@
 	        $(".menuListCnt").each(function(index, item){
 	        	menuCntArray.push($(this).text());
 	        })
+			
 	    }
 	   function windowOnClickcash(event) { 
+		   
 	        if (event.target === modalcash) { 
 	            toggleModalcash(); 
 	        } 
 	    }
+	   
 	});
-	
-	 function card(){
-			let timerInterval
-			Swal.fire({
-			  title: '결제중입니다.',
-			  html: 'I will close in <strong></strong> seconds.',
-			  timer: 2000, 
-			  onBeforeOpen: ()=> { 
-			    Swal.showLoading()
-			    timerInterval = setInterval(() => {
-			      Swal.getContent().querySelector('strong')
-			        .textContent = Swal.getTimerLeft() 
-			    }, 100)
-			  }, 
-			  onClose: ()=> { 
-			    clearInterval(timerInterval)
-			  }
-			}).then((result)=> {
-			  if (
-			    result.dismiss === Swal.DismissReason.timer
-			  ) {
-			    card2();
-			  }
-			})
-			function card2(){
-				Swal.fire({
-				  position: 'center',
-				  type: 'success',
-				  title: '결제가 완료되었습니다.',
-				  showConfirmButton: false,
-				  timer: 1500
-				});
-				
-			}
+	function card(){
+		 
+	 	//modalcash.classList.toggle("show-modalcash"); 
+        //$('input[name=payTotal]').val($('.pTotal').text());
+		
+        var payTotal = $('#pTotal').text();
+        
+        var rTime = new Date();
+ 	    var regTime = rTime.getHours()+":";
+ 	    regTime += rTime.getMinutes()+":";
+ 	    regTime += rTime.getSeconds();
+ 	    
+        //추가 돼 있는 상품에 이름을 배열에 담는다
+        $(".menuListName").each(function(index, item){
+        	menuNameArray.push($(this).text());
+        })
+        //추가 돼 있는 상품에 갯수를 배열에 담는다
+        $(".menuListCnt").each(function(index, item){
+        	menuCntArray.push($(this).text());
+        })
+        
+	   var orderListChild = document.getElementById("orderList");
+	   
+	   if(orderListChild.childElementCount == 0){
+		   effectiveness();
+			return;
 		}
+	   $.ajax({
+    		url : "/pos/orders",
+    		data : {"payTotal" : payTotal, "regTime":regTime},
+    		dataType : "JSON",
+    		type : "POST",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+			success : function(data) {
+				msgAnimate();
+				if(data == 1){
+					
+					let timerInterval
+					Swal.fire({
+					  title: '결제중입니다.',
+					  html: 'I will close in <strong></strong> seconds.',
+					  timer: 1000, 
+					  onBeforeOpen: ()=> { 
+					    Swal.showLoading()
+					    timerInterval = setInterval(() => {
+					      Swal.getContent().querySelector('strong')
+					        .textContent = Swal.getTimerLeft() 
+					    }, 100)
+					  }, 
+					  onClose: ()=> { 
+					    clearInterval(timerInterval)
+					  }
+					}).then((result)=> {
+					  if (
+					    result.dismiss === Swal.DismissReason.timer
+					  ) {
+					    
+					    선규();
+					  }
+					  card2();
+					})
+					
+				}
+			}
+    	});
+		
+		function card2(){
+			Swal.fire({
+			  position: 'center',
+			  type: 'success',
+			  title: '결제가 완료되었습니다.',
+			  showConfirmButton: false,
+			  timer: 1500
+			});
+			
+		}
+		function effectiveness(){
+			Swal.fire({
+			  position: 'center',
+			  type: 'success',
+			  title: '상품을 선택 해 주세요.',
+			  showConfirmButton: false,
+			  timer: 1500
+			});
+			
+		}
+	}
+	 
 	function pDelete(menuId) {
 		$.ajax({
 			url : '/pos/delete',
@@ -308,54 +381,60 @@
 	function pTotal(total){
 		$(".pTotal").text(total);
 	}
-		 function send(){
-		   var payTotal = $('input[name=payTotal]').val();
-		   var input = $('input[name=payTotal2]').val();
-		   var nmg = $('input[name=nmg]').val();
-		   var sum = input - nmg;
-		   
-		   var rTime = new Date();
-		   var regTime = rTime.getHours()+":";
-		   regTime += rTime.getMinutes()+":";
-		   regTime += rTime.getSeconds();
-		   
-		    if( payTotal == sum){
-		    	alert('결제완료'); 
-		    	$.ajax({
-		     		url : "/pos/orders",
-		     		data : {"payTotal" : payTotal, "regTime":regTime},
-		     		dataType : "JSON",
-		     		type : "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
-					success : function(data) {
-						msgAnimate();
-						if(data == 1){
-							선규();
-						}
+	function send(){
+		
+	   var payTotal = $('input[name=payTotal]').val();
+	   var input = $('input[name=payTotal2]').val();
+	   var nmg = $('input[name=nmg]').val();
+	   var sum = input - nmg;
+	   
+	   var rTime = new Date();
+	   var regTime = rTime.getHours()+":";
+	   regTime += rTime.getMinutes()+":";
+	   regTime += rTime.getSeconds();
+	   
+	    if( payTotal == sum){
+	    	$.ajax({
+	     		url : "/pos/orders",
+	     		data : {"payTotal" : payTotal, "regTime":regTime},
+	     		dataType : "JSON",
+	     		type : "POST",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+				success : function(data) {
+					alert("결제가 완료되었습니다.");
+					msgAnimate();
+					if(data == 1){
+						선규();
 					}
-		     	});
-		   	    	return false;
-		   }
-		     if(payTotal != sum){
-			   alert('일치하지 않습니다. 다시 확인해주십시오.');
-			   return true;  
-		   }  
-		     
+				}
+	     	});
+	   	    	return false;
 	   }
+	   
+	     if(payTotal != sum){
+		   alert('일치하지 않습니다. 다시 확인해주십시오.');
+		   return true;  
+	   }  
+   }
+	
 		 function msgAnimate(){
 			  $("#chat_box").animate({
 		 			"color" : "#e3e3e3", "font-size" : "18px"
 		 		},1000) .animate({"color":"#333333", "font-size": "16px"},1000);
 		 }
+		 
 		 function 선규(){
+			
 				$.ajax({
 		     		url : "/pos/menuAdd",
 		     		data : {"menuNameArray" : menuNameArray, "menuCntArray" : menuCntArray},
 		     		dataType : "JSON",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 					success : function(data) {
+						 
 						if(data == 1){
-							window.location.reload();
+							
+							setTimeout(window.location.reload(), 2000);
 						}
 					}
 		     	});

@@ -100,6 +100,7 @@ public class PosController {
 	Date time = new Date();
 	SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
 	SimpleDateFormat timeformat = new SimpleDateFormat("a hh:mm:ss");
+	
 	@ResponseBody
 	@RequestMapping(value="/orders",method=RequestMethod.POST)
 	int orders(@RequestParam(value="payTotal") int payTotal , @RequestParam(value="regTime") String regTime) {

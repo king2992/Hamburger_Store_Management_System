@@ -126,8 +126,7 @@ html{
 /* 	min-width:40px; */
 	/* width:100%; */
 	width: 685px; 
-	height:450px;
-	
+	top:120px;
 	 
 	
 /* 	position: relative;
@@ -429,11 +428,13 @@ width: 300px;
 	 <div id="myModal" class="modal">
   <div class="modal-content">
   <div class="content-display"> 
-  <h2 style="text-align: center; margin-top:40px;">시간을 선택해주세요</h2>
+  <h2 style="text-align: center; margin-top:20px; ">시간을 선택해주세요</h2>
         	
            <div class="timenCenter">
-           		 <button type="button" id="am-btn">오전</button>
-           		 <button type="button" id="pm-btn">오후</button>
+           		 <div class="timeWrapper">
+           		<button type="button" class="btn-three green rounded" id="am-btn">오전</button>
+           		<button type="button" class="btn-three green rounded" id="pm-btn">오후</button>
+           		</div>
            		 
 				 <div id="containerScroll" class="sb02 hours" >
                     <div class="item">1</div>
@@ -615,11 +616,6 @@ width: 300px;
 					</tr>
 				</thead>
 				<tbody class="documentTable">
-				<!-- 	<tr>
-						<th><span id="documentMenuName"></span></th>
-						<th><span id="documentCnt"></span></th>
-						<th><span id="documentPrice"></span></th>
-					</tr> -->
 				</tbody>
 			</table>
 			<table class="totalTable">

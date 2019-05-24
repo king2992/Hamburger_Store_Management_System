@@ -1,16 +1,6 @@
 
 	localStorage.clear();
-	$("#menuModal").hide();
-	$(".chickenList").hide();
-	$(".burgerList").hide();
-	$(".sideMenuList").hide();
-	$(".drinkMenuList").hide();
-	$("#orderListUl").hide();
-	$(".documentPopup").hide();
-	$(".setSelect").hide();
-	$(".setList").hide()
-	$(".setSideList").hide();
-	$(".setDrinkList").hide();
+	$("#menuModal").hide();$(".chickenList").hide();$(".burgerList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$("#orderListUl").hide();$(".documentPopup").hide();$(".setSelect").hide();$(".setList").hide();$(".setSideList").hide();$(".setDrinkList").hide();$(".overlay").hide();$(".popup").hide();
 	var cntArray = new Array(); // 주문 할 때 메뉴 수량 넘길 배열
 	var menuNameArray = new Array();// 주문 할 때 메뉴 이름 넘길 배열
 document.addEventListener('DOMContentLoaded', function() {
@@ -73,18 +63,23 @@ function timeAdd(){
 $(document).ready(function() {
 	$("#containerScroll3").hide();
 	
-	$("#containerScroll").scroll(function(){var height = $(this).scrollTop();if(height == 0 && height < 148){$("#hours").text("1시");}else if(height == 148){$("#hours").text("2시");}else if(height == 296){$("#hours").text("3시");}else if(height == 444){$("#hours").text("4시");}else if(height == 592){$("#hours").text("5시");}else if(height == 740){$("#hours").text("6시");}else if(height == 888){$("#hours").text("7시");}else if(height == 1036){$("#hours").text("8시");}else if(height == 1184){$("#hours").text("9시");}else if(height == 1332){$("#hours").text("10시");}else if(height == 1480){$("#hours").text("11시");}else if(height == 1628){$("#hours").text("12시");}})
-	$("#containerScroll2").scroll(function(){var height = $(this).scrollTop();if(height == 0 && height < 148){$("#minutes").text("1분");}else if(height == 148){$("#minutes").text("2분");}else if(height == 296){$("#minutes").text("3분");}else if(height == 444){$("#minutes").text("4분");}else if(height == 592){$("#minutes").text("5분");}else if(height == 740){$("#minutes").text("6분");}else if(height == 888){$("#minutes").text("7분");}else if(height == 1036){$("#minutes").text("8분");}else if(height == 1184){$("#minutes").text("9분");}else if(height == 1332){$("#minutes").text("10분");}else if(height == 1480){$("#minutes").text("11분");}else if(height == 1628){$("#minutes").text("12분");}else if(height == 1776){$("#minutes").text("13분");}else if(height == 1924){$("#minutes").text("14분");}else if(height == 2072){$("#minutes").text("15분");}else if(height == 2220){$("#minutes").text("16분");}else if(height == 2368){$("#minutes").text("17분");}else if(height == 2516){$("#minutes").text("18분");}else if(height == 2664){$("#minutes").text("19분");}else if(height == 2812){$("#minutes").text("20분");}else if(height == 2960){$("#minutes").text("21분");}else if(height == 3108){$("#minutes").text("22분");}else if(height == 3256){$("#minutes").text("23분");}else if(height == 3404){$("#minutes").text("24분");}else if(height == 3552){$("#minutes").text("25분");}else if(height == 3700){$("#minutes").text("26분");}else if(height == 3848){$("#minutes").text("27분");}else if(height == 3996){$("#minutes").text("28분");}else if(height == 4144){$("#minutes").text("29분");}else if(height == 4292){$("#minutes").text("30분");}else if(height == 4440){$("#minutes").text("31분");}else if(height == 4588){$("#minutes").text("32분");}else if(height == 4736){$("#minutes").text("33분");}else if(height == 4884){$("#minutes").text("34분");}else if(height == 5032){$("#minutes").text("35분");}else if(height == 5180){$("#minutes").text("36분");}else if(height == 5328){$("#minutes").text("37분");}else if(height == 5476){$("#minutes").text("38분");}else if(height == 5624){$("#minutes").text("39분");}else if(height == 5772){$("#minutes").text("40분");}else if(height == 5920){$("#minutes").text("41분");}else if(height == 6068){$("#minutes").text("42분");}else if(height == 6216){$("#minutes").text("43분");}else if(height == 6364){$("#minutes").text("44분");}else if(height == 6512){$("#minutes").text("45분");}else if(height == 6660){$("#minutes").text("46분");}else if(height == 6808){$("#minutes").text("47분");}else if(height == 6956){$("#minutes").text("48분");}else if(height == 7104){$("#minutes").text("49분");}else if(height == 7252){$("#minutes").text("50분");}else if(height == 7400){$("#minutes").text("51분");}else if(height == 7548){$("#minutes").text("52분");}else if(height == 7696){$("#minutes").text("53분");}else if(height == 7844){$("#minutes").text("54분");}else if(height == 7992){$("#minutes").text("55분");}else if(height == 8140){$("#minutes").text("56분");}else if(height == 8288){$("#minutes").text("57분");}else if(height == 8436){$("#minutes").text("58분");}else if(height == 8584){$("#minutes").text("59분");}})
-	$("#containerScroll3").scroll(function(){var height = $(this).scrollTop();if(height == 0 && height < 148){$("#hours").text("13시");}else if(height == 148){$("#hours").text("14시");}else if(height == 296){$("#hours").text("15시");}else if(height == 444){$("#hours").text("16시");}else if(height == 592){$("#hours").text("17시");}else if(height == 740){$("#hours").text("18시");}else if(height == 888){$("#hours").text("19시");}else if(height == 1036){$("#hours").text("20시");}else if(height == 1184){$("#hours").text("21시");}else if(height == 1332){$("#hours").text("22시");}else if(height == 1480){$("#hours").text("23시");}else if(height == 1628){$("#hours").text("24시");}})
+	$("#containerScroll").scroll(function(){timeAnimate();var height = $(this).scrollTop();if(height == 0 && height < 148){$("#hours").text("1시");}else if(height == 148){$("#hours").text("2시");}else if(height == 296){$("#hours").text("3시");}else if(height == 444){$("#hours").text("4시");}else if(height == 592){$("#hours").text("5시");}else if(height == 740){$("#hours").text("6시");}else if(height == 888){$("#hours").text("7시");}else if(height == 1036){$("#hours").text("8시");}else if(height == 1184){$("#hours").text("9시");}else if(height == 1332){$("#hours").text("10시");}else if(height == 1480){$("#hours").text("11시");}else if(height == 1628){$("#hours").text("12시");}})
+	$("#containerScroll2").scroll(function(){timeAnimate();var height = $(this).scrollTop();if(height == 0 && height < 148){$("#minutes").text("1분");}else if(height == 148){$("#minutes").text("2분");}else if(height == 296){$("#minutes").text("3분");}else if(height == 444){$("#minutes").text("4분");}else if(height == 592){$("#minutes").text("5분");}else if(height == 740){$("#minutes").text("6분");}else if(height == 888){$("#minutes").text("7분");}else if(height == 1036){$("#minutes").text("8분");}else if(height == 1184){$("#minutes").text("9분");}else if(height == 1332){$("#minutes").text("10분");}else if(height == 1480){$("#minutes").text("11분");}else if(height == 1628){$("#minutes").text("12분");}else if(height == 1776){$("#minutes").text("13분");}else if(height == 1924){$("#minutes").text("14분");}else if(height == 2072){$("#minutes").text("15분");}else if(height == 2220){$("#minutes").text("16분");}else if(height == 2368){$("#minutes").text("17분");}else if(height == 2516){$("#minutes").text("18분");}else if(height == 2664){$("#minutes").text("19분");}else if(height == 2812){$("#minutes").text("20분");}else if(height == 2960){$("#minutes").text("21분");}else if(height == 3108){$("#minutes").text("22분");}else if(height == 3256){$("#minutes").text("23분");}else if(height == 3404){$("#minutes").text("24분");}else if(height == 3552){$("#minutes").text("25분");}else if(height == 3700){$("#minutes").text("26분");}else if(height == 3848){$("#minutes").text("27분");}else if(height == 3996){$("#minutes").text("28분");}else if(height == 4144){$("#minutes").text("29분");}else if(height == 4292){$("#minutes").text("30분");}else if(height == 4440){$("#minutes").text("31분");}else if(height == 4588){$("#minutes").text("32분");}else if(height == 4736){$("#minutes").text("33분");}else if(height == 4884){$("#minutes").text("34분");}else if(height == 5032){$("#minutes").text("35분");}else if(height == 5180){$("#minutes").text("36분");}else if(height == 5328){$("#minutes").text("37분");}else if(height == 5476){$("#minutes").text("38분");}else if(height == 5624){$("#minutes").text("39분");}else if(height == 5772){$("#minutes").text("40분");}else if(height == 5920){$("#minutes").text("41분");}else if(height == 6068){$("#minutes").text("42분");}else if(height == 6216){$("#minutes").text("43분");}else if(height == 6364){$("#minutes").text("44분");}else if(height == 6512){$("#minutes").text("45분");}else if(height == 6660){$("#minutes").text("46분");}else if(height == 6808){$("#minutes").text("47분");}else if(height == 6956){$("#minutes").text("48분");}else if(height == 7104){$("#minutes").text("49분");}else if(height == 7252){$("#minutes").text("50분");}else if(height == 7400){$("#minutes").text("51분");}else if(height == 7548){$("#minutes").text("52분");}else if(height == 7696){$("#minutes").text("53분");}else if(height == 7844){$("#minutes").text("54분");}else if(height == 7992){$("#minutes").text("55분");}else if(height == 8140){$("#minutes").text("56분");}else if(height == 8288){$("#minutes").text("57분");}else if(height == 8436){$("#minutes").text("58분");}else if(height == 8584){$("#minutes").text("59분");}})
+	$("#containerScroll3").scroll(function(){timeAnimate();var height = $(this).scrollTop();if(height == 0 && height < 148){$("#hours").text("13시");}else if(height == 148){$("#hours").text("14시");}else if(height == 296){$("#hours").text("15시");}else if(height == 444){$("#hours").text("16시");}else if(height == 592){$("#hours").text("17시");}else if(height == 740){$("#hours").text("18시");}else if(height == 888){$("#hours").text("19시");}else if(height == 1036){$("#hours").text("20시");}else if(height == 1184){$("#hours").text("21시");}else if(height == 1332){$("#hours").text("22시");}else if(height == 1480){$("#hours").text("23시");}else if(height == 1628){$("#hours").text("24시");}})
 	$(document).on('click', '#am-btn',function(){
 		$("#containerScroll3").hide();
 		$("#containerScroll").show();
+		var height = $("#containerScroll").scrollTop();if(height == 0 && height < 148){$("#hours").text("1시");}else if(height == 148){$("#hours").text("2시");}else if(height == 296){$("#hours").text("3시");}else if(height == 444){$("#hours").text("4시");}else if(height == 592){$("#hours").text("5시");}else if(height == 740){$("#hours").text("6시");}else if(height == 888){$("#hours").text("7시");}else if(height == 1036){$("#hours").text("8시");}else if(height == 1184){$("#hours").text("9시");}else if(height == 1332){$("#hours").text("10시");}else if(height == 1480){$("#hours").text("11시");}else if(height == 1628){$("#hours").text("12시");}
+		timeAnimate();
 	})
 	$(document).on('click', '#pm-btn',function(){
 		$("#containerScroll3").show();
 		$("#containerScroll").hide();
+		var height = $("#containerScroll3").scrollTop();if(height == 0 && height < 148){$("#hours").text("13시");}else if(height == 148){$("#hours").text("14시");}else if(height == 296){$("#hours").text("15시");}else if(height == 444){$("#hours").text("16시");}else if(height == 592){$("#hours").text("17시");}else if(height == 740){$("#hours").text("18시");}else if(height == 888){$("#hours").text("19시");}else if(height == 1036){$("#hours").text("20시");}else if(height == 1184){$("#hours").text("21시");}else if(height == 1332){$("#hours").text("22시");}else if(height == 1480){$("#hours").text("23시");}else if(height == 1628){$("#hours").text("24시");}
+		timeAnimate();
 	})
 	$(document).on('click', "#timeSelect", function(){
+		
 		var hours = $("#hours").text();
 		var minutes = $("#minutes").text();
 		
@@ -147,6 +142,7 @@ $(document).ready(function() {
 	}
 	// right-box에 메뉴를 선택했을 시 
 	$(document).on('click', '.menu-item', function() {
+		   
 		if($("#dateInnerHTML").text() == ""){
 			dateAlert();
 		}else{
@@ -261,7 +257,6 @@ $(document).ready(function() {
 		
 	}
 function setAdd(uniqId, menuName, menuPrice, menuCnt, menuImgUrl) {
-		
 		var menuHtml =  '<tr class="set-order-item" data-id="' + uniqId + '">' +
 						'<td class="tdMenuName"><img src="' + menuImgUrl + '" class="order-img"/>' +
 						'<span class="orderMenuName">' + menuName + '</span>' + 
@@ -485,24 +480,58 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		}
 	});
 	$(document).on('click', '#orderModal', function(){
-		
-		$('.overlay').show();
-		$('popup').css('display','block');
-		var priceSum = $("#priceSum").text();
-		$("#payment").text(priceSum);
-		
-		$(".orderMenuName").each(function(item,index){
-			menuNameArray.push($(this).text());
-		});
-		$(".menuCnt").each(function(item,index){
-			cntArray.push($(this).text());
-		});
+		console.log($(".set-order-item").length);
+		   if($(".order-item").length == 0 && $(".set-order-item").length == 0 ){
+				card2();
+				$('.popup').css('display','none');
+				$('.overlay').hide();
+				return;
+			}
+		   if(localStorage.getItem("셋트") == "셋트"){
+				setCheck();
+				$('.popup').css('display','none');
+				$('.overlay').hide();
+				return;
+			}
+		   
+		   $('.popup').css('display','inline-block');
+			$('.overlay').show();
+			
+			var priceSum = $("#priceSum").text();
+			$("#payment").text(priceSum);
+			
+			$(".orderMenuName").each(function(item,index){
+				menuNameArray.push($(this).text());
+			});
+			$(".menuCnt").each(function(item,index){
+				cntArray.push($(this).text());
+			});	
+			
 	});
+	 function card2(){
+			Swal.fire({
+			  position: 'center',
+			  type: 'error',
+			  title: '상품을 선택 해 주세요.',
+			  showConfirmButton: false,
+			  timer: 700
+			});
+			
+		}
 		});
-
+function setCheck(){
+	Swal.fire({
+	  position: 'center',
+	  type: 'error',
+	  title: '세트 메뉴 선택을 진행해주세요.',
+	  showConfirmButton: false,
+	  timer: 700
+	});
+	
+}
 	$(document).on('click', '.chickenMenuLoad', function(){
 		if(localStorage.getItem("셋트") == "셋트"){
-			alert("세트 메뉴 선택을 진행해주세요.");
+			setCheck();
 			return;
 		}
 		
@@ -510,7 +539,7 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 	});
 	$(document).on('click', '.burgerMenuLoad', function(){
 		if(localStorage.getItem("셋트") == "셋트"){
-			alert("세트 메뉴 선택을 진행해주세요.");
+			setCheck();
 			return;
 		}
 $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(".setList").hide();$(".setDrinkList").hide();$(".setSideList").hide();
@@ -531,7 +560,7 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 	
 	$(document).on('click', '.sideMenuLoad', function(){
 		if(localStorage.getItem("셋트") == "셋트"){
-			alert("세트 메뉴 선택을 진행해주세요.");
+			setCheck();
 			return;
 		}
 		$(".setDrinkList").hide();$(".setSideList").hide();$(".setList").hide();$(".chickenList").hide();$(".burgerList").hide();$(".sideMenuList").show();$(".drinkMenuList").hide();$(".setSelect").hide();
@@ -539,7 +568,7 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 	});
 	$(document).on('click', '.drinkMenuLoad', function(){
 		if(localStorage.getItem("셋트") == "셋트"){
-			alert("세트 메뉴 선택을 진행해주세요.");
+			setCheck();
 			return;
 		}
 		$(".setDrinkList").hide();$(".setSideList").hide();$(".setList").hide();$(".chickenList").hide();$(".burgerList").hide();$(".sideMenuList").hide();$(".drinkMenuList").show();$(".setSelect").hide();
