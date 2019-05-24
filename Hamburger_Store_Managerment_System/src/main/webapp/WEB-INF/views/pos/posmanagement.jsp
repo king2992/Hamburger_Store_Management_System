@@ -380,7 +380,7 @@
             <label for="input_file" style="vertical-align: sub;">업로드</label> 
             <input type="file" id="input_file" class="upload-hidden" name="file"> 
         </div>
-				<input type="button" id="cancel" value="취소"> 
+				<input type="button" id="cancel" class="menuAddModalCancle" value="취소"> 
 				<input type="submit" id="submit" value="보내기">
 			</form>
 		</div>
@@ -409,7 +409,7 @@
 	            <label for="input_file2" style="vertical-align: sub;">업로드</label> 
 	            <input type="file" id="input_file2" class="upload-hidden2" name="file"> 
         		</div>
-				<input type="button" id="cancel" value="취소"> 
+				<input type="button" id="cancle" class="setMenuModalCancel" value="취소"> 
 				<input type="submit" id="submit" value="보내기">
 		</form>
 		</div>

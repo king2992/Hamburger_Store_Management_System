@@ -21,6 +21,12 @@
 			//div 태그를 만들어 텍스트를 msg로 지정을 한뒤 #chat_box에 추가를 시켜준다.
 			$('<div></div>').text('새로운 주문이 있습니다.').appendTo("#chat_box");
 		});
+		$(document).on('click', ".menuAddModalCancle", function(){
+			$(".modal").hide();$(".modal-content").hide();
+		})
+		$(document).on('click', ".setMenuModalCancel", function(){
+			$(".setModal").hide();$(".set-modal-content").hide();
+		})
 		$(document).on("click",".document",function(){
 			var payTotal = document.getElementById('payTotal').value;
 			var payTotal2 = document.getElementById('payTotal2').value;

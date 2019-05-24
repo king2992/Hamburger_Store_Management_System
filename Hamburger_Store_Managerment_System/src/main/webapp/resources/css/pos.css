@@ -196,7 +196,18 @@ footer{clear: both; width: 30%;}
          background-color: #216282; 
          opacity: 0.9; 
      }
-
+	 .setMenuModalCancel { 
+         width: 127px; height: 48px; 
+         text-align: center; 
+         border: none; 
+         margin-top: 20px; 
+         cursor: pointer; 
+     } 
+     .setMenuModalCancel:hover{ 
+         color: #fff; 
+         background-color: #216282; 
+         opacity: 0.9; 
+     }
     .modal { 
          position: fixed; 
          left: 0; 
@@ -263,7 +274,7 @@ footer{clear: both; width: 30%;}
      } 
     .tr-none{display:none;}
     #trigger{color:#fff;}
-    
+    #setAdd{color:#fff;}
     /* �쁽湲덇껐�젣 紐⑤떖 �젅�씠�뼱 */
     .labelcash { 
          display: block; 
