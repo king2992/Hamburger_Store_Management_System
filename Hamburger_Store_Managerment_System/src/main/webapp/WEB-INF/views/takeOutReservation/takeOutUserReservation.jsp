@@ -271,7 +271,7 @@ width: 300px;
 					 <th>상품정보</th>
 					 <th>가격</th>
 					 <th>수량</th>
-					 <th>삭제</th>
+					 <th><a href="#" class="snip1535" id="orderReset">리셋</a></th>
 					 </tr>
 					 </table>
 				</div>
@@ -430,15 +430,11 @@ width: 300px;
   <div class="modal-content">
   <div class="content-display"> 
   <h2 style="text-align: center; margin-top:40px;">시간을 선택해주세요</h2>
-         <!--   <div><p style="text-align: center;"><span style="font-size: 14pt;"><b>시간을 선택해주세요.<span style="font-size: 24pt;"></span></b></span></p>
-           <button type="button" onclick="amView()">오전</button><button type="button" onclick="pmView()">오후</button>
-            <button type="button" class="directInput button buttonblack" data-tooltip-text="시간을 직접 입력 할 때 에는 정확한 시간을 입력해주세요 . ex) 오후09시,21시,21:00 ">직접 입력</button>
-              <div class="divDirectInput">
-	           
-	            </div>
-           </div> -->
-           
+        	
            <div class="timenCenter">
+           		 <button type="button" id="am-btn">오전</button>
+           		 <button type="button" id="pm-btn">오후</button>
+           		 
 				 <div id="containerScroll" class="sb02 hours" >
                     <div class="item">1</div>
                     <div class="item">2</div>
@@ -452,9 +448,21 @@ width: 300px;
                     <div class="item">10</div>
                     <div class="item">11</div>
                     <div class="item">12</div>
-         <!--    </div> -->
             </div>
-            <!-- <div class="right-pm"> -->
+            <div id="containerScroll3" class="sb02 hours" >
+                    <div class="item">13</div>
+                    <div class="item">14</div>
+                    <div class="item">15</div>
+                    <div class="item">16</div>
+                    <div class="item">17</div>
+                    <div class="item">18</div>
+                    <div class="item">19</div>
+                    <div class="item">20</div>
+                    <div class="item">21</div>
+                    <div class="item">22</div>
+                    <div class="item">23</div>
+                    <div class="item">24</div>
+            </div>
 				<div id="containerScroll2" class="sb02 minutes" >
                     <div class="item">01</div>
                     <div class="item">02</div>

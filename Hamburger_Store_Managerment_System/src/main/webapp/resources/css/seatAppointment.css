@@ -209,7 +209,7 @@ html {
 .timeBtnCenter{width:100px; margin:0 auto;}
 #timeSelect{width:100px; margin:0 auto;}
 
-  #containerScroll,#containerScroll2 {
+  #containerScroll,#containerScroll2,#containerScroll3 {
   width: 150px;
   height: 150px;
   border: 1px solid #000;
@@ -275,7 +275,6 @@ html {
 /* 	min-width:40px; */
 	/* width:100%; */
 	width: 685px; 
-	height:475px;
 	 border-radius: 10px;
 	 transition: opacity .5s, top .5s;
 	  box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
