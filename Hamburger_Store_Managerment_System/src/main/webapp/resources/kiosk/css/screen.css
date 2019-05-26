@@ -178,4 +178,5 @@ nav ul li:first-child { border-left:none; }
 .table_list tbody th{border:1px solid #ff6e40; border-collapse: collapse; width:120px; padding:5px;}
 .table_tr2 { width: 100%; text-align: center;}
 .p_btn, .m_btn, .menu_del { width: 20px; height: 20px;}
-.menu_del { position:relative; left:67px;}
+.menu_del { position:relative; left:67px; }
+.price_p { line-height: 5px; }
