@@ -1,5 +1,7 @@
 package kr.ac.kopo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class KioskController {
 
 	@RequestMapping("/screen")
-	String screen()	{
+	String screen(HttpSession session)	{
+		session.removeAttribute("failed");
 		return "kiosk/screen";
 	}
 }

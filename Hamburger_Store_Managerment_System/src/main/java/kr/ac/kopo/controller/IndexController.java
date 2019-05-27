@@ -13,7 +13,6 @@ public class IndexController {
 		
 		session.removeAttribute(places);
 		
-		
 		return "index";
 	}
 

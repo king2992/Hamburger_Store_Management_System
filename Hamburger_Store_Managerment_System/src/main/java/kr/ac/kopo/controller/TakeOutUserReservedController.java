@@ -35,7 +35,7 @@ public class TakeOutUserReservedController {
 	@RequestMapping("/takeOutUserReservation")
 	String seatAppointment( Model model,String places, HttpSession session) {
 		session.setAttribute("places", places);
-		
+		session.removeAttribute("failed");
 		List<Menu> chickenList = service.chickenList();
 		List<Menu> burger = service.burgerList();
 		List<Menu> side = service.sideList();

@@ -409,12 +409,7 @@
 	</div>
 <!-- login modal -->
 	<script type="text/javascript">
-	var loginFailed = "${sessionScope.failed}";
-	window.onload = function(){
-		if(loginFailed == "failed"){
-			alert("아이디 또는 비밀번호를 확인해주세요.");
-		}
-	}
+	
 	var modal = document.querySelector(".modal");
 	var trigger = document.querySelector("#trigger");
 	var closeButton = document.querySelector(".close-button");

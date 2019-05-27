@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +33,8 @@ public class PosController {
 	PosService posservice;
 	
 	@RequestMapping(value="/posmanagement")
-	String pos(Model model) {
+	String pos(Model model , HttpSession session) {
+		session.removeAttribute("failed");
 		List<Menu> chicken = posservice.getChickenList();
 		List<Menu> burger = posservice.getBurgerList();
 		List<Menu> sideMenu = posservice.getSideMenuList();

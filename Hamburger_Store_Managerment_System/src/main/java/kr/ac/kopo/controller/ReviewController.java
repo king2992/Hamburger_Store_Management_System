@@ -27,9 +27,10 @@ public class ReviewController {
 	@Autowired
 	private FileService fileService;
 	
-	//	후기게시판 목록
+	//	�썑湲곌쾶�떆�뙋 紐⑸줉
 	@RequestMapping("/reviewList")	
-	String reviewList(Model model, Paging paging) {		
+	String reviewList(Model model, Paging paging, HttpSession session) {	
+		session.removeAttribute("failed");
 		List<Review> reviewList = reviewService.reviewList(paging);
 		
 		model.addAttribute("reviewList", reviewList);
@@ -40,7 +41,7 @@ public class ReviewController {
 	}
 	
 
-	// 글쓰기
+	// 湲��벐湲�
 	@RequestMapping("/reviewAdd")	
 	String reviewAdd() {		
 		return "review/reviewAdd";
@@ -54,7 +55,7 @@ public class ReviewController {
 		return "redirect:reviewList";
 	}
 	
-//수정
+//�닔�젙
 	@RequestMapping(value ="/reviewUp")
 	String reviewUp(int number, Model model) throws Exception {
 		
@@ -77,7 +78,7 @@ public class ReviewController {
 		reviewService.reviewUp(reviewUp);
 		return "redirect:reviewList";
 	}
-//삭제
+//�궘�젣
 	@RequestMapping("/delete") 
 	String delete(int number) throws Exception {
 		
@@ -86,7 +87,7 @@ public class ReviewController {
 		return "redirect:reviewList";
 
 	}
-//뷰	
+//酉�	
 	@RequestMapping("/view")
 	String view(int number, Model model) throws Exception {
 		
@@ -101,7 +102,7 @@ public class ReviewController {
 		return "review/view";
 	}
 	
-//좋아요
+//醫뗭븘�슂
 	@RequestMapping("/like")
 	
 	String like(int number, Review review) {
@@ -111,7 +112,7 @@ public class ReviewController {
 		return "redirect:/review/view?number=" + review.getNumber();
 	}
 	
-//계층형 답글	
+//怨꾩링�삎 �떟湲�	
 	@RequestMapping("/reply")
 		String reply(Review review, Model model) {
 		
