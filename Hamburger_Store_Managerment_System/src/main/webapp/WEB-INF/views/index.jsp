@@ -8,21 +8,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Hamburger_Store_Managerment_System</title>
+  <title>M-SA</title>
    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
  <!--  <script src="/resources/js/mainR.js"></script>  -->
   
   
   <!-- Bootstrap core CSS -->
-  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
  
   <!-- Custom fonts for this template -->
   <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+   <link href="/resources/css/mainIndex.css" rel="stylesheet" type="text/css">
+       <script src="/resources/js/carousel.js"></script> 
   <!-- Custom styles for this template -->
-  <link href="/resources/css/grayscale.min.css" rel="stylesheet">
+<!--   <link href="/resources/css/grayscale.min.css" rel="stylesheet"> -->
 
 
 <style>
@@ -74,7 +75,7 @@
          opacity: 0; 
          visibility: hidden; 
          display: block !important;
-        
+        z-index:5;
          transform: scale(1.1); 
          transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
      } 
@@ -198,7 +199,7 @@
          opacity: 0; 
          visibility: hidden; 
          display: block !important;
-        
+        z-index:5;
          transform: scale(1.1); 
          transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
      } 
@@ -293,24 +294,17 @@
      }
 </style>
 </head>
-
-<body id="page-top">
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-to8up">Team2</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <!-- <a class="nav-link js-scroll-trigger" href="/user/signUp">SignUp</a> -->
-             <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a>
-          </li>
-          <li class="nav-item">
+<body>
+     <div id="container">
+            <div id="center-wrap">
+                <header class="header">
+                    <nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                     <a href="#" class="navbar-brand js-scroll-trigger"><p>M-SA</p></a>
+                        <ul>
+                            
+                            <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li>
+                            
+                                 <li class="nav-item">
               <c:choose>
                   <c:when test="${sessionScope.user eq null }">
           <a class="nav-link js-scroll-trigger" href="#"  id="trigger">Login</a> 
@@ -320,53 +314,144 @@
             </c:otherwise>
           </c:choose>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a>
-          </li>
-          <c:choose>
+                            
+                            
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                               <c:choose>
           <c:when test="${sessionScope.user ne null }">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/user/myPage">My Page</a>
           </li>
           </c:when>
           </c:choose>
-        </ul>
-      </div>
+                        </ul>
+                    </nav>
+                </header>
+                <div style="position: relative; width: 100%; height:600px;">
+          <div id="slider">
+            <div class="slider_item img1"></div>
+            <div class="slider_item img2"></div>
+            <div class="slider_item img3"></div>
+            <div class="slider_item img4"></div>
+<!--            <div class="slider_item img5"></div>-->
+        </div>
+            </div>
+                 <script>
+        const SHOWING_CLASS = "showing";
+        const firstSlide = document.querySelector(".slider_item:first-child");
+        function slide(){
+                const currentSlide = document.querySelector('.showing');
+            if(currentSlide){
+                currentSlide.classList.remove(SHOWING_CLASS);
+                const nextSlide = currentSlide.nextElementSibling;
+                if(nextSlide){
+                    nextSlide.classList.add(SHOWING_CLASS);
+                } else{
+                    firstSlide.classList.add(SHOWING_CLASS);
+                }
+               }else{
+                firstSlide.classList.add(SHOWING_CLASS);
+            }
+        }
+        slide();
+       setInterval(slide,6000);
+            // setInterval(slide,2000); 
+        </script>
+  
+               
+            </div>
+            
+              <div style="clear: both; position: relative;">
+        <div class="banner-wrap">
+            <ul class="bannerUl">
+             
+                 <li>
+                    <div class="autoRolling"  style="background: #8e1316">
+                    <ul class="rolling community">
+                     <li style=""><h3>COMMUNITY</h3><a href="">COMMUNITY</a></li>
+                    <li style="display: none"></li>
+                    <li style="display: none"></li>
+                    </ul>
+                    </div>
+                </li>
+                 <li>
+                    <div class="autoRolling">
+                    <ul class="rolling takeout">
+                     <li style=""><h3>TakeOut</h3><a href="">TakeOut</a></li>
+                    <li style="display: none"></li>
+                    <li style="display: none"></li>
+                    </ul>
+                    </div>
+                </li>
+                 <li>
+                    <div class="autoRolling" style="background: #8e1316">
+                    <ul class="rolling kiosk">
+                     <li><h3>Kiosk</h3><a href="">web Kiosk</a></li>
+                    <li style="display: none"></li>
+                    <li style="display: none"></li>
+                    </ul>
+                    </div>
+                </li>
+                   <li>
+                    <div class="autoRolling">
+                    <ul class="rolling display">
+                     <li style=""><h3>Display</h3><a href="">Display</a></li>
+                    <li style="display: none"></li>
+                    <li style="display: none"></li>
+                    </ul>
+                    </div>
+                </li>
+            </ul>        
+        </div>
+        <div>
+            <div class="mainFootArea">
+                <div class="footerNoticeArea">
+                    <h3>NOTICE&NEWS</h3>
+                    <div class="footNoticeWrap">
+                        <ul class="footNoticeUl">
+                            <li>
+                                <p>
+                                    <a href="">공휴일 및 넷째 주 일요일 휴업</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <ul class="footQuickUl">
+                    <li><a href=""><img src="/resources/images/24.gif"></a></li>
+<!--                     <li><a href=""><img src="images/drive.jpg"></a></li>-->
+                     <li><a href=""><img src="/resources/images/home.gif"></a></li>
+                     <li class="btn_ria_insta"><a href=""><img src="/resources/images/instargram.gif"></a></li>
+                     <li class="btn_ria_movie"><a href=""><img src="/resources/images/grow.gif"></a></li>
+                </ul>
+            </div>          
+        </div>
+                  
+                   <footer class="footer">
+                    <div class="inner">
+                        <address>
+                            <p>대전광역시 동구 우암로 352-21 대표문의 : 010-8950 - 1914</p>
+                            <p>고객지원센터 010-5456-0801 (고객불편사항 등)대표자:주이원박조</p>
+                            <p>COPYRIGHT &copy; 2019 M-SA ALL RIGHT RESERVED</p>
+                        </address>
+                        <div>
+                            <img src="/resources/images/footer2.jpg">
+                            <img src="/resources/images/footer.jpg">
+                            <img src="/resources/images/footer4.gif">
+                            <img src="/resources/images/footer5.gif">
+                            <img src="/resources/images/footer6.gif">
+                        </div>
+                        
+                        
+                    </div>
+                </footer>
     </div>
-  </nav>
-
-  <!-- Header -->
-  <header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">Hamburger Store Management System</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">햄버거 매장 관리 시스템</h2>
-        <a href="#about" class="btn btn-primary js-scroll-trigger">Go</a>
-      </div>
-    </div>
-  </header>
-
-
- 
-
-  <!-- Footer -->
-  <footer class="bg-black small text-center text-white-50">
-    <div class="container">
-      Copyright &copy; team2 Website 2019
-    </div>
-  </footer>
+        </div>
 
 <!-- 로그인 모달창 -->
 
@@ -565,16 +650,15 @@
 	</script>
 
 
-
   <!-- Bootstrap core JavaScript -->
-  <script src="/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--   <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
   <!-- Plugin JavaScript -->
-  <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!--   <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
   <!-- Custom scripts for this template -->
-  <script src="/resources/js/grayscale.min.js"></script>
+<!--   <script src="/resources/js/grayscale.min.js"></script> -->
 
 </body>
 

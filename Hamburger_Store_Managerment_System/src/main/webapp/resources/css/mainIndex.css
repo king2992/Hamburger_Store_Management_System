@@ -1,0 +1,178 @@
+*{  font-family: "Times New Roman", Times, serif;}
+@media (min-width: 576px)
+{.navbar-expand-sm .navbar-nav {flex-direction: row;}
+.navbar-nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+}
+@media (min-width: 576px){
+.navbar-expand-sm {
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-pack: start;
+    justify-content: flex-start !important;
+}
+}
+
+textarea{resize: none;}
+
+.navbar-expand-sm{justify-content:flex-start;}
+.navbar {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem !important;
+}
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+} 
+
+@media (min-width: 576px){
+.navbar-expand-sm .navbar-nav .nav-link {
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+}
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+@media (min-width: 576px){
+.navbar-expand-sm .navbar-nav .dropdown-menu {
+    position: absolute;
+}}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
+ul li{list-style-type: none;}
+a { text-decoration-line: none; color: rgba(255,255,255,.5);}
+#container{width: 100%; min-width: 1024px;}
+#center-wrap{width: 100%;}
+.header{width: 100%; height: 100px; line-height: 84px;background: #080607;}
+.navi {color:rgba(255,255,255,.5) !important;  width: 1024px; margin: 0 auto;}
+.navi a{color: rgba(255,255,255,.5); }
+.navi a p{ font-size: 36px; font-weight: 700;  line-height: 15px;}
+.navi a{ float: left;}
+.navi a:hover{color: #fff;}
+.navi li  { margin-left: 30px;}
+.navi li a{font-weight: 700; font-size: 20px}
+.navi ul { display: flex; float: right;}
+.item img{width: 100%;}
+
+/*carousel*/
+      #slider{
+            width: 100%;
+            position: relative;
+        }
+@media (max-width:1024px){
+    .slider_item{
+         background-size: 100% 100%;
+    }
+}
+
+.slider_item{
+       width: 100%;
+       height: 600px;
+       display: flex;
+       justify-content: center; 
+       align-items: center; 
+       color: white; 
+       position: absolute;
+       top: 0;
+       z-index: 0; 
+       opacity: 0; 
+       transition: all .5s ease-in-out; 
+       transform: scale(0.9); 
+            }
+       .img1,.img2,.img3,.img4,.img5{
+    /*  */    
+    background-position: center center;
+    background-repeat: no-repeat;
+  
+}
+    .img1{background-image: url(/resources/images/carousel1.jpg);}
+       .img2{background-image: url(/resources/images/carousel2.jpg) }
+       .img3{background-image: url(/resources/images/carousel3.jpg) }
+       .img4{background-image: url(/resources/images/carousel4.jpg)}
+/*      .img5{background-image: url(images/carousel6.jpg)}*/
+        .showing{z-index: 1; opacity: 1; transform: none;}
+.banner-wrap{position: relative; z-index: 1; width: 100%; height: 136px; background: #760000;}
+.bannerUl{width: 1024px; margin: 0 auto;}
+.bannerUl li{position: relative; float: left; width: 256px; height: 136px;}
+.autoRolling{position: relative; z-index: 1;}
+.rolling{position: relative; z-index: 1;  height: 136px; overflow: hidden;}
+.rolling li h3{font-size: 20px; color: #fff; padding:15px}
+.rolling li a {padding: 15px; color: #fff}
+.kiosk{background-image: url(/resources/images/kiosk.png); background-repeat: no-repeat; background-position: right; background-size: 60%;}
+.takeout{background-image: url(/resources/images/takeout.png); background-repeat: no-repeat; background-position: right; background-size: 43%;}
+.display{background-image: url(/resources/images/display.png); background-repeat: no-repeat; background-position: right; background-size: 62%;}
+.community{background-image: url(/resources/images/boa.png); background-repeat: no-repeat; background-position: right; background-size: 53%;}
+
+.mainFootArea{width: 1024px; height: 40px; margin: 0 auto; position: relative;}
+.footerNoticeArea{position: relative; z-index: 1; float: left; width: 460px; padding: 11px 0 0 0;}
+.footerNoticeArea h3{float: left; width: 108px; color: #808080; font-size: 17px;}
+.footNoticeWrap{position: relative; z-index: 1; float: left; width: 316px; height: 19px; overflow: hidden; left: 35px; font-size: 14px; border-left: 1px solid #d3d3d3;}
+.footNoticeUl{position: relative; z-index: 1; width: 304px; padding: 0 0 0 12px;}
+.footNoticeUl li{clear: both; height: 19px; line-height: 19px;}
+.footNoticeUl li p{float: left; width: 188px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.footNoticeUl li p a{font-family: Nanum Gothic; color: #808080; font-size: 13px;}
+.footNoticeUl li span{float: right; width: 65px;font-family: Nanum Gothic;}
+.footQuickUl {float: right; width: 564px;}
+.footQuickUl li{float: left;}
+.footQuickUl li a,.footQuickUl li img {display: block; height: 40px; width: 139px;}
+.btn_ria_insta{width: 140px;}
+
+.footer{position: relative; bottom: 0; z-index: 2; height: 100px; width: 100%; padding: 24px 0 0 0; border: 1px solid #cdcdcd; background: #fff; clear: both;}
+.footer .inner{position: relative; z-index: 5; width: 1024px; margin: 0 auto;}
+.footer .inner address{clear: both; float: left; width: 50%; margin: 8px 0 0 0;}
+.footer .inner address p{font-style: normal; font-size: 11px; color: #808080;}
