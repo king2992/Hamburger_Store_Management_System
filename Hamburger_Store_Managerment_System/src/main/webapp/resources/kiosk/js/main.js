@@ -139,16 +139,41 @@ $(document).ready(function(){
 			
 			var total = priceItem
 		});
-// 주문 총 금액		
-		$(function(){
-			var total = $('.')
-			$('.total_pay').html(total);
+// 주문 총 금액	
+		
+//		$(document).on('click','.tab_cont li img', function(){
+//			var price = $(this).data('price');
+//			console.log('>>>>>>>>>>>>>>>>'+price);
+//			var priceItem = $('.listPrice').html();
+//			console.log(priceItem+'<<<<<<<<<<<<<<<<<<<<<<<<<');
+//		});
+//		$(function(){
+//			$('.tab_cont li img').on('click', function(){
+//				var price = $(this).data('price');
+//				console.log('>>>>>>>>>>>>>>>>>>'+price);
+//				var total = $('.listPrice').data('price');
+//				console.log('>>>>>>>>>>>>>>>>>>'+total);
+//				var priceTotal = $(event.target).children().data();
+//				console.log('>>>>>>>>>>>>>>>>>>'+priceTotal);
+//				$('label').empty(); 
+//				var total = (price*$('.listPrice')).data('price');
+//				console.log(total);
+//				
+//			});
+//		});
+//		$(function(){
+//			var total = $('.')
+//			$('.total_pay').html(total);
+//			
+//			$(function(){
+//				var total = $('.cnt').find().parents().append()
+//			});
 //			$('.total_pay').on('click', function(){
 //				var price = $('.table_tr2').children('td').data('price');
 //				
 //			console.log(price);
 //			});
-		});
+//		});
 //		$('.total_pay').text();		
 //	$(function() {
 //		var sum;
@@ -159,7 +184,28 @@ $(document).ready(function(){
 //	});
 //		var sum = $('.listPrice').text();
 //			$('.total_pay').append('');
-
+//		$(function(){
+//			$('.tab_cont li img').on('click', function(){
+//				var price = $(event.target).data('price');
+//				console.log(price);
+//				var total = $(event.target).data();
+//				var totalPrice = $('.listPrice').text();
+//				console.log(totalPrice);
+//		$(function(){
+//			$('label').empty();
+//			var price = $('.tab_cont li img').data('price');
+//			console.log(price);
+//		});
+//				$(document).on('click', 'p_btn', function(){
+//					console.log(totalPrice);
+//				});
+//				
+//				$(document).on('click','m_btn', function(){
+//					console.log(totalPrice);
+//				});
+//			});
+//		});
+		
 });
 
 
