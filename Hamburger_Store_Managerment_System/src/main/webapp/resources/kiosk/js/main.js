@@ -85,7 +85,7 @@ $(document).ready(function(){
 // + = .p_btn
 // - = .m_btn
 // x = .menu_del
-		$(function(){  
+		$(function(){   
 			$('.tab_cont li img').on('click', function() {
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
