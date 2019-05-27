@@ -99,7 +99,9 @@ public class UserController {
 	}
 	//회원탈퇴
 	@RequestMapping("/withdrawal")
-	String withdrawal() {
+	String withdrawal(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("user");
+		model.addAttribute("userId", userId);
 		return "/user/withdrawal";
 	}
 	//비밀번호변경 : 현재비밀번호체크
