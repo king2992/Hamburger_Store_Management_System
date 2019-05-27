@@ -150,7 +150,7 @@
 						<td>주문 총 금액 :&nbsp;&nbsp;</td>
 <!-- 			총액 금액 영역 -->
 <!-- 						<td><input class="total_pay" type="text">&nbsp;원</td> -->
-							<td><label>요기야</label></td>
+							<td><label id="total_price">요기야</label></td>
 					</tr>
 				</table>
            			 <div class="button_base b03_skewed_slide_in">

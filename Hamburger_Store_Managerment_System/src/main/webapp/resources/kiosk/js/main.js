@@ -95,20 +95,30 @@ $(document).ready(function(){
 // + = .p_btn
 // - = .m_btn
 // x = .menu_del
+		
 		$(function(){
 			$('.tab_cont li img').on('click', function() {
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
-				$('.table_tr2').append('<tr>'+'<td id="menuname'+menuname+'">'+menuname+'</td>'+'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+'<td class="listPrice">'+price+'<button class="menu_del">X</button>'+'</td>'+'</tr>');
+				$('.table_tr2').append(
+						'<tr>'+
+						'<td id="menuname'+menuname+'">'+menuname+'</td>'+
+						'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
+						'<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">X</button>'+'</td>'+
+						'</tr>');
+			totalPrice();
+				
 			});
 		});
 // 주문 내역 삭제
 		$(document).on('click', '.menu_del', function(){
 			$(this).parent().parent().remove();
 			swal2();
+			totalPrice();
 		});
 // 수량 + 
-		$(document).on('click','.p_btn', function(){	
+		$(document).on('click','.p_btn', function(){
+			
 			var item = $(this).siblings("span").text();
 			if (item < 50){
 				item ++;
@@ -117,11 +127,13 @@ $(document).ready(function(){
 			}
 			var tot = item;
 			$(this).siblings("span").text(tot);
+			
 // 수량 증가 시 금액 
 			var price = $('.tab_cont li img').data('price');
 			var sum = item * price;
 			var priceItem = $(this).parent().siblings(".listPrice");
-			priceItem.html(sum + "<button class='menu_del'>X</button>");
+			priceItem.html("<span class='spanPrice'>"+sum +"</span>"+"<button class='menu_del'>X</button>");
+			totalPrice();
 		});
 // 수량 -
 		$(document).on('click','.m_btn', function(){
@@ -131,81 +143,25 @@ $(document).ready(function(){
 			}
 			var tot = item;
 			$(this).siblings("span").text(tot);
+			
 // 수량 감소 시 금액
 			var price = $('.tab_cont li img').data('price');
 			var minus = item * price;
 			var priceItem = $(this).parent().siblings('.listPrice');
-			priceItem.html(minus + "<button class='menu_del'>X</button>");
+			priceItem.html("<span class='spanPrice'>"+minus +"</span>"+"<button class='menu_del'>X</button>");
 			
-			var total = priceItem
+			var total = priceItem;
+			totalPrice();
 		});
 // 주문 총 금액	
-		
-//		$(document).on('click','.tab_cont li img', function(){
-//			var price = $(this).data('price');
-//			console.log('>>>>>>>>>>>>>>>>'+price);
-//			var priceItem = $('.listPrice').html();
-//			console.log(priceItem+'<<<<<<<<<<<<<<<<<<<<<<<<<');
-//		});
-//		$(function(){
-//			$('.tab_cont li img').on('click', function(){
-//				var price = $(this).data('price');
-//				console.log('>>>>>>>>>>>>>>>>>>'+price);
-//				var total = $('.listPrice').data('price');
-//				console.log('>>>>>>>>>>>>>>>>>>'+total);
-//				var priceTotal = $(event.target).children().data();
-//				console.log('>>>>>>>>>>>>>>>>>>'+priceTotal);
-//				$('label').empty(); 
-//				var total = (price*$('.listPrice')).data('price');
-//				console.log(total);
-//				
-//			});
-//		});
-//		$(function(){
-//			var total = $('.')
-//			$('.total_pay').html(total);
-//			
-//			$(function(){
-//				var total = $('.cnt').find().parents().append()
-//			});
-//			$('.total_pay').on('click', function(){
-//				var price = $('.table_tr2').children('td').data('price');
-//				
-//			console.log(price);
-//			});
-//		});
-//		$('.total_pay').text();		
-//	$(function() {
-//		var sum;
-//		console.log(sum);
-//	$('.table_tr2').find('.listPrice').each(function(){
-//		sum += Number($(this).parents('tr').find('.listPrice').text());
-//		});
-//	});
-//		var sum = $('.listPrice').text();
-//			$('.total_pay').append('');
-//		$(function(){
-//			$('.tab_cont li img').on('click', function(){
-//				var price = $(event.target).data('price');
-//				console.log(price);
-//				var total = $(event.target).data();
-//				var totalPrice = $('.listPrice').text();
-//				console.log(totalPrice);
-//		$(function(){
-//			$('label').empty();
-//			var price = $('.tab_cont li img').data('price');
-//			console.log(price);
-//		});
-//				$(document).on('click', 'p_btn', function(){
-//					console.log(totalPrice);
-//				});
-//				
-//				$(document).on('click','m_btn', function(){
-//					console.log(totalPrice);
-//				});
-//			});
-//		});
-		
+		function totalPrice() {
+			var total = "";
+			$.each($('.spanPrice'),function(){
+				var tot = $(this).text();
+				total = Number(total) + Number(tot) ;
+			});
+			$('#total_price').text(total);
+		};
 });
 
 
