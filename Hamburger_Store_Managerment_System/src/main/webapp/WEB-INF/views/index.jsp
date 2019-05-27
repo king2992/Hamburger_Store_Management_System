@@ -12,7 +12,7 @@
    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
  <!--  <script src="/resources/js/mainR.js"></script>  -->
   
-
+  
   <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
  
