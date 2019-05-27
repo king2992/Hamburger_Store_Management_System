@@ -45,7 +45,6 @@ function cancel(){
 		title: '결제가 취소 되었습니다.',
 	  	width: 600,
 	  	padding: '3em',
-	  	background: '#fff url(/images/trees.png)',
 	  	backdrop: `
 	  		rgba(0,0,123,0.4)
 	  		url("/resources/kiosk/images/test.gif")
@@ -60,7 +59,6 @@ function swal2() {
 		  '메뉴 내역이 삭제되었습니다!',
 		  'OK 를 클릭해주세요!',
 		  'success'
-		  
 		)
 };
 // 50개 이상 되면 alert
@@ -70,14 +68,6 @@ function swal3() {
 		  title: 'Oops...',
 		  text: '더이상 수량을 증가 시킬 수 없습니다!',
 		  footer: '<a href>메뉴로  돌아가기</a>'
-		});
-};
-function swal4() {
-	Swal.fire({
-		  type: 'error',
-		  title: '잠깐만...........',
-		  text: '1개 이상은 시켜야지 시키야',
-		  footer: '<a href>메뉴로 돌아가기</a>'
 		});
 };
 // Tab 메뉴
@@ -91,23 +81,33 @@ $(document).ready(function(){
 			$(".center-wrap > div > ul").hide();
 			$(".center-wrap > div > ul").eq(list).show();
 	});
-// 주문 내역 
+// 주문 내역
 // + = .p_btn
 // - = .m_btn
 // x = .menu_del
-		
 		$(function(){
 			$('.tab_cont li img').on('click', function() {
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
+				var cnt = $('#menuname'+menuname+'').siblings('.td2').children('.cnt'+menuname+'').text();
+// 이미지 클릭 시 수량 증가 중복방지
+				if($('#menuname'+menuname+'').length == 1){
+					var a = Number(cnt) + 1;
+					var b = "";
+					b = Number(a) * Number(price);
+					$('#menuname'+menuname+'').siblings('.td2').children('.cnt'+menuname+'').text(a);
+					$('#menuname'+menuname+'').siblings('.listPrice').children('.spanPrice').text(b);
+					totalPrice();
+					return;
+				} else {
 				$('.table_tr2').append(
 						'<tr>'+
 						'<td id="menuname'+menuname+'">'+menuname+'</td>'+
-						'<td>'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
+						'<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
 						'<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">X</button>'+'</td>'+
 						'</tr>');
-			totalPrice();
-				
+				totalPrice();
+				}
 			});
 		});
 // 주문 내역 삭제
@@ -116,7 +116,7 @@ $(document).ready(function(){
 			swal2();
 			totalPrice();
 		});
-// 수량 + 
+// 수량 +
 		$(document).on('click','.p_btn', function(){
 			
 			var item = $(this).siblings("span").text();
@@ -128,7 +128,7 @@ $(document).ready(function(){
 			var tot = item;
 			$(this).siblings("span").text(tot);
 			
-// 수량 증가 시 금액 
+// 수량 증가 시 금액
 			var price = $('.tab_cont li img').data('price');
 			var sum = item * price;
 			var priceItem = $(this).parent().siblings(".listPrice");
@@ -153,12 +153,12 @@ $(document).ready(function(){
 			var total = priceItem;
 			totalPrice();
 		});
-// 주문 총 금액	
-		function totalPrice() {
+// 주문 총 금액
+		function totalPrice(){
 			var total = "";
 			$.each($('.spanPrice'),function(){
 				var tot = $(this).text();
-				total = Number(total) + Number(tot) ;
+				total = Number(total) + Number(tot);
 			});
 			$('#total_price').text(total);
 		};
