@@ -52,11 +52,14 @@ public class UserController {
 	  }
 	  return "redirect:../";
 	   }
-	 
 	
 	@RequestMapping("/userLogout")
 	String userLogout(HttpSession session) {
 		session.invalidate();
 		return "redirect:../";
+	}
+	@RequestMapping("/myPage")
+	String myPage() {
+		return "/user/myPage";
 	}
 }

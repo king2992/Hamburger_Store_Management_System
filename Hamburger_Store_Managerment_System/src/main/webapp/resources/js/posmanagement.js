@@ -305,7 +305,7 @@
 		function effectiveness(){
 			Swal.fire({
 			  position: 'center',
-			  type: 'success',
+			  type: 'error',
 			  title: '상품을 선택 해 주세요.',
 			  showConfirmButton: false,
 			  timer: 1500
@@ -327,7 +327,9 @@
 		});
 	}
 	function allRemove(){
-		$(".orderList").empty();
+		$(".menuListTr").each(function(){
+			$(this).remove();
+		})
 		menuItemPriceTotal();
 	}
 	function menuRemove(){
@@ -345,9 +347,6 @@
 		var priceSum = Number(cnt) * Number(price);
 		$("[name='"+menuName+"']").siblings(".item-price").text(priceSum);
 	}
-	function allRemove(){
-		$('#orderList').remove();
-		}
 	function menuCntUp(){
 		var price = $("#menuListSelected").find(".item-price").text();
 		var tot = $("#menuListSelected").find(".menuListCnt").text();

@@ -335,6 +335,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/user/myPage">My Page</a>
+          </li>
         </ul>
       </div>
     </div>

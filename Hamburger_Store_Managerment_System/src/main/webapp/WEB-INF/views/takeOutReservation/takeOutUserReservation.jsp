@@ -221,20 +221,7 @@ width: 300px;
 			class="navbar-brand menu-title" href='<c:url value="/"/>'> <span
 			class="menu-pre">store</span><span class="menu-last">management</span>
 		</a> <!-- Links -->
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link"
-				href='<c:url value="/"/>'> <i class="fa fa-home menu-icon"></i>
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href='<c:url value="/review/reviewList"/>'> <i
-					class="fa fa-edit menu-icon"></i>
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href='<c:url value="/study/list"/>'> <i
-					class="fas fa-book menu-icon"></i>
-			</a></li>
-		</ul>
-
+		
 		<ul class="nav navbar-nav menu-infobtn">
 			<li class="dropdown"><a href="#"
 				class="dropdown-toggle menu-dropicon" data-toggle="dropdown"
