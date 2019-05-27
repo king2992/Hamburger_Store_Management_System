@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.User;
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -46,6 +48,14 @@ SqlSession sql;
 	public void userInfoUpdate(HashMap<String, Object> map) {
 		System.out.println("1111111111111111111111111111111111111"+map);
 		sql.update("user.userInfoUpdate", map);
+	}
+	@Override
+	public List<TakeOutReserved> takeoutReservedList(String userId) {
+		return sql.selectList("user.takeoutReservedList",userId);
+	}
+	@Override
+	public List<TakeoutReservedMenu> userReservedCheck(int takeoutId) {
+		return sql.selectList("user.userTakeoutReservedCheck", takeoutId);
 	}
 	
 	

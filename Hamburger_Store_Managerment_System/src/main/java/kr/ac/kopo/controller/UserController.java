@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.User;
 import kr.ac.kopo.service.UserService;
 
@@ -82,8 +84,18 @@ public class UserController {
 	}
 	//Takeout ¿¹¾à ³»¿ª
 	@RequestMapping("/takeoutReservedList")
-	String takeoutReservedList() {
+	String takeoutReservedList(Model model, HttpSession session) {
+		String userId = (String) session.getAttribute("user");
+		List<TakeOutReserved> list = service.takeoutReservedList(userId);
+		model.addAttribute("list", list);
 		return "/user/takeoutReservedList";
+	}
+	@ResponseBody
+	@RequestMapping("/reservedCheck")
+	Object userReservedCheck(@RequestParam(value="takeoutId") int takeoutId) {
+		List<TakeoutReservedMenu> list = service.userReservedCheck(takeoutId);
+		
+		return list;
 	}
 	//È¸¿øÅ»Åð
 	@RequestMapping("/withdrawal")

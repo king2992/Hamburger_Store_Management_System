@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.dao.UserDao;
+import kr.ac.kopo.model.TakeOutReserved;
+import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.User;
 @Service
 public class UserServiceImpl implements UserService {
@@ -41,6 +43,14 @@ UserDao dao;
 	@Override
 	public void userInfoUpdate(HashMap<String, Object> map) {
 		dao.userInfoUpdate(map);
+	}
+	@Override
+	public List<TakeOutReserved> takeoutReservedList(String userId) {
+		return dao.takeoutReservedList(userId);
+	}
+	@Override
+	public List<TakeoutReservedMenu> userReservedCheck(int takeoutId) {
+		return dao.userReservedCheck(takeoutId);
 	}
 	
 	
