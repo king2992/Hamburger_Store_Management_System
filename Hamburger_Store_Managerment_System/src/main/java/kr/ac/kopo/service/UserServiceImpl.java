@@ -1,6 +1,8 @@
 package kr.ac.kopo.service;
 
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,25 @@ UserDao dao;
 	public boolean login(User user) {
 		return dao.login(user);
 	}
+	@Override
+	public User personalInfomationChange(String userId) {
+		return dao.personalInfomationChange(userId);
+	}
+	@Override
+	public User nowPwCheck(HashMap<String, Object> map) {
+		return dao.nowPwCheck(map);
+	}
+	@Override
+	public void userPwUpdate(HashMap<String, Object> map) {
+		dao.userPwUpdate(map);
+	}
+	@Override
+	public void userInfoUpdate(HashMap<String, Object> map) {
+		dao.userInfoUpdate(map);
+	}
 	
+	
+
 	
 
 }

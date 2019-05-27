@@ -1,12 +1,14 @@
 package kr.ac.kopo.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,10 +47,12 @@ public class UserController {
 	  String userLogin(HttpSession session, User user) { 
 	  if (service.login(user)) {
 	  session.setAttribute("user", user.getUserId());
+	  session.removeAttribute("failed");
 	  return "redirect:../"; 
 	   } 
 	   else
 	  {
+		   session.setAttribute("failed", "failed");
 	  }
 	  return "redirect:../";
 	   }
@@ -62,4 +66,73 @@ public class UserController {
 	String myPage() {
 		return "/user/myPage";
 	}
+	//개인정보변경
+	@RequestMapping("/personalInfomationChange")
+	String personalInfomationChange(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("user");
+		User userInfo = service.personalInfomationChange(userId);
+		model.addAttribute("user", userInfo);
+		
+		return "/user/personalInfomationChange";
+	}
+	//내가 작성 한 글
+	@RequestMapping("/myWritten")
+	String myWritten() {
+		return "/user/myWritten";
+	}
+	//Takeout 예약 내역
+	@RequestMapping("/takeoutReservedList")
+	String takeoutReservedList() {
+		return "/user/takeoutReservedList";
+	}
+	//회원탈퇴
+	@RequestMapping("/withdrawal")
+	String withdrawal() {
+		return "/user/withdrawal";
+	}
+	//비밀번호변경 : 현재비밀번호체크
+	@ResponseBody
+	@RequestMapping("/nowPwCheck")
+	int nowPwCheck(@RequestParam(value="nowPw") String nowPw, HttpSession session) {
+		String userId = (String) session.getAttribute("user");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		
+		map.put("userId", userId);
+		map.put("userPassword", nowPw);
+		User user = service.nowPwCheck(map);
+		if(user == null) {
+			return 0;
+		}
+		return 1 ;
+	}
+	@ResponseBody
+	@RequestMapping("/userPwUpdate")
+	int userPwUpdate(@RequestParam(value="userPassword") String userPassword, HttpSession session) {
+		String userId = (String) session.getAttribute("user");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("userId", userId);
+		map.put("userPassword", userPassword);
+		service.userPwUpdate(map);
+		return 1; 
+	}
+	@ResponseBody
+	@RequestMapping("/userInfoUpdate")
+	int userInfoUpdate(HttpSession session, @RequestParam(value="userPhone") String userPhone,
+			@RequestParam(value="userName") String userName) {
+		String userId = (String) session.getAttribute("user");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("userId", userId);
+		map.put("userPhone", userPhone);
+		map.put("userName", userName);
+		
+		service.userInfoUpdate(map);
+		
+		session.invalidate();
+		return 1;
+	}
+	
+	
 }

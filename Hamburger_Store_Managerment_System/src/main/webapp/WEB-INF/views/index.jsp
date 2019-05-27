@@ -335,9 +335,13 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a>
           </li>
+          <c:choose>
+          <c:when test="${sessionScope.user ne null }">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/user/myPage">My Page</a>
           </li>
+          </c:when>
+          </c:choose>
         </ul>
       </div>
     </div>
@@ -405,6 +409,12 @@
 	</div>
 <!-- login modal -->
 	<script type="text/javascript">
+	var loginFailed = "${sessionScope.failed}";
+	window.onload = function(){
+		if(loginFailed == "failed"){
+			alert("아이디 또는 비밀번호를 확인해주세요.");
+		}
+	}
 	var modal = document.querySelector(".modal");
 	var trigger = document.querySelector("#trigger");
 	var closeButton = document.querySelector(".close-button");
