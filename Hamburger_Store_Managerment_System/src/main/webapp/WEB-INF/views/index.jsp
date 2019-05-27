@@ -405,7 +405,7 @@
 				<!-- <input type="submit" id="submit" value="보내기"> -->
 				<input type="button" id="submitup" value="가입하기" onclick="signUpGoData()">
 			</form>
-		</div>
+		</div> 
 	</div>
 <!-- login modal -->
 	<script type="text/javascript">
