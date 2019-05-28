@@ -4,14 +4,7 @@
 <html>
 <head>  
 <meta charset="UTF-8">
-<c:if test="${sessionScope.user == null}">
-<script type="text/javascript">
-		alert("로그인 하신 후에 이용해 주세요.");
-			location.href="${pageContext.request.contextPath}/";
-</script>
-</c:if>
 <title></title>
- <link rel="shortcut icon" type="image/x-icon" href="/resources/images/etc/check.ico" />
  <style>
 button { border-style:none; width: 70px; height:35px; background-color:#2d70be; font-weight:bold; color:#fff; cursor: pointer;}
 .fileDrop {
@@ -20,20 +13,23 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 	border : 2px dotted #0b58a2;
 }
  </style>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<c:if test="${sessionScope.user == null}">
+<script type="text/javascript">
+		alert("로그인 하신 후에 이용해 주세요.");
+			location.href="${pageContext.request.contextPath}/";
+</script>
+</c:if>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
-<!-- <script src="/resources/js/summernote.js"></script> -->
 <script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/classic/ckeditor.js"></script>
-
-<link rel="stylesheet" href="/resources/lightbox/css/lightbox.css">
-<script type="text/javascript" src="/resources/js/summernote.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+<link rel="stylesheet" href="${path}/resources/lightbox/css/lightbox.css">
+<script type="text/javascript" src="${path}/resources/js/summernote.js"></script>
 <script id="fileTemplate" type="text/x-handlebars-template">
 	<li style="list-style: none; margin: 0 0 0 0; padding: 0 0 0 0; border: 0; float:left;">
 		<span class="mailbox-attachment-icon has-img">
@@ -43,15 +39,16 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 			<a href="{{originalFileUrl}}" class="mailbox-attachment-name">
 				<i class="fa fa-paperclip"></i> {{originalFileName}}
 			</a>
-			<a href="{{fileName}}" class="btn btn-default btn-xs pull-right delBtn">
+			<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delBtn">
 				<i class="fa fa-fw fa-remove">삭제</i>
 			</a>
 		</div>
 	</li>
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-<script type="text/javascript" src="/resources/js/fileUpload.js"></script>
+<script type="text/javascript" src="${path}/resources/js/fileUpload.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script type="text/javascript" src="/resources/lightbox/js/lightbox.js"></script>
 <script src="sweetalert2.all.min.js"></script>
 <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
@@ -73,10 +70,6 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 
 		<div>
 			<textarea name="contents" id="summernote" placeholder="내용을 입력해주세요"></textarea>
-		</div>
-
-		<div>
-			<input class="add" type="submit" value="등록">
 		</div>	
 <!-- 		첨부파일 영역 추가 -->
 		<div class="form-group">
@@ -93,7 +86,5 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 			<button class="addBtn" type="submit"><i></i>저장</button>
 		</div>	
 	</form>
-
 </body>
-<script type="text/javascript" src="/resources/lightbox/js/lightbox.js"></script>
 </html>

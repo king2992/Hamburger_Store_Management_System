@@ -6,14 +6,13 @@
 	<update id="ref">
 		UPDATE review
 		SET ref=ref+1
-		where number=#{number}
+		WHERE number=#{number}
 	</update>
 
 	<update id="reLike">
 		UPDATE review
 		SET reLike=reLike + 1
-		where
-		number=#{number}
+		WHERE number=#{number}
 	</update>
 
 	<!-- 데이터베이스=#{스프링} -->

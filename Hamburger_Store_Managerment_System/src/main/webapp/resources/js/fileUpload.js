@@ -71,7 +71,6 @@ function uploadFile(formData) {
 		success : function (data) {
 			printFiles(data);// 첨부파일 출력 메서드 호출
 			$(".noAttach").remove();
-		
 		}
 	});
 }
@@ -100,7 +99,7 @@ function filesSubmit(that) {
 	var str = "";
 	$(".uploadedFileList .delBtn").each(function (index) {
 		 str += "<input type='hidden' name='files[" + index + "]' value='" + $(this).attr("href") + "'>"
-	});	
+	});
 	
 	that.append(str);
 	that.get(0).submit();
@@ -133,7 +132,7 @@ function deleteFile(url, that) {
 					  title: 'AttachFile Deleted!',
 					  showConfirmButton: false,
 					  timer: 1500
-					})
+					});
 			//	alert("삭제되었습니다.");
 				that.parents("li").remove();
 			}
@@ -187,7 +186,7 @@ function getFiles(number) {
 		}
 		$(list).each(function () {
 			printFiles(this);
-		})
+		});
 	});
 }
 // 현재 게시글 번호
@@ -201,13 +200,7 @@ $(document).on("click", ".delBtn", function(event) {
 
 //첨부파일 목록
 
-//getFiles(number);
 $(document).ready(function() {
-//	var number = $('#number').val();
-//	if(number) {
-//		getFiles(number);
-//	}
-	
 	$("#writeForm").submit(function(event) {
 		event.preventDefault();
 		

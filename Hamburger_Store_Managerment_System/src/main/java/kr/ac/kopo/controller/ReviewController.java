@@ -27,10 +27,10 @@ public class ReviewController {
 	@Autowired
 	private FileService fileService;
 	
-	//	�썑湲곌쾶�떆�뙋 紐⑸줉
+	//	게시판 목록
 	@RequestMapping("/reviewList")	
-	String reviewList(Model model, Paging paging, HttpSession session) {	
-		session.removeAttribute("failed");
+	String reviewList(Model model, Paging paging) {	
+
 		List<Review> reviewList = reviewService.reviewList(paging);
 		
 		model.addAttribute("reviewList", reviewList);
@@ -41,7 +41,7 @@ public class ReviewController {
 	}
 	
 
-	// 湲��벐湲�
+// 글 등록
 	@RequestMapping("/reviewAdd")	
 	String reviewAdd() {		
 		return "review/reviewAdd";
@@ -55,15 +55,11 @@ public class ReviewController {
 		return "redirect:reviewList";
 	}
 	
-//�닔�젙
+// 글 수정
 	@RequestMapping(value ="/reviewUp")
-	String reviewUp(int number, Model model) throws Exception {
+	String reviewUp(int number, Model model){
 		
 		Review reviewUp = reviewService.update(number);
-		
-		List<String> fileList = fileService.getArticleFiles(number);
-		model.addAttribute("fileList",fileList);
-		
 		model.addAttribute("reviewUp", reviewUp);
 		
 		return "review/reviewUp";
@@ -78,7 +74,8 @@ public class ReviewController {
 		reviewService.reviewUp(reviewUp);
 		return "redirect:reviewList";
 	}
-//�궘�젣
+	
+// 글 삭제
 	@RequestMapping("/delete") 
 	String delete(int number) throws Exception {
 		
@@ -87,22 +84,20 @@ public class ReviewController {
 		return "redirect:reviewList";
 
 	}
-//酉�	
+// 글 보기	
 	@RequestMapping("/view")
 	String view(int number, Model model) throws Exception {
 		
 		reviewService.ref(number);
-
 		Review view = reviewService.update(number);
 		List<String> fileList = fileService.getArticleFiles(number);
 		model.addAttribute("fileList",fileList);
-		
 		model.addAttribute("view", view);
 		
 		return "review/view";
 	}
 	
-//醫뗭븘�슂
+// 글 추천
 	@RequestMapping("/like")
 	
 	String like(int number, Review review) {
@@ -112,7 +107,7 @@ public class ReviewController {
 		return "redirect:/review/view?number=" + review.getNumber();
 	}
 	
-//怨꾩링�삎 �떟湲�	
+// 계층형 답글	
 	@RequestMapping("/reply")
 		String reply(Review review, Model model) {
 		

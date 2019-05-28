@@ -106,5 +106,4 @@ public class Review {
 	public void setFileCnt(int fileCnt) {
 		this.fileCnt = fileCnt;
 	}
-
 }
