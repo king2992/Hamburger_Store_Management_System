@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>주문 현황 판</title>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="http://localhost:84/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/resources/js/orderDisplay.js"></script>
 <style>
 *{margin:0; padding:0;}

@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>포스기(관리자)</title>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="http://localhost:84/socket.io/socket.io.js"></script>
 <link href="/resources/css/pos.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/mainR.css">
 <link rel="stylesheet" href="/resources/css/sub.css"> 

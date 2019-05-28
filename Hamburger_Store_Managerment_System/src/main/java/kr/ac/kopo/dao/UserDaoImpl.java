@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.model.Review;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.User;
@@ -56,6 +57,10 @@ SqlSession sql;
 	@Override
 	public List<TakeoutReservedMenu> userReservedCheck(int takeoutId) {
 		return sql.selectList("user.userTakeoutReservedCheck", takeoutId);
+	}
+	@Override
+	public List<Review> myWritten(String userId) {
+		return sql.selectList("user.myWritten", userId);
 	}
 	
 	

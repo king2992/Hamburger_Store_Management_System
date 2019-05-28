@@ -130,7 +130,7 @@ $(document).ready(function(){
 			}
 		})
 	});
-	var socket = io("http://localhost:84");
+	
 	$(document).on('click', '.orderReady', function(){
 		var orderId = $(event.target).parent().siblings(".reservedOrderId").text();
 		var item = $(event.target).parent().siblings().parent() ;
@@ -141,7 +141,6 @@ $(document).ready(function(){
 		$(".reservedContainer").append(item);
 		
 			//msg_process를 클릭할 때
-		socket.emit("orderDisplay", orderId);
 		
 		$.ajax({
 			url : "/pos/reservedListStatus",

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.dao.UserDao;
+import kr.ac.kopo.model.Review;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.User;
@@ -51,6 +52,10 @@ UserDao dao;
 	@Override
 	public List<TakeoutReservedMenu> userReservedCheck(int takeoutId) {
 		return dao.userReservedCheck(takeoutId);
+	}
+	@Override
+	public List<Review> myWritten(String userId) {
+		return dao.myWritten(userId);
 	}
 	
 	

@@ -33,9 +33,12 @@
 		update user set user_phone = #{userPhone} , user_name = #{userName} where user_id = #{userId}
 	</update>
 	<select id="takeoutReservedList" resultType="TakeOutReserved">
-		select * from takeout_reserved_list where user_id = #{userId}
+		select * from takeout_reserved_list where user_id = #{userId} order by reserved_date desc
 	</select>
 	<select id="userTakeoutReservedCheck" resultType="TakeoutReservedMenu">
 		select * from takeout_reserved_menu where takeout_id = #{takeoutId}
+	</select>
+	<select id="myWritten" resultType="Review">
+		select * from review where user_id = #{userId}
 	</select>
 </mapper>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.kopo.model.Review;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
 import kr.ac.kopo.model.User;
@@ -79,7 +80,10 @@ public class UserController {
 	}
 	//내가 작성 한 글
 	@RequestMapping("/myWritten")
-	String myWritten() {
+	String myWritten(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("user");
+		List<Review> list = service.myWritten(userId);
+		model.addAttribute("list", list);
 		return "/user/myWritten";
 	}
 	//Takeout 예약 내역

@@ -1,5 +1,5 @@
 	var userId = "${sessionScope.user}";
-	var socket = io("http://localhost:84");
+
 	
 	var menuNameArray = new Array();
 	var menuCntArray = new Array();
@@ -9,18 +9,7 @@
 		$(".side").hide();
 		$(".drink").hide();
 		$(".setModal").hide();
-		//msg_process를 클릭할 때
-		$("#submitcash").click(function() {
-			//소켓에 send_msg라는 이벤트로 input에 #msg의 벨류를 담고 보내준다.
-			socket.emit("send_msg", $("#msg").text());
-			//#msg에 벨류값을 비워준다.
-			$("#msg").text("");
-		});
-		//소켓 서버로 부터 send_msg를 통해 이벤트를 받을 경우 
-		socket.on('send_msg', function(msg) {
-			//div 태그를 만들어 텍스트를 msg로 지정을 한뒤 #chat_box에 추가를 시켜준다.
-			$('<div></div>').text('새로운 주문이 있습니다.').appendTo("#chat_box");
-		});
+
 		$(document).on('click', ".menuAddModalCancle", function(){
 			$(".modal").hide();$(".modal-content").hide();
 		})
