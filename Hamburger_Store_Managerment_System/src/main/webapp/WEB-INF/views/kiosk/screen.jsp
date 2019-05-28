@@ -12,7 +12,38 @@
 <!-- <script src="sweetalert2.all.min.js"></script> -->
 <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<style>
+/*zoomoutdown animation*/
+ .zoomOutDown {
+/*    position: absolute; */
+  animation-name: zoomOutDown;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  background-image:url("/resources/img/chickenMenu/chipao.png");
+  z-index: 99;
+  width:240px;
+  height: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  }
+  @keyframes zoomOutDown {
+  40% {
+  opacity: 1;
+  z-index: 99;
+  transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+ 
+  }
+  100% {
+  opacity: 0;
+  transform: scale3d(.1, .1, .1) translate3d(0, 2000px, 0);
+  transform-origin: center bottom;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  }
+ } 
 
+</style>
 <body>
 <!-- 배경 이미지 영역 -->
 	<div class="body_image">
@@ -39,7 +70,7 @@
 <!-- 			전체메뉴 -->
 			<div>
 				<ul class="tab_cont">
-					<li><img data-menuname="치파오" data-price="10000" src="${path}/resources/img/chickenMenu/chiPao.jpg"><p>치파오</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="치파오" data-price="10000" src="${path}/resources/img/chickenMenu/chiPao.jpg"><div class="addclass" style="position: absolute;"></div><p>치파오</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="치파오 치킨" data-price="10000" src="${path}/resources/img/chickenMenu/chiPaOChicken.jpg"><p>치파오 치킨</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="찜햇닭" data-price="10000" src="${path}/resources/img/chickenMenu/jjimHatDag.jpg"><p>찜햇닭</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="찜햇닭 강정" data-price="10000" src="${path}/resources/img/chickenMenu/JjimHatDagGangJung.jpg"><p>찜햇닭 강정</p><p class="price_p">10000</p></li>

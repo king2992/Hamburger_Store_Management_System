@@ -80,6 +80,9 @@ $(document).ready(function(){
 			$(this).addClass("on");
 			$(".center-wrap > div > ul").hide();
 			$(".center-wrap > div > ul").eq(list).show();
+			
+			$('.addclass').removeClass("zoomOutDown");
+			
 	});
 // 주문 내역
 // + = .p_btn
@@ -90,8 +93,13 @@ $(document).ready(function(){
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
 				var cnt = $('#menuname'+menuname+'').siblings('.td2').children('.cnt'+menuname+'').text();
+				$('.addclass').addClass("zoomOutDown");
+				
+//zoomoutdown animation
+				
 // 이미지 클릭 시 수량 증가 중복방지
 				if($('#menuname'+menuname+'').length == 1){
+					
 					var a = Number(cnt) + 1;
 					var b = "";
 					b = Number(a) * Number(price);
@@ -109,6 +117,7 @@ $(document).ready(function(){
 				totalPrice();
 				}
 			});
+			
 		});
 // 주문 내역 삭제
 		$(document).on('click', '.menu_del', function(){
