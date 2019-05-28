@@ -630,27 +630,27 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 					  },
 					  onClose: () => {
 					    clearInterval(timerInterval)
-					    swal();
+					    alert("주문이 완료 되었습니다.")
+					    location.href="/";
 					  }
 					}).then((result) => {
 					  if (
 					    result.dismiss === Swal.DismissReason.timer
 					  ) {
-					    console.log('주문 결제가 완료 되었습니다.')
 					  }
 					});
 				// swal() 생성	
-					function swal() {
-					Swal.fire({
-						
-						  position: 'center',
-						  type: 'success',
-						  title: '주문 결제가 완료 되었습니다!<br>감사합니다!',
-						  showConfirmButton: false,
-						  timer: 1000
-						});
-					reservedSuccess();
-					}
+//					function swal() {
+//					Swal.fire({
+//						
+//						  position: 'center',
+//						  type: 'success',
+//						  title: '주문 결제가 완료 되었습니다!<br>감사합니다!',
+//						  showConfirmButton: false,
+//						  timer: 1000
+//						});
+//					reservedSuccess();
+//					}
 				}
 			}
 		});

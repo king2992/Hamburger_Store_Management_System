@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,16 +37,31 @@ ul li{list-style: none; display:inline-block;}
 		<li>
 		<h1>제품을<br>준비중 입니다.</h1>
 		<ul id="orderListReady">
-		
+			<c:choose>
+		<c:when test="${list.size() > 0 }">
+			<c:forEach items="${list}" var="list">
+			<li>${list.orderId}</li>
+			</c:forEach>
+			</c:when>
+			<c:otherwise>
+			</c:otherwise>
+			</c:choose>
 		</ul>
 		</li>
 		
 		<li>
 		<h1>주문하신<br>제품이 나왔습니다.</h1>
 		<ul id="orderListFinish">
-		
+				<c:choose>
+		<c:when test="${successList.size() > 0 }">
+			<c:forEach items="${successList}" var="list">
+			<li>${list.orderId}</li>
+			</c:forEach>
+			</c:when>
+			<c:otherwise>
+			</c:otherwise>
+			</c:choose>
 		</ul>
-		</li>
 	</ul>
 	</div>
 	</div>

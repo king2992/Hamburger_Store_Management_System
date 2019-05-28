@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		    	 					takeoutList += "<td>" + item.totalPrice + "</td>";
 		    	 					takeoutList += "<td data-tooltip-text='예약내역 확인하기'>" +'<button type="button" class="takeoutReservedCheck btn btn-concrete">'+"예약 메뉴 확인"+"</button>" +"</td>";
 		    	 					takeoutList += "<td>" +item.reservedName + "</td>";
-		    	 					takeoutList += "<td>" +"<a href='tel:"+item.reservedPhone+"'>${takeout.reservedPhone}</a>" + "</td>";
+		    	 					takeoutList += "<td>" +"<a href='tel:"+item.reservedPhone+"'>"+item.reservedPhone+"</a>" + "</td>";
 		    	 					takeoutList += "<td>"+"상품 준비 중"+ "<button type='button' class='orderReady button'>"+"조리완료"+"</button>"+"</td>";
 		    	 					takeoutList += "</tr>";
 		    	 				}else {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		    	 					takeoutList += "<td>" + item.totalPrice + "</td>";
 		    	 					takeoutList += "<td data-tooltip-text='예약내역 확인하기'>" + '<button type="button" class="takeoutReservedCheck btn btn-concrete">'+"예약 메뉴 확인"+"</button>" +"</td>";
 		    	 					takeoutList += "<td>" +item.reservedName + "</td>";
-		    	 					takeoutList += "<td>" +"<a href='tel:"+item.reservedPhone+"'>${takeout.reservedPhone}</a>" + "</td>";
+		    	 					takeoutList += "<td>" +"<a href='tel:"+item.reservedPhone+"'>"+item.reservedPhone+"</a>" + "</td>";
 		    	 					takeoutList += "<td>" +"준비완료"+ "</td>";
 		    	 					takeoutList += "</tr>";
 		    	 				}

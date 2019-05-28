@@ -43,4 +43,13 @@
 	<select id="setDrinkList" resultType="setSideDrink">
 		select * from set_side_drink where menu_category ="setDrink"
 	</select>
+	<select id="orderDisplay" resultType="Orders">
+		select * from orders where status = "Ready"
+	</select>
+	<select id="orderDisplaySuccess" resultType="Orders">
+		select * from orders where status = "Complete"
+	</select>
+	<update id="orderDisplayOk">
+		update orders set status = "Ok" where order_id = #{orderId}
+	</update>
 </mapper>
