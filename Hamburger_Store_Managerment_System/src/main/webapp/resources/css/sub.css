@@ -1,11 +1,125 @@
-html {
+/* html {
     background-color: #e7ebed;
-}
+} */
 
 /* 상단 메뉴 수정 */
-.layout-topheader {
+/* .layout-topheader {
     height: 125px;
+} */
+
+.header{width: 100%; height: 100px; line-height: 84px;background: #080607;}
+.navi {color:rgba(255,255,255,.5) !important;  width: 1024px; margin: 0 auto;}
+.navi a{color: rgba(255,255,255,.5); }
+.navi a p{ font-size: 36px; font-weight: 700;  line-height: 15px;}
+.navi a{ float: left;}
+.navi a:hover{color: #fff;}
+.navi li  { margin-left: 30px;}
+.navi li a{font-weight: 700; font-size: 20px}
+.navi ul { display: flex; float: right;}
+
+.navi a p:hover{color:#fff;}
+
+
+#home-slider {
+  overflow: hidden;
+  position: relative;
 }
+
+#home-slider .caption {
+  position: absolute;
+  top: 50%;
+  margin-top: -104px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 15;
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+}
+
+#home-slider .caption h1 {
+  color: #fff;
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.caption .btn-start {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding:14px 40px;
+  border: 1px solid #6e6d6c;
+  border-radius: 4px;
+  margin-top: 40px;
+}
+
+.caption .btn-start:hover {
+  color: #fff
+}
+
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 2037px;
+}
+
+.carousel-fade .carousel-inner .item:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,.7);
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+#home-slider:hover .left-control {
+  left:30px
+} 
+
+#home-slider:hover .right-control {
+  right:30px
+}
+
+#home-slider .fa-angle-down {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  color: #fff;
+  display: inline-block;
+  width: 24px;
+  margin-left: -12px;
+  font-size: 24px;
+  line-height: 24px;
+  z-index: 999;
+  -webkit-animation: bounce 3000ms infinite;
+  animation: bounce 3000ms infinite;
+}
+
+
 
 .layout-menu {
  /*    top: 5%; */
@@ -24,9 +138,10 @@ html {
 }
 
 .content {
-    width: 65%;
-    background-color: #f6f7f8;
+    width: 1024px;
+/*     background-color: #f6f7f8; */
     padding: 50px 100px 0 100px;
+    margin:0 auto;
 }
 
 .rightmenu {
@@ -41,9 +156,10 @@ html {
 .rightmenu {
    /*  float: left; */
    
-   float:right;
+  /*  float:right; */
     min-height: 100%;
     height: auto;
+  /*   margin-top:150px; */
 }
 
 .content_subject {
@@ -54,29 +170,30 @@ html {
 
 /* 좌측 컨텐츠 영역 */
 .content_subject img {
-    width: 50px;
+   /*  width: 50px; */
     height: 50px;
 }
 
 .content_subject span {
     display: inline-block;
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 23px;
     vertical-align: bottom;
     margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .content_subjectleft {
     float: left;
 }
 
-.content_subjectright {
+/* .content_subjectright {
     float: left;
-    width: 70%;
+    width: 670px;
     position: absolute;
-    right: 4%;
+    right: 45px;
     top: 17.5%;
-}
+} */
 
 .content_body {
     margin-top: 25px;
@@ -116,7 +233,7 @@ html {
     /*border: 1px solid red;*/
     height: 77%;
     margin-top: 1%;
-    padding: 0 5% 0 5%;
+  /*   padding: 0 5% 0 5%; */
 }
 
 
@@ -281,7 +398,7 @@ ul {
 
 .board_searchselect {
     float: left;
-    width: 130px;
+    width: 123px;
     height: 40px;
     border: 1px solid #dddddd;
     margin-left: 6%;
@@ -327,9 +444,9 @@ ul {
 
 .content_layoutimg img {
     width: 58px;
-    height: 58px;
+   /*  height: 58px; */
     margin-left: 5px;
-    margin-top: 5px;
+    margin-top: 9px;
     z-index: 20;
     border-radius: 5px;
 }
@@ -818,14 +935,14 @@ ul {
 
 .comment_inputwarp input {
     padding: 10px 20px 10px 20px;
-    width: 89%;
+    width: 87%;
     border-radius: 10px;
     border: 1px solid #ccc;
 }
 
 .comment_inputwarp button {
     height: 48px;
-    width: 80px;
+    width: 78px;
     font-weight: bold;
     margin-left: 5px;
 }
@@ -1455,3 +1572,26 @@ ul {
 	top: 220px;
 }
 .note-editor {width:100% !important;}
+
+/* .image{float: left; width:100%; background-image:url("/resources/images/main10.jpg");}
+.image-wrap{margin:0 auto; position: relative; width:1024px;}
+.img{background-image: url(".."); background-size: 100% 100%; background-position: center center;} */
+/* footer  */
+.mainFootArea{width: 1024px; height: 40px; margin: 0 auto; position: relative;}
+.footerNoticeArea{position: relative; z-index: 1; float: left; width: 460px; padding: 11px 0 0 0;}
+.footerNoticeArea h3{float: left; width: 108px; color: #808080; font-size: 17px;}
+.footNoticeWrap{position: relative; z-index: 1; float: left; width: 316px; height: 19px; overflow: hidden; left: 35px; font-size: 14px; border-left: 1px solid #d3d3d3;}
+.footNoticeUl{position: relative; z-index: 1; width: 304px; padding: 0 0 0 12px;}
+.footNoticeUl li{clear: both; height: 19px; line-height: 19px;}
+.footNoticeUl li p{float: left; width: 188px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.footNoticeUl li p a{font-family: Nanum Gothic; color: #808080; font-size: 13px;}
+.footNoticeUl li span{float: right; width: 65px;font-family: Nanum Gothic;}
+.footQuickUl {float: right; width: 564px;}
+.footQuickUl li{float: left;}
+.footQuickUl li a,.footQuickUl li img {display: block; height: 40px; width: 139px;}
+.btn_ria_insta{width: 140px;}
+
+.footer{position: relative; bottom: 0; z-index: 2; height: 100px; width: 100%; padding: 24px 0 0 0; border: 1px solid #cdcdcd; background: #fff; clear: both;}
+.footer .inner{position: relative; z-index: 5; width: 1024px; margin: 0 auto;}
+.footer .inner address{clear: both; float: left; width: 50%; margin: 8px 0 0 0;}
+.footer .inner address p{font-style: normal; font-size: 11px; color: #808080; margin:0; padding:0;}

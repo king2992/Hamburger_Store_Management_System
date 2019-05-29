@@ -177,7 +177,7 @@
         <div class="layout-body">
 
 
-            <div class="content" style="float:left;">
+            <div class="content">
 
 <div class="content_subject">
     <div class="content_subjectleft">
