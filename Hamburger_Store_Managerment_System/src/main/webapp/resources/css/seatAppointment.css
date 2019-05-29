@@ -382,4 +382,13 @@ background:#1AAB8A;
     left : 66px; 
     bottom : 25px;
     }
+    
+    #modalLayer{display:none; position:relative;}
+	#modalLayer .modalContent{width:440px; height:200px; padding:20px; border:1px solid #ccc; position:fixed; left:50%; 
+	top:50%; z-index:11; background:#fff;}
+/* 	#modalLayer .modalContent button{position:absolute; right:0; top:0; cursor:pointer;} */
+
+
+
+/* The Modal (background) */
 

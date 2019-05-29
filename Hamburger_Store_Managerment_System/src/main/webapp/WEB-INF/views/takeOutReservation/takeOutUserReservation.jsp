@@ -404,7 +404,30 @@ width: 300px;
 	<script src="/resources/js/jquery.isotope.min.js"></script>
 	<script src="/resources/js/main.js"></script> 
 	<script type="text/javascript" src="/resources/js/seatAppointment.js"></script>
-
+	
+		
+		<div id="modalLayer">
+						
+		<div class="modalContent">
+		<button type="button" class="modalLayerClose">X</button>
+			<div class="modalContentHide">
+				<h1 class="title">결제 방법을 선택해주세요.</h1>
+				<button type="button" id="modalContentCard">카드</button>
+				<button type="button" id="modalContentPay">현금</button>
+			</div>
+			<div class="modalContentShow">
+				<h1 class="titlecash">현금결제</h1> 
+          <label for="total" class="labelcash" >총 금액</label> 
+          <input type="text" name="payTotal"  id="payTotal2"  class="inputcash" readonly="readonly"> 
+          <label class="labelcash">받은 금액 입력란</label> 
+          <input type="text" name="payTotal2" placeholder="받은 금액" id="payTotal" class="inputcash" required="required">
+          <input type="button" class="changeMoney" value="거스름돈 출력">
+          <label class="labelcash nmg">거스름돈</label>
+          <input type="text" id="nmg" name="nmg" readonly="readonly"> 
+          <input type="button" id="submitcash" value="보내기"> 
+			</div>
+		</div>
+		</div>
 	<!-- The Modal -->
 	 <div id="myModal" class="modal">
   <div class="modal-content">
@@ -547,10 +570,9 @@ width: 300px;
 		</div>
 	</div>
 	<!--End Modal-->
-
+	
 	<!-- 숨겨왔던 나의 수줍은 모달-->
 	<a href="#x" class="overlay" id="login_form"></a>
-
 	<div class="popup">
 		<h2>주문자 정보</h2>
 		<h3>주문 하시는 분의 정보를 입력해주세요.</h3>
@@ -569,12 +591,14 @@ width: 300px;
 			 <input type="hidden" id="formReservedDate" name="formReservedDate" value="" />
 			 <input type="hidden" id="formReservedTime" name="formReservedTime" value="" />
 			<div class="center">
+<!-- 			<a href="#modalLayer" class="modalLink">간단한 모달 창 만들기</a> -->
 				<button id="msg_process" type="button"
-					 class="snip1535 center">주문</button>  <!-- onclick="takeOutReservedGo();" -->
-					 
+					 class="snip1535 center modalLink">주문</button>  <!-- onclick="takeOutReservedGo();" -->
 			</div>
+			<!--결제 선택  -->
 			<a class="close" href="#close"></a>
 		</form>
+		
 	</div>
 	
 	<!-- 영수증 -->
@@ -616,30 +640,5 @@ width: 300px;
 		<!-- 	<a class="close" href="#close"></a> -->
 	</div>
 	</div>
-	<script>
-	$(document).on('click','#msg_process',function() {
-		
-		$('.popup').hide();
-		$('.overlay').hide();
-		$('.documentPopup').show();
-		
-		var documentPayment = $('#priceSum').text();
-		var documentTimeCheck = $('#dateInnerHTML').text();
-		var documentHours = $('#timeModalHours').text();
-		var documentMinutes = $('#timeModalMinutes').text();
-		var documentTime = documentTimeCheck + " - " + documentHours + " " + documentMinutes;
-		
-		
-		$('#documentTimeModalHours').text(documentTime);
-		$('#documentPayment').text(documentPayment);
-		$('#documentTimeCheck').text(documentTimeCheck);
-
-	});
-	
-	$('.documentClose').click(function(){
-		$('.documentPopup').hide();
-	});
-	
-	</script>
 </body>
 </html>

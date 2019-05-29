@@ -1,5 +1,6 @@
 window.onload = function(){
-	$(".popup").hide();$(".overlay").hide();
+	$(".popup").hide();$(".overlay").hide();$(".payment-select").show();$(".payment-select-content").show();
+	$(".payment-select").hide();
 }
 	localStorage.clear();
 	$("#menuModal").hide();$(".chickenList").hide();$(".burgerList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$("#orderListUl").hide();$(".documentPopup").hide();$(".setSelect").hide();$(".setList").hide();$(".setSideList").hide();$(".setDrinkList").hide();$(".overlay").hide();
@@ -62,6 +63,112 @@ function timeAdd(){
 	
 
 $(document).ready(function() {
+	var modalLayer = $("#modalLayer");
+	  var modalLink = $(".modalLink");
+	  var modalCont = $(".modalContent");
+	  var marginLeft = modalCont.outerWidth()/2;
+	  var marginTop = modalCont.outerHeight()/2; 
+	 
+	  modalLink.click(function(){
+	    modalLayer.fadeIn("slow");
+	    modalCont.css({"margin-top" : -marginTop, "margin-left" : -marginLeft});
+	    $(this).blur();
+	    $(".modalContent > a").focus(); 
+	    msg_process();
+	    return false;
+	  });
+	 
+	  $(".modalLayerClose").click(function(){
+		  $(".modalContentHide").show();
+		  $(".modalContentShow").hide();
+	    modalLayer.fadeOut("slow");
+	    modalLink.focus();
+	  });        
+//		$(document).on('click','#msg_process',function() {
+		function msg_process(){
+			
+		$('.popup').hide();
+		$('.overlay').hide();
+		$(".modalContentShow").hide();
+		var documentPayment = $('#priceSum').text();
+		var documentTimeCheck = $('#dateInnerHTML').text();
+		var documentHours = $('#timeModalHours').text();
+		var documentMinutes = $('#timeModalMinutes').text();
+		var documentTime = documentTimeCheck + " - " + documentHours + " " + documentMinutes;
+		
+		$('#documentTimeModalHours').text(documentTime);
+		$('#documentPayment').text(documentPayment);
+		$('#documentTimeCheck').text(documentTimeCheck);
+		}
+//	});
+		$(document).on("click", "#modalContentCard", function(){
+			documentCard();
+		})
+		$(document).on("click", "#modalContentPay", function(){
+			$(".modalContentHide").hide();
+			$(".modalContentShow").show();
+			var priceSum = $("#priceSum").text();
+			$("#payTotal2").val(priceSum);
+		})
+		$(document).on("click", ".changeMoney", function(){
+			var payTotal = $("#payTotal").val();
+			var payTotal2 = $("#payTotal2").val();
+			
+			var changeMoney = Number(payTotal) - Number(payTotal2);
+			$("#nmg").val(changeMoney);
+		})
+		$(document).on("click", "#submitcash", function(){
+			$(".documentPopup").show();
+			modalLayer.fadeOut("slow");
+		})
+		 function documentCard(){
+			Swal.fire({
+				  title: '주문 결제 중 입니다~',
+				  html: '잠시만  기다려주세요~ <strong></strong>',
+				  timer: 700,
+				  onBeforeOpen: () => {
+				    Swal.showLoading()
+				    timerInterval = setInterval(() => {
+				      Swal.getContent().querySelector('strong')
+				        .textContent = Swal.getTimerLeft()
+				    }, 100)
+				  },
+				  onClose: () => {
+				    clearInterval(timerInterval)
+				    setTimeout(function(){
+				    	documentCardSuccess();
+				    }, 3000)
+				    
+				    
+				  }
+				}).then((result) => {
+				  if (
+				    result.dismiss === Swal.DismissReason.timer
+				  ) {
+				  }
+				});
+				  
+					$(".modalLayer").hide();$(".modalContent").hide();
+					setTimeout(function(){
+						documentCardSuccess();
+					}, 1000);
+				 
+				
+			}
+		function documentCardSuccess() {
+			Swal.fire({
+				
+				  position: 'center',
+				  type: 'success',
+				  title: '카드 결제가 완료 되었습니다!<br>감사합니다!',
+				  showConfirmButton: false,
+				  timer: 1000
+				});
+			setTimeout(function(){
+				$('.documentPopup').show();
+			}, 700)
+			
+			}
 	$("#containerScroll3").hide();
 	
 	$("#containerScroll").scroll(function(){timeAnimate();var height = $(this).scrollTop();if(height == 0 && height < 148){$("#hours").text("1시");}else if(height == 148){$("#hours").text("2시");}else if(height == 296){$("#hours").text("3시");}else if(height == 444){$("#hours").text("4시");}else if(height == 592){$("#hours").text("5시");}else if(height == 740){$("#hours").text("6시");}else if(height == 888){$("#hours").text("7시");}else if(height == 1036){$("#hours").text("8시");}else if(height == 1184){$("#hours").text("9시");}else if(height == 1332){$("#hours").text("10시");}else if(height == 1480){$("#hours").text("11시");}else if(height == 1628){$("#hours").text("12시");}})
@@ -536,6 +643,10 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 			$("#payment").text(priceSum);
 			
 	});
+		
+		$('.documentClose').click(function(){
+			$('.documentPopup').hide();
+		});
 	 function card2(){
 			Swal.fire({
 			  position: 'center',
@@ -654,7 +765,7 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 					takeOutReservedMenuInsert();
 					let timerInterval
 					Swal.fire({
-					  title: '주문 결제 중 입니다~',
+					  title: '영수증 출력 중입니다~',
 					  html: '잠시만  기다려주세요~ <strong></strong>',
 					  timer: 2000,
 					  onBeforeOpen: () => {
@@ -666,8 +777,11 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 					  },
 					  onClose: () => {
 					    clearInterval(timerInterval)
-					    alert("주문이 완료 되었습니다.")
-					    location.href="/";
+					    setTimeout(function(){
+					    	swal();
+					    }, 700)
+					    
+					    
 					  }
 					}).then((result) => {
 					  if (
@@ -676,17 +790,20 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 					  }
 					});
 				// swal() 생성	
-//					function swal() {
-//					Swal.fire({
-//						
-//						  position: 'center',
-//						  type: 'success',
-//						  title: '주문 결제가 완료 되었습니다!<br>감사합니다!',
-//						  showConfirmButton: false,
-//						  timer: 1000
-//						});
-//					reservedSuccess();
-//					}
+					function swal() {
+					Swal.fire({
+						
+						  position: 'center',
+						  type: 'success',
+						  title: '출력이 완료되었습니다.!<br>감사합니다!',
+						  showConfirmButton: false,
+						  timer: 1000
+						});
+					setTimeout(function(){
+						location.href="/";
+					}, 700)
+					
+					}
 				}
 			}
 		});
@@ -710,6 +827,9 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 	function menuModalClose(){
 		$("#menuModal").hide();
 	}
+
+		
+	
 	
 	
 	
