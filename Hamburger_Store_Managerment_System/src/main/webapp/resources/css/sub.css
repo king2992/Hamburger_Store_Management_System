@@ -7,7 +7,8 @@
     height: 125px;
 } */
 
-.header{width: 100%; height: 100px; line-height: 84px;background: #080607;}
+ul,p{margin:0; padding:0;}
+.header{width: 100%; height: 100px;background: #080607;}
 .navi {color:rgba(255,255,255,.5) !important;  width: 1024px; margin: 0 auto;}
 .navi a{color: rgba(255,255,255,.5); }
 .navi a p{ font-size: 36px; font-weight: 700;  line-height: 15px;}
@@ -16,6 +17,7 @@
 .navi li  { margin-left: 30px;}
 .navi li a{font-weight: 700; font-size: 20px}
 .navi ul { display: flex; float: right;}
+.navi a img {padding-bottom: 15px;}
 
 .navi a p:hover{color:#fff;}
 
