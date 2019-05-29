@@ -16,7 +16,7 @@
 <link href="/resources/css/font-awesome.min.css" rel="stylesheet">
 <link href="/resources/css/icomoon.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://localhost:84/socket.io/socket.io.js"></script>
+<!-- <script src="http://localhost:84/socket.io/socket.io.js"></script> -->
 <script src="sweetalert2.all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
@@ -66,29 +66,29 @@
 	href="/resources/css/seatAppointment.css">
 <script>
 	var userId = "${sessionScope.user}";
-	$(document).ready(function() {
-		var socket = io("http://localhost:84");
-		//msg에서 키를 누를떄
-		$("#msg").keydown(function(key) {
-			//해당하는 키가 엔터키(13) 일떄
-			if (key.keyCode == 13) {
-				//msg_process를 클릭해준다.
-				msg_process.click();
-			}
-		});
-		//msg_process를 클릭할 때
-		$("#msg_process").click(function() {
-			//소켓에 send_msg라는 이벤트로 input에 #msg의 벨류를 담고 보내준다.
-			socket.emit("send_msg", $("#msg").text());
-			//#msg에 벨류값을 비워준다.
-			$("#msg").text("");
-		});
-		//소켓 서버로 부터 send_msg를 통해 이벤트를 받을 경우 
-		socket.on('send_msg', function(msg) {
-			//div 태그를 만들어 텍스트를 msg로 지정을 한뒤 #chat_box에 추가를 시켜준다.
-			$('<div></div>').text('새로운 주문이 있습니다.').appendTo("#chat_box");
-		});
-	});
+// 	$(document).ready(function() {
+// 		var socket = io("http://localhost:84");
+// 		//msg에서 키를 누를떄
+// 		$("#msg").keydown(function(key) {
+// 			//해당하는 키가 엔터키(13) 일떄
+// 			if (key.keyCode == 13) {
+// 				//msg_process를 클릭해준다.
+// 				msg_process.click();
+// 			}
+// 		});
+// 		//msg_process를 클릭할 때
+// 		$("#msg_process").click(function() {
+// 			//소켓에 send_msg라는 이벤트로 input에 #msg의 벨류를 담고 보내준다.
+// 			socket.emit("send_msg", $("#msg").text());
+// 			//#msg에 벨류값을 비워준다.
+// 			$("#msg").text("");
+// 		});
+// 		//소켓 서버로 부터 send_msg를 통해 이벤트를 받을 경우 
+// 		socket.on('send_msg', function(msg) {
+// 			//div 태그를 만들어 텍스트를 msg로 지정을 한뒤 #chat_box에 추가를 시켜준다.
+// 			$('<div></div>').text('새로운 주문이 있습니다.').appendTo("#chat_box");
+// 		});
+// 	});
 </script>
 <title>햄버거 테이크아웃 예약</title>
 <style type="text/css">
@@ -262,13 +262,7 @@ width: 300px;
 					 </table>
 				</div>
 				<div id="calendar">
-					<div class="dateAlert"
-						style="position: relative; top: 50px; left: 10px; z-index: 99999; max-width: 1024px; color: black; opactiy: 1.0; font-family: 'Hind', sans-serif">
-						<img src="/resources/img/icon101.png"
-							style="width: 70px; height: 70px; float: left;">
-						<p style="font-size: 35px; position: relative; top: 15px;">날짜를
-							선택해 주세요.</p>
-					</div>
+					
 				</div>
 			</div>
 			<div class="right-box">
@@ -624,9 +618,7 @@ width: 300px;
 	</div>
 	<script>
 	$(document).on('click','#msg_process',function() {
-		/* $('.documentPopup').css('display','block');
-		$('.popup').css('display','none'); */
-		/* $('.documentPopup').show(); */
+		
 		$('.popup').hide();
 		$('.overlay').hide();
 		$('.documentPopup').show();
@@ -637,21 +629,11 @@ width: 300px;
 		var documentMinutes = $('#timeModalMinutes').text();
 		var documentTime = documentTimeCheck + " - " + documentHours + " " + documentMinutes;
 		
-	
 		
 		$('#documentTimeModalHours').text(documentTime);
 		$('#documentPayment').text(documentPayment);
 		$('#documentTimeCheck').text(documentTimeCheck);
-		
-		
-	  /*   var ordermenuName = $('.orderMenuName').text(); */
-     	
-		/* var price = $('.menu-price').text(); */
-		
- 		/*  $('#documentMenuName').text(ordermenuName);  */
-/* 		$('#documentCnt').text(cnt); */
-		/* $('#documentPrice').text(price);  */
-		/* $('#menuName').text(menuName); */
+
 	});
 	
 	$('.documentClose').click(function(){

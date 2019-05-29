@@ -182,6 +182,18 @@
 		  });
 		});
 </script>
+<script type="text/javascript">
+$(document).on('click', "#trigger", function(){
+	console.log("왜 씨발 안나오냐 ");
+	 /*$(".modal-content").show();$(".modal").show();*/
+	 $(".modal").css('display','block');
+	 $(".modal").css('visibility','visible');
+	 $(".modal").css('opacity','1');
+})
+$(document).on('click','#cancel',function(){
+	$(".modal").hide();
+})
+</script>
 </head>
 <body>
 	<div id="container">
@@ -417,14 +429,13 @@
 	<!-- 현금결제 레이어 -->
 	<div class="modalcash"> 
     <div class="modal-contentcash"> 
-        <span class="close-buttoncash">&times;</span> 
         <h1 class="titlecash">현금결제</h1> 
         <form action="/pos/orders" class="formcash" id="frm"method="POST">
           <label for="total" class="labelcash" >총 금액</label> 
-          <input type="text" name="payTotal"  value="" id="payTotal2"  class="inputcash" readonly="readonly"> 
+          <input type="text" name="payTotal"  id="payTotal2"  class="inputcash" readonly="readonly"> 
           <label class="labelcash">받은 금액 입력란</label> 
           <input type="text" name="payTotal2" placeholder="받은 금액" id="payTotal" class="inputcash" required="required">
-          <input type="button" class="document" onclick="nmg()" value="거스름돈 출력">
+          <input type="button" class="document" value="거스름돈 출력">
           <label class="labelcash nmg">거스름돈</label>
           <input type="text" id="nmg" name="nmg" readonly="readonly"> 
           <input type="button" id="cancelcash" value="취소"> 

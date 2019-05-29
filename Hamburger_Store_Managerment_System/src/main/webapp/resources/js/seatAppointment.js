@@ -1,6 +1,8 @@
-
+window.onload = function(){
+	$(".popup").hide();$(".overlay").hide();
+}
 	localStorage.clear();
-	$("#menuModal").hide();$(".chickenList").hide();$(".burgerList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$("#orderListUl").hide();$(".documentPopup").hide();$(".setSelect").hide();$(".setList").hide();$(".setSideList").hide();$(".setDrinkList").hide();$(".overlay").hide();$(".popup").hide();
+	$("#menuModal").hide();$(".chickenList").hide();$(".burgerList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$("#orderListUl").hide();$(".documentPopup").hide();$(".setSelect").hide();$(".setList").hide();$(".setSideList").hide();$(".setDrinkList").hide();$(".overlay").hide();
 	var cntArray = new Array(); // 주문 할 때 메뉴 수량 넘길 배열
 	var menuNameArray = new Array();// 주문 할 때 메뉴 이름 넘길 배열
 document.addEventListener('DOMContentLoaded', function() {
@@ -24,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			 		},1000) .animate({"color":"#333333", "font-size": "16px"},1000);
 			 		}
 			     
-			     $(".dateAlert").hide(); 
 			     
 				 $('#myModal').show();
 				 $("#hours").text("1시");
@@ -89,7 +90,6 @@ $(document).ready(function() {
 		timeAnimate();
 		$("#myModal").hide();
 	})
-	$(".dateAlert").hide();
 	//총 주문 금액
 	function totalPrice() {
 		var total = 0;
@@ -123,17 +123,17 @@ $(document).ready(function() {
 		$("#formMenuPrice").val(total);
 	}
 	//날짜를 선택 안하고 메뉴를 선택했을 시 "날짜를 선택해 주세요." 라는 애니메이션
-	function dateAlert(){
-			$(".dateAlert").show();
-			if($("#dateInnerHTML").text() == ""){
-			$(".dateAlert").animate({
-				top : 52, left : 10, "color" : "blue", "opacity":"0.7", 'font-size' : "18px", "font-family":"'Hind', sans-serif"
-			},1000) .animate({top:"50px",left:"10","color" : "black","font-size" : "10px", "opacity":"1.0","font-size": "16px","font-family":"'Hind', sans-serif" },dateAlert);
-			}else{
-				$(".dateAlert").finish();
-				$(".dateAlert").hide();
-			}
-	}
+			
+			 function dateAnimate(){
+					Swal.fire({
+					  position: 'center',
+					  type: 'error',
+					  title: '날짜를 선택 해 주세요.',
+					  showConfirmButton: false,
+					  timer: 700
+					});
+					
+				}
 	//주문 금액이 바뀔 때 마다 호출하는 애니메이션
 	function priceSumAnimate(){
 		$("#priceSum").animate({
@@ -144,7 +144,7 @@ $(document).ready(function() {
 	$(document).on('click', '.menu-item', function() {
 		   
 		if($("#dateInnerHTML").text() == ""){
-			dateAlert();
+			dateAnimate();
 		}else{
 			$('#calendar').hide(); // 달력 안보이기
 			$("#orderListUl").show();
@@ -167,7 +167,7 @@ $(document).ready(function() {
 	//right-box에서 SET 메뉴를 선택했을 시
 	$(document).on('click','.set-item',function(){
 		if($("#dateInnerHTML").text() == ""){
-			dateAlert();
+			dateAnimate();
 		}else{
 			$('#calendar').hide(); // 달력 안보이기
 			$("#orderListUl").show();
@@ -186,7 +186,7 @@ $(document).ready(function() {
 	})
 	$(document).on('click','.set-side-item',function(){
 		if($("#dateInnerHTML").text() == ""){
-			dateAlert();
+			dateAnimate();
 		}else{
 			var uniqId = $(this).data('id');
 			var menuName = $(this).attr('value');
@@ -203,7 +203,7 @@ $(document).ready(function() {
 	})
 	$(document).on('click','.set-drink-item',function(){
 		if($("#dateInnerHTML").text() == ""){
-			dateAlert();
+			dateAnimate();
 		}else{
 			var uniqId = $(this).data('id');
 			var menuName = $(this).attr('value');
@@ -241,12 +241,12 @@ $(document).ready(function() {
 		
 		totalPrice(); // 상품이 추가 될 때 주문 총 금액 변경 하는 함수 호출
 		
-		var documentOrder =  '<tr id="order' + uniqId + '" class="receipt">' +
+		var documentOrder =  '<tr id="document'+uniqId+'" class="receipt">' +
 							 '<td>' +
-							 '<span id="documentMenuName">' + menuName + '</span>' + 
+							 '<span id="documentMenuName'+menuName+'">' + menuName + '</span>' + 
 							 '</td>' +
 							 '<td>' +
-							 '<span id="'+menuName+'">1</span>' +
+							 '<span id="documentCnt'+menuName+'">1</span>' +
 							 '</td>' +
 							 '<td>' +
 							 '	<span id="documentPrice">' + menuPrice + '</span>' +
@@ -274,15 +274,15 @@ function setAdd(uniqId, menuName, menuPrice, menuCnt, menuImgUrl) {
 		
 		totalPrice(); // 상품이 추가 될 때 주문 총 금액 변경 하는 함수 호출
 		
-		var documentOrder =  '<tr id="order' + uniqId + '" class="receipt">' +
+		var documentOrder =  '<tr id="document'+uniqId+'" class="receipt">' +
 							 '<td>' +
-							 '<span id="documentMenuName">' + menuName + '</span>' + 
+							 '<span id="documentMenuName'+menuName+'">' + menuName + '</span>' + 
 							 '</td>' +
 							 '<td>' +
-							 '<span id="'+menuName+'">1</span>' +
+							 '<span id="documentCnt'+menuName+'">1</span>' +
 							 '</td>' +
 							 '<td>' +
-							 '	<span id="documentPrice">' + menuPrice + '</span>' +
+							 '	<span id="documentPrice'+menuName+'">' + menuPrice + '</span>' +
 							 '</td>' +
 							 '</tr>';	
 	
@@ -308,12 +308,11 @@ function setSideAdd(uniqId, menuName, menuPrice, menuImgUrl) {
 		
 		sidetotalPrice(); // 상품이 추가 될 때 주문 총 금액 변경 하는 함수 호출
 		
-		var documentOrder =  '<tr id="order' + uniqId + '" class="receipt">'+
+		var documentOrder =  '<tr id="document'+uniqId +'" class="receipt">'+
 							 '<td>' +
-							 '<span id="documentMenuName">' + menuName + '</span>' + 
+							 '<span id="documentMenuName'+menuName+'">' + menuName + '</span>' + 
 							 '</td>' +
 							 '<td>' +
-							 '<span id="'+menuName+'"></span>' +
 							 '</td>' +
 							 '<td>' +
 							 '	<span id="documentPrice">' + menuPrice + '</span>' +
@@ -343,12 +342,11 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 	
 	sidetotalPrice(); // 상품이 추가 될 때 주문 총 금액 변경 하는 함수 호출
 	
-	var documentOrder =  '<tr id="order' + uniqId + '" class="receipt">' +
+	var documentOrder =  '<tr id="document'+uniqId +'" class="receipt">' +
 						 '<td>' +
-						 '<span id="documentMenuName">' + menuName + '</span>' + 
+						 '<span id="documentMenuName'+menuName+'">' + menuName + '</span>' + 
 						 '</td>' +
 						 '<td>' +
-						 '<span id="'+menuName+'"></span>' +
 						 '</td>' +
 						 '<td>' +
 						 '	<span id="documentPrice">' + menuPrice + '</span>' +
@@ -392,6 +390,17 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		
 	});
 	$(document).on('click', '.largeButton', function(){
+		var menuName = $(this).parent().siblings(".tdMenuName").children(".orderMenuName").text();
+		
+		var documentPrice = document.getElementById("documentPrice"+menuName+"");
+		var documentPriceText = documentPrice.innerHTML ;
+		var largePrice = Number(documentPriceText) + 500;
+		
+		documentPrice.innerHTML = largePrice;
+		
+		var documentMenuName = document.getElementById("documentMenuName"+menuName+"");
+		documentMenuName.innerHTML = menuName + "<p id='documentMenuNamePtag"+menuName+"'>라지</p>";
+		
 		var item = $(this).parent().siblings(".tdMenuName");
 		var itemPrice = $(this).parent().siblings(".tdMenuPrice").children(".menu-price").text();
 		
@@ -405,9 +414,20 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		$(event.target).attr("class", "normalButton btn-3d red");
 		$(event.target).text("기본");
 		totalPrice();
+		
+		
 	})
 	$(document).on('click', '.normalButton', function(){
-		var item = $(this).parent().siblings(".tdMenuName");
+		var menuName = $(this).parent().siblings(".tdMenuName").children(".orderMenuName").text();
+		
+		var documentPrice = document.getElementById("documentPrice"+menuName+"");
+		var documentPriceText = documentPrice.innerHTML ;
+		var largePrice = Number(documentPriceText) - 500;
+		
+		documentPrice.innerHTML = largePrice;
+		var documentMenuNamePtag = document.getElementById("documentMenuNamePtag"+menuName+"");
+		documentMenuNamePtag.remove();
+		
 		var itemPrice = $(this).parent().siblings(".tdMenuPrice").children(".menu-price").text();
 		var largeSpan = $(this).parent().siblings(".tdMenuName").children(".largeSpan");
 		
@@ -423,11 +443,26 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 	$(document).on('click', '.btnAddMenuCnt', function(e) {
 		e.preventDefault();
 		setMenuCnt($(this).parents('.order-item'), 1,$(this).parents('.order-item').data("id"));
+		
+		var menuCnt = $(this).siblings('span').children('.menuCnt').text();
+		
+		var menuName = $(this).parent().parent().data("id");
+		
+		var documentCnt = document.getElementById("documentCnt"+menuName+"");
+		documentCnt.innerHTML = menuCnt;
+		
 	});
 	//수량 1 감소
 	$(document).on('click', '.btnDelMenuCnt', function(e) {
 		e.preventDefault();
 		setMenuCnt($(this).parents('.order-item'), -1,$(this).parents('.order-item').data("id"));
+		
+		var menuCnt = $(this).siblings('span').children('.menuCnt').text();
+		
+		var menuName = $(this).parent().parent().data("id");
+		
+		var documentCnt = document.getElementById("documentCnt"+menuName+"");
+		documentCnt.innerHTML = menuCnt;
 	});
 	//추가 된 상품 삭제
 	$(document).on('click', '.xButton', function(e){
@@ -480,7 +515,7 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		}
 	});
 	$(document).on('click', '#orderModal', function(){
-		console.log($(".set-order-item").length);
+		
 		   if($(".order-item").length == 0 && $(".set-order-item").length == 0 ){
 				card2();
 				$('.popup').css('display','none');
@@ -499,13 +534,6 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 			
 			var priceSum = $("#priceSum").text();
 			$("#payment").text(priceSum);
-			
-			$(".orderMenuName").each(function(item,index){
-				menuNameArray.push($(this).text());
-			});
-			$(".menuCnt").each(function(item,index){
-				cntArray.push($(this).text());
-			});	
 			
 	});
 	 function card2(){
@@ -596,6 +624,14 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 	}
 	
 	function takeOutReservedGo() { //예매 테이블로 값이 들어가는 부분
+		$(".orderMenuName").each(function(item,index){
+			var large = $(this).siblings(".largeSpan").text();
+			menuNameArray.push($(this).text() + large);
+		});
+		$(".menuCnt").each(function(item,index){
+			cntArray.push($(this).text());
+		});	
+		
 		var formValue = document.formValue;
 		
 		var userId = formValue.userId.value;

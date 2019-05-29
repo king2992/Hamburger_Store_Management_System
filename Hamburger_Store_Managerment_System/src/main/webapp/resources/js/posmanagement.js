@@ -9,24 +9,22 @@
 		$(".side").hide();
 		$(".drink").hide();
 		$(".setModal").hide();
-
-		$(document).on('click', ".menuAddModalCancle", function(){
-			$(".modal").hide();$(".modal-content").hide();
-		})
-		$(document).on('click', ".setMenuModalCancel", function(){
-			$(".setModal").hide();$(".set-modal-content").hide();
-		})
+		$(".modal").hide();
+		
 		$(document).on("click",".document",function(){
-			var payTotal = document.getElementById('payTotal').value;
-			var payTotal2 = document.getElementById('payTotal2').value;
 			
-			document.getElementById('nmg').value = payTotal - payTotal2;
+			var payTotal = $("#payTotal").val();
+			var payTotal2 = $("#payTotal2").val();
+			var nmg = $("#nmg").val(Number(payTotal) - Number(payTotal2));
 			
-			if(payTotal < payTotal2){
+			console.log(payTotal);
+			console.log(payTotal2);
+			
+			if(Number(payTotal) < Number(payTotal2)){
 				alert('받은 금액을 다시 확인해주십시오.');
 			}
 			
-			if(payTotal >= payTotal2){
+			if(Number(payTotal) >= Number(payTotal2)){
 			
 			$('#nmg').css('display','block');
 			$('.nmg').css('display','block');
@@ -37,9 +35,6 @@
 			
 		});
 		
-		$(document).on('click', "#setAdd", function(){
-			$(".setModal").show();
-		});
 		$(document).on('click', '.set-cancel', function(){
 			$(".setModal").hide();
 		})
@@ -94,19 +89,19 @@
 		});
 	$(document).on( "click", ".menuListTr", function() {
 		
-		$('.menuListTr').each( function(index) { 
-			$(this).click( function() {
 				$(this).css("background-color", "red");
 				$(this).attr("id", "menuListSelected");
 				$(this).siblings().attr("id", "none");
-				
-			})
-		})
+
+				$(".menuListTr").each(function(){
+					if($(this).attr("id") != "menuListSelected"){
+						$(this).css("background-color", "#FBF2EF");
+					}
+				})
 	});
 	$(document).on( "mouseenter", ".menuListTr", function() {
 		
 			
-			console.log($(event.target).parent().css("background-color"));
 		if($(event.target).parent().css("background-color") == "rgb(255, 0, 0)"){
 			event.target.parentNode.setAttribute("style", "background-color:red");
 		}else if($(event.target).parent().css("background-color") != "rgb(255, 0, 0)"){
@@ -146,73 +141,65 @@
 		$(".drink").show();
 	})
 	var modal = document.querySelector(".modal");
-	var trigger = document.querySelector("#trigger");
-	var closeButton = document.querySelector(".close-button");
-	var cancelButton = document.querySelector("#cancel");
-	var cardCash = document.querySelector(".cardCash");
 	var modalcash = document.querySelector(".modalcash"); 
 	var triggercash = document.querySelector(".triggercash"); 
-	var closeButtoncash = document.querySelector(".close-buttoncash"); 
 	var cancelButtoncash = document.querySelector("#cancelcash");
 	
-	triggercash.addEventListener("click", toggleModalcash); 
-    closeButtoncash.addEventListener("click", toggleModalcash); 
+	//현금 결제
+//	triggercash.addEventListener("click", toggleModalcash); 
+//    closeButtoncash.addEventListener("click", toggleModalcash); 
     cancelButtoncash.addEventListener("click", toggleModalcash); 
-    //window.addEventListener("click", windowOnClickcash); 
     
-    trigger.addEventListener("click", toggleModal);
-	closeButton.addEventListener("click", toggleModal);
-	cancel.addEventListener("click", toggleModal);
-	//window.addEventListener("click", windowOnClick);
+    $(document).on('click', ".menuAddModalCancle", function(){
+		$(".modal").hide();$(".modal-content").hide();
+	})
+	$(document).on('click', ".setMenuModalCancel", function(){
+		$(".setModal").hide();$(".set-modal-content").hide();
+	})
+	$(document).on('click', "#cancelcash", function(){
+		$(".modalcash").hide();$(".modal-contentcash").hide();
+	})
 	
-	function toggleModal() {
-		modal.classList.toggle("show-modal");
-	}
+	$(document).on('click', "#setAdd", function(){
+		$(".setModal").show(); $(".set-modal-content").show();
+	});
+    
+    $(document).on('click', ".triggercash", function(){
+		$(".modalcash").show(); $(".modal-contentcash").show();
+		toggleModalcash();
+	});
 
-	function windowOnClick(event) {
-		if (event.target === modal) {
-			toggleModal();
+    function toggleModalcash() { 
+	   var orderListChild = document.getElementById("orderList");
+	   
+	   if(orderListChild.childElementCount == 0){
+			card2();
+			return;
 		}
-	}
-
-	   //console.log(modal);
-		
-	   function toggleModalcash() { 
-		   var orderListChild = document.getElementById("orderList");
-		   
-		   if(orderListChild.childElementCount == 0){
-				card2();
-				return;
-			}
-		   function card2(){
-				Swal.fire({
-				  position: 'center',
-				  type: 'error',
-				  title: '상품을 선택 해 주세요.',
-				  showConfirmButton: false,
-				  timer: 1000
-				});
-				
-			}
-	        modalcash.classList.toggle("show-modalcash"); 
-	        $('input[name=payTotal]').val($('.pTotal').text());
-	        
-	        //추가 돼 있는 상품에 이름을 배열에 담는다
-	        $(".menuListName").each(function(index, item){
-	        	menuNameArray.push($(this).text());
-	        })
-	        //추가 돼 있는 상품에 갯수를 배열에 담는다
-	        $(".menuListCnt").each(function(index, item){
-	        	menuCntArray.push($(this).text());
-	        })
+	   function card2(){
+			Swal.fire({
+			  position: 'center',
+			  type: 'error',
+			  title: '상품을 선택 해 주세요.',
+			  showConfirmButton: false,
+			  timer: 1000
+			});
 			
-	    }
-	   function windowOnClickcash(event) { 
-		   
-	        if (event.target === modalcash) { 
-	            toggleModalcash(); 
-	        } 
-	    }
+		}
+        modalcash.classList.toggle("show-modalcash"); 
+        $('input[name=payTotal]').val($('.pTotal').text());
+        
+        //추가 돼 있는 상품에 이름을 배열에 담는다
+        $(".menuListName").each(function(index, item){
+        	menuNameArray.push($(this).text());
+        })
+        //추가 돼 있는 상품에 갯수를 배열에 담는다
+        $(".menuListCnt").each(function(index, item){
+        	menuCntArray.push($(this).text());
+        })
+		
+    }
+  
 	   
 	});
 	function card(){
@@ -319,6 +306,10 @@
 		$(".menuListTr").each(function(){
 			$(this).remove();
 		})
+		menuNameArray =[];
+		menuCntArray = [];
+		
+		console.log(menuNameArray);
 		menuItemPriceTotal();
 	}
 	function menuRemove(){
