@@ -7,24 +7,7 @@ var number = $('.board_no').val(); //게시글 번호
 
 $('[name=commentBtn]').click(function(){
 	var insertData = $('[name=insertForm]').serialize();// serialize() : 표준  URL-encoded 표기법으로 텍스트 문자열을 만듭니다.
-
 	commentInsert(insertData);
-	
-var coDate = new Date();
-var yyyy = today.getFullYear();
-var mm = today.getMonth()+1;
-var dd = today.getDate();
-
-if (dd < 10) {
-	dd = '0' + dd
-}
-
-if (mm < 10) {
-	mm = '0' + mm
-}
-
-today = mm + '/' +dd+ '/' +yyyy;
-document.write(coDate);
 });
 
 var userId = "${view.userId}";
@@ -40,7 +23,6 @@ function commentList(){
         success : function(data){
         	console.log(data);
             var a ='';
-            
             $.each(data.result, function(index, value){
 //            	대댓글일 경우 출력폼
             	if (value.coDepth == 1) {
@@ -96,20 +78,15 @@ function commentInsert(insertData){
 //댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
 function commentUpdate(coNumber, content){
     var a ='';
-    
     a += '<div class="input-group">';
     a += '<input type="text" class="form-control" name="content_'+coNumber+'" value="'+content+'"/>';
     a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUp('+coNumber+');">수정</button> </span>';
     a += '</div>';
-    
     $('.commentContent'+coNumber).html(a);
-    
 }
- 
 //댓글 수정
 function commentUp(coNumber){
     var updateContent = $('[name=content_'+coNumber+']').val();
-    
     $.ajax({
         url : '/comment/co.update',
         type : 'post',
@@ -120,7 +97,6 @@ function commentUp(coNumber){
         }
     });
 }
- 	
 //댓글 삭제 
 function commentDelete(coNumber){
     $.ajax({

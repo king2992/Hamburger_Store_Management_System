@@ -1,30 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>  
 <meta charset="UTF-8">
 <title></title>
+<link rel="shortcut icon" href="${path}/review/reviewAdd">
  <style>
 button { border-style:none; width: 70px; height:35px; background-color:#2d70be; font-weight:bold; color:#fff; cursor: pointer;}
-.fileDrop {
-	width : 100%;
-	height: 200px; 
-	border : 2px dotted #0b58a2;
-}
+.fileDrop { width : 100%; height: 200px;  border : 2px dotted #0b58a2; }
+.uploadedFileList li{ margin-right:20px !important; }
  </style>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <c:if test="${sessionScope.user == null}">
 <script type="text/javascript">
 		alert("로그인 하신 후에 이용해 주세요.");
 			location.href="${pageContext.request.contextPath}/";
 </script>
 </c:if>
-<!-- include libraries(jQuery, bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-<!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/classic/ckeditor.js"></script>
@@ -49,25 +45,16 @@ button { border-style:none; width: 70px; height:35px; background-color:#2d70be; 
 <script type="text/javascript" src="${path}/resources/js/fileUpload.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script type="text/javascript" src="/resources/lightbox/js/lightbox.js"></script>
-<script src="sweetalert2.all.min.js"></script>
-<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-<style type="text/css">
-.uploadedFileList li{
-	margin-right:20px !important;
-}
-</style>
 </head>
 <body>
 	<!-- input 태그의 속성값이 file이면 enctype을 사용해서 multipart써줘야 서버가 인식을한다. -->
 	<form id="writeForm" method="post" action="reviewAdd" >
-<!-- 		<input type="hidden" id="number" name="number" > -->
 	<div>
 		<div>
 			<label>제목</label>
 			<input type="text" name="title" placeholder="제목을 입력해주세요">
 		</div>
-
 		<div>
 			<textarea name="contents" id="summernote" placeholder="내용을 입력해주세요"></textarea>
 		</div>	

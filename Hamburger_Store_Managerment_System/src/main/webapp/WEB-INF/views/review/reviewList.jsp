@@ -1,81 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <!DOCTYPE html>
 <html>
- 
+ <title>M-SA 커뮤니티 게시판</title>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>커뮤니티 게시판</title>
- 
-<!-- <link rel="stylesheet" href="/resources/css/reset.css"> --> <!-- CSS reset -->
-<!-- <link rel="stylesheet" href="/resources/css/style.css"> --> <!-- Resource style -->
-<!-- <script src="/resources/js/modernizr.js"></script>  --><!-- Modernizr -->
- 
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"> 
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css">
-<!-- <link rel="stylesheet" href="/resources/css/messenger.css"> -->
-<!--  <link rel="stylesheet" href="/resources/css/mainR.css"> --> 
- <link rel="stylesheet" href="/resources/css/sub.css"> 
-  <link href="/resources/css/animate.min.css" rel="stylesheet"> 
- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>   
- <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> --> 
- <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.js"></script>  -->
-<!--  <script src="/resources/js/mainR.js"></script> -->
-
-<!-- 접속현황 -->
-<c:if test="${sessionScope.user ne null }">
-	<script>
-		$(document).ready(function() {
-			statusConnect();
-		});
-	</script>
-</c:if> 
-
+<link rel="shortcut icon" href="${path}/review/reviewList">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>   
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="${path}/resources/css/sub.css"> 
+<link href="${path}/resources/css/animate.min.css" rel="stylesheet"> 
+<link href="${path}/resources/review/js/reviewList.js">
 <script type="text/javascript">
-var slideHeight = $(window).height();
-$('#home-slider .item').css('height',slideHeight);
-
-$(window).resize(function(){
-    'use strict';
-	$('#home-slider .item').css('height',slideHeight);
-});
-
-$(document).ready(function(){
-	$('#tohash , #startBtn').on('click', function(event){
-		$('html, body').animate({scrollTop: $(this.hash).offset().top -5},1000);
-		event.preventDefault();
+	var slideHeight = $(window).height();
+		$('#home-slider .item').css('height',slideHeight);
+		$(window).resize(function(){
+    	'use strict';
+		$('#home-slider .item').css('height',slideHeight);
+		});
+		$(document).ready(function(){
+			$('#tohash , #startBtn').on('click', function(event){
+			$('html, body').animate({scrollTop: $(this.hash).offset().top -5},1000);
+			event.preventDefault();
 		return false;
 	});	
-})
-
-
-if($(window).width() > 767){
-    //Initiat WOW JS
- /*    new WOW().init(); */
-}
-/* 마우스스크롤 */
-
+});
+	if($(window).width() > 767){
+   	//Initiat WOW JS
+ 	/*    new WOW().init(); */
+	/* 마우스스크롤 */
+	}
 </script>
 <script type="text/javascript">
 //Scroll Menu
-$(window).on('scroll', function(){
-	if( $(window).scrollTop()>slideHeight ){
-		$('.main-nav').addClass('navbar-fixed-top');
-	} else {
-		$('.main-nav').removeClass('navbar-fixed-top');
-	}
-});
-
+	$(window).on('scroll', function(){
+		if( $(window).scrollTop()>slideHeight ){
+			$('.main-nav').addClass('navbar-fixed-top');
+		} else {
+			$('.main-nav').removeClass('navbar-fixed-top');
+		}
+	});
 //smoothScroll
 /* smoothScroll.init(); */
 </script>
 </head>
-
 <body>
   <div id="home">
      <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
@@ -90,51 +62,46 @@ $(window).on('scroll', function(){
       </div>
       <a id="tohash" href="#board"><i class="fa fa-angle-down"></i></a>
     </div>	
-                 <header class="header main-nav" id="board">
-                    <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
-                     <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,.5)"><p>M-SA</p></a>
-                        <ul>
-                            
-                            <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li>
-                            
-                                 <li class="nav-item">
-              <c:choose>
-                  <c:when test="${sessionScope.user eq null }">
-          <a class="nav-link js-scroll-trigger" href="#"  id="trigger">Login</a> 
-          </c:when>
-          <c:otherwise>
-              <a class="nav-link js-scroll-trigger" href="/user/userLogout">LogOut</a>
-            </c:otherwise>
-          </c:choose>
-          </li>
-                            
-                            
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
-                               <c:choose>
-          <c:when test="${sessionScope.user ne null }">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/user/myPage">My Page</a>
-          </li>
-          </c:when>
-          </c:choose>
-                        </ul>
-                    </nav>
-                </header>
-</div>
-					<div class="layout">
-		<!-- <div class="layout-body"></div> -->
+<!--     헤더 부분 -->
+    <header class="header main-nav" id="board">
+     	<nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav" style="line-height:0; padding-top:40px;">
+           <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,.5)"><p>M-SA</p></a>
+             <ul>
+               <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li>
+               <li class="nav-item">
+    			<c:choose>
+       				<c:when test="${sessionScope.user eq null }">
+          				<a class="nav-link js-scroll-trigger" href="#" id="trigger">Login</a> 
+       				</c:when>
+       				<c:otherwise>
+          				<a class="nav-link js-scroll-trigger" href="${path}/user/userLogout">LogOut</a>
+       				</c:otherwise>
+    			</c:choose>
+         	   </li>
+               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/review/reviewList">Community</a></li>
+               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/store/storeFind">Takeout</a></li>
+               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/kiosk/screen">Kiosk</a></li>
+               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/pos/posmanagement">Pos</a></li>
+               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/order/orderDisplay">Display</a></li>
+               <c:choose>
+          		 <c:when test="${sessionScope.user ne null }">
+                   <li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="${path}/user/myPage">My Page</a>
+                   </li>
+                 </c:when>
+               </c:choose>
+             </ul>
+        </nav>
+    </header>
+  </div>
+  <div class="layout">
 		<div class="content">
 			<div class="content_subject">
 				<div class="content_subjectleft">
-					<img src="../resources/images/m-sa.png"> <span>커뮤니티 게시판</span>
+					<img src="${path}/resources/images/m-sa.png"> <span>커뮤니티 게시판</span>
 				</div>
 				<div class="content_subjectright">
 					<form id="searchfrm">
-						<!-- method="GET" action="/board/search" -->
 						<select name="search" class="form-control board_searchselect">
 							<option value="title">제목</option>
 							<option value="contents">내용</option>
@@ -144,27 +111,21 @@ $(window).on('scroll', function(){
 							name="keyword" class="form-control" placeholder="검색 내용을 입력하세요">
 						<button class="btn btn-primary board_searchbtn boardBtn"
 							onclick="javascript:frm_search();">검색</button>
-						<!-- data="board_search" -->
 					</form>
 					<a href="reviewAdd"><button
 							class="btn btn-warning board_writebtn boardBtn">글쓰기</button></a>
-					<!-- data="board_movewrite" -->
 				</div>
 			</div>
-
 			<div class="clear-fix"></div>
-
 			<div class="content_body">
-
 				<div class="content_listwarp">
-
 					<c:forEach items="${reviewList}" var="list">
 						<c:choose>
 							<c:when test="${reviewList.size() > 0 }">
 								<div class="content_list">
 									<div class="content_userimg">
 										<div class="content_layoutimg">
-											<img src="../resources/images/m-sa.png">
+											<img src="${path}/resources/images/m-sa.png">
 										</div>
 									</div>
 									<div class="content_boardview">
@@ -186,66 +147,30 @@ $(window).on('scroll', function(){
 									</div>
 									<div class="content_boardinfo">
 										<div class="content_searchicon">
-											<img src="../resources/images/board_search.png"> <span>${list.ref}</span>
+											<img src="${path}/resources/images/board_search.png"> <span>${list.ref}</span>
 										</div>
 										<div class="content_totalicon">
-											<img src="../resources/images/board_like.png"> <span>${list.reLike }</span>
+											<img src="${path}/resources/images/board_like.png"> <span>${list.reLike}</span>
 										</div>
 									</div>
 								</div>
 							</c:when>
-							<c:otherwise>
-
-								<div class="content_list">
-									<div class="content_userimg">
-										<div class="content_layoutimg">
-											<img src="../resources/images/siba-default.png">
-										</div>
-									</div>
-									<div class="content_boardview">
-										<div class="content_boardtext">
-											<c:if test="${list.groupDepth eq 0 }">
-												<c:set var="wid" value="${list.groupDepth*10 }"></c:set>
-												<img src='<c:url value="../resources/images/level.png"/>'
-													width="${wid }">
-												<img src='<c:url value="../resources/images/list-re.png"/>'>
-											</c:if>
-											<span data="${list.number}">삭제 된 게시글 입니다.</span> <span></span>
-										</div>
-										<div class="content_boardinfotext">
-											<span>확인불가</span> <span></span> <span></span>
-										</div>
-									</div>
-									<div class="content_boardinfo">
-										<div class="content_searchicon">
-											<img src="../resources/images/board_search.png"> <span>-</span>
-										</div>
-										<div class="content_totalicon">
-											<img src="../resources/images/board_like.png"> <span>-</span>
-										</div>
-									</div>
-								</div>
-							</c:otherwise>
 						</c:choose>
 					</c:forEach>
-					    
 				</div>
- 
 				<div class="clear-fix"></div>
 				<div class="content_pagenation ">
+<!-- 				페이징 부분 -->
 					<ul class="pagination">
 						<li>${paging.html}</li>
 					</ul>
-
 				</div>
-
 			</div>
-
 		</div>
-<div>
+		<div>
             <div class="mainFootArea">
                 <div class="footerNoticeArea">
-                    <h3>NOTICE&NEWS</h3>
+                    <h3>NOTICE&amp;NEWS</h3>
                     <div class="footNoticeWrap">
                         <ul class="footNoticeUl">
                             <li>
@@ -259,14 +184,13 @@ $(window).on('scroll', function(){
                 
                 <ul class="footQuickUl">
                     <li><a href=""><img src="/resources/images/24.gif"></a></li>
-<!--                     <li><a href=""><img src="images/drive.jpg"></a></li>-->
                      <li><a href=""><img src="/resources/images/home.gif"></a></li>
                      <li class="btn_ria_insta"><a href=""><img src="/resources/images/instargram.gif"></a></li>
                      <li class="btn_ria_movie"><a href=""><img src="/resources/images/grow.gif"></a></li>
                 </ul>
             </div>          
         </div>
-                  
+<!--         푸터 부분 -->
                    <footer class="footer">
                     <div class="inner">
                         <address>
@@ -283,8 +207,6 @@ $(window).on('scroll', function(){
                         </div>
                     </div>
                 </footer>
-	</div>
+		</div>
 </body>
-
 </html>
-
