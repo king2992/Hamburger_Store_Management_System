@@ -18,6 +18,7 @@
 		<li><span>이름 : <input type="text" value="${user.userName}" class="userName"></span></li>
 	</ul>
 	<button type="button" id="userInfoUpdate">변경하기</button>
+	<button type="button" id="userPayCardUpdate">카드등록</button>
 	<!-- Trigger/Open The Modal -->
  
     <!-- The Modal -->
@@ -34,29 +35,7 @@
       </div>
  
     </div>
-		<div><span>은행</span></div>
-	<div>
-		<select>
-			<option>농협</option>
-			<option>신한은행</option>
-			<option>국민은행</option>
-			<option>하나은행</option>
-			<option>카카오뱅크</option>
-		</select>
-	</div>
-		<div><span>카드 번호</span></div>
-		<input type="text">
-		<div><span>만기일</span></div>
-	<div style="display:inline-flex">
-		<select>
-			<option>MM</option>
-		</select>
-		<select>
-			<option>YY</option>
-		</select>
-	</div>
-		<div><span>보안 코드</span></div>
-		<div><input type="text"></div>
-	<button type="button">카드 등록</button>
+    
+		
 </body>
 </html>

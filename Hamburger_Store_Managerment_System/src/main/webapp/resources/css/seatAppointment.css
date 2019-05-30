@@ -305,6 +305,8 @@ background:#1AAB8A;
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
+  position:relative;
+  left: 50px;
 }
 .documentBtnCenter button:hover {
 	background:#fff;
@@ -384,7 +386,7 @@ background:#1AAB8A;
     }
     
     #modalLayer{display:none; position:relative;}
-	#modalLayer .modalContent{width:440px; height:200px; padding:20px; border:1px solid #ccc; position:fixed; left:50%; 
+	#modalLayer .modalContent{width:440px;  padding:20px; border:1px solid #ccc; position:fixed; left:50%; 
 	top:50%; z-index:11; background:#fff;}
 /* 	#modalLayer .modalContent button{position:absolute; right:0; top:0; cursor:pointer;} */
 

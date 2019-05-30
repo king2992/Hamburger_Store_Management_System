@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.dao.TakeOutUserReservedDao;
 import kr.ac.kopo.model.Menu;
+import kr.ac.kopo.model.PayInfo;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.setSideDrink;
 @Service
@@ -63,6 +64,21 @@ public class TakeOutUserReservedServiceImpl implements TakeOutUserReservedServic
 	@Override
 	public List<setSideDrink> setDrinkList() {
 		return dao.setDrinkList();
+	}
+
+	@Override
+	public PayInfo myCardLoad(String userId) {
+		return dao.myCardLoad(userId);
+	}
+
+	@Override
+	public PayInfo cardPay(HashMap<String, Object> map) {
+		return dao.cardPay(map);
+	}
+
+	@Override
+	public PayInfo cardInputPay(HashMap<String, Object> map) {
+		return dao.cardInputPay(map);
 	}
 
 

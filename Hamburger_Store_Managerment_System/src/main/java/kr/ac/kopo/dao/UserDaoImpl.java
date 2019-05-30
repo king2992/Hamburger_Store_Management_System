@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.model.PayInfo;
 import kr.ac.kopo.model.Review;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
@@ -62,11 +63,14 @@ SqlSession sql;
 	public List<Review> myWritten(String userId) {
 		return sql.selectList("user.myWritten", userId);
 	}
+	@Override
+	public void payInfoAdd(HashMap<String, Object> map) {
+		sql.insert("user.payInfoAdd", map);
+	}
+	@Override
+	public PayInfo cardCheck(HashMap<String, Object> map) {
+		return sql.selectOne("user.cardCheck", map);
+	}
 	
 	
-
-	
-	
-	
-
 }

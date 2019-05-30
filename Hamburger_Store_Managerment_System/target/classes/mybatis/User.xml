@@ -41,4 +41,12 @@
 	<select id="myWritten" resultType="Review">
 		select * from review where user_id = #{userId}
 	</select>
+	<insert id="payInfoAdd" parameterType="map">
+		insert into user_pay_card (card_num, validity, card_pw, user_id, bank_name, security_code)
+		values(#{cardNum},#{validity},#{cardPw},#{userId},#{bankName},#{securityCode})
+	</insert>
+	<select id="cardCheck" parameterType="map" resultType="PayInfo">
+		select * from bank where card_num =#{cardNum} and card_pw =#{cardPw} and validity =#{validity} and
+		bank_name =#{bankName} and security_code =#{securityCode} 
+	</select>
 </mapper>

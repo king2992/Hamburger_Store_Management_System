@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import kr.ac.kopo.model.Menu;
+import kr.ac.kopo.model.PayInfo;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.setSideDrink;
 
@@ -29,6 +30,12 @@ public interface TakeOutUserReservedService {
 	List<setSideDrink> setSideList();
 
 	List<setSideDrink> setDrinkList();
+
+	PayInfo myCardLoad(String userId);
+
+	PayInfo cardPay(HashMap<String, Object> map);
+
+	PayInfo cardInputPay(HashMap<String, Object> map);
 
 
 	

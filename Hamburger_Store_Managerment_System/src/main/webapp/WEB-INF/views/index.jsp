@@ -655,7 +655,7 @@ p{margin:0;}
 					$("#phoneCheck").text("숫자만 입력해주세요.");
 					$("#userPhone").val("");	
 				
-				}else if(userPhone.length == 11){
+				}else if(userPhone.length == 10){
 					$("#phoneCheck").text("OK");
 				}
 		})

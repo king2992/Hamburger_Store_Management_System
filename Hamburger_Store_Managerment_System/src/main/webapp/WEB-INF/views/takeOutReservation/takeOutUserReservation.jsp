@@ -426,7 +426,59 @@ width: 300px;
           <input type="text" id="nmg" name="nmg" readonly="readonly"> 
           <input type="button" id="submitcash" value="보내기"> 
 			</div>
-		</div>
+<!-- 			카드 결제 과정 -->
+			<div class="myCardCheck">
+				<button type="button" class="userInputCard">직접 입력 하기</button>
+				<div><span>은행</span></div>
+			<div>
+				<select name="bankName" id="myBankName">
+					<option>농협</option>
+					<option>신한은행</option>
+					<option>국민은행</option>
+					<option>하나은행</option>
+					<option>카카오뱅크</option>
+				</select>
+			</div>
+				<div><span>카드 번호</span></div>
+				<input type="text" name="cardNum" id="myCardNum">
+		
+				<div><span>카드 비밀번호</span></div>
+				<div><input type="password" name="myCardPw" id="myCardPw"></div>
+			<button type="button" id="cardPay">결제</button>
+					</div>
+					
+			<div class="cardPay">
+				<button type="button" class="myCardLoad">내 카드 가져오기</button>
+				<div><span>은행</span></div>
+			<div>
+				<select name="bankName" id="bankName">
+					<option>농협</option>
+					<option>신한은행</option>
+					<option>국민은행</option>
+					<option>하나은행</option>
+					<option>카카오뱅크</option>
+				</select>
+			</div>
+				<div><span>카드 번호</span></div>
+				<input type="text" name="cardNum" id="cardNum">
+				<div><span >만기일</span></div>
+			<div style="display:inline-flex" id="validity">
+				<select name="validityMonth" id="validityMonth" >
+					<option>MM</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
+				</select>
+				<select name="validityYears" id="validityYears">
+					<option>YY</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option>
+				</select>
+			</div>
+				<div><span>보안 코드</span></div>
+				<div><input type="text" name="securityCode" id="securityCode"></div>
+				<div><span>카드 비밀번호</span></div>
+				<div><input type="password" name="cardPw" id="cardPw"></div>
+			<button type="button" id="cardAdd">결제</button>
+					</div>		
+					
+<!-- 			카드 결제 과정 -->					
+				</div>
 		</div>
 	<!-- The Modal -->
 	 <div id="myModal" class="modal">
@@ -581,8 +633,8 @@ width: 300px;
 			<ul style="list-style: none;" class="reservedCheck">
 				<li class="space">${sessionScope.places}<input type="hidden" name="frcName" value="${sessionScope.places}"></li>
 				<li><span class="span">아이디  <input type="text" name="userId" readonly="readonly" value="${sessionScope.user}" class="input"></span></li>
-				<li><span class="span">이름  <input type="text" name="reservedName" class="input"></span></li>
-				<li><span class="span">전화번호  <input type="text" name="reservedPhone" class="input"></span></li>
+				<li><span class="span">이름  <input type="text" name="reservedName" class="input" id="orderUserName"></span></li>
+				<li><span class="span">전화번호  <input type="text" name="reservedPhone" class="input" id="orderUserPhone"></span></li>
 				<li><span class="span">날짜</span>  <span id="dateCheck"></span></li>
 				<li><span class="span">시간 </span><span id="timeModalHours"></span><span id="timeModalMinutes"></span></li>
 				<li><span class="span">금액</span>  <span id="payment"></span></li>
@@ -635,7 +687,6 @@ width: 300px;
 			<div class="documentBtnCenter">
 				<button id="" type="button"
 					onclick="takeOutReservedGo()" class="documentClose">출력</button>
-			   <button type="button" id="cancel" class="documentClose">취소</button> 
 			</div>
 		<!-- 	<a class="close" href="#close"></a> -->
 	</div>

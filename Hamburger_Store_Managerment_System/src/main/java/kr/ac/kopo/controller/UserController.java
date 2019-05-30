@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.kopo.model.PayInfo;
 import kr.ac.kopo.model.Review;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
@@ -151,6 +152,44 @@ public class UserController {
 		session.invalidate();
 		return 1;
 	}
-	
-	
+	//결제정보등록창 팝업
+	@RequestMapping("/cardAdd")
+	String userCardAdd() {
+		return "/user/cardAdd";
+	}
+	//결제정보 INSERT
+	@ResponseBody
+	@RequestMapping("/payInfoAdd")
+	int payInfoAdd(@RequestParam(value="bankName") String bankName, @RequestParam(value="cardNum") String cardNum,
+			@RequestParam(value="validityMonth") String validityMonth,@RequestParam(value="validityYears") String validityYears,
+			@RequestParam(value="securityCode") int securityCode, @RequestParam(value="cardPw") String cardPw, HttpSession session) {
+		String userId = (String) session.getAttribute("user");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("userId", userId);
+		map.put("bankName", bankName);
+		map.put("cardNum", cardNum);
+		map.put("validity", validityYears + "/"+ validityMonth);
+		map.put("securityCode", securityCode);
+		map.put("cardPw", cardPw);
+		service.payInfoAdd(map);
+		
+		return 1;
+	}
+	@ResponseBody
+	@RequestMapping("/cardCheck")
+	int cardCheck(@RequestParam(value="bankName") String bankName, @RequestParam(value="cardNum") String cardNum,
+			@RequestParam(value="validityMonth") String validityMonth,@RequestParam(value="validityYears") String validityYears,
+			@RequestParam(value="securityCode") int securityCode, @RequestParam(value="cardPw") String cardPw, HttpSession session) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("bankName", bankName);
+		map.put("cardNum", cardNum);
+		map.put("validity",   validityMonth + "/"+ validityYears);
+		map.put("securityCode", securityCode);
+		map.put("cardPw", cardPw);
+		PayInfo payinfo = service.cardCheck(map);
+		if(payinfo == null) {
+			return 0;
+		}
+		return 1;
+	}
 }

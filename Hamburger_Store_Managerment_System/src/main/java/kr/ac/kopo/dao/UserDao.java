@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import kr.ac.kopo.model.PayInfo;
 import kr.ac.kopo.model.Review;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
@@ -31,6 +32,10 @@ public interface UserDao {
 	List<TakeoutReservedMenu> userReservedCheck(int takeoutId);
 
 	List<Review> myWritten(String userId);
+
+	void payInfoAdd(HashMap<String, Object> map);
+
+	PayInfo cardCheck(HashMap<String, Object> map);
 
 
 

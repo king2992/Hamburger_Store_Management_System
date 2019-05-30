@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.model.Menu;
+import kr.ac.kopo.model.PayInfo;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.setSideDrink;
 @Repository
@@ -63,5 +64,20 @@ public List<setSideDrink> setSideList() {
 @Override
 public List<setSideDrink> setDrinkList() {
 	return sql.selectList("takeOutReservedList.setDrinkList");
+}
+
+@Override
+public PayInfo myCardLoad(String userId) {
+	return sql.selectOne("takeOutReservedList.myCardLoad", userId);
+}
+
+@Override
+public PayInfo cardPay(HashMap<String, Object> map) {
+	return sql.selectOne("takeOutReservedList.cardPay", map);
+}
+
+@Override
+public PayInfo cardInputPay(HashMap<String, Object> map) {
+	return sql.selectOne("takeOutReservedList.cardInputPay", map);
 }
 }

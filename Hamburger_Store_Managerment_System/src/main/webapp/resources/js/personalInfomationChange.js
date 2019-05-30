@@ -93,7 +93,16 @@ $(document).ready(function(){
 		
 		
 	})
-	
+	$(document).on("click", "#userPayCardUpdate", function(){
+		cardAddPopUpOpen();
+	})
+	function cardAddPopUpOpen(){
+		var url = "/user/cardAdd";
+		var winWidth = 550;
+		var winHeight = 450;
+		var popupOption = "width="+winWidth+", height="+winHeight;
+		window.open(url,"",popupOption);
+	}
 	
 	
 	

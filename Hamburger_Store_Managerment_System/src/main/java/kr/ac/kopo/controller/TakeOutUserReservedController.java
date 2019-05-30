@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
 import kr.ac.kopo.model.Menu;
+import kr.ac.kopo.model.PayInfo;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.setSideDrink;
 import kr.ac.kopo.service.TakeOutUserReservedService;
@@ -103,7 +104,53 @@ public class TakeOutUserReservedController {
 	String ticketingSuccess(){
 		return "/takeOutReservation/ticketingSuccess";
 	}
-	
-	
+	//내가 등록한 카드 정보 불러오기
+	@ResponseBody
+	@RequestMapping(value="/myCardLoad",method= {RequestMethod.GET, RequestMethod.POST})
+	Object myCardLoad (HttpSession session) {
+		String userId = (String) session.getAttribute("user");
+		
+		PayInfo payinfo = service.myCardLoad(userId);
+		
+		return payinfo;
+	}
+	//카드결제 비밀번호 체크
+	@ResponseBody
+	@RequestMapping(value="/cardPay", method= {RequestMethod.GET, RequestMethod.POST})
+	int cardPay(@RequestParam(value="bankName") String bankName, @RequestParam(value="cardNum") String cardNum,
+			@RequestParam(value="cardPw") String cardPw) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("bankName", bankName);
+		map.put("cardNum", cardNum);
+		map.put("cardPw", cardPw);
+		
+		PayInfo payinfo = service.cardPay(map);
+		if(payinfo == null) {
+			return 0;
+		}
+		return 1;	
+	}
+	//카드결제 직접입력 비밀번호 체크
+		@ResponseBody
+		@RequestMapping(value="/cardInputPay", method= {RequestMethod.GET, RequestMethod.POST})
+		int cardInputPay(@RequestParam(value="bankName") String bankName, @RequestParam(value="cardNum") String cardNum,
+				@RequestParam(value="cardPw") String cardPw,@RequestParam(value="validityMonth") String validityMonth,
+				@RequestParam(value="validityYears") String validityYears,@RequestParam(value="securityCode") int securityCode) {
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("bankName", bankName);
+			map.put("cardPw", cardPw);
+			map.put("cardNum", cardNum);
+			map.put("validity", validityMonth + "/"+ validityYears);
+			map.put("securityCode", securityCode);
+			
+			
+			PayInfo payinfo = service.cardInputPay(map);
+			if(payinfo == null) {
+				return 0;
+			}
+			return 1;	
+		}
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.dao.UserDao;
+import kr.ac.kopo.model.PayInfo;
 import kr.ac.kopo.model.Review;
 import kr.ac.kopo.model.TakeOutReserved;
 import kr.ac.kopo.model.TakeoutReservedMenu;
@@ -57,6 +58,15 @@ UserDao dao;
 	public List<Review> myWritten(String userId) {
 		return dao.myWritten(userId);
 	}
+	@Override
+	public void payInfoAdd(HashMap<String, Object> map) {
+		dao.payInfoAdd(map);
+	}
+	@Override
+	public PayInfo cardCheck(HashMap<String, Object> map) {
+		return dao.cardCheck(map);
+	}
+	
 	
 	
 

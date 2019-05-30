@@ -17,6 +17,7 @@
 		<typeAlias type="kr.ac.kopo.model.ordersMenuList" alias="ordersMenuList" />
 		<typeAlias type="kr.ac.kopo.model.TakeoutReservedMenu" alias="TakeoutReservedMenu" />
 		<typeAlias type="kr.ac.kopo.model.setSideDrink" alias="setSideDrink" />
+		<typeAlias type="kr.ac.kopo.model.PayInfo" alias="PayInfo" />
 	</typeAliases>
 
 	<mappers>
