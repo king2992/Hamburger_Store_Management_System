@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="toDay" class="java.util.Date" />
 <html>
 <head>
@@ -521,66 +521,18 @@ width: 300px;
                     <div class="item">24</div>
             </div>
 				<div id="containerScroll2" class="sb02 minutes" >
-                    <div class="item">01</div>
-                    <div class="item">02</div>
-                    <div class="item">03</div>
-                    <div class="item">04</div>
+                    <div class="item">00</div>
                     <div class="item">05</div>
-                    <div class="item">06</div>
-                    <div class="item">07</div>
-                    <div class="item">08</div>
-                    <div class="item">09</div>
                     <div class="item">10</div>
-                    <div class="item">11</div>
-                    <div class="item">12</div>
-                    <div class="item">13</div>
-                    <div class="item">14</div>
                      <div class="item">15</div>
-                     <div class="item">16</div>
-                     <div class="item">17</div>
-                   <div class="item">18</div>
-                   <div class="item">19</div>
                     <div class="item">20</div>
-                     <div class="item">21</div>
-                    <div class="item">22</div>
-                    <div class="item">23</div>
-                    <div class="item">24</div>
                     <div class="item">25</div>
-                    <div class="item">26</div>
-                    <div class="item">27</div>
-                    <div class="item">28</div>
-                    <div class="item">29</div>
                     <div class="item">30</div>
-                     <div class="item">31</div>
-                    <div class="item">32</div>
-                    <div class="item">33</div>
-                    <div class="item">34</div>
                     <div class="item">35</div>
-                    <div class="item">36</div>
-                    <div class="item">37</div>
-                    <div class="item">38</div>
-                    <div class="item">39</div>
                     <div class="item">40</div>
-                     <div class="item">41</div>
-                    <div class="item">42</div>
-                    <div class="item">43</div>
-                    <div class="item">44</div>
                     <div class="item">45</div>
-                    <div class="item">46</div>
-                    <div class="item">47</div>
-                    <div class="item">48</div>
-                    <div class="item">49</div>
                     <div class="item">50</div>
-                     <div class="item">51</div>
-                    <div class="item">52</div>
-                    <div class="item">53</div>
-                    <div class="item">54</div>
                     <div class="item">55</div>
-                    <div class="item">56</div>
-                    <div class="item">57</div>
-                    <div class="item">58</div>
-                    <div class="item">59</div>
-                    
             </div>
             <div class="timeBtnCenter">
              <button type="button" id="timeSelect" class="btn-two green rounded">선택</button>
