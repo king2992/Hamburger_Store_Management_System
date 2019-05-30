@@ -1,0 +1,37 @@
+@font-face { font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal; }
+*{font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal;}
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+ul li{list-style-type: none;}
+a { text-decoration-line: none; color: rgba(255,255,255,0.5);}
+.banner-wrap{position: relative; z-index: 1; width: 100%; height: 136px; background: #760000;}
+.bannerUl{width: 1024px; margin: 0 auto;}
+.bannerUl li{position: relative; float: left; width: 256px; height: 136px;}
+.autoRolling{position: relative; z-index: 1;}
+.rolling{position: relative; z-index: 1;  height: 136px; overflow: hidden;}
+.rolling li h3{font-size: 20px; color: #fff; padding:15px}
+.rolling li a {padding: 15px; color: #fff}
+.kiosk{background-image: url(/resources/images/main_03.png); background-repeat: no-repeat; background-position: right; background-size: 100% 100%;}
+.takeout{background-image: url(/resources/images/main_02.png); background-repeat: no-repeat; background-position: right; background-size: 100% 100%;}
+.display{background-image: url(/resources/images/main_04.png); background-repeat: no-repeat; background-position: right; background-size: 100% 100%;}
+.community{background-image: url(/resources/images/main_01.png); background-repeat: no-repeat; background-position: right; background-size: 100% 100%;}
+
+.mainFootArea{width: 1024px; height: 40px; margin: 0 auto; position: relative;}
+.footerNoticeArea{position: relative; z-index: 1; float: left; width: 460px; padding: 11px 0 0 0;}
+.footerNoticeArea h3{float: left; width: 108px; color: #808080; font-size: 17px;}
+.footNoticeWrap{position: relative; z-index: 1; float: left; width: 316px; height: 19px; overflow: hidden; left: 35px; font-size: 14px; border-left: 1px solid #d3d3d3;}
+.footNoticeUl{position: relative; z-index: 1; width: 304px; padding: 0 0 0 12px;}
+.footNoticeUl li{clear: both; height: 19px; line-height: 19px;}
+.footNoticeUl li p{float: left; width: 188px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.footNoticeUl li p a{font-family: Nanum Gothic; color: #808080; font-size: 13px;}
+.footNoticeUl li span{float: right; width: 65px;font-family: Nanum Gothic;}
+.footQuickUl {float: right; width: 564px;}
+.footQuickUl li{float: left;}
+.footQuickUl li a,.footQuickUl li img {display: block; height: 40px; width: 139px;}
+.btn_ria_insta{width: 140px;}
+
+.footer{position: relative; bottom: 0; z-index: 2; height: 100px; width: 100%; padding: 24px 0 0 0; border: 1px solid #cdcdcd; background: #fff; clear: both;}
+.footer .inner{position: relative; z-index: 5; width: 1024px; margin: 0 auto;}
+.footer .inner address{clear: both; float: left; width: 50%; margin: 8px 0 0 0;}
+.footer .inner address p{font-style: normal; font-size: 11px; color: #808080;}
+    
