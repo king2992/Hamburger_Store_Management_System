@@ -28,7 +28,7 @@
 				<td>${list.reservedName}</td>
 				<td>${list.reservedPhone}</td>
 				<td>${list.frcName}<button type="button" class="reservedCheck" data-takeoutid="${list.takeoutId}">
-				예약 내역 확인</button></td>
+				예약 내역 확인</button></td> 
 			</tr> 
 			</c:forEach>
 		</c:when>
