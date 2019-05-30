@@ -6,9 +6,10 @@
 /* .layout-topheader {
     height: 125px;
 } */
-
+@font-face { font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal; }
+*{font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal;}
 ul,p{margin:0; padding:0;}
-.header{width: 100%; height: 100px;background: #080607;}
+.header{width: 100%; height: 100px;background: #080607; line-height: 84px;}
 .navi {color:rgba(255,255,255,.5) !important;  width: 1024px; margin: 0 auto;}
 .navi a{color: rgba(255,255,255,.5); }
 .navi a p{ font-size: 36px; font-weight: 700;  line-height: 15px;}
@@ -735,9 +736,9 @@ ul {
     color: #0069d9;
 }
 
-.board_wrtiewarp {
+/* .board_wrtiewarp {
     padding: 3% 5% 3% 10%;
-}
+} */
 
 .board_writesubject {
     margin-bottom: 3%;

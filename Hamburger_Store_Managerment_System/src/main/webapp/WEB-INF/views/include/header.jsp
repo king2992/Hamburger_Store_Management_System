@@ -13,28 +13,27 @@
   
   <link rel="shortcut icon" href="/">
   <!-- Bootstrap core CSS -->
-   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
   <!-- Custom fonts for this template -->
   <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-   <link href="/resources/css/mainIndex.css" rel="stylesheet" type="text/css">
+<!--    <link href="/resources/css/mainIndex.css" rel="stylesheet" type="text/css"> -->
        <script src="/resources/js/carousel.js"></script> 
        <link rel="stylesheet" href="/resources/css/mainR.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
      <link rel="shortcut icon" href="/">
 </head>
 <body>
-  <header class="header">
+  <header class="header" style="line-height: 0;">
                     <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
-                     <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 20px;"></a>
+                     <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" class="msa"></a>
                         <ul>
                             
                           <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
                             
-                                
-                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li>
+            
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
@@ -42,7 +41,7 @@
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
                        
                         </ul>
-                          <ul class="nav navbar-nav menu-infobtn" style="padding-bottom: 13px;">
+                          <ul class="nav navbar-nav menu-infobtn">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
                         <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>

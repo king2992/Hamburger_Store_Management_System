@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IncludeController {
 
 	@RequestMapping("/header")
-	String screen(HttpSession session)	{
+	String header(HttpSession session)	{
 		session.removeAttribute("failed");
 		return "include/header";
+	}
+	@RequestMapping("/footer")
+	String footer(HttpSession session)	{
+		session.removeAttribute("failed");
+		return "include/footer";
 	}
 }

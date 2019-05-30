@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"> 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css">
 <link rel="stylesheet" href="${path}/resources/css/sub.css"> 
+<!-- <link rel="stylesheet" href="/resources/css/mainR.css">  -->
 <link href="${path}/resources/css/animate.min.css" rel="stylesheet"> 
 <link href="${path}/resources/review/js/reviewList.js">
 <script type="text/javascript">
@@ -47,6 +48,26 @@
 //smoothScroll
 /* smoothScroll.init(); */
 </script>
+<script>
+	$(document).on("click",".dropdown",function(){
+		if($(".dropdown-menu").css('display') == 'block'){
+			$(".dropdown-menu").hide();
+		}else{$(".dropdown-menu").show();}
+	})
+</script>
+<style>
+.dropdown {cursor: pointer;}
+.dropdown-menu > a{color:#16181b; font-size: 15px !important; height:32px; line-height: 32px; c}
+.dropdown-menu > a:hover{background-color:#ffc107;}
+.menu-icon {
+    font-size: 1.5rem;
+    color: #9a9da0;
+}
+.menu-dropmenu {
+    position: absolute;
+    left: -225%;
+}
+</style>
 </head>
 <body>
   <div id="home">
@@ -63,36 +84,47 @@
       <a id="tohash" href="#board"><i class="fa fa-angle-down"></i></a>
     </div>	
 <!--     헤더 부분 -->
-    <header class="header main-nav" id="board">
-     	<nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav" style="line-height:0; padding-top:40px;">
-           <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,.5)"><p>M-SA</p></a>
-             <ul>
-               <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li>
-               <li class="nav-item">
-    			<c:choose>
-       				<c:when test="${sessionScope.user eq null }">
-          				<a class="nav-link js-scroll-trigger" href="#" id="trigger">Login</a> 
-       				</c:when>
-       				<c:otherwise>
-          				<a class="nav-link js-scroll-trigger" href="${path}/user/userLogout">LogOut</a>
-       				</c:otherwise>
-    			</c:choose>
-         	   </li>
-               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/review/reviewList">Community</a></li>
-               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/store/storeFind">Takeout</a></li>
-               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/kiosk/screen">Kiosk</a></li>
-               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/pos/posmanagement">Pos</a></li>
-               <li class="nav-item"><a class="nav-link js-scroll-trigger" href="${path}/order/orderDisplay">Display</a></li>
-               <c:choose>
-          		 <c:when test="${sessionScope.user ne null }">
-                   <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="${path}/user/myPage">My Page</a>
-                   </li>
-                 </c:when>
-               </c:choose>
-             </ul>
-        </nav>
-    </header>
+   <header class="header main-nav" id="board">
+                    <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
+                     <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
+                        <ul>
+                            
+                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
+                            
+                                
+                             <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                       
+                        </ul>
+                          <ul class="nav navbar-nav menu-infobtn">
+                <li class="dropdown">
+                    <a class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
+                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+                    </a>
+                    <div class="dropdown-menu menu-dropmenu">
+                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+                            <c:choose>
+                  <c:when test="${sessionScope.user eq null }">
+          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
+          </c:when>
+          <c:otherwise>
+              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
+            </c:otherwise>
+          </c:choose>
+                          <c:choose>
+          <c:when test="${sessionScope.user ne null }">
+            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+          </c:when>
+          </c:choose>
+                    </div>
+                </li>
+            </ul>
+                    </nav>
+                </header>
   </div>
   <div class="layout">
 		<div class="content">
