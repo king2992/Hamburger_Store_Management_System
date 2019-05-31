@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			     
 				 $('#myModal').show();
 				 $("#hours").text("1시");
-				 $("#minutes").text("1분"); 
+				 $("#minutes").text("00분"); 
 				 dateAnimate();
 				   
 			    } ,
@@ -121,6 +121,18 @@ $(document).ready(function() {
 		  var validityYears = $("#validityYears").val();
 		  var securityCode = $("#securityCode").val();
 		  var cardPw = $("#cardPw").val();
+		  if(bankName == ""){
+			  alert("은행을 선택 해 주세요.");
+		  }else if(cardNum == ""){
+			  alert("카드 번호를 입력 해 주세요.");
+		  }else if(validityMonth == "" || validityYears == ""){
+			  alert("만기일을 입력 해 주세요.");
+		  }else if(securityCode == ""){
+			  alert("보안 코드를 입력 해 주세요.");
+		  }else if(cardPw == ""){
+			  alert("카드 비밀번호를 입력 해 주세요.");
+		  }else {
+		  
 		  $.ajax({
 			  url :"/takeOutReservation/cardInputPay",
 			  data :{"bankName" : bankName,"cardNum" : cardNum,
@@ -153,11 +165,12 @@ $(document).ready(function() {
 							documentCardSuccess();
 						}, 1000);
 				  }else if(data == 0){
-					  alert("비밀번호를 다시 확인해주세요.");
+					  alert("카드 정보를 다시 확인해주세요.");
 				  }
 			  }
 			  
 		  })
+		  }
 	  })
 	  $(document).on("click", "#cardPay", function(){
 		  var bankName = $("#myBankName").val();
@@ -171,7 +184,7 @@ $(document).ready(function() {
 						Swal.fire({
 					  title: '주문 결제 중 입니다~',
 					  html: '잠시만  기다려주세요~ <strong></strong>',
-					  timer: 700,
+					  timer: 900,
 					  onBeforeOpen: () => {
 					    Swal.showLoading()
 					    timerInterval = setInterval(() => {
@@ -181,11 +194,6 @@ $(document).ready(function() {
 					  },
 					  onClose: () => {
 					    clearInterval(timerInterval)
-					    setTimeout(function(){
-					    	documentCardSuccess();
-					    }, 3000)
-					    
-					    
 					  }
 					}).then((result) => {
 					  if (
@@ -200,11 +208,12 @@ $(document).ready(function() {
 						}, 1000);
 				  }else if(data == 0){
 					  alert("비밀번호를 다시 확인해주세요.");
+					  $("#myCardPw").focus();
+					  $("#myCardPw").val("");
 				  }
 			  }
 		  })
 	  })
-//		$(document).on('click','#msg_process',function() {
 		function msg_process(){
 			
 		$('.popup').hide();
@@ -221,7 +230,7 @@ $(document).ready(function() {
 		$('#documentPayment').text(documentPayment);
 		$('#documentTimeCheck').text(documentTimeCheck);
 		}
-//	});
+	  
 		$(document).on("click", "#modalContentCard", function(){
 			documentCard();
 		})
@@ -253,10 +262,10 @@ $(document).ready(function() {
 				  type: 'success',
 				  title: '카드 결제가 완료 되었습니다!',
 				  showConfirmButton: false,
-				  timer: 1000
+				  timer: 600
 				});
 			setTimeout(function(){
-				$('.documentPopup').show();
+				$('.documentCenter').show();$('.documentPopup').show();
 			}, 700)
 			
 			}
@@ -829,7 +838,7 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 			success : function(data) {
 				if (data == 1) {
 					takeOutReservedMenuInsert();
-					let timerInterval
+					var timerInterval
 					Swal.fire({
 					  title: '영수증 출력 중입니다~',
 					  html: '잠시만  기다려주세요~ <strong></strong>',
@@ -844,7 +853,7 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 					  onClose: () => {
 					    clearInterval(timerInterval)
 					    setTimeout(function(){
-					    	swal();
+					    	swal3();
 					    }, 700)
 					    
 					    
@@ -856,7 +865,7 @@ $(".chickenList").hide();$(".sideMenuList").hide();$(".drinkMenuList").hide();$(
 					  }
 					});
 				// swal() 생성	
-					function swal() {
+					function swal3() {
 					Swal.fire({
 						
 						  position: 'center',

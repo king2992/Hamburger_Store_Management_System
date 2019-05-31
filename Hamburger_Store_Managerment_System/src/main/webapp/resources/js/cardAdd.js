@@ -2,12 +2,14 @@
 $(document).ready(function(){
 	
 		$(document).on("click", "#cardAdd", function(){
+			
 			var bankName = $("[name=bankName]").val();
 			var cardNum = $("[name=cardNum]").val();
 			var validityMonth = $("[name=validityMonth]").val();
 			var validityYears = $("[name=validityYears]").val();
 			var securityCode = $("[name=securityCode]").val();
 			var cardPw = $("[name=cardPw]").val();
+			
 			if(localStorage.getItem("등록가능") == "등록가능"){
 				$.ajax({
 					url : "/user/payInfoAdd",
