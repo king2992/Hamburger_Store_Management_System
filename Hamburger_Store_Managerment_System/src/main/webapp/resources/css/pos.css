@@ -348,7 +348,6 @@ footer{clear: both; width: 30%;}
          background-color: white; 
          padding: 1rem 1.5rem; 
          width: 500px; 
-         height: 350px; 
          border-radius: 0.5rem; 
      } 
      .close-buttoncash { 
@@ -614,5 +613,8 @@ div#select_box select#menuCategory {
   filter: alpha(opacity=0);
   /* IE 8 */
 }
-
+.moneyImg{
+	width:100px;
+	height:50px;
+}
 

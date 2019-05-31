@@ -435,9 +435,20 @@ $(document).on('click','#cancel',function(){
           <input type="text" name="payTotal"  id="payTotal2"  class="inputcash" readonly="readonly"> 
           <label class="labelcash">받은 금액 입력란</label> 
           <input type="text" name="payTotal2" placeholder="받은 금액" id="payTotal" class="inputcash" required="required">
+          <div>
+          <button type="button" class="moneyImg" data-money="100">100</button>
+          <button type="button" class="moneyImg" data-money="500">500</button>
+          <button type="button" id="moneyReset">리셋</button>
+          </div>
+          <div> 
+          <button type="button" class="moneyImg" data-money="1000">1000</button>
+          <button type="button" class="moneyImg" data-money="5000">5000</button>
+          <button type="button" class="moneyImg" data-money="10000">10000</button>
+          <button type="button" class="moneyImg" data-money="50000">50000</button>
+          </div>
           <input type="button" class="document" value="거스름돈 출력">
           <label class="labelcash nmg">거스름돈</label>
-          <input type="text" id="nmg" name="nmg" readonly="readonly"> 
+          <input type="text" id="nmg" name="nmg" readonly="readonly">
           <input type="button" id="cancelcash" value="취소"> 
           <input type="button" id="submitcash" onclick ="send()" value="보내기"> 
         </form> 

@@ -10,7 +10,19 @@
 		$(".drink").hide();
 		$(".setModal").hide();
 		$(".modal").hide();
-		
+		$(document).on("click", ".moneyImg",function(){
+			var thisMoney = $(this).data("money");
+			var ReceiveMoney = $("#payTotal").val();
+			var total = "";
+			
+			total = Number(ReceiveMoney) + Number(thisMoney) ;
+			
+			$("#payTotal").val(total);
+			
+		});
+		$(document).on("click", "#moneyReset", function(){
+			$("#payTotal").val("");
+		})
 		$(document).on("click",".document",function(){
 			
 			var payTotal = $("#payTotal").val();
@@ -28,7 +40,6 @@
 			
 			$('#nmg').css('display','block');
 			$('.nmg').css('display','block');
-			$('.modal-contentcash').css('height','430px');
 			$('.document').css('display','none');
 			$('#submitcash').css('display','inline-block');
 			}
