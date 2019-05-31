@@ -22,10 +22,10 @@
 		<c:when test="${list.size() > 0 }">
 			<c:forEach items="${list}" var="list">
 			<tr>
-				<td><button type="button" data-number="${list.number }">게시글 보러가기</button></td>
+				<td><button type="button" data-number="${list.number}">게시글 보러가기</button></td>
 				<td>${list.date}</td>
 				<td>${list.title}</td>
-				<td><button type="button">게시글 삭제</button></td>
+				<td><button type="button" data-number="${list.number}" id="boardDel">게시글 삭제</button></td>
 			</tr> 
 			</c:forEach>
 		</c:when>

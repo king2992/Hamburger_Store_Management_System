@@ -69,4 +69,11 @@
 		set status = "Complete"
 		where takeout_id = #{takeoutId}
 	</update>
+	<select id="takeoutSales" resultType="String">
+		select sum(total_price) from takeout_reserved_list where reserved_date = #{regDate}
+	</select>
+	<select id="ordersSales" resultType="String">
+		select sum(pay_total) from orders where reg_date = #{regDate}
+	</select>
+	
 </mapper>

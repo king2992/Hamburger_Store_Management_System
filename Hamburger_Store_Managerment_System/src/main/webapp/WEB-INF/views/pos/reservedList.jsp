@@ -18,12 +18,12 @@
 <link rel="stylesheet" href="/resources/css/sub.css"> 
 <script src="/resources/js/mainR.js"></script> 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="sweetalert2.all.min.js"></script>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css">  -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> -->
+<!-- <script src="sweetalert2.all.min.js"></script> -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
  <link href="/resources/css/reservedList.css" type="text/css" rel="stylesheet">
- <script src="http://localhost:84/socket.io/socket.io.js"></script>
+<!--  <script src="http://localhost:84/socket.io/socket.io.js"></script> -->
 </head>
 <body>
 <div id="container">
@@ -72,6 +72,7 @@
 	</div>
 		<ul class="reservedCheckList">
 		</ul>
+		<div><p class="storeSales"></p></div>
 	<div class="button_base b04_3d_tick dal">
 	<div></div>
 	<div>달력출력(날짜)</div>
@@ -79,7 +80,6 @@
 	</div>	
 	<div class="right-box">
 	<h1 class="reservedList-title">매장 예약 내역</h1>
-	
 	<table class="reserved-table">
 			<tr>
 				<th>구 분</th>

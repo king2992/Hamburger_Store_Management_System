@@ -65,6 +65,11 @@ public interface PosDao {
 
 	void setMenuAdd(setSideDrink item);
 
+	String takeoutSales(String regDate);
+
+	String ordersSales(String regDate);
+
+
 	
 
 }

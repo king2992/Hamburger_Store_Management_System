@@ -97,5 +97,14 @@ public class PosServiceImpl implements PosService {
 	public void setMenuAdd(setSideDrink item) {
 		posdao.setMenuAdd(item);
 	}
+	@Override
+	public String takeoutSales(String regDate) {
+		return posdao.takeoutSales(regDate);
+	}
+	@Override
+	public String ordersSales(String regDate) {
+		return posdao.ordersSales(regDate);
+	}
+	
 
 }

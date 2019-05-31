@@ -416,14 +416,12 @@ width: 300px;
 				<button type="button" id="modalContentPay">현금</button>
 			</div>
 			<div class="modalContentShow">
-				<h1 class="titlecash">현금결제</h1> 
-          <label for="total" class="labelcash" >총 금액</label> 
-          <input type="text" name="payTotal"  id="payTotal2"  class="inputcash" readonly="readonly"> 
-          <label class="labelcash">받은 금액 입력란</label> 
-          <input type="text" name="payTotal2" placeholder="받은 금액" id="payTotal" class="inputcash" required="required">
-          <input type="button" class="changeMoney" value="거스름돈 출력">
-          <label class="labelcash nmg">거스름돈</label>
-          <input type="text" id="nmg" name="nmg" readonly="readonly"> 
+				<h1 class="titlecash">무통장 입금</h1> 
+          		<ul>
+          			<li>은행명 : 신한은행</li>
+          			<li>계좌번호 : 110-397-061-375</li>
+          			<li class="modalContentShowPay"></li>
+          		</ul> 
           <input type="button" id="submitcash" value="보내기"> 
 			</div>
 <!-- 			카드 결제 과정 -->

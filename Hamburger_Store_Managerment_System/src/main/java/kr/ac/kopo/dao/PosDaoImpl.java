@@ -121,4 +121,16 @@ public class PosDaoImpl implements PosDao {
 		sql.insert("pos.setMenuAdd", item);
 	}
 
+	@Override
+	public String takeoutSales(String regDate) {
+		return sql.selectOne("pos.takeoutSales", regDate);
+	}
+
+	@Override
+	public String ordersSales(String regDate) {
+		return sql.selectOne("pos.ordersSales", regDate);
+	}
+
+	
+
 }

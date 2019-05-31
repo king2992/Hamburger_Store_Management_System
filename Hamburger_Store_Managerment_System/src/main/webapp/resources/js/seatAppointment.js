@@ -238,7 +238,7 @@ $(document).ready(function() {
 			$(".modalContentHide").hide();
 			$(".modalContentShow").show();
 			var priceSum = $("#priceSum").text();
-			$("#payTotal2").val(priceSum);
+			$(".modalContentShowPay").text("금액 : "+priceSum + "원");
 		})
 		$(document).on("click", ".changeMoney", function(){
 			var payTotal = $("#payTotal").val();

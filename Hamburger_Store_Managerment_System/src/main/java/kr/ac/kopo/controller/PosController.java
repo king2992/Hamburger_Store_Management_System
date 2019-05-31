@@ -181,4 +181,22 @@ public class PosController {
 		List<TakeOutReserved> takeoutreserved = posservice.takeoutDateSort(reservedDate); 
 		return takeoutreserved;
 	}
+	@ResponseBody
+	@RequestMapping(value="/todaySales", method = {RequestMethod.GET, RequestMethod.POST})
+	int todaySales(@RequestParam(value="regDate") String regDate) {
+		
+		String ordersSales = posservice.ordersSales(regDate);
+		String takeoutSales = posservice.takeoutSales(regDate);
+		int total = 0;
+		if(takeoutSales == null) {
+			takeoutSales = "0";
+		}
+		if(ordersSales == null) {
+			ordersSales = "0";
+		}
+		total = Integer.parseInt(ordersSales) + Integer.parseInt(takeoutSales);
+
+		
+		return total;
+	}
 }
