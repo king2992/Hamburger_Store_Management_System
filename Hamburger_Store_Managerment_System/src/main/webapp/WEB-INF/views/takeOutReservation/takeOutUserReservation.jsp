@@ -26,7 +26,7 @@
 <!--  <link href="/resources/css/bootstrap-min.css" rel="stylesheet">
 <link href="/resources/css/font-awesome-min.css" rel="stylesheet">
 <link href="/resources/css/prettyPhoto.css" rel="stylesheet"> -->
-
+<link href="/resources/css/mainIndex.css" rel="stylesheet" type="text/css">
 
 
 <link rel="stylesheet" href="/resources/css/mainR.css">
@@ -92,6 +92,8 @@
 </script>
 <title>햄버거 테이크아웃 예약</title>
 <style type="text/css">
+.footQuickUl{margin:0;}
+.footer .inner address p{margin:0}
 html{
 	font-size: 100% !important;
 }
@@ -210,46 +212,160 @@ width: 300px;
     margin: 0 auto;
     display: block;
 }
+
+a.animated-button:link, a.animated-button:visited {
+	position: relative;
+	display: block;
+	margin: 30px auto 0;
+	padding: 14px 15px;
+	color: #fff;
+	font-size:14px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	overflow: hidden;
+	letter-spacing: .08em;
+	border-radius: 0;
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+}
+a.animated-button:link:after, a.animated-button:visited:after {
+	content: "";
+	position: absolute;
+	height: 0%;
+	left: 50%;
+	top: 50%;
+	width: 150%;
+	z-index: -1;
+	-webkit-transition: all 0.75s ease 0s;
+	-moz-transition: all 0.75s ease 0s;
+	-o-transition: all 0.75s ease 0s;
+	transition: all 0.75s ease 0s;
+}
+a.animated-button:link:hover, a.animated-button:visited:hover {
+	color: #FFF;
+	text-shadow: none;
+}
+a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+	height: 450%;
+}
+a.animated-button:link, a.animated-button:visited {
+	position: relative;
+	display: block;
+	margin: 30px auto 0;
+	padding: 14px 15px;
+	color: #fff;
+	font-size:14px;
+	border-radius: 0;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	overflow: hidden;
+	letter-spacing: .08em;
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+}
+a.animated-button.victoria-one {
+	border: 2px solid #D24D57;
+    width:300px;
+}
+a.animated-button.victoria-one:after {
+	background: #D24D57;
+	-moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+	-ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+	-webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+	transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+
 </style>
 </head>
 <body>
 
 	<div id="container">
-		<nav
-			class="navbar navbar-expand-sm navbar-dark fixed-top1 layout-menu"
-			style="padding:0;"> <!-- Brand --> <a
-			class="navbar-brand menu-title" href='<c:url value="/"/>'> <span
-			class="menu-pre">store</span><span class="menu-last">management</span>
-		</a> <!-- Links -->
-		
-		<ul class="nav navbar-nav menu-infobtn">
-			<li class="dropdown"><a href="#"
-				class="dropdown-toggle menu-dropicon" data-toggle="dropdown"
-				role="button" aria-haspopup="true" aria-expaneded="false"> <i
-					class="fa fa-cog fa-spin fa-fw menu-icon"></i>
-			</a>
-				<div class="dropdown-menu menu-dropmenu">
-					<a class="dropdown-item modal_open modal_menu" data="modifyModal"
-						href="#">정보수정</a> <a class="dropdown-item modal_open modal_menu"
-						data="passModal" href="#">비밀번호변경</a> <a
-						class="dropdown-item modal_open modal_menu" data="logoutModal"
-						href="<c:url value='/user/userLogout'/>">로그아웃</a> <a
-						class="dropdown-item modal_open modal_menu" data="secessionModal"
-						href="#">회원탈퇴</a>
-				</div></li>
-		</ul>
-		</nav>
-		<hr width="30%;">
+		       <header class="header">
+                    <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
+                     <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
+                        <ul>
+                            
+                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
+                            
+                                
+                             <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                       
+                        </ul>
+                          <ul class="nav navbar-nav menu-infobtn">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
+                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+                    </a>
+                    <div class="dropdown-menu menu-dropmenu">
+                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+                            <c:choose>
+                  <c:when test="${sessionScope.user eq null }">
+          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
+          </c:when>
+          <c:otherwise>
+              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
+            </c:otherwise>
+          </c:choose>
+                          <c:choose>
+          <c:when test="${sessionScope.user ne null }">
+            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+          </c:when>
+          </c:choose>
+                    </div>
+                </li>
+            </ul>
+                    </nav>
+                </header>
+           <div class="inline">
+         <div class="div">
+		<!-- <hr width="77%;"> -->
 		<p class="reservation">RESERVATION</p>
 		<p class="reservation">${sessionScope.places}</p>
-		<hr width="30%;">
-		<ul class="value-document">
+		<!-- <hr width="77%;"> -->
+		</div>
+	<!-- 	<ul class="value-document">
 			<li><span>날짜</span><span id="dateInnerHTML"></span></li>
 			<li><span>시간</span><span id="hours"></span><span id="minutes"></span></li>
 			<li><span>총금액</span><span id="priceSum"></span></li>
-		</ul>
-		
-		<div class="seats" style="position: relative; top: 35px;">
+		</ul> -->
+  <table class="type09">
+            <thead>
+            <tr>
+                <th scope="cols" colspan="3">주문목록</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">날짜</th>
+                <td><span id="dateInnerHTML"></span></td>
+            </tr>
+            <tr>
+                <th scope="row">시간</th>
+                <td><span id="hours"></span><span id="minutes"></span></td>
+            </tr>
+            <tr>
+                <th scope="row">총금액</th>
+                <td><span id="priceSum"></span></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>		
+		<div class="seats">
 			<div class="left-box">
 				<div id="orderList">
 					<table id="orderListUl" class="table">
@@ -393,6 +509,52 @@ width: 300px;
 			<ul id="msg">
 			</ul>
 		</div>
+		 <div style="clear: both; position: relative;">
+        
+        <div>
+            <div class="mainFootArea">
+                <div class="footerNoticeArea">
+                    <h3>NOTICE&NEWS</h3>
+                    <div class="footNoticeWrap">
+                        <ul class="footNoticeUl">
+                            <li>
+                                <p>
+                                    <a href="">공휴일 및 넷째 주 일요일 휴업</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <ul class="footQuickUl">
+                    <li><a href=""><img src="/resources/images/24.gif"></a></li>
+<!--                     <li><a href=""><img src="images/drive.jpg"></a></li>-->
+                     <li><a href=""><img src="/resources/images/home.gif"></a></li>
+                     <li class="btn_ria_insta"><a href=""><img src="/resources/images/instargram.gif"></a></li>
+                     <li class="btn_ria_movie"><a href=""><img src="/resources/images/grow.gif"></a></li>
+                </ul>
+            </div>          
+        </div>
+                  
+                   <footer class="footer">
+                    <div class="inner">
+                        <address>
+                            <p>대전광역시 동구 우암로 352-21 대표문의 : 010-8950 - 1914</p>
+                            <p>고객지원센터 010-5456-0801 (고객불편사항 등)대표자:주이원박조</p>
+                            <p>COPYRIGHT &copy; 2019 M-SA ALL RIGHT RESERVED</p>
+                        </address>
+                        <div>
+                            <img src="/resources/images/footer2.jpg">
+                            <img src="/resources/images/footer.jpg">
+                            <img src="/resources/images/footer4.gif">
+                            <img src="/resources/images/footer5.gif">
+                            <img src="/resources/images/footer6.gif">
+                        </div>
+                        
+                        
+                    </div>
+                </footer>
+    </div>
 	</div>
 
 	<!--/#error-->
@@ -412,21 +574,27 @@ width: 300px;
 		<button type="button" class="modalLayerClose">X</button>
 			<div class="modalContentHide">
 				<h1 class="title">결제 방법을 선택해주세요.</h1>
-				<button type="button" id="modalContentCard">카드</button>
-				<button type="button" id="modalContentPay">현금</button>
-			</div>
-			<div class="modalContentShow">
+				<div class="col-md-3 col-sm-3 col-xs-6"> <a href="#" id="modalContentCard" class="btn2 btn-sm animated-button victoria-one">카드</a> </div>
+			    <div class="col-md-3 col-sm-3 col-xs-6"> <a href="#" id="modalContentPay" class="btn btn-sm animated-button victoria-two" style="width:300px;">현금</a> </div></div>
+		
+			<div class="modalContentShow" style="text-align: center; color:#BDC3C7">
 				<h1 class="titlecash">무통장 입금</h1> 
           		<ul>
           			<li>은행명 : 신한은행</li>
           			<li>계좌번호 : 110-397-061-375</li>
           			<li class="modalContentShowPay"></li>
           		</ul> 
-          <input type="button" id="submitcash" value="보내기"> 
+          <a href="#" id="submitcash" class="buttonsubmit">보내기</a> <!-- <input type="button" id="submitcash" value="보내기"> --> 
 			</div>
 <!-- 			카드 결제 과정 -->
 			<div class="myCardCheck">
-				<button type="button" class="userInputCard">직접 입력 하기</button>
+			    <div class="button_base b03_skewed_slide_in userInputCard">
+                <div>직접 입력 하기</div>
+                <div></div>
+                <div class="userInputCard">직접 입력 하기</div>
+            </div>
+			
+				<!-- <button type="button" class="userInputCard">직접 입력 하기</button> -->
 				<div><span>은행</span></div>
 			<div>
 				<select name="bankName" id="myBankName">
@@ -446,7 +614,12 @@ width: 300px;
 					</div>
 					
 			<div class="cardPay">
-				<button type="button" class="myCardLoad">내 카드 가져오기</button>
+			  <div class="button_base b03_skewed_slide_in myCardLoad">
+                <div>내 카드 가져오기</div>
+                <div></div>
+                <div class="userInputCard">내 카트 가져오기</div>
+            </div>
+				<!-- <button type="button" class="myCardLoad">내 카드 가져오기</button> -->
 				<div><span>은행</span></div>
 			<div>
 				<select name="bankName" id="bankName">
@@ -458,9 +631,9 @@ width: 300px;
 				</select>
 			</div>
 				<div><span>카드 번호</span></div>
-				<input type="text" name="cardNum" id="cardNum">
+				<input type="text" name="cardNum" id="cardNum" style="text-align: left !important;">
 				<div><span >만기일</span></div>
-			<div style="display:inline-flex" id="validity">
+			<div id="validity">
 				<select name="validityMonth" id="validityMonth" >
 					<option value="" selected>MM</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
 				</select>

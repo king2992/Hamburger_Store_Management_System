@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html> 
 <html>
@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title></title>
 <style>
-.add { border-style:none; width: 70px; height:35px; background-color:#2d70be; font-weight:bold; color:#fff; cursor: pointer;}
-.fileDrop { width: 100%; height: 200px; border: 2px dotted #0b58a2; }
+/* .add { border-style:none; width: 70px; height:35px; background-color:#2d70be; font-weight:bold; color:#fff; cursor: pointer;}
+.fileDrop { width: 100%; height: 200px; border: 2px dotted #0b58a2; } */
 </style>
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
@@ -15,6 +15,8 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script src="/resources/js/summernote.js"></script>
+<link rel="stylesheet" href="/resources/css/mainR.css">
+<link rel="stylesheet" href="/resources/css/sub.css">
 <script type="text/javascript" src="/resources/js/fileUpload.js"></script>
 <link rel="stylesheet" href="/resources/lightbox/css/lightbox.css">
 <script id="fileTemplate" type="text/x-handlebars-template">
