@@ -73,6 +73,7 @@ function swal3() {
 // Tab 메뉴
 $(document).ready(function(){
 	$('.hide').hide();
+	
 		$('.tab_btn li').click(function(){
 			$('.hide').show();
 			var list = $(this).index();
@@ -98,7 +99,8 @@ $(document).ready(function(){
 //zoomoutdown animation
 				
 // 이미지 클릭 시 수량 증가 중복방지
-				if($('#menuname'+menuname+'').length == 1){
+				console.log($("#menuname"+menuname+"").length);
+				if($("#menuname"+menuname+"").length == 1){
 					
 					var a = Number(cnt) + 1;
 					var b = "";

@@ -1,5 +1,6 @@
 package kr.ac.kopo.controller;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,22 @@ public class UserController {
 	}
 	@RequestMapping(value="/signUp", method=RequestMethod.POST)
 	String signUp(User user) {
-		service.signUp(user);
+		String userPassword = user.getUserPassword();
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(userPassword.getBytes("UTF-8"));
+			StringBuffer hexString = new StringBuffer();
+			for(int i=0; i<hash.length; i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if(hex.length()==1) hexString.append('0');
+				hexString.append(hex);
+			}
+			user.setUserPassword(hexString.toString());
+			service.signUp(user);
+		}catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
+		
 		return "redirect:/";
 	}
 	@RequestMapping(value="/idCk", method=RequestMethod.POST)
@@ -50,10 +66,27 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="signIn",method= {RequestMethod.GET,RequestMethod.POST})
 	int signIn(HttpSession session, @RequestParam (value="userId") String userId,@RequestParam (value="userPassword") String userPassword ) {
+		
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(userPassword.getBytes("UTF-8"));
+			StringBuffer hexString = new StringBuffer();
+			
+			for(int i=0; i<hash.length;i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if(hex.length()==1) hexString.append('0');
+				hexString.append(hex);
+			}
+			map.put("userPassword", hexString.toString());
+		}catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
 		map.put("userId", userId);
-		map.put("userPassword", userPassword);
+		
 		User user = service.signIn(map);
+		
 		session.setAttribute("user", userId);
 		
 		if(user == null) {
