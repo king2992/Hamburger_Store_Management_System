@@ -3,7 +3,7 @@
 
 <mapper namespace="user">
 	<!-- 로그인 -->
-	<select id="userLogin" resultType="User">
+	<select id="signIn" resultType="User">
 		SELECT * FROM  user WHERE user_id=#{userId} and user_password=#{userPassword}
 	</select>
 	

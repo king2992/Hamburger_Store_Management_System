@@ -17,8 +17,6 @@ public interface UserDao {
 
 	int idCk(String userId);
 
-	boolean login(User user);
-
 	User personalInfomationChange(String userId);
 
 	User nowPwCheck(HashMap<String, Object> map);
@@ -36,6 +34,8 @@ public interface UserDao {
 	void payInfoAdd(HashMap<String, Object> map);
 
 	PayInfo cardCheck(HashMap<String, Object> map);
+
+	User signIn(HashMap<String, Object> map);
 
 
 

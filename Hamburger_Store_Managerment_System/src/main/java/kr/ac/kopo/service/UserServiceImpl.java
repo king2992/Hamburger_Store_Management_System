@@ -27,10 +27,6 @@ UserDao dao;
 		return dao.idCk(userId);
 	}
 	@Override
-	public boolean login(User user) {
-		return dao.login(user);
-	}
-	@Override
 	public User personalInfomationChange(String userId) {
 		return dao.personalInfomationChange(userId);
 	}
@@ -65,6 +61,10 @@ UserDao dao;
 	@Override
 	public PayInfo cardCheck(HashMap<String, Object> map) {
 		return dao.cardCheck(map);
+	}
+	@Override
+	public User signIn(HashMap<String, Object> map) {
+		return dao.signIn(map);
 	}
 	
 	

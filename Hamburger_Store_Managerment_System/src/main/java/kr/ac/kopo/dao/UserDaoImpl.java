@@ -26,14 +26,7 @@ SqlSession sql;
 	public int idCk(String userId) {
 		return sql.selectOne("user.idCk", userId);
 	}
-	@Override
-	public boolean login(User user) {
-		if(sql.selectOne("user.userLogin", user) == null)
-			
-			return false;
-			
-		return true;
-	}
+
 	@Override
 	public User personalInfomationChange(String userId) {
 		return sql.selectOne("user.personalInfomationChange", userId);
@@ -70,6 +63,10 @@ SqlSession sql;
 	@Override
 	public PayInfo cardCheck(HashMap<String, Object> map) {
 		return sql.selectOne("user.cardCheck", map);
+	}
+	@Override
+	public User signIn(HashMap<String, Object> map) {
+		return sql.selectOne("user.signIn", map);
 	}
 	
 	

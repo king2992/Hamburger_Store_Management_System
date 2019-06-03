@@ -475,16 +475,36 @@ p{margin:0;}
 			<span class="close-button">&times;</span>
 			<h1 class="title">M-SA</h1>
 			<p class="mSa">Mobile-Substation Automation</p>
-			<form action="/user/signIn" method="POST" name="signIn" enctype="multipart/form-data">
+<!-- 			<form action="/user/signIn" method="POST" name="signIn" enctype="multipart/form-data"> -->
 			 <input type="text" class="input" name="userId" id="signInId" placeholder="ID" required="required">
 			  <input type="password" class="input" name="userPassword"id="signInPassword" placeholder="password" required="required">
 				<input type="button" id="cancel" value="취소"> 
 				<!-- <input type="submit" id="submit" value="보내기"> -->
-				<input type=submit id="submit" value="로그인">
-			</form>
+				<input type=submit id="submit" class="loginSubmit" value="로그인">
+<!-- 			</form> -->
 		</div>
 	</div>
-
+	<script>
+	$(document).ready(function(){
+		$(document).on("click", ".loginSubmit", function(){
+			var signInId = $("#signInId").val();
+			var signInPassword = $("#signInPassword").val();
+			
+			$.ajax({
+				data : {"userId" : signInId, "userPassword" : signInPassword},
+				url : "/user/signIn",
+				success : function(data){
+					if(data == 1){
+						alert("로그인 되었습니다.");
+						location.href="/";
+					}else if(data == 0){
+						alert("아이디 또는 비밀번호를 확인해주세요.");
+					}
+				}
+			})
+		})
+	})
+	</script>
 <!-- 회원가입 모달창 -->
 <div class="modalup">
 		<div class="modal-contentup">

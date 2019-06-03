@@ -16,8 +16,8 @@ public interface UserService {
 	void signUp(User user);
 
 	int idCk(String userId);
-
-	boolean login(User user);
+	
+	User signIn(HashMap<String, Object> map);
 
 	User personalInfomationChange(String userId);
 
@@ -36,6 +36,10 @@ public interface UserService {
 	void payInfoAdd(HashMap<String, Object> map);
 
 	PayInfo cardCheck(HashMap<String, Object> map);
+
+
+	
+
 
 
 

@@ -47,20 +47,21 @@ public class UserController {
 		return map;
 	}
 		
-	  @RequestMapping(value="/signIn", method=RequestMethod.POST) 
-	  String userLogin(HttpSession session, User user) { 
-	  if (service.login(user)) {
-	  session.setAttribute("user", user.getUserId());
-	  session.removeAttribute("failed");
-	  return "redirect:../"; 
-	   } 
-	   else
-	  {
-		   session.setAttribute("failed", "failed");
-	  }
-	  return "redirect:../";
-	   }
-	
+	@ResponseBody
+	@RequestMapping(value="signIn",method= {RequestMethod.GET,RequestMethod.POST})
+	int signIn(HttpSession session, @RequestParam (value="userId") String userId,@RequestParam (value="userPassword") String userPassword ) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("userId", userId);
+		map.put("userPassword", userPassword);
+		User user = service.signIn(map);
+		session.setAttribute("user", userId);
+		
+		if(user == null) {
+			return 0;
+		}
+		
+		return 1 ;
+	}
 	@RequestMapping("/userLogout")
 	String userLogout(HttpSession session) {
 		session.invalidate();
