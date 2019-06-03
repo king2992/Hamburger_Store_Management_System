@@ -1,6 +1,9 @@
 package kr.ac.kopo.service;
 
 import java.util.List;
+import java.util.Map;
+
+import kr.ac.kopo.model.Like;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
 
@@ -21,5 +24,13 @@ public interface ReviewService {
 	void like(int number);
 
 	void reply(Review review);
+
+	void likeAdd(Map<String, Object> map);
+
+	Like likeFunc(Map<String, Object> map);
+
+	void likeDel(Map<String, Object> map);
+
+	void likeRun(Map<String, Object> map);
 
 }

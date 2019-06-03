@@ -18,6 +18,7 @@
 		<typeAlias type="kr.ac.kopo.model.TakeoutReservedMenu" alias="TakeoutReservedMenu" />
 		<typeAlias type="kr.ac.kopo.model.setSideDrink" alias="setSideDrink" />
 		<typeAlias type="kr.ac.kopo.model.PayInfo" alias="PayInfo" />
+		<typeAlias type="kr.ac.kopo.model.Like" alias="Like" />
 	</typeAliases>
 
 	<mappers>

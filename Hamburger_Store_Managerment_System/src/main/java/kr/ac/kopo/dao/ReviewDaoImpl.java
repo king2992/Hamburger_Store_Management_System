@@ -1,11 +1,13 @@
 package kr.ac.kopo.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.model.Like;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
   
@@ -67,5 +69,25 @@ public class ReviewDaoImpl implements ReviewDao {
 	public void reply(Review review) {
 		db.insert("review.reply",review);
 	}
-	
+
+	@Override
+	public void likeAdd(Map<String, Object> map) {
+		db.insert("review.likeAdd",map);
+	}
+
+	@Override
+	public Like likeFunc(Map<String, Object> map) {
+		return db.selectOne("review.likeFunc",map);
+	}
+
+	@Override
+	public void likeDel(Map<String, Object> map) {
+		db.update("review.likeDel",map);
+	}
+
+	@Override
+	public void likeRun(Map<String, Object> map) {
+		db.update("review.likeRun",map);
+	}
+
 }

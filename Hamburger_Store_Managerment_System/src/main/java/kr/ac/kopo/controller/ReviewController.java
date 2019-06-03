@@ -1,6 +1,8 @@
 package kr.ac.kopo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.kopo.model.Like;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
 import kr.ac.kopo.service.FileService;
@@ -89,7 +94,9 @@ public class ReviewController {
 	String view(int number, Model model) throws Exception {
 		
 		reviewService.ref(number);
+		
 		Review view = reviewService.update(number);
+		
 		List<String> fileList = fileService.getArticleFiles(number);
 		model.addAttribute("fileList",fileList);
 		model.addAttribute("view", view);
@@ -99,14 +106,53 @@ public class ReviewController {
 	
 // 글 추천
 	@RequestMapping("/like")
-	
 	String like(int number, Review review) {
-		
 		reviewService.like(number);
-		
 		return "redirect:/review/view?number=" + review.getNumber();
 	}
+	@ResponseBody
+	@RequestMapping(value="/likeAdd")
+	int like(@RequestParam("number") int number,HttpSession session) {
+	    String userId = (String)session.getAttribute("user");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("number",number); 
+		map.put("userId", userId);
+		reviewService.likeAdd(map);
+		return 1;
+	}
 	
+	@ResponseBody
+	@RequestMapping(value="/likeFunc" ,method= {RequestMethod.GET,RequestMethod.POST})
+	Object likeFunc(@RequestParam (value="number") int number, HttpSession session) {
+		String userId = (String)session.getAttribute("user");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("number",number);
+		map.put("userId",userId);
+		Like like = reviewService.likeFunc(map);
+		return like;
+	}
+	@ResponseBody
+	@RequestMapping(value="/likeDel", method= {RequestMethod.GET,RequestMethod.POST})
+	int likeDel(@RequestParam (value="number")int number, HttpSession session) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		String userId = (String)session.getAttribute("user");
+		map.put("number",number);
+		map.put("userId",userId);
+		reviewService.likeDel(map);
+		return 0;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/likeRun", method= {RequestMethod.GET,RequestMethod.POST})
+	int likeRun(@RequestParam int number, HttpSession session) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		String userId = (String)session.getAttribute("user");
+		map.put("number",number);
+		map.put("userId",userId);
+		reviewService.likeRun(map);
+		return 1;
+		
+	}
 // 계층형 답글	
 	@RequestMapping("/reply")
 		String reply(Review review, Model model) {

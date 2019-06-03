@@ -1,6 +1,7 @@
 package kr.ac.kopo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.dao.FileDao;
 import kr.ac.kopo.dao.ReviewDao;
+import kr.ac.kopo.model.Like;
 import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
 
@@ -85,5 +87,22 @@ public class ReviewServiceImpl implements ReviewService {
 	public void reply(Review review) {
 		reviewDao.replyUpdate(review);
 		reviewDao.reply(review);
+	}
+	
+	@Override
+	public void likeAdd(Map<String, Object> map) {
+		reviewDao.likeAdd(map);
+	}
+	@Override
+	public Like likeFunc(Map<String, Object> map) {
+		return reviewDao.likeFunc(map);
+	}
+	@Override
+	public void likeDel(Map<String, Object> map) {
+		reviewDao.likeDel(map);
+	}
+	@Override
+	public void likeRun(Map<String, Object> map) {
+		reviewDao.likeRun(map);
 	}
 }

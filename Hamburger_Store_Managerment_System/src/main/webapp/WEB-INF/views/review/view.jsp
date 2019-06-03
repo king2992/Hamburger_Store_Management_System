@@ -33,12 +33,123 @@
 		alert("로그인 하신 후에 이용해 주세요.");
 			location.href="${pageContext.request.contextPath}/";
 </script>
+</c:if>
 <script type="text/javascript">
+window.onload = function() {
+	var likeArea = $('#likeArea');
+	var a = "";
+	var b = "";
+	var c = "";
+// 처음 출력 
+	
+	a += '<div class="view_like" id="likeBtn" data-number="${view.number}>'+
+	'<img id="likeImg">'+
+	'<span>'+'좋아요'+'</span>'+ 
+	'<span>'+'${view.reLike}'+'</span>'+
+	'</div>';
+	likeArea.html(a);
+// 	$('#like').attr('src','/resources/images/unlike.png');
+	//$('#likeBtn').children('img').attr('src','/resources/images/unlike.png');
+	
+	
+	b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
+	'<img src="/resources/images/unlike.png">'+
+	'<span>'+'좋아요 취소'+'</span>'+ 
+	'<span>'+'${view.reLike}'+'</span>'+
+	'</div>';
+	
+	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}>'+
+	'<img id="like_">'+
+	'<span>'+'좋아요 '+'</span>'+ 
+	'<span>'+'${view.reLike}'+'</span>'+
+	'</div>';
+	
+	var number = $('#view_no').val();
+	$.ajax({
+		url : '/review/likeFunc',
+		data : {'number':Number(number)},
+		success : function(data) {
+			if (data.likeCheck == 1) {
+				likeArea.html(b);
+			} else if(data.likeCheck == 0){
+				likeArea.html(c);
+			}
+		}
+	});
+	var likeImg = document.getElementById("likeImg");
+	likeImg.setAttribute("src", "/resources/images/unlike.png"); 
+	
+};
+
 $(document).ready(function(){
-    $("#header").load("/include/header")    
+    $("#header").load("/include/header");
+   
+    $(document).on('click', "#likeBtn",function(){
+// 		var number = $('#likeBtn').data('number');
+		var likeArea = $('#likeArea');
+		var b ="";
+		b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
+		'<img src="/resources/images/unlike.png">'+
+		'<span>'+'좋아요 취소'+'</span>'+ 
+		'<span>'+'${view.reLike}'+'</span>'+
+		'</div>';
+	var number = $('#view_no').val();
+    	$.ajax({
+    		url : "/review/likeAdd",
+    		data : {"number":Number(number)},
+    		success : function(data){
+    			if (data == 1) {
+    				likeArea.html(b);
+    			};
+    		}
+    	});
+    	
+    });
+    
+    
+    $(document).on('click','#likeDel', function(){
+    	var likeArea = $('#likeArea');
+    	var c ="";
+    	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}>'+
+    	'<img id="like_">'+
+    	'<span>'+'좋아요 '+'</span>'+ 
+    	'<span>'+'${view.reLike}'+'</span>'+
+    	'</div>';
+    	
+    	var number = $('#view_no').val();
+    	$.ajax({
+    		url : '/review/likeDel',
+    		data : {'number':Number(number)},
+    		success : function(data) {
+    			if (data == 0) {
+    				likeArea.html(c);
+    			}
+    		}
+    	});
+    });
+    
+    $(document).on('click','#unLikeBtn', function(){
+    	var likeArea = $('#likeArea');
+    	var b="";
+    	b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
+    	'<img src="/resources/images/unlike.png">'+
+    	'<span>'+'좋아요 취소'+'</span>'+ 
+    	'<span>'+'${view.reLike}'+'</span>'+
+    	'</div>';
+    	var number = $('#view_no').val();
+    	$.ajax({
+    		url : '/review/likeRun',
+    		data : {'number':Number(number)},
+    		success : function(data) {
+    			if (data == 1) {
+    				likeArea.html(b);
+    			}
+    		}
+    	});
+    });
  });
 </script>
-</c:if>
+
 <style>
 .dropdown {cursor: pointer;}
 .dropdown-menu > a{color:#16181b; font-size: 15px !important; height:32px; line-height: 32px; c}
@@ -127,23 +238,13 @@ $(document).ready(function(){
                 <div class="view_content">
                     ${view.contents }
                 </div>
-                <c:choose>
-                	<c:when test="${view.reLike eq 0 }">
-                		<div class="view_like" onclick="likeAdd()">
-                			<img src="${path}/resources/images/unlike.png">
-                			<span>좋아요</span>
-                			<span>${view.reLike }</span>
-                		</div>
-                	</c:when>
-                	<c:otherwise>
-                		<div class="view_like" onclick="likeMin()">
-                			<img src="${path}/resources/images/like.png">
-                			<span>좋아요</span>
-                			<span>${view.reLike }</span>
-                		</div>
-                	</c:otherwise>
-                </c:choose>
-                
+                <div id="likeArea"></div>
+<%--                 		<div class="view_like"  id="likeBtn" data-number="${view.number}"> --%>
+                		
+<%--                 			<img src="${path}/resources/images/unlike.png"> --%>
+<!--                 			<span>좋아요</span> -->
+<%--                 			<span>${view.reLike}</span> --%>
+<!--                 		</div> -->
                 <div>
       				<c:forEach var="file" items="${fileList }">
       					<img src="${path}/resources/upload/images/${file }"/>

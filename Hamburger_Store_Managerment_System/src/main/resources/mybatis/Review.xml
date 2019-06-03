@@ -39,8 +39,8 @@
 
 	<!-- Now(),Sysdate 함수 현재시간 출력 -->
 	<insert id="reviewAdd">
-		INSERT INTO review (user_id,title,contents,date,reLike,ref,group_num,group_ord,group_depth)
-		VALUES (#{userId},#{title},#{contents},NOW(),0,0,(SELECT IFNULL(MAX(number),0)+1 FROM review re),0,0)
+		INSERT INTO review (user_id,title,contents,date,ref,group_num,group_ord,group_depth)
+		VALUES (#{userId},#{title},#{contents},NOW(),0,(SELECT IFNULL(MAX(number),0)+1 FROM review re),0,0)
 <!-- 		NVL = IFNULL 쿼리와 동일 값이 NULL일 경우 대체 값을 삽입 -->
 <!-- 		글 등록시 답글번호와 원글의 값은 같아야 됨 - 글번호가 높은 글에 +1 을 한다 (최신글) - ex 여러명이 동시에 답글 등록시  -->
 <!-- 	SELECT IFNULL(필드명, "대체할 값") FROM 테이블명  -->
@@ -95,6 +95,29 @@
    		UPDATE review
    		SET	group_ord = group_ord+1
    		WHERE group_num = #{groupNum} AND group_ord > #{groupOrd}
+   	</update>
+   	
+   	<insert id="likeAdd">
+   		INSERT INTO like_to (like_check,user_id,number)
+   		VALUES (1, #{userId},#{number})
+   	</insert>
+   	
+   	<select id="likeFunc" resultType="Like" parameterType="map">
+   		SELECT	like_check
+   		FROM	like_to
+   		WHERE 	number=#{number} AND user_id=#{userId}
+   	</select>
+   	
+   	<update id="likeDel" parameterType="map">
+   		UPDATE like_to
+   		SET	   like_check = 0
+   		WHERE number=#{number} AND user_id=#{userId}
+   	</update>
+   	
+   	<update id="likeRun">
+   		UPDATE like_to
+   		SET	   like_check = 1
+   		WHERE  number=#{number} AND user_id=#{userId}
    	</update>
    	
 </mapper>
