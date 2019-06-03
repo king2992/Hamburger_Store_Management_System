@@ -19,14 +19,14 @@ import java.util.List;
 import kr.ac.kopo.service.FileService;
 import kr.ac.kopo.util.UploadFileUtils;
 
-@RestController
+@RestController 
 @RequestMapping("/review/file")
 public class FileController {
 	
 	@Autowired
 	private FileService fileService;
 	
-	// 게시글 파일 업로드
+	// 寃뚯떆湲� �뙆�씪 �뾽濡쒕뱶
     @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
     public ResponseEntity<String> uploadFile(MultipartFile file, HttpServletRequest request) {
         ResponseEntity<String> entity = null;
@@ -40,16 +40,16 @@ public class FileController {
         return entity;
     }
 
-    // 게시글 파일 출력
+    // 寃뚯떆湲� �뙆�씪 異쒕젰
     @RequestMapping(value = "/display", method = RequestMethod.GET)
     public ResponseEntity<byte[]> displayFile(String fileName, HttpServletRequest request) throws Exception {
 
-        HttpHeaders httpHeaders = UploadFileUtils.getHttpHeaders(fileName); // Http 헤더 설정 가져오기
-        String rootPath = UploadFileUtils.getRootPath(fileName, request); // 업로드 기본경로 경로
+        HttpHeaders httpHeaders = UploadFileUtils.getHttpHeaders(fileName); // Http �뿤�뜑 �꽕�젙 媛��졇�삤湲�
+        String rootPath = UploadFileUtils.getRootPath(fileName, request); // �뾽濡쒕뱶 湲곕낯寃쎈줈 寃쎈줈
 
         ResponseEntity<byte[]> entity = null;
 
-        // 파일데이터, HttpHeader 전송
+        // �뙆�씪�뜲�씠�꽣, HttpHeader �쟾�넚
         try (InputStream inputStream = new FileInputStream(rootPath + fileName)) {
             entity = new ResponseEntity<>(IOUtils.toByteArray(inputStream), httpHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class FileController {
         return entity;
     }
 
-    // 게시글 첨부 파일 목록
+    // 寃뚯떆湲� 泥⑤� �뙆�씪 紐⑸줉
     @RequestMapping(value = "/list/{number}", method = RequestMethod.GET)
     public ResponseEntity<List<String>> getFiles(@PathVariable("number") int number) {
         ResponseEntity<List<String>> entity = null;
@@ -73,7 +73,7 @@ public class FileController {
         return entity;
     }
 
-    // 게시글 파일 삭제 : 게시글 작성
+    // 寃뚯떆湲� �뙆�씪 �궘�젣 : 寃뚯떆湲� �옉�꽦
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ResponseEntity<String> deleteFile(String fileName, HttpServletRequest request) {
         ResponseEntity<String> entity = null;
@@ -89,7 +89,7 @@ public class FileController {
         return entity;
     }
 
-    // 게시글 파일 삭제 : 게시글 수정
+    // 寃뚯떆湲� �뙆�씪 �궘�젣 : 寃뚯떆湲� �닔�젙
     @RequestMapping(value = "/delete/{number}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteFile(@PathVariable("number") int number, String fileName, HttpServletRequest request) {
         ResponseEntity<String> entity = null;
@@ -106,7 +106,7 @@ public class FileController {
         return entity;
     }
 
-    // 게시글 파일 전체 삭제
+    // 寃뚯떆湲� �뙆�씪 �쟾泥� �궘�젣
     @RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
     public ResponseEntity<String> deleteAllFiles(@RequestParam("files[]") String[] files, HttpServletRequest request) {
 
