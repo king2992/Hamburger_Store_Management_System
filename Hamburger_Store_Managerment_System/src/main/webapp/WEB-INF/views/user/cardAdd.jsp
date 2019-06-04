@@ -57,8 +57,10 @@
                         <p1>카드 비밀번호</p1>
                         <input type="password" name="cardPw" class="Number"title="카드 비밀번호 입력">
                     </div>
-                    <button type="button" id="cardCheck" class="cardButton Check">카드 조회</button>
-                    <button type="button" id="cardAdd" class="cardButton">카드 등록</button>
+                    <div class="Check">
+	                    <button type="button" id="cardCheck" class="cardButton">카드 조회</button>
+	                    <button type="button" id="cardAdd" class="cardButton">카드 등록</button>
+                    </div>
                 </div>
 </body> 
 </html>

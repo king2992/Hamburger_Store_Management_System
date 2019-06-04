@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/resources/css/header.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/personalInfomationChange.js"></script>
+<script type="text/javascript" src="/resources/js/MYcard.js"></script>
 <link rel="stylesheet" href="/resources/css/personalInfomationChange.css">
 <script type="text/javascript" src="/resources/js/userTakeoutReservedLIst.js"></script>
 <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -20,7 +21,7 @@
         $(document).ready(function(){
                 // 클래스이름이 test 인 것을 show메소드로 보인다
                 $('#personalInfomationChange').show();
-                $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd').hide();
+                $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd,.MYcard').hide();
                 /*$('#contents').hide();*/
                 // #tab_btn li 클릭 시 함수 실행해서
                 $('#tab_btn li').on('click', function(){
@@ -52,28 +53,33 @@
 //                }
 //              })
             
-            $(document).on("click", "#change", function(){
-                $('#personalInfomationChange').show();
-                $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd').hide();
-            })
-             $(document).on("click", "#userPayCardUpdate", function(){
-                $('.cardAdd').show();
-                $("#change").css("background", "#ffd9a3");
-                $('.myWritten,.TakeoutReservedLIst,.withdrawal,#personalInfomationChange').hide();
-            })
-             $(document).on("click", "#myWriten", function(){
-                $('.myWritten').show();
-                $('#personalInfomationChange,.TakeoutReservedLIst,.withdrawal,.cardAdd,.dropDown').hide();
-            })
-             $(document).on("click", "#takeoutReservedList", function(){
-                $('.TakeoutReservedLIst').show();
-                $('#personalInfomationChange,.myWritten,.withdrawal,.cardAdd,.dropDown').hide();
-            })
-             $(document).on("click", "#withdrawal", function(){
-                $('.withdrawal').show();
-                $('.myWritten,.TakeoutReservedLIst,#personalInfomationChange,.cardAdd,.dropDown').hide();
-            })
-        });
+                $(document).on("click", "#change", function(){
+                    $('#personalInfomationChange').show();
+                    $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd,.MYcard').hide();
+                })
+                 $(document).on("click", "#userPayCardUpdate", function(){
+                    $('.cardAdd').show();
+                    $("#change").css("background", "#ffd9a3");
+                    $('.myWritten,.TakeoutReservedLIst,.withdrawal,#personalInfomationChange,.MYcard').hide();
+                })
+                $(document).on("click", "#MyCard", function(){
+                    $('.MYcard').show();
+                    $("#change").css("background", "#ffd9a3");
+                    $('.myWritten,.TakeoutReservedLIst,.withdrawal,#personalInfomationChange,.cardAdd').hide();
+                })
+                 $(document).on("click", "#myWriten", function(){
+                    $('.myWritten').show();
+                    $('#personalInfomationChange,.TakeoutReservedLIst,.withdrawal,.cardAdd,.dropDown,.MYcard').hide();
+                })
+                 $(document).on("click", "#takeoutReservedList", function(){
+                    $('.TakeoutReservedLIst').show();
+                    $('#personalInfomationChange,.myWritten,.withdrawal,.cardAdd,.dropDown,.MYcard').hide();
+                })
+                 $(document).on("click", "#withdrawal", function(){
+                    $('.withdrawal').show();
+                    $('.myWritten,.TakeoutReservedLIst,#personalInfomationChange,.cardAdd,.dropDown,.MYcard').hide();
+                })
+            });
         </script>
         <script>
             $(document).on("click","#change",function(){
@@ -162,11 +168,13 @@
                      <ul id="tab_btn">
                          <li id="change"><button type="button" class="aside_item" >개인정보변경</button></li>
                             <!--<ul class="dropDown">-->
-                        <li id="userPayCardUpdate" class="dropDown"><button type="button" class="userPayCardUpdate">
+                        <li id="userPayCardUpdate" class="dropDown" style="border:none; padding-bottom: 1px;"><button type="button" class="userPayCardUpdate">
                             <img src="/resources/images/cardAdd_03.png" class="cardAdd_img">카드 등록</button></li>
-                            <!--</ul>-->
-                        
-                        <li  id="myWriten"><button class="aside_item" >내가 작성 한 글</button></li>
+                            
+                        <li id="MyCard" class="dropDown" style="padding-top: 10px;"><button type="button" class="ButtonMyCard">
+                                <img src="/resources/images/cardAdd_03.png" class="cardAdd_img2">MY 카드</button></li>
+                                
+                        <li id="myWriten"><button class="aside_item" >내가 작성 한 글</button></li>
                         <li id="takeoutReservedList"><button type="button" class="aside_item" >TakeOut 예약 내역</button></li>
                         <li id="withdrawal"><button type="button" class="aside_item"  >회원탈퇴</button></li>
                     </ul>    
@@ -289,7 +297,7 @@
                                 <th style="width: 94px;" class="border_right">주문시간</th>
                                 <th style="width: 75px;" class="border_right">예약자</th>
                                 <th style="width: 173px;" class="border_right">예약자 전화번호</th>
-                                <th style="width: 300px;">지점</th>
+                                <th style="width: 300px;" class="border_right">지점</th>
                                 <th style="width: px;"></th>
                             </tr>
                         </thead>
@@ -302,7 +310,8 @@
 										<td>${list.reservedTime}</td>
 										<td>${list.reservedName}</td>
 										<td>${list.reservedPhone}</td>
-		                                <td>${list.frcName}<button type="button" class="reservedCheck" data-takeoutid="${list.takeoutId}">예약 확인 내역</button></td>
+		                                <td>${list.frcName}</td>
+		                            	<td><button type="button" class="reservedCheck" data-takeoutid="${list.takeoutId}">예약 확인 내역</button></td>
 		                            </tr>
                          			</c:forEach>
 								</c:when>
@@ -318,7 +327,7 @@
             <div class="withdrawal">    
                 <h3>회원탈퇴</h3>
                     <ul>
-                        <li>사용하고 계신 아이디(psj0735)는 탈퇴할 경우 재사용 및 복구가 불가능 합니다.</li>   
+                        <li>사용하고 계신 아이디 (${sessionScope.user})는 탈퇴할 경우 재사용 및 복구가 불가능 합니다.</li>   
                         <li> 탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다.</li>
                             <br>
                             <br>
@@ -327,6 +336,21 @@
                     </ul>
                 <button type="button" class="btn_type"  id="withdrawal">회원탈퇴</button>
                </div>
+                <!-- MYcard Modal -->
+			    <div id="MYcardModal" class="MYcard">
+				      <!-- Modal content -->
+				      <div class="cardmodal-content">
+							<ul class="cardImg">
+			                      <li class="BankName">Bank Name</li>
+			                      <li class="MYcardNum">0123</li>
+			                      <li class="MYcardNum">4567</li>
+			                      <li class="MYcardNum">8910</li>
+			                      <li class="MYcardNum">1112</li>
+			                      <li class="MYcardName">Park Su Jin</li>
+		                    </ul>
+				      </div>
+				      <button type="button" class="cardDelete"  id="cardDelete">삭제하기</button>
+			    </div>
             </div>
         </div>
         </body>
