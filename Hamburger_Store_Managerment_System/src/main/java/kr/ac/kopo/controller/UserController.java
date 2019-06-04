@@ -116,34 +116,16 @@ public class UserController {
 		
 		model.addAttribute("user", userInfo);
 		
+		List<Review> myWrittenList = service.myWritten(userId);
+		model.addAttribute("myWrittenList", myWrittenList);
+		
+		List<TakeOutReserved> takeoutReservedList = service.takeoutReservedList(userId);
+		model.addAttribute("takeoutReservedList", takeoutReservedList);
 		
 		return "/user/myPage";
 	}
-	//개인정보변경
-	@RequestMapping("/personalInfomationChange")
-	String personalInfomationChange(HttpSession session, Model model) {
-		String userId = (String) session.getAttribute("user");
-		User userInfo = service.personalInfomationChange(userId);
-		model.addAttribute("user", userInfo);
-		
-		return "/user/personalInfomationChange";
-	}
-	//내가 작성 한 글
-	@RequestMapping("/myWritten")
-	String myWritten(HttpSession session, Model model) {
-		String userId = (String) session.getAttribute("user");
-		List<Review> list = service.myWritten(userId);
-		model.addAttribute("list", list);
-		return "/user/myWritten";
-	}
-	//Takeout 예약 내역
-	@RequestMapping("/takeoutReservedList")
-	String takeoutReservedList(Model model, HttpSession session) {
-		String userId = (String) session.getAttribute("user");
-		List<TakeOutReserved> list = service.takeoutReservedList(userId);
-		model.addAttribute("list", list);
-		return "/user/takeoutReservedList";
-	}
+	
+	
 	@ResponseBody
 	@RequestMapping("/reservedCheck")
 	Object userReservedCheck(@RequestParam(value="takeoutId") int takeoutId) {
@@ -162,12 +144,24 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("/nowPwCheck")
 	int nowPwCheck(@RequestParam(value="nowPw") String nowPw, HttpSession session) {
-		String userId = (String) session.getAttribute("user");
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(nowPw.getBytes("UTF-8"));
+			StringBuffer hexString = new StringBuffer();
+			for(int i=0; i<hash.length; i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if(hex.length()==1) hexString.append('0');
+				hexString.append(hex);
+			}
+			map.put("userPassword", hexString.toString());
+		}catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
+		String userId = (String) session.getAttribute("user");
 		
 		map.put("userId", userId);
-		map.put("userPassword", nowPw);
+		
 		User user = service.nowPwCheck(map);
 		if(user == null) {
 			return 0;
@@ -179,23 +173,38 @@ public class UserController {
 	int userPwUpdate(@RequestParam(value="userPassword") String userPassword, HttpSession session) {
 		String userId = (String) session.getAttribute("user");
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(userPassword.getBytes("UTF-8"));
+			StringBuffer hexString = new StringBuffer();
+			for(int i=0; i<hash.length; i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if(hex.length()==1) hexString.append('0');
+				hexString.append(hex);
+			}
+			map.put("userPassword", hexString.toString());
+		}catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
 		
 		map.put("userId", userId);
-		map.put("userPassword", userPassword);
+		
 		service.userPwUpdate(map);
 		return 1; 
 	}
 	@ResponseBody
 	@RequestMapping("/userInfoUpdate")
-	int userInfoUpdate(HttpSession session, @RequestParam(value="userPhone") String userPhone,
+	int userInfoUpdate(HttpSession session, @RequestParam(value="userPhone1") String userPhone1,
+			@RequestParam(value="userPhone2") String userPhone2,
 			@RequestParam(value="userName") String userName) {
 		String userId = (String) session.getAttribute("user");
+		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("userId", userId);
-		map.put("userPhone", userPhone);
+		map.put("userPhone", "010" + userPhone1 + userPhone2);
 		map.put("userName", userName);
-		
+		System.out.println(userName);
 		service.userInfoUpdate(map);
 		
 		session.invalidate();

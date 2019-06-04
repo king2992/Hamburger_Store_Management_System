@@ -15,11 +15,11 @@
                <div class="paymentCardAdd bank">
                     <p1>은행</p1>
                         <select name="bankName" id="bankName" class="bank_select" title="은행 선택">
-                             <option value="NHbank" selected> 농협</option>
-                             <option value="Shinhanbank"> 신한은행</option>
-                             <option value="nationbank"> 국민은행</option>
-                             <option value="hanabank"> 하나은행</option>
-                             <option value="cacaobank"> 카카오뱅크</option>
+                             <option value="농협" selected> 농협</option>
+                             <option value="신한은행"> 신한은행</option>
+                             <option value="국민은행"> 국민은행</option>
+                             <option value="하나은행"> 하나은행</option>
+                             <option value="카카오뱅크"> 카카오뱅크</option>
                         </select>
                     </div>
                     <div class="paymentCardAdd cardNum">

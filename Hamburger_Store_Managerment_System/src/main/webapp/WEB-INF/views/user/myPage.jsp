@@ -216,8 +216,8 @@
                                      <option value="011"> 018</option>
                                      <option value="011"> 019</option> 
                                  </select> -
-                                    <input type="text" class="userPhone" name="number" id="number"  value="${phone2}" title="전화번호 중간자리 입력"> -
-                                    <input type="text" class="userPhone" name="number" id="number" value="${phone4}" title="전화번호 마지막자리 입력">
+                                    <input type="text" class="userPhone" name="userPhone1" id="number"  value="${phone2}" title="전화번호 중간자리 입력"> -
+                                    <input type="text" class="userPhone" name="userPhone2" id="number" value="${phone4}" title="전화번호 마지막자리 입력">
                                 </td>
                             </tr>
                              <tr>
@@ -231,7 +231,7 @@
                         </tbody>
                     </table>
                     <button type="button" class="btn_type"  id="userInfoUpdate">변경하기</button>
-                    <button type="button" class="btn_type"  id="userPayCardUpdate">카드등록</button>
+<!--                     <button type="button" class="btn_type"  id="userPayCardUpdate">카드등록</button> -->
 				     <!-- Trigger/Open The Modal -->
 				 
 				    <!-- The Modal -->
@@ -264,8 +264,8 @@
                         </thead>
                         <tbody class="myWrittenContainer">
                         <c:choose>
-							<c:when test="${list.size() > 0 }">
-								<c:forEach items="${list}" var="list">
+							<c:when test="${myWrittenList.size() > 0 }">
+								<c:forEach items="${myWrittenList}" var="list">
                             <tr>
                                 <th><button type="button" class="boardMove" data-number="${list.number}">게시글 이동</button></th>
                                 <th>${list.date}</th>
@@ -294,8 +294,8 @@
                         </thead>
                         <tbody class="reservedContainer">
                         <c:choose>
-							<c:when test="${list.size() > 0 }">
-								<c:forEach items="${list}" var="list">
+							<c:when test="${takeoutReservedList.size() > 0 }">
+								<c:forEach items="${takeoutReservedList}" var="list">
 		                            <tr>
 		                                <td>${list.reservedDate}</td>
 										<td>${list.reservedTime}</td>

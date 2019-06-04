@@ -106,7 +106,7 @@ table {
     cursor: pointer;
 }
 .cardAdd_img {
-    margin: 0 5px 2px 0;
+    margin: 0 5px 10px 0;
 }
 /*ÄÁÅÙÃ÷*/
 #contents {
@@ -158,7 +158,7 @@ table {
     height: 20px;
 }
 /*ºñ¹Ð¹øÈ£ º¯°æ*/
-.pw_Change {
+.pwChange {
     width: 90px;
     height: 27px;
     font-size: 13px;
@@ -408,7 +408,12 @@ table {
     text-align: center;
     outline: none;
     border-color:#e79210;
+    margin: 5px 0 5px;
+}
+.paymentCardAdd:nth-child(6) {
+	margin-bottom:30px;
 }
 .Check {
-    margin: 30px 10px 0 120px;
+    margin:0 auto;
+    width:fit-content;
 }

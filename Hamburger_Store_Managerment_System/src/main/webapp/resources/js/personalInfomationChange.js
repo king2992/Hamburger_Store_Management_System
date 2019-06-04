@@ -11,7 +11,8 @@ $(document).ready(function(){
 	
 	$("#userInfoUpdate").on("click", function(){
 		var userPw = $(".userPw").val();
-		var userPhone = $(".userPhone").val();
+		var userPhone1 = $("[name = userPhone1]").val();
+		var userPhone2 = $("[name = userPhone2]").val();
 		var userName = $(".userName").val();
 		if($(".userPw").val() == ""){
 			alert("비밃번호를 입력 해 주세요.");
@@ -29,9 +30,8 @@ $(document).ready(function(){
 				success : function(data){
 					if(data == 1){
 						$.ajax({
-							
-							data :{"userPhone":userPhone, "userName":userName},
 							url : "/user/userInfoUpdate",
+							data :{"userPhone1":userPhone1,"userPhone2":userPhone2, "userName":userName},
 							success : function(){
 								if(data == 1){
 									alert("개인정보가 변경 되었습니다. 다시 로그인 하여 주시기 바랍니다.");
