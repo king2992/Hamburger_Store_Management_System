@@ -101,7 +101,22 @@ public class UserController {
 		return "redirect:../";
 	}
 	@RequestMapping("/myPage")
-	String myPage() {
+	String myPage(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("user");
+		User userInfo = service.personalInfomationChange(userId);
+		
+		String phone1 = userInfo.getUserPhone();
+		String phone2 = phone1.substring(3,7);
+		
+		String phone3 = userInfo.getUserPhone();
+		String phone4 = phone3.substring(7);
+		
+		model.addAttribute("phone2", phone2);
+		model.addAttribute("phone4", phone4);
+		
+		model.addAttribute("user", userInfo);
+		
+		
 		return "/user/myPage";
 	}
 	//개인정보변경
