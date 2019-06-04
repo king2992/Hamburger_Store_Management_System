@@ -307,7 +307,7 @@ p{margin:0;}
             <div id="center-wrap">
                 <header class="header">
                     <nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-                     <a href="#" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
+                     <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
                         <ul>
                             
                           <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->

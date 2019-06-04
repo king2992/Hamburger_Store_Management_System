@@ -251,7 +251,7 @@ hr{border:2px solid #e3e3e3; margin:0 auto;}
 	margin-left:10px;
 }
 
-
+/* 영수증 출력 모달 */
 .documentPopup{
 		  display: none;   /* Hidden by default */
  	

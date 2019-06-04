@@ -14,7 +14,13 @@
 <script src='/resources/fullcalendar-4.0.2/packages/interaction/main.js'></script>
 <link href='/resources/fullcalendar-4.0.2/packages/core/main.css' rel='stylesheet'/>
 <link href='/resources/fullcalendar-4.0.2/packages/daygrid/main.css' rel='stylesheet'/>
+
+   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="/resources/css/mainR.css">
+<link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="/resources/css/mainIndex.css" rel="stylesheet" type="text/css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/resources/css/sub.css"> 
 <script src="/resources/js/mainR.js"></script> 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
@@ -22,75 +28,134 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> -->
 <!-- <script src="sweetalert2.all.min.js"></script> -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
- <link href="/resources/css/reservedList.css" type="text/css" rel="stylesheet">
+ <link href="/resources/css/reservedListjung.css" type="text/css" rel="stylesheet">
+  <link href="/resources/css/reservedList.css" type="text/css" rel="stylesheet">
 <!--  <script src="http://localhost:84/socket.io/socket.io.js"></script> -->
+<style type="text/css">
+</style>
+       <script>
+            //달력 모달 띄워줌
+            $(document).on("click","#myBtn",function(){
+                $('.modalwrap').css('opacity','1');
+                $('.modalwrap').css('visibility','visible');
+                
+            });
+            
+            //닫아줌
+               $(document).on("click",".fc td",function(){
+                   $('.modalwrap').css('opacity','0');
+                   $('.modalwrap').css('visibility','hidden');
+                   
+                
+            }); 
+            
+        //영수증 모달
+   /*           $(document).on("click",".receiptBtn",function(){
+                $('.modal2').css('display','block');
+                
+            }); */
+            $(document).on("click",".documentClose",function(){
+                $('.documentPopup').css('display','none');
+                
+            });
+            //닫아줌
+               $(document).on("click",".reservedCheck",function(){
+            	   $('.documentPopup').css('display','block');
+                
+            });
+            $(document).on("click",".takeoutReservedCheck",function(){
+            	$('.documentPopup').css('display','block');
+            });
+        </script>
 </head>
 <body>
 <div id="container">
-			<nav class="navbar navbar-expand-sm navbar-dark fixed-top1 layout-menu">
-			<!-- Brand -->
-			<a class="navbar-brand menu-title" href='<c:url value="/"/>'> <span
-				class="menu-pre">store</span><span class="menu-last">management</span>
-			</a>
-			<!-- Links -->
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/pos/posmanagement"/>'> <i class="fa fa-home menu-icon"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/pos/reservedList"/>'> <i
-						class="fa fa-edit menu-icon"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/study/list"/>'> <i
-						class="fas fa-book menu-icon"></i>
-				</a></li>
-			</ul>
-
-			<ul class="nav navbar-nav menu-infobtn">
-				<li class="dropdown"><a href="#"
-					class="dropdown-toggle menu-dropicon" data-toggle="dropdown"
-					role="button" aria-haspopup="true" aria-expaneded="false"> <i
-						class="fa fa-cog fa-spin fa-fw menu-icon"></i>
-				</a>
-					<div class="dropdown-menu menu-dropmenu">
-						<a class="dropdown-item modal_open modal_menu" data="modifyModal"
-							href="#">정보수정</a> <a class="dropdown-item modal_open modal_menu"
-							data="passModal" href="#">비밀번호변경</a> <a
-							class="dropdown-item modal_open modal_menu" data="logoutModal"
-							href="<c:url value='/user/userLogout'/>">로그아웃</a> <a
-							class="dropdown-item modal_open modal_menu" data="secessionModal"
-							href="#">회원탈퇴</a>
-					</div></li>
-			</ul>
-		</nav>
+		<header class="header">
+                    <nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                     <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
+                        <ul>
+                            
+                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
+                            
+                                
+                             <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                       
+                        </ul>
+                          <ul class="nav navbar-nav menu-infobtn">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
+                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+                    </a>
+                    <div class="dropdown-menu menu-dropmenu">
+                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+                            <c:choose>
+                  <c:when test="${sessionScope.user eq null }">
+          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
+          </c:when>
+          <c:otherwise>
+              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
+            </c:otherwise>
+          </c:choose>
+                          <c:choose>
+          <c:when test="${sessionScope.user ne null }">
+            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+          </c:when>
+          </c:choose>
+                    </div>
+                </li>
+            </ul>
+                    </nav>
+                </header>
 		
 	<div id="wrap-center">
-	<div class="button-center">
+	<div class="reservation_text">
+                <h1>예약 내역</h1>
+                <h3>주문 진행 상태를 확인하거나 지난 구매내역을 확인할 수 있습니다.</h3>
+            </div>
+	<!-- <div class="button-center">
 	<button type="button" class="buttonin" id="storeReserved"><span>매장 예약 내역</span></button>
 	<button type="button" class="buttonin" id="takeoutReserved"><span>테이크아웃 예약 내역</span></button>
-	</div>
-		<ul class="reservedCheckList">
-		</ul>
-		<div><p class="storeSales"></p></div>
-	<div class="button_base b04_3d_tick dal">
-	<div></div>
-	<div>달력출력(날짜)</div>
-    <div>달력출력(날짜)</div>
-	</div>	
-	<div class="right-box">
-	<h1 class="reservedList-title">매장 예약 내역</h1>
-	<table class="reserved-table">
-			<tr>
-				<th>구 분</th>
-				<th>주문번호</th>
-				<th>주문날짜</th>
-				<th>주문금액</th>
-				<th>예약상세</th>
-				<th>상태</th>
-			</tr>
-			<tbody class="reservedContainer">
-	<c:choose>
+	</div> -->
+		 <div style="display: inline-block;">
+           <div style="padding: 30px 0px 20px 0px;">
+           <button type="button" class="buttonin btn_1" id="myBtn" >
+            <span style="font-size:20px; font-weight: 700; top: -5px;">날짜 별 예약 내역 확인</span></button>
+            </div>
+            <div><button type="button" class="buttonin btn_2" style="background-color: #d1830d; float:left; margin-right: 20px; "  id="storeReserved">
+            <span style="font-size:16px; font-weight: 300;">매장 예약 내역</span></button></div>
+            <div style=""><button type="button" class="buttonin btn_3" style="background-color: #d1830d;" id="takeoutReserved"><span style="font-size:16px; font-weight: 300;">테이크아웃 예약 내역</span></button></div>
+            </div>
+            <ul style=" margin-left: 10px; width:160px; display: inline-block;"> 
+                <li class=" number_txt" style="margin-left: 30px;"><span class="storeSales  number_txt"></span></li>
+            </ul>
+         <!--    <ul class="reservedCheckList">
+		</ul> -->
+            <ul> 
+          <!--       <li class="table_list_txt" style="margin-top:30px;">매장 예약 내역</li> -->
+          <li class="reservedList-title" style="margin-top:30px;">매장 예약 내역</li>
+            </ul>
+            
+            <table class="takeoutReserved-table2 reserved-table">
+              
+                    <tr>
+                        <th>구 분</th>
+                        <th>주문번호</th>
+                        <th>주문날짜</th>
+                        <th>주문금액</th>
+                        <th>예약상세</th>
+                 <!--        <th>예약자 명</th>
+                        <th>예약자 연락처</th> -->
+                        <th>상태</th>
+                    </tr>
+                
+                 <tbody class="reservedContainer">
+               
+                     <c:choose>
 		<c:when test="${orders.size() > 0 }">
 			<c:forEach items="${orders}" var="orders">
 				<c:choose>
@@ -120,9 +185,9 @@
 		<c:otherwise>
 		</c:otherwise>
 	</c:choose>
-	</tbody>
-	</table>
-	<table class="takeoutReserved-table">
+                </tbody>
+            </table>
+            	<table class="takeoutReserved-table">
 			<tr>
 				<th>구 분</th>
 				<th>주문번호</th>
@@ -170,10 +235,34 @@
 	</c:choose>
 			</tbody>
 		</table>
+        </div>
+        <div class="modalwrap"><div id="calendar"></div></div>
+        
+        <!-- 영수증 -->
+	<div class="documentPopup">
+		<div class="documentCenter">
+		<h2>[ 주문 내역 ]</h2>
+			
+			<table class="menuTable">
+				<thead>
+					<tr>
+						<th>메뉴명</th>
+						<th>수 량</th>
+					</tr>
+				</thead>
+				<tbody class="documentTable">
+				</tbody>
+			</table>
+	
+			<div class="documentBtnCenter">
+				<button id="" type="button"
+					 class="documentClose">닫 기</button>
+			</div>
+		<!-- 	<a class="close" href="#close"></a> -->
 	</div>
+	</div>
+        
 </div>
-</div>
-		<div id="calendar"></div>
 </body>
 <script type="text/javascript">
 	$('.b04_3d_tick').click(function(){

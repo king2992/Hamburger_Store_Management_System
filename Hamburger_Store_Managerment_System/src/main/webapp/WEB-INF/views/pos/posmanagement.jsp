@@ -13,11 +13,13 @@
 <link rel="stylesheet" href="/resources/css/sub.css"> 
 <script src="/resources/js/mainR.js"></script> 
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+   <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="sweetalert2.all.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="/resources/js/posmanagement.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <style>
 /*     .active { 
     background-color: #EC5538 ;
@@ -197,43 +199,47 @@ $(document).on('click','#cancel',function(){
 </head>
 <body>
 	<div id="container">
-			<nav class="navbar navbar-expand-sm navbar-dark fixed-top1 layout-menu">
-			<!-- Brand -->
-			<a class="navbar-brand menu-title" href='<c:url value="/"/>'> <span
-				class="menu-pre">store</span><span class="menu-last">management</span>
-			</a>
-			<!-- Links -->
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/pos/posmanagement"/>'> <i class="fa fa-home menu-icon"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/pos/reservedList"/>'> <i
-						class="fa fa-edit menu-icon"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/study/list"/>'> <i
-						class="fas fa-book menu-icon"></i>
-				</a></li>
-			</ul>
-			<div id="chat_box" style = "color : white;"></div>
-			<ul class="nav navbar-nav menu-infobtn">
-				<li class="dropdown"><a href="#"
-					class="dropdown-toggle menu-dropicon" data-toggle="dropdown"
-					role="button" aria-haspopup="true" aria-expaneded="false"> <i
-						class="fa fa-cog fa-spin fa-fw menu-icon"></i>
-				</a>
-					<div class="dropdown-menu menu-dropmenu">
-						<a class="dropdown-item modal_open modal_menu" data="modifyModal"
-							href="#">정보수정</a> <a class="dropdown-item modal_open modal_menu"
-							data="passModal" href="#">비밀번호변경</a> <a
-							class="dropdown-item modal_open modal_menu" data="logoutModal"
-							href="<c:url value='/user/userLogout'/>">로그아웃</a> <a
-							class="dropdown-item modal_open modal_menu" data="secessionModal"
-							href="#">회원탈퇴</a>
-					</div></li>
-			</ul>
-		</nav>
+			   <header class="header" style="line-height: 0;">
+                    <nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                     <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
+                        <ul>
+                            
+                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
+                            
+                                
+                             <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                       
+                        </ul>
+                          <ul class="nav navbar-nav menu-infobtn">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
+                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+                    </a>
+                    <div class="dropdown-menu menu-dropmenu">
+                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+                            <c:choose>
+                  <c:when test="${sessionScope.user eq null }">
+          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
+          </c:when>
+          <c:otherwise>
+              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
+            </c:otherwise>
+          </c:choose>
+                          <c:choose>
+          <c:when test="${sessionScope.user ne null }">
+            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+          </c:when>
+          </c:choose>
+                    </div>
+                </li>
+            </ul>
+                    </nav>
+                </header>
 	
 		<div class="margin">
 			<div style="width: 100%; height: 100%;">

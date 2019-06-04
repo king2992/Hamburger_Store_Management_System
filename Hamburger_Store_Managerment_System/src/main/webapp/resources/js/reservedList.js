@@ -148,32 +148,34 @@ $(document).ready(function(){
 		
 		var orderId = $(event.target).parents().siblings(".reservedOrderId").text();
 		var list = "";
-		
+		var documentTable = $(".documentTable");
 		$.ajax({
 			url : "/pos/reservedListCheck",
 			type : "GET",
 			data : {"orderId" : orderId},
 			success : function(data){
 					$.each(data, function(index,item){
-						list +="<li class='ajaxMenuName'>상품명 : "+item.menuName+"</li><li>수량 : "+item.menuCnt+"</li>";
+						list +="<td class='ajaxMenuName'>"+item.menuName+"</td><td>"+item.menuCnt+"</td>";
 					})
-					reservedCheckList.html(list);
+					documentTable.html(list);
 			}
 		})
 	});
 	$(document).on('click', '.takeoutReservedCheck', function(){
 		var takeoutId = $(event.target).data("takeoutid");
 		var list = "";
-		
+		var documentTable = $(".documentTable");
 		$.ajax({
 			url : "/pos/takeoutReservedCheck",
 			type : "GET", 
 			data : {"takeoutId" : takeoutId},
 			success : function(data){
 				$.each(data, function(index, item){
-					list +="<li class='ajaxMenuName'>상품명 : "+item.menuName+"</li><li>수량 : "+item.menuCnt+"</li>";
+					console.log(item.menuName);
+					console.log(item.menuCnt);
+					list += "<td class='ajaxMenuName'>" + item.menuName + "</td><td>" + item.menuCnt + "</td>";
 				})
-				reservedCheckList.html(list);
+				documentTable.html(list);
 			}
 		})
 	});
