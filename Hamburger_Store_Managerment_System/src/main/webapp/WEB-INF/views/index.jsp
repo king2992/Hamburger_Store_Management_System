@@ -519,11 +519,15 @@ p{margin:0;}
 				 <p id="pwCheck"></p>
 				 <input type="text" class="input" name="userName" placeholder="your name" id="userName" >
 				 <p id="nameCheck"></p>
-				 <input type="text" class="input" name="userPhone" placeholder="phone number" id="userPhone" style="ime-mode:disabled;" >
+				 <select class="input">
+				 	<option value="010">010</option>
+				 </select>-
+				 <input type="text" class="input" name="userPhone1" style="ime-mode:disabled;" id="userPhone1">-
+				 <input type="text" class="input" name="userPhone2" id="userPhone2" style="ime-mode:disabled;" >
 				 <p id="phoneCheck"></p>
 			 <input type="button" id="cancelup" value="취소"> 
 				<!-- <input type="submit" id="submit" value="보내기"> -->
-				<input type="button" id="submitup" value="가입하기" onclick="signUpGoData()">
+				<input type="button" id="submitup" value="가입하기" >
 			</form>
 		</div> 
 	</div>
@@ -603,38 +607,7 @@ p{margin:0;}
 			}
 		});
 	}
-	function signUpGoData(){
-		var form = document.signUp;
-		var userId = document.userId;
-		var userPw = document.userPassword;
-		var userPhone = document.userPhone;
-		var userName = document.userName;
-		
-		if(form.userId.value == ""){
-			$("#idCheck").text("아이디는 8~16자로 입력해주세요.");
-			$("#userId").focus();
-		}
-		else if(form.userPassword.value == ""){
-			$("#pwCheck").text("비밀번호를 입력해 주세요");
-			$("#userPassword").focus();
-		}else if(form.userName.value == ""){
-			$("#nameCheck").text("이름을 입력해 주세요");
-			$("#userName").focus();
-		}else if(form.userPhone.value == ""){
-			$("#phoneCheck").text("전화번호를 입력해 주세요");
-			$("#userPhone").focus();
-		}
-		else if(form.userId.value != "" && form.userPassword.value != ""){
-			
-			if(idCkCnt == 1){
-				alert("회원가입을 환영합니다.")	
-				form.submit();	
-			}else if(idCkCnt == 0){
-				alert("아이디 중복체크를 해주시기 바랍니다.")
-			}
-			
-		}
-	}
+	
 
 	$(document).ready(function(){
 		var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
@@ -642,6 +615,8 @@ p{margin:0;}
 		$(document).on('keydown', '#userId', function(){
 			var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
 			var userId = $("#userId").val();
+			
+			
 			if(userId.length < 7){
 				$("#idCheck").text("아이디는 8~16자로 입력해주세요.");
 			}else{
@@ -664,20 +639,83 @@ p{margin:0;}
 			var userName = $("#userName").val();
 			
 		})
-		$(document).on('keydown', '#userPhone', function(e){
-			var userPhone = $("#userPhone").val();
+		$(document).on('keydown', '[name=userPhone1]', function(e){
+			var userPhone1 = $("[name=userPhone1]").val();
 			var regexp = /^[0-9]*$/
-				if(userPhone.length <= 11){
+				if(userPhone1.length < 4){
 					$("#phoneCheck").text("숫자만 입력해주세요.");
 				}
-				if( !regexp.test(userPhone) ) {
+				if( !regexp.test(userPhone1) ) {
 					//$(this).val(userPhone.replace(regexp,''));
 					$("#phoneCheck").text("숫자만 입력해주세요.");
-					$("#userPhone").val("");	
+					$("[name=userPhone1]").val("");	
 				
-				}else if(userPhone.length == 10){
+				}else if(userPhone1.length == 3){
 					$("#phoneCheck").text("OK");
 				}
+		})
+		$(document).on('keydown', '[name=userPhone2]', function(e){
+			var userPhone2 = $("[name=userPhone2]").val();
+			var regexp = /^[0-9]*$/
+				if(userPhone2.length < 4){
+					$("#phoneCheck").text("숫자만 입력해주세요.");
+				}
+				if( !regexp.test(userPhone2) ) {
+					//$(this).val(userPhone.replace(regexp,''));
+					$("#phoneCheck").text("숫자만 입력해주세요.");
+					$("[name=userPhone2]").val("");	
+				
+				}else if(userPhone2.length == 3){
+					$("#phoneCheck").text("OK");
+				}
+		})
+		$(document).on("click","#submitup",function(){
+			var form = document.signUp;
+			var userId = document.userId;
+			var userPw = document.userPassword;
+			var userPhone1 = document.userPhone1;
+			var userPhone2 = document.userPhone2;
+			var userName = document.userName;
+			var userPhoneId1 = $("#userPhone1").val();
+			var userPhoneId2 = $("#userPhone2").val();
+			
+			if(form.userId.value == ""){
+				$("#idCheck").text("아이디는 8~16자로 입력해주세요.");
+				$("#userId").focus();
+			}
+			else if(form.userPassword.value == ""){
+				$("#pwCheck").text("비밀번호를 입력해 주세요");
+				$("#userPassword").focus();
+			}else if(form.userName.value == ""){
+				$("#nameCheck").text("이름을 입력해 주세요");
+				$("#userName").focus();
+			}else if(form.userPhone1.value == ""){
+				$("#phoneCheck").text("전화번호를 입력해 주세요");
+				$("[name=userPhone1]").focus();
+			}else if(form.userPhone2.value == ""){
+				$("#phoneCheck").text("전화번호를 입력해 주세요");
+				$("#userPhone").focus();
+			}
+			else{
+				if(userPhoneId1.length != 4 ){
+					alert("전화번호 양식이 맞지 않습니다.");
+					$("#userPhone1").val("");
+					$("#userPhone2").val("");
+					$("#userPhone1").focus();
+					
+				} else if(userPhoneId2.length !=4 ){
+					alert("전화번호 양식이 맞지 않습니다.");
+					$("#userPhone2").val("");
+					$("#userPhone1").val("");
+					$("#userPhone1").focus();
+				}else if(idCkCnt == 1){
+					alert("회원가입을 환영합니다.");
+					form.submit();	
+				}else if(idCkCnt == 0){
+					alert("아이디 중복체크를 해주시기 바랍니다.");
+				}
+				
+			}
 		})
 		
 	})

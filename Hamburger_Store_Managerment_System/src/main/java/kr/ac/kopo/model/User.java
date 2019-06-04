@@ -4,11 +4,25 @@ public class User {
 	String userId;
 	String userPassword;
 	String userPhone;
+	String userPhone1;
+	String userPhone2;
 	String userName;
 	int userCommentStatus;
 	int userBoardStatus;
 	int boardNum;
 	
+	public String getUserPhone1() {
+		return userPhone1;
+	}
+	public void setUserPhone1(String userPhone1) {
+		this.userPhone1 = userPhone1;
+	}
+	public String getUserPhone2() {
+		return userPhone2;
+	}
+	public void setUserPhone2(String userPhone2) {
+		this.userPhone2 = userPhone2;
+	}
 	public String getUserPhone() {
 		return userPhone;
 	}

@@ -36,6 +36,9 @@ public class UserController {
 	@RequestMapping(value="/signUp", method=RequestMethod.POST)
 	String signUp(User user) {
 		String userPassword = user.getUserPassword();
+		String userPhone1 = user.getUserPhone1();
+		String userPhone2 = user.getUserPhone2();
+		user.setUserPhone("010"+userPhone1 + userPhone2);
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 			byte[] hash = digest.digest(userPassword.getBytes("UTF-8"));

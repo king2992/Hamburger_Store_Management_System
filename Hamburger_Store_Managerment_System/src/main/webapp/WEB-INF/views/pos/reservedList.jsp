@@ -131,7 +131,7 @@
             <div style=""><button type="button" class="buttonin btn_3" style="background-color: #d1830d;" id="takeoutReserved"><span style="font-size:16px; font-weight: 300;">테이크아웃 예약 내역</span></button></div>
             </div>
             <ul style=" margin-left: 10px; width:160px; display: inline-block;"> 
-                <li class=" number_txt" style="margin-left: 30px;"><span class="storeSales  number_txt"></span></li>
+                <li class=" number_txt" style="margin-left: 30px;"><span class="storeSales number_txt"></span></li>
             </ul>
          <!--    <ul class="reservedCheckList">
 		</ul> -->

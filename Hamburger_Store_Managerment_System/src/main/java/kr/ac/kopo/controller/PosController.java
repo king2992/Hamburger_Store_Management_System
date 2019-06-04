@@ -196,7 +196,7 @@ public class PosController {
 		}
 		total = Integer.parseInt(ordersSales) + Integer.parseInt(takeoutSales);
 
-		
+		System.out.println(total);
 		return total;
 	}
 }

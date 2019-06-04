@@ -29,13 +29,13 @@ window.onload = function(){
 
 
 	 var todayDate = new Date().format('yyyy-MM-dd');
-	 $.ajax({
-		 data : {"regDate" : todayDate},
-		 url : "/pos/todaySales",
-		 success : function(data){
-			 $(".storeSales").text("매출액 : " + data);
-		 }
-	 })
+//	 $.ajax({
+//		 data : {"regDate" : todayDate},
+//		 url : "/pos/todaySales",
+//		 success : function(data){
+//			 $(".storeSales").text("매출액 : " + data);
+//		 }
+//	 })
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -155,7 +155,9 @@ $(document).ready(function(){
 			data : {"orderId" : orderId},
 			success : function(data){
 					$.each(data, function(index,item){
+						list += "<tr>";
 						list +="<td class='ajaxMenuName'>"+item.menuName+"</td><td>"+item.menuCnt+"</td>";
+						list += "</tr>";
 					})
 					documentTable.html(list);
 			}
@@ -171,9 +173,9 @@ $(document).ready(function(){
 			data : {"takeoutId" : takeoutId},
 			success : function(data){
 				$.each(data, function(index, item){
-					console.log(item.menuName);
-					console.log(item.menuCnt);
+					list += "<tr>";
 					list += "<td class='ajaxMenuName'>" + item.menuName + "</td><td>" + item.menuCnt + "</td>";
+					list += "</tr>";
 				})
 				documentTable.html(list);
 			}
