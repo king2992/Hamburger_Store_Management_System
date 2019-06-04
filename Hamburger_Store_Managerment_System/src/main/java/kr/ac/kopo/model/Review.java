@@ -5,7 +5,7 @@ import java.util.Date;
   
 
 public class Review {
-	 
+	  
 	private int number; // 글번호
 	private String title; // 제목
 	private String contents; // 내용

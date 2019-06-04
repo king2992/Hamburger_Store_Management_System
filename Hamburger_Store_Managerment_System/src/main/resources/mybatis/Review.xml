@@ -8,7 +8,7 @@
 		SET ref=ref+1
 		WHERE number=#{number}
 	</update>
-
+ 
 	<select id="likeCnt" resultType="int">
 		SELECT COUNT(like_cnt)
 		FROM   review

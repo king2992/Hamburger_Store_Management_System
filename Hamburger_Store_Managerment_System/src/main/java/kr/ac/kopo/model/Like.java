@@ -1,7 +1,7 @@
 package kr.ac.kopo.model;
 
 public class Like {
-
+ 
 	private int likeNo;  //추천번호
 	private int likeCheck;  //추천상태
 	private String userId;  // 아이디

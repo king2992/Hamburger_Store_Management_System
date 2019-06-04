@@ -13,7 +13,7 @@ import kr.ac.kopo.model.Review;
   
 @Repository
 public class ReviewDaoImpl implements ReviewDao {
-
+ 
 	@Autowired
 	private SqlSession db;
 	

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title></title>
 <link rel="shortcut icon" href="${path}/review/reviewAdd">
- <style>
+ <style> 
 button { border-style:none; width: 70px; height:35px; background-color:#2d70be; font-weight:bold; color:#fff; cursor: pointer;}
 .fileDrop { width : 100%; height: 200px;  border : 2px dotted #0b58a2; }
 .uploadedFileList li{ margin-right:20px !important; }

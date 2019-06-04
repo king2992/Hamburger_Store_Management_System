@@ -18,7 +18,7 @@ window.onload = function() {
 // 	$('#like').attr('src','/resources/images/unlike.png');
 	//$('#likeBtn').children('img').attr('src','/resources/images/unlike.png');
 	
-	
+	 
 	b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
 	'<img src="/resources/images/unlike.png">'+
 	'<span>'+'좋아요 취소'+'</span>'+ 

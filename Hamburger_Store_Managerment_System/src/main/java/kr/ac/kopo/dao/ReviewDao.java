@@ -8,7 +8,7 @@ import kr.ac.kopo.model.Paging;
 import kr.ac.kopo.model.Review;
   
 public interface ReviewDao {
-
+ 
 	List<Review> reviewList(Paging paging);
 
 	void reviewAdd(Review reviewAdd);
