@@ -21,8 +21,6 @@ public interface ReviewDao {
 
 	void ref(int number);
 
-	void like(int number);
-
 	int total(Paging paging);
 
 	void replyUpdate(Review review);
@@ -36,5 +34,13 @@ public interface ReviewDao {
 	void likeDel(Map<String, Object> map);
 
 	void likeRun(Map<String, Object> map);
+
+	void likeCnt(int number);
+
+	void likeMin(Map<String, Object> map);
+
+	void likeAdd2(Map<String, Object> map);
+
+	void likeAdd3(Map<String, Object> map);
 
 }

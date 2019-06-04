@@ -182,7 +182,7 @@
 											<img src="${path}/resources/images/board_search.png"> <span>${list.ref}</span>
 										</div>
 										<div class="content_totalicon">
-											<img src="${path}/resources/images/board_like.png"> <span>${list.reLike}</span>
+											<img src="${path}/resources/images/board_like.png"> <span>${list.likeCnt}</span>
 										</div>
 									</div>
 								</div>

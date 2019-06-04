@@ -105,10 +105,11 @@ public class ReviewController {
 	}
 	
 // 글 추천
-	@RequestMapping("/like")
-	String like(int number, Review review) {
-		reviewService.like(number);
-		return "redirect:/review/view?number=" + review.getNumber();
+	@ResponseBody
+	@RequestMapping("/likeCnt")
+	int likeCnt(@RequestParam int number, Review review) {
+		reviewService.likeCnt(number);
+		return 1;
 	}
 	@ResponseBody
 	@RequestMapping(value="/likeAdd")

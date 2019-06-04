@@ -48,11 +48,6 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public void like(int number) {
-		db.update("review.reLike",number);
-	}
-
-	@Override
 	public int total(Paging paging) {
 		
 		int total = db.selectOne("review.total",paging);
@@ -88,6 +83,26 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public void likeRun(Map<String, Object> map) {
 		db.update("review.likeRun",map);
+	}
+
+	@Override
+	public void likeCnt(int number) {
+		db.selectOne("review.likeCnt",number);
+	}
+
+	@Override
+	public void likeMin(Map<String, Object> map) {
+		db.update("review.likeMin",map);
+	}
+
+	@Override
+	public void likeAdd2(Map<String, Object> map) {
+		db.update("review.likeAdd2",map);
+	}
+
+	@Override
+	public void likeAdd3(Map<String, Object> map) {
+		db.update("review.likeAdd3",map);
 	}
 
 }

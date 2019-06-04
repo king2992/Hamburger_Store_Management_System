@@ -77,10 +77,6 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDao.ref(number);
 	}
 
-	@Override
-	public void like(int number) {
-		reviewDao.like(number);
-	}
 	//	트랜지션 - 두개의 쿼리를 실행해서 하나라도 false 면 false 같이 true 가 되야 쿼리 처리된다.
 	@Transactional
 	@Override
@@ -88,21 +84,32 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDao.replyUpdate(review);
 		reviewDao.reply(review);
 	}
-	
+	@Transactional
 	@Override
 	public void likeAdd(Map<String, Object> map) {
 		reviewDao.likeAdd(map);
+		reviewDao.likeAdd3(map);
 	}
 	@Override
 	public Like likeFunc(Map<String, Object> map) {
 		return reviewDao.likeFunc(map);
+		
 	}
+	@Transactional
 	@Override
 	public void likeDel(Map<String, Object> map) {
 		reviewDao.likeDel(map);
+		reviewDao.likeMin(map);
+		
 	}
+	@Transactional
 	@Override
 	public void likeRun(Map<String, Object> map) {
 		reviewDao.likeRun(map);
+		reviewDao.likeAdd2(map);
+	}
+	@Override
+	public void likeCnt(int number) {
+		reviewDao.likeCnt(number);
 	}
 }

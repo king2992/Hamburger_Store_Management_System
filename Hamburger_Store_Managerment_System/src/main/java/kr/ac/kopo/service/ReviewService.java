@@ -21,7 +21,7 @@ public interface ReviewService {
 
 	void ref(int number);
 
-	void like(int number);
+	void likeCnt(int number);
 
 	void reply(Review review);
 

@@ -135,17 +135,12 @@ html{font-size: 14px !important;}
 <div class="box-footer">
 			<ul class="uploadedFileList"></ul>
 		</div>
-	<!-- 	<div style="clear:both;">
-			<button class="resetBtn" type="reset"><i></i>초기화</button>
-			<button class="addBtn" type="submit"><i></i>저장</button>
-		</div>	 -->
-        
-        
     </div>
 </div>
+ <button class="btn btn-primary boardBtn" id="board_wrtiebtn">등록</button>
  </form>
  <a href="${path}/review/reviewList"><button class="btn btn-danger boardBtn"  id="board_wrtiebtn">취소</button></a>
- <button class="btn btn-primary boardBtn" id="board_wrtiebtn">등록</button>
+
 </div>
 </div>
 <div style="clear: both; position: relative;">
@@ -153,7 +148,7 @@ html{font-size: 14px !important;}
         <div>
             <div class="mainFootArea">
                 <div class="footerNoticeArea">
-                    <h3>NOTICE&NEWS</h3>
+                    <h3>NOTICE&amp;NEWS</h3>
                     <div class="footNoticeWrap">
                         <ul class="footNoticeUl">
                             <li>
@@ -164,17 +159,14 @@ html{font-size: 14px !important;}
                         </ul>
                     </div>
                 </div>
-                
                 <ul class="footQuickUl">
                     <li><a href=""><img src="/resources/images/24.gif"></a></li>
-<!--                     <li><a href=""><img src="images/drive.jpg"></a></li>-->
                      <li><a href=""><img src="/resources/images/home.gif"></a></li>
                      <li class="btn_ria_insta"><a href=""><img src="/resources/images/instargram.gif"></a></li>
                      <li class="btn_ria_movie"><a href=""><img src="/resources/images/grow.gif"></a></li>
                 </ul>
             </div>          
         </div>
-                  
                    <footer class="footer">
                     <div class="inner">
                         <address>
@@ -189,8 +181,6 @@ html{font-size: 14px !important;}
                             <img src="/resources/images/footer5.gif">
                             <img src="/resources/images/footer6.gif">
                         </div>
-                        
-                        
                     </div>
                 </footer>
     </div>
