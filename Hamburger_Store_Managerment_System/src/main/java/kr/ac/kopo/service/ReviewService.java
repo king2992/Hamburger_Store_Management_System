@@ -20,7 +20,7 @@ public interface ReviewService {
 	void delete(int number) throws Exception;
 
 	void ref(int number);
-
+ 
 	void likeCnt(int number);
 
 	void reply(Review review);

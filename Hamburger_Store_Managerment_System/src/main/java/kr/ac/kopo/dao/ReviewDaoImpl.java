@@ -104,5 +104,5 @@ public class ReviewDaoImpl implements ReviewDao {
 	public void likeAdd3(Map<String, Object> map) {
 		db.update("review.likeAdd3",map);
 	}
-
+ 
 }

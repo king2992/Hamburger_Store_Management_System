@@ -92,7 +92,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	@Override
 	public Like likeFunc(Map<String, Object> map) {
-		return reviewDao.likeFunc(map);
+	 	return reviewDao.likeFunc(map);
 		
 	}
 	@Transactional

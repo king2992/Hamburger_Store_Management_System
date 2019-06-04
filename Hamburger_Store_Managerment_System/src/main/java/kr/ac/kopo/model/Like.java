@@ -6,7 +6,7 @@ public class Like {
 	private int likeCheck;  //추천상태
 	private String userId;  // 아이디
 	private int number; // 글번호
-	
+	 
 	@Override
 	public String toString() {
 		return "Like [likeNo=" + likeNo + ", likeCheck=" + likeCheck + ", userId=" + userId + ", number=" + number

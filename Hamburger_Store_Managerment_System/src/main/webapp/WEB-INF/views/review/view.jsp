@@ -111,7 +111,7 @@
                         <span>조회 ${view.ref}</span>
                     </div>
                 </div>
-            </div>
+            </div> 
             <div class="view_body">
                 <input type="hidden" id="view_no" value="${view.number }" name="number">
                 <div class="view_content">

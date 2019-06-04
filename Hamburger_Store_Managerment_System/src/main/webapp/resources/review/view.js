@@ -6,7 +6,7 @@ window.onload = function() {
 	var likeArea = $('#likeArea');
 	var a = "";
 	var b = "";
-	var c = "";
+	var c = ""; 
 // 처음 출력 
 	var likeCnt = $('#likeCnt').val();
 	a += '<div class="view_like" id="likeBtn" data-number="${view.number}>'+

@@ -19,7 +19,7 @@
 <!-- 		SET like_cnt=likeCnt + 1 -->
 <!-- 		WHERE number=#{number} -->
 <!-- 	</update> -->
-
+ 
 	<!-- 데이터베이스=#{스프링} -->
 	<select id="reviewList" resultType="Review">
 		SELECT r.*,(SELECT count(*) FROM comment c WHERE c.number=r.number) AS coNum

@@ -42,5 +42,5 @@ public interface ReviewDao {
 	void likeAdd2(Map<String, Object> map);
 
 	void likeAdd3(Map<String, Object> map);
-
+ 
 }

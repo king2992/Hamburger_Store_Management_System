@@ -20,7 +20,7 @@ html{font-size: 14px !important;}
 .mailbox-attachment-name{color:#337ab7;}
 .mailbox-attachment-icon has-img > img{width:70px;}
 .fa-cog:before{content: "\f013";}
- </style>
+ </style> 
 <c:if test="${sessionScope.user == null}">
 <script type="text/javascript">
 		alert("로그인 하신 후에 이용해 주세요.");
