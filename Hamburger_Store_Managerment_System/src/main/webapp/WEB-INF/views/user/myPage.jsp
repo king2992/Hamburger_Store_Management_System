@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/resources/css/header.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/personalInfomationChange.js"></script>
-<link rel="stylesheet" href="/resources/css/personalInfomationChange.css">
+<!-- <link rel="stylesheet" href="/resources/css/personalInfomationChange.css"> -->
 <script type="text/javascript" src="/resources/js/userTakeoutReservedLIst.js"></script>
  <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/resources/css/mainR.css">
@@ -20,7 +20,7 @@
         $(document).ready(function(){
                 // 클래스이름이 test 인 것을 show메소드로 보인다
                 $('#personalInfomationChange').show();
-                $('.myWritten,.TakeoutReservedLIst,.withdrawal').hide();
+                $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd').hide();
                 /*$('#contents').hide();*/
                 // #tab_btn li 클릭 시 함수 실행해서
                 $('#tab_btn li').on('click', function(){
@@ -40,13 +40,51 @@
                             $(this).css("background", "#ffd9a3");
                         }
                     });
-                    //#contents 안에 잇는 div 를 숨기고
-                    $('#contents > div').hide();
-                    // #contents 안에 div 태그중 eq메소드로 list 변수에 맞는 것을 찾아서 보여주지
-                    $('#contents > div').eq(list).show();
-                });  
+                  
+                }); 
+//            $("#tab_btn li").on("mouseover", function(){
+//                $(this).css("background", "#F7D358");
+//              })
+//            $("#tab_btn li").on("mouseout", function(){
+//                $(this).css("background", "white");
+//                if($(this).attr("class")=="on"){
+//                    $(this).css("background", "#ffd9a3");
+//                }
+//              })
             
+            $(document).on("click", "#change", function(){
+                $('#personalInfomationChange').show();
+                $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd').hide();
+            })
+             $(document).on("click", "#userPayCardUpdate", function(){
+                $('.cardAdd').show();
+                $("#change").css("background", "#ffd9a3");
+                $('.myWritten,.TakeoutReservedLIst,.withdrawal,#personalInfomationChange').hide();
+            })
+             $(document).on("click", "#myWriten", function(){
+                $('.myWritten').show();
+                $('#personalInfomationChange,.TakeoutReservedLIst,.withdrawal,.cardAdd,.dropDown').hide();
+            })
+             $(document).on("click", "#takeoutReservedList", function(){
+                $('.TakeoutReservedLIst').show();
+                $('#personalInfomationChange,.myWritten,.withdrawal,.cardAdd,.dropDown').hide();
+            })
+             $(document).on("click", "#withdrawal", function(){
+                $('.withdrawal').show();
+                $('.myWritten,.TakeoutReservedLIst,#personalInfomationChange,.cardAdd,.dropDown').hide();
+            })
         });
+        </script>
+        <script>
+            $(document).on("click","#change",function(){
+               if($('.dropDown').is(':visible')){
+               $('.dropDown').css('display','none');
+               }
+                else{
+                    $('.dropDown').css('display','block');
+               }
+            });
+           
         </script>
         <script type="text/javascript">
      
@@ -60,6 +98,9 @@
         
         </script>
         <style>
+        	.test{display: block !important;}
+            #tab_btn li:hover button{color: #ff6c00;}
+            /*header 부분*/
             .test{display: block !important;}
             .aside_item:hover {color: #ff6c00;}
             .fa-cog:before {content: "\f013";}
@@ -119,10 +160,15 @@
 <!--      사이드바      -->
             <div class="aside">                    
                      <ul id="tab_btn">
-                        <li><button class="aside_item" type="button">개인정보변경</button></li>
-                        <li><button class="aside_item" type="button">내가 작성 한 글</button></li>
-                        <li><button class="aside_item" type="button">TakeOut 예약 내역</button></li>
-                        <li><button class="aside_item" type="button">회원탈퇴</button></li>
+                         <li id="change"><button type="button" class="aside_item" >개인정보변경</button></li>
+                            <!--<ul class="dropDown">-->
+                        <li id="userPayCardUpdate" class="dropDown"><button type="button" class="userPayCardUpdate">
+                            <img src="/resources/images/cardAdd_03.png" class="cardAdd_img">카드 등록</button></li>
+                            <!--</ul>-->
+                        
+                        <li  id="myWriten"><button class="aside_item" >내가 작성 한 글</button></li>
+                        <li id="takeoutReservedList"><button type="button" class="aside_item" >TakeOut 예약 내역</button></li>
+                        <li id="withdrawal"><button type="button" class="aside_item"  >회원탈퇴</button></li>
                     </ul>    
             </div>
 <!--      컨텐츠      -->
@@ -238,10 +284,10 @@
                     <table class="reserved-table">
                         <thead class="reservedHead">
                             <tr>
-                                <th style="width: 130px;">주문날짜</th>
-                                <th style="width: 94px;">주문시간</th>
-                                <th style="width: 75px;">예약자</th>
-                                <th style="width: 173px;">예약자 전화번호</th>
+                                <th style="width: 130px;" class="border_right">주문날짜</th>
+                                <th style="width: 94px;" class="border_right">주문시간</th>
+                                <th style="width: 75px;" class="border_right">예약자</th>
+                                <th style="width: 173px;" class="border_right">예약자 전화번호</th>
                                 <th style="width: 300px;">지점</th>
                                 <th style="width: px;"></th>
                             </tr>
@@ -279,7 +325,7 @@
                         <li class="disc">탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다.</li>
                     </ul>
                 <button type="button" class="btn_type"  id="withdrawal">회원탈퇴</button>
-                </div>
+               </div>
             </div>
         </div>
         </body>

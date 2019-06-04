@@ -98,8 +98,8 @@ $(document).ready(function(){
 	})
 	function cardAddPopUpOpen(){
 		var url = "/user/cardAdd";
-		var winWidth = 550;
-		var winHeight = 450;
+		var winWidth = 508;
+		var winHeight = 515;
 		var popupOption = "width="+winWidth+", height="+winHeight;
 		window.open(url,"",popupOption);
 	}
