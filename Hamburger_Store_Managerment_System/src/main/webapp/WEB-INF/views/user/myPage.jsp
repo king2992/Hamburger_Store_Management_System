@@ -10,11 +10,11 @@
 <link rel="stylesheet" href="/resources/css/header.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/personalInfomationChange.js"></script>
-<!-- <link rel="stylesheet" href="/resources/css/personalInfomationChange.css"> -->
+<link rel="stylesheet" href="/resources/css/personalInfomationChange.css">
 <script type="text/javascript" src="/resources/js/userTakeoutReservedLIst.js"></script>
- <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/resources/css/mainR.css">
-         <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/mainR.css">
+<link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <script>
         $(document).ready(function(){
@@ -238,7 +238,8 @@
 				    <div id="myModal" class="modal">
 				      <!-- Modal content -->
 				      <div class="modal-content">
-				        <span class="close">&times;</span>                                                               
+				        <a href="#"><span class="close">&times;</span></a>
+				        <h5>비밀번호 변경</h5>                                                               
 				     <ul class="pwUpdate">
 						<li><span>현재 비밀번호<input type="password" class="nowPw"></span></li>
 						<li><span>새 비밀번호<input type="password" class="newPw"></span></li>
