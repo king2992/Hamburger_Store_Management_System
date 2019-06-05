@@ -158,7 +158,7 @@
                      <c:choose>
 		<c:when test="${orders.size() > 0 }">
 			<c:forEach items="${orders}" var="orders">
-				<c:choose>
+				<c:choose> 
 			<c:when test="${orders.status eq 'Ready'}">
 			<tr>
 				<td>매장</td>
