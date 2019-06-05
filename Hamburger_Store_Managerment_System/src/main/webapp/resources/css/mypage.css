@@ -41,7 +41,7 @@ table {
     word-break: break-all;
 }
 
-/*»çÀÌµå¹Ù*/
+/*ï¿½ï¿½ï¿½Ìµï¿½ï¿½*/
 .aside {
     position: relative;
     float: left;
@@ -97,7 +97,7 @@ table {
     font-weight: 600;
     cursor: pointer;
 }
-/*Ä«µåµî·Ï µðÀÚÀÎ*/
+/*Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .dropDown{
 /*    position: absolute;*/
     display: none;
@@ -121,7 +121,7 @@ table {
 .cardAdd_img2 {
     margin: 0px 5px 10px -4px;
 }
-/*ÄÁÅÙÃ÷*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 #contents {
     float: left;
     width: 720px;
@@ -144,9 +144,9 @@ table {
     font-weight:700;
     font-size: 18px;
 }
-/***********°³ÀÎÁ¤º¸º¯°æ*************/
+/***********ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*************/
 
-/*Å×ÀÌºí ¼³Á¤*/
+/*ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½*/
 .tb_type {
     border-bottom: 1px solid #d9d9d9;
     width: 100%;
@@ -164,13 +164,13 @@ table {
     padding: 20px;
     color: #666;
 }
-/*ºñ¹Ð¹øÈ£*/
+/*ï¿½ï¿½Ð¹ï¿½È£*/
 .input_password {
     border: 1px solid #cccccc;
     padding: 2px 0 2px 5px;
     height: 20px;
 }
-/*ºñ¹Ð¹øÈ£ º¯°æ*/
+/*ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½*/
 .pwChange {
     width: 90px;
     height: 27px;
@@ -181,7 +181,7 @@ table {
     margin-left: 12px;
     border-color:#e79210;
 }
-/*ÀüÈ­¹øÈ£*/
+/*ï¿½ï¿½È­ï¿½ï¿½È£*/
 .first_number {
     width: 72px;
     border: 1px solid #cccccc;
@@ -195,13 +195,13 @@ table {
     height: 20px;
     width:100px;
 }
-/*ÀÌ¸§*/
+/*ï¿½Ì¸ï¿½*/
 .input_name {
     border: 1px solid #cccccc;
     padding: 2px 0 2px 5px;
     height: 25px;
 }
-/*º¯°æÇÏ±â ¹öÆ°*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½Æ°*/
 .btn_type {
     width: 120px;
     height: 35px;
@@ -216,7 +216,7 @@ table {
     border-color:#e79210;
 }
 
-/***********³»°¡ ÀÛ¼º ÇÑ ±Û*************/
+/***********ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ ï¿½ï¿½*************/
 .myWritten-table {
     width: 100%;
     border-top: 2px solid #585e6a;
@@ -255,7 +255,7 @@ table {
     padding:10px 10px 10px 9px;
     color: #555;
 }
-/*°Ô½Ã±Û ÀÌµ¿*/
+/*ï¿½Ô½Ã±ï¿½ ï¿½Ìµï¿½*/
 .boardMove {
     width: 95px;
     height: 32px;
@@ -268,7 +268,7 @@ table {
     outline: none;
     border-color:#f9a72b;
 }
-/*°Ô½Ã±Û »èÁ¦*/
+/*ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 .boardDelete {
     width: 95px;
     height: 32px;
@@ -282,7 +282,7 @@ table {
     border-color:#e20101;
 }
 /***********TakeoutReservedLIst*************/
-/*Å×ÀÌºí ¼³Á¤*/
+/*ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½*/
 .reserved-table {
     width: 100%;
     border: 2px solid #ccc;
@@ -314,7 +314,7 @@ table {
     font-size: 13px;
     padding:10px 10px 10px 9px;
 }
-/*¿¹¾à È®ÀÎ ³»¿ª*/
+/*ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 .reservedCheck {
     width: 120px;
     height: 35px;
@@ -327,7 +327,7 @@ table {
     outline: none;
     border-color:#e79210;
 }
-/***********È¸¿øÅ»Åð*************/
+/***********È¸ï¿½ï¿½Å»ï¿½ï¿½*************/
 .withdrawal ul{
     border-top: 2px solid #333333;
     border-bottom: 1px solid #a8a7a7;
@@ -340,7 +340,7 @@ table {
     font-weight: 700;
 }
 .disc{list-style-type: disc; list-style-position: inside;}
-/*Ä«µå µî·Ï*/
+/*Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½*/
 .cardAdd {
 /*     margin-top: 200px; */
     width: 460px;
@@ -360,7 +360,7 @@ table {
 /*     border-radius: 10px; */
     box-shadow: 0 1px 1px 2px rgba(0.4, 0, 0, 0.4);
 }
-/*°áÁ¦Ä«µå µî·Ï*/
+/*ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½*/
 .cardAdd h2 {
    border-bottom: 2px solid #333;
     padding-bottom: 20px;
@@ -372,7 +372,7 @@ table {
 .paymentCardAdd p1{
     display: inline-block;
 }
-/*ÀºÇà,Ä«µå¹øÈ£,¸¸±âÀÏ, º¸¾ÈÄÚµå,Ä«µå ºñ¹Ð¹øÈ£*/
+/*ï¿½ï¿½ï¿½ï¿½,Ä«ï¿½ï¿½ï¿½È£,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½,Ä«ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£*/
 .paymentCardAdd p1 {
     font-size: 18px;
     font-weight: 600;
@@ -382,7 +382,7 @@ table {
     border-bottom: 1px solid #999;
     padding: 15px 0 15px 0;
 }
-/*ÀºÇà*/
+/*ï¿½ï¿½ï¿½ï¿½*/
 .bank select {
     width: 100px;
     height:30px;
@@ -392,7 +392,7 @@ table {
     background-color: #f1f1f1;
     border: 1px solid #999;
 }
-/*Ä«µå¹øÈ£*/
+/*Ä«ï¿½ï¿½ï¿½È£*/
 .Number {
     width: 120px;
     height: 28px;
@@ -402,7 +402,7 @@ table {
     background-color: #f1f1f1;
 /*    border: 1px solid #999;*/
 }
-/*¸¸±âÀÏ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .validity {
     color: black;
     font-size: 15px;
@@ -412,7 +412,7 @@ table {
 .Month {
     margin: 0 7px 0 20px;
 }
-/*Ä«µåÁ¶È¸,Ä«µåµî·Ï ¹öÆ°*/
+/*Ä«ï¿½ï¿½ï¿½ï¿½È¸,Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°*/
 .cardButton {
     width: 80px;
     height: 35px;
@@ -431,17 +431,36 @@ table {
     margin:0 auto;
     width:fit-content;
 }
-/*MY Ä«µå*/
- .MYcard {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
+/*MY Ä«ï¿½ï¿½*/
+ /* .MYcard {
+	display: none; Hidden by default
+	position: fixed; Stay in place
+	z-index: 1; Sit on top
 	width: 400px;
 	height: 400px;
 	padding: 20px;
-/* 	margin-left: 70px; */
-/* 	margin-top:-100px; */
-}
+	margin-left: 70px;
+	margin-top:-100px;
+} */
+#MYcardModal { 
+    	border-radius:25px;
+         position: fixed; 
+         left: 0; 
+         top: 0; 
+         width: 100%; 
+         height: 100%; 
+       /*   text-align:center; */
+         background-color: rgba(0, 0, 0, 0.5); 
+         opacity: 0; 
+         visibility: hidden; 
+         display: none;
+        z-index:9999;
+         transform: scale(1.1); 
+         transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+     } 
+
+
+
 .BankName {
     font-size: 35px;
     color: #fff;
@@ -463,13 +482,16 @@ table {
 }
 /* Modal Content/Box */
 .cardmodal-content {
- background-image: url(/resources/images/MYcard.png);
+ background-image: url(/resources/images/mycard.png);
  background-repeat: no-repeat;
 /*  margin: 15% auto; 15% from the top and centered */
  padding: 20px;
  width: 600px !important;
+      position: absolute; 
+         top: 30%; 
+         left: 40%; 
  }
-/* »èÁ¦ÇÏ±â  */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½  */
 .cardDelete {
     width: 120px;
     height: 35px;
@@ -479,7 +501,8 @@ table {
     position:relative;
     margin: 0 auto;
     margin-top: 35px;
-    left:50px;
+    top:20px;
+    left:-48px;
     display: block;
     text-align: center;
     outline: none;

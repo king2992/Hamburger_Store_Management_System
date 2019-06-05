@@ -103,6 +103,7 @@
      
         
         </script>
+        
         <style>
         	.test{display: block !important;}
             #tab_btn li:hover button{color: #ff6c00;}
@@ -348,8 +349,9 @@
 			                      <li class="MYcardNum">1112</li>
 			                      <li class="MYcardName">Park Su Jin</li>
 		                    </ul>
+		                    <button type="button" class="cardDelete"  id="cardDelete">삭제하기</button>
 				      </div>
-				      <button type="button" class="cardDelete"  id="cardDelete">삭제하기</button>
+				      
 			    </div>
             </div>
         </div>

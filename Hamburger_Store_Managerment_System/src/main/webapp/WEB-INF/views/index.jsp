@@ -44,7 +44,7 @@ p{margin:0;}
          margin-top: 20px; 
          cursor: pointer; 
      }
-    #submit,#cancel{margin-top:70px;}
+    #submit,#cancel{margin:50px 0;}
       
      #submit:hover{ 
          color: #fff; 
@@ -79,7 +79,7 @@ p{margin:0;}
          opacity: 0; 
          visibility: hidden; 
          display: block !important;
-        z-index:5;
+        z-index:9999;
          transform: scale(1.1); 
          transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
      } 
@@ -91,8 +91,8 @@ p{margin:0;}
          transform: translate(-50%, -50%); 
           background:#ececec; 
   /*        padding: 1rem 1.5rem;  */
-         width: 500px; 
-         height: 600px; 
+         width: 450px; 
+      /*    height: 600px;  */
          border-radius: 0.5rem; 
          display: inline-block;
      } 
@@ -203,7 +203,7 @@ p{margin:0;}
          opacity: 0; 
          visibility: hidden; 
          display: block !important;
-        z-index:5;
+        z-index:9999;
          transform: scale(1.1); 
          transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
      } 
@@ -519,11 +519,13 @@ p{margin:0;}
 				 <p id="pwCheck"></p>
 				 <input type="text" class="input" name="userName" placeholder="your name" id="userName" >
 				 <p id="nameCheck"></p>
-				 <select class="input">
+				 <div class="phoneDiv">
+				 <select class="selectPhone" style="width: 92.72px;">
 				 	<option value="010">010</option>
 				 </select>-
-				 <input type="text" class="input" name="userPhone1" style="ime-mode:disabled;" id="userPhone1">-
-				 <input type="text" class="input" name="userPhone2" id="userPhone2" style="ime-mode:disabled;" >
+				 <input type="text" class="selectPhone" name="userPhone1" style="ime-mode:disabled;" id="userPhone1">-
+				 <input type="text" class="selectPhone" name="userPhone2" id="userPhone2" style="ime-mode:disabled;" >
+				 </div>
 				 <p id="phoneCheck"></p>
 			 <input type="button" id="cancelup" value="취소"> 
 				<!-- <input type="submit" id="submit" value="보내기"> -->
