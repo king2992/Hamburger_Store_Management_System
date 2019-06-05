@@ -47,7 +47,7 @@ function cancel(){
 	  	padding: '3em',
 	  	backdrop: `
 	  		rgba(0,0,123,0.4)
-	  		url("/resources/kiosk/images/test.gif")
+	  		url("/resources/kiosk/images/card.gif")
 	  		center left
 	  		no-repeat
 	  		`
@@ -99,7 +99,6 @@ $(document).ready(function(){
 //zoomoutdown animation
 				
 // 이미지 클릭 시 수량 증가 중복방지
-				console.log($("#menuname"+menuname+"").length);
 				if($("#menuname"+menuname+"").length == 1){
 					
 					var a = Number(cnt) + 1;
@@ -173,6 +172,8 @@ $(document).ready(function(){
 			});
 			$('#total_price').text(total);
 		};
+		
+		$('.modal').removeAttr('max-width');
 });
 
 

@@ -5,45 +5,18 @@
 <meta charset="UTF-8">
 <title>Kiosk First Web Screen</title>
 </head>
+<link rel="shortcut icon" href="${path}/kiosk/screen">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="${path}/resources/kiosk/js/main.js"></script>
 <link rel="stylesheet" type="text/css" href="${path}/resources/kiosk/css/screen.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<!-- <script src="sweetalert2.all.min.js"></script> -->
 <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-<style>
-/*zoomoutdown animation*/
- .zoomOutDown {
-/*    position: absolute; */
-  animation-name: zoomOutDown;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  background-image:url("/resources/img/chickenMenu/chipao.png");
-  z-index: 99;
-  width:240px;
-  height: 200px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  }
-  @keyframes zoomOutDown {
-  40% {
-  opacity: 1;
-  z-index: 99;
-  transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
-  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
- 
-  }
-  100% {
-  opacity: 0;
-  transform: scale3d(.1, .1, .1) translate3d(0, 2000px, 0);
-  transform-origin: center bottom;
-  animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-  }
- } 
-
-</style>
+<!-- Remember to include jQuery :) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <body>
 <!-- 배경 이미지 영역 -->
 	<div class="body_image">
@@ -54,7 +27,7 @@
 			<ul class="tab_btn">
 				<li><button class="ListBtn btn1" type="button">전체 메뉴</button></li>
 				<li><button class="ListBtn btn2" type="button">치킨 메뉴</button></li>
-				<li><button class="ListBtn btn3" type="button">버거 메뉴</button></li>
+				<li><a href="#ex1" rel="modal:open"><button class="ListBtn btn3" type="button">버거 메뉴</button></a></li>
 				<li><button class="ListBtn btn4" type="button">사이드 메뉴</button></li>
 				<li><button class="ListBtn btn5" type="button">음료류</button></li>
 			</ul>
@@ -105,7 +78,7 @@
 				</ul>
 			</div>
 <!-- 			햄버거 메뉴 -->
-			<div  class="hide">
+			<div class="hide">
 				<ul class="tab_cont">
 					<li><img data-menuname="치파오" data-price="10000" src="${path}/resources/img/chickenMenu/chiPao.jpg"><p>치파오</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="치파오치킨" data-price="10000" src="${path}/resources/img/chickenMenu/chiPaOChicken.jpg"><p>치파오 치킨</p><p class="price_p">10000</p></li>
@@ -180,7 +153,6 @@
 					<tr>
 						<td>주문 총 금액 :&nbsp;&nbsp;</td>
 <!-- 			총액 금액 영역 -->
-<!-- 						<td><input class="total_pay" type="text">&nbsp;원</td> -->
 							<td><label id="total_price">요기야</label></td>
 					</tr>
 				</table>
@@ -200,6 +172,38 @@
 			</div>
 			</div>
 		</div>
+	</div>
+<!-- 	모달 부분 -->
+	<div id="ex1" class="modal">
+	<span class="modal_span"><h2>세트로 드시겠어요?</h2></span>
+		<div class="modal_div">
+        	<div><a href="#" rel="modal:close"><img src="${path}/resources/kiosk/images/single.png" ></a><h4>버거만</h4></div>
+        	<div><a href="#set" rel="modal:open"><img src="${path}/resources/kiosk/images/set.png"></a><h4>세트</h4></div>
+        </div>
+    </div>
+<!-- 세트 모달 부분     -->
+	<div class="modal" id="set" style="display:inline-block; max-width:none;">
+		<div class="set_div"><h3>세트디저트 1개를 선택해 주세요.</h3></div>
+		<div>
+			<ul class="modal_set">
+				<li><button class="set_btn" type="button"><h4>SET.사이드</h4></button></li>
+				<li><button class="set_btn" type="button"><h4>SET.드링크</h4></button></li>
+			</ul>
+		</div>
+		<div>
+		<div class="set_side">
+			<ul class="set_side_ul">
+				<li><img src="${path}/resources/img/sideMenu/20170331173889.jpg"></li>
+				<li><img src="${path}/resources/img/sideMenu/20170821851383.jpg"></li>
+				<li><img src="${path}/resources/img/sideMenu/20171120319875.jpg"></li>
+				<li><img src="${path}/resources/img/sideMenu/20171120979582.jpg"></li>
+				<li><img src="${path}/resources/img/sideMenu/20180704788027.jpg"></li>
+				<li><img src="${path}/resources/img/sideMenu/20180903624821.jpg"></li>
+				<li><img src="${path}/resources/img/sideMenu/20180903730621.jpg"></li>
+				<li><img src="${path}/resources/img/sideMenu/20181026154178.jpg"></li>
+			</ul>		
+		</div>
+	</div>
 	</div>
 </body>
 </html>
