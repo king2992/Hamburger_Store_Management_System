@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/resources/css/header.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/personalInfomationChange.js"></script>
+<script type="text/javascript" src="/resources/js/myWritten.js"></script>
 <script type="text/javascript" src="/resources/js/MYcard.js"></script>
 <link rel="stylesheet" href="/resources/css/personalInfomationChange.css">
 <script type="text/javascript" src="/resources/js/userTakeoutReservedLIst.js"></script>
@@ -295,7 +296,7 @@
                         <thead class="reservedHead">
                             <tr>
                                 <th style="width: 130px;" class="border_right">주문날짜</th>
-                                <th style="width: 94px;" class="border_right">주문시간</th>
+                                <th style="width: 100px;" class="border_right">주문시간</th>
                                 <th style="width: 75px;" class="border_right">예약자</th>
                                 <th style="width: 173px;" class="border_right">예약자 전화번호</th>
                                 <th style="width: 300px;" class="border_right">지점</th>
@@ -353,6 +354,30 @@
 				      </div>
 				      
 			    </div>
+			    
+			    <!-- 영수증 -->
+					<div class="documentPopup">
+						<div class="documentCenter">
+						<h2>[ 주문 내역 ]</h2>
+							
+							<table class="menuTable">
+								<thead>
+									<tr>
+										<th>메뉴명</th>
+										<th>수 량</th>
+									</tr>
+								</thead>
+								<tbody class="documentTable">
+								</tbody>
+							</table>
+					
+							<div class="documentBtnCenter">
+								<button id="" type="button"
+									 class="documentClose">닫 기</button>
+							</div>
+						<!-- 	<a class="close" href="#close"></a> -->
+						</div>
+					</div>
             </div>
         </div>
         </body>

@@ -41,7 +41,7 @@ table {
     word-break: break-all;
 }
 
-/*���̵��*/
+/*占쏙옙占싱듸옙占�*/
 .aside {
     position: relative;
     float: left;
@@ -97,7 +97,7 @@ table {
     font-weight: 600;
     cursor: pointer;
 }
-/*ī���� ������*/
+/*카占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙*/
 .dropDown{
 /*    position: absolute;*/
     display: none;
@@ -121,7 +121,7 @@ table {
 .cardAdd_img2 {
     margin: 0px 5px 10px -4px;
 }
-/*������*/
+/*占쏙옙占쏙옙占쏙옙*/
 #contents {
     float: left;
     width: 720px;
@@ -144,9 +144,9 @@ table {
     font-weight:700;
     font-size: 18px;
 }
-/***********������������*************/
+/***********占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙*************/
 
-/*���̺� ����*/
+/*占쏙옙占싱븝옙 占쏙옙占쏙옙*/
 .tb_type {
     border-bottom: 1px solid #d9d9d9;
     width: 100%;
@@ -164,13 +164,13 @@ table {
     padding: 20px;
     color: #666;
 }
-/*��й�ȣ*/
+/*占쏙옙橘占싫�*/
 .input_password {
     border: 1px solid #cccccc;
     padding: 2px 0 2px 5px;
     height: 20px;
 }
-/*��й�ȣ ����*/
+/*占쏙옙橘占싫� 占쏙옙占쏙옙*/
 .pwChange {
     width: 90px;
     height: 27px;
@@ -181,7 +181,7 @@ table {
     margin-left: 12px;
     border-color:#e79210;
 }
-/*��ȭ��ȣ*/
+/*占쏙옙화占쏙옙호*/
 .first_number {
     width: 72px;
     border: 1px solid #cccccc;
@@ -195,13 +195,13 @@ table {
     height: 20px;
     width:100px;
 }
-/*�̸�*/
+/*占싱몌옙*/
 .input_name {
     border: 1px solid #cccccc;
     padding: 2px 0 2px 5px;
     height: 25px;
 }
-/*�����ϱ� ��ư*/
+/*占쏙옙占쏙옙占싹깍옙 占쏙옙튼*/
 .btn_type {
     width: 120px;
     height: 35px;
@@ -212,11 +212,11 @@ table {
     margin-top: 35px;
     display: block;
     text-align: center;
-    outline: none;
+    outline: 0;
     border-color:#e79210;
 }
 
-/***********���� �ۼ� �� ��*************/
+/***********占쏙옙占쏙옙 占쌜쇽옙 占쏙옙 占쏙옙*************/
 .myWritten-table {
     width: 100%;
     border-top: 2px solid #585e6a;
@@ -255,7 +255,7 @@ table {
     padding:10px 10px 10px 9px;
     color: #555;
 }
-/*�Խñ� �̵�*/
+/*占쌉시깍옙 占싱듸옙*/
 .boardMove {
     width: 95px;
     height: 32px;
@@ -268,7 +268,7 @@ table {
     outline: none;
     border-color:#f9a72b;
 }
-/*�Խñ� ����*/
+/*占쌉시깍옙 占쏙옙占쏙옙*/
 .boardDelete {
     width: 95px;
     height: 32px;
@@ -282,7 +282,7 @@ table {
     border-color:#e20101;
 }
 /***********TakeoutReservedLIst*************/
-/*���̺� ����*/
+/*占쏙옙占싱븝옙 占쏙옙占쏙옙*/
 .reserved-table {
     width: 100%;
     border: 2px solid #ccc;
@@ -314,7 +314,7 @@ table {
     font-size: 13px;
     padding:10px 10px 10px 9px;
 }
-/*���� Ȯ�� ����*/
+/*占쏙옙占쏙옙 확占쏙옙 占쏙옙占쏙옙*/
 .reservedCheck {
     width: 120px;
     height: 35px;
@@ -327,7 +327,7 @@ table {
     outline: none;
     border-color:#e79210;
 }
-/***********ȸ��Ż��*************/
+/***********회占쏙옙탈占쏙옙*************/
 .withdrawal ul{
     border-top: 2px solid #333333;
     border-bottom: 1px solid #a8a7a7;
@@ -340,7 +340,7 @@ table {
     font-weight: 700;
 }
 .disc{list-style-type: disc; list-style-position: inside;}
-/*ī�� ���*/
+/*카占쏙옙 占쏙옙占�*/
 .cardAdd {
 /*     margin-top: 200px; */
     width: 460px;
@@ -360,7 +360,7 @@ table {
 /*     border-radius: 10px; */
     box-shadow: 0 1px 1px 2px rgba(0.4, 0, 0, 0.4);
 }
-/*����ī�� ���*/
+/*占쏙옙占쏙옙카占쏙옙 占쏙옙占�*/
 .cardAdd h2 {
    border-bottom: 2px solid #333;
     padding-bottom: 20px;
@@ -372,7 +372,7 @@ table {
 .paymentCardAdd p1{
     display: inline-block;
 }
-/*����,ī���ȣ,������, �����ڵ�,ī�� ��й�ȣ*/
+/*占쏙옙占쏙옙,카占쏙옙占싫�,占쏙옙占쏙옙占쏙옙, 占쏙옙占쏙옙占쌘듸옙,카占쏙옙 占쏙옙橘占싫�*/
 .paymentCardAdd p1 {
     font-size: 18px;
     font-weight: 600;
@@ -382,7 +382,7 @@ table {
     border-bottom: 1px solid #999;
     padding: 15px 0 15px 0;
 }
-/*����*/
+/*占쏙옙占쏙옙*/
 .bank select {
     width: 100px;
     height:30px;
@@ -392,7 +392,7 @@ table {
     background-color: #f1f1f1;
     border: 1px solid #999;
 }
-/*ī���ȣ*/
+/*카占쏙옙占싫�*/
 .Number {
     width: 120px;
     height: 28px;
@@ -402,7 +402,7 @@ table {
     background-color: #f1f1f1;
 /*    border: 1px solid #999;*/
 }
-/*������*/
+/*占쏙옙占쏙옙占쏙옙*/
 .validity {
     color: black;
     font-size: 15px;
@@ -412,7 +412,7 @@ table {
 .Month {
     margin: 0 7px 0 20px;
 }
-/*ī����ȸ,ī���� ��ư*/
+/*카占쏙옙占쏙옙회,카占쏙옙占쏙옙 占쏙옙튼*/
 .cardButton {
     width: 80px;
     height: 35px;
@@ -431,7 +431,7 @@ table {
     margin:0 auto;
     width:fit-content;
 }
-/*MY ī��*/
+/*MY 카占쏙옙*/
  /* .MYcard {
 	display: none; Hidden by default
 	position: fixed; Stay in place
@@ -491,7 +491,7 @@ table {
          top: 30%; 
          left: 40%; 
  }
-/* �����ϱ�  */
+/* 占쏙옙占쏙옙占싹깍옙  */
 .cardDelete {
     width: 120px;
     height: 35px;
@@ -507,4 +507,98 @@ table {
     text-align: center;
     outline: none;
     border-color:#e79210;	
+}
+
+/* 영수증 출력 모달*/
+.documentPopup{
+ 		  display: none;  /* Hidden by default */
+ 	
+ 	position: fixed;  /* Stay in place */
+	 z-index: 10000;  /* Sit on top */
+	 left: 0; 
+	 top: 0;  
+	 width: 100%;  /* Full width */
+	  height: 100%; */ /* Full height */
+	 /* overflow: auto;   *//* Enable scroll if needed */
+	 background-color: rgb(0, 0, 0); /* Fallback color */
+	 background-color: rgba(0, 0, 0, 0.4);  /* Black w/ opacity */
+/* 	 position:absolute; */
+	 margin:0 auto;
+}
+.documentCenter{
+ 	  	background-color: #fefefe;
+    margin: 10% auto;  
+	padding: 25px;
+	border: 1px solid #888;
+/* 	height:40px; */
+/* 	min-width:40px; */
+	/* width:100%; */
+	width: 685px; 
+	 border-radius: 10px;
+	 transition: opacity .5s, top .5s;
+	  box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
+	  
+	/*  transform: translate(-50%, -50%); */
+}
+.documentCenter h2{text-align: center; margin-top: 20px;}
+.documentUl{margin-top:30px;}
+.menuTable  {width:90%; text-align: center; margin-left: 40px; border-bottom:2px dotted #555555;}
+.menuTable thead {width:100%; border-top:2px dotted #555555; border-bottom:2px dotted #555555;}
+.menuTable thead th{width:30%; padding: 6px; letter-spacing:5px; }
+.totalTable  {width:90%;  margin-left: 40px; text-align: justify; margin-bottom: 40px;}
+.totalTable thead {width:100%; border-bottom:2px dotted #555555;}
+.totalTable thead th{width:30%; padding: 6px; text-align: center;}
+.documentUl > li > span:nth-child(1){font-weight: 600; font-size: 17px; width: 100px; margin-right: 10px;}
+.documentBtnCenter{width:246px; margin: 0 auto;}
+.documentBtnCenter button{
+
+background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:45px;
+  font-size:20px;
+  padding:0 2em;
+  border-radius:5px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  position:relative;
+  left: 50px;
+}
+.documentBtnCenter button:hover {
+	background:#fff;
+  color:#1AAB8A;
+}
+.documentBtnCenter button:before,.documentBtnCenter button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.documentBtnCenter button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.documentBtnCenter button:hover:before,.documentBtnCenter button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+#reservedCheckList{
+	margin-bottom:50px;
+	margin-top:30px;
+}
+
+#reservedCheckList > li{
+	display:inline-block;
+	border:1px solid #e3e3e3;
+	padding:20px;
+	width:160px;
+	
 }

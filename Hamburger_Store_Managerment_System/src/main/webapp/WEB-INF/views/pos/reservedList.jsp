@@ -259,7 +259,7 @@
 					 class="documentClose">닫 기</button>
 			</div>
 		<!-- 	<a class="close" href="#close"></a> -->
-	</div>
+		</div>
 	</div>
         
 </div>
