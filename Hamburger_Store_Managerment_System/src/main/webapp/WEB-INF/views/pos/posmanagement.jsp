@@ -466,7 +466,7 @@ $(document).on('click','#cancel',function(){
       		<li id="setSideSelect">
       		<a href="#"><img src="/resources/kiosk/images/single.png"></a>
       			<p class="burgerOrSetP">세트</p>
-      		</li>
+      		</li> 
       		
       		<li id="setBurgerSelect">
       			<a href="#"><img src="/resources/kiosk/images/set.png"></a>
