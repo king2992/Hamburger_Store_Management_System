@@ -69,6 +69,10 @@ public interface PosDao {
 
 	String ordersSales(String regDate);
 
+	List<setSideDrink> getSetSide();
+
+	List<setSideDrink> getSetDrink();
+
 
 	
 

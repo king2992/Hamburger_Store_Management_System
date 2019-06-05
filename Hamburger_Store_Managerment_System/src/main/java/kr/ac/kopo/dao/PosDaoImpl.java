@@ -43,8 +43,6 @@ public class PosDaoImpl implements PosDao {
 		return sql.delete("pos.pDelete",menuId);
 	}
 
-	
-	
 	@Override
 	public void orderMenuAdd(HashMap<String, Object> map) {
 		sql.insert("pos.orderMenuAdd", map);
@@ -129,6 +127,16 @@ public class PosDaoImpl implements PosDao {
 	@Override
 	public String ordersSales(String regDate) {
 		return sql.selectOne("pos.ordersSales", regDate);
+	}
+
+	@Override
+	public List<setSideDrink> getSetSide() {
+		return sql.selectList("pos.setSideList");
+	}
+
+	@Override
+	public List<setSideDrink> getSetDrink() {
+		return sql.selectList("pos.setDrinkList");
 	}
 
 	

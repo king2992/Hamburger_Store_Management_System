@@ -184,7 +184,6 @@
 </script>
 <script type="text/javascript">
 $(document).on('click', "#trigger", function(){
-	console.log("왜 씨발 안나오냐 ");
 	 /*$(".modal-content").show();$(".modal").show();*/
 	 $(".modal").css('display','block');
 	 $(".modal").css('visibility','visible');
@@ -268,7 +267,7 @@ $(document).on('click','#cancel',function(){
 					</div>
 					<div class="crud-width">
 						<ul class="crud">
-							<li onclick="menuRemove()"  ><a href="#" data-tooltip-text="상품을 선택 후 눌러주세요.">지정취소</a></li>
+							<li onclick="menuRemove()"  ><a href="#"  data-tooltip-text="상품을 선택 후 눌러주세요.">지정취소</a></li>
 							<li onclick="allRemove()"  ><a href="#" data-tooltip-text="전체 상품을 취소합니다.">전체취소</a></li>
 							<!-- <li>수정입력</li> -->
 							<li onclick="menuCntUp()"  style="cursor:pointer;" data-tooltip-text="상품을 선택 후 눌러주세요. ">+</li>
@@ -280,10 +279,10 @@ $(document).on('click','#cancel',function(){
 				<section class="right-section">
 					<table class="right-table">
 						<tr>
-							<th class="chickenMenu">치킨 메뉴</th>
-							<th class="burgerMenu">버거 메뉴</th>
-							<th class="sideMenu" >사이드 메뉴</th>
-							<th class="drinkMenu" >음료류</th>
+							<th class="chickenMenu"><a href="#" style="color:white;">치킨 메뉴</a></th>
+							<th class="burgerMenu"><a href="#" style="color:white;">버거 메뉴</a></th>
+							<th class="sideMenu" ><a href="#" style="color:white;">사이드 메뉴</a></th>
+							<th class="drinkMenu" ><a href="#" style="color:white;">음료류</a></th>
 						</tr>
 					</table>
 <ul class="ul chicken">
@@ -308,7 +307,7 @@ $(document).on('click','#cancel',function(){
 			<c:forEach var="item" items="${burger}">
 				<input type="hidden" class="hiddenNumber" value="${item.menuId}" style="display: none; cursor:pointer;">
 				<li style="cursor:pointer;" class="pNameClick" value="${item.menuName}" data-price="${item.menuPrice}" data-number="${item.menuId}"
-					data-cnt="1" data-menu="${item.menuCategory}"><p class="pName" name="${item.menuCategory}">${item.menuName}</p>
+					data-cnt="1" data-menu="${item.menuCategory}" data-category="burger"><p class="pName" name="${item.menuCategory}">${item.menuName}</p>
 						<p class="pPrice">${item.menuPrice}</p>
 						<p id="pMenuClick">${item.menuCategory}
 						</li>
@@ -459,6 +458,55 @@ $(document).on('click','#cancel',function(){
           <input type="button" id="submitcash" onclick ="send()" value="보내기"> 
         </form> 
     </div> 
+</div>
+<div class="burgerOrSet"> 
+    <div class="burgerOrSet-content">
+    	<div class="setSelect">
+      	<ul>
+      		<li id="setSideSelect">
+      		<a href="#"><img src="/resources/kiosk/images/single.png"></a>
+      			<p class="burgerOrSetP">세트</p>
+      		</li>
+      		
+      		<li id="setBurgerSelect">
+      			<a href="#"><img src="/resources/kiosk/images/set.png"></a>
+      			<p class="burgerOrSetP">버거만</p>
+      		</li>
+      	</ul>
+      	</div>
+    </div>
+    <div class="setSideList">
+    <p>사이드 메뉴를 선택해주세요.</p>
+   <c:choose>
+		<c:when test="${setSide.size() > 0}">
+			<c:forEach var="item" items="${setSide}">
+			<ul class="setSideUl">
+				<li class="setSideItem">${item.menuName}</li>
+				<li>추가금액 :<p class="setSidePrice">${item.menuPrice}</p></li>
+			</ul>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+		</c:otherwise>
+	</c:choose>
+	<button type="button" class="burgerPrev">이 전</button>
+	</div>
+	<div class="setDrinkList">
+	<p>음료를 선택해주세요.</p>
+	<c:choose>
+		<c:when test="${setDrink.size() > 0}">
+			<c:forEach var="item" items="${setDrink}">
+			<ul class="setDrinkUl">
+				<li class="setDrinkItem">${item.menuName}</li>
+				<li>추가금액 :<p class="setDrinkPrice">${item.menuPrice}</p></li>
+			</ul>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+		</c:otherwise>
+	</c:choose>
+	<button type="button" class="sidePrev">이 전</button>
+	</div> 
 </div>
 </body>
 </html>

@@ -53,5 +53,9 @@ public interface PosService {
 
 	String ordersSales(String regDate);
 
+	List<setSideDrink> getSetSide();
+
+	List<setSideDrink> getSetDrink();
+
 
 }

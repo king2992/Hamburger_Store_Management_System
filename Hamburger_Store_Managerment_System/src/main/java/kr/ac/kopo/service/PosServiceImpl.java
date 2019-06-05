@@ -105,6 +105,14 @@ public class PosServiceImpl implements PosService {
 	public String ordersSales(String regDate) {
 		return posdao.ordersSales(regDate);
 	}
+	@Override
+	public List<setSideDrink> getSetSide() {
+		return posdao.getSetSide();
+	}
+	@Override
+	public List<setSideDrink> getSetDrink() {
+		return posdao.getSetDrink();
+	}
 	
 
 }

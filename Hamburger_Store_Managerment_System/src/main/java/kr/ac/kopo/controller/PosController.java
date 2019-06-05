@@ -39,11 +39,14 @@ public class PosController {
 		List<Menu> burger = posservice.getBurgerList();
 		List<Menu> sideMenu = posservice.getSideMenuList();
 		List<Menu> drinkMenu = posservice.getDrinkMenuList();
-		
+		List<setSideDrink> setSide = posservice.getSetSide();
+		List<setSideDrink> setDrink = posservice.getSetDrink();
 		model.addAttribute("chicken",chicken);
 		model.addAttribute("burger",burger);
 		model.addAttribute("sideMenu",sideMenu);
 		model.addAttribute("drinkMenu",drinkMenu);
+		model.addAttribute("setSide",setSide);
+		model.addAttribute("setDrink",setDrink);
 		
 		return path + "posmanagement";
 	}

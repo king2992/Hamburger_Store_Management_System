@@ -75,5 +75,10 @@
 	<select id="ordersSales" resultType="String">
 		select sum(pay_total) from orders where reg_date = #{regDate}
 	</select>
-	
+	<select id="setSideList" resultType="setSideDrink">
+		select menu_name, menu_price from set_side_drink where menu_category = "setSide"
+	</select>
+	<select id="setDrinkList" resultType="setSideDrink">
+		select menu_name, menu_price from set_side_drink where menu_category = "setDrink"
+	</select>
 </mapper>

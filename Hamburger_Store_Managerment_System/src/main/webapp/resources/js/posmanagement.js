@@ -4,12 +4,15 @@
 	var menuNameArray = new Array();
 	var menuCntArray = new Array();
 	$(document).ready(function() {
+		localStorage.clear();
 		$(".chicken").show();
 		$(".burger").hide();
 		$(".side").hide();
 		$(".drink").hide();
 		$(".setModal").hide();
 		$(".modal").hide();
+		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
+		$(".setSideList").hide();$(".setDrinkList").hide();
 		$(document).on("click", ".moneyImg",function(){
 			var thisMoney = $(this).data("money");
 			var ReceiveMoney = $("#payTotal").val();
@@ -56,6 +59,7 @@
 			var td4 = document.createElement("td");
 			var tr1 = document.createElement("tr");
 			var menuName = $(this).attr("value");
+			
 			tr1.setAttribute("class", "menuListTr");
 			tr1.style = "cursor:pointer";
 			td1.innerHTML = $(this).attr("data-number");
@@ -69,7 +73,12 @@
 			td4.innerHTML = $(this).attr("data-price");
 			td4.setAttribute("class", "item-price");
 			td4.setAttribute("data-price",$(this).attr("data-price"));
-			
+			localStorage.setItem("버거", menuName);
+				//선택 한 놈이 햄버거이면 실행하라
+				if($(this).data("category") == "burger"){
+					$(".burgerOrSet").show();$(".burgerOrSet-content").show();
+				}
+				
 				if($("[name='"+menuName+"']").length == 0 ){
 					$("#orderList").append(tr1);
 					tr1.append(td1);
@@ -86,12 +95,99 @@
 			var menuId = $(this).attr('data-number');
 						
 			if ($(".menuDelete").length < 1) {
-				$('.deleteUpdate').append('<li class="menuDelete" id="menuDelete" >메뉴삭제</li>');
+				$('.deleteUpdate').append('<li class="menuDelete" id="menuDelete">메뉴삭제</li>');
 			}
-			$("#menuDelete").attr("onclick", "pDelete('"+menuId+"')");
-			 menuItemPriceTotal();
-		});
-
+			
+	$("#menuDelete").attr("onclick", "pDelete('"+menuId+"')");
+		menuItemPriceTotal();
+	});
+		//세트메뉴를 선택했을 때 
+	$("#setSideSelect").on("click", function(){
+		$(".setSideList").show(); // 세트 사이드 리스트를 보여준다
+		$(".setSelect").hide(); // 세트인지 버거인지 선택하는 영역은 숨긴다
+	})
+		//사이드 메뉴 골랐을 때
+	$(".setSideUl").on("click", function(){
+		var menuName = $(this).children(".setSideItem").text();//사이드 메뉴 누른 놈에 메뉴 이름
+		var menuPrice = $(this).children("li").children(".setSidePrice").text();//사이드 메뉴 누른 놈에 메뉴 가격
+		var tr1 = document.createElement("tr");
+		tr1.setAttribute("class", "menuListTr");
+		
+		var tdNull1 = document.createElement("td");
+		var tdNull2 = document.createElement("td");
+		
+		tdNull2.innerHTML = "1";
+		tdNull2.setAttribute("class", "menuListCnt");
+		
+		var td1 = document.createElement("td");
+		td1.innerHTML = menuName ; 
+		td1.setAttribute("id", menuName);
+		td1.setAttribute("class", "menuListName");
+		
+		var td2 = document.createElement("td");
+		td2.innerHTML = menuPrice ; 
+		td2.setAttribute("class", "item-price");
+		
+		$("#orderList").append(tr1);
+		tr1.append(tdNull1);
+		tr1.append(td1);
+		tr1.append(tdNull2);
+		tr1.append(td2);
+		localStorage.setItem("사이드", menuName);
+		menuItemPriceTotal();
+		$(".setSideList").hide();$(".setDrinkList").show();
+	});
+	$(".burgerPrev").on("click", function(){
+		var localMenuName = localStorage.getItem("버거");
+		var menuListTd = $("#"+localMenuName+"");
+		menuListTd.parent().remove();
+		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
+	})
+	$(".sidePrev").on("click", function(){
+		var localMenuName = localStorage.getItem("사이드");
+		var menuListTd = $("#"+localMenuName+"");
+		menuListTd.parent().remove();
+		$(".setDrinkList").hide();$(".setSideList").show();
+	})
+		//사이드 음료 골랐을 때
+	$(".setDrinkUl").on("click", function(){
+		var menuName = $(this).children(".setDrinkItem").text();//사이드 메뉴 누른 놈에 메뉴 이름
+		var menuPrice = $(this).children("li").children(".setDrinkPrice").text();//사이드 메뉴 누른 놈에 메뉴 가격
+		
+		var tr1 = document.createElement("tr");
+		tr1.setAttribute("class", "menuListTr");
+		
+		var tdNull1 = document.createElement("td");
+		var tdNull2 = document.createElement("td");
+		tdNull2.innerHTML = "1";
+		tdNull2.setAttribute("class", "menuListCnt");
+		
+		var td1 = document.createElement("td");
+		td1.innerHTML = menuName ; 
+		td1.setAttribute("class", "menuListName");
+		
+		var td2 = document.createElement("td");
+		td2.innerHTML = menuPrice ; 
+		td2.setAttribute("class", "item-price");
+		
+		$("#orderList").append(tr1);
+		tr1.append(tdNull1);
+		tr1.append(td1);
+		tr1.append(tdNull2);
+		tr1.append(td2);
+		menuItemPriceTotal();
+		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
+		$(".setSideList").show();$(".setDrinkList").hide();
+	});
+		//버거만을 선택했을 때 에는 모달 창 닫아버린다
+	$("#setBurgerSelect").on("click", function(){
+		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
+	})
+		//세트 or 버거 선택 창 닫기
+	$(".burgerOrSetCancle").on("click", function(){
+		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
+	})
+	
 	$('.pNameClick').each( function(index, value) {
 			$(this).click( function() {
 				$(this).attr("id", "selected");
