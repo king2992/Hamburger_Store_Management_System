@@ -11,19 +11,27 @@
 <style>
 *{margin:0; padding:0;}
 ul li{list-style: none; display:inline-block;}
+	body{background:black; color:white;}
 	.container{width:100%; margin: 0 auto;}
 	.center-wrap{width: 1024px; margin: 0 auto;}
-	.center-wrap > h1 {text-align: center; margin-top:60px; }
-	#orderListCenter{display: table; width:100%; border:1px solid #dddddd; margin-top:60px;}
+	.center-wrap > h1 {text-align: center;}
+	#orderListCenter{display: table; width:100%; border:2px solid #dddddd; margin-top:60px;}
 	/* #orderList li:nth-child(4n){} */
-	#orderListCenter > li{ font-size:35px; width:50%; display:table-cell; text-align: center; border-right:1px solid #dddddd;}
+	#orderListCenter > li{ font-size:35px;  display:table-cell; text-align: center; border-right:1px solid #dddddd;}
 /* 	#orderList li:nth-child(4n) {border-right:1px solid #dddddd;}
 	#orderList li:nth-child(3n) {border-left:1px solid #dddddd;}
 	#orderList li:nth-child(6n){border:none;} */
-	#orderListCenter h1{font-size: 40px; border-bottom:1px solid #dddddd; padding-bottom:20px; padding-top:20px; background-color: #eeeeee; width:100%; color:#808080; display:inline-block; text-align: center;}
+	#orderListCenter h1{font-size: 40px;  padding-top:20px; background-color: #eeeeee; width:100%; color:#808080; display:inline-block; text-align: center;}
+	#orderListCenter p{font-size: 18px; border-bottom:1px solid #dddddd; padding-bottom:20px; padding-top:20px; background-color: #eeeeee; width:100%; color:#808080; display:inline-block; text-align: center;}
 	/* #orderList h1:first-child {border-right:1px solid #dddddd;} */
-	#orderListReady li,#orderListFinish li{width:48%; text-align: center; float: left; padding-top:30px; padding-bottom:30px;}
-	
+	#orderListHead{width:37%;}
+	#orderListFinish li{width:47%; padding-top:5px; padding-bottom:5px; }
+	#orderListFinish li{color:yellow; font-weight : 600; font-size : 100px; display : block; position:relative; left:100px; border-top : 2px solid #dddddd;}
+	#orderListFinish li:nth-child(1) {border:none;}
+	#orderListReady li{width:33%; padding-top:5px; padding-bottom:5px; }
+	#orderListReady li{font-weight:600; font-size : 100px;  border-top : 2px solid #dddddd;}
+	#orderListReady li:nth-child(1) {border:none;}
+	#orderListReady li:nth-child(2) {border:none;}
 </style>
 </head>
 <body>
@@ -33,34 +41,36 @@ ul li{list-style: none; display:inline-block;}
 <!-- 	<ul id="orderList">
 	</ul> -->
 	<ul id="orderListCenter">
-		<li>
-		<h1>제품을<br>준비중 입니다.</h1>
-		<ul id="orderListReady">
-			<c:choose>
-		<c:when test="${list.size() > 0 }">
-			<c:forEach items="${list}" var="list">
-			<li>${list.orderId}</li>
-			</c:forEach>
-			</c:when>
-			<c:otherwise>
-			</c:otherwise>
-			</c:choose>
-		</ul>
-		</li>
-		
-		<li>
-		<h1>주문하신<br>제품이 나왔습니다.</h1>
-		<ul id="orderListFinish">
+		<li id="orderListHead">
+			<h1>준비 완료 | Ready</h1>
+			<p>영수증 상단의 주문번호를 확안하세요.</p>
+			<ul id="orderListFinish">
 				<c:choose>
-		<c:when test="${successList.size() > 0 }">
-			<c:forEach items="${successList}" var="list">
-			<li>${list.orderId}</li>
-			</c:forEach>
-			</c:when>
-			<c:otherwise>
-			</c:otherwise>
-			</c:choose>
-		</ul>
+					<c:when test="${successList.size() > 0 }">
+						<c:forEach items="${successList}" var="list">
+					<li>${list.orderId}</li>
+						</c:forEach>
+					</c:when>
+						<c:otherwise>
+						</c:otherwise>
+				</c:choose>
+			</ul>
+		</li>
+		<li>
+			<h1>준비 중 | Preparing</h1>
+			<p>음식이 준비중이에요!</p>
+			<ul id="orderListReady">
+				<c:choose>
+					<c:when test="${list.size() > 0 }">
+						<c:forEach items="${list}" var="list">
+					<li>${list.orderId}</li>
+						</c:forEach>
+					</c:when>
+						<c:otherwise>
+						</c:otherwise>
+				</c:choose>
+			</ul>
+		</li>
 	</ul>
 	</div>
 	</div>
