@@ -46,6 +46,14 @@
     position: absolute;
     left: -225%;
 }
+#reply_add{
+    padding: 10px 20px 10px 20px;
+    width: 76%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-left:15px;
+}
+.replyBtn{text-align: center; width:86px !important; vertical-align: bottom;}
 </style>
 </head>
 <body>

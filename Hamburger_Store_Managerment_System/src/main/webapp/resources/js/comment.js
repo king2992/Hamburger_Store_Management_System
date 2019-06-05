@@ -26,9 +26,9 @@ function commentList(){
             $.each(data.result, function(index, value){
 //            	대댓글일 경우 출력폼
             	if (value.coDepth == 1) {
-            		a += '<img style="position:relative; top:55px;" src="/resources/images/comment.png">';
+            		a += '<img style="position:relative; top:55px; left:20px;" src="/resources/images/comment.png">';
             		a += '<div style="position:relative; left:55px;">'
-            		a += '<div class="comment_content" style="border-bottom:1px solid darkgray; margin-bottom:10px;">';
+            		a += '<div class="comment_content">';
             		a += '<div class="commentInfo'+value.coNumber+'">'+'작성일: '+value.coDate+'/ 작성자: '+value.userId;
             		a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정</a>';
             		a += '<a onclick="commentDelete('+value.coNumber+');">삭제</a></div>';
@@ -79,8 +79,8 @@ function commentInsert(insertData){
 function commentUpdate(coNumber, content){
     var a ='';
     a += '<div class="input-group">';
-    a += '<input type="text" class="form-control" name="content_'+coNumber+'" value="'+content+'"/>';
-    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUp('+coNumber+');">수정</button> </span>';
+    a += '<input type="text" class="form-control" style="width:500px; flex:inherit;" name="content_'+coNumber+'" value="'+content+'"/>';
+    a += '<span class="input-group-btn"><button class="btn btn-default" type="button"  onclick="commentUp('+coNumber+');">수정</button> </span>';
     a += '</div>';
     $('.commentContent'+coNumber).html(a);
 }
@@ -120,9 +120,9 @@ function commentReply(coGroup) {
 	re += '<input type="hidden" name="coGroup_'+coGroup+'" value="'+coGroup+'">';
 	
 	re += '<div>';
-	re += '<img style="float:left; position:relative; top:25px;" src="/resources/images/reply.gif">';
-	re += '<textarea class="reply" id="reply_add" rows="10" cols="10" placeholder="답글을 입력하세요"></textarea>';
-	re += '<span><button class="replyBtn" type="button" onclick="replyAdd('+coGroup+')">답글등록</button><span>';
+	re += '<img style="float:left; position:relative; top:13px;" src="/resources/images/comment.png">';
+	re += '<input class="reply" id="reply_add" placeholder="답글을 입력하세요">';
+	re += '<span><button class="replyBtn btn btn-danger" type="button" onclick="replyAdd('+coGroup+')">답글등록</button><span>';
 	re += '</div>';
     $('.reply'+coGroup).html(re);
 	console.log(coGroup+'>>>>>>>>>>>>>>>>>>대댓글번호');
