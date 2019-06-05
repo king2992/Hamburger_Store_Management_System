@@ -755,7 +755,7 @@ a.animated-button.victoria-one:after {
 			id="formSubmit" name="formValue">
 			<ul style="list-style: none;" class="reservedCheck">
 				<li class="space">${sessionScope.places}<input type="hidden" name="frcName" value="${sessionScope.places}"></li>
-				<li><span class="span">아이디  <input type="text" name="userId" readonly="readonly" value="${sessionScope.user}" class="input"></span></li>
+				<li><span class="span">아이디  <input type="text" name="userId" id="userId" readonly="readonly" value="${sessionScope.user}" class="input"></span></li>
 				<li><span class="span">이름  <input type="text" name="reservedName" class="input" id="orderUserName"></span></li>
 				<li><span class="span">전화번호  <input type="text" name="reservedPhone" class="input" id="orderUserPhone"></span></li>
 				<li><span class="span">날짜</span>  <span id="dateCheck"></span></li>

@@ -708,7 +708,10 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		}
 	});
 	$(document).on('click', '#orderModal', function(){
-		
+		   var userId = $("#userId").val();
+		   $.ajax({
+			   
+		   })
 		   if($(".order-item").length == 0 && $(".set-order-item").length == 0 ){
 				card2();
 				$('.popup').css('display','none');
