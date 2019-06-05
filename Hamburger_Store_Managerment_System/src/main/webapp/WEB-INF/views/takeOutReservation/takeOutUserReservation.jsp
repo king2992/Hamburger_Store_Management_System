@@ -346,7 +346,7 @@ a.animated-button.victoria-one:after {
   <table class="type09">
             <thead>
             <tr>
-                <th scope="cols" colspan="3">주문목록</th>
+                <th scope="cols" colspan="3">주문정보</th>
             </tr>
             </thead>
             <tbody>
@@ -581,7 +581,7 @@ a.animated-button.victoria-one:after {
 				<h1 class="titlecash">무통장 입금</h1> 
           		<ul>
           			<li>은행명 : 신한은행</li>
-          			<li>계좌번호 : 110-397-061-375</li>
+          			<li>계좌번호 : 110-397-061375</li>
           			<li class="modalContentShowPay"></li>
           		</ul> 
           <a href="#" id="submitcash" class="buttonsubmit">보내기</a> <!-- <input type="button" id="submitcash" value="보내기"> --> 

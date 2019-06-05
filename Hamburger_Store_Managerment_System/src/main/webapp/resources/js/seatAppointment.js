@@ -579,6 +579,11 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		 
 		 $("#"+menuName+"").text("수량 :" + cnt);
 		 $("#order"+menuName+"").text(cnt);
+		
+		 var documentCnt = document.getElementById("documentCnt"+menuName+"");
+			
+		 documentCnt.innerHTML = cnt;
+		 console.log(cnt);
 		 
 		 totalPrice();
 	}
@@ -648,7 +653,9 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 	})
 	//수량 1 증가
 	$(document).on('click', '.btnAddMenuCnt', function(e) {
+		
 		e.preventDefault();
+		
 		setMenuCnt($(this).parents('.order-item'), 1,$(this).parents('.order-item').data("id"));
 		
 		var menuCnt = $(this).siblings('span').children('.menuCnt').text();
@@ -656,7 +663,9 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		var menuName = $(this).parent().parent().data("id");
 		
 		var documentCnt = document.getElementById("documentCnt"+menuName+"");
+	
 		documentCnt.innerHTML = menuCnt;
+		
 		
 	});
 	//수량 1 감소
@@ -669,6 +678,7 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		var menuName = $(this).parent().parent().data("id");
 		
 		var documentCnt = document.getElementById("documentCnt"+menuName+"");
+		
 		documentCnt.innerHTML = menuCnt;
 	});
 	//추가 된 상품 삭제
@@ -688,8 +698,9 @@ function setDrinkAdd(uniqId, menuName, menuPrice,  menuImgUrl) {
 		$(this).parents('.order-item').remove();
 		var menuName = $(this).data("menuname");
 		var orderMenuName = $("#order"+menuName+"");
-		console.log(orderMenuName);
+		var documentMenuName = $("#document"+menuName+"");
 		orderMenuName.remove();
+		documentMenuName.remove();
 		priceSumAnimate();
 		totalPrice();
 		if($(".order-item").length == 0){
