@@ -182,16 +182,17 @@
         </div>
     </div>
 <!-- 세트 모달 부분     -->
-	<div class="modal" id="set" style="display:inline-block; max-width:none;">
-		<div class="set_div"><h3>세트디저트 1개를 선택해 주세요.</h3></div>
+	<div class="modal" id="set" style="/* display:inline-block; */ max-width:1000px; margin:0; padding:0;">
+	
+		<div class="set_div"><h3 style="padding:15px;">세트디저트 1개를 선택해 주세요.</h3></div>
 		<div>
-			<ul class="modal_set">
+			<ul class="modal_set" style="text-align: center;">
 				<li><button class="set_btn" type="button"><h4>SET.사이드</h4></button></li>
 				<li><button class="set_btn" type="button"><h4>SET.드링크</h4></button></li>
 			</ul>
 		</div>
-		<div>
-		<div class="set_side">
+		<div class="set_wrap">
+		<div class="set_side" id="hide">
 			<ul class="set_side_ul">
 				<li><img src="${path}/resources/img/sideMenu/20170331173889.jpg"></li>
 				<li><img src="${path}/resources/img/sideMenu/20170821851383.jpg"></li>
@@ -203,7 +204,20 @@
 				<li><img src="${path}/resources/img/sideMenu/20181026154178.jpg"></li>
 			</ul>		
 		</div>
+		<div class="set_drink" id="hide">
+			<ul class="set_side_ul">
+				<li><img src="${path}/resources/img/drink/20150223992319.jpg"></li>
+				<li><img src="${path}/resources/img/drink/20161129735987.jpg"></li>
+				<li><img src="${path}/resources/img/drink/20170825874361.jpg"></li>
+				<li><img src="${path}/resources/img/drink/20180220231170.jpg"></li>
+				<li><img src="${path}/resources/img/drink/20180220239529.jpg"></li>
+				<li><img src="${path}/resources/img/drink/20180416547805.jpg"></li>
+				<li><img src="${path}/resources/img/drink/20181113571936.jpg"></li>
+				<li><img src="${path}/resources/img/drink/20181113609096.jpg"></li>
+			</ul>
+		</div>
 	</div>
 	</div>
+	
 </body>
 </html>

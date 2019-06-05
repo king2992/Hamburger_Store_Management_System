@@ -173,7 +173,17 @@ $(document).ready(function(){
 			$('#total_price').text(total);
 		};
 		
-		$('.modal').removeAttr('max-width');
+		$(document).ready(function(){
+			$('#hide').hide();
+				$('.modal_set li').click(function(){
+					$('#hide').show();
+					var list = $(this).index();
+					$('.modal_set li').removeClass('set');
+					$(this).addClass('set');
+					$('.set_wrap > div > ul').hide();
+					$('.set_wrap > div > ul').eq(list).show();
+				});
+		});
 });
 
 
