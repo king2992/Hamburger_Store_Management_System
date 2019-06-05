@@ -934,6 +934,7 @@ ul {
 .comment_inputwarp {
     padding: 10px;
     background-color: #e8e8e8;
+    overflow: hidden;
 }
 
 .comment_inputwarp input {
@@ -959,11 +960,13 @@ ul {
     height: auto;
     border-top: 1px solid #ccc;
     padding: 15px 15px 15px 15px;
+   
 }
 
+
 .comment_content img {
-    width: 45px;
-    height: 45px;
+ /*    width: 45px;
+    height: 45px; */
     border-radius: 8px;
     margin-right: 20px;
 }
