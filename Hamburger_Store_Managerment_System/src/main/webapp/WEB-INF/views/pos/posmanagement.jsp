@@ -491,6 +491,14 @@ $(document).on('click','#cancel',function(){
 	</c:choose>
 	<button type="button" class="burgerPrev">이 전</button>
 	</div>
+	<div class="sideFlavorSelect">
+		<p>양념감자 맛을 선택 해 주세요.</p>
+		<ul>
+			<li class="flavor-item">양파맛</li>
+			<li class="flavor-item">칠리맛</li>
+			<li class="flavor-item">치즈맛</li>
+		</ul>
+	</div>
 	<div class="setDrinkList">
 	<p>음료를 선택해주세요.</p>
 	<c:choose>

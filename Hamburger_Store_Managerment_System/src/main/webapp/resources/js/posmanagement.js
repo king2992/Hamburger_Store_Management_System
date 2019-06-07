@@ -12,7 +12,7 @@
 		$(".setModal").hide();
 		$(".modal").hide();
 		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
-		$(".setSideList").hide();$(".setDrinkList").hide();
+		$(".setSideList").hide();$(".setDrinkList").hide();$(".sideFlavorSelect").hide();
 		$(document).on("click", ".moneyImg",function(){
 			var thisMoney = $(this).data("money");
 			var ReceiveMoney = $("#payTotal").val();
@@ -52,7 +52,9 @@
 		$(document).on('click', '.set-cancel', function(){
 			$(".setModal").hide();
 		})
+		//포스기에 우측에 상품을 클릭 했을 때
 		$(document).on( "click", ".pNameClick", function() {
+			localStorage.clear();
 			var td1 = document.createElement("td");
 			var td2 = document.createElement("td");
 			var td3 = document.createElement("td");
@@ -74,9 +76,14 @@
 			td4.setAttribute("class", "item-price");
 			td4.setAttribute("data-price",$(this).attr("data-price"));
 			localStorage.setItem("버거", menuName);
+			console.log($(this).data("category"));
 				//선택 한 놈이 햄버거이면 실행하라
 				if($(this).data("category") == "burger"){
-					$(".burgerOrSet").show();$(".burgerOrSet-content").show();
+					$(".burgerOrSet").show();$(".burgerOrSet-content").show();// 세트인지 버거인지 선택 하는 모달
+					$(".setSideList").hide();
+					$(".setSelect").show();
+					td2.setAttribute("id", "set");
+					td1.setAttribute("rowspan", "3");
 				}
 				
 				if($("[name='"+menuName+"']").length == 0 ){
@@ -101,19 +108,27 @@
 	$("#menuDelete").attr("onclick", "pDelete('"+menuId+"')");
 		menuItemPriceTotal();
 	});
-		//세트메뉴를 선택했을 때 
+		
 	$("#setSideSelect").on("click", function(){
 		$(".setSideList").show(); // 세트 사이드 리스트를 보여준다
+		var menuName = $("#set").text();
+		setNameAdd(menuName);
 		$(".setSelect").hide(); // 세트인지 버거인지 선택하는 영역은 숨긴다
 	})
+	
+	//세트메뉴를 선택했을 때 
+	function setNameAdd(menuName){
+		$("#set").text(menuName+"set");
+	}
 		//사이드 메뉴 골랐을 때
 	$(".setSideUl").on("click", function(){
+		
 		var menuName = $(this).children(".setSideItem").text();//사이드 메뉴 누른 놈에 메뉴 이름
 		var menuPrice = $(this).children("li").children(".setSidePrice").text();//사이드 메뉴 누른 놈에 메뉴 가격
 		var tr1 = document.createElement("tr");
 		tr1.setAttribute("class", "menuListTr");
 		
-		var tdNull1 = document.createElement("td");
+//		var tdNull1 = document.createElement("td");
 		var tdNull2 = document.createElement("td");
 		
 		tdNull2.innerHTML = "1";
@@ -129,23 +144,40 @@
 		td2.setAttribute("class", "item-price");
 		
 		$("#orderList").append(tr1);
-		tr1.append(tdNull1);
+//		tr1.append(tdNull1);
 		tr1.append(td1);
 		tr1.append(tdNull2);
 		tr1.append(td2);
 		localStorage.setItem("사이드", menuName);
 		menuItemPriceTotal();
-		$(".setSideList").hide();$(".setDrinkList").show();
+		//선택 한 사이드가 양념감자이면 
+		if(menuName == "양념감자"){
+			$(".sideFlavorSelect").show();
+			$(".setSideList").hide();
+		}else{
+			$(".setSideList").hide();$(".setDrinkList").show();
+		}
+		
 	});
+	$(".flavor-item").on("click", function(){
+		var flavorItem = $(this).text(); //양념감자 맛 선택 한 놈
+		var sideMenu = localStorage.getItem("사이드"); //상품리스트에 추가하기 위한 변수
+		localStorage.setItem("양념감자맛", flavorItem);// localStorage에 세팅
+		$("#"+sideMenu+"").append(flavorItem);//좌측 상품리스트 양념감자 옆에 맛 표시
+		$(".sideFlavorSelect").hide();$(".setDrinkList").show();//맛 선택 창 숨기고 음료 선택 창 show
+	})
+	
 	$(".burgerPrev").on("click", function(){
 		var localMenuName = localStorage.getItem("버거");
 		var menuListTd = $("#"+localMenuName+"");
+		
 		menuListTd.parent().remove();
 		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
 	})
 	$(".sidePrev").on("click", function(){
 		var localMenuName = localStorage.getItem("사이드");
 		var menuListTd = $("#"+localMenuName+"");
+		localStorage.removeItem("사이드");
 		menuListTd.parent().remove();
 		$(".setDrinkList").hide();$(".setSideList").show();
 	})
@@ -157,7 +189,7 @@
 		var tr1 = document.createElement("tr");
 		tr1.setAttribute("class", "menuListTr");
 		
-		var tdNull1 = document.createElement("td");
+//		var tdNull1 = document.createElement("td");
 		var tdNull2 = document.createElement("td");
 		tdNull2.innerHTML = "1";
 		tdNull2.setAttribute("class", "menuListCnt");
@@ -171,11 +203,16 @@
 		td2.setAttribute("class", "item-price");
 		
 		$("#orderList").append(tr1);
-		tr1.append(tdNull1);
+//		tr1.append(tdNull1);
 		tr1.append(td1);
 		tr1.append(tdNull2);
 		tr1.append(td2);
 		menuItemPriceTotal();
+		
+		localStorage.setItem("음료", menuName);
+		
+		$("#set").removeAttr("id");//set라는 텍스트를 추가 하기 위한 아이디 삭제
+		
 		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
 		$(".setSideList").show();$(".setDrinkList").hide();
 	});
@@ -418,6 +455,7 @@
 		
 		console.log(menuNameArray);
 		menuItemPriceTotal();
+		localStorage.clear();
 	}
 	function menuRemove(){
 		$("#menuListSelected").remove();
