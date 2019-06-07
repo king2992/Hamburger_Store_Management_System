@@ -284,6 +284,9 @@ a.animated-button.victoria-one:after {
 	-webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
 	transform: translateX(-50%) translateY(-50%) rotate(-25deg);
 }
+.dropdown-item:hover{color:#fff !important; background:#ffc107 !important; }
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus{background: transparent;}
+.nav>li>a:hover, .nav>li>a:focus{background:transparent;}
 
 </style>
 </head>
@@ -311,7 +314,7 @@ a.animated-button.victoria-one:after {
                     <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
                         <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
                     </a>
-                    <div class="dropdown-menu menu-dropmenu">
+                    <div class="dropdown-menu menu-dropmenu" style="left: -93px;">
                         <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
                             <c:choose>
                   <c:when test="${sessionScope.user eq null }">
@@ -369,7 +372,7 @@ a.animated-button.victoria-one:after {
 			<div class="left-box">
 				<div id="orderList">
 					<table id="orderListUl" class="table">
-					 <tr>
+					 <tr class="orderListTr">
 					 <th>상품정보</th>
 					 <th>가격</th>
 					 <th>수량</th>
@@ -500,15 +503,16 @@ a.animated-button.victoria-one:after {
 					</c:choose>
 				</ul>
 			</div>
-				<div class="order-center">
-					<a href="#login_form" class="snip1535" id="orderModal">주 문</a>
-				</div>
+				
 		</div>
 		<div id="reservedTimeList"></div>
 		<div class="orderListMsg">
 			<ul id="msg">
 			</ul>
 		</div>
+		<div class="order-center">
+					<a href="#login_form" class="snip1535" id="orderModal">주 문</a>
+				</div>
 		 <div style="clear: both; position: relative;">
         
         <div>

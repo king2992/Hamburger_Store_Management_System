@@ -201,6 +201,7 @@ ul,p{margin:0; padding:0;}
 .content_body {
     margin-top: 25px;
     min-height: 680px;
+    padding-bottom: 5%;
 }
 
 .content_buttonline {
@@ -236,6 +237,7 @@ ul,p{margin:0; padding:0;}
     /*border: 1px solid red;*/
     height: 77%;
     margin-top: 1%;
+    margin-bottom: 2%;
   /*   padding: 0 5% 0 5%; */
 }
 
@@ -533,10 +535,10 @@ ul {
 }
 
 .content_pagenation {
-    margin-left: 40%;
-    margin-top: 5%;
+  /*   margin-left: 40%;
+    margin-top: 5%; */
 }
-
+.paginationSub{list-style: none; text-align: center; margin:0 auto;}
 
 /*
  *    스터디 게시판
@@ -959,10 +961,13 @@ ul {
 .comment_content {
     height: auto;
     border-top: 1px solid #ccc;
-    padding: 15px 15px 15px 15px;
+   /*  padding: 15px 15px 15px 15px; */
+   padding-top:20px;
+   padding-left: 8px;
+   line-height: 30px;
    
 }
-
+.comment_content a{cursor: pointer; margin-left: 10px; }
 
 .comment_content img {
  /*    width: 45px;

@@ -4,6 +4,7 @@
     list-style: none;
     text-decoration: none;
     }
+.reservedCheck:hover{text-decoration: none !important;}
 
 body{
     font-family: 'S-Core Dream', NanumGothic;
@@ -550,8 +551,8 @@ table {
 .totalTable thead th{width:30%; padding: 6px; text-align: center;}
 .documentUl > li > span:nth-child(1){font-weight: 600; font-size: 17px; width: 100px; margin-right: 10px;}
 .documentBtnCenter{width:246px; margin: 0 auto;}
-.documentBtnCenter button{
 
+.documentBtnCenter button{
 background:#1AAB8A;
   color:#fff;
   border:none;
@@ -565,6 +566,7 @@ background:#1AAB8A;
   outline:none;
   position:relative;
   left: 50px;
+  margin-top: 25px;
 }
 .documentBtnCenter button:hover {
 	background:#fff;
@@ -590,15 +592,9 @@ background:#1AAB8A;
   width:100%;
   transition:800ms ease all;
 }
-#reservedCheckList{
-	margin-bottom:50px;
-	margin-top:30px;
+.modal a.close-modal{
+	width: 0 !important;
 }
-
-#reservedCheckList > li{
-	display:inline-block;
-	border:1px solid #e3e3e3;
-	padding:20px;
-	width:160px;
-	
+.menuTable th{
+	border: 1px solid #dddddd;
 }

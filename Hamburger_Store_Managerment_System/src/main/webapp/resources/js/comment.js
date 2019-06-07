@@ -26,9 +26,9 @@ function commentList(){
             $.each(data.result, function(index, value){
 //            	대댓글일 경우 출력폼
             	if (value.coDepth == 1) {
-            		a += '<img style="position:relative; top:55px; left:20px;" src="/resources/images/comment.png">';
-            		a += '<div style="position:relative; left:55px;">'
-            		a += '<div class="comment_content">';
+            		a += '<img style="position:relative; top:55px;" src="/resources/images/comment.png">';
+            		a += '<div style="position:relative;">'
+            		a += '<div class="comment_content" style="margin-left:40px;">';
             		a += '<div class="commentInfo'+value.coNumber+'">'+'작성일: '+value.coDate+'/ 작성자: '+value.userId;
             		a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정</a>';
             		a += '<a onclick="commentDelete('+value.coNumber+');">삭제</a></div>';
