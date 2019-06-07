@@ -240,5 +240,5 @@ nav ul li:first-child { border-left:none; }
     border: 1px solid #e3e3e3;
     position: relative;
     left: 50px;}
- .set_side {max-width:900px; margin: 0 auto;}
+ .set_wrap div {width:900px; margin: 0 auto;}
  
