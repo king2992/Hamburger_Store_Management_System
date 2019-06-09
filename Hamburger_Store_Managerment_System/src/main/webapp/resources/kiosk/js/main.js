@@ -3,6 +3,8 @@
  */
 
 // 주문 결제 완료 alert
+
+
 function payment() {
 	let timerInterval
 	Swal.fire({
@@ -70,6 +72,25 @@ function swal3() {
 		  footer: '<a href>메뉴로  돌아가기</a>'
 		});
 };
+
+// 세트 메뉴 확인 취소 선택
+function swal4() {
+Swal.fire({
+	  title: '주문내역이 지워집니다.<br/>진행하겠습니까?',
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: '지울겨 왜'
+	}).then((result) => {
+	  if (result.value) {
+	    Swal.fire(
+	      '주문내역이 삭제 되었습니다!',
+	      'success'
+	    )
+	  }
+	});
+};
 // Tab 메뉴
 $(document).ready(function(){
 	$('.hide').hide();
@@ -90,7 +111,7 @@ $(document).ready(function(){
 // - = .m_btn
 // x = .menu_del
 		$(function(){   
-			$('.tab_cont li img').on('click', function() {
+			$('.tab_cont li img,.set_wrap li img').on('click', function() {
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
 				var cnt = $('#menuname'+menuname+'').siblings('.td2').children('.cnt'+menuname+'').text();
@@ -110,7 +131,7 @@ $(document).ready(function(){
 					return;
 				} else {
 				$('.table_tr2').append(
-						'<tr>'+
+						'<tr class="test">'+
 						'<td id="menuname'+menuname+'">'+menuname+'</td>'+
 						'<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
 						'<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">X</button>'+'</td>'+
@@ -183,6 +204,34 @@ $(document).ready(function(){
 					$('.set_wrap > div > ul').hide();
 					$('.set_wrap > div > ul').eq(list).show();
 				});
+		});
+// 세트메뉴 > 사이드 or 음료류 이미지 클릭 시 선택수량 1씩 증가
+		$(function(){
+			var cnt = 0;
+			$('.set_side_ul img').on('click', function(){
+				$(this).each(function(){
+					cnt++;
+				});
+				$('.set_total label').text(Number(cnt));
+			});
+		});
+// 이미지 클릭 시 선택 확인 토스트 알림		
+		$(function(){
+			$('.set_side_ul img,.tab_cont img').click(function(){
+				toastr.option = {
+						"progressBar" : true,
+						"timeOut" : 1000,
+				}
+					toastr.success('주문내역에 추가 되었습니다!');
+			});
+		});
+		$(function(){
+			$('.set_cancel').click(function(){
+				var cnt = $('.set_total label').text();
+				$('.test').remove();
+				
+				$('.set_total label')[0].reset(cnt);
+			});
 		});
 });
 

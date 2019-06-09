@@ -241,4 +241,19 @@ nav ul li:first-child { border-left:none; }
     position: relative;
     left: 50px;}
  .set_wrap div {width:900px; margin: 0 auto;}
- 
+ .set_side_ul p { text-align:center;} 
+ .set_footer div { 
+ border:1px solid black;
+ border-radius:10px;
+ margin-left:70px;
+ margin-right:50px;
+ width:200px;
+ height:100px;
+ background:#fff;
+ display:inline-block;
+ text-align:center;
+ line-height:100px;
+ }
+.set_footer { margin-bottom: 20px;}
+.set_choice:hover {background:skyblue;}
+.set_cancel:hover {background:tomato;}

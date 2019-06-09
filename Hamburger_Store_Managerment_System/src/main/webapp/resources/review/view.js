@@ -15,10 +15,7 @@ window.onload = function() {
 	'<span>'+Number(likeCnt)+'</span>'+
 	'</div>';
 	likeArea.html(a);
-// 	$('#like').attr('src','/resources/images/unlike.png');
-	//$('#likeBtn').children('img').attr('src','/resources/images/unlike.png');
 	
-	 
 	b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
 	'<img src="/resources/images/unlike.png">'+
 	'<span>'+'좋아요 취소'+'</span>'+ 
@@ -46,11 +43,11 @@ window.onload = function() {
 };
 
 $(document).ready(function(){
+	
+	
     $("#header").load("/include/header");
     var likeCnt = $('#likeCnt').val();
     $(document).on('click', "#likeBtn",function(){
-    	
-// 		var number = $('#likeBtn').data('number');
 		var likeArea = $('#likeArea');
 		var b ="";
 		b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
@@ -66,12 +63,14 @@ $(document).ready(function(){
     			if (data == 1) {
     				likeArea.html(b);
     			};
+    			window.location.reload();
     		}
     	});
     	
     });
     
     $(document).on('click','#likeDel', function(){
+    	
     	var likeArea = $('#likeArea');
     	var c ="";
     	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}>'+
@@ -87,7 +86,8 @@ $(document).ready(function(){
     		success : function(data) {
     			if (data == 0) {
     				likeArea.html(c);
-    			}
+    			};
+    			window.location.reload();
     		}
     	});
     });
@@ -95,6 +95,7 @@ $(document).ready(function(){
     $(document).on('click','#unLikeBtn', function(){
     	var likeArea = $('#likeArea');
     	var b="";
+    	
     	b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
     	'<img src="/resources/images/unlike.png">'+
     	'<span>'+'좋아요 취소'+'</span>'+ 
@@ -107,7 +108,8 @@ $(document).ready(function(){
     		success : function(data) {
     			if (data == 1) {
     				likeArea.html(b);
-    			}
+    			};
+    			window.location.reload();
     		}
     	});
     });

@@ -174,5 +174,4 @@ public class ReviewController {
 		reviewService.reply(review);
 		return "redirect:reviewList";
 	}
-	
 }

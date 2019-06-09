@@ -17,15 +17,14 @@ public class Review {
 	private int groupOrd; // 답글 순서
 	private int groupDepth; //답글 깊이
 	private String[] files; // 첨부파일 
-	private int fileCnt; // 파일갯수
 	private int likeCnt; // 좋아요갯수
 	
 	@Override
 	public String toString() {
 		return "Review [number=" + number + ", title=" + title + ", contents=" + contents + ", userId=" + userId
 				+ ", date=" + date + ", ref=" + ref + ", coNum=" + coNum + ", groupNum=" + groupNum + ", groupOrd="
-				+ groupOrd + ", groupDepth=" + groupDepth + ", files=" + Arrays.toString(files) + ", fileCnt=" + fileCnt
-				+ ", likeCnt=" + likeCnt + "]";
+				+ groupOrd + ", groupDepth=" + groupDepth + ", files=" + Arrays.toString(files) + ", likeCnt=" + likeCnt
+				+ "]";
 	}
 	
 	public int getNumber() {
@@ -94,17 +93,11 @@ public class Review {
 	public void setFiles(String[] files) {
 		this.files = files;
 	}
-	public int getFileCnt() {
-		return fileCnt;
-	}
-	public void setFileCnt(int fileCnt) {
-		this.fileCnt = fileCnt;
-	}
 	public int getLikeCnt() {
 		return likeCnt;
 	}
 	public void setLikeCnt(int likeCnt) {
 		this.likeCnt = likeCnt;
 	}
-	
+
 }

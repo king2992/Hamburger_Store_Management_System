@@ -27,7 +27,6 @@ public class CommentController {
 	private CommentService commentService;
 
 	@SuppressWarnings("unchecked")
-	// @RequestMapping(value="/co.list", method=RequestMethod.GET, produces = "application/json; charset=utf8")
     @RequestMapping(value="/co.list", method=RequestMethod.GET, produces="text/plain;charset=UTF-8") //댓글 리스트
     String commentList(@RequestParam int number,Model model) throws Exception{
 		List<Comment> list = commentService.commentList(number);
@@ -66,7 +65,6 @@ public class CommentController {
   //댓글 수정  
     //한글 인코딩 처리 하는거쥐 produces = "application/json; charset=utf8"
     @RequestMapping("/co.update") 
-    //(@RequestParam(value="coNumber", defaultValue="false")
      int commentUp(@RequestParam int coNumber, @RequestParam String content) throws Exception{//예외처리
         // new 인스턴스 생성
         Comment comm = new Comment();//호출
