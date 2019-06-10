@@ -131,7 +131,7 @@ $(document).ready(function(){
 					return;
 				} else {
 				$('.table_tr2').append(
-						'<tr class="test">'+
+						'<tr class="order_list">'+
 						'<td id="menuname'+menuname+'">'+menuname+'</td>'+
 						'<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
 						'<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">X</button>'+'</td>'+
@@ -194,7 +194,7 @@ $(document).ready(function(){
 			$('#total_price').text(total);
 		};
 		
-		$(document).ready(function(){
+		$(function(){
 			$('#hide').hide();
 				$('.modal_set li').click(function(){
 					$('#hide').show();
@@ -206,17 +206,14 @@ $(document).ready(function(){
 				});
 		});
 // 세트메뉴 > 사이드 or 음료류 이미지 클릭 시 선택수량 1씩 증가
-		$(function(){
-			var cnt = 0;
+		var cnt = 0;
 			$('.set_side_ul img').on('click', function(){
 				$(this).each(function(){
 					cnt++;
 				});
 				$('.set_total label').text(Number(cnt));
 			});
-		});
 // 이미지 클릭 시 선택 확인 토스트 알림		
-		$(function(){
 			$('.set_side_ul img,.tab_cont img').click(function(){
 				toastr.option = {
 						"progressBar" : true,
@@ -224,15 +221,14 @@ $(document).ready(function(){
 				}
 					toastr.success('주문내역에 추가 되었습니다!');
 			});
-		});
-		$(function(){
+// Modal 취소하기 클릭 시 주문내역 삭제 및 금액,선택수량 초기화			
 			$('.set_cancel').click(function(){
-				var cnt = $('.set_total label').text();
-				$('.test').remove();
-				
-				$('.set_total label')[0].reset(cnt);
+				$('.order_list').remove();
+				var count = $('.set_total label').text('0');
+				totalPrice();
+				cnt = 0;
 			});
-		});
+			
 });
 
 

@@ -21,9 +21,23 @@
 <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'/>
 <script src='//code.jquery.com/jquery.min.js'></script>
 <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+<style>
+.swiper-container {
+	width:640px;
+	height:380px;
+	border:5px solid silver;
+	border-radius:7px;
+	box-shadow:0 0 20px #ccc inset;
+} 
+
+</style>
+
 <body>
 <!-- 배경 이미지 영역 -->
-	<div class="body_image">
+	<div class="body_image" id="swiper">
 <!-- 	카테고리 바깥 영역 -->
 	<div class="background-image"> 
 <!-- 	카테고리 안쪽 영역 -->
@@ -38,6 +52,8 @@
 		</nav>
 	</div>
 <!-- 	주문메뉴  큰 영역  -->
+<div class="swiper-wrapper">
+	<div class="swiper-slide">
 	<div class="order_div">
 <!-- 	주문메뉴 list 영역 -->
 		<div class="center-wrap">
@@ -177,6 +193,38 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="swiper-slide" style="display:grid; grid-template-columns: 50% 50%;">
+			<div class="order_list_div2">
+				<table class="table_list2">
+				<thead>
+					<tr>
+						<th>제품</th>
+						<th>수량</th>
+						<th>금액</th>
+					</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+			</div>
+			<div class="slide_div2">
+		매장/포장
+	</div>
+	</div>
+	<div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+	<div class="swiper-button-prev" style="color:red;"></div><!-- 이전 버튼 -->	
+	</div>
+	</div>
+<script>
+new Swiper('#swiper', {
+	navigation : {
+		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+	},
+});
+</script>
 <!-- 	모달 부분 -->
 	<div id="ex1" class="modal">
 	<span class="modal_span"><h2>세트로 드시겠어요?</h2></span>
