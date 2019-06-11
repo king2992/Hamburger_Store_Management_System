@@ -631,7 +631,7 @@ $(this).removeClass("hover");
                 <div></div>
                 <div class="userInputCard" style="margin-bottom: 10px;">직접 입력 하기</div>
             </div>
-			
+			 
 				<!-- <button type="button" class="userInputCard">직접 입력 하기</button> -->
 				<div><span>은행</span></div>
 			<div>
