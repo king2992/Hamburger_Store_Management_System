@@ -388,7 +388,7 @@ background:#1AAB8A;
     #modalLayer{display:none; position:relative;}
     .modalLayerClose{border:none; background:transparent; color:#fff; text-align: left;}
 	#modalLayer .modalContent{width:440px; border-radius:10px; background-color:#353535; padding:50px; border:1px solid #ccc; position:fixed; left:50%; 
-	top:40%; z-index:11; text-align: right;}
+	top:23%; z-index:11; text-align: right;}
 	.title{font-size:25px; color:#BDC3C7; text-align: center;}
 	.modalContentHide div{display: block;}
 /* 	#modalLayer .modalContent button{position:absolute; right:0; top:0; cursor:pointer;} */
@@ -528,4 +528,7 @@ table.type09 td {
 
 /* tbody > td{text-align: left;} */
 .cardPay{color:#BDC3C7;}
-.cardPay > div , .cardPay input , .cardPay select{text-align: left;}
+.cardPay > div , .cardPay input , .cardPay select{text-align: left; margin-bottom: 4px; border-radius: 8px; }
+#cardAdd{cursor: pointer; width: 120px;}
+.myCardCheck div select , .myCardCheck div input , .myCardCheck input {border-radius: 8px; margin-bottom: 13px;}
+#cardPay{width: 120px; cursor: pointer;}

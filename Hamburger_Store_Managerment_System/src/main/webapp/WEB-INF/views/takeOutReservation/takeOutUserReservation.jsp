@@ -454,7 +454,7 @@ $(this).removeClass("hover");
 					<figure class="snip1384">
             <img src="/resources/images/set.jpg" alt="" class="setButton"/>
             <figcaption class="setButton">
-              <h3>세트(set)</h3>
+              <h3>세트<br>(set)</h3>
                <i class="ion-ios-arrow-right"></i>
             	</figcaption>
             <a href="#" class="setButton"></a>
@@ -625,17 +625,17 @@ $(this).removeClass("hover");
           <a href="#" id="submitcash" class="buttonsubmit">보내기</a> <!-- <input type="button" id="submitcash" value="보내기"> --> 
 			</div>
 <!-- 			카드 결제 과정 -->
-			<div class="myCardCheck">
+			<div class="myCardCheck" style="text-align: left; color: #BDC3C7;">
 			    <div class="button_base b03_skewed_slide_in userInputCard">
                 <div>직접 입력 하기</div>
                 <div></div>
-                <div class="userInputCard">직접 입력 하기</div>
+                <div class="userInputCard" style="margin-bottom: 10px;">직접 입력 하기</div>
             </div>
 			
 				<!-- <button type="button" class="userInputCard">직접 입력 하기</button> -->
 				<div><span>은행</span></div>
 			<div>
-				<select name="bankName" id="myBankName">
+				<select name="bankName" id="myBankName" style="width:140px;">
 					<option>농협</option>
 					<option>신한은행</option>
 					<option>국민은행</option>
@@ -644,11 +644,11 @@ $(this).removeClass("hover");
 				</select>
 			</div>
 				<div><span>카드 번호</span></div>
-				<input type="text" name="cardNum" id="myCardNum">
+				<input type="text" name="cardNum" id="myCardNum" style="width: 200px;">
 		
 				<div><span>카드 비밀번호</span></div>
-				<div><input type="password" name="myCardPw" id="myCardPw"></div>
-			<button type="button" id="cardPay">결제</button>
+				<div><input type="password" name="myCardPw" id="myCardPw" style="width: 200px;"></div>
+			<a id="cardPay" class="buttonsubmit">결제</a>
 					</div>
 					
 			<div class="cardPay">
@@ -669,8 +669,8 @@ $(this).removeClass("hover");
 				</select>
 			</div>
 				<div><span>카드 번호</span></div>
-				<input type="text" name="cardNum" id="cardNum" style="text-align: left !important;">
-				<div><span >만기일</span></div>
+				<input type="text" name="cardNum" id="cardNum" style="float:left; width:200px; text-align: left !important;">
+				<div style="clear: both"><span >만기일</span></div>
 			<div id="validity">
 				<select name="validityMonth" id="validityMonth" >
 					<option value="" selected>MM</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
@@ -683,8 +683,7 @@ $(this).removeClass("hover");
 				<div><input type="text" name="securityCode" id="securityCode"></div>
 				<div><span>카드 비밀번호</span></div>
 				<div><input type="password" name="cardPw" id="cardPw"></div>
-			<button type="button" id="cardAdd">결제</button>
-					</div>		
+			<a id="cardAdd" class="buttonsubmit" >결제</a></div>		
 					
 <!-- 			카드 결제 과정 -->					
 				</div>
