@@ -42,7 +42,7 @@ table {
     word-break: break-all;
 }
 
-/*占쏙옙占싱듸옙占�*/
+/*�뜝�룞�삕�뜝�떛�벝�삕�뜝占�*/
 .aside {
     position: relative;
     float: left;
@@ -98,7 +98,7 @@ table {
     font-weight: 600;
     cursor: pointer;
 }
-/*카占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙*/
+/*移닷뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕*/
 .dropDown{
 /*    position: absolute;*/
     display: none;
@@ -122,7 +122,7 @@ table {
 .cardAdd_img2 {
     margin: 0px 5px 10px -4px;
 }
-/*占쏙옙占쏙옙占쏙옙*/
+/*�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕*/
 #contents {
     float: left;
     width: 720px;
@@ -145,9 +145,9 @@ table {
     font-weight:700;
     font-size: 18px;
 }
-/***********占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙*************/
+/***********�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕*************/
 
-/*占쏙옙占싱븝옙 占쏙옙占쏙옙*/
+/*�뜝�룞�삕�뜝�떛釉앹삕 �뜝�룞�삕�뜝�룞�삕*/
 .tb_type {
     border-bottom: 1px solid #d9d9d9;
     width: 100%;
@@ -165,13 +165,13 @@ table {
     padding: 20px;
     color: #666;
 }
-/*占쏙옙橘占싫�*/
+/*�뜝�룞�삕艅섇뜝�떕占�*/
 .input_password {
     border: 1px solid #cccccc;
     padding: 2px 0 2px 5px;
     height: 20px;
 }
-/*占쏙옙橘占싫� 占쏙옙占쏙옙*/
+/*�뜝�룞�삕艅섇뜝�떕占� �뜝�룞�삕�뜝�룞�삕*/
 .pwChange {
     width: 90px;
     height: 27px;
@@ -182,7 +182,7 @@ table {
     margin-left: 12px;
     border-color:#e79210;
 }
-/*占쏙옙화占쏙옙호*/
+/*�뜝�룞�삕�솕�뜝�룞�삕�샇*/
 .first_number {
     width: 72px;
     border: 1px solid #cccccc;
@@ -196,13 +196,13 @@ table {
     height: 20px;
     width:100px;
 }
-/*占싱몌옙*/
+/*�뜝�떛紐뚯삕*/
 .input_name {
     border: 1px solid #cccccc;
     padding: 2px 0 2px 5px;
     height: 25px;
 }
-/*占쏙옙占쏙옙占싹깍옙 占쏙옙튼*/
+/*�뜝�룞�삕�뜝�룞�삕�뜝�떦源띿삕 �뜝�룞�삕�듉*/
 .btn_type {
     width: 120px;
     height: 35px;
@@ -217,7 +217,7 @@ table {
     border-color:#e79210;
 }
 
-/***********占쏙옙占쏙옙 占쌜쇽옙 占쏙옙 占쏙옙*************/
+/***********�뜝�룞�삕�뜝�룞�삕 �뜝�뙗�눦�삕 �뜝�룞�삕 �뜝�룞�삕*************/
 .myWritten-table {
     width: 100%;
     border-top: 2px solid #585e6a;
@@ -256,7 +256,7 @@ table {
     padding:10px 10px 10px 9px;
     color: #555;
 }
-/*占쌉시깍옙 占싱듸옙*/
+/*�뜝�뙃�떆源띿삕 �뜝�떛�벝�삕*/
 .boardMove {
     width: 95px;
     height: 32px;
@@ -269,7 +269,7 @@ table {
     outline: none;
     border-color:#f9a72b;
 }
-/*占쌉시깍옙 占쏙옙占쏙옙*/
+/*�뜝�뙃�떆源띿삕 �뜝�룞�삕�뜝�룞�삕*/
 .boardDelete {
     width: 95px;
     height: 32px;
@@ -283,7 +283,7 @@ table {
     border-color:#e20101;
 }
 /***********TakeoutReservedLIst*************/
-/*占쏙옙占싱븝옙 占쏙옙占쏙옙*/
+/*�뜝�룞�삕�뜝�떛釉앹삕 �뜝�룞�삕�뜝�룞�삕*/
 .reserved-table {
     width: 100%;
     border: 2px solid #ccc;
@@ -315,7 +315,7 @@ table {
     font-size: 13px;
     padding:10px 10px 10px 9px;
 }
-/*占쏙옙占쏙옙 확占쏙옙 占쏙옙占쏙옙*/
+/*�뜝�룞�삕�뜝�룞�삕 �솗�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕*/
 .reservedCheck {
     width: 120px;
     height: 35px;
@@ -328,7 +328,7 @@ table {
     outline: none;
     border-color:#e79210;
 }
-/***********회占쏙옙탈占쏙옙*************/
+/***********�쉶�뜝�룞�삕�깉�뜝�룞�삕*************/
 .withdrawal ul{
     border-top: 2px solid #333333;
     border-bottom: 1px solid #a8a7a7;
@@ -341,7 +341,7 @@ table {
     font-weight: 700;
 }
 .disc{list-style-type: disc; list-style-position: inside;}
-/*카占쏙옙 占쏙옙占�*/
+/*移닷뜝�룞�삕 �뜝�룞�삕�뜝占�*/
 .cardAdd {
 /*     margin-top: 200px; */
     width: 460px;
@@ -361,7 +361,7 @@ table {
 /*     border-radius: 10px; */
     box-shadow: 0 1px 1px 2px rgba(0.4, 0, 0, 0.4);
 }
-/*占쏙옙占쏙옙카占쏙옙 占쏙옙占�*/
+/*�뜝�룞�삕�뜝�룞�삕移닷뜝�룞�삕 �뜝�룞�삕�뜝占�*/
 .cardAdd h2 {
    border-bottom: 2px solid #333;
     padding-bottom: 20px;
@@ -373,7 +373,7 @@ table {
 .paymentCardAdd p1{
     display: inline-block;
 }
-/*占쏙옙占쏙옙,카占쏙옙占싫�,占쏙옙占쏙옙占쏙옙, 占쏙옙占쏙옙占쌘듸옙,카占쏙옙 占쏙옙橘占싫�*/
+/*�뜝�룞�삕�뜝�룞�삕,移닷뜝�룞�삕�뜝�떕占�,�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕, �뜝�룞�삕�뜝�룞�삕�뜝�뙓�벝�삕,移닷뜝�룞�삕 �뜝�룞�삕艅섇뜝�떕占�*/
 .paymentCardAdd p1 {
     font-size: 18px;
     font-weight: 600;
@@ -383,7 +383,7 @@ table {
     border-bottom: 1px solid #999;
     padding: 15px 0 15px 0;
 }
-/*占쏙옙占쏙옙*/
+/*�뜝�룞�삕�뜝�룞�삕*/
 .bank select {
     width: 100px;
     height:30px;
@@ -393,7 +393,7 @@ table {
     background-color: #f1f1f1;
     border: 1px solid #999;
 }
-/*카占쏙옙占싫�*/
+/*移닷뜝�룞�삕�뜝�떕占�*/
 .Number {
     width: 120px;
     height: 28px;
@@ -403,7 +403,7 @@ table {
     background-color: #f1f1f1;
 /*    border: 1px solid #999;*/
 }
-/*占쏙옙占쏙옙占쏙옙*/
+/*�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕*/
 .validity {
     color: black;
     font-size: 15px;
@@ -413,7 +413,7 @@ table {
 .Month {
     margin: 0 7px 0 20px;
 }
-/*카占쏙옙占쏙옙회,카占쏙옙占쏙옙 占쏙옙튼*/
+/*移닷뜝�룞�삕�뜝�룞�삕�쉶,移닷뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�듉*/
 .cardButton {
     width: 80px;
     height: 35px;
@@ -432,7 +432,7 @@ table {
     margin:0 auto;
     width:fit-content;
 }
-/*MY 카占쏙옙*/
+/*MY 移닷뜝�룞�삕*/
  /* .MYcard {
 	display: none; Hidden by default
 	position: fixed; Stay in place
@@ -492,7 +492,7 @@ table {
          top: 30%; 
          left: 40%; 
  }
-/* 占쏙옙占쏙옙占싹깍옙  */
+/* �뜝�룞�삕�뜝�룞�삕�뜝�떦源띿삕  */
 .cardDelete {
     width: 120px;
     height: 35px;
@@ -510,7 +510,7 @@ table {
     border-color:#e79210;	
 }
 
-/* 영수증 출력 모달*/
+/* �쁺�닔利� 異쒕젰 紐⑤떖*/
 .documentPopup{
  		  display: none;  /* Hidden by default */
  	
@@ -598,3 +598,40 @@ background:#1AAB8A;
 .menuTable th{
 	border: 1px solid #dddddd;
 }
+
+/*회원탈퇴 모달창*/
+/* The Modal (background) */
+        .withdrawalModal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .withdrawal-modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */                          
+        }
+        /* The Close Button */
+        .withdrawal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .withdrawal-close:hover,
+        .withdrawal-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }

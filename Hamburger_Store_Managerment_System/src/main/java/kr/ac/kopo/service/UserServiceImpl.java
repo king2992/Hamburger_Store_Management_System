@@ -66,6 +66,46 @@ UserDao dao;
 	public User signIn(HashMap<String, Object> map) {
 		return dao.signIn(map);
 	}
+	@Override
+	public void myWrittenDelete(int number) {
+		dao.myWrittenDelete(number);
+	}
+	@Override
+	public User userWithdrawal(HashMap<String, Object> map) {
+		return dao.userWithdrawal(map);
+	}
+	@Override
+	public void userDelete(String userId) {
+		dao.userDelete(userId);
+	}
+	@Override
+	public void userBoardDelete(String userId) {
+		dao.userBoardDelete(userId);
+	}
+	@Override
+	public void userCommentDelete(String userId) {
+		dao.userCommentDelete(userId);
+	}
+	@Override
+	public void userTakeoutReservedListDelete(String userId) {
+		dao.userTakeoutReservedListDelete(userId);
+	}
+	@Override
+	public void userPayCardDelete(String userId) {
+		dao.userPayCardDelete(userId);
+	}
+	@Override
+	public void likeToDelete(String userId) {
+		dao.likeToDelete(userId);
+	}
+	@Override
+	public PayInfo myCard(String userId) {
+		return dao.myCard(userId);
+	}
+	@Override
+	public void cardDelete(String userId) {
+		dao.cardDelete(userId);
+	}
 	
 	
 	

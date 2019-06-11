@@ -37,6 +37,26 @@ public interface UserService {
 
 	PayInfo cardCheck(HashMap<String, Object> map);
 
+	void myWrittenDelete(int number);
+
+	User userWithdrawal(HashMap<String, Object> map);
+
+	void userDelete(String userId);
+
+	void userBoardDelete(String userId);
+
+	void userCommentDelete(String userId);
+
+	void userTakeoutReservedListDelete(String userId);
+
+	void userPayCardDelete(String userId);
+
+	void likeToDelete(String userId);
+
+	PayInfo myCard(String userId);
+
+	void cardDelete(String userId);
+
 
 	
 

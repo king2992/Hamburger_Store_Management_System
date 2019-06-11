@@ -17,6 +17,8 @@
 <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/mainR.css">
 <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <!-- Remember to include jQuery :) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <!-- jQuery Modal -->
@@ -49,16 +51,6 @@
                     });
                   
                 }); 
-//            $("#tab_btn li").on("mouseover", function(){
-//                $(this).css("background", "#F7D358");
-//              })
-//            $("#tab_btn li").on("mouseout", function(){
-//                $(this).css("background", "white");
-//                if($(this).attr("class")=="on"){
-//                    $(this).css("background", "#ffd9a3");
-//                }
-//              })
-           
                 $(document).on("click", "#change", function(){
                     $('#personalInfomationChange').show();
                     $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd,.MYcard').hide();
@@ -106,10 +98,11 @@
         		else
         			$(".dropdown-menu").css('display', 'block');
         	});
-     
+        	window.onload = function(){
+        		console.log("${sessionScope.card}");
+        	}
         
         </script>
-        
         <style>
         	.test{display: block !important;}
             #tab_btn li:hover button{color: #ff6c00;}
@@ -128,17 +121,11 @@
               	<nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
                   	<a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
                       <ul>
-                            
-                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
-                            
-                                
-                             <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
-                       
                        </ul>
                        <ul class="nav navbar-nav menu-infobtn">
                 			<li class="dropdown">
@@ -181,15 +168,11 @@
                             
                         <li id="MyCard" class="dropDown" style="padding-top: 10px;"><button type="button" class="ButtonMyCard">
                                 <img src="/resources/images/cardAdd_03.png" class="cardAdd_img2">MY 카드</button></li>
-                                
                         <li id="myWriten"><button class="aside_item" >내가 작성 한 글</button></li>
                         <li id="takeoutReservedList"><button type="button" class="aside_item" >TakeOut 예약 내역</button></li>
                         <li id="withdrawal"><button type="button" class="aside_item"  >회원탈퇴</button></li>
                     </ul>    
             </div>
-<!--      컨텐츠      -->
-            
-<!--     개인정보변경       -->
 <!--            큰 div-->
             <div id="contents">
                 <div id="personalInfomationChange">
@@ -208,7 +191,6 @@
                                    	 아이디
                                 </td>
                                 <td>${user.userId}</td>
-                         
                             </tr>         
                             <tr>
                                 <td scope="col">
@@ -247,7 +229,6 @@
                         </tbody>
                     </table>
                     <button type="button" class="btn_type"  id="userInfoUpdate">변경하기</button>
-<!--                     <button type="button" class="btn_type"  id="userPayCardUpdate">카드등록</button> -->
 				     <!-- Trigger/Open The Modal -->
 				 
 				    <!-- The Modal -->
@@ -263,7 +244,6 @@
 					</ul>
 					<div><button type="button" class="pwUpSubmit">변경하기</button></div>
 				      </div>
-				 
 				    </div>
                 </form>
             </div>
@@ -339,30 +319,25 @@
                         <li class="disc">탈퇴 후 회원정보 및 개인형 서비스 이용기록은 모두 삭제됩니다.</li>
                         <li class="disc">탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다.</li>
                     </ul>
-                <button type="button" class="btn_type"  id="withdrawal">회원탈퇴</button>
+                <button type="button" class="btn_type"  id="myBtn">회원탈퇴</button>
                </div>
                 <!-- MYcard Modal -->
 			    <div id="MYcardModal" class="MYcard">
 				      <!-- Modal content -->
 				      <div class="cardmodal-content">
-							<ul class="cardImg">
-			                      <li class="BankName">Bank Name</li>
-			                      <li class="MYcardNum">0123</li>
-			                      <li class="MYcardNum">4567</li>
-			                      <li class="MYcardNum">8910</li>
-			                      <li class="MYcardNum">1112</li>
-			                      <li class="MYcardName">Park Su Jin</li>
+							<ul class="cardImg"> 
+			                      <li class="BankName">신한은행</li>
+			                      <li class="MYcardNum">1234-5678-1234-5678</li>
+			                      <li class="MYcardNum">12/08</li>
+			                      <li class="MYcardName">이 진 우</li>
 		                    </ul>
 		                    <button type="button" class="cardDelete"  id="cardDelete">삭제하기</button>
 				      </div>
-				      
 			    </div>
-			    
 			    <!-- 영수증 -->
 					<div class="documentPopup" id="modal_takeOut" style="max-width:750px; height:600px; ">
 						<div class="documentCenter">
 						<h2>[ 주문 내역 ]</h2>
-							
 							<table class="menuTable">
 								<thead>
 									<tr>
@@ -383,5 +358,18 @@
 					</div>
             </div>
         </div>
+ 
+    <!-- The Modal -->
+    <div id="myModal" class="withdrawalModal">
+      <!-- Modal content -->
+      <div class="withdrawal-modal-content">
+        <span class="withdrawal-close">&times;</span>                                                               
+        <h2>현재 비밀번호를 입력해주세요.</h2>
+        <input type="password" id="nowPw">
+        <button type="button" id="userDelete">회원탈퇴</button>
+      </div>
+ 
+    </div>
+        
         </body>
         </html>

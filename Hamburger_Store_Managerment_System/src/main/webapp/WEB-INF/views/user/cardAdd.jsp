@@ -51,7 +51,7 @@
                     </div>
                     <div class="paymentCardAdd securityCode">
                         <p1>보안코드</p1>
-                        <input type="text" name="securityCode" class="Number"title="보안코드 입력">
+                        <input type="password" name="securityCode" class="Number"title="보안코드 입력">
                     </div>
                     <div class="paymentCardAdd cardPw">
                         <p1>카드 비밀번호</p1>

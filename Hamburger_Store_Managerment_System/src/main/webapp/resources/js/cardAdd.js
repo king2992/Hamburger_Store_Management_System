@@ -19,9 +19,9 @@ $(document).ready(function(){
 						if(data == 1){
 							
 							alert("카드가 등록되었습니다.");
+							$(".cardmodal-content").show();
+							window.close();
 							
-							self.close();
-							window.location.reload();
 							}
 						}
 					})

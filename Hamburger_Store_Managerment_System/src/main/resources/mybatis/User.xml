@@ -49,4 +49,22 @@
 		select * from bank where card_num =#{cardNum} and card_pw =#{cardPw} and validity =#{validity} and
 		bank_name =#{bankName} and security_code =#{securityCode} 
 	</select>
+	<delete id="myWrittenDelete">
+		delete from review where number = #{number}
+	</delete>
+	<select id="userWithdrawal" resultType="User" parameterType="map">
+		select * from user where user_id = #{userId} and user_password = #{userPassword}
+	</select>
+	<select id="myCard" resultType="PayInfo">
+		select card_num, bank_name, user_id, validity from user_pay_card where user_id = #{userId}
+	</select>
+	<delete id="cardDelete">
+		delete from user_pay_card where user_id = #{userId}	
+	</delete>
+	<delete id="userDelete">delete from user where user_id = #{userId}</delete>
+	<delete id="userBoardDelete">delete from review where user_id = #{userId}</delete>
+	<delete id="userCommentDelete">delete from comment where user_id = #{userId}</delete>
+	<delete id="userTakeoutReservedListDelete">delete from takeout_reserved_list where user_id = #{userId}</delete>
+	<delete id="userPayCardDelete">delete from user_pay_card where user_id = #{userId}</delete>
+	<delete id="likeToDelete">delete from like_to where user_id = #{userId}</delete>
 </mapper>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -124,6 +125,10 @@ public class UserController {
 		
 		List<TakeOutReserved> takeoutReservedList = service.takeoutReservedList(userId);
 		model.addAttribute("takeoutReservedList", takeoutReservedList);
+		
+		PayInfo card = service.myCard(userId);
+		
+		model.addAttribute("card", card);
 		
 		return "/user/myPage";
 	}
@@ -251,6 +256,58 @@ public class UserController {
 		if(payinfo == null) {
 			return 0;
 		}
+		return 1;
+	}
+	@RequestMapping("/myWrittenDelete")
+	String myWrittenDelete(int number) {
+			service.myWrittenDelete(number);
+		return "redirect:/user/myPage";
+	}
+	@ResponseBody
+	@RequestMapping("/userWithdrawal")
+	int userWithdrawal(HttpSession session, @RequestParam(value="userPassword") String userPassword) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String userId = (String)session.getAttribute("user");
+		map.put("userId", userId);
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(userPassword.getBytes("UTF-8"));
+			StringBuffer hexString = new StringBuffer();
+			for(int i=0; i<hash.length; i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if(hex.length()==1) hexString.append('0');
+				hexString.append(hex);
+			}
+			map.put("userPassword", hexString.toString());
+		}catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
+		User user = service.userWithdrawal(map);
+		if(user == null) {
+			return 0;
+		}
+		return 1;
+	}
+	@Transactional
+	@ResponseBody
+	@RequestMapping("/userDelete")
+	int userDelete (HttpSession session) {
+		String userId = (String)session.getAttribute("user");
+		
+		service.userDelete(userId);
+		service.userBoardDelete(userId);
+		service.userCommentDelete(userId);
+		service.userTakeoutReservedListDelete(userId);
+		service.userPayCardDelete(userId);
+		service.likeToDelete(userId);
+		session.invalidate();
+		
+		return 1;
+	}
+	@ResponseBody
+	@RequestMapping("/cardDelete")
+	int cardDelete(@RequestParam(value="userId") String userId, HttpSession session) {
+		service.cardDelete(userId);
 		return 1;
 	}
 }
