@@ -9,7 +9,7 @@ $(document).ready(function(){
 				var list = "";
 				
 					$.each(data, function(index, item){
-						list += "<li>" + item.menuName+ "</li>" +"<li>" + item.menuCnt+ "</li>";
+						list += "<tr>" + "<th>" + item.menuName+ "</th>" +"<th>" + item.menuCnt+ "</th>" + "</tr>";
 					})
 					
 					reservedCheckList.html(list);

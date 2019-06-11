@@ -5,7 +5,8 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>${view.title}</title>
+<title>
+${view.title}</title>
 <link rel="shortcut icon" href="${path}/review/view?number=${view.number}">
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="${path}/resources/review/view.js"></script>
@@ -16,6 +17,9 @@
 <link rel="stylesheet" href="/resources/css/mainR.css">
 <link rel="stylesheet" href="/resources/css/sub.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'/>
+<script src='//code.jquery.com/jquery.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
 <script id="fileTemplate" type="text/x-handlebars-template">
 	<li data-src="{{fileName}}">
 		<span class="mailbox-attachment-icon has-img">
@@ -100,7 +104,7 @@
             <div class="content">
 <div class="content_subject">
     <div class="content_subjectleft">
-        <img src="/resources/images/studying.png">
+        <img src="/resources/images/m-sa.png">
         <span>커뮤니티 게시판</span>
     </div>
 </div>
@@ -136,16 +140,18 @@
             </div>
             <div class="view_footer">
                 <div class="view_info">
-                    <img src="../resources/images/studying.png">
+                    <img src="../resources/images/m-sa.png">
                     <span>[ ${view.userId } ]</span>
                 </div>
             </div>
             <div class="view_button">
-               <a href="reviewUp?number=${view.number}"><button class="btn btn-primary boardBtn" data="content_modify">수정</button></a>
-               <a href="delete?number=${view.number}"><button class="btn btn-primary boardBtn" data="content_delete">삭제</button></a>
+            <c:if test="${!view.userId eq sessionScope.userId}">
+               <a href="reviewUp?number=${view.number}"><button class="btn btn-primary boardBtn">수정</button></a>
+               <a href="delete?number=${view.number}"><button class="btn btn-primary boardBtn">삭제</button></a>
+            </c:if>
                <a href="reply?groupNum=${view.groupNum}&groupOrd=${view.groupOrd}&groupDepth=${view.groupDepth}"> 
-               <button class="btn btn-primary boardBtn" data="content_rewrite">답글쓰기</button></a>
-               <a href="reviewList"> <button class="btn btn-primary boardBtn" data="board_list">목록</button></a>
+               <button class="btn btn-primary boardBtn">답글쓰기</button></a>
+               <a href="reviewList"> <button class="btn btn-primary boardBtn">목록</button></a>
             </div>
 <div class="box-footer uploadFiles">
 		<ul class="mailbox-attachments clearfix uploadedFileList"></ul>
@@ -204,11 +210,11 @@
                             <p>COPYRIGHT &copy; 2019 M-SA ALL RIGHT RESERVED</p>
                         </address>
                         <div>
-                            <img src="/resources/images/footer2.jpg">
-                            <img src="/resources/images/footer.jpg">
-                            <img src="/resources/images/footer4.gif">
-                            <img src="/resources/images/footer5.gif">
-                            <img src="/resources/images/footer6.gif">
+                            <img src="${path}/resources/images/footer2.jpg">
+                            <img src="${path}/resources/images/footer.jpg">
+                            <img src="${path}/resources/images/footer4.gif">
+                            <img src="${path}/resources/images/footer5.gif">
+                            <img src="${path}/resources/images/footer6.gif">
                         </div>
                     </div>
                 </footer>

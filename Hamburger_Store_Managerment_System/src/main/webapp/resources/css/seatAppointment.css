@@ -496,7 +496,7 @@ table.type09 {
 	border-collapse: collapse;
 	text-align: left;
 	line-height: 1.5;
-	width: 50%;
+	width: 47%;
 
 }
 table.type09 thead th {
@@ -517,10 +517,12 @@ table.type09 tbody th {
 table.type09 td {
 	width: 350px;
 	padding: 10px;
+	height:48px;
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
 	text-align: left;
 }
+.orderListTr > th{line-height: 48px !important;}
 .div{float: left; width:50%; padding-top: 30px;}
 .inline{margin: 0 auto; width: 1024px;}
 

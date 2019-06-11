@@ -65,7 +65,7 @@ position: relative;
 	/* 	position:relative;
 	top:123px;*/
 	/* 	min-height:555px;  */
-	padding: 15px 0 0 50px;
+/* 	padding: 15px 0 0 50px; */
 }
 
 .left-box {
@@ -329,9 +329,11 @@ position: relative;
 .order-center{
 	/* margin:0 auto; */
 	text-align:center;
-	position: relative;
+/* 	position: relative; */
 	bottom:100px;
-	background:
+/* 	background: */
+margin-bottom: 40px;
+margin-top: 30px;
 }
 .btn-left {
 	position: absolute;
@@ -606,6 +608,7 @@ width:300px;
         0 8px 0 1px rgba(0,0,0,0.4),
 				0 8px 8px 1px rgba(0,0,0,0.5);
 				border:none;
+				padding:5px 
 }
 .btn-3d.red:active {
 	box-shadow: 0 0 0 1px #c63702 inset,

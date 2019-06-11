@@ -58,7 +58,9 @@
 <style>
 .dropdown {cursor: pointer;}
 .dropdown-menu > a{color:#16181b; font-size: 15px !important; height:32px; line-height: 32px; c}
-.dropdown-menu > a:hover{background-color:#ffc107;}
+.dropdown-menu > a:hover{background-color:#ffc107 !important;}
+.dropdown-toggle:hover, .dropdown-toggle:focus{background-color: transparent !important; color:black;}
+.nav>li>a:hover, .nav>li>a:focus{background: transparent !important;}
 .menu-icon {
     font-size: 1.5rem;
     color: #9a9da0;
@@ -67,6 +69,26 @@
     position: absolute;
     left: -225%;
 }
+
+.paginationSub li {
+  color: black;
+  width:50px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 auto;
+  color: #000;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.paginationSub li:hover:not(.active) {background-color: #ddd;}
+
 </style>
 </head>
 <body>
@@ -141,8 +163,8 @@
 							<option value="title_contents">제목+내용</option>
 						</select> <input class="board_searchtext board_searchtext" type="text"
 							name="keyword" class="form-control" placeholder="검색 내용을 입력하세요">
-						<button class="btn btn-primary board_searchbtn boardBtn"
-							onclick="javascript:frm_search();">검색</button>
+						<a class="btn btn-primary board_searchbtn boardBtn" href="#board"
+							onclick="javascript:frm_search();">검색</a>
 					</form>
 					<a href="reviewAdd"><button
 							class="btn btn-warning board_writebtn boardBtn">글쓰기</button></a>
@@ -191,10 +213,10 @@
 					</c:forEach>
 				</div>
 				<div class="clear-fix"></div>
-				<div class="content_pagenation ">
+				<div class="content_pagenation paginationDiv">
 <!-- 				페이징 부분 -->
-					<ul class="pagination">
-						<li>${paging.html}</li>
+					<ul class="paginationSub">
+						<li class="active">${paging.html}</li>
 					</ul>
 				</div>
 			</div>

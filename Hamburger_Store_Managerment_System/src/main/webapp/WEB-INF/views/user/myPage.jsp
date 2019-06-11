@@ -17,9 +17,14 @@
 <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/mainR.css">
 <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+<!-- Remember to include jQuery :) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
         <script>
         $(document).ready(function(){
+        	 $('.modal a.close-modal').removeAttr('width');
                 // 클래스이름이 test 인 것을 show메소드로 보인다
                 $('#personalInfomationChange').show();
                 $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd,.MYcard').hide();
@@ -53,7 +58,7 @@
 //                    $(this).css("background", "#ffd9a3");
 //                }
 //              })
-            
+           
                 $(document).on("click", "#change", function(){
                     $('#personalInfomationChange').show();
                     $('.myWritten,.TakeoutReservedLIst,.withdrawal,.cardAdd,.MYcard').hide();
@@ -115,6 +120,7 @@
             .navbar-brand {margin:0 0 0 -8px;}
             .navi ul {margin:0 0 0 90px;}
             .menu-icon {margin-left:-12px;}
+            html a:hover{text-decoration:none !important;}
         </style>
     </head>
     <body>
@@ -313,17 +319,14 @@
 										<td>${list.reservedName}</td>
 										<td>${list.reservedPhone}</td>
 		                                <td>${list.frcName}</td>
-		                            	<td><button type="button" class="reservedCheck" data-takeoutid="${list.takeoutId}">예약 확인 내역</button></td>
+		                            	<td><a href="#modal_takeOut" rel="modal:open" ><button type="button" id="checkButton" class="reservedCheck" data-takeoutid="${list.takeoutId}">예약 확인 내역</button></a></td>
 		                            </tr>
                          			</c:forEach>
 								</c:when>
 							</c:choose>   
                         </tbody>
                     </table>
-                    <div>
-						<ul id="reservedCheckList">
-						</ul>
-					</div>
+                    
                 </div>
 <!--      회원탈퇴      -->
             <div class="withdrawal">    
@@ -356,7 +359,7 @@
 			    </div>
 			    
 			    <!-- 영수증 -->
-					<div class="documentPopup">
+					<div class="documentPopup" id="modal_takeOut" style="max-width:750px; height:600px; ">
 						<div class="documentCenter">
 						<h2>[ 주문 내역 ]</h2>
 							
@@ -367,16 +370,16 @@
 										<th>수 량</th>
 									</tr>
 								</thead>
-								<tbody class="documentTable">
+								<tbody class="documentTable" id="reservedCheckList">
 								</tbody>
 							</table>
-					
+							<div>
 							<div class="documentBtnCenter">
-								<button id="" type="button"
-									 class="documentClose">닫 기</button>
+								<a href="#" rel="modal:close"><button type="button" class="documentClose">닫 기</button></a>
 							</div>
-						<!-- 	<a class="close" href="#close"></a> -->
+					</div>
 						</div>
+
 					</div>
             </div>
         </div>

@@ -17,9 +17,27 @@
 <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'/>
+<script src='//code.jquery.com/jquery.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+<style>
+.swiper-container {
+	width:640px;
+	height:380px;
+	border:5px solid silver;
+	border-radius:7px;
+	box-shadow:0 0 20px #ccc inset;
+} 
+
+</style>
+
 <body>
 <!-- 배경 이미지 영역 -->
-	<div class="body_image">
+	<div class="body_image" id="swiper">
 <!-- 	카테고리 바깥 영역 -->
 	<div class="background-image"> 
 <!-- 	카테고리 안쪽 영역 -->
@@ -34,6 +52,8 @@
 		</nav>
 	</div>
 <!-- 	주문메뉴  큰 영역  -->
+<div class="swiper-wrapper">
+	<div class="swiper-slide">
 	<div class="order_div">
 <!-- 	주문메뉴 list 영역 -->
 		<div class="center-wrap">
@@ -173,6 +193,38 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="swiper-slide" style="display:grid; grid-template-columns: 50% 50%;">
+			<div class="order_list_div2">
+				<table class="table_list2">
+				<thead>
+					<tr>
+						<th>제품</th>
+						<th>수량</th>
+						<th>금액</th>
+					</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+			</div>
+			<div class="slide_div2">
+		매장/포장
+	</div>
+	</div>
+	<div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+	<div class="swiper-button-prev" style="color:red;"></div><!-- 이전 버튼 -->	
+	</div>
+	</div>
+<script>
+new Swiper('#swiper', {
+	navigation : {
+		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+	},
+});
+</script>
 <!-- 	모달 부분 -->
 	<div id="ex1" class="modal">
 	<span class="modal_span"><h2>세트로 드시겠어요?</h2></span>
@@ -194,30 +246,34 @@
 		<div class="set_wrap">
 		<div class="set_side" id="hide">
 			<ul class="set_side_ul">
-				<li><img src="${path}/resources/img/sideMenu/20170331173889.jpg"></li>
-				<li><img src="${path}/resources/img/sideMenu/20170821851383.jpg"></li>
-				<li><img src="${path}/resources/img/sideMenu/20171120319875.jpg"></li>
-				<li><img src="${path}/resources/img/sideMenu/20171120979582.jpg"></li>
-				<li><img src="${path}/resources/img/sideMenu/20180704788027.jpg"></li>
-				<li><img src="${path}/resources/img/sideMenu/20180903624821.jpg"></li>
-				<li><img src="${path}/resources/img/sideMenu/20180903730621.jpg"></li>
-				<li><img src="${path}/resources/img/sideMenu/20181026154178.jpg"></li>
+					<li><img data-menuname="할라피뇨너겟" data-price="10000" src="${path}/resources/img/sideMenu/20170331173889.jpg"><p>할라피뇨 너겟</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="치즈할라피뇨너겟" data-price="10000" src="${path}/resources/img/sideMenu/20170821851383.jpg"><p>치즈할라피뇨 너겟</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="치즈감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120319875.jpg"><p>치즈감자</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="어니언치즈감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120979582.jpg"><p>어니언치즈 감자</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="라이스&치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&amp;치즈너겟</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="콘베지샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903624821.jpg"><p>콘베지 샐러드</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="베지샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903730621.jpg"><p>베지샐러드</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="에그랩(2종)" data-price="10000" src="${path}/resources/img/sideMenu/20181026154178.jpg"><p>에그랩(2종)</p><p class="price_p">10000</p></li>
 			</ul>		
 		</div>
 		<div class="set_drink" id="hide">
 			<ul class="set_side_ul">
-				<li><img src="${path}/resources/img/drink/20150223992319.jpg"></li>
-				<li><img src="${path}/resources/img/drink/20161129735987.jpg"></li>
-				<li><img src="${path}/resources/img/drink/20170825874361.jpg"></li>
-				<li><img src="${path}/resources/img/drink/20180220231170.jpg"></li>
-				<li><img src="${path}/resources/img/drink/20180220239529.jpg"></li>
-				<li><img src="${path}/resources/img/drink/20180416547805.jpg"></li>
-				<li><img src="${path}/resources/img/drink/20181113571936.jpg"></li>
-				<li><img src="${path}/resources/img/drink/20181113609096.jpg"></li>
+					<li><img data-menuname="콜라" data-price="10000" src="${path}/resources/img/drink/20150223992319.jpg"><p>콜라</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="라떼류" data-price="10000" src="${path}/resources/img/drink/20161129735987.jpg"><p>라떼류</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="스트로베리밀크" data-price="10000" src="${path}/resources/img/drink/20170825874361.jpg"><p>스트로베리밀크</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="레몬티" data-price="10000" src="${path}/resources/img/drink/20180220231170.jpg"><p>레몬티</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="레몬에이드" data-price="10000" src="${path}/resources/img/drink/20180220239529.jpg"><p>레몬에이드</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="딸기크림빙수" data-price="10000" src="${path}/resources/img/drink/20180416547805.jpg"><p>딸기크림빙수</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="레몬홍차" data-price="10000" src="${path}/resources/img/drink/20181113571936.jpg"><p>레몬홍차</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="홍차" data-price="10000" src="${path}/resources/img/drink/20181113609096.jpg"><p>홍차</p><p class="price_p">10000</p></li>
 			</ul>
 		</div>
 	</div>
+	<div class="set_footer">
+	<div class="set_total">선택수량 :<label></label></div>
+	<div class="set_cancel"><p><a href="#" rel="modal:close">취소하기</a></p></div>
+	<div class="set_choice"><p><a href="#" rel="modal:close">선택완료</a></p></div>
 	</div>
-	
+	</div>
 </body>
 </html>

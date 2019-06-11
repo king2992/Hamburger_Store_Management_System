@@ -4,7 +4,7 @@
 <mapper namespace="comment">
  
 	<select id="commentList" resultType="Comment">
-		SELECT co_number, number, user_id, content, DATE_FORMAT(co_date, '%Y-%m-%d') as coDate , co_group, co_ord, co_depth 
+		SELECT co_number, number, user_id, content, DATE_FORMAT(co_date, '%Y-%m-%d') as co_date , co_group, co_ord, co_depth 
 		FROM comment
 		where number = #{number}
 		order by co_group DESC, co_ord ASC
@@ -19,7 +19,7 @@
 <!-- 	좌: DB 우: 스프링 데이터값이 일치하는값을 찾는다 -->
 	<update id="commentUpdate">
 		UPDATE comment
-		SET co_date = now() AND content=#{content}
+		SET   content=#{content}
 		WHERE co_number=#{coNumber}
 	</update>
 	

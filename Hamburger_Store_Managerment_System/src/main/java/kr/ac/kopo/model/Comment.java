@@ -1,5 +1,6 @@
 package kr.ac.kopo.model;
 
+
 public class Comment {
 
 	private int coNumber;
@@ -29,7 +30,6 @@ public class Comment {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	
 	public String getUserId() {
 		return userId;
 	}
@@ -66,5 +66,6 @@ public class Comment {
 	public void setCoDepth(int coDepth) {
 		this.coDepth = coDepth;
 	}
+
 	
 }
