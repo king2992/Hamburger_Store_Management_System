@@ -421,7 +421,7 @@ footer{clear: both; width: 30%;}
      	height:285px;
      	top:30%;
      	left:39%;
-/*      	border: 1px solid black; */
+     	border: 1px solid #666;
     	border-radius: 10px;
      }
      .burgerOrSet-content > .setSelect > ul > li > a > img{
@@ -468,10 +468,12 @@ footer{clear: both; width: 30%;}
      }
      .setSideUl li {
      	display:inline-block;
+     	font-weight:600;
      }
      .setSideItem {
      	 color:#faae3b;
      	 cursor: pointer;
+     	 font-weight:600;
      }
      .setSideAddPrice {
      	margin-left: 130px;
@@ -488,6 +490,7 @@ footer{clear: both; width: 30%;}
 	    outline: 0;
 	    border-color:#e79210;
 	    margin-left: 15px;
+	    cursor:pointer;
      }
      /*양념감자 맛 선택*/
      .sideFlavorSelect {
@@ -513,7 +516,7 @@ footer{clear: both; width: 30%;}
      	margin: 10px 0 0 30px;
      }
      .potato {
-     	width: 100px;
+     	width: 105px;
     	height: 110px;
      }
      .sideFlavorPrev {
@@ -528,6 +531,7 @@ footer{clear: both; width: 30%;}
 	    outline: 0;
 	    border-color:#e79210;
 	    margin-left: 15px;
+	    cursor:pointer;
      }
      /*음료 선택*/
      .setDrinkList{
@@ -546,9 +550,11 @@ footer{clear: both; width: 30%;}
      }
      .setDrinkUl li {
      	display:inline-block;
+     	font-weight:600;
      }
      .setDrinkItem {
      	 color:#faae3b;
+     	 font-weight:600;
      	 cursor: pointer;
      	 width: 50px;
      }
@@ -567,6 +573,7 @@ footer{clear: both; width: 30%;}
 	    outline: 0;
 	    border-color:#e79210;
 	    margin-left: 15px;
+	    cursor:pointer;
      }
      div#select_box {
 		position: relative;

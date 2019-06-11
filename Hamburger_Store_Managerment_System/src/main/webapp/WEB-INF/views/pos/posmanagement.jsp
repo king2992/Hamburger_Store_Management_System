@@ -501,7 +501,7 @@ $(document).on('click','#cancel',function(){
 			<c:forEach var="item" items="${setSide}">
 			<ul class="setSideUl">
 				<li class="setSideItem">${item.menuName}</li>
-				<li class="setSideAddPrice">추가금액 : <p class="setSidePrice" style="display:inline-block;"> ${item.menuPrice}원</p></li>
+				<li class="setSideAddPrice">추가금액 : <p class="setSidePrice" style="display:inline-block; font-weight:600;"> ${item.menuPrice}원</p></li>
 			</ul>
 			</c:forEach>
 		</c:when>
@@ -526,7 +526,7 @@ $(document).on('click','#cancel',function(){
 			<c:forEach var="item" items="${setDrink}">
 			<ul class="setDrinkUl">
 				<li class="setDrinkItem">${item.menuName}</li>
-				<li class="setDrinkAddPrice">추가금액 : <p class="setDrinkPrice" style="display:inline-block;">${item.menuPrice}원</p></li>
+				<li class="setDrinkAddPrice">추가금액 : <p class="setDrinkPrice" style="display:inline-block; font-weight:600;">${item.menuPrice}원</p></li>
 			</ul>
 			</c:forEach>
 		</c:when>

@@ -364,9 +364,9 @@
       <!-- Modal content -->
       <div class="withdrawal-modal-content">
         <span class="withdrawal-close">&times;</span>                                                               
-        <h2>현재 비밀번호를 입력해주세요.</h2>
-        <input type="password" id="nowPw">
-        <button type="button" id="userDelete">회원탈퇴</button>
+        <h2 class="withdrawalH2">현재 비밀번호를 입력해주세요.</h2>
+        <input type="password" id="nowPw" class="nowPwClass">
+        <button type="button" id="userDelete" class="userDeleteClass">회원탈퇴</button>
       </div>
  
     </div>
