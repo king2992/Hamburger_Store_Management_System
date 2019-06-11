@@ -84,10 +84,10 @@
 .null-item{  width: 23%;  float:left;}  
 
 .sizeSelect{ position: relative;left: 19%; top: 32%; height: 100%;}
-.largeSizeSelect{width: 30%; border: 1px solid white; height: 30%; display: inline-block; text-align:center;}
-.normalSizeSelect{width: 30%; border: 1px solid white; height: 30%; display: inline-block; text-align:center;}
-.largeSizeSelect > p{margin-top: 23%; font-size:20px;}
-.normalSizeSelect > p{margin-top: 23%; font-size:20px;}
+.largeSizeSelect{width: 150px; height: 145px; display: inline-block; background: #c1ddf5;border: 2px solid #000;  position: relative; bottom: 20px; right: 35px;border-radius: 10px; cursor: pointer;}
+.normalSizeSelect{width: 150px; height: 145px; display: inline-block; background: #c1ddf5;border: 2px solid #000; position: relative; bottom: 20px;border-radius: 10px; cursor: pointer;}
+.largeSizeSelect > p{margin-top: 60px; font-size:20px; text-align:center; font-weight:600;}
+.normalSizeSelect > p{margin-top: 60px; font-size:20px; text-align:center; font-weight:600;}
 </style>
 	<script>
 	$(document).ready(function(){
@@ -483,25 +483,25 @@ $(document).on('click','#cancel',function(){
     	<div class="setSelect">
       	<ul>
       		<li id="setSideSelect">
-      		<a href="#"><img src="/resources/kiosk/images/single.png"></a>
+      		<a href="#"><img src="/resources/kiosk/images/set.png"></a>
       			<p class="burgerOrSetP">세트</p>
       		</li> 
       		
       		<li id="setBurgerSelect">
-      			<a href="#"><img src="/resources/kiosk/images/set.png"></a>
+      			<a href="#"><img src="/resources/kiosk/images/single.png"></a>
       			<p class="burgerOrSetP">버거만</p>
       		</li>
       	</ul>
       	</div>
     </div>
     <div class="setSideList">
-    <p>사이드 메뉴를 선택해주세요.</p>
+    <p class="setSideListP"><span style="color:#d1840e">사이드 메뉴</span>를 선택해주세요.</p>
    <c:choose>
 		<c:when test="${setSide.size() > 0}">
 			<c:forEach var="item" items="${setSide}">
 			<ul class="setSideUl">
 				<li class="setSideItem">${item.menuName}</li>
-				<li>추가금액 :<p class="setSidePrice">${item.menuPrice}</p></li>
+				<li class="setSideAddPrice">추가금액 : <p class="setSidePrice" style="display:inline-block;"> ${item.menuPrice}원</p></li>
 			</ul>
 			</c:forEach>
 		</c:when>
@@ -511,21 +511,22 @@ $(document).on('click','#cancel',function(){
 	<button type="button" class="burgerPrev">이 전</button>
 	</div>
 	<div class="sideFlavorSelect">
-		<p>양념감자 맛을 선택 해 주세요.</p>
+		<p class="sideFlavorSelectP"><span style="color:#d1840e">양념감자 맛 </span>을 선택 해 주세요.</p>
 		<ul>
-			<li class="flavor-item">양파맛</li>
-			<li class="flavor-item">칠리맛</li>
-			<li class="flavor-item">치즈맛</li>
+			<li class="flavor-item"><img src="/resources/images/onion.png" class="potato"><p>양파맛</p></li>
+			<li class="flavor-item"><img src="/resources/images/chili.png"class="potato"><p>칠리맛</p></li>
+			<li class="flavor-item"><img src="/resources/images/cheese.png"class="potato"><p>치즈맛</p></li>
 		</ul>
+		<button type="button" class="sideFlavorPrev">이 전</button>
 	</div>
 	<div class="setDrinkList">
-	<p>음료를 선택해주세요.</p>
+	<p class="setDrinkListP"><span style="color:#d1840e">음료</span>를 선택해주세요.</p>
 	<c:choose>
 		<c:when test="${setDrink.size() > 0}">
 			<c:forEach var="item" items="${setDrink}">
 			<ul class="setDrinkUl">
 				<li class="setDrinkItem">${item.menuName}</li>
-				<li>추가금액 :<p class="setDrinkPrice">${item.menuPrice}</p></li>
+				<li class="setDrinkAddPrice">추가금액 : <p class="setDrinkPrice" style="display:inline-block;">${item.menuPrice}원</p></li>
 			</ul>
 			</c:forEach>
 		</c:when>
@@ -536,10 +537,10 @@ $(document).on('click','#cancel',function(){
 	</div> 
 	<div class="sizeSelect">
 		<section class="largeSizeSelect">
-			<p>라지사이즈</p>
+			<p>Large Size</p>
 		</section>
 		<section class="normalSizeSelect">
-			<p>노말사이즈</p>
+			<p>Normal Size</p>
 		</section>
 		
 	</div>

@@ -413,16 +413,16 @@ footer{clear: both; width: 30%;}
          border-radius: 0.5rem; 
          
      } 
-    
+    	/*세트 or 버거만*/
      .burgerOrSet{
      	position:absolute;
-     	background:#d35448;
+     	background:#fff;
      	width:430px;
-     	height:302px;
+     	height:285px;
      	top:30%;
      	left:39%;
-     	border: 1px solid black;
-    	border-radius: 30px;
+/*      	border: 1px solid black; */
+    	border-radius: 10px;
      }
      .burgerOrSet-content > .setSelect > ul > li > a > img{
      	width:122px;
@@ -430,11 +430,13 @@ footer{clear: both; width: 30%;}
      	margin-top:10px;
      }
      .burgerOrSet-content > .setSelect ul > li{
-     	border : 1px solid white;
+     	border : 2px solid #000;
      	width:150px;
      	height:141px;
      	display:inline-block;
      	margin-left:50px;
+     	border-radius: 10px;
+     	background:#f0de89;
      }
      .burgerOrSet-content > .setSelect >ul{
      	position : relative;
@@ -443,26 +445,138 @@ footer{clear: both; width: 30%;}
      }
      .burgerOrSetP{
         position: relative;
-	    left: 51px;
-	    top: 14px;
-	    color:white;
-	    font-size:1em;
+        top: 20px;
+		text-align: center;
+	    color:#000;
+	    font-size:19px;
+	    font-weight: 600;
+     }
+     /* 사이드 메뉴 선택*/
+     .setSideList {
+     	padding: 20px 30px;
+     }
+     .setSideListP {
+     	text-align:center;
+     	font-size:20px;
+     	font-weight:600;
+     	padding-bottom: 15px;
+     	border-bottom: 2px solid #000;
      }
      .setSideUl{
-     	border : 1px solid white;
+     	border-bottom : 1px solid #a1a1a1;
+     	padding: 15px;
+     }
+     .setSideUl li {
+     	display:inline-block;
+     }
+     .setSideItem {
+     	 color:#faae3b;
+     	 cursor: pointer;
+     }
+     .setSideAddPrice {
+     	margin-left: 130px;
+     }
+     .burgerPrev {
+     	width: 60px;
+	    height: 30px;
+	    font-size: 15px;
+	    background:#d1840e;
+	    color: #fff;
+	    margin-top: 14px;
+	    display: block;
+	    text-align: center;
+	    outline: 0;
+	    border-color:#e79210;
+	    margin-left: 15px;
+     }
+     /*양념감자 맛 선택*/
+     .sideFlavorSelect {
+     	padding: 20px 30px;
+     }
+     .sideFlavorSelectP {
+     	text-align:center;
+     	font-size:20px;
+     	font-weight:600;
+     	padding-bottom: 15px;
+     	border-bottom: 2px solid #000;
+     }
+     .sideFlavorSelect ul {
+     	display:flex;
+     }
+     .sideFlavorSelect ul li{
+		margin:20px 8px;
+		cursor:pointer;
+     }
+     .sideFlavorSelect ul li p{
+     	font-size: 15px;
+     	font-weight:600;
+     	margin: 10px 0 0 30px;
+     }
+     .potato {
+     	width: 100px;
+    	height: 110px;
+     }
+     .sideFlavorPrev {
+     	width: 60px;
+	    height: 30px;
+	    font-size: 15px;
+	    background:#d1840e;
+	    color: #fff;
+	    margin-top: -8px;
+	    display: block;
+	    text-align: center;
+	    outline: 0;
+	    border-color:#e79210;
+	    margin-left: 15px;
+     }
+     /*음료 선택*/
+     .setDrinkList{
+     	padding: 20px 30px;
+     }
+     .setDrinkListP {
+     	text-align:center;
+     	font-size:20px;
+     	font-weight:600;
+     	padding-bottom: 15px;
+     	border-bottom: 2px solid #000;
      }
      .setDrinkUl{
-     	border : 1px solid white;
+     	border-bottom : 1px solid #a1a1a1;
+     	padding: 15px;
+     }
+     .setDrinkUl li {
+     	display:inline-block;
+     }
+     .setDrinkItem {
+     	 color:#faae3b;
+     	 cursor: pointer;
+     	 width: 50px;
+     }
+     .setDrinkAddPrice {
+     	margin-left: 130px;
+     }
+     .sidePrev {
+     	width: 60px;
+	    height: 30px;
+	    font-size: 15px;
+	    background:#d1840e;
+	    color: #fff;
+	    margin-top: 30px;
+	    display: block;
+	    text-align: center;
+	    outline: 0;
+	    border-color:#e79210;
+	    margin-left: 15px;
      }
      div#select_box {
-  position: relative;
-  width: 200px;
-  height: 32px;
-  background: url(http://cfile1.uf.tistory.com/image/27423E43565F8EF627B215) 0 center no-repeat;
-  /* 화살표 이미지 */
-  float:right;
-  bottom: 10px;
-  right: 40px;
+		position: relative;
+		width: 200px;
+		height: 32px;
+		background: url(http://cfile1.uf.tistory.com/image/27423E43565F8EF627B215) 0 center no-repeat;
+		/* 화살표 이미지 */
+		float:right;
+		bottom: 10px;
+		right: 40px;
 }
 
 div#select_box label {

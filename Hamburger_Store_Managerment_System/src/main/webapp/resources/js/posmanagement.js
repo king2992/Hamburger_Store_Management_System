@@ -212,6 +212,13 @@ $(document).ready(function() {
 		menuListTd.parent().remove();
 		$(".setDrinkList").hide();$(".setSideList").show();
 	})
+		$(document).on("click", ".sideFlavorPrev", function(){
+		var localMenuName = localStorage.getItem("양념감자");
+		var menuListTd = $("#"+localMenuName+"");
+		localStorage.removeItem("양념감자");
+		menuListTd.parent().remove();
+		$(".sideFlavorSelect").hide();$(".setSideList").show();
+	})
 		//사이드 음료 골랐을 때
 	$(document).on("click",".setDrinkUl", function(){
 		var menuName = $(this).children(".setDrinkItem").text();//사이드 메뉴 누른 놈에 메뉴 이름
