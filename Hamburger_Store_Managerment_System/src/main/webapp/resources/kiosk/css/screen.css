@@ -292,8 +292,10 @@ nav ul li:first-child { border-left:none; }
 .payment_choice img { width:100px; height:100px; }
 .ad{width: 100%;  position: absolute; top: 0; text-align: center;}
 .footer_div { background:#fff; border:1px solid black; width:1021px; height:100px; position:relative; top:10px; }
-.footer_div button {width:250px; height:70px; position:relative; top:15px; display:inline-block; font-size:20pt; border-radius: 12px; outline:0; border:none; margin-right:100px;}
-.order_cancel_btn {position:relative; left:385px; cursor:pointer;}
-#order_add_btn {position:relative; left:400px; cursor:pointer; }
-.side_img { display:inline-block;}
-.side_img img { width:50px; height:50px;}
+.footer_div button {width:250px; height:70px; position:relative; top:15px; display:inline-block; font-size:20pt; border-radius: 12px; outline:0; border:none; }
+.order_cancel_btn {position:relative; left:77px; cursor:pointer;}
+#order_add_btn {position:relative; left:130px; cursor:pointer; }
+.side_img {float:left; text-align: center;}
+.side_img li { display:inline-block;  position: relative; top: 7px; left:60px; margin-right:50px;}
+.side_img p{margin-top: -30px;}
+.side_img img { width:40px; height:40px;}

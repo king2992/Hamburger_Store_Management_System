@@ -228,7 +228,9 @@ $(document).ready(function(){
 				totalPrice();
 				cnt = 0;
 			});
-			
+			$('.choice_check td').click(function(){
+				var img = "/resources/kiosk/images/";
+			});
 });
 
 

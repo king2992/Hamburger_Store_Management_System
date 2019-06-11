@@ -160,7 +160,7 @@
    <div class="order_div" style="top: 300px;">
 <!-- 	주문메뉴 list 영역 -->
 	<div class="center-wrap" style="display: flex; padding-top:0; box-sizing: border-box;">
-	  <div class="order_list_div2" style=" overflow-x: hidden;">
+	  <div class="order_list_div2" style="overflow-x: hidden;">
 		<table class="table_list2">
 			<thead>
 				<tr>
@@ -170,6 +170,7 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 			</tbody>
 		</table>
 		<table class="ordertable">
@@ -211,7 +212,7 @@
 		<table class="takeout_table">
 			<thead>
 				<tr>
-					<th colspan="2">Step1 포장을 선택하세요.</th>
+					<th colspan="2">Step1.포장을 선택하세요.</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -244,7 +245,7 @@
 			<tbody>
 				<tr class="payment_choice">
 					<td style="border-right:1px solid #c0c0c0;"><img src="${path}/resources/kiosk/images/check_card.png"><p>신용/체크<br>카드</p></td>
-					<td style="border-right:1px solid #c0c0c0;"><img src="${path}/resources/kiosk/images/mobile.png"><p>모바일<br>/바코드<br>/페이류<br>(pay)</p></td>
+					<td style="border-right:1px solid #c0c0c0;"><img src="${path}/resources/kiosk/images/mobile.png"><p>모바일<br>(pay)</p></td>
 					<td><img src="${path}/resources/kiosk/images/card_.png"><p>교통카드</p></td>
 				</tr>
 			</tbody>
@@ -253,20 +254,18 @@
   </div>
 <!-- 결제 footer -->
   <div class="footer_div">
-<!--   	<div> -->
-<!--   		<ul class="side_img"> -->
-<%--   			<li><img src="${path}/resources/kiosk/images/Disabled.png"><p>장애인</p></li> --%>
-<%--   			<li><img src="${path}/resources/kiosk/images/key.png"><p>보안키</p></li> --%>
-<%--   			<li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li> --%>
-<!--   		</ul> -->
-<!--   	</div> -->
+  		<ul class="side_img">
+  			<li><img src="${path}/resources/kiosk/images/Disabled.png"><p>장애인</p></li>
+  			<li><img src="${path}/resources/kiosk/images/key.png"><p>보안키</p></li>
+  			<li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li>
+  		</ul>
   	<button class="order_cancel_btn" onclick="cancel();">결제취소</button>
   	<button class="swiper-button-prev" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4);">추가주문</button>
   </div>
 	<!-- 이전 버튼 -->	
 	</div>
 	</div>
-	<div class="swiper-button-prev" style="top:81.5%;"></div>
+	<div class="swiper-button-prev" style="top:85.5%;"></div>
 	</div>
 	</div>
 	</div>
@@ -278,7 +277,6 @@ new Swiper('#swiper', {
 	},
 });
 </script>
-
 <!-- 	모달 부분 -->
 <div id="ex1" class="modal">
 	<h2><span class="modal_span">세트로 드시겠어요?</span></h2>
@@ -288,7 +286,7 @@ new Swiper('#swiper', {
         </div>
 </div>
 <!-- 세트 모달 부분     -->
-	<div class="modal" id="set" style="/* display:inline-block; */ max-width:1000px; margin:0; padding:0;">
+	<div class="modal" id="set" style="max-width:1000px; margin:0; padding:0;">
 	
 		<div class="set_div"><h3 style="padding:15px;">세트디저트 1개를 선택해 주세요.</h3></div>
 		<div>
