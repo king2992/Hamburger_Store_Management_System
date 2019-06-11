@@ -289,11 +289,22 @@ a.animated-button.victoria-one:after {
 .nav>li>a:hover, .nav>li>a:focus{background:transparent;}
 
 </style>
+<script type="text/javascript">
+<script>
+/* Demo purposes only */
+$(".hover").mouseleave(
+function () {
+$(this).removeClass("hover");
+}
+);
+
+</script>
 </head>
 <body>
 
 	<div id="container">
 		       <header class="header">
+		      
                     <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
                      <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
                         <ul>
@@ -373,10 +384,10 @@ a.animated-button.victoria-one:after {
 				<div id="orderList">
 					<table id="orderListUl" class="table">
 					 <tr class="orderListTr">
-					 <th>상품정보</th>
-					 <th>가격</th>
-					 <th>수량</th>
-					 <th><a href="#" class="snip1535" id="orderReset">리셋</a></th>
+					 <th style="width:160px">상품정보</th>
+					 <th style="width: 90px;">가격</th>
+					 <th style="width: 109px;">수량</th>
+					 <th style="width: 121px;"><a href="#" class="button3" id="orderReset">리셋</a></th>
 					 </tr>
 					 </table>
 				</div>
@@ -438,9 +449,32 @@ a.animated-button.victoria-one:after {
 						</c:otherwise>
 					</c:choose>
 				</ul>
-				<ul class="setSelect">
-					<li><button type="button" class="setButton">세트</button></li>
-					<li><button type="button" class="singleButton">단품</button></li>
+				<ul class="setSelect" style="margin: 0 auto;">
+					<li>
+					<figure class="snip1384">
+            <img src="/resources/images/set.jpg" alt="" class="setButton"/>
+            <figcaption class="setButton">
+              <h3>세트(set)</h3>
+               <i class="ion-ios-arrow-right"></i>
+            	</figcaption>
+            <a href="#" class="setButton"></a>
+          </figure>
+					</li>
+<!-- <button type="button" class="setButton">세트</button> -->
+
+					<li>
+			<figure class="snip1384">
+            <img src="/resources/images/singleimg.jpg" height="205px;" alt="" class="singleButton"/>
+            <figcaption class="singleButton">
+              <h3>단품(single)</h3>
+       
+               <i class="ion-ios-arrow-right"></i>
+            	</figcaption>
+            <a href="#" class="singleButton"></a>
+          </figure>
+					
+					</li>
+					<!-- <button type="button" class="singleButton">단품</button> -->
 				</ul>
 				<ul class="sideMenuList" id="sideMenuList">
 					<c:choose>
