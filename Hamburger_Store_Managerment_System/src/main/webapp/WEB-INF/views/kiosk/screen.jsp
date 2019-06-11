@@ -159,7 +159,7 @@
  </div>
    <div class="order_div" style="top: 300px;">
 <!-- 	주문메뉴 list 영역 -->
-	<div class="center-wrap" style="display: flex; padding-top:0">
+	<div class="center-wrap" style="display: flex; padding-top:0; box-sizing: border-box;">
 	  <div class="order_list_div2" style=" overflow-x: hidden;">
 		<table class="table_list2">
 			<thead>
@@ -251,12 +251,22 @@
 		</table>
 	</div>
   </div>
+<!-- 결제 footer -->
   <div class="footer_div">
+<!--   	<div> -->
+<!--   		<ul class="side_img"> -->
+<%--   			<li><img src="${path}/resources/kiosk/images/Disabled.png"><p>장애인</p></li> --%>
+<%--   			<li><img src="${path}/resources/kiosk/images/key.png"><p>보안키</p></li> --%>
+<%--   			<li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li> --%>
+<!--   		</ul> -->
+<!--   	</div> -->
+  	<button class="order_cancel_btn" onclick="cancel();">결제취소</button>
+  	<button class="swiper-button-prev" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4);">추가주문</button>
   </div>
 	<!-- 이전 버튼 -->	
 	</div>
 	</div>
-	<div class="swiper-button-prev" style="top:92%;"></div>
+	<div class="swiper-button-prev" style="top:81.5%;"></div>
 	</div>
 	</div>
 	</div>

@@ -32,7 +32,7 @@ nav ul li:first-child { border-left:none; }
 .tab_cont li { color:white; display:inline-block;}
 .tab_cont li img { width:240px; height:200px; margin-right:50px; cursor: pointer; margin-top:15px; border:1px solid #e3e3e3; position: relative; left: 50px; }
 .tab_cont li p {text-align: center; position:relative; left:50px; width:240px; color:#3f3f3f; top:-23px;}
-.center-wrap{margin:0 auto;  width:1024px; height:100%; padding-top:40px; background-color: #fff;}
+.center-wrap{margin:0 auto;  width:1024px; padding-top:40px; background-color: #fff;}
 .ListBtn { border: none; font-size:16px; background:transparent; cursor: pointer; color:rgb(133,42,42);}
 .image_out_div { margin-bottom: -5px; }
 .order_history_div { clear:both; position:relative; top:60px; color:#fff; width:1024px;}
@@ -290,6 +290,10 @@ nav ul li:first-child { border-left:none; }
 .payment_table th{background: #8e1306; color: #fff;}
 .payment_table th, payment_table,td{padding: 20px;}
 .payment_choice img { width:100px; height:100px; }
-/* .ad img { width: 50%; position:relative; left:500px;} */
 .ad{width: 100%;  position: absolute; top: 0; text-align: center;}
-.footer_div { border:1px solid black; width:100%; height:100px; position:relative; top:10px; }
+.footer_div { background:#fff; border:1px solid black; width:1021px; height:100px; position:relative; top:10px; }
+.footer_div button {width:250px; height:70px; position:relative; top:15px; display:inline-block; font-size:20pt; border-radius: 12px; outline:0; border:none; margin-right:100px;}
+.order_cancel_btn {position:relative; left:385px; cursor:pointer;}
+#order_add_btn {position:relative; left:400px; cursor:pointer; }
+.side_img { display:inline-block;}
+.side_img img { width:50px; height:50px;}
