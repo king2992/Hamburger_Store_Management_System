@@ -621,7 +621,7 @@ background:#1AAB8A;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
-            width: 30%; /* Could be more or less, depending on screen size */                          
+            width: 450px; /* Could be more or less, depending on screen size */                          
         }
         /* The Close Button */
         .withdrawal-close {
@@ -650,7 +650,7 @@ background:#1AAB8A;
 		    padding: 0 0 2px 3px;
 		    background-color: #f1f1f1;
 		    position:relative;
-		    left:70px;
+		    left:67px;
 		    top:10px;
         }
         .userDeleteClass {
@@ -659,7 +659,7 @@ background:#1AAB8A;
 		    font-size: 15px;
 		    background: #d1840e;
 		    color: #fff;
-		    margin: 30px 0 0 140px;
+		    margin: 30px 0 0 135px;
 		    display: block;
 		    text-align: center;
 		    outline: 0;
