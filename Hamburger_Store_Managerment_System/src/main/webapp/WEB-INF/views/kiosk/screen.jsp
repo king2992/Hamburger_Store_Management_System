@@ -155,7 +155,10 @@
 <div class="swiper-slide">
  <div class="swiper-wrapper">
  <div class="ad">
- <img src="${path}/resources/images/carousel1.jpg" width="1024px">
+ <img class="mySlides" src="${path}/resources/images/carousel1.jpg" width="1024px">
+ <img class="mySlides" src="${path}/resources/images/carousel2.jpg" width="1024px">
+ <img class="mySlides" src="${path}/resources/images/carousel3.jpg" width="1024px">
+ <img class="mySlides" src="${path}/resources/images/carousel4.jpg" width="1024px">
  </div>
    <div class="order_div" style="top: 300px;">
 <!-- 	주문메뉴 list 영역 -->
@@ -269,14 +272,7 @@
 	</div>
 	</div>
 	</div>
-<script>
-new Swiper('#swiper', {
-	navigation : {
-		nextEl : '.swiper-button-next', 
-		prevEl : '.swiper-button-prev', 
-	},
-});
-</script>
+
 <!-- 	모달 부분 -->
 <div id="ex1" class="modal">
 	<h2><span class="modal_span">세트로 드시겠어요?</span></h2>
