@@ -76,6 +76,18 @@
 } 
 .deleteUpdate li {cursor: pointer;}
 
+#orderList .order-group { line-height:32px; width:100%;height:100%; border-bottom: 1px solid #aaa;}
+#orderList .order-num {width:23%;display:inline-block; }
+#orderList .order-item { display:inline-block;width:75%; }
+#orderList .order-item li {display:inline-block;width:32%;}
+
+.null-item{  width: 23%;  float:left;}  
+
+.sizeSelect{ position: relative;left: 19%; top: 32%; height: 100%;}
+.largeSizeSelect{width: 30%; border: 1px solid white; height: 30%; display: inline-block; text-align:center;}
+.normalSizeSelect{width: 30%; border: 1px solid white; height: 30%; display: inline-block; text-align:center;}
+.largeSizeSelect > p{margin-top: 23%; font-size:20px;}
+.normalSizeSelect > p{margin-top: 23%; font-size:20px;}
 </style>
 	<script>
 	$(document).ready(function(){
@@ -240,20 +252,27 @@ $(document).on('click','#cancel',function(){
 					<div class="take">
 						<p>Take Out</p>
 					</div>
+				
 					<div class="top-table">
-						<table>
+						<table class="order-header">
+							<colgroup>
+								<col style="width:25%;"/>
+								<col style="width:25%;"/>
+								<col style="width:25%;"/>
+								<col style="width:25%;"/>
+							</colgroup>
 							<thead>
 								<tr>
-									<th>상품번호</th>
+									<th>번호</th>
 									<th>상품명</th>
 									<th>상품수량</th>
 									<th>가격</th>
 								</tr>
 							</thead>
-							<tbody class="orderList" id="orderList">
-								
-							</tbody>
 						</table>
+						<div id="orderList" class="orderList">
+						
+						</div>
 					</div>
 					<div class="total">
 						<table>
@@ -515,6 +534,15 @@ $(document).on('click','#cancel',function(){
 	</c:choose>
 	<button type="button" class="sidePrev">이 전</button>
 	</div> 
+	<div class="sizeSelect">
+		<section class="largeSizeSelect">
+			<p>라지사이즈</p>
+		</section>
+		<section class="normalSizeSelect">
+			<p>노말사이즈</p>
+		</section>
+		
+	</div>
 </div>
 </body>
 </html>

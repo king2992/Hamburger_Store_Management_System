@@ -3,152 +3,173 @@
 	
 	var menuNameArray = new Array();
 	var menuCntArray = new Array();
-	$(document).ready(function() {
-		localStorage.clear();
-		$(".chicken").show();
-		$(".burger").hide();
-		$(".side").hide();
-		$(".drink").hide();
-		$(".setModal").hide();
-		$(".modal").hide();
-		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
-		$(".setSideList").hide();$(".setDrinkList").hide();$(".sideFlavorSelect").hide();
-		$(document).on("click", ".moneyImg",function(){
-			var thisMoney = $(this).data("money");
-			var ReceiveMoney = $("#payTotal").val();
-			var total = "";
-			
-			total = Number(ReceiveMoney) + Number(thisMoney) ;
-			
-			$("#payTotal").val(total);
-			
-		});
-		$(document).on("click", "#moneyReset", function(){
-			$("#payTotal").val("");
-		})
-		$(document).on("click",".document",function(){
-			
-			var payTotal = $("#payTotal").val();
-			var payTotal2 = $("#payTotal2").val();
-			var nmg = $("#nmg").val(Number(payTotal) - Number(payTotal2));
-			
-			console.log(payTotal);
-			console.log(payTotal2);
-			
-			if(Number(payTotal) < Number(payTotal2)){
-				alert('받은 금액을 다시 확인해주십시오.');
-			}
-			
-			if(Number(payTotal) >= Number(payTotal2)){
-			
-			$('#nmg').css('display','block');
-			$('.nmg').css('display','block');
-			$('.document').css('display','none');
-			$('#submitcash').css('display','inline-block');
-			}
-			
-		});
+$(document).ready(function() {
+	localStorage.clear();
+	$(".chicken").show();
+	$(".burger").hide();
+	$(".side").hide();
+	$(".drink").hide();
+	$(".setModal").hide();
+	$(".modal").hide();
+	$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
+	$(".setSideList").hide();$(".setDrinkList").hide();$(".sideFlavorSelect").hide();$(".setSelect").hide();
+	$(document).on("click", ".moneyImg",function(){
+		var thisMoney = $(this).data("money");
+		var ReceiveMoney = $("#payTotal").val();
+		var total = "";
 		
-		$(document).on('click', '.set-cancel', function(){
-			$(".setModal").hide();
-		})
-		//포스기에 우측에 상품을 클릭 했을 때
-		$(document).on( "click", ".pNameClick", function() {
-			localStorage.clear();
-			var td1 = document.createElement("td");
-			var td2 = document.createElement("td");
-			var td3 = document.createElement("td");
-			var td4 = document.createElement("td");
-			var tr1 = document.createElement("tr");
-			var menuName = $(this).attr("value");
-			
-			tr1.setAttribute("class", "menuListTr");
-			tr1.style = "cursor:pointer";
-			td1.innerHTML = $(this).attr("data-number");
-			td2.innerHTML = $(this).attr("value");
-			td2.setAttribute("name",menuName);
-			td2.setAttribute("data-menuName", $(this).attr("value"));
-			td2.setAttribute("class","menuListName");
-			td3.setAttribute("id", menuName);
-			td3.innerHTML = $(this).attr("data-cnt");
-			td3.setAttribute("class", "menuListCnt");
-			td4.innerHTML = $(this).attr("data-price");
-			td4.setAttribute("class", "item-price");
-			td4.setAttribute("data-price",$(this).attr("data-price"));
-			localStorage.setItem("버거", menuName);
-			console.log($(this).data("category"));
-				//선택 한 놈이 햄버거이면 실행하라
-				if($(this).data("category") == "burger"){
-					$(".burgerOrSet").show();$(".burgerOrSet-content").show();// 세트인지 버거인지 선택 하는 모달
-					$(".setSideList").hide();
-					$(".setSelect").show();
-					td2.setAttribute("id", "set");
-					td1.setAttribute("rowspan", "3");
-				}
-				
-				if($("[name='"+menuName+"']").length == 0 ){
-					$("#orderList").append(tr1);
-					tr1.append(td1);
-					tr1.append(td2);
-					tr1.append(td3);
-					tr1.append(td4);
-				}else{
-					var sum = 1;
-					sumCount(menuName);
-					sumPrice(menuName);
-				}
-				
-				
-			var menuId = $(this).attr('data-number');
-						
-			if ($(".menuDelete").length < 1) {
-				$('.deleteUpdate').append('<li class="menuDelete" id="menuDelete">메뉴삭제</li>');
-			}
-			
-	$("#menuDelete").attr("onclick", "pDelete('"+menuId+"')");
-		menuItemPriceTotal();
+		total = Number(ReceiveMoney) + Number(thisMoney) ;
+		
+		$("#payTotal").val(total);
+		
 	});
-		
-	$("#setSideSelect").on("click", function(){
-		$(".setSideList").show(); // 세트 사이드 리스트를 보여준다
-		var menuName = $("#set").text();
-		setNameAdd(menuName);
-		$(".setSelect").hide(); // 세트인지 버거인지 선택하는 영역은 숨긴다
+	$(document).on("click", "#moneyReset", function(){
+		$("#payTotal").val("");
 	})
-	
-	//세트메뉴를 선택했을 때 
-	function setNameAdd(menuName){
-		$("#set").text(menuName+"set");
-	}
-		//사이드 메뉴 골랐을 때
-	$(".setSideUl").on("click", function(){
+	$(document).on("click",".document",function(){
 		
+		var payTotal = $("#payTotal").val();
+		var payTotal2 = $("#payTotal2").val();
+		var nmg = $("#nmg").val(Number(payTotal) - Number(payTotal2));
+		
+		console.log(payTotal);
+		console.log(payTotal2);
+		
+		if(Number(payTotal) < Number(payTotal2)){
+			alert('받은 금액을 다시 확인해주십시오.');
+		}
+		
+		if(Number(payTotal) >= Number(payTotal2)){
+		
+		$('#nmg').css('display','block');
+		$('.nmg').css('display','block');
+		$('.document').css('display','none');
+		$('#submitcash').css('display','inline-block');
+		}
+		
+	});
+	
+	$(document).on('click', '.set-cancel', function(){
+		$(".setModal").hide();
+	})
+	var localCnt = "";
+	//포스기에 우측에 상품을 클릭 했을 때
+	$(document).on( "click", ".pNameClick", function() {
+		
+		var menuId = $(".order-group").length + 1;
+		var pName = $(this).attr('value');
+		var pPrice = $(this).data('price');
+		var pNumber = $(this).data('number');
+		var pCnt = Number($(this).data('cnt'));
+		var pMenu = $(this).data('menu');
+
+		var $thisItem = $('#item-'+menuId);
+		
+		var tmplt ='';
+			if($(this).data("category") == "burger"){//누른놈이 햄버거 일 때
+				
+				$(".burgerOrSet").show().attr('data-number',menuId).attr("data-menuname", pName);
+				$(".burgerOrSet-content").show();// 세트인지 버거인지 선택 하는 모달
+				$(".setSideList").hide();
+				$(".setSelect").show();$(".sizeSelect").hide();
+				
+				
+					tmplt = '<template>' +
+					'	<div id="item-' + menuId + '" class="order-group">' +
+					'		<div class="order-num">' + menuId + '</div>' +
+					'		<ul class="order-item">'	+
+					'			<li class="item-name" id="'+pName+''+menuId+'">' + pName +'</li>' +
+					'			<li class="item-cnt">' + pCnt + '</li>' +
+					'			<li class="item-price" data-price="'+pPrice+'">' + pPrice + '</li>' +
+					'		</ul>' +
+					'	</div>' +
+					'</template>';
+			
+					localStorage.setItem("버거", pName);
+					
+					var $tmplt = $(tmplt);
+					$("#orderList").append($tmplt.html());
+				
+				}else if($(this).data("category") != "burger") { // 누른놈이 햄버거가 아닐 때
+						var uniqId = document.getElementById(""+pName+"");
+						
+						if(uniqId == null){
+							var tmplt ='';
+							tmplt = '<template>' +
+							'	<div id="item-' + menuId + '" class="order-group">' +
+							'		<div class="order-num">' + menuId + '</div>' +
+							'		<ul class="order-item">'	+
+							'			<li class="item-name"  id="'+pName+'">' + pName +'</li>' +
+							'			<li class="item-cnt">' + pCnt + '</li>' +
+							'			<li class="item-price" data-price="'+pPrice+'">' + pPrice + '</li>' +
+							'		</ul>' +
+							'	</div>' +
+							'</template>';
+							var $tmplt = $(tmplt);
+							$("#orderList").append($tmplt.html());
+						}else if(uniqId != null){
+							var cnt = $("#"+pName+"").siblings(".item-cnt").text();
+							cnt = Number(cnt) + 1;
+							var a = '';
+							a = Number(cnt) * Number(pPrice);
+							$("#"+pName+"").siblings(".item-price").text(a);
+							$("#"+pName+"").siblings(".item-cnt").text(cnt);
+						}
+						
+							}
+							
+		menuItemPriceTotal();
+					
+		if ($(".menuDelete").length < 1) {
+			$('.deleteUpdate').append('<li class="menuDelete" id="menuDelete">메뉴삭제</li>');
+		}
+	});
+	// 세트를 선택 했을 때
+	$(document).on('click', '#setSideSelect', function() { 
+		$(".sizeSelect").show(); // 세트 사이드 리스트를 보여준다
+		$(".setSelect").hide(); // 세트인지 버거인지 선택하는 영역은 숨긴다
+		var menuName = $(".burgerOrSet").attr("data-menuname"); //진행중인 메뉴 이름 가져오기
+		var menuId = $(".order-group").length;
+		$("#"+menuName+""+menuId+"").text(menuName + "-SET").attr("id", menuName +"SET" + menuId);// 진행중인 메뉴에서 세트 클릭시 아이디에 세트 추가
+		
+		$(".burgerOrSet").data("setitem", "-SET");
+	});
+	//라지 사이즈 선택 했을 때
+	$(document).on("click",".largeSizeSelect", function(){
+		$(".sizeSelect").hide();$(".setSideList").show();//라지 선택 시 사이즈 선택 창 닫고 세트 선택 창 오픈
+		$(".burgerOrSet").data("menusize", "-L");//라지사이즈 라는 상태
+		var menuName = $(".burgerOrSet").data("menuname");//세트 진행 중인 놈에 메뉴 이름
+		var menuPrice = $("#"+menuName+""+menuId+"").siblings(".item-price").text();//세트 진행 중인 놈에 메뉴 가격
+		var largePrice = 800; // 라지 사이즈는 800원 추가
+		largePrice = largePrice + Number(menuPrice);// 라지 사이즈는 800원 추가
+		$("#"+menuName+""+menuId+"").siblings(".item-price").text(largePrice);//추가 한 금액 표시
+		var setItem = $(".burgerOrSet").data("setitem");
+		var menuId = $(".order-group").length;
+		$("#"+menuName+"SET"+menuId+"").text(menuName + "-L" + setItem);
+	});
+	//노말 사이즈 선택 했을 때
+	$(document).on("click",".normalSizeSelect", function(){
+		$(".sizeSelect").hide();$(".setSideList").show();
+	});
+		//사이드 메뉴 골랐을 때
+	$(document).on("click", ".setSideUl", function(){		
 		var menuName = $(this).children(".setSideItem").text();//사이드 메뉴 누른 놈에 메뉴 이름
 		var menuPrice = $(this).children("li").children(".setSidePrice").text();//사이드 메뉴 누른 놈에 메뉴 가격
-		var tr1 = document.createElement("tr");
-		tr1.setAttribute("class", "menuListTr");
+		var menuId = $(".burgerOrSet").attr("data-number");
+		localStorage.setItem("사이드", "set"+menuName);
+		var tmplt = "";
+		tmplt = '<div>' +
+				'	<div class="null-item">'+"-"+'</div>' +
+				'		<ul class="order-item">'	+
+				'			<li class="item-name">' + menuName +'</li>' +
+				'			<li class="item-cnt">' + "SET" + '</li>' +
+				'			<li class="item-price" data-price="'+menuPrice+'">' + menuPrice + '</li>' +
+				'		</ul>' +
+				'</div>';
 		
-//		var tdNull1 = document.createElement("td");
-		var tdNull2 = document.createElement("td");
+		var $tmplt = $(tmplt);
+		$("#item-"+menuId+"").append($tmplt.html());
 		
-		tdNull2.innerHTML = "1";
-		tdNull2.setAttribute("class", "menuListCnt");
-		
-		var td1 = document.createElement("td");
-		td1.innerHTML = menuName ; 
-		td1.setAttribute("id", menuName);
-		td1.setAttribute("class", "menuListName");
-		
-		var td2 = document.createElement("td");
-		td2.innerHTML = menuPrice ; 
-		td2.setAttribute("class", "item-price");
-		
-		$("#orderList").append(tr1);
-//		tr1.append(tdNull1);
-		tr1.append(td1);
-		tr1.append(tdNull2);
-		tr1.append(td2);
-		localStorage.setItem("사이드", menuName);
 		menuItemPriceTotal();
 		//선택 한 사이드가 양념감자이면 
 		if(menuName == "양념감자"){
@@ -157,24 +178,34 @@
 		}else{
 			$(".setSideList").hide();$(".setDrinkList").show();
 		}
-		
 	});
-	$(".flavor-item").on("click", function(){
+	$(document).on("click", ".flavor-item", function(){
 		var flavorItem = $(this).text(); //양념감자 맛 선택 한 놈
-		var sideMenu = localStorage.getItem("사이드"); //상품리스트에 추가하기 위한 변수
-		localStorage.setItem("양념감자맛", flavorItem);// localStorage에 세팅
-		$("#"+sideMenu+"").append(flavorItem);//좌측 상품리스트 양념감자 옆에 맛 표시
+		var menuId = $(".burgerOrSet").attr("data-number");
+		
+		var tmplt = "";
+		tmplt = '<template>' +
+				'	<div class="null-item">'+"-"+'</div>' +
+				'		<ul class="order-item">'	+
+				'			<li class="item-name">' + flavorItem +'</li>' +
+				'			<li class="item-cnt">' + "" + '</li>' +
+				'			<li class="item-price" >' + "0"+ '</li>' +
+				'		</ul>' +
+				'</template>';
+		
+		var $tmplt = $(tmplt);
+		$("#item-"+menuId+"").append($tmplt.html());
+		
 		$(".sideFlavorSelect").hide();$(".setDrinkList").show();//맛 선택 창 숨기고 음료 선택 창 show
 	})
-	
-	$(".burgerPrev").on("click", function(){
+	$(document).on("click", ".burgerPrev", function(){
 		var localMenuName = localStorage.getItem("버거");
 		var menuListTd = $("#"+localMenuName+"");
 		
 		menuListTd.parent().remove();
 		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
 	})
-	$(".sidePrev").on("click", function(){
+	$(document).on("click", ".sidePrev", function(){
 		var localMenuName = localStorage.getItem("사이드");
 		var menuListTd = $("#"+localMenuName+"");
 		localStorage.removeItem("사이드");
@@ -182,83 +213,67 @@
 		$(".setDrinkList").hide();$(".setSideList").show();
 	})
 		//사이드 음료 골랐을 때
-	$(".setDrinkUl").on("click", function(){
+	$(document).on("click",".setDrinkUl", function(){
 		var menuName = $(this).children(".setDrinkItem").text();//사이드 메뉴 누른 놈에 메뉴 이름
 		var menuPrice = $(this).children("li").children(".setDrinkPrice").text();//사이드 메뉴 누른 놈에 메뉴 가격
+		var menuId = $(".burgerOrSet").attr("data-number");
+		var tmplt = "";
 		
-		var tr1 = document.createElement("tr");
-		tr1.setAttribute("class", "menuListTr");
+		tmplt = '<template>' +
+				'	<div class="null-item">'+"-"+'</div>' +
+				'		<ul class="order-item">'	+
+				'			<li class="item-name">' + menuName +'</li>' +
+				'			<li class="item-cnt">' + "SET" + '</li>' +
+				'			<li class="item-price" data-price="'+menuPrice+'">' + menuPrice + '</li>' +
+				'		</ul>' +
+				'</template>';
 		
-//		var tdNull1 = document.createElement("td");
-		var tdNull2 = document.createElement("td");
-		tdNull2.innerHTML = "1";
-		tdNull2.setAttribute("class", "menuListCnt");
+		var $tmplt = $(tmplt);
+		$("#item-" + menuId).append($tmplt.html());
 		
-		var td1 = document.createElement("td");
-		td1.innerHTML = menuName ; 
-		td1.setAttribute("class", "menuListName");
-		
-		var td2 = document.createElement("td");
-		td2.innerHTML = menuPrice ; 
-		td2.setAttribute("class", "item-price");
-		
-		$("#orderList").append(tr1);
-//		tr1.append(tdNull1);
-		tr1.append(td1);
-		tr1.append(tdNull2);
-		tr1.append(td2);
 		menuItemPriceTotal();
-		
-		localStorage.setItem("음료", menuName);
-		
-		$("#set").removeAttr("id");//set라는 텍스트를 추가 하기 위한 아이디 삭제
 		
 		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
 		$(".setSideList").show();$(".setDrinkList").hide();
 	});
 		//버거만을 선택했을 때 에는 모달 창 닫아버린다
-	$("#setBurgerSelect").on("click", function(){
-		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
+	$(document).on("click","#setBurgerSelect", function(){
+		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();$(".sizeSelect").hide();
+		
 	})
 		//세트 or 버거 선택 창 닫기
-	$(".burgerOrSetCancle").on("click", function(){
+	$(document).on("click",".burgerOrSetCancle", function(){
 		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
 	})
 	
 	$('.pNameClick').each( function(index, value) {
-			$(this).click( function() {
-				$(this).attr("id", "selected");
-				$(this).siblings().attr("id", "none");
-					});
+		$(this).click( function() {
+		$(this).attr("id", "selected");
+		$(this).siblings().attr("id", "none");
+			});
 		});
-	$(document).on( "click", ".menuListTr", function() {
+	$(document).on( "click", ".order-group", function() {
 		
-				$(this).css("background-color", "red");
-				$(this).attr("id", "menuListSelected");
-				$(this).siblings().attr("id", "none");
+		$(this).css("background-color", "red");
+		$(this).attr("id", "menuListSelected");
+		$(this).siblings().attr("id", "none");
 
-				$(".menuListTr").each(function(){
-					if($(this).attr("id") != "menuListSelected"){
-						$(this).css("background-color", "#FBF2EF");
-					}
-				})
+		$(".order-group").each(function(){
+			if($(this).attr("id") != "menuListSelected"){
+				$(this).css("background-color", "#FBF2EF");
+			}
+		})
 	});
-	$(document).on( "mouseenter", ".menuListTr", function() {
-		
-			
-		if($(event.target).parent().css("background-color") == "rgb(255, 0, 0)"){
-			event.target.parentNode.setAttribute("style", "background-color:red");
-		}else if($(event.target).parent().css("background-color") != "rgb(255, 0, 0)"){
-			event.target.parentNode.setAttribute("style", "background-color:blue");
+	$(document).on( "mouseover", ".order-group", function() {
+		if($(this).attr("id") != "menuListSelected"){
+			$(this).css("background" , "#aaa");
 		}
 		
 	});
-	$(document).on( "mouseleave", ".menuListTr", function() {
-		
-		if(event.target.parentNode.getAttribute("id") != "menuListSelected" ){
-			event.target.parentNode.setAttribute("style", "background-color: #FBF2EF");
+	$(document).on( "mouseout", ".order-group", function() {
+		if($(this).attr("id") != "menuListSelected"){
+			$(this).css("background" , "#e9e9e9");
 		}
-		
 	});
 	$(document).on("click", ".chickenMenu", function(){
 		$(".chicken").show();
@@ -289,9 +304,6 @@
 	var triggercash = document.querySelector(".triggercash"); 
 	var cancelButtoncash = document.querySelector("#cancelcash");
 	
-	//현금 결제
-//	triggercash.addEventListener("click", toggleModalcash); 
-//    closeButtoncash.addEventListener("click", toggleModalcash); 
     cancelButtoncash.addEventListener("click", toggleModalcash); 
     
     $(document).on('click', ".menuAddModalCancle", function(){
@@ -312,7 +324,7 @@
 		$(".modalcash").show(); $(".modal-contentcash").show();
 		toggleModalcash();
 	});
-
+});
     function toggleModalcash() { 
 	   var orderListChild = document.getElementById("orderList");
 	   
@@ -344,13 +356,9 @@
 		
     }
   
-	   
-	});
+	
 	function card(){
 		 
-	 	//modalcash.classList.toggle("show-modalcash"); 
-        //$('input[name=payTotal]').val($('.pTotal').text());
-		
         var payTotal = $('#pTotal').text();
         
         var rTime = new Date();
@@ -359,17 +367,19 @@
  	    regTime += rTime.getSeconds();
  	    
         //추가 돼 있는 상품에 이름을 배열에 담는다
-        $(".menuListName").each(function(index, item){
+        $(".item-name").each(function(index, item){
         	menuNameArray.push($(this).text());
         })
         //추가 돼 있는 상품에 갯수를 배열에 담는다
-        $(".menuListCnt").each(function(index, item){
+        $(".item-cnt").each(function(index, item){
         	menuCntArray.push($(this).text());
         })
+        console.log(menuNameArray);
+        console.log(menuCntArray);
         
 	   var orderListChild = document.getElementById("orderList");
 	   
-	   if(orderListChild.childElementCount == 0){
+	   if(orderListChild.childElementCount == 0){ // 리스트에 상품이 없으면 alert("상품을 선택해주세요")
 		   effectiveness();
 			return;
 		}
@@ -412,26 +422,26 @@
 			}
     	});
 		
-		function card2(){
-			Swal.fire({
-			  position: 'center',
-			  type: 'success',
-			  title: '결제가 완료되었습니다.',
-			  showConfirmButton: false,
-			  timer: 1500
-			});
-			
-		}
-		function effectiveness(){
-			Swal.fire({
-			  position: 'center',
-			  type: 'error',
-			  title: '상품을 선택 해 주세요.',
-			  showConfirmButton: false,
-			  timer: 1500
-			});
-			
-		}
+	function card2(){
+		Swal.fire({
+		  position: 'center',
+		  type: 'success',
+		  title: '결제가 완료되었습니다.',
+		  showConfirmButton: false,
+		  timer: 1500
+		});
+		
+	}
+	function effectiveness(){
+		Swal.fire({
+		  position: 'center',
+		  type: 'error',
+		  title: '상품을 선택 해 주세요.',
+		  showConfirmButton: false,
+		  timer: 1500
+		});
+		
+	}
 	}
 	 
 	function pDelete(menuId) {
@@ -447,13 +457,12 @@
 		});
 	}
 	function allRemove(){
-		$(".menuListTr").each(function(){
+		$(".order-group").each(function(){
 			$(this).remove();
 		})
 		menuNameArray =[];
 		menuCntArray = [];
 		
-		console.log(menuNameArray);
 		menuItemPriceTotal();
 		localStorage.clear();
 	}
@@ -474,21 +483,21 @@
 	}
 	function menuCntUp(){
 		var price = $("#menuListSelected").find(".item-price").text();
-		var tot = $("#menuListSelected").find(".menuListCnt").text();
+		var tot = $("#menuListSelected").find(".item-cnt").text();
 		var cnt = Number(tot) + 1;
-		$("#menuListSelected").find(".menuListCnt").text(cnt);
+		$("#menuListSelected").find(".item-cnt").text(cnt);
 		menuItemTotal(cnt);
-		 menuItemPriceTotal()
+		 menuItemPriceTotal();
 	}
 	function menuCntDown(){
 		var price = $("#menuListSelected").find(".item-price").text();
-		var tot = $("#menuListSelected").find(".menuListCnt").text();
+		var tot = $("#menuListSelected").find(".item-cnt").text();
 		var cnt = Number(tot) - 1;
-		if($("#menuListSelected").find(".menuListCnt").text() > 1){
-			$("#menuListSelected").find(".menuListCnt").text(cnt);	
+		if($("#menuListSelected").find(".item-cnt").text() > 1){
+			$("#menuListSelected").find(".item-cnt").text(cnt);	
 		}
 		menuItemTotal(cnt);
-		 menuItemPriceTotal()
+		 menuItemPriceTotal();
 	}
 	function menuItemTotal(cnt){
 		var itemPrice = $("#menuListSelected").find(".item-price").attr("data-price");
@@ -504,7 +513,6 @@
 		var tot = 0;
 			$(".item-price").each(function(index){
 				total += Number($(this).text());
-			//total = Number(total) + Number($(this).text());
 		});
 			pTotal(total);
 	}
@@ -554,7 +562,6 @@
 		 }
 		 
 		 function 선규(){
-			
 				$.ajax({
 		     		url : "/pos/menuAdd",
 		     		data : {"menuNameArray" : menuNameArray, "menuCntArray" : menuCntArray},
@@ -569,4 +576,3 @@
 					}
 		     	});
 		 }  
-	
