@@ -16,6 +16,6 @@
  	<div><span>전화번호 : <select><option>010</option></select>-<input type="text">-<input type="text"></span></div>
  	<div><span>이메일 : <input type="text">@<input type="text"><button type="button">이메일 본인 인증</button></span></div>
  	<div><span>사업자 등록 번호 : <input type="text">-<input type="text">-<input type="text"><button type="button">등록 번호 인증</button></span></div>
- 	<div><span><button type="button">회원가입</button></span></div>
+ 	<div><span><button type="button">회원가입</button></span></div> 
 </body> 
 </html>
