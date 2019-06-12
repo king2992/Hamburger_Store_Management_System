@@ -34,6 +34,7 @@ table {
 }
 .MyPage h1 {
     font-size: 25px;
+    font-weight:600;
 }
 .container_box {
     margin: 0 auto;
@@ -664,4 +665,19 @@ background:#1AAB8A;
 		    text-align: center;
 		    outline: 0;
 		    border-color: #e79210;
+        }
+		/*MY 카드 닫기 버튼*/
+		.cardmodal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: relative;
+    		bottom: 60px;
+        }
+        .cardmodal-close:hover,
+        .cardmodal-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }

@@ -52,4 +52,7 @@ $(document).ready(function(){
 	 $(document).on("click", ".withdrawal-close", function(){
 		 $(".withdrawalModal").hide();
 	 })
+	 $(document).on("click", ".cardmodal-close", function(){
+		 $("#MYcardModal").hide();
+	 })
 });

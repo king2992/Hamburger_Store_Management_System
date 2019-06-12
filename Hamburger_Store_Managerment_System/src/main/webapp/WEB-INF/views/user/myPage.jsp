@@ -179,7 +179,7 @@
                 <h3>개인정보변경</h3>
                 <p>회원 기본 정보</p>
                 
-                <form name="Regist" id="Regist" method="post" action="">
+                <form name="Regist" id="Regist" method="post" style="height:470px;">
                     <table width="100%" cellpadding="0" cellspacing="0" class="tb_type" summary="회원 기본 정보 테이블">
                         <colgroup>
                             <col width="20%">
@@ -325,6 +325,7 @@
 			    <div id="MYcardModal" class="MYcard">
 				      <!-- Modal content -->
 				      <div class="cardmodal-content">
+				      	<span class="cardmodal-close">&times;</span>
 							<ul class="cardImg"> 
 			                      <li class="BankName">신한은행</li>
 			                      <li class="MYcardNum">1234-5678-1234-5678</li>

@@ -1,10 +1,10 @@
 /* The Modal (background) */
         .modal {
             display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
+            position: relative; /* Stay in place */
             z-index: 1; /* Sit on top */
 /*             left: 0; */
-/*             top: 0; */
+           top: -450px !important;
             border: 2px solid black;
 		    border-radius: 10px;
 		    width: 400px;
@@ -17,11 +17,12 @@
         /* Modal Content/Box */
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 10% auto; /* 15% from the top and centered */
             padding: 20px;
-            border: 1px solid #888;
+            border: 1px solid #ababab !important;
             width: 400px !important;
-		    height: 400px !important; /* Could be more or less, depending on screen size */                          
+		    height: 390px !important; /* Could be more or less, depending on screen size */ 
+		    bottom:20px;                         
         }
         .modal-content h5{
 		    font-size: 21px;
@@ -79,7 +80,7 @@
 		    background:#d1840e;
 		    color: #fff;
 		    margin: 0 auto;
-		    margin-top: 15px;
+		    margin-top: 10px;
 		    display: block;
 		    text-align: center;
 		    outline: none;
