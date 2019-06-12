@@ -1,0 +1,144 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    }
+body{
+    font-family: 'S-Core Dream', NanumGothic;
+    background: #f8f8f8;
+    padding:20px 20px;
+}
+.adminTitle {
+	font-family: 'Oswald', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    text-align:center;
+}
+.input { 
+         width: 300px; 
+         height: 30px;
+         line-height:30px; 
+         background-color: #fff; 
+         border-radius: 10px; 
+         border: 1px solid #dedede; 
+         padding: 10px; 
+         /* margin-top: 3px;  */
+         margin-bottom:20px;
+         font-size: 0.9em; 
+         color: #3a3a3a; 
+     	margin:0 auto;
+     	display: block;
+/*          position: relative; */
+/*     	left: -6px; */
+     } 
+.input:focus{ 
+     border: 1px solid #97d6eb; 
+} 
+input[name=userId]{margin-bottom:25px; margin-top:30px;}
+input[name=userPhone]{margin-bottom:25px; margin-top:30px;}
+input[name=userName]{margin-bottom:25px; margin-top:30px;}
+.check{
+    box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
+    padding: 10px;
+    font-family: 'Varela Round';
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border: 0;
+    background-color: #64a19d;
+    border-radius: 10px;
+    color:#fff;
+    float:right;
+    position: relative;
+    right:56px;
+    top:38px;
+}
+.emil_check {
+    box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
+    padding: 10px;
+    font-family: 'Varela Round';
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border: 0;
+    background-color: #64a19d;
+    border-radius: 10px;
+    color:#fff;
+    float:right;
+    position: relative;
+    right:-3px;
+    top:2px;	
+}
+.Num_check {
+	box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
+    padding: 10px;
+    font-family: 'Varela Round';
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border: 0;
+    background-color: #64a19d;
+    border-radius: 10px;
+    color:#fff;
+    float:right;
+    position: relative;
+    right:-63px;
+    top:2px;
+}
+#userId{
+width:223px;
+}
+#idCheck{
+	font-size:12px;
+}
+.phoneDiv{display: inline-block; margin-bottom: 30px; position: relative; left: 66px;}
+.emilDiv{display: inline-block; margin-bottom: 30px; position: relative; relative; left: 66px;}
+.selectPhone {
+    width: 78px;
+    /* height: 30px; */
+    line-height: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #dedede;
+    padding: 10px;
+    margin: 0 auto;
+    font-size: 0.9em;
+    color: #3a3a3a;
+   /*  display: block; */
+}
+.emil {
+	width: 90px;
+    height: 20px;
+    line-height: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #dedede;
+    padding: 10px;
+    margin: 0 auto;
+    font-size: 0.9em;
+    color: #3a3a3a;
+   /*  display: block; */	
+}
+.buisnessNum {
+	font-size: 13px;
+    position: relative;
+    left: 70px;
+    bottom: 15px;
+}
+.adminSingup{ 
+    width: 127px; 
+    height: 48px; 
+    text-align: center;
+    border: none; 
+    background-color: rgb(36, 36, 75);
+    border-radius: 10px;
+    color: #fff; 
+    margin: 20px 0 0 177px; 
+    cursor: pointer; 
+     }     
+.adminSingup:hover{ 
+    color: #fff; 
+    background-color: #216282; 
+    opacity: 0.9; 
+} 

@@ -275,20 +275,20 @@ p{margin:0;}
         input[name=userId]{margin-bottom:25px; margin-top:30px;}
         
      .check{
-    box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
-    padding: 10px;
-    font-family: 'Varela Round';
-    font-size: 80%;
-    text-transform: uppercase;
-    letter-spacing: .15rem;
-    border: 0;
-    background-color: #64a19d;
-    border-radius: 10px;
-    color:#fff;
-    float:right;
-    position: relative;
-    right:70px;
-    top:6px;
+	    box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
+	    padding: 10px;
+	    font-family: 'Varela Round';
+	    font-size: 80%;
+	    text-transform: uppercase;
+	    letter-spacing: .15rem;
+	    border: 0;
+	    background-color: #64a19d;
+	    border-radius: 10px;
+	    color:#fff;
+	    float:right;
+	    position: relative;
+	    right:70px;
+	    top:6px;
      }   
      #userId{
      width:220px;
@@ -522,9 +522,9 @@ p{margin:0;}
 				 <div class="phoneDiv">
 				 <select class="selectPhone" style="width: 92.72px;">
 				 	<option value="010">010</option>
-				 </select>-
-				 <input type="text" class="selectPhone" name="userPhone1" style="ime-mode:disabled;" id="userPhone1">-
-				 <input type="text" class="selectPhone" name="userPhone2" id="userPhone2" style="ime-mode:disabled;" >
+				 </select> -
+				 <input type="text" class="selectPhone" name="userPhone1" style="ime-mode:disabled; height:45px;" id="userPhone1"> -
+				 <input type="text" class="selectPhone" name="userPhone2" id="userPhone2" style="ime-mode:disabled; height:45px;" >
 				 </div>
 				 <p id="phoneCheck"></p>
 			 <input type="button" id="cancelup" value="취소"> 
