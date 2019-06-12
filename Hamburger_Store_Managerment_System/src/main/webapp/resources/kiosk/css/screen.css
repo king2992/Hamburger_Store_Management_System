@@ -300,3 +300,4 @@ nav ul li:first-child { border-left:none; }
 .side_img p{margin-top: -30px;}
 .side_img img { width:40px; height:40px;}
 .mySlides {display:none;}
+.ad > img {margin:0 auto; width: 1024px;}
