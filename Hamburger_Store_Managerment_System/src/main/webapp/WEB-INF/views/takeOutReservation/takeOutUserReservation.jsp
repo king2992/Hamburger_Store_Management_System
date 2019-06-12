@@ -573,7 +573,6 @@ $(this).removeClass("hover");
                 </ul>
             </div>          
         </div>
-                  
                    <footer class="footer">
                     <div class="inner">
                         <address>
