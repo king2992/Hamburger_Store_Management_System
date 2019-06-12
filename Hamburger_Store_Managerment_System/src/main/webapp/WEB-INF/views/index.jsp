@@ -509,7 +509,7 @@ p{margin:0;}
 <div class="modalup">
 		<div class="modal-contentup">
 			<span class="close-buttonup">&times;</span>
-			<h1 class="title">M-SA</h1>
+			<h1 class="title">M-SA</h1><button type="button" id="adminAdd">관리자 회원가입</button>
 			<p class="mSa">Mobile-Substation Automation</p>
 			<form action="/user/signUp" method="POST" name="signUp" id="signIn" enctype="multipart/form-data">
 			<button type="button" onClick="idCk()" class="check">중복체크</button>
@@ -612,6 +612,13 @@ p{margin:0;}
 	
 
 	$(document).ready(function(){
+		$(document).on("click", "#adminAdd", function(){
+			var url = "/user/adminAdd";
+			var winWidth = 508;
+			var winHeight = 515;
+			var popupOption = "width="+winWidth+", height="+winHeight;
+			window.open(url,"",popupOption);
+		})
 		var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
 		
 		$(document).on('keydown', '#userId', function(){

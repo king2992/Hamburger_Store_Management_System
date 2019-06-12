@@ -141,14 +141,14 @@ public class UserController {
 		
 		return list;
 	}
-	//È¸¿øÅ»Åð
+	//È¸ï¿½ï¿½Å»ï¿½ï¿½
 	@RequestMapping("/withdrawal")
 	String withdrawal(HttpSession session, Model model) {
 		String userId = (String) session.getAttribute("user");
 		model.addAttribute("userId", userId);
 		return "/user/withdrawal";
 	}
-	//ºñ¹Ð¹øÈ£º¯°æ : ÇöÀçºñ¹Ð¹øÈ£Ã¼Å©
+	//ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½È£Ã¼Å©
 	@ResponseBody
 	@RequestMapping("/nowPwCheck")
 	int nowPwCheck(@RequestParam(value="nowPw") String nowPw, HttpSession session) {
@@ -218,12 +218,12 @@ public class UserController {
 		session.invalidate();
 		return 1;
 	}
-	//°áÁ¦Á¤º¸µî·ÏÃ¢ ÆË¾÷
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½Ë¾ï¿½
 	@RequestMapping("/cardAdd")
 	String userCardAdd() {
 		return "/user/cardAdd";
 	}
-	//°áÁ¦Á¤º¸ INSERT
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ INSERT
 	@ResponseBody
 	@RequestMapping("/payInfoAdd")
 	int payInfoAdd(@RequestParam(value="bankName") String bankName, @RequestParam(value="cardNum") String cardNum,
@@ -309,5 +309,9 @@ public class UserController {
 	int cardDelete(@RequestParam(value="userId") String userId, HttpSession session) {
 		service.cardDelete(userId);
 		return 1;
+	}
+	@RequestMapping("/adminAdd")
+	String adminAdd() {
+		return "/user/adminAdd";
 	}
 }

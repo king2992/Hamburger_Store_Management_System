@@ -10,7 +10,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileUpload;
-import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -104,7 +103,7 @@ public class TakeOutUserReservedController {
 	String ticketingSuccess(){
 		return "/takeOutReservation/ticketingSuccess";
 	}
-	//³»°¡ µî·ÏÇÑ Ä«µå Á¤º¸ ºÒ·¯¿À±â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	@ResponseBody
 	@RequestMapping(value="/myCardLoad",method= {RequestMethod.GET, RequestMethod.POST})
 	Object myCardLoad (HttpSession session) {
@@ -114,7 +113,7 @@ public class TakeOutUserReservedController {
 		
 		return payinfo;
 	}
-	//Ä«µå°áÁ¦ ºñ¹Ð¹øÈ£ Ã¼Å©
+	//Ä«ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ Ã¼Å©
 	@ResponseBody
 	@RequestMapping(value="/cardPay", method= {RequestMethod.GET, RequestMethod.POST})
 	int cardPay(@RequestParam(value="bankName") String bankName, @RequestParam(value="cardNum") String cardNum,
@@ -130,7 +129,7 @@ public class TakeOutUserReservedController {
 		}
 		return 1;	
 	}
-	//Ä«µå°áÁ¦ Á÷Á¢ÀÔ·Â ºñ¹Ð¹øÈ£ Ã¼Å©
+	//Ä«ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ ï¿½ï¿½Ð¹ï¿½È£ Ã¼Å©
 		@ResponseBody
 		@RequestMapping(value="/cardInputPay", method= {RequestMethod.GET, RequestMethod.POST})
 		int cardInputPay(@RequestParam(value="bankName") String bankName, @RequestParam(value="cardNum") String cardNum,
