@@ -282,14 +282,13 @@ nav ul li:first-child { border-left:none; }
 .takeout_table{width: 100%; text-align: center; border: 1px solid #000; border-collapse: collapse;}
 .takeout_table th{background: #8e1306; color: #fff;}
 .takeout_table th, takeout_table,td{padding: 20px;}
-.choice_check img { width:100px; height:100px; }
+#img_icon { width:100px; height:100px; }
 .sale_point_table {width: 100%; text-align: center; border: 1px solid #000; border-collapse: collapse;}
 .sale_point_table th{background: #8e1306; color: #fff;}
 .sale_point_table th, sale_point_table,td{padding: 20px;}
 .payment_table {width: 100%; text-align: center; border: 1px solid #000; border-collapse: collapse;}
 .payment_table th{background: #8e1306; color: #fff;}
 .payment_table th, payment_table,td{padding: 20px;}
-.payment_choice img { width:100px; height:100px; }
 .ad{width: 100%;  position: absolute; top: 0; text-align: center;}
 .footer_div { background:#fff; border:1px solid black; width:1021px; height:100px; position:relative; top:10px; }
 .footer_div button {width:250px; height:70px; position:relative; top:15px; display:inline-block; font-size:20pt; border-radius: 12px; outline:0; border:none; }
@@ -301,3 +300,12 @@ nav ul li:first-child { border-left:none; }
 .side_img img { width:40px; height:40px;}
 .mySlides {display:none;}
 .ad > img {margin:0 auto; width: 1024px;}
+.v_img { width:60px; height:60px; position:absolute; left:620px; top:75px; display:none;}
+.v_img2 { width:60px; height:60px; position:absolute; left:870px; top:75px; display:none;}
+.v_img3 { width:60px; height:60px; position:absolute; left:600px; top:320px; display:none;}
+.v_img4 { width:60px; height:60px; position:absolute; left:770px; top:320px; display:none;}
+.v_img5 { width:60px; height:60px; position:absolute; left:950px; top:320px; display:none;}
+.v_img6 { width:60px; height:60px; position:absolute; left:600px; top:570px; display:none;}
+.v_img7 { width:60px; height:60px; position:absolute; left:770px; top:570px; display:none;}
+.v_img8 { width:60px; height:60px; position:absolute; left:950px; top:570px; display:none;}
+.slide_div2 table td:hover {background:#ff4500;}

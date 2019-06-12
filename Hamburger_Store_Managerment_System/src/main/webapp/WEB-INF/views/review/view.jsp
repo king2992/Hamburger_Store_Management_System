@@ -145,7 +145,7 @@ ${view.title}</title>
                 </div>
             </div>
             <div class="view_button">
-            <c:if test="${!view.userId eq sessionScope.userId}">
+            <c:if test="${view.userId eq sessionScope.user}">
                <a href="reviewUp?number=${view.number}"><button class="btn btn-primary boardBtn">수정</button></a>
                <a href="delete?number=${view.number}"><button class="btn btn-primary boardBtn">삭제</button></a>
             </c:if>

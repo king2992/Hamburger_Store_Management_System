@@ -9,21 +9,21 @@ window.onload = function() {
 	var c = ""; 
 // 처음 출력 
 	var likeCnt = $('#likeCnt').val();
-	a += '<div class="view_like" id="likeBtn" data-number="${view.number}>'+
-	'<img id="likeImg">'+
+	a += '<div class="view_like" id="likeBtn" data-number="${view.number}">'+
+	'<img src="/resources/images/unlike.png">'+
 	'<span>'+'좋아요'+'</span>'+ 
 	'<span>'+Number(likeCnt)+'</span>'+
 	'</div>';
 	likeArea.html(a);
 	
-	b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
-	'<img src="/resources/images/unlike.png">'+
-	'<span>'+'좋아요 취소'+'</span>'+ 
+	b += '<div class="view_like" id="likeDel" data-number="${view.number}">'+
+	'<img src="/resources/images/like.png">'+
+	'<span style="font-size:10pt;">'+'좋아요 취소'+'</span>'+ 
 	'<span>'+Number(likeCnt)+'</span>'+
 	'</div>';
 	
-	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}>'+
-	'<img id="like_">'+
+	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}">'+
+	'<img src="/resources/images/unlike.png">'+
 	'<span>'+'좋아요 '+'</span>'+ 
 	'<span>'+Number(likeCnt)+'</span>'+
 	'</div>';
@@ -50,9 +50,9 @@ $(document).ready(function(){
     $(document).on('click', "#likeBtn",function(){
 		var likeArea = $('#likeArea');
 		var b ="";
-		b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
-		'<img src="/resources/images/unlike.png">'+
-		'<span>'+'좋아요 취소'+'</span>'+ 
+		b += '<div class="view_like" id="likeDel" data-number="${view.number}">'+
+		'<img src="/resources/images/like.png">'+
+		'<span style="font-size:10pt;>'+'좋아요 취소'+'</span>'+ 
 		'<span>'+Number(likeCnt)+'</span>'+
 		'</div>';
 	var number = $('#view_no').val();
@@ -73,8 +73,8 @@ $(document).ready(function(){
     	
     	var likeArea = $('#likeArea');
     	var c ="";
-    	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}>'+
-    	'<img id="like_">'+
+    	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}">'+
+    	'<img src="/resources/images/unlike.png">'+
     	'<span>'+'좋아요 '+'</span>'+ 
     	'<span>'+Number(likeCnt)+'</span>'+
     	'</div>';
@@ -96,9 +96,9 @@ $(document).ready(function(){
     	var likeArea = $('#likeArea');
     	var b="";
     	
-    	b += '<div class="view_like" id="likeDel" data-number="${view.number}>'+
-    	'<img src="/resources/images/unlike.png">'+
-    	'<span>'+'좋아요 취소'+'</span>'+ 
+    	b += '<div class="view_like" id="likeDel" data-number="${view.number}">'+
+    	'<img src="/resources/images/like.png">'+
+    	'<span style="font-size:10pt;>'+'좋아요 취소'+'</span>'+ 
     	'<span>'+Number(likeCnt)+'</span>'+
     	'</div>';
     	var number = $('#view_no').val();

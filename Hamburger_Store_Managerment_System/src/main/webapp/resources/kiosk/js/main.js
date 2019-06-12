@@ -44,17 +44,35 @@ function payment() {
 // 주문 결제 취소 alert
 function cancel(){
 	Swal.fire({
-		title: '결제가 취소 되었습니다.',
-	  	width: 600,
-	  	padding: '3em',
-	  	backdrop: `
-	  		rgba(0,0,123,0.4)
-	  		url("/resources/kiosk/images/card.gif")
-	  		center left
-	  		no-repeat
-	  		`
-	});
-};
+		  title: '알림',
+		  text: "결제를 취소 하시겠습니까?",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes'
+		}).then((result) => {
+		  if (result.value) {
+		    Swal.fire(
+		      '알림',
+		      '결제가 취소되었습니다!',
+		      'success'
+		    )
+		  }
+		})
+}
+//	Swal.fire({
+//		title: '결제가 취소 되었습니다.',
+//	  	width: 600,
+//	  	padding: '3em',
+//	  	backdrop: `
+//	  		rgba(0,0,123,0.4)
+//	  		url("/resources/kiosk/images/card.gif")
+//	  		center left
+//	  		no-repeat
+//	  		`
+//	});
+//};
 // 메뉴 X 버튼 클릭 시 alert
 function swal2() {
 	Swal.fire(
@@ -136,6 +154,12 @@ $(document).ready(function(){
 						'<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
 						'<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">X</button>'+'</td>'+
 						'</tr>');
+				$('.order_tbody').append(
+						'<tr>'+
+						'<td></td>'+
+						'<td></td>'+
+						'<td></td>'+
+						'</tr>');
 				totalPrice();
 				}
 			});
@@ -149,7 +173,6 @@ $(document).ready(function(){
 		});
 // 수량 +
 		$(document).on('click','.p_btn', function(){
-			
 			var item = $(this).siblings("span").text();
 			if (item < 50){
 				item ++;
@@ -252,6 +275,10 @@ $(document).ready(function(){
 					nextEl : '.swiper-button-next', 
 					prevEl : '.swiper-button-prev', 
 				},
+			});
+			
+			$('.slide_div2 table td').click(function(){
+				$('.v_img').css('display','block');
 			});
 });
 
