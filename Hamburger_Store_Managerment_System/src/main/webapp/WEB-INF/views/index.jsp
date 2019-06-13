@@ -473,7 +473,7 @@ p{margin:0;}
  	<div class="modal">
 		<div class="modal-content">
 			<span class="close-button">&times;</span>
-			<h1 class="title">M-SA</h1>
+			<h1 class="title">M-SA</h1><button type="button" id="adminLogin">관리자 로그인</button>
 			<p class="mSa">Mobile-Substation Automation</p>
 <!-- 			<form action="/user/signIn" method="POST" name="signIn" enctype="multipart/form-data"> -->
 			 <input type="text" class="input" name="userId" id="signInId" placeholder="ID" required="required">
@@ -486,6 +486,9 @@ p{margin:0;}
 	</div>
 	<script>
 	$(document).ready(function(){
+		$(document).on("click", "#adminLogin", function(){
+			location.href = "/admin/adminLogin";
+		})
 		$(document).on("click", ".loginSubmit", function(){
 			var signInId = $("#signInId").val();
 			var signInPassword = $("#signInPassword").val();
@@ -613,9 +616,12 @@ p{margin:0;}
 
 	$(document).ready(function(){
 		$(document).on("click", "#adminAdd", function(){
-			var url = "/user/adminAdd";
-			var winWidth = 508;
-			var winHeight = 515;
+			console.log("호로로로로");
+			$(".modalup show-modalup").hide();
+			$(".modal-contentup").hide();
+			var url = "/admin/adminAdd";
+			var winWidth = 800;
+			var winHeight = 900;
 			var popupOption = "width="+winWidth+", height="+winHeight;
 			window.open(url,"",popupOption);
 		})

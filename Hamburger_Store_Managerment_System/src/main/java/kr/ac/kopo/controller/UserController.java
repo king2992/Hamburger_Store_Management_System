@@ -29,7 +29,7 @@ import kr.ac.kopo.service.UserService;
 public class UserController {
 	@Autowired
 	UserService service;
-	//ȸ������
+	//회占쏙옙占쏙옙占쏙옙
 	@RequestMapping(value="/signUp", method=RequestMethod.GET)
 	String signUp() {
 		return "/user/signUp";
@@ -141,14 +141,14 @@ public class UserController {
 		
 		return list;
 	}
-	//ȸ��Ż��
+	//회占쏙옙탈占쏙옙
 	@RequestMapping("/withdrawal")
 	String withdrawal(HttpSession session, Model model) {
 		String userId = (String) session.getAttribute("user");
 		model.addAttribute("userId", userId);
 		return "/user/withdrawal";
 	}
-	//��й�ȣ���� : �����й�ȣüũ
+	//占쏙옙橘占싫ｏ옙占쏙옙占� : 占쏙옙占쏙옙占싻뱄옙호체크
 	@ResponseBody
 	@RequestMapping("/nowPwCheck")
 	int nowPwCheck(@RequestParam(value="nowPw") String nowPw, HttpSession session) {
@@ -218,12 +218,12 @@ public class UserController {
 		session.invalidate();
 		return 1;
 	}
-	//�����������â �˾�
+	//占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占시� 占싯억옙
 	@RequestMapping("/cardAdd")
 	String userCardAdd() {
 		return "/user/cardAdd";
 	}
-	//�������� INSERT
+	//占쏙옙占쏙옙占쏙옙占쏙옙 INSERT
 	@ResponseBody
 	@RequestMapping("/payInfoAdd")
 	int payInfoAdd(@RequestParam(value="bankName") String bankName, @RequestParam(value="cardNum") String cardNum,
@@ -309,9 +309,5 @@ public class UserController {
 	int cardDelete(@RequestParam(value="userId") String userId, HttpSession session) {
 		service.cardDelete(userId);
 		return 1;
-	}
-	@RequestMapping("/adminAdd")
-	String adminAdd() {
-		return "/user/adminAdd";
 	}
 }

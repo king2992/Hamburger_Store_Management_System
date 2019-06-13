@@ -19,9 +19,11 @@
 		<typeAlias type="kr.ac.kopo.model.setSideDrink" alias="setSideDrink" />
 		<typeAlias type="kr.ac.kopo.model.PayInfo" alias="PayInfo" />
 		<typeAlias type="kr.ac.kopo.model.Like" alias="Like" />
+		<typeAlias type="kr.ac.kopo.model.Admin" alias="Admin" />
 	</typeAliases>
 
 	<mappers>
+		<mapper resource="mybatis/Admin.xml"/>
 		<mapper resource="mybatis/User.xml"/>
 		<mapper resource="mybatis/Review.xml"/>
 		<mapper resource="mybatis/Comment.xml" />
