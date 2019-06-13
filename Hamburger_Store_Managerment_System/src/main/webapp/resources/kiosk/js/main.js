@@ -123,6 +123,7 @@ $(document).ready(function(){
 			
 			$('.addclass').removeClass("zoomOutDown");
 			
+			
 	});
 // 주문 내역
 // + = .p_btn
@@ -257,7 +258,6 @@ $(document).ready(function(){
 // img Slide			
 			var myIndex = 0;
 			carousel();
-
 			function carousel() {
 			    var i;
 			    var x = document.getElementsByClassName("mySlides");
@@ -277,8 +277,24 @@ $(document).ready(function(){
 				},
 			});
 			
-			$('.slide_div2 table td').click(function(){
-				$('.v_img').css('display','block');
+//			$('.slide_div2 td img:nth-child(2)').hide();
+//			$('.choice_check td').on('click',function(){
+//				$(this).find('img').show();
+//				var hideImg = $('.choice_check td').siblings('img');
+//				console.log(hideImg);
+//				$('.choice_check td').hide(hideImg);
+//			});
+			$('.slide_div2 td img:nth-child(2)').hide();
+			$('.payment_table td').css('background','transparent');
+			$('.payment_table td').css('color','black');
+			$('.choice_check td').click(function(){
+				$(this).find('img').show();
+				var img = $(this).index();
+				console.log(img);
+				$('.choice_check td img:nth-child(2)').removeClass('V');
+				$(this).addClass('V');
+				$('.choice_check td img:nth-child(2)').hide();
+				$('.choice_check td img:nth-child(2)').eq(img).show();
 			});
 });
 

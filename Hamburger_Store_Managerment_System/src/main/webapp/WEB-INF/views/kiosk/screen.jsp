@@ -49,7 +49,7 @@
 <!-- 			추천메뉴 -->
 			<div>
 				<ul class="tab_cont">
-					<li><img data-menuname="치파오" data-price="10000" src="${path}/resources/img/chickenMenu/chiPao.jpg"><div class="addclass" style="position: absolute;"></div><p>치파오</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="치파오" data-price="10000" src="${path}/resources/img/chickenMenu/chiPao.jpg"><div class="addclas'.s" style="position: absolute;"></div><p>치파오</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="치파오치킨" data-price="10000" src="${path}/resources/img/chickenMenu/chiPaOChicken.jpg"><p>치파오 치킨</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="찜햇닭" data-price="10000" src="${path}/resources/img/chickenMenu/jjimHatDag.jpg"><p>찜햇닭</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="찜햇닭강정" data-price="10000" src="${path}/resources/img/chickenMenu/JjimHatDagGangJung.jpg"><p>찜햇닭 강정</p><p class="price_p">10000</p></li>
@@ -246,7 +246,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="payment_choice">
+				<tr class="choice_check">
 					<td style="border-right:1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></td>
 					<td style="border-right:1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/mobile.png"><img class="v_img7" src="${path}/resources/kiosk/images/v.png"><p>모바일<br>(pay)</p></td>
 					<td><img id="img_icon" src="${path}/resources/kiosk/images/card_.png"><img class="v_img8" src="${path}/resources/kiosk/images/v.png"><p>교통카드</p></td>
@@ -259,7 +259,7 @@
   <div class="footer_div">
   		<ul class="side_img">
   			<li><img src="${path}/resources/kiosk/images/Disabled.png"><p>장애인</p></li>
-  			<li><img src="${path}/resources/kiosk/images/key.png"><p>보안키</p></li>
+  			<li><img src="${path}/resources/kiosk/images/seach.png"><p>크게</p></li>
   			<li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li>
   		</ul>
   	<button class="order_cancel_btn" onclick="cancel();">결제취소</button>
