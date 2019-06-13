@@ -8,10 +8,10 @@
 <meta charset="UTF-8">
 <title>포스기(관리자)</title>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="shourtcut icon" href="${path}/pos/posmanagement">
 <link href="/resources/css/pos.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/mainR.css">
-<link rel="stylesheet" href="/resources/css/sub.css">  
-<script src="/resources/js/mainR.js"></script> 
+<link rel="stylesheet" href="/resources/css/sub.css"> 
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
@@ -19,12 +19,10 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="/resources/js/posmanagement.js"></script>
 <style>
- /*header 부분*/
- .navi a img {
-    padding-bottom: 63px !important;
-}    
-    .navi > ul > li{ margin-bottom: 51px !important;}
-
+/*     .active { 
+    background-color: #EC5538 ;
+    color: #fff;
+} */
 .selected {
 	background-color: black;
 }
@@ -210,7 +208,44 @@ $(document).on('click','#cancel',function(){
 </head>
 <body>
 	<div id="container">
-	<%@ include file="header.jsp"%>
+			<nav class="navbar navbar-expand-sm navbar-dark fixed-top1 layout-menu">
+			<!-- Brand -->
+			<a class="navbar-brand menu-title" href='<c:url value="/"/>'> <span
+				class="menu-pre">store</span><span class="menu-last">management</span>
+			</a>
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					href='<c:url value="/pos/posmanagement"/>'> <i class="fa fa-home menu-icon"></i>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href='<c:url value="/pos/reservedList"/>'> <i
+						class="fa fa-edit menu-icon"></i>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href='<c:url value="/study/list"/>'> <i
+						class="fas fa-book menu-icon"></i>
+				</a></li>
+			</ul>
+			<div id="chat_box" style = "color : white;"></div>
+			<ul class="nav navbar-nav menu-infobtn">
+				<li class="dropdown"><a href="#"
+					class="dropdown-toggle menu-dropicon" data-toggle="dropdown"
+					role="button" aria-haspopup="true" aria-expaneded="false"> <i
+						class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+				</a>
+					<div class="dropdown-menu menu-dropmenu">
+						<a class="dropdown-item modal_open modal_menu" data="modifyModal"
+							href="#">정보수정</a> <a class="dropdown-item modal_open modal_menu"
+							data="passModal" href="#">비밀번호변경</a> <a
+							class="dropdown-item modal_open modal_menu" data="logoutModal"
+							href="<c:url value='/user/userLogout'/>">로그아웃</a> <a
+							class="dropdown-item modal_open modal_menu" data="secessionModal"
+							href="#">회원탈퇴</a>
+					</div></li>
+			</ul>
+		</nav>
+	
 		<div class="margin">
 			<div style="width: 100%; height: 100%;">
 				<section class="left-section">
