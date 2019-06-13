@@ -276,25 +276,81 @@ $(document).ready(function(){
 					prevEl : '.swiper-button-prev', 
 				},
 			});
-			
-//			$('.slide_div2 td img:nth-child(2)').hide();
-//			$('.choice_check td').on('click',function(){
-//				$(this).find('img').show();
-//				var hideImg = $('.choice_check td').siblings('img');
-//				console.log(hideImg);
-//				$('.choice_check td').hide(hideImg);
-//			});
+// Step 1		
 			$('.slide_div2 td img:nth-child(2)').hide();
-			$('.payment_table td').css('background','transparent');
-			$('.payment_table td').css('color','black');
-			$('.choice_check td').click(function(){
-				$(this).find('img').show();
+			$('.payment_table td,.choice_check2 td').css('background','transparent');
+			$('.payment_table td,.choice_check2 td').css('color','black');
+			$('.choice_check td').on('click',function(event){
+				var back = $('.takeout_table').css('opacity');
+				console.log(back);
+				if (back == 1){
+				$(this).find('img:nth-child(2)').show(event);
 				var img = $(this).index();
 				console.log(img);
 				$('.choice_check td img:nth-child(2)').removeClass('V');
 				$(this).addClass('V');
 				$('.choice_check td img:nth-child(2)').hide();
 				$('.choice_check td img:nth-child(2)').eq(img).show();
+				$('.takeout_table').css('opacity','0.5');
+				$('.sale_point_table').css('opacity','1');
+				$('.choice_check td').css('background','transparent');
+				$('.choice_check td').css('color','black');
+				event.preventDefault();
+				}
+			});
+// Step 2	
+			$('.choice_check2 td').mouseover(function(){
+				var back = $('.sale_point_table').css('opacity');
+				console.log(back);
+				if (back == 1){
+					$(this).css('background','#ff4500');
+				}
+			}).mouseout(function(){
+				$(this).css('background','transparent');
+			});
+			$('.choice_check2 td').on('click',function(event){
+				var back = $('.sale_point_table').css('opacity');
+				console.log(back);
+				if (back == 1){
+				$(this).find('img:nth-child(2)').show(event);
+				var img = $(this).index();
+				$('.choice_check2 td img:nth-child(2)').removeClass('V');
+				$(this).addClass('V');
+				$('.choice_check2 td img:nth-child(2)').hide();
+				$('.choice_check2 td img:nth-child(2)').eq(img).show();
+				$('.sale_point_table').css('opacity','0.5');
+				$('.payment_table').css('opacity','1');
+				$('.choice_check2 td').css('background','transparent');
+				$('.choice_check2 td').css('color','black');
+				event.preventDefault();
+				}
+			});
+// Step 3 	
+			$('.choice_check3 td').mouseover(function(){
+				var back = $('.payment_table').css('opacity');
+				console.log(back);
+				if (back == 1){
+					$(this).css('background','#ff4500');
+				}
+			}).mouseout(function(){
+				$(this).css('background','transparent');
+			});
+			$('.choice_check3 td').on('click',function(event){
+				var back = $('.payment_table').css('opacity');
+				console.log(back);
+				if (back == 1){
+				$(this).find('img:nth-child(2)').show(event);
+				var img = $(this).index();
+				$('.choice_check3 td img:nth-child(2)').removeClass('V');
+				$(this).addClass('V');
+				$('.choice_check3 td img:nth-child(2)').hide();
+				$('.choice_check3 td img:nth-child(2)').eq(img).show();
+				$('.payment_table').css('opacity','0.5');
+				$('.payment_table').css('color','black');
+				event.preventDefault();
+				}
+				var modal = $(this).append('<a href="#pay2" rel="modal:open"></a>');
+				console.log(modal);
 			});
 });
 

@@ -232,7 +232,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="choice_check">
+				<tr class="choice_check2">
 					<td style="border-right:1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/sale.png"><img class="v_img3" src="${path}/resources/kiosk/images/v.png"><p>제휴사<br>할인</p></td>
 					<td style="border-right:1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/point.png"><img class="v_img4" src="${path}/resources/kiosk/images/v.png"><p>포인트<br>사용/적립</p></td>
 					<td><img id="img_icon" src="${path}/resources/kiosk/images/X.png"><img class="v_img5" src="${path}/resources/kiosk/images/v.png"><p>선택<br>없음</p></td>
@@ -246,7 +246,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="choice_check">
+				<tr class="choice_check3">
 					<td style="border-right:1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></td>
 					<td style="border-right:1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/mobile.png"><img class="v_img7" src="${path}/resources/kiosk/images/v.png"><p>모바일<br>(pay)</p></td>
 					<td><img id="img_icon" src="${path}/resources/kiosk/images/card_.png"><img class="v_img8" src="${path}/resources/kiosk/images/v.png"><p>교통카드</p></td>
@@ -323,5 +323,9 @@
 	<div class="set_choice"><p><a href="#" rel="modal:close">선택완료</a></p></div>
 	</div>
 	</div>
+<div id="pay2" class="modal">
+	<div>img</div>
+	<div>gif</div>
+</div>
 </body>
 </html>
