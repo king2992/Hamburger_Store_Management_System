@@ -3,6 +3,8 @@ package kr.ac.kopo.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -68,11 +70,10 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="/adminLogin", method= RequestMethod.POST)
 	String adminLogin(@RequestParam(value="adminId", required=false)  String adminId ,
-			@RequestParam(value="adminPassword", required=false)  String adminPassword  ) {
+			@RequestParam(value="adminPassword", required=false)  String adminPassword,
+			HttpSession session) {
 		
 			Map<String,Object> map = new HashMap<String,Object>();
-			System.out.println("¹Þ³Ä"+adminId);
-			System.out.println(adminPassword);
 				
 				map.put("adminId", adminId);
 				map.put("adminPassword", adminPassword);
@@ -80,22 +81,28 @@ public class AdminController {
 			    String authstatus = service.adminLogin(map);	
 				String n = "n_auth";
 				String y = "y_auth";
-				System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>"+authstatus);
-				System.out.println("dfdff"+ n == authstatus);
-				System.out.println("123"+y == "y_auth");
-				
-				System.out.println(y.equals(authstatus));
-				if(n == authstatus) {
+				System.out.println(authstatus);
+				System.out.println();
+				if(n.equals(authstatus)) {
 					
 					return "auth";
 				} 
-				if(y == authstatus) {
-					
+				if(y.equals(authstatus)) {
+					session.setAttribute("admin", adminId);
 					return "loginSuccess";
 				} else {
 					return "noId";
 				}
 			
 			
+	}
+	@RequestMapping("/adminLogout")
+	String adminLogout(HttpSession session) {
+		session.removeAttribute("admin");
+		return "redirect:/";
+	}
+	@RequestMapping("/myPage")
+	String myPage() {
+		return "/admin/myPage";
 	}
 }

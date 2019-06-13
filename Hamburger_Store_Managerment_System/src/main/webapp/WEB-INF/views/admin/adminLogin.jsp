@@ -22,10 +22,14 @@
 					console.log(data);
 					if(data == "auth"){
 						alert("미인증 계정입니다.");
+						location.href="/admin/emailConfirm";
 					}else if(data == "loginSuccess"){
 						alert("환영합니다.");
+						location.href="/";
 					}else if(data == "noId"){
-						alert("존재하지 않는 아이디 입니다.");
+						alert("아이디 또는 비밀번호를 확인해주세요.");
+						$("#adminId").val("");
+						$("#adminPassword").val("");
 					}else if(data == 1){
 						alert("호로로로");
 					}

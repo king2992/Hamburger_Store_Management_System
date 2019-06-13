@@ -328,17 +328,25 @@ p{margin:0;}
                     </a>
                     <div class="dropdown-menu menu-dropmenu">
                         <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
-                            <c:choose>
-                  <c:when test="${sessionScope.user eq null }">
-          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
+          <c:choose>
+           <c:when test="${sessionScope.user eq null}">
+          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a>
           </c:when>
-          <c:otherwise>
+        <c:otherwise>
               <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
-            </c:otherwise>
+          </c:otherwise>
           </c:choose>
-                          <c:choose>
+          
+          <c:choose>
+          	<c:when test="${sessionScope.admin ne null}"> <a class="dropdown-item modal_open modal_menu" href="/admin/adminLogout">LogOut</a></c:when>
+          </c:choose>
+          
+          <c:choose>
           <c:when test="${sessionScope.user ne null }">
             <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+          </c:when>
+          <c:when test="${sessionScope.admin ne null }">
+          <a class="dropdown-item modal_open modal_menu" href="/admin/myPage">My Page</a>
           </c:when>
           </c:choose>
                     </div>
