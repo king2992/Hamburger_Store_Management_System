@@ -3,8 +3,6 @@
  */
 
 // 주문 결제 완료 alert
-
-
 function payment() {
 	let timerInterval
 	Swal.fire({
@@ -41,6 +39,42 @@ function payment() {
 		});
 	}
 }
+//결제 취소
+function paymentCancel() {
+	let timerInterval
+	Swal.fire({
+	  title: '주문 취소 중 입니다!',
+	  html: '잠시만  기다려주세요! <strong></strong>',
+	  timer: 2000,
+	  onBeforeOpen: () => {
+	    Swal.showLoading()
+	    timerInterval = setInterval(() => {
+	      Swal.getContent().querySelector('strong')
+	        .textContent = Swal.getTimerLeft()
+	    }, 100)
+	  },
+	  onClose: () => {
+	    clearInterval(timerInterval)
+	    swalCancel();
+	  }
+	}).then((result) => {
+	  if (
+	    result.dismiss === Swal.DismissReason.timer
+	  ) {
+	    console.log('주문 취소가 완료 되었습니다.')
+	  }
+	});
+// swalCancel() 생성
+	function swalCancel() {
+	Swal.fire({
+		  position: 'center',
+		  type: 'success',
+		  title: '주문 취소가 완료 되었습니다!<br>이용해 주셔서<br>감사합니다!',
+		  showConfirmButton: false,
+		  timer: 1500
+		});
+	}
+}
 // 주문 결제 취소 alert
 function cancel(){
 	Swal.fire({
@@ -59,20 +93,8 @@ function cancel(){
 		      'success'
 		    )
 		  }
-		})
+		});
 }
-//	Swal.fire({
-//		title: '결제가 취소 되었습니다.',
-//	  	width: 600,
-//	  	padding: '3em',
-//	  	backdrop: `
-//	  		rgba(0,0,123,0.4)
-//	  		url("/resources/kiosk/images/card.gif")
-//	  		center left
-//	  		no-repeat
-//	  		`
-//	});
-//};
 // 메뉴 X 버튼 클릭 시 alert
 function swal2() {
 	Swal.fire(
@@ -112,7 +134,6 @@ Swal.fire({
 // Tab 메뉴
 $(document).ready(function(){
 	$('.hide').hide();
-	
 		$('.tab_btn li').click(function(){
 			$('.hide').show();
 			var list = $(this).index();
@@ -120,16 +141,12 @@ $(document).ready(function(){
 			$(this).addClass("on");
 			$(".center-wrap > div > ul").hide();
 			$(".center-wrap > div > ul").eq(list).show();
-			
 			$('.addclass').removeClass("zoomOutDown");
-			
-			
-	});
+		});
 // 주문 내역
 // + = .p_btn
 // - = .m_btn
-// x = .menu_del
-		$(function(){   
+// x = .menu_del  
 			$('.tab_cont li img,.set_wrap li img').on('click', function() {
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
@@ -155,17 +172,9 @@ $(document).ready(function(){
 						'<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
 						'<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">X</button>'+'</td>'+
 						'</tr>');
-				$('.order_tbody').append(
-						'<tr>'+
-						'<td></td>'+
-						'<td></td>'+
-						'<td></td>'+
-						'</tr>');
 				totalPrice();
 				}
 			});
-			
-		});
 // 주문 내역 삭제
 		$(document).on('click', '.menu_del', function(){
 			$(this).parent().parent().remove();
@@ -187,8 +196,8 @@ $(document).ready(function(){
 			var price = $('.tab_cont li img').data('price');
 			var sum = item * price;
 			var priceItem = $(this).parent().siblings(".listPrice");
-			priceItem.html("<span class='spanPrice'>"+sum +"</span>"+"<button class='menu_del'>X</button>");
-			totalPrice();
+				priceItem.html("<span class='spanPrice'>"+sum +"</span>"+"<button class='menu_del'>X</button>");
+				totalPrice();
 		});
 // 수량 -
 		$(document).on('click','.m_btn', function(){
@@ -198,7 +207,6 @@ $(document).ready(function(){
 			}
 			var tot = item;
 			$(this).siblings("span").text(tot);
-			
 // 수량 감소 시 금액
 			var price = $('.tab_cont li img').data('price');
 			var minus = item * price;
@@ -217,8 +225,6 @@ $(document).ready(function(){
 			});
 			$('#total_price').text(total);
 		};
-		
-		$(function(){
 			$('#hide').hide();
 				$('.modal_set li').click(function(){
 					$('#hide').show();
@@ -228,7 +234,6 @@ $(document).ready(function(){
 					$('.set_wrap > div > ul').hide();
 					$('.set_wrap > div > ul').eq(list).show();
 				});
-		});
 // 세트메뉴 > 사이드 or 음료류 이미지 클릭 시 선택수량 1씩 증가
 		var cnt = 0;
 			$('.set_side_ul img').on('click', function(){
@@ -251,9 +256,6 @@ $(document).ready(function(){
 				var count = $('.set_total label').text('0');
 				totalPrice();
 				cnt = 0;
-			});
-			$('.choice_check td').click(function(){
-				var img = "/resources/kiosk/images/";
 			});
 // img Slide			
 			var myIndex = 0;
@@ -303,10 +305,10 @@ $(document).ready(function(){
 				var back = $('.sale_point_table').css('opacity');
 				console.log(back);
 				if (back == 1){
-					$(this).css('background','#ff4500');
+					$(this).css('background','#ff4500').css('color','#fff');
 				}
 			}).mouseout(function(){
-				$(this).css('background','transparent');
+				$(this).css('background','transparent').css('color','#000');
 			});
 			$('.choice_check2 td').on('click',function(event){
 				var back = $('.sale_point_table').css('opacity');
@@ -330,10 +332,10 @@ $(document).ready(function(){
 				var back = $('.payment_table').css('opacity');
 				console.log(back);
 				if (back == 1){
-					$(this).css('background','#ff4500');
+					$(this).css('background','#ff4500').css('color','#fff');
 				}
 			}).mouseout(function(){
-				$(this).css('background','transparent');
+				$(this).css('background','transparent').css('color','#000');
 			});
 			$('.choice_check3 td').on('click',function(event){
 				var back = $('.payment_table').css('opacity');
@@ -349,9 +351,12 @@ $(document).ready(function(){
 				$('.payment_table').css('color','black');
 				event.preventDefault();
 				}
-				var modal = $(this).append('<a href="#pay2" rel="modal:open"></a>');
-				console.log(modal);
 			});
+// 결제 Modal 취소 Btn			
+			$('.pay_btn').click(function(){
+				paymentCancel();
+			});
+			
 });
 
 

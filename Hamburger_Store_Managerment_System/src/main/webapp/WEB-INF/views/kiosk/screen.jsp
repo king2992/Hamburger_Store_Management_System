@@ -247,9 +247,9 @@
 			</thead>
 			<tbody>
 				<tr class="choice_check3">
-					<td style="border-right:1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></td>
-					<td style="border-right:1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/mobile.png"><img class="v_img7" src="${path}/resources/kiosk/images/v.png"><p>모바일<br>(pay)</p></td>
-					<td><img id="img_icon" src="${path}/resources/kiosk/images/card_.png"><img class="v_img8" src="${path}/resources/kiosk/images/v.png"><p>교통카드</p></td>
+					<td style="border-right:1px solid #c0c0c0;"><a href="#pay" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"></a><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></td>
+					<td style="border-right:1px solid #c0c0c0;"><a href="#mobile_div" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/mobile.png"></a><img class="v_img7" src="${path}/resources/kiosk/images/v.png"><p>모바일<br>(pay)</p></td>
+					<td><a href="#bus_card" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/card_.png"></a><img class="v_img8" src="${path}/resources/kiosk/images/v.png"><p>교통카드</p></td>
 				</tr>
 			</tbody>
 		</table>
@@ -323,9 +323,29 @@
 	<div class="set_choice"><p><a href="#" rel="modal:close">선택완료</a></p></div>
 	</div>
 	</div>
-<div id="pay2" class="modal">
-	<div>img</div>
-	<div>gif</div>
+<!-- 카드결제 Modal -->
+<div id="pay" class="modalPay" style="display:none;">
+	<div class="text_header">신용/체크카드</div>
+	<div class="text_div">그림과 같이 카드를 넣어주세요<br/>(IC칩이 단말기에 투입되도록 넣어주세요)</div>
+	<div class="pay_img"><img class="wallet" src="${path}/resources/kiosk/images/pay_1.jpg"></div>
+	<div class="pay_gif"><img class="wallet" src="${path}/resources/kiosk/images/card.gif"></div>
+	<a href="" rel="modal:close"><button type="button" class="pay_btn">취소</button></a>
+</div>	
+<!-- 모바일 결제 -->
+<div id="mobile_div" class="modalPay" style="display:none;">
+	<div class="text_header">Mobile(pay)</div>
+	<div class="text_div">그림과 같이 바코드를 찍어주세요</div>
+	<div class="pay_img"><img class="wallet" src="${path}/resources/kiosk/images/pay_2.jpg"></div>
+	<div class="pay_gif"><img class="wallet" src="${path}/resources/kiosk/images/mobile_pay.gif"></div>
+	<a href="" rel="modal:close"><button type="button" class="pay_btn">취소</button></a>
 </div>
+<!-- 교통카드결제 Modal -->
+<div id="bus_card" class="modalPay" style="display:none;">
+	<div class="text_header">교통카드</div>
+	<div class="text_div">그림과 같이 카드를 넣어주세요</div>
+	<div class="pay_img"><img class="wallet" src="${path}/resources/kiosk/images/pay_3.jpg"></div>
+	<div class="pay_gif"><img class="wallet" src="${path}/resources/kiosk/images/jj1JW.gif"></div>
+	<a href="" rel="modal:close"><button type="button" class="pay_btn">취소</button></a>
+</div>	
 </body>
 </html>
