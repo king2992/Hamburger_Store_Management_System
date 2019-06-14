@@ -113,7 +113,7 @@ public class AdminController {
 					}
 					map.put("adminPassword",hexString.toString() );
 					
-				}catch(Exception ex) {
+				}catch(Exception ex) { 
 					throw new RuntimeException(ex);
 				}
 				String authstatus = service.adminLogin(map);	
