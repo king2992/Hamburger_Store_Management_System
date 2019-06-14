@@ -10,8 +10,14 @@ public interface AdminService {
 
 	void adminSignUp(Admin admin) throws Exception;
 
-	void joinConfirm(String authkey);
+	void joinConfirm(Map<String, Object> map);
 
 	String adminLogin(Map<String, Object> map);
+
+	Admin adminMyPage(String adminId);
+
+	void adminEmail(Admin admin) throws Exception;
+
+
 
 }

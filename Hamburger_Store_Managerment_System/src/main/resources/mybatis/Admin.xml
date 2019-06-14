@@ -8,7 +8,7 @@
 		insert into admin (admin_id, admin_password, admin_name, admin_phone, admin_email, authkey)
 		values (#{adminId}, #{adminPassword}, #{adminName}, #{adminPhone}, #{adminEmail}, #{authkey}) 
 	</insert>
-	<update id="joinConfirm">
+	<update id="joinConfirm" parameterType="map">
 		update admin
 		set authstatus = "y_auth"
 		where authkey = #{authkey}
@@ -19,4 +19,12 @@
 		where admin_id = #{adminId} and 
 			  admin_password = #{adminPassword}
 	</select>
+	<select id="adminMyPage" resultType="Admin">
+		select * from admin where admin_id=#{adminId}
+	</select>
+	<update id="authKeyUpdate" parameterType="map">
+		update admin
+		set authkey = #{authkey}
+		where admin_id = #{adminId}
+	</update>
 </mapper>

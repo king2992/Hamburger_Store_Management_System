@@ -20,13 +20,19 @@ SqlSession sql;
 		sql.insert("admin.adminSignUp", admin);
 	}
 	@Override
-	public void joinConfirm(String authkey) {
-		sql.update("admin.joinConfirm", authkey);
-	}
-	@Override
 	public String adminLogin(Map<String, Object> map) {
 		return sql.selectOne("admin.adminLogin", map);
 	}
-
-
+	@Override
+	public Admin adminMyPage(String adminId) {
+		return sql.selectOne("admin.adminMyPage", adminId);
+	}
+	@Override
+	public void authKeyUpdate(Map<String, Object> map) {
+		sql.update("admin.authKeyUpdate", map);
+	}
+	@Override
+	public void joinConfirm(Map<String, Object> map) {
+		sql.update("admin.joinConfirm", map);
+	}
 }

@@ -21,8 +21,8 @@
 				success : function(data){
 					console.log(data);
 					if(data == "auth"){
-						alert("미인증 계정입니다.");
-						location.href="/admin/emailConfirm";
+						alert("이메일 인증을 진행해주세요.");
+						location.href="/admin/myPage";
 					}else if(data == "loginSuccess"){
 						alert("환영합니다.");
 						location.href="/";

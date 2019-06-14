@@ -11,8 +11,12 @@ public interface AdminDao {
 	void adminSignUp(Admin admin);
 
 
-	void joinConfirm(String authkey);
+	void joinConfirm(Map<String, Object> map);
 
 	String adminLogin(Map<String, Object> map);
+
+	Admin adminMyPage(String adminId);
+
+	void authKeyUpdate(Map<String, Object> map);
 
 }

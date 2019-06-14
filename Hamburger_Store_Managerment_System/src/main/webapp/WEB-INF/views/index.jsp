@@ -327,26 +327,27 @@ p{margin:0;}
                         <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
                     </a>
                     <div class="dropdown-menu menu-dropmenu">
-                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+            
+               <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+                        
           <c:choose>
-           <c:when test="${sessionScope.user eq null}">
-          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a>
-          </c:when>
-        <c:otherwise>
-              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
-          </c:otherwise>
-          </c:choose>
-          
-          <c:choose>
-          	<c:when test="${sessionScope.admin ne null}"> <a class="dropdown-item modal_open modal_menu" href="/admin/adminLogout">LogOut</a></c:when>
+	           <c:when test="${sessionScope.user eq null && sessionScope.admin eq null}"> <!-- 사용자 로그인 -->
+	          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a>
+	          </c:when>
+          		<c:when test="${sessionScope.user ne null }">
+              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">User-LogOut</a><!-- 사용자 로그아웃 -->
+              </c:when>
+              <c:when test="${sessionScope.admin ne null}"> 
+              <a class="dropdown-item modal_open modal_menu" href="/admin/adminLogout">Admin-LogOut</a
+              ></c:when>
           </c:choose>
           
           <c:choose>
           <c:when test="${sessionScope.user ne null }">
-            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">User-My-Page</a>
           </c:when>
           <c:when test="${sessionScope.admin ne null }">
-          <a class="dropdown-item modal_open modal_menu" href="/admin/myPage">My Page</a>
+          <a class="dropdown-item modal_open modal_menu" href="/admin/myPage">Admin-My-Page</a>
           </c:when>
           </c:choose>
                     </div>
@@ -624,14 +625,9 @@ p{margin:0;}
 
 	$(document).ready(function(){
 		$(document).on("click", "#adminAdd", function(){
-			console.log("호로로로로");
 			$(".modalup show-modalup").hide();
 			$(".modal-contentup").hide();
-			var url = "/admin/adminAdd";
-			var winWidth = 800;
-			var winHeight = 900;
-			var popupOption = "width="+winWidth+", height="+winHeight;
-			window.open(url,"",popupOption);
+			location.href="/admin/adminAdd";
 		})
 		var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
 		

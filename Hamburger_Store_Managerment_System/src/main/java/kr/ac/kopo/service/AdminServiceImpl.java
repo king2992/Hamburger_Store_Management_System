@@ -1,5 +1,6 @@
 package kr.ac.kopo.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,27 +31,40 @@ public class AdminServiceImpl implements AdminService {
 
 				admin.setAuthkey(authkey);
 				dao.adminSignUp(admin);
-				// mail 작성 관련 
-				MailUtils sendMail = new MailUtils(mailSender);
-
-				sendMail.setSubject("[M-SA] 회원가입 이메일 인증");
-				sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
-						.append("<p>다음에 코드를 입력하세요 : " + authkey + "</p>")
-						.toString());
-//				sendMail.setFrom("관리자","dlwlsdn0801@gmail.com");
-				sendMail.setTo(admin.getAdminEmail());
-				sendMail.send();
 				
-				
-	}
-	@Override
-	public void joinConfirm(String authkey) {
-		dao.joinConfirm(authkey);
 	}
 	@Override
 	public String adminLogin(Map<String, Object> map) {
 		return dao.adminLogin(map);
 	}
+	@Override
+	public Admin adminMyPage(String adminId) {
+		return dao.adminMyPage(adminId);
+	}
+	@Override
+	public void adminEmail(Admin admin) throws Exception {
+		String authkey = new TempKey().getKey(50, false);
+		String adminId = admin.getAdminId();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("authkey",authkey);
+		map.put("adminId",adminId);
+		
+		dao.authKeyUpdate(map);
+		
+		MailUtils sendMail = new MailUtils(mailSender);
+		sendMail.setSubject("[M-SA] 회원가입 이메일 인증");
+		sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
+				.append("<p>다음에 코드를 입력하세요 : " + authkey + "</p>")
+				.toString());
+		sendMail.setTo(admin.getAdminEmail());
+		sendMail.send();
+		
+	}
+	@Override
+	public void joinConfirm(Map<String, Object> map) {
+		dao.joinConfirm(map);
+	}
+	
 	
 	
 }
