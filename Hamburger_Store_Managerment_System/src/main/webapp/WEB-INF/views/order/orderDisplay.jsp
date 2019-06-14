@@ -26,13 +26,31 @@ ul li{list-style: none; display:inline-block;}
 	/* #orderList h1:first-child {border-right:1px solid #dddddd;} */
 	#orderListHead{width:37%;}
 	#orderListFinish li{width:47%; padding-top:5px; padding-bottom:5px; }
-	#orderListFinish li{color:yellow; font-weight : 600; font-size : 100px; display : block; position:relative; left:100px; border-top : 2px solid #dddddd;}
-	#orderListFinish li:nth-child(1) {border:none;}
-	#orderListReady li{width:33%; padding-top:5px; padding-bottom:5px; }
-	#orderListReady li{font-weight:600; font-size : 100px;  border-top : 2px solid #dddddd;}
-	#orderListReady li:nth-child(1) {border:none;}
-	#orderListReady li:nth-child(2) {border:none;}
-</style>
+	#orderListFinish li{color:yellow; font-weight : 600; font-size : 100px; display : block; position:relative; left:100px; border-bottom: 1px solid #dddddd;}
+/*  	#orderListFinish li:last-child {border:none;} */
+	/* #orderListReady li{width:33%; padding-top:5px; padding-bottom:5px; font-weight:600; font-size : 100px;  border-bottom : 2px solid #dddddd;} */
+ 	#orderListReady{margin:0 auto; width: 70%;}
+	#orderListReady li{ font-weight:600; font-size : 100px;}
+	#orderListReady li:nth-child(odd){width: 45%; display: table-cell; float: left; border-bottom: 1px solid #dddddd;} 
+	#orderListReady li:nth-child(even){width: 45%; display: table-cell; border-bottom: 1px solid #dddddd;}
+	/* #orderListReady li:last-child {border:none;} */
+	/* #orderListReady li:nth-last-child(1),#orderListReady li:nth-last-child(2) {border-bottom:none;} */
+	</style>
+	<script type="text/javascript">
+	$(document).ready(function(){
+			var length = $('#orderListReady > li').length;
+			
+			$(document).on("click","#orderListReady>li",function(){
+				console.log(length)
+			});
+			
+			if(length%2 == 0){
+				$('#orderListReady li:nth-last-child(1),#orderListReady li:nth-last-child(2)').css('border-bottom','none');
+			}else{
+				$('#orderListReady li:nth-last-child(1)').css('border-bottom','none');
+			}
+	});
+	</script>
 </head>
 <body>
 	<div class="container">

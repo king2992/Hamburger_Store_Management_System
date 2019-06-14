@@ -42,7 +42,8 @@ p{margin:0;}
         /*  margin-top:20px; */
          color: #fff; 
          margin-top: 20px; 
-         cursor: pointer; 
+         cursor: pointer;
+         outline:none;	 
      }
     #submit,#cancel{margin:50px 0;}
       
@@ -60,6 +61,7 @@ p{margin:0;}
          cursor: pointer; 
          color:#fff;
          background-color: rgb(36, 36, 75);
+         outline:none;	
      } 
      #cancel:hover{ 
          color: #fff; 
@@ -167,6 +169,7 @@ p{margin:0;}
          color: #fff; 
          margin-top: 20px; 
          cursor: pointer; 
+         outline:none;	
      }
 /*     #submitup,#cancelup{margin-top:70px;} */
       
@@ -184,13 +187,50 @@ p{margin:0;}
          cursor: pointer; 
          color:#fff;
          background-color: rgb(36, 36, 75);
+         outline:none;	
      } 
      #cancelup:hover{ 
          color: #fff; 
          background-color: #216282; 
          opacity: 0.9; 
      }
-
+	/*관리자 회원가입*/
+	.adminSignup_btn {
+		 width: 127px; 
+		 height: 48px; 
+         text-align: center; 
+         border: none; 
+         margin-top: 20px; 
+         border-radius:10px;
+         cursor: pointer; 
+         color:#fff;
+         background-color: rgb(121, 121, 121);
+         outline:none;
+/*          font-size: 13px; */
+	}
+	.adminSignup_btn:hover{ 
+         color: #fff; 
+         background-color: rgb(66, 66, 66); 
+         opacity: 0.9;
+         outline:none; 
+     }	
+	.adminlogin_btn {
+		width: 127px; height: 48px; 
+         text-align: center; 
+         border: none; 
+         margin-top: 20px; 
+         border-radius:10px;
+         cursor: pointer; 
+         color:#fff;
+         background-color: rgb(121, 121, 121);
+         outline:none;	
+	}
+	.adminlogin_btn:hover{ 
+         color: #fff; 
+         background-color: rgb(66, 66, 66);
+         opacity: 0.9;
+         outline:none; 
+     }
     .modalup { 
     	border-radius:25px;
          position: fixed; 
@@ -208,7 +248,7 @@ p{margin:0;}
          transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
      } 
      .modal-contentup { 
-         padding:50px 20px 20px;
+         padding:50px 20px 50px;
          position: absolute; 
          top: 50%; 
          left: 50%; 
@@ -482,7 +522,7 @@ p{margin:0;}
  	<div class="modal">
 		<div class="modal-content">
 			<span class="close-button">&times;</span>
-			<h1 class="title">M-SA</h1><button type="button" id="adminLogin">관리자 로그인</button>
+			<h1 class="title">M-SA</h1>
 			<p class="mSa">Mobile-Substation Automation</p>
 <!-- 			<form action="/user/signIn" method="POST" name="signIn" enctype="multipart/form-data"> -->
 			 <input type="text" class="input" name="userId" id="signInId" placeholder="ID" required="required">
@@ -491,6 +531,7 @@ p{margin:0;}
 				<!-- <input type="submit" id="submit" value="보내기"> -->
 				<input type=submit id="submit" class="loginSubmit" value="로그인">
 <!-- 			</form> -->
+				<button type="button" id="adminLogin" class="adminlogin_btn">관리자 로그인</button>
 		</div>
 	</div>
 	<script>
@@ -521,7 +562,7 @@ p{margin:0;}
 <div class="modalup">
 		<div class="modal-contentup">
 			<span class="close-buttonup">&times;</span>
-			<h1 class="title">M-SA</h1><button type="button" id="adminAdd">관리자 회원가입</button>
+			<h1 class="title">M-SA</h1>
 			<p class="mSa">Mobile-Substation Automation</p>
 			<form action="/user/signUp" method="POST" name="signUp" id="signIn" enctype="multipart/form-data">
 			<button type="button" onClick="idCk()" class="check">중복체크</button>
@@ -542,6 +583,7 @@ p{margin:0;}
 			 <input type="button" id="cancelup" value="취소"> 
 				<!-- <input type="submit" id="submit" value="보내기"> -->
 				<input type="button" id="submitup" value="가입하기" >
+				<button type="button" id="adminAdd" class="adminSignup_btn">관리자 회원가입</button>
 			</form>
 		</div> 
 	</div>

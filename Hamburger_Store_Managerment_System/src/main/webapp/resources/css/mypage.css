@@ -43,7 +43,7 @@ table {
     word-break: break-all;
 }
 
-/*�뜝�룞�삕�뜝�떛�벝�삕�뜝占�*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈뼓占쎈쿈占쎌굲占쎈쐻�뜝占�*/
 .aside {
     position: relative;
     float: left;
@@ -99,7 +99,7 @@ table {
     font-weight: 600;
     cursor: pointer;
 }
-/*移닷뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕*/
+/*燁삳떣�쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 .dropDown{
 /*    position: absolute;*/
     display: none;
@@ -123,7 +123,7 @@ table {
 .cardAdd_img2 {
     margin: 0px 5px 10px -4px;
 }
-/*�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 #contents {
     float: left;
     width: 720px;
@@ -146,15 +146,15 @@ table {
     font-weight:700;
     font-size: 18px;
 }
-/***********�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕*************/
+/***********占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*************/
 
-/*�뜝�룞�삕�뜝�떛釉앹삕 �뜝�룞�삕�뜝�룞�삕*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈뼓�뇡�빘�굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 .tb_type {
     border-bottom: 1px solid #d9d9d9;
     width: 100%;
 }
 .table_td {
-    background: #f8f8f8;
+    background: #efefef;
     border-top: 1px solid #d9d9d9;
     font-weight: 700;
     padding: 12px;
@@ -166,13 +166,13 @@ table {
     padding: 20px;
     color: #666;
 }
-/*�뜝�룞�삕艅섇뜝�떕占�*/
-.input_password {
+/*占쎈쐻占쎈짗占쎌굲�뎲�꼪�쐻占쎈뼍�뜝占�*/
+.userPw {
     border: 1px solid #cccccc;
     padding: 2px 0 2px 5px;
-    height: 20px;
+    height: 32px;
 }
-/*�뜝�룞�삕艅섇뜝�떕占� �뜝�룞�삕�뜝�룞�삕*/
+/*占쎈쐻占쎈짗占쎌굲�뎲�꼪�쐻占쎈뼍�뜝占� 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 .pwChange {
     width: 90px;
     height: 27px;
@@ -182,8 +182,10 @@ table {
     text-align: center;
     margin-left: 12px;
     border-color:#e79210;
+    position: relative;
+    bottom: 2px;
 }
-/*�뜝�룞�삕�솕�뜝�룞�삕�샇*/
+/*占쎈쐻占쎈짗占쎌굲占쎌넅占쎈쐻占쎈짗占쎌굲占쎌깈*/
 .first_number {
     width: 72px;
     border: 1px solid #cccccc;
@@ -191,19 +193,21 @@ table {
     font-size: 13px;
     color: #666;
 }
-.phon_number {
+.userPhone {
     border: 1px solid #cccccc;
-    padding: 2px 0 0 2px;
-    height: 20px;
-    width:100px;
+    padding: 2px 0 0 5px;
+    height: 32px;
+    width: 100px;
+    position: relative;
+    top: 3px;
 }
-/*�뜝�떛紐뚯삕*/
-.input_name {
+/*占쎈쐻占쎈뼓筌뤿슣�굲*/
+.userName {
     border: 1px solid #cccccc;
     padding: 2px 0 2px 5px;
-    height: 25px;
+    height: 32px;
 }
-/*�뜝�룞�삕�뜝�룞�삕�뜝�떦源띿삕 �뜝�룞�삕�듉*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈뼣繹먮씮�굲 占쎈쐻占쎈짗占쎌굲占쎈뱣*/
 .btn_type {
     width: 120px;
     height: 35px;
@@ -218,7 +222,7 @@ table {
     border-color:#e79210;
 }
 
-/***********�뜝�룞�삕�뜝�룞�삕 �뜝�뙗�눦�삕 �뜝�룞�삕 �뜝�룞�삕*************/
+/***********占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈솙占쎈닰占쎌굲 占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲*************/
 .myWritten-table {
     width: 100%;
     border-top: 2px solid #585e6a;
@@ -257,7 +261,7 @@ table {
     padding:10px 10px 10px 9px;
     color: #555;
 }
-/*�뜝�뙃�떆源띿삕 �뜝�떛�벝�삕*/
+/*占쎈쐻占쎈셾占쎈뻻繹먮씮�굲 占쎈쐻占쎈뼓占쎈쿈占쎌굲*/
 .boardMove {
     width: 95px;
     height: 32px;
@@ -270,7 +274,7 @@ table {
     outline: none;
     border-color:#f9a72b;
 }
-/*�뜝�뙃�떆源띿삕 �뜝�룞�삕�뜝�룞�삕*/
+/*占쎈쐻占쎈셾占쎈뻻繹먮씮�굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 .boardDelete {
     width: 95px;
     height: 32px;
@@ -284,7 +288,7 @@ table {
     border-color:#e20101;
 }
 /***********TakeoutReservedLIst*************/
-/*�뜝�룞�삕�뜝�떛釉앹삕 �뜝�룞�삕�뜝�룞�삕*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈뼓�뇡�빘�굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 .reserved-table {
     width: 100%;
     border: 2px solid #ccc;
@@ -316,7 +320,7 @@ table {
     font-size: 13px;
     padding:10px 10px 10px 9px;
 }
-/*�뜝�룞�삕�뜝�룞�삕 �솗�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎌넇占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 .reservedCheck {
     width: 120px;
     height: 35px;
@@ -329,7 +333,7 @@ table {
     outline: none;
     border-color:#e79210;
 }
-/***********�쉶�뜝�룞�삕�깉�뜝�룞�삕*************/
+/***********占쎌돳占쎈쐻占쎈짗占쎌굲占쎄퉱占쎈쐻占쎈짗占쎌굲*************/
 .withdrawal ul{
     border-top: 2px solid #333333;
     border-bottom: 1px solid #a8a7a7;
@@ -342,7 +346,7 @@ table {
     font-weight: 700;
 }
 .disc{list-style-type: disc; list-style-position: inside;}
-/*移닷뜝�룞�삕 �뜝�룞�삕�뜝占�*/
+/*燁삳떣�쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻�뜝占�*/
 .cardAdd {
 /*     margin-top: 200px; */
     width: 460px;
@@ -362,7 +366,7 @@ table {
 /*     border-radius: 10px; */
     box-shadow: 0 1px 1px 2px rgba(0.4, 0, 0, 0.4);
 }
-/*�뜝�룞�삕�뜝�룞�삕移닷뜝�룞�삕 �뜝�룞�삕�뜝占�*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲燁삳떣�쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻�뜝占�*/
 .cardAdd h2 {
    border-bottom: 2px solid #333;
     padding-bottom: 20px;
@@ -374,7 +378,7 @@ table {
 .paymentCardAdd p1{
     display: inline-block;
 }
-/*�뜝�룞�삕�뜝�룞�삕,移닷뜝�룞�삕�뜝�떕占�,�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕, �뜝�룞�삕�뜝�룞�삕�뜝�뙓�벝�삕,移닷뜝�룞�삕 �뜝�룞�삕艅섇뜝�떕占�*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲,燁삳떣�쐻占쎈짗占쎌굲占쎈쐻占쎈뼍�뜝占�,占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲, 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈솓占쎈쿈占쎌굲,燁삳떣�쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲�뎲�꼪�쐻占쎈뼍�뜝占�*/
 .paymentCardAdd p1 {
     font-size: 18px;
     font-weight: 600;
@@ -384,7 +388,7 @@ table {
     border-bottom: 1px solid #999;
     padding: 15px 0 15px 0;
 }
-/*�뜝�룞�삕�뜝�룞�삕*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 .bank select {
     width: 100px;
     height:30px;
@@ -394,7 +398,7 @@ table {
     background-color: #f1f1f1;
     border: 1px solid #999;
 }
-/*移닷뜝�룞�삕�뜝�떕占�*/
+/*燁삳떣�쐻占쎈짗占쎌굲占쎈쐻占쎈뼍�뜝占�*/
 .Number {
     width: 120px;
     height: 28px;
@@ -404,7 +408,7 @@ table {
     background-color: #f1f1f1;
 /*    border: 1px solid #999;*/
 }
-/*�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕*/
+/*占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲*/
 .validity {
     color: black;
     font-size: 15px;
@@ -414,7 +418,7 @@ table {
 .Month {
     margin: 0 7px 0 20px;
 }
-/*移닷뜝�룞�삕�뜝�룞�삕�쉶,移닷뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�듉*/
+/*燁삳떣�쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎌돳,燁삳떣�쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈뱣*/
 .cardButton {
     width: 80px;
     height: 35px;
@@ -433,7 +437,7 @@ table {
     margin:0 auto;
     width:fit-content;
 }
-/*MY 移닷뜝�룞�삕*/
+/*MY 燁삳떣�쐻占쎈짗占쎌굲*/
  /* .MYcard {
 	display: none; Hidden by default
 	position: fixed; Stay in place
@@ -493,7 +497,7 @@ table {
          top: 30%; 
          left: 40%; 
  }
-/* �뜝�룞�삕�뜝�룞�삕�뜝�떦源띿삕  */
+/* 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈뼣繹먮씮�굲  */
 .cardDelete {
     width: 120px;
     height: 35px;
@@ -511,7 +515,7 @@ table {
     border-color:#e79210;	
 }
 
-/* �쁺�닔利� 異쒕젰 紐⑤떖*/
+/* 占쎌겫占쎈땾筌앾옙 �빊�뮆�젾 筌뤴뫀�뼎*/
 .documentPopup{
  		  display: none;  /* Hidden by default */
  	
@@ -600,7 +604,7 @@ background:#1AAB8A;
 	border: 1px solid #dddddd;
 }
 
-/*회원탈퇴 모달창*/
+/*�쉶�썝�깉�눜 紐⑤떖李�*/
 /* The Modal (background) */
         .withdrawalModal {
             display: none; /* Hidden by default */
@@ -630,6 +634,8 @@ background:#1AAB8A;
             float: right;
             font-size: 28px;
             font-weight: bold;
+            position: relative;
+    		bottom: 7px;
         }
         .withdrawal-close:hover,
         .withdrawal-close:focus {
@@ -666,7 +672,7 @@ background:#1AAB8A;
 		    outline: 0;
 		    border-color: #e79210;
         }
-		/*MY 카드 닫기 버튼*/
+		/*MY 移대뱶 �떕湲� 踰꾪듉*/
 		.cardmodal-close {
             color: #aaa;
             float: right;

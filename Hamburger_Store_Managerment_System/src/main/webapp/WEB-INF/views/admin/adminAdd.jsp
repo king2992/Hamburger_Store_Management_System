@@ -10,11 +10,13 @@
 <link href="/resources/css/adminAdd.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="container">
 	<form action="/admin/adminSignUp" method="POST" id="frm">
+	<a href="/"><span class="close-buttonupAdd">&times;</span></a>
 		<h2 class="adminTitle">관리자 회원가입</h2>
 	 	<a href="#"><button type="button" id="idCk" class="check">중복체크</button></a>
 	 	<!-- 아이디 -->
-		<input type="text" class="input" name="adminId" placeholder="ID"  id="adminId">
+		<input type="text" class="input inputId" name="adminId" placeholder="ID"  id="adminId">
 	 	<p id="idCheck"></p>
 	 	<!-- 비밀번호-->
 		<input type="password" class="input" name="adminPassword" placeholder="password" id="adminPassword">
@@ -33,10 +35,10 @@
 		<p id="phoneCheck"></p>
 		<!-- 이메일 -->
 		<div class="emailDiv">
-			<input type="text" name="adminEmailFirst"> @ <input type="text" name="adminEmailLast">
+			<input type="text" name="adminEmailFirst" class="email" placeholder="e-mail"> @ <input type="text" name="adminEmailLast" class="email">
 		</div>
-		
-	 	<button type="button" class="adminSignUp">회원가입</button> 
 	</form>
+		 	<button type="button" class="adminSignUp">회원가입</button>
+</div>		 	 
 </body> 
 </html>

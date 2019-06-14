@@ -187,13 +187,13 @@
                         </colgroup>
                         <tbody>
                             <tr>
-                                <td scope="col" class="">
+                                <td scope="col" class="table_td">
                                    	 아이디
                                 </td>
                                 <td>${user.userId}</td>
                             </tr>         
                             <tr>
-                                <td scope="col">
+                                <td scope="col" class="table_td">
                                    	 비밀번호
                                 </td>
                                 <td>
@@ -202,7 +202,7 @@
                                 </td>
                             </tr> 
                              <tr>
-                                <td scope="col">
+                                <td scope="col" class="table_td">
                                     	전화번호
                                 </td>
                                  <td>
@@ -219,7 +219,7 @@
                                 </td>
                             </tr>
                              <tr>
-                                <td scope="col">
+                                <td scope="col" class="table_td">
                                     	이름
                                 </td>
                                 <td>
@@ -361,16 +361,16 @@
         </div>
  
     <!-- The Modal -->
-    <div id="myModal" class="withdrawalModal">
-      <!-- Modal content -->
-      <div class="withdrawal-modal-content">
-        <span class="withdrawal-close">&times;</span>                                                               
-        <h2 class="withdrawalH2">현재 비밀번호를 입력해주세요.</h2>
-        <input type="password" id="nowPw" class="nowPwClass">
-        <button type="button" id="userDelete" class="userDeleteClass">회원탈퇴</button>
-      </div>
- 
-    </div>
+		    <div id="myModal" class="withdrawalModal">
+		      <!-- Modal content -->
+		      <div class="withdrawal-modal-content">
+		        <span class="withdrawal-close">&times;</span>                                                               
+		        <h2 class="withdrawalH2">현재 비밀번호를 입력해주세요.</h2>
+		        <input type="password" id="nowPw" class="nowPwClass">
+		        <button type="button" id="userDelete" class="userDeleteClass">회원탈퇴</button>
+		      </div>
+		 
+		    </div>
         
         </body>
         </html>

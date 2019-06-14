@@ -40,8 +40,16 @@
 </script>
 </head>
 <body>
-	<div><span>아이디 : <input type="text" name="adminId" id="adminId"></span></div>
-	<div><span>비밀번호 : <input type="password" name="adminPassword" id="adminPassword"></span></div>
-	<div><button type="button" id="adminLogin">로그인</button></div>
+<div class="container login">
+<!-- 	<form action="/admin/adminSignUp" method="POST" id="frm"> -->
+		<a href="/"><span class="close-buttonup">&times;</span></a>
+		<h2 class="adminTitle">관리자 로그인</h2>
+	 	<!-- 아이디 -->
+		<input type="text" class="input" name="adminId"  placeholder="ID"  id="adminId">
+	 	<!-- 비밀번호-->
+		<input type="password" class="input" name="adminPassword" id="adminPassword" placeholder="password">
+<!-- 	</form> -->
+		 	<button type="button" id="adminLogin" class="adminlogin_btn">로그인</button>
+</div>
 </body> 
 </html>

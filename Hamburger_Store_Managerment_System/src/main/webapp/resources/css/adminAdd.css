@@ -6,14 +6,34 @@
     }
 body{
     font-family: 'S-Core Dream', NanumGothic;
-    background: #f8f8f8;
-    padding:20px 20px;
+/*     background: #f8f8f8; */
+	 background-image: url(/resources/images/main_img.png);
+/* 	 background-repeat: no-repeat; */
+/*     padding:20px 20px; */
+    margin: 0 auto;
+    width: 460px;
+    height: 725px;    
+}
+.container {
+	background: #f1f1f1;
+	border-radius:10px;
+	position:relative;
+	top:200px;
+	padding: 50px 0 50px 0;
+}
+.login {
+	background: #f1f1f1;
+	border-radius:10px;
+	position:relative;
+	top:200px;
+    padding: 60px 0 60px 0;
 }
 .adminTitle {
 	font-family: 'Oswald', sans-serif;
     font-size: 35px;
     font-weight: 700;
     text-align:center;
+    margin-bottom:20px;
 }
 .input { 
          width: 300px; 
@@ -27,13 +47,16 @@ body{
          margin-bottom:20px;
          font-size: 0.9em; 
          color: #3a3a3a; 
-     	margin:0 auto;
+/*      	margin:0 auto; */
      	display: block;
-/*          position: relative; */
-/*     	left: -6px; */
+         position: relative;
+    	left: 66px;
      } 
 .input:focus{ 
      border: 1px solid #97d6eb; 
+}
+.inputId {
+	width:212px;
 } 
 input[name=userId]{margin-bottom:25px; margin-top:30px;}
 input[name=userPhone]{margin-bottom:25px; margin-top:30px;}
@@ -51,51 +74,18 @@ input[name=userName]{margin-bottom:25px; margin-top:30px;}
     color:#fff;
     float:right;
     position: relative;
-    right:56px;
-    top:38px;
-}
-.emil_check {
-    box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
-    padding: 10px;
-    font-family: 'Varela Round';
-    font-size: 80%;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    border: 0;
-    background-color: #64a19d;
-    border-radius: 10px;
-    color:#fff;
-    float:right;
-    position: relative;
-    right:-3px;
-    top:2px;	
-}
-.Num_check {
-	box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
-    padding: 10px;
-    font-family: 'Varela Round';
-    font-size: 80%;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    border: 0;
-    background-color: #64a19d;
-    border-radius: 10px;
-    color:#fff;
-    float:right;
-    position: relative;
-    right:-63px;
-    top:2px;
-}
-#userId{
-width:223px;
+    right:73px;
+    top:8px;
+    outline: none;
+    cursor:pointer;
 }
 #idCheck{
 	font-size:12px;
 }
-.phoneDiv{display: inline-block; margin-bottom: 30px; position: relative; left: 66px;}
-.emilDiv{display: inline-block; margin-bottom: 30px; position: relative; relative; left: 66px;}
+.phoneDiv{display: inline-block; margin-bottom: 20px; position: relative; left: 66px;}
+.emailDiv{display: inline-block; margin-bottom: 30px; position: relative; left: 66px;}
 .selectPhone {
-    width: 78px;
+    width: 79px;
     /* height: 30px; */
     line-height: 30px;
     background-color: #ffffff;
@@ -107,8 +97,8 @@ width:223px;
     color: #3a3a3a;
    /*  display: block; */
 }
-.emil {
-	width: 90px;
+.email {
+	width: 127px;
     height: 20px;
     line-height: 30px;
     background-color: #ffffff;
@@ -120,13 +110,7 @@ width:223px;
     color: #3a3a3a;
    /*  display: block; */	
 }
-.buisnessNum {
-	font-size: 13px;
-    position: relative;
-    left: 70px;
-    bottom: 15px;
-}
-.adminSingup{ 
+.adminSignUp{ 
     width: 127px; 
     height: 48px; 
     text-align: center;
@@ -134,11 +118,64 @@ width:223px;
     background-color: rgb(36, 36, 75);
     border-radius: 10px;
     color: #fff; 
-    margin: 20px 0 0 177px; 
-    cursor: pointer; 
-     }     
-.adminSingup:hover{ 
+    cursor: pointer;
+    position: relative;
+    left: 163px; 
+    outline: none;
+    top: 5px;
+}     
+.adminSignUp:hover{ 
     color: #fff; 
     background-color: #216282; 
     opacity: 0.9; 
+}
+.adminlogin_btn {
+	width: 127px; 
+    height: 48px; 
+    text-align: center;
+    border: none; 
+    background-color: rgb(36, 36, 75);
+    border-radius: 10px;
+    color: #fff; 
+    cursor: pointer;
+    position: relative;
+    left: 163px; 
+    outline: none;
+    font-size: 17px;
+    top: 20px;
+}
+.adminlogin_btn:hover{ 
+    color: #fff; 
+    background-color: #216282; 
+    opacity: 0.9; 
+}
+.close-buttonup { 
+    float: right; 
+    width: 1.5rem; 
+    line-height: 1.5rem; 
+    text-align: center; 
+    cursor: pointer; 
+    border-radius: 0.25rem; 
+    background-color: lightgray;
+    position: relative;
+    right: 23px;
+    bottom: 37px; 
 } 
+.close-buttonup:hover { 
+    background-color: darkgray; 
+}
+.close-buttonupAdd { 
+    float: right; 
+    width: 1.5rem; 
+    line-height: 1.5rem; 
+    text-align: center; 
+    cursor: pointer; 
+    border-radius: 0.25rem; 
+    background-color: lightgray;
+    position: relative;
+    right: 23px;
+    bottom: 30px; 
+} 
+.close-buttonupAdd:hover { 
+    background-color: darkgray; 
+}
