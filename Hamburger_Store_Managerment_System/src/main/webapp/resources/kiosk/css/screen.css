@@ -315,9 +315,46 @@ nav ul li:first-child { border-left:none; }
 .pay_img {width:400px; height:400px; border:1px solid black; display: inline-block; margin:15px 10px 15px 30px;}
 .pay_gif {width:400px; height:400px; border:1px solid black; display: inline-block;  margin:15px 10px 15px 30px;}
 .modalPay{max-width: 910px !important; padding: 0 !important;}
-
 .modal a.close-modal{display: none !important;}
 .wallet { width:400px; height:400px;}
 .pay_btn {width:200px; height:100px; font-size:20pt; font-weight:bold; margin-top:10px; float:right; position:relative; right:30px; bottom:11px; border-radius:12px; outline:0; border:none; cursor:pointer; background:}
 .text_div {text-align:center; font-size:15pt; font-weight:bold;}
 .text_header {text-align:center; font-size:25pt; font-weight:bold; background:#87CEFA; margin-bottom:10px;}
+.tab_cont img {
+	-webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1); 
+    -o-transform:scale(1);  
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+}
+.tab_cont img:hover {
+	-webkit-transform:scale(1.2);
+    -moz-transform:scale(1.2);
+    -ms-transform:scale(1.2);   
+    -o-transform:scale(1.2);
+    transform:scale(1.2);
+}
+.set_side_ul img {
+	-webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1); 
+    -o-transform:scale(1);  
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+}
+.set_side_ul img:hover {
+	-webkit-transform:scale(1.2);
+    -moz-transform:scale(1.2);
+    -ms-transform:scale(1.2);   
+    -o-transform:scale(1.2);
+    transform:scale(1.2);
+}

@@ -141,7 +141,7 @@ $(document).ready(function(){
 			$(this).addClass("on");
 			$(".center-wrap > div > ul").hide();
 			$(".center-wrap > div > ul").eq(list).show();
-			$('.addclass').removeClass("zoomOutDown");
+			$('.animate_div').removeClass("zoomOutDown");
 		});
 // 주문 내역
 // + = .p_btn
@@ -151,13 +151,9 @@ $(document).ready(function(){
 				var menuname = $(this).data('menuname');
 				var price = $(this).data('price');
 				var cnt = $('#menuname'+menuname+'').siblings('.td2').children('.cnt'+menuname+'').text();
-				$('.addclass').addClass("zoomOutDown");
-				
-//zoomoutdown animation
-				
+				$('.animate_div').addClass("zoomOutDown");
 // 이미지 클릭 시 수량 증가 중복방지
 				if($("#menuname"+menuname+"").length == 1){
-					
 					var a = Number(cnt) + 1;
 					var b = "";
 					b = Number(a) * Number(price);
@@ -280,8 +276,8 @@ $(document).ready(function(){
 			});
 // Step 1		
 			$('.slide_div2 td img:nth-child(2)').hide();
-			$('.payment_table td,.choice_check2 td').css('background','transparent');
-			$('.payment_table td,.choice_check2 td').css('color','black');
+			$('.payment_table td,.choice_check2 td').css('background','transparent').css('color','black');
+			$('.choice_check3 td').children('a').removeAttr('href');
 			$('.choice_check td').on('click',function(event){
 				var back = $('.takeout_table').css('opacity');
 				console.log(back);
@@ -295,17 +291,17 @@ $(document).ready(function(){
 				$('.choice_check td img:nth-child(2)').eq(img).show();
 				$('.takeout_table').css('opacity','0.5');
 				$('.sale_point_table').css('opacity','1');
-				$('.choice_check td').css('background','transparent');
-				$('.choice_check td').css('color','black');
+				$('.choice_check td').css('background','transparent').css('color','black');
 				event.preventDefault();
 				}
+				$('.choice_check td').css('cursor','default');
 			});
 // Step 2	
 			$('.choice_check2 td').mouseover(function(){
 				var back = $('.sale_point_table').css('opacity');
 				console.log(back);
 				if (back == 1){
-					$(this).css('background','#ff4500').css('color','#fff');
+					$(this).css('background','#ff4500').css('color','#fff').css('cursor','pointer');
 				}
 			}).mouseout(function(){
 				$(this).css('background','transparent').css('color','#000');
@@ -322,12 +318,16 @@ $(document).ready(function(){
 				$('.choice_check2 td img:nth-child(2)').eq(img).show();
 				$('.sale_point_table').css('opacity','0.5');
 				$('.payment_table').css('opacity','1');
-				$('.choice_check2 td').css('background','transparent');
-				$('.choice_check2 td').css('color','black');
+				$('.choice_check2 td').css('background','transparent').css('color','black');
 				event.preventDefault();
 				}
+				$('.choice_check2 td').css('cursor','default');
+				$('.choice_check3 td:nth-child(1)').children('a').attr('href','#pay');
+				$('.choice_check3 td:nth-child(2)').children('a').attr('href','#mobile_div');
+				$('.choice_check3 td:nth-child(3)').children('a').attr('href','#bus_card');
 			});
 // Step 3 	
+
 			$('.choice_check3 td').mouseover(function(){
 				var back = $('.payment_table').css('opacity');
 				console.log(back);
@@ -347,16 +347,13 @@ $(document).ready(function(){
 				$(this).addClass('V');
 				$('.choice_check3 td img:nth-child(2)').hide();
 				$('.choice_check3 td img:nth-child(2)').eq(img).show();
-				$('.payment_table').css('opacity','0.5');
-				$('.payment_table').css('color','black');
+				$('.payment_table').css('opacity','0.5').css('color','black');
 				event.preventDefault();
 				}
 			});
-// 결제 Modal 취소 Btn			
+// 결제 Modal 취소 Btn
 			$('.pay_btn').click(function(){
 				paymentCancel();
 			});
 			
 });
-
-

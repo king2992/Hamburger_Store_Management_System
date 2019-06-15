@@ -11,7 +11,6 @@ $('[name=commentBtn]').click(function(){
 });
 
 var userId = "${view.userId}";
-
 function commentList(){
 	console.log('댓글리스트 출력');
     $.ajax({
@@ -25,7 +24,7 @@ function commentList(){
             var a ='';
             $.each(data.result, function(index, value){
 //            	대댓글일 경우 출력폼
-            	if (value.coDepth == 1) {
+            	if (value.coDepth == 1 ) {
             		a += '<img style="position:relative; top:55px;" src="/resources/images/comment.png">';
             		a += '<div style="position:relative;">'
             		a += '<div class="comment_content" style="margin-left:40px;">';
@@ -39,8 +38,8 @@ function commentList(){
             	else {
                 a += '<div class="comment_content">';
                 a += '<div class="comment_info'+value.coNumber+'">'+'작성일 : '+value.coDate+' / 작성자 : '+value.userId;
-                a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정 </a>';
                 a += '<a onclick="commentReply('+value.coGroup+');">답글</a>';
+                a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정 </a>';
                 a += '<a onclick="commentDelete('+value.coNumber+');"> 삭제 </a> </div>';
                 a += '<div class="commentContent'+value.coNumber+'"> <p>'+value.content+'</p>';
                 a += '</div></div>';
@@ -116,9 +115,7 @@ $(document).ready(function(){
 function commentReply(coGroup) {
 	
 	var re = '';
-	
 	re += '<input type="hidden" name="coGroup_'+coGroup+'" value="'+coGroup+'">';
-	
 	re += '<div>';
 	re += '<img style="float:left; position:relative; top:13px;" src="/resources/images/comment.png">';
 	re += '<input class="reply" id="reply_add" placeholder="답글을 입력하세요">';

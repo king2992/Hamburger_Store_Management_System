@@ -49,7 +49,7 @@
 <!-- 			추천메뉴 -->
 			<div>
 				<ul class="tab_cont">
-					<li><img data-menuname="치파오" data-price="10000" src="${path}/resources/img/chickenMenu/chiPao.jpg"><div class="addclas'.s" style="position: absolute;"></div><p>치파오</p><p class="price_p">10000</p></li>
+					<li><img data-menuname="치파오" data-price="10000" src="${path}/resources/img/chickenMenu/chiPao.jpg"><div class="animate_div" style="position: absolute;"></div><p>치파오</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="치파오치킨" data-price="10000" src="${path}/resources/img/chickenMenu/chiPaOChicken.jpg"><p>치파오 치킨</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="찜햇닭" data-price="10000" src="${path}/resources/img/chickenMenu/jjimHatDag.jpg"><p>찜햇닭</p><p class="price_p">10000</p></li>
 					<li><img data-menuname="찜햇닭강정" data-price="10000" src="${path}/resources/img/chickenMenu/JjimHatDagGangJung.jpg"><p>찜햇닭 강정</p><p class="price_p">10000</p></li>
@@ -219,7 +219,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="choice_check">
+				<tr class="choice_check" style="cursor:pointer">
 					<td style="border-right: 1px solid #c0c0c0;"><img id="img_icon" src="${path}/resources/kiosk/images/takeOut.png"><img class="v_img" src="${path}/resources/kiosk/images/v.png"><p>포장</p><p>(1회용기 제공)</p></td>
 					<td><img id="img_icon" src="${path}/resources/kiosk/images/store.png"><img class="v_img2" src="${path}/resources/kiosk/images/v.png"><p>매장</p><p>(다회용기 제공)</p></td>
 				</tr>

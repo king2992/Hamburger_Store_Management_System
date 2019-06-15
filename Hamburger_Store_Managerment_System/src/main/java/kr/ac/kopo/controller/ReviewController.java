@@ -37,15 +37,11 @@ public class ReviewController {
 	String reviewList(Model model, Paging paging) {	
 
 		List<Review> reviewList = reviewService.reviewList(paging);
-		
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("paging", paging);
-		
 		System.out.println(reviewList.toString());
 		return "review/reviewList";
 	}
-	
-
 // 글 등록
 	@RequestMapping("/reviewAdd")	
 	String reviewAdd() {		
