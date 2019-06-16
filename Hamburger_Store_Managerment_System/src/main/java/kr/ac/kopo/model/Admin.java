@@ -14,7 +14,36 @@ public class Admin {
 	String businessNum;
 	String authkey;
 	String authstatus;
+	String businessStatus;
+		String firstBuNum;
+		String centerBuNum;
+		String lastBuNum;
 	
+	
+	public String getFirstBuNum() {
+			return firstBuNum;
+		}
+		public void setFirstBuNum(String firstBuNum) {
+			this.firstBuNum = firstBuNum;
+		}
+		public String getCenterBuNum() {
+			return centerBuNum;
+		}
+		public void setCenterBuNum(String centerBuNum) {
+			this.centerBuNum = centerBuNum;
+		}
+		public String getLastBuNum() {
+			return lastBuNum;
+		}
+		public void setLastBuNum(String lastBuNum) {
+			this.lastBuNum = lastBuNum;
+		}
+	public String getBusinessStatus() {
+		return businessStatus;
+	}
+	public void setBusinessStatus(String businessStatus) {
+		this.businessStatus = businessStatus;
+	}
 	public String getAdminPhoneFirst() {
 		return adminPhoneFirst;
 	}

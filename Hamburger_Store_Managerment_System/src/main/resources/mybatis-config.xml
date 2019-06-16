@@ -20,6 +20,7 @@
 		<typeAlias type="kr.ac.kopo.model.PayInfo" alias="PayInfo" />
 		<typeAlias type="kr.ac.kopo.model.Like" alias="Like" />
 		<typeAlias type="kr.ac.kopo.model.Admin" alias="Admin" />
+		<typeAlias type="kr.ac.kopo.model.BusinessNumCheck" alias="BusinessNumCheck" />
 	</typeAliases>
 
 	<mappers>

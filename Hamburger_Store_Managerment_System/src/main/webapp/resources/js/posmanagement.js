@@ -43,7 +43,7 @@ $(document).ready(function() {
 		
 		$('#nmg').css('display','block');
 		$('.nmg').css('display','block');
-		$('.document').css('display','none');
+//		$('.document').css('display','none');
 		$('#submitcash').css('display','inline-block');
 		}
 		
@@ -331,38 +331,37 @@ $(document).ready(function() {
 		$(".modalcash").show(); $(".modal-contentcash").show();
 		toggleModalcash();
 	});
-});
     function toggleModalcash() { 
-	   var orderListChild = document.getElementById("orderList");
-	   
-	   if(orderListChild.childElementCount == 0){
-			card2();
-			return;
-		}
-	   function card2(){
-			Swal.fire({
-			  position: 'center',
-			  type: 'error',
-			  title: '상품을 선택 해 주세요.',
-			  showConfirmButton: false,
-			  timer: 1000
-			});
-			
-		}
-        modalcash.classList.toggle("show-modalcash"); 
-        $('input[name=payTotal]').val($('.pTotal').text());
-        
-        //추가 돼 있는 상품에 이름을 배열에 담는다
-        $(".menuListName").each(function(index, item){
-        	menuNameArray.push($(this).text());
-        })
-        //추가 돼 있는 상품에 갯수를 배열에 담는다
-        $(".menuListCnt").each(function(index, item){
-        	menuCntArray.push($(this).text());
-        })
-		
-    }
-  
+ 	   var orderListChild = document.getElementById("orderList");
+ 	   
+ 	   if(orderListChild.childElementCount == 0){
+ 			card2();
+ 			return;
+ 		}
+ 	   function card2(){
+ 			Swal.fire({
+ 			  position: 'center',
+ 			  type: 'error',
+ 			  title: '상품을 선택 해 주세요.',
+ 			  showConfirmButton: false,
+ 			  timer: 1000
+ 			});
+ 			
+ 		}
+         modalcash.classList.toggle("show-modalcash"); 
+         $('input[name=payTotal]').val($('.pTotal').text());
+         
+         //추가 돼 있는 상품에 이름을 배열에 담는다
+         $(".menuListName").each(function(index, item){
+         	menuNameArray.push($(this).text());
+         })
+         //추가 돼 있는 상품에 갯수를 배열에 담는다
+         $(".menuListCnt").each(function(index, item){
+         	menuCntArray.push($(this).text());
+         })
+ 		
+     }
+});
 	
 	function card(){
 		 

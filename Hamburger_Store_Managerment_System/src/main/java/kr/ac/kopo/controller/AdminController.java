@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.model.Admin;
+import kr.ac.kopo.model.BusinessNumCheck;
 import kr.ac.kopo.service.AdminService;
 import kr.ac.kopo.util.MailUtils;
 
@@ -29,7 +31,7 @@ public class AdminController {
 	String adminAdd() {
 		return "/admin/adminAdd";
 	}
-	@ResponseBody // °ü¸®ÀÚ ¾ÆÀÌµð Áßº¹ Ã¼Å©
+	@ResponseBody // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ Ã¼Å©
 	@RequestMapping("/adminIdCk")
 	int adminIdCk(@RequestParam(value="adminId") String adminId) {
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -42,14 +44,14 @@ public class AdminController {
 		
 		return 1 ;
 	}
-	//°ü¸®ÀÚ È¸¿ø°¡ÀÔ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="adminSignUp", method=RequestMethod.POST)
 	String adminSignUp(@ModelAttribute("Admin") Admin admin)throws Exception{
-		String adminPhoneFirst = admin.getAdminPhoneFirst();//ÀÌ¸ÞÀÏ
+		String adminPhoneFirst = admin.getAdminPhoneFirst();//ï¿½Ì¸ï¿½ï¿½ï¿½
 		String adminPhoneCenter = admin.getAdminPhoneCenter();
 		String adminPhoneLast = admin.getAdminPhoneLast();
 		
-		String adminEmailFirst = admin.getAdminEmailFirst();//ÀüÈ­¹øÈ£
+		String adminEmailFirst = admin.getAdminEmailFirst();//ï¿½ï¿½È­ï¿½ï¿½È£
 		String adminEmailLast = admin.getAdminEmailLast();
 		admin.setAdminPhone(adminPhoneFirst + "-" + adminPhoneCenter + "-" + adminPhoneLast );
 		admin.setAdminEmail(adminEmailFirst + "@" + adminEmailLast );
@@ -77,7 +79,7 @@ public class AdminController {
 	String joinConfirm() {
 		return "/user/joinConfirm";
 	}
-	//ÀÌ¸ÞÀÏ ÀÎÁõ ÇßÀ»¶§
+	//ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="authSuccess", method=RequestMethod.POST)
 	String joinConfirm(String authkey) {
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -86,12 +88,12 @@ public class AdminController {
 		service.joinConfirm(map);
 		return "redirect:/admin/myPage";
 	}
-	//°ü¸®ÀÚ ·Î±×ÀÎ ÆäÀÌÁö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="/adminLogin", method=RequestMethod.GET)
 	String adminLogin() {
 		return "/admin/adminLogin";
 	}
-	//°ü¸®ÀÚ ·Î±×ÀÎ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½
 	@ResponseBody
 	@RequestMapping(value="/adminLogin", method= RequestMethod.POST)
 	String adminLogin(@RequestParam(value="adminId", required=false)  String adminId ,
@@ -143,6 +145,19 @@ public class AdminController {
 		String adminId = (String)session.getAttribute("admin");
 		Admin admin = service.adminMyPage(adminId);
 		model.addAttribute("admin", admin);
+		String businessNum1 = admin.getBusinessNum();
+		String businessNum2 = businessNum1.substring(0,3);
+		
+		String businessNum3 = admin.getBusinessNum();
+		String businessNum4 = businessNum3.substring(3,8);
+		
+		String businessNum5 = admin.getBusinessNum();
+		String businessNum6 = businessNum5.substring(8,15);
+	
+		model.addAttribute("businessNum2", businessNum2);
+		model.addAttribute("businessNum4", businessNum4);
+		model.addAttribute("businessNum6", businessNum6);
+		
 		return "/admin/myPage";
 	}
 	@RequestMapping(value="/afterEmailAuth", method=RequestMethod.GET)
@@ -152,11 +167,35 @@ public class AdminController {
 		
 		return "/admin/afterEmailAuth";
 	}
-//	@RequestMapping("/emailConfirm")
-//	String emailConfirm(HttpSession session) {
-//		String adminId = (String)session.getAttribute("admin");
-//		String adminEmail = service.adminEmailSelect(adminId);
-//		
-//		return "/admin/emailConfirm";
-//	}
+	@Transactional
+	@ResponseBody
+	@RequestMapping("/businessAuth")
+	int businessAuth(Admin admin, HttpSession session) {
+		String firstBuNum = admin.getFirstBuNum();
+		String centerBuNum = admin.getCenterBuNum();
+		String lastBuNum = admin.getLastBuNum();
+		String businessNum = firstBuNum+centerBuNum+lastBuNum;
+		BusinessNumCheck check = service.businessAuth(businessNum);
+		if(check == null) {
+			return 0;
+		}else {
+			Map<String, Object> businessNumMap = new HashMap<String,Object>();
+			Map<String, Object> businessStatusMap = new HashMap<String,Object>();
+			
+			businessNumMap.put("businessNum", businessNum);
+			businessNumMap.put("adminId", (String)session.getAttribute("admin"));
+			businessStatusMap.put("adminId", (String)session.getAttribute("admin"));
+			
+			service.businessAuthInsert(businessNumMap);
+			service.businessAuthStatusUpdate(businessStatusMap);
+			return 1;
+		}
+	}
+	@ResponseBody
+	@RequestMapping("/authConfirm")
+	Object authConfirm(String adminId) {
+		System.out.println(adminId);
+		Admin admin = service.authConfirm(adminId);
+		return admin;
+	}
 }

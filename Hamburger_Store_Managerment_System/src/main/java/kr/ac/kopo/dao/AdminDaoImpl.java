@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.model.Admin;
+import kr.ac.kopo.model.BusinessNumCheck;
 @Repository
 public class AdminDaoImpl implements AdminDao {
 @Autowired
@@ -35,4 +36,21 @@ SqlSession sql;
 	public void joinConfirm(Map<String, Object> map) {
 		sql.update("admin.joinConfirm", map);
 	}
+	@Override
+	public BusinessNumCheck businessAuth(String businessNum) {
+		return sql.selectOne("admin.businessAuth", businessNum);
+	}
+	@Override
+	public void businessAuthInsert(Map<String, Object> businessNumMap) {
+		sql.update("admin.businessNumInsert", businessNumMap);
+	}
+	@Override
+	public void businessAuthStatusUpdate(Map<String, Object> businessStatusMap) {
+		sql.update("admin.businessAuthStatusUpdate", businessStatusMap);
+	}
+	@Override
+	public Admin authConfirm(String adminId) {
+		return sql.selectOne("admin.authConfirm", adminId);
+	}
+	
 }

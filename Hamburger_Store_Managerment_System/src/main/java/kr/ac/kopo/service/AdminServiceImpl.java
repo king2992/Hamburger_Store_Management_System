@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.dao.AdminDao;
 import kr.ac.kopo.model.Admin;
+import kr.ac.kopo.model.BusinessNumCheck;
 import kr.ac.kopo.util.MailUtils;
 import kr.ac.kopo.util.TempKey;
 @Service
@@ -26,7 +27,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void adminSignUp(Admin admin) throws Exception{
 				
-				// ÀÓÀÇÀÇ authkey »ý¼º
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ authkey ï¿½ï¿½ï¿½ï¿½
 				String authkey = new TempKey().getKey(50, false);
 
 				admin.setAuthkey(authkey);
@@ -52,9 +53,9 @@ public class AdminServiceImpl implements AdminService {
 		dao.authKeyUpdate(map);
 		
 		MailUtils sendMail = new MailUtils(mailSender);
-		sendMail.setSubject("[M-SA] È¸¿ø°¡ÀÔ ÀÌ¸ÞÀÏ ÀÎÁõ");
-		sendMail.setText(new StringBuffer().append("<h1>[ÀÌ¸ÞÀÏ ÀÎÁõ]</h1>")
-				.append("<p>´ÙÀ½¿¡ ÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä : " + authkey + "</p>")
+		sendMail.setSubject("[M-SA] È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		sendMail.setText(new StringBuffer().append("<h1>[ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½]</h1>")
+				.append("<p>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµå¸¦ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ : " + authkey + "</p>")
 				.toString());
 		sendMail.setTo(admin.getAdminEmail());
 		sendMail.send();
@@ -64,6 +65,23 @@ public class AdminServiceImpl implements AdminService {
 	public void joinConfirm(Map<String, Object> map) {
 		dao.joinConfirm(map);
 	}
+	@Override
+	public BusinessNumCheck businessAuth(String businessNum) {
+		return dao.businessAuth(businessNum);
+	}
+	@Override
+	public void businessAuthInsert(Map<String, Object> businessNumMap) {
+		dao.businessAuthInsert(businessNumMap);
+	}
+	@Override
+	public void businessAuthStatusUpdate(Map<String, Object> businessStatusMap) {
+		dao.businessAuthStatusUpdate(businessStatusMap);
+	}
+	@Override
+	public Admin authConfirm(String adminId) {
+		return dao.authConfirm(adminId);
+	}
+	
 	
 	
 	

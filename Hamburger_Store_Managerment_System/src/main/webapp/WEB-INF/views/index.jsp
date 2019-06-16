@@ -349,17 +349,12 @@ p{margin:0;}
                     <nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
                      <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
                         <ul>
-                            
-                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
-                            
-                                
-                             <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
-                       
+                            
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
                         </ul>
                           <ul class="nav navbar-nav menu-infobtn">
                 <li class="dropdown">
@@ -536,6 +531,26 @@ p{margin:0;}
 	</div>
 	<script>
 	$(document).ready(function(){
+		$(".nav-admin").hide();
+		var adminId = "${sessionScope.admin}";
+		if(adminId != null){
+			$.ajax({
+				data : {"adminId":adminId},
+				url : "/admin/authConfirm",
+				success : function(data){
+					if(data.authstatus == "y_auth" && data.businessStatus == "y_auth"){
+						$(".nav-admin").show();
+					}else if(data.authstatus == "n_auth"){
+						alert("이메일 본인인증을 진행해주세요.");
+						location.href="/admin/myPage";
+					}else if(data.businessStatus == "n_auth"){
+						alert("사업자 등록번호 인증을 진행해주세요.");
+						location.href="/admin/myPage";
+					}
+				}
+			})	
+		}
+		
 		$(document).on("click", "#adminLogin", function(){
 			location.href = "/admin/adminLogin";
 		})

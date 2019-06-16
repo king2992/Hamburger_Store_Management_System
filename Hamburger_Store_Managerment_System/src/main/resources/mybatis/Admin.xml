@@ -27,4 +27,20 @@
 		set authkey = #{authkey}
 		where admin_id = #{adminId}
 	</update>
+	<select id="businessAuth" resultType="BusinessNumCheck">
+		select * from business_num_check
+	</select>
+	<update id="businessAuthStatusUpdate" parameterType="map">
+		update admin
+		set business_status = "y_auth"
+		where admin_id =#{adminId}
+	</update>
+	<update id="businessNumInsert">
+		update admin
+		set business_num = #{businessNum}
+		where admin_id = #{adminId}
+	</update>
+	<select id="authConfirm" resultType="Admin">
+		select authstatus, business_status from admin where admin_id = #{adminId}
+	</select>
 </mapper>

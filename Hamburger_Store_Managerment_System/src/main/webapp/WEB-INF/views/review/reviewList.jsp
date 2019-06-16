@@ -23,10 +23,24 @@
     	'use strict';
 		$('#home-slider .item').css('height',slideHeight);
 		});
-		$(document).ready(function(){
-			$('#tohash , #startBtn').on('click', function(event){
-			$('html, body').animate({scrollTop: $(this.hash).offset().top -5},1000);
-			event.preventDefault();
+	$(document).ready(function(){
+		$(".nav-admin").hide();
+		var adminId = "${sessionScope.admin}";
+		if(adminId != null){
+			$.ajax({
+				data : {"adminId":adminId},
+				url : "/admin/authConfirm",
+				success : function(data){
+					if(data.authstatus == "y_auth" && data.businessStatus == "y_auth"){
+						$(".nav-admin").show();
+					}
+				}
+			})	
+		}
+		
+		$('#tohash , #startBtn').on('click', function(event){
+		$('html, body').animate({scrollTop: $(this.hash).offset().top -5},1000);
+		event.preventDefault();
 		return false;
 	});	
 });
@@ -112,34 +126,45 @@
                         <ul>
                             
                           <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
+                            
+                                
                              <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                            
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                       
                         </ul>
                           <ul class="nav navbar-nav menu-infobtn">
                 <li class="dropdown">
                     <a class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
                         <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
                     </a>
-                    <div class="dropdown-menu menu-dropmenu">
-                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
-                            <c:choose>
-                  <c:when test="${sessionScope.user eq null }">
-          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
-          </c:when>
-          <c:otherwise>
-              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
-            </c:otherwise>
+      <div class="dropdown-menu menu-dropmenu">
+               	   <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+           <c:choose>
+	           <c:when test="${sessionScope.user eq null && sessionScope.admin eq null}"> <!-- 사용자 로그인 -->
+	       		   <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a>
+	          </c:when>
+          	  <c:when test="${sessionScope.user ne null }">
+              	   <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">User-LogOut</a><!-- 사용자 로그아웃 -->
+              </c:when>
+              <c:when test="${sessionScope.admin ne null}"> 
+              	   <a class="dropdown-item modal_open modal_menu" href="/admin/adminLogout">Admin-LogOut</a>
+              </c:when>
           </c:choose>
-                          <c:choose>
-          <c:when test="${sessionScope.user ne null }">
-            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
-          </c:when>
+          
+          <c:choose>
+          	<c:when test="${sessionScope.user ne null }">
+            	<a class="dropdown-item modal_open modal_menu" href="/user/myPage">User-My-Page</a>
+            </c:when>
+            <c:when test="${sessionScope.admin ne null }">
+          		<a class="dropdown-item modal_open modal_menu" href="/admin/myPage">Admin-My-Page</a>
+            </c:when>
           </c:choose>
-                    </div>
+        </div>
                 </li>
             </ul>
                     </nav>

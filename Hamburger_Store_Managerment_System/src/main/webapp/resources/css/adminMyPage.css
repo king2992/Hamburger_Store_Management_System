@@ -115,6 +115,7 @@ table {
     padding-bottom: 10px;
     font-weight:700;
     font-size: 18px;
+    color : green;
 }
 /***********개인정보변경*************/
 
@@ -225,7 +226,7 @@ table {
 	display:inline-block;
     float: right;
     position: relative;
-    right: 150px;
+    right: 120px;
 	top:4px;
 }
 .register {

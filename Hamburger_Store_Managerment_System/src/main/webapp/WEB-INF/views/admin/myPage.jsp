@@ -17,6 +17,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <script>
         $(document).ready(function(){
+        	$(".nav-admin").hide();
+    		var adminId = "${sessionScope.admin}";
+    		if(adminId != null){
+    			$.ajax({
+    				data : {"adminId":adminId},
+    				url : "/admin/authConfirm",
+    				success : function(data){
+    					if(data.authstatus == "y_auth" && data.businessStatus == "y_auth"){
+    						$(".nav-admin").show();
+    					}
+    				}
+    			})	
+    		}
         	 $('.modal a.close-modal').removeAttr('width');
                 // 클래스이름이 test 인 것을 show메소드로 보인다
                 $('#personalInfomationChange').show();
@@ -137,17 +150,20 @@
                                     	사업자 <br>등록번호
                                 </td>
                                  <td>
-                                 <div class="register">등록상태 :미등록</div>
-                                 <select class="first_number">
-									 <option value="010" selected> 010</option>
-                                     <option value="011"> 011</option>
-                                     <option value="011"> 016</option>
-                                     <option value="011"> 017</option>
-                                     <option value="011"> 018</option>
-                                     <option value="011"> 019</option> 
-								 </select> -
-								 <input type="text" class="adminPhone"> - <input type="text" class="adminPhone">
-								 <button type="button" class="phone_btn">등록하기</button>
+                                 <div class="register">등록상태 : 
+                                 <c:choose>
+                                 <c:when test ="${admin.businessStatus eq 'n_auth'}">
+                                 <p style="color: red; font-size:14px;" id="notAuth">미등록</p>
+                                 </c:when>
+                                 <c:otherwise>
+                                 <p style="color: green; font-size:14px;" id="checkAuth">등록</p>
+                                 </c:otherwise>
+                                 </c:choose> 
+                                 </div>
+                                  <input type="text" class="adminPhone" id="firstBuNum" value="${businessNum2}">-
+								 <input type="text" class="adminPhone" id="centerBuNum" value="${businessNum4}"> - 
+								 <input type="text" class="adminPhone" id="lastBuNum" value="${businessNum6}">
+								 <button type="button" class="phone_btn" id="businessAuth">인증하기</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -169,7 +185,17 @@
                     </ul>
                 <button type="button" class="btn_type"  id="myBtn">회원탈퇴</button>
                </div>
-        </div>    
+        </div>
+		      <!-- The Modal -->
+				    <div id="myModal" class="withdrawalModal">
+				      <!-- Modal content -->
+				      <div class="withdrawal-modal-content">
+				        <span class="withdrawal-close">&times;</span>                                                               
+				        <h2 class="withdrawalH2">현재 비밀번호를 입력해주세요.</h2>
+				        <input type="password" id="nowPw" class="nowPwClass">
+				        <button type="button" id="userDelete" class="userDeleteClass">회원탈퇴</button>
+				      </div>
+				    </div>
     </div>       
 </body> 
 </html>
