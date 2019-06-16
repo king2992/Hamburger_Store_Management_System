@@ -53,10 +53,10 @@
                <li><img data-menuname="치파오치킨" data-price="10000" src="${path}/resources/img/chickenMenu/chiPaOChicken.jpg"><p>치파오 치킨</p><p class="price_p">10000</p></li>
                <li><img data-menuname="찜햇닭" data-price="10000" src="${path}/resources/img/chickenMenu/jjimHatDag.jpg"><p>찜햇닭</p><p class="price_p">10000</p></li>
                <li><img data-menuname="찜햇닭강정" data-price="10000" src="${path}/resources/img/chickenMenu/JjimHatDagGangJung.jpg"><p>찜햇닭 강정</p><p class="price_p">10000</p></li>
-               <li><img data-menuname="불갈비치킨버거" data-price="10000" src="${path}/resources/img/burger/20170227485176.jpg"><p>불갈비 치킨버거</p><p class="price_p">10000</p></li>
-               <li><img data-menuname="불싸이버거" data-price="10000" src="${path}/resources/img/burger/20170412442355.jpg"><p>불싸이 버거</p><p class="price_p">10000</p></li>
-               <li><img data-menuname="치킨커틀렛버거" data-price="10000" src="${path}/resources/img/burger/20180220459667.jpg"><p>치킨커틀렛 버거</p><p class="price_p">10000</p></li>
-               <li><img data-menuname="치즈베이컨버거" data-price="10000" src="${path}/resources/img/burger/20180416932721.jpg"><p>치즈베이컨 버거</p><p class="price_p">10000</p></li>
+               <li><a href="#ex1" rel="modal:open"><img data-menuname="불갈비치킨버거" data-price="10000" src="${path}/resources/img/burger/20170227485176.jpg"></a><p>불갈비 치킨버거</p><p class="price_p">10000</p></li>
+               <li><a href="#ex1" rel="modal:open"><img data-menuname="불싸이버거" data-price="10000" src="${path}/resources/img/burger/20170412442355.jpg"></a><p>불싸이 버거</p><p class="price_p">10000</p></li>
+               <li><a href="#ex1" rel="modal:open"><img data-menuname="치킨커틀렛버거" data-price="10000" src="${path}/resources/img/burger/20180220459667.jpg"></a><p>치킨커틀렛 버거</p><p class="price_p">10000</p></li>
+               <li><a href="#ex1" rel="modal:open"><img data-menuname="치즈베이컨버거" data-price="10000" src="${path}/resources/img/burger/20180416932721.jpg"></a><p>치즈베이컨 버거</p><p class="price_p">10000</p></li>
             </ul>
          </div>
 <!--          햄버거 메뉴 -->
@@ -258,7 +258,7 @@
 <!-- 결제 footer -->
   <div class="footer_div">
         <ul class="side_img">
-           <li><img src="${path}/resources/kiosk/images/Disabled.png"><p>장애인</p></li>
+           <li><a href="/"><img src="${path}/resources/kiosk/images/home.png"></a><p>Home</p></li>
            <li><img src="${path}/resources/kiosk/images/seach.png"><p>크게</p></li> 
            <li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li>
         </ul>
