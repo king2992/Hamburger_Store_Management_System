@@ -8,7 +8,7 @@
 		insert into admin (admin_id, admin_password, admin_name, admin_phone, admin_email, authkey)
 		values (#{adminId}, #{adminPassword}, #{adminName}, #{adminPhone}, #{adminEmail}, #{authkey}) 
 	</insert>
-	<update id="joinConfirm">
+	<update id="joinConfirm" parameterType="map">
 		update admin
 		set authstatus = "y_auth"
 		where authkey = #{authkey}
@@ -18,5 +18,29 @@
 		from admin 
 		where admin_id = #{adminId} and 
 			  admin_password = #{adminPassword}
+	</select>
+	<select id="adminMyPage" resultType="Admin">
+		select * from admin where admin_id=#{adminId}
+	</select>
+	<update id="authKeyUpdate" parameterType="map">
+		update admin
+		set authkey = #{authkey}
+		where admin_id = #{adminId}
+	</update>
+	<select id="businessAuth" resultType="BusinessNumCheck">
+		select * from business_num_check
+	</select>
+	<update id="businessAuthStatusUpdate" parameterType="map">
+		update admin
+		set business_status = "y_auth"
+		where admin_id =#{adminId}
+	</update>
+	<update id="businessNumInsert">
+		update admin
+		set business_num = #{businessNum}
+		where admin_id = #{adminId}
+	</update>
+	<select id="authConfirm" resultType="Admin">
+		select authstatus, business_status from admin where admin_id = #{adminId}
 	</select>
 </mapper>

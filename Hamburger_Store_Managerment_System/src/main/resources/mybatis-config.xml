@@ -21,6 +21,7 @@
 		<typeAlias type="kr.ac.kopo.model.Like" alias="Like" />
 		<typeAlias type="kr.ac.kopo.model.Admin" alias="Admin" />
 		<typeAlias type="kr.ac.kopo.model.BusinessNumCheck" alias="BusinessNumCheck" />
+		<typeAlias type="kr.ac.kopo.model.MenuInfo" alias="MenuInfo" />
 	</typeAliases>
 
 	<mappers>
@@ -31,5 +32,6 @@
 		<mapper resource="mybatis/File.xml" />
 		<mapper resource="mybatis/Pos.xml" />
 		<mapper resource="mybatis/TakeOutReservedList.xml" />
+		<mapper resource="mybatis/MenuIntroduce.xml" />
 	</mappers>
 </configuration>

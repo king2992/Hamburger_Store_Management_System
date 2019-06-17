@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="menuIntroduce">
+	<select id="setList" resultType="Menu">select * from menu where menu_category = "chicken"</select>
+	<select id="burgerList" resultType="Menu">select * from menu where menu_category = "burger"</select>
+	<select id="drinkList" resultType="Menu">select * from menu where menu_category = "drink"</select>
+	<select id="sideList" resultType="Menu">select * from menu where menu_category = "side"</select>
+	<select id="menuInfo" resultType="menuInfo"> 
+	select m.menu_name , m_info.menu_introduce , m_info.menu_kcal, m.menu_img 
+	from menu m , menu_info m_info 
+	where m.menu_id = m_info.menu_id and m.menu_id = #{menuId}
+	</select>
+</mapper>
