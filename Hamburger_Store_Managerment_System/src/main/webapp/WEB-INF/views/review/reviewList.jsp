@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"> 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css">
 <link rel="stylesheet" href="${path}/resources/css/sub.css"> 
-<!-- <link rel="stylesheet" href="/resources/css/mainR.css">  -->
 <link href="${path}/resources/css/animate.min.css" rel="stylesheet"> 
 <link href="${path}/resources/review/js/reviewList.js">
 <script type="text/javascript">
@@ -102,7 +101,12 @@
 }
 
 .paginationSub li:hover:not(.active) {background-color: #ddd;}
-
+.pre_p { border:1px solid #ececec; right: 5px; position: relative; border:none; top:2px;}
+.next_p {position: relative; top:3px;}
+.page_nav { clear:both; text-align:center; letter-spacing:-1px; line-height:normal; white-space:nowrap; padding:25px 0; }
+.now_p, .page_nav a { display:inline-block; text-decoration:none; width:25px; height:26px; vertical-align:middle; text-align:center; line-height:24px; margin:0 5px 0 0;  font-weight:400;  }
+.page_nav .now_p { background:#ddd; color:#fff;font-weight:600;width:35px; height:36px;border:1px solid #dedede; line-height: 36px;}
+.now_p > a{ position: relative; left:3px; }
 </style>
 </head>
 <body>
@@ -238,9 +242,12 @@
 				<div class="clear-fix"></div>
 				<div class="content_pagenation paginationDiv">
 <!-- 				페이징 부분 -->
-					<ul class="paginationSub">
-						<li class="active">${paging.html}</li>
-					</ul>
+<!-- 					<ul class="paginationSub"> -->
+<%-- 						<li class="active">${paging.html}</li> --%>
+<!-- 					</ul> -->
+				<div class="page_nav">
+					<div style="display:inline;">${paging.html}</div>
+				</div>
 				</div>
 			</div>
 		</div>

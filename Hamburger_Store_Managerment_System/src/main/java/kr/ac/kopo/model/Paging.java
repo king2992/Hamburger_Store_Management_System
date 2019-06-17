@@ -13,7 +13,7 @@ public class Paging {
 
        String html = "";
 //div 스타일 적용 가운데 1 ~         
-         html += "<div style=\"display:inline;\">";
+         html += "<div class='paging_div' style=\"display:inline;\">";
 //         형변환 (int) total 나누기 페이지 정수형으로 형변환 식 
          int maxPage = (int) Math.ceil( total / pager );
 //         반복문 실행 i = 1 첫번째페이지 지정 
