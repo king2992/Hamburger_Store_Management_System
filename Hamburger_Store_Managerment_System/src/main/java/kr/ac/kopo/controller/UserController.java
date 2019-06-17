@@ -310,4 +310,8 @@ public class UserController {
 		service.cardDelete(userId);
 		return 1;
 	}
+	  @RequestMapping("/about")
+	   String about(){
+	      return "/user/about";
+	   }
 }
