@@ -121,6 +121,7 @@
               	<nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
                   	<a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
                       <ul>
+                      		<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about/aboutUs">About Us</a></li>
                       		<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/menuIntroduce/menuList">Menu</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
