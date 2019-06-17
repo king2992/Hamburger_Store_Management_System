@@ -164,7 +164,7 @@ $(document).ready(function(){
                   '<tr class="order_list">'+
                   '<td id="menuname'+menuname+'">'+menuname+'</td>'+
                   '<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
-                  '<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">X</button>'+'</td>'+
+                  '<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">삭제</button>'+'</td>'+
                   '</tr>');
             totalPrice();
             }
@@ -190,7 +190,7 @@ $(document).ready(function(){
          var price = $('.tab_cont li img').data('price');
          var sum = item * price;
          var priceItem = $(this).parent().siblings(".listPrice");
-            priceItem.html("<span class='spanPrice'>"+sum +"</span>"+"<button class='menu_del'>X</button>");
+            priceItem.html("<span class='spanPrice'>"+sum +"</span>"+"<button class='menu_del'>삭제</button>");
             totalPrice();
       });
 // 수량 -
@@ -205,7 +205,7 @@ $(document).ready(function(){
          var price = $('.tab_cont li img').data('price');
          var minus = item * price;
          var priceItem = $(this).parent().siblings('.listPrice');
-         priceItem.html("<span class='spanPrice'>"+minus +"</span>"+"<button class='menu_del'>X</button>");
+         priceItem.html("<span class='spanPrice'>"+minus +"</span>"+"<button class='menu_del'>삭제</button>");
          
          var total = priceItem;
          totalPrice();

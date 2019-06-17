@@ -4,6 +4,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Kiosk First Web Screen</title>
+<style type="text/css">
+#footer-div2{
+	position: absolute;
+	left: 0;
+	background: #ddd;
+ /*    border: 1px solid black; */
+    width: 1021px;
+    height: 100px;
+    
+}
+.order_cancel_btn,#order_add_btn{
+    width: 250px;
+    height: 70px;
+    position: relative;
+    top: 15px;
+    display: inline-block;
+    font-size: 20pt;
+    border-radius: 12px;
+    outline: 0;
+    border: none;
+}
+.order_list_div ul li{display: inline-block;}
+.order_list_div ul li:nth-child(2){float: right;}
+</style>
 </head>
 <link rel="shortcut icon" href="${path}/kiosk/screen">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
@@ -115,45 +139,43 @@
 <!--          주문/갯수/금액 내역 영역 -->
    <div class="order_list_wrap">
 <!--          결제/취소 영역 -->
-    <div class="order_payment_div">
-         <table class="total_table">
-            <tr>
-               <td>주문 총 금액 :</td>
-               <td><label id="total_price">요기야</label></td>
-            </tr>
-         </table>
-              <div class="button_base b03_skewed_slide_in">
-               <div>결제취소</div>
-               <div></div>
-               <div onclick="cancel()">결제취소</div>
-            </div>
-      <div class="back">
-              <div class="button_base b03_skewed_slide_in">
-                  <div>결제하기</div>
-                <div></div>
-                <div class="swiper-button-next">결제하기</div>
-            </div>
-        </div>
-    </div>
       <div class="order_list_div">
+      	<ul>
+      		<li>총주문내역</li>
+      		<li><label id="total_price" style="color: #e97e71;"></label></li>
+      	</ul>
          <table class="table_list">
-            <thead>
+          <!--   <thead>
                <tr>
                   <th>주문내역</th>
                   <th>수량(개)</th>
                   <th>금액(원)</th>
                </tr>
-            </thead>
+            </thead> -->
                <tbody class="table_tr2">
                </tbody>
          </table>
+       <div id="footer-div2">
+        <ul class="side_img">
+           <li><a href="/"><img src="${path}/resources/kiosk/images/home.png"></a><p>Home</p></li>
+           <li><img src="${path}/resources/kiosk/images/seach.png"><p>크게</p></li> 
+           <li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li>
+        </ul>
+     <button class="order_cancel_btn" onclick="cancel();">결제취소</button>
+     <button class="swiper-button-prev swiper-button-nex" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4);">결제하기</button>
+  </div> 
       </div>
    </div>
   </div>
      <div class="swiper-button-next" id="next_div"><p>다<br>음</p></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
 </div>
+
+
 <div class="swiper-slide">
+
  <div class="swiper-wrapper">
+ <!-- 카테고리 이미지 영역    -->
+   
  <div class="ad">
  <img class="mySlides" src="${path}/resources/images/carousel1.jpg" width="1024px">
  <img class="mySlides" src="${path}/resources/images/carousel2.jpg" width="1024px">
