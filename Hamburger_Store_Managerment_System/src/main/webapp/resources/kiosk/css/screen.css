@@ -185,7 +185,7 @@ nav ul li:first-child { border-left:none; }
 .table_list tbody th{border:1px solid #ff6e40; border-collapse: collapse; width:120px; padding:5px;}
 .table_tr2 { width: 100%; text-align: center; display: block; overflow-y:scroll; height: 250px; }
 .p_btn, .m_btn, .menu_del { width: 20px; height: 20px;}
-.menu_del { position:relative; left:135px; width: 75px; height:28px; border:1px solid #141414; border-radius:8px; background: #fff;}
+.menu_del { outline:none; position:relative; left:135px; width: 75px; height:28px; border:1px solid #141414; border-radius:8px; background: #fff; cursor:pointer}
 .price_p { line-height: 5px; }
 .orderListBar{background-color: #702e2d;}
 .orderListBar table{padding:30px; width:100%;text-align: center;}
@@ -293,7 +293,7 @@ nav ul li:first-child { border-left:none; }
 .payment_table th{background: #8e1306; color: #fff;}
 .payment_table th, payment_table,td{padding: 20px;}
 .ad{width: 100%;  position: absolute; top: 0; text-align: center;}
-.footer_div { background:#fff; border:1px solid black; width:1021px; height:100px; position:relative; top:10px; }
+.footer_div { background:#fff; width:1024px; height:100px; position:relative; top:10px; }
 .footer_div button {width:250px; height:70px; position:relative; top:15px; display:inline-block; font-size:20pt; border-radius: 12px; outline:0; border:none; }
 .order_cancel_btn {position:relative; left:77px; cursor:pointer; box-shadow:3px 3px 3px 3px gray;}
 #order_add_btn {position:relative; left:130px; cursor:pointer; box-shadow:3px 3px 3px 3px gray;}
@@ -367,3 +367,23 @@ nav ul li:first-child { border-left:none; }
 #next_div > p {position:relative; top:35px; color:#fff;}
 #prev_div {border:none; background:rgba(105,105,105,0.5); width:100px; height:150px; font-size:20pt; border-top-right-radius:20px; border-bottom-right-radius: 20px; text-align: center;}
 #prev_div > p {position:relative; top:35px; color:#fff;}
+#footer-div2{
+	position: absolute;
+	left: 0;
+	background: #ddd;
+    width: 1024px;
+    height: 100px;
+}
+.order_cancel_btn,#order_add_btn{
+    width: 250px;
+    height: 70px;
+    position: relative;
+    top: 15px;
+    display: inline-block;
+    font-size: 20pt;
+    border-radius: 12px;
+    outline: 0;
+    border: none;
+}
+.order_list_div ul li{display: inline-block;}
+.order_list_div ul li:nth-child(2){float: right;}

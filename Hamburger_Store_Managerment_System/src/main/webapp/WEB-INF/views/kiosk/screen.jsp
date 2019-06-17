@@ -5,28 +5,7 @@
 <meta charset="UTF-8">
 <title>Kiosk First Web Screen</title>
 <style type="text/css">
-#footer-div2{
-	position: absolute;
-	left: 0;
-	background: #ddd;
- /*    border: 1px solid black; */
-    width: 1021px;
-    height: 100px;
-    
-}
-.order_cancel_btn,#order_add_btn{
-    width: 250px;
-    height: 70px;
-    position: relative;
-    top: 15px;
-    display: inline-block;
-    font-size: 20pt;
-    border-radius: 12px;
-    outline: 0;
-    border: none;
-}
-.order_list_div ul li{display: inline-block;}
-.order_list_div ul li:nth-child(2){float: right;}
+
 </style>
 </head>
 <link rel="shortcut icon" href="${path}/kiosk/screen">
@@ -116,10 +95,10 @@
                <li><img data-menuname="치즈할라피뇨너겟" data-price="10000" src="${path}/resources/img/sideMenu/20170821851383.jpg"><p>치즈할라피뇨 너겟</p><p class="price_p">10000</p></li>
                <li><img data-menuname="치즈감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120319875.jpg"><p>치즈감자</p><p class="price_p">10000</p></li>
                <li><img data-menuname="어니언치즈감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120979582.jpg"><p>어니언치즈 감자</p><p class="price_p">10000</p></li>
-               <li><img data-menuname="라이스&치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&amp;치즈너겟</p><p class="price_p">10000</p></li>
+               <li><img data-menuname="라이스치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&amp;치즈너겟</p><p class="price_p">10000</p></li>
                <li><img data-menuname="콘베지샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903624821.jpg"><p>콘베지 샐러드</p><p class="price_p">10000</p></li>
                <li><img data-menuname="베지샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903730621.jpg"><p>베지샐러드</p><p class="price_p">10000</p></li>
-               <li><img data-menuname="에그랩(2종)" data-price="10000" src="${path}/resources/img/sideMenu/20181026154178.jpg"><p>에그랩(2종)</p><p class="price_p">10000</p></li>
+               <li><img data-menuname="에그랩2종" data-price="10000" src="${path}/resources/img/sideMenu/20181026154178.jpg"><p>에그랩(2종)</p><p class="price_p">10000</p></li>
             </ul>
          </div>
 <!--          음료류 -->
@@ -145,13 +124,6 @@
       		<li><label id="total_price" style="color: #e97e71;"></label></li>
       	</ul>
          <table class="table_list">
-          <!--   <thead>
-               <tr>
-                  <th>주문내역</th>
-                  <th>수량(개)</th>
-                  <th>금액(원)</th>
-               </tr>
-            </thead> -->
                <tbody class="table_tr2">
                </tbody>
          </table>
@@ -162,7 +134,7 @@
            <li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li>
         </ul>
      <button class="order_cancel_btn" onclick="cancel();">결제취소</button>
-     <button class="swiper-button-prev swiper-button-nex" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4);">결제하기</button>
+     <button class="swiper-button-next" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4); opacity:1;">결제하기</button>
   </div> 
       </div>
    </div>
@@ -204,20 +176,8 @@
                <th>주문금액</th>
                <th>1000</th>
             </tr>
-            <tr>
-               <th style="border-top:1px solid #c0c0c0;">할인금액</th>
-               <th style="border-top:1px solid #c0c0c0;">0</th>
-            </tr>
          </thead>
       </table>
-         <ul class="payfuture">
-            <li>결제할 금액</li>
-            <li>1000</li>
-         </ul>
-         <ul class="paymented">
-            <li>결제한 금액</li>
-            <li>1000</li>
-         </ul>
       <table class="paykind">
          <thead>
             <tr>
@@ -269,7 +229,7 @@
          </thead>
          <tbody>
             <tr class="choice_check3">
-               <td style="border-right:1px solid #c0c0c0;"><a href="#pay" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></a></td>
+               <td style="border-right:1px solid #c0c0c0;"><a href="#pay" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"></a><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></td>
                <td style="border-right:1px solid #c0c0c0;"><a href="#mobile_div" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/mobile.png"></a><img class="v_img7" src="${path}/resources/kiosk/images/v.png"><p>모바일<br>(pay)</p></td>
                <td><a href="#bus_card" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/card_.png"></a><img class="v_img8" src="${path}/resources/kiosk/images/v.png"><p>교통카드</p></td>
             </tr>
@@ -290,7 +250,7 @@
    <!-- 이전 버튼 -->   
    </div>
    </div>
-   <div class="swiper-button-prev" id="prev_div" style="top:85.5%;"><p>이<br>전</p></div>
+   <div class="swiper-button-prev" id="prev_div" style="top:90.2%;"><p>이<br>전</p></div>
    </div>
    </div>
    </div>
@@ -320,10 +280,10 @@
                <li><img data-menuname="치즈할라피뇨너겟" data-price="10000" src="${path}/resources/img/sideMenu/20170821851383.jpg"><p>치즈할라피뇨 너겟</p><p class="price_p">10000</p></li>
                <li><img data-menuname="치즈감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120319875.jpg"><p>치즈감자</p><p class="price_p">10000</p></li>
                <li><img data-menuname="어니언치즈감자" data-price="10000" src="${path}/resources/img/sideMenu/20171120979582.jpg"><p>어니언치즈 감자</p><p class="price_p">10000</p></li>
-               <li><img data-menuname="라이스&치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&amp;치즈너겟</p><p class="price_p">10000</p></li>
+               <li><img data-menuname="라이스치즈너겟" data-price="10000" src="${path}/resources/img/sideMenu/20180704788027.jpg"><p>라이스&amp;치즈너겟</p><p class="price_p">10000</p></li>
                <li><img data-menuname="콘베지샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903624821.jpg"><p>콘베지 샐러드</p><p class="price_p">10000</p></li>
                <li><img data-menuname="베지샐러드" data-price="10000" src="${path}/resources/img/sideMenu/20180903730621.jpg"><p>베지샐러드</p><p class="price_p">10000</p></li>
-               <li><img data-menuname="에그랩(2종)" data-price="10000" src="${path}/resources/img/sideMenu/20181026154178.jpg"><p>에그랩(2종)</p><p class="price_p">10000</p></li>
+               <li><img data-menuname="에그랩2종" data-price="10000" src="${path}/resources/img/sideMenu/20181026154178.jpg"><p>에그랩(2종)</p><p class="price_p">10000</p></li>
          </ul>      
       </div>
       <div class="set_drink" id="hide">

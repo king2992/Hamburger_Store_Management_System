@@ -353,7 +353,7 @@ $(document).ready(function(){
             paymentCancel();
          });
 // 이미지 클릭 시 zoomOutDown animate         
-         $(document).on('click','.tab_cont img', function(){
+         $(document).on('click','.tab_cont img,.set_side_ul img', function(){
         	var imgSrc = $(this).attr('src');
         	$(this).addClass('zoomOutDown');
         	var test2 = $(this).css('background-image');

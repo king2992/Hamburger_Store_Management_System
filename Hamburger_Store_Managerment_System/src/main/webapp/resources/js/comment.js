@@ -31,7 +31,7 @@ function commentList(){
             		a += '<div style="position:relative;">'
             		a += '<div class="comment_content" style="margin-left:40px;">';
             		a += '<div class="commentInfo'+value.coNumber+'">'+'작성일: '+value.coDate+'/ 작성자: '+value.userId;
-            		if(userId == session){
+            		if(value.userId == session){
             		a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정</a>';
             		a += '<a onclick="commentDelete('+value.coNumber+');">삭제</a></div>';
             		}
@@ -43,7 +43,7 @@ function commentList(){
                 a += '<div class="comment_content">';
                 a += '<div class="comment_info'+value.coNumber+'">'+'작성일 : '+value.coDate+' / 작성자 : '+value.userId;
                 a += '<a onclick="commentReply('+value.coGroup+');">답글</a>';
-                if(userId == session){
+                if(value.userId == session){
                 a += '<a onclick="commentUpdate('+value.coNumber+',\''+value.content+'\');">수정 </a>';
                 a += '<a onclick="commentDelete('+value.coNumber+');"> 삭제 </a> </div>';
                 }
