@@ -125,7 +125,8 @@ public class PosController {
 	int menuAdd(@RequestParam(value="menuNameArray[]") String menuNameArray[],
 			@RequestParam(value="menuCntArray[]") String menuCntArray[]) {
 		
-				
+			System.out.println(menuNameArray);
+			System.out.println(menuCntArray);
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			
 			for(int i = 0; i < menuNameArray.length; i++ ) {

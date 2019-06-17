@@ -145,18 +145,21 @@ public class AdminController {
 		String adminId = (String)session.getAttribute("admin");
 		Admin admin = service.adminMyPage(adminId);
 		model.addAttribute("admin", admin);
-		String businessNum1 = admin.getBusinessNum();
-		String businessNum2 = businessNum1.substring(0,3);
+		if(admin.getBusinessNum() != null) {
+			String businessNum1 = admin.getBusinessNum();
+			String businessNum2 = businessNum1.substring(0,3);
+			
+			String businessNum3 = admin.getBusinessNum();
+			String businessNum4 = businessNum3.substring(3,8);
+			
+			String businessNum5 = admin.getBusinessNum();
+			String businessNum6 = businessNum5.substring(8,15);
 		
-		String businessNum3 = admin.getBusinessNum();
-		String businessNum4 = businessNum3.substring(3,8);
+			model.addAttribute("businessNum2", businessNum2);
+			model.addAttribute("businessNum4", businessNum4);
+			model.addAttribute("businessNum6", businessNum6);
+		}
 		
-		String businessNum5 = admin.getBusinessNum();
-		String businessNum6 = businessNum5.substring(8,15);
-	
-		model.addAttribute("businessNum2", businessNum2);
-		model.addAttribute("businessNum4", businessNum4);
-		model.addAttribute("businessNum6", businessNum6);
 		
 		return "/admin/myPage";
 	}

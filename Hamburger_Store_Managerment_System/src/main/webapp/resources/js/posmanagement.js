@@ -253,12 +253,12 @@ $(document).ready(function() {
 		$(".burgerOrSet").hide();$(".burgerOrSet-content").hide();
 	})
 	
-	$('.pNameClick').each( function(index, value) {
-		$(this).click( function() {
-		$(this).attr("id", "selected");
-		$(this).siblings().attr("id", "none");
-			});
-		});
+//	$('.pNameClick').each( function(index, value) {
+//		$(this).click( function() {
+//		$(this).attr("id", "selected");
+//		$(this).siblings().attr("id", "none");
+//			});
+//		});
 	$(document).on( "click", ".order-group", function() {
 		
 		$(this).css("background-color", "red");
@@ -351,234 +351,240 @@ $(document).ready(function() {
          modalcash.classList.toggle("show-modalcash"); 
          $('input[name=payTotal]').val($('.pTotal').text());
          
-         //추가 돼 있는 상품에 이름을 배열에 담는다
-         $(".menuListName").each(function(index, item){
-         	menuNameArray.push($(this).text());
-         })
-         //추가 돼 있는 상품에 갯수를 배열에 담는다
-         $(".menuListCnt").each(function(index, item){
-         	menuCntArray.push($(this).text());
-         })
- 		
      }
+//    $(document).on("click", "#menuDelete", function(){
+//    	var menuId = $("#selected").data("number");
+//    	$.ajax({
+//		url : '/pos/delete',
+//		type : "post",
+//		data : {
+//			"menuId" : menuId
+//		},
+//		success : function(data) {
+//			location.reload();
+//	}
+//	});
+//    })
 });
-	
-	function card(){
-		 
-        var payTotal = $('#pTotal').text();
-        
-        var rTime = new Date();
- 	    var regTime = rTime.getHours()+":";
- 	    regTime += rTime.getMinutes()+":";
- 	    regTime += rTime.getSeconds();
- 	    
-        //추가 돼 있는 상품에 이름을 배열에 담는다
-        $(".item-name").each(function(index, item){
-        	menuNameArray.push($(this).text());
-        })
-        //추가 돼 있는 상품에 갯수를 배열에 담는다
-        $(".item-cnt").each(function(index, item){
-        	menuCntArray.push($(this).text());
-        })
-        console.log(menuNameArray);
-        console.log(menuCntArray);
-        
-	   var orderListChild = document.getElementById("orderList");
-	   
-	   if(orderListChild.childElementCount == 0){ // 리스트에 상품이 없으면 alert("상품을 선택해주세요")
-		   effectiveness();
-			return;
+function card(){
+	 
+    var payTotal = $('#pTotal').text();
+    
+    var rTime = new Date();
+	    var regTime = rTime.getHours()+":";
+	    regTime += rTime.getMinutes()+":";
+	    regTime += rTime.getSeconds();
+	    
+    //추가 돼 있는 상품에 이름을 배열에 담는다
+    $(".item-name").each(function(index, item){
+    	menuNameArray.push($(this).text());
+    })
+    //추가 돼 있는 상품에 갯수를 배열에 담는다
+    $(".item-cnt").each(function(index, item){
+    	menuCntArray.push($(this).text());
+    })
+    
+   var orderListChild = document.getElementById("orderList");
+   
+   if(orderListChild.childElementCount == 0){ // 리스트에 상품이 없으면 alert("상품을 선택해주세요")
+	   effectiveness();
+		return;
+	}
+   $.ajax({
+		url : "/pos/orders",
+		data : {"payTotal" : payTotal, "regTime":regTime},
+		dataType : "JSON",
+		type : "POST",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+		success : function(data) {
+			if(data == 1){
+				
+				let timerInterval
+				Swal.fire({
+				  title: '결제중입니다.',
+				  html: 'I will close in <strong></strong> seconds.',
+				  timer: 1000, 
+				  onBeforeOpen: ()=> { 
+				    Swal.showLoading()
+				    timerInterval = setInterval(() => {
+				      Swal.getContent().querySelector('strong')
+				        .textContent = Swal.getTimerLeft() 
+				    }, 100)
+				  }, 
+				  onClose: ()=> { 
+				    clearInterval(timerInterval)
+				  }
+				}).then((result)=> {
+				  if (
+				    result.dismiss === Swal.DismissReason.timer
+				  ) {
+				    선규();
+				  }
+				  card2();
+				})
+				
+			}
 		}
-	   $.ajax({
-    		url : "/pos/orders",
-    		data : {"payTotal" : payTotal, "regTime":regTime},
-    		dataType : "JSON",
-    		type : "POST",
+	});
+  
+function card2(){
+	Swal.fire({
+	  position: 'center',
+	  type: 'success',
+	  title: '결제가 완료되었습니다.',
+	  showConfirmButton: false,
+	  timer: 1500
+	});
+	
+}
+function effectiveness(){
+	Swal.fire({
+	  position: 'center',
+	  type: 'error',
+	  title: '상품을 선택 해 주세요.',
+	  showConfirmButton: false,
+	  timer: 1500
+	});
+	
+}
+}
+ 
+function pDelete(menuId) {
+	
+	$.ajax({
+		url : '/pos/delete',
+		type : "post",
+		data : {
+			"menuId" : menuId
+		},
+		success : function(data) {
+			location.reload();
+	}
+	});
+}
+function allRemove(){
+	$(".order-group").each(function(){
+		$(this).remove();
+	})
+	menuNameArray =[];
+	menuCntArray = [];
+	
+	menuItemPriceTotal();
+	localStorage.clear();
+}
+function menuRemove(){
+	$("#menuListSelected").remove();
+	menuItemPriceTotal();
+}
+function sumCount(menuName){
+	var sum = Number($("[name='"+menuName+"']").siblings(".menuListCnt").text());
+	sum = sum + 1;
+	$("[name='"+menuName+"']").siblings(".menuListCnt").text(sum);
+}	
+function sumPrice(menuName){
+	var cnt = document.getElementById(menuName).innerHTML;
+	var price = $("[name='"+menuName+"']").siblings(".item-price").data("price");
+	var priceSum = Number(cnt) * Number(price);
+	$("[name='"+menuName+"']").siblings(".item-price").text(priceSum);
+}
+function menuCntUp(){
+	var price = $("#menuListSelected").find(".item-price").text();
+	var tot = $("#menuListSelected").find(".item-cnt").text();
+	var cnt = Number(tot) + 1;
+	$("#menuListSelected").find(".item-cnt").text(cnt);
+	menuItemTotal(cnt);
+	 menuItemPriceTotal();
+}
+function menuCntDown(){
+	var price = $("#menuListSelected").find(".item-price").text();
+	var tot = $("#menuListSelected").find(".item-cnt").text();
+	var cnt = Number(tot) - 1;
+	if($("#menuListSelected").find(".item-cnt").text() > 1){
+		$("#menuListSelected").find(".item-cnt").text(cnt);	
+	}
+	menuItemTotal(cnt);
+	 menuItemPriceTotal();
+}
+function menuItemTotal(cnt){
+	var itemPrice = $("#menuListSelected").find(".item-price").attr("data-price");
+	var total = itemPrice * cnt;
+	$("#menuListSelected").find(".item-price").text(total);
+	if($("#menuListSelected").find(".item-price").text() == 0 ){
+		$("#menuListSelected").find(".item-price").text(itemPrice);		
+	}
+}
+
+function menuItemPriceTotal(){
+	var total = 0;
+	var tot = 0;
+		$(".item-price").each(function(index){
+			total += Number($(this).text());
+	});
+		pTotal(total);
+}
+function pTotal(total){
+	$(".pTotal").text(total);
+}
+function send(){
+	
+   var payTotal = $('input[name=payTotal]').val();
+   var input = $('input[name=payTotal2]').val();
+   var nmg = $('input[name=nmg]').val();
+   var sum = input - nmg;
+   
+   var rTime = new Date();
+   var regTime = rTime.getHours()+":";
+   regTime += rTime.getMinutes()+":";
+   regTime += rTime.getSeconds();
+   
+   //추가 돼 있는 상품에 이름을 배열에 담는다
+   $(".item-name").each(function(index, item){
+   	menuNameArray.push($(this).text());
+   })
+   //추가 돼 있는 상품에 갯수를 배열에 담는다
+   $(".item-cnt").each(function(index, item){
+   	menuCntArray.push($(this).text());
+   })
+    if( payTotal == sum){
+    	$.ajax({
+     		url : "/pos/orders",
+     		data : {"payTotal" : payTotal, "regTime":regTime},
+     		dataType : "JSON",
+     		type : "POST",
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 			success : function(data) {
-				msgAnimate();
+				alert("결제가 완료되었습니다.");
+				
 				if(data == 1){
-					
-					let timerInterval
-					Swal.fire({
-					  title: '결제중입니다.',
-					  html: 'I will close in <strong></strong> seconds.',
-					  timer: 1000, 
-					  onBeforeOpen: ()=> { 
-					    Swal.showLoading()
-					    timerInterval = setInterval(() => {
-					      Swal.getContent().querySelector('strong')
-					        .textContent = Swal.getTimerLeft() 
-					    }, 100)
-					  }, 
-					  onClose: ()=> { 
-					    clearInterval(timerInterval)
-					  }
-					}).then((result)=> {
-					  if (
-					    result.dismiss === Swal.DismissReason.timer
-					  ) {
-					    
-					    선규();
-					  }
-					  card2();
-					})
-					
+					선규();
 				}
 			}
-    	});
-		
-	function card2(){
-		Swal.fire({
-		  position: 'center',
-		  type: 'success',
-		  title: '결제가 완료되었습니다.',
-		  showConfirmButton: false,
-		  timer: 1500
-		});
-		
-	}
-	function effectiveness(){
-		Swal.fire({
-		  position: 'center',
-		  type: 'error',
-		  title: '상품을 선택 해 주세요.',
-		  showConfirmButton: false,
-		  timer: 1500
-		});
-		
-	}
-	}
-	 
-	function pDelete(menuId) {
-		$.ajax({
-			url : '/pos/delete',
-			type : "post",
-			data : {
-				"menuId" : menuId
-			},
-			success : function(data) {
-				location.reload();
-		}
-		});
-	}
-	function allRemove(){
-		$(".order-group").each(function(){
-			$(this).remove();
-		})
-		menuNameArray =[];
-		menuCntArray = [];
-		
-		menuItemPriceTotal();
-		localStorage.clear();
-	}
-	function menuRemove(){
-		$("#menuListSelected").remove();
-		menuItemPriceTotal();
-	}
-	function sumCount(menuName){
-		var sum = Number($("[name='"+menuName+"']").siblings(".menuListCnt").text());
-		sum = sum + 1;
-		$("[name='"+menuName+"']").siblings(".menuListCnt").text(sum);
-	}	
-	function sumPrice(menuName){
-		var cnt = document.getElementById(menuName).innerHTML;
-		var price = $("[name='"+menuName+"']").siblings(".item-price").data("price");
-		var priceSum = Number(cnt) * Number(price);
-		$("[name='"+menuName+"']").siblings(".item-price").text(priceSum);
-	}
-	function menuCntUp(){
-		var price = $("#menuListSelected").find(".item-price").text();
-		var tot = $("#menuListSelected").find(".item-cnt").text();
-		var cnt = Number(tot) + 1;
-		$("#menuListSelected").find(".item-cnt").text(cnt);
-		menuItemTotal(cnt);
-		 menuItemPriceTotal();
-	}
-	function menuCntDown(){
-		var price = $("#menuListSelected").find(".item-price").text();
-		var tot = $("#menuListSelected").find(".item-cnt").text();
-		var cnt = Number(tot) - 1;
-		if($("#menuListSelected").find(".item-cnt").text() > 1){
-			$("#menuListSelected").find(".item-cnt").text(cnt);	
-		}
-		menuItemTotal(cnt);
-		 menuItemPriceTotal();
-	}
-	function menuItemTotal(cnt){
-		var itemPrice = $("#menuListSelected").find(".item-price").attr("data-price");
-		var total = itemPrice * cnt;
-		$("#menuListSelected").find(".item-price").text(total);
-		if($("#menuListSelected").find(".item-price").text() == 0 ){
-			$("#menuListSelected").find(".item-price").text(itemPrice);		
-		}
-	}
+     	});
+   	    	return false;
+   }
+   
+     if(payTotal != sum){
+	   alert('일치하지 않습니다. 다시 확인해주십시오.');
+	   return true;  
+   }  
+}
 
-	function menuItemPriceTotal(){
-		var total = 0;
-		var tot = 0;
-			$(".item-price").each(function(index){
-				total += Number($(this).text());
-		});
-			pTotal(total);
-	}
-	function pTotal(total){
-		$(".pTotal").text(total);
-	}
-	function send(){
-		
-	   var payTotal = $('input[name=payTotal]').val();
-	   var input = $('input[name=payTotal2]').val();
-	   var nmg = $('input[name=nmg]').val();
-	   var sum = input - nmg;
-	   
-	   var rTime = new Date();
-	   var regTime = rTime.getHours()+":";
-	   regTime += rTime.getMinutes()+":";
-	   regTime += rTime.getSeconds();
-	   
-	    if( payTotal == sum){
-	    	$.ajax({
-	     		url : "/pos/orders",
-	     		data : {"payTotal" : payTotal, "regTime":regTime},
+	
+	 
+	 function 선규(){
+		 //추가 돼 있는 상품에 이름을 배열에 담는다
+			$.ajax({
+	     		url : "/pos/menuAdd",
+	     		data : {"menuNameArray" : menuNameArray, "menuCntArray" : menuCntArray},
 	     		dataType : "JSON",
-	     		type : "POST",
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 				success : function(data) {
-					alert("결제가 완료되었습니다.");
-					msgAnimate();
+					 
 					if(data == 1){
-						선규();
+						
+						setTimeout(window.location.reload(), 2000);
 					}
 				}
 	     	});
-	   	    	return false;
-	   }
-	   
-	     if(payTotal != sum){
-		   alert('일치하지 않습니다. 다시 확인해주십시오.');
-		   return true;  
-	   }  
-   }
+	 }  	
 	
-		 function msgAnimate(){
-			  $("#chat_box").animate({
-		 			"color" : "#e3e3e3", "font-size" : "18px"
-		 		},1000) .animate({"color":"#333333", "font-size": "16px"},1000);
-		 }
-		 
-		 function 선규(){
-				$.ajax({
-		     		url : "/pos/menuAdd",
-		     		data : {"menuNameArray" : menuNameArray, "menuCntArray" : menuCntArray},
-		     		dataType : "JSON",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
-					success : function(data) {
-						 
-						if(data == 1){
-							
-							setTimeout(window.location.reload(), 2000);
-						}
-					}
-		     	});
-		 }  

@@ -74,41 +74,8 @@
                     <nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
                      <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
                         <ul>
-                            
-                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
-                            
-                                
-                             <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
-                       
                         </ul>
-                          <ul class="nav navbar-nav menu-infobtn">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
-                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
-                    </a>
-                    <div class="dropdown-menu menu-dropmenu">
-                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
-                            <c:choose>
-                  <c:when test="${sessionScope.user eq null }">
-          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
-          </c:when>
-          <c:otherwise>
-              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
-            </c:otherwise>
-          </c:choose>
-                          <c:choose>
-          <c:when test="${sessionScope.user ne null }">
-            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
-          </c:when>
-          </c:choose>
-                    </div>
-                </li>
-            </ul>
                     </nav>
                 </header>
 		
