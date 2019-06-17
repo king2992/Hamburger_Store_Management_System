@@ -200,7 +200,7 @@ nav ul li:first-child { border-left:none; }
  .zoomOutDown {
   animation-name: zoomOutDown;
   animation-duration: 1s;
-  animation-fill-mode: both;
+  animation-fill-mode: none;
   background-image:url("/resources/img/chickenMenu/chipao.png");
   z-index: 99;
   width:240px;

@@ -21,6 +21,7 @@ function commentList(){
         dataType:'JSON',
         success : function(data){
         	console.log(data);
+        	console.log(data.userId);
             var a ='';
             $.each(data.result, function(index, value){
 //            	대댓글일 경우 출력폼

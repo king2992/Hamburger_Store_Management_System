@@ -10,20 +10,20 @@ window.onload = function() {
 // 처음 출력 
 	var likeCnt = $('#likeCnt').val();
 	a += '<div class="view_like" id="likeBtn" data-number="${view.number}">'+
-	'<img src="/resources/images/unlike.png">'+
+	'<img src="/resources/images/unlike.png" style="margin-right:5px;">'+
 	'<span>'+'좋아요'+'</span>'+ 
 	'<span>'+Number(likeCnt)+'</span>'+
 	'</div>';
 	likeArea.html(a);
 	
 	b += '<div class="view_like" id="likeDel" data-number="${view.number}">'+
-	'<img src="/resources/images/like.png">'+
+	'<img src="/resources/images/like.png" style="margin-right:5px; margin-left:-5px;">'+
 	'<span style="font-size:10pt;">'+'좋아요 취소'+'</span>'+ 
 	'<span>'+Number(likeCnt)+'</span>'+
 	'</div>';
 	
 	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}">'+
-	'<img src="/resources/images/unlike.png">'+
+	'<img src="/resources/images/unlike.png" style="margin-right:5px;">'+
 	'<span>'+'좋아요 '+'</span>'+ 
 	'<span>'+Number(likeCnt)+'</span>'+
 	'</div>';
@@ -51,7 +51,7 @@ $(document).ready(function(){
 		var likeArea = $('#likeArea');
 		var b ="";
 		b += '<div class="view_like" id="likeDel" data-number="${view.number}">'+
-		'<img src="/resources/images/like.png">'+
+		'<img src="/resources/images/like.png" style="margin-right:5px; margin-left:-5px;">'+
 		'<span style="font-size:10pt;>'+'좋아요 취소'+'</span>'+ 
 		'<span>'+Number(likeCnt)+'</span>'+
 		'</div>';
@@ -74,7 +74,7 @@ $(document).ready(function(){
     	var likeArea = $('#likeArea');
     	var c ="";
     	c += '<div class="view_like" id="unLikeBtn" data-number="${view.number}">'+
-    	'<img src="/resources/images/unlike.png">'+
+    	'<img src="/resources/images/unlike.png" style="margin-right:5px;">'+
     	'<span>'+'좋아요 '+'</span>'+ 
     	'<span>'+Number(likeCnt)+'</span>'+
     	'</div>';
@@ -97,7 +97,7 @@ $(document).ready(function(){
     	var b="";
     	
     	b += '<div class="view_like" id="likeDel" data-number="${view.number}">'+
-    	'<img src="/resources/images/like.png">'+
+    	'<img src="/resources/images/like.png" style="margin-right:5px; margin-left:-5px;">'+
     	'<span style="font-size:10pt;>'+'좋아요 취소'+'</span>'+ 
     	'<span>'+Number(likeCnt)+'</span>'+
     	'</div>';

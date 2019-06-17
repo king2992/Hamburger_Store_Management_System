@@ -141,7 +141,6 @@ $(document).ready(function(){
          $(this).addClass("on");
          $(".center-wrap > div > ul").hide();
          $(".center-wrap > div > ul").eq(list).show();
-         $('.animate_div').removeClass("zoomOutDown");
       });
 // 주문 내역
 // + = .p_btn
@@ -151,7 +150,6 @@ $(document).ready(function(){
             var menuname = $(this).data('menuname');
             var price = $(this).data('price');
             var cnt = $('#menuname'+menuname+'').siblings('.td2').children('.cnt'+menuname+'').text();
-            $('.animate_div').addClass("zoomOutDown");
 // 이미지 클릭 시 수량 증가 중복방지
             if($("#menuname"+menuname+"").length == 1){
                var a = Number(cnt) + 1;
@@ -354,5 +352,13 @@ $(document).ready(function(){
          $('.pay_btn').click(function(){
             paymentCancel();
          });
-         
+// 이미지 클릭 시 zoomOutDown animate         
+         $(document).on('click','.tab_cont img', function(){
+        	var imgSrc = $(this).attr('src');
+        	$(this).addClass('zoomOutDown');
+        	var test2 = $(this).css('background-image');
+        	setTimeout(function(){
+               	$('.tab_cont img').removeClass('zoomOutDown');
+        	}, 1000);
+         });
 });

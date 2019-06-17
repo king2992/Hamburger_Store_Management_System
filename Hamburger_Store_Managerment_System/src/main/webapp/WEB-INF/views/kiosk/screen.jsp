@@ -247,7 +247,7 @@
          </thead>
          <tbody>
             <tr class="choice_check3">
-               <td style="border-right:1px solid #c0c0c0;"><a href="#pay" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"></a><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></td>
+               <td style="border-right:1px solid #c0c0c0;"><a href="#pay" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></a></td>
                <td style="border-right:1px solid #c0c0c0;"><a href="#mobile_div" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/mobile.png"></a><img class="v_img7" src="${path}/resources/kiosk/images/v.png"><p>모바일<br>(pay)</p></td>
                <td><a href="#bus_card" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/card_.png"></a><img class="v_img8" src="${path}/resources/kiosk/images/v.png"><p>교통카드</p></td>
             </tr>
@@ -268,7 +268,7 @@
    <!-- 이전 버튼 -->   
    </div>
    </div>
-   <div class="swiper-button-prev" id="prev_div" style="top:85%;"><p>이<br>전</p></div>
+   <div class="swiper-button-prev" id="prev_div" style="top:85.5%;"><p>이<br>전</p></div>
    </div>
    </div>
    </div>
