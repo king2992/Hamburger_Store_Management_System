@@ -107,13 +107,13 @@
             <div id="contents">
             <div class="setMenu">
                 <h3>세트메뉴</h3>
-                <ul>
+                <ul class="flex">
               <c:choose>
 		<c:when test="${setList.size() > 0}">
 			<c:forEach var="item" items="${setList}">
 			
 				<li style="cursor:pointer;" class="pNameClick" >
-						<a href="/menuIntroduce/menuInfo?menuId=${item.menuId}" ><img src="/upload/${item.menuImg}"></a>
+						<a href="/menuIntroduce/menuInfo?menuId=${item.menuId}" ><img src="/upload/${item.menuImg}" class="imgSize"></a>
 						<p class="pName">${item.menuName}</p>
 				</li>
 						
@@ -126,29 +126,29 @@
             </div>
             <div class="burgerMenu">    
                 <h3>버거메뉴</h3>
-                <ul>
+                <ul class="flex">
                    <c:choose>
-		<c:when test="${burgerList.size() > 0}">
-			<c:forEach var="item" items="${burgerList}">
-				<li style="cursor:pointer;" class="pNameClick" >
-				<a href="/menuIntroduce/menuInfo?menuId=${item.menuId}" data-menuid="${item.menuId}"><img src="/upload/${item.menuImg}"></a>
-				<p class="pName">${item.menuName}</p>
-						</li>
-			</c:forEach>
-		</c:when>
-		<c:otherwise>
-		</c:otherwise>
-	</c:choose>
-	</ul>
+						<c:when test="${burgerList.size() > 0}">
+						<c:forEach var="item" items="${burgerList}">
+							<li style="cursor:pointer;" class="pNameClick" >
+								<a href="/menuIntroduce/menuInfo?menuId=${item.menuId}" data-menuid="${item.menuId}"><img src="/upload/${item.menuImg}" class="imgSize"></a>
+								<p class="pName">${item.menuName}</p>
+		</li>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+						</c:otherwise>
+					</c:choose>
+					</ul>
                </div>
             <div class="sideMenu">    
                 <h3>사이드메뉴</h3>
-                <ul>
+                <ul class="flex">
                       <c:choose>
 		<c:when test="${sideList.size() > 0}">
 			<c:forEach var="item" items="${sideList}">
 				<li style="cursor:pointer;" class="pNameClick" >
-				<a href="/menuIntroduce/menuInfo?menuId=${item.menuId}" data-menuid="${item.menuId}"><img src="/upload/${item.menuImg}"></a>
+				<a href="/menuIntroduce/menuInfo?menuId=${item.menuId}" data-menuid="${item.menuId}"><img src="/upload/${item.menuImg}" class="imgSize"></a>
 				<p class="pName">${item.menuName}</p>
 						</li>
 			</c:forEach>
@@ -160,12 +160,12 @@
                </div>
             <div class="drinkMenu">    
              	<h3>음료메뉴</h3>
-             	<ul>
+             	<ul class="flex">
                       <c:choose>
 		<c:when test="${drinkList.size() > 0}">
 			<c:forEach var="item" items="${drinkList}">
 				<li style="cursor:pointer;" class="pNameClick" >
-				<a href="/menuIntroduce/menuInfo?menuId=${item.menuId}" data-menuid="${item.menuId}"><img src="/upload/${item.menuImg}"></a>
+				<a href="/menuIntroduce/menuInfo?menuId=${item.menuId}" data-menuid="${item.menuId}"><img src="/upload/${item.menuImg}" class="imgSize"></a>
 				<p class="pName">${item.menuName}</p>
 						</li>
 			</c:forEach>
@@ -176,16 +176,13 @@
 	</ul>
             </div>   
         </div>
-		      <!-- The Modal -->
-				    <div id="myModal" class="withdrawalModal">
-				      <!-- Modal content -->
-				      <div class="withdrawal-modal-content">
-				        <span class="withdrawal-close">&times;</span>                                                               
-				        <h2 class="withdrawalH2">현재 비밀번호를 입력해주세요.</h2>
-				        <input type="password" id="nowPw" class="nowPwClass">
-				        <button type="button" id="userDelete" class="userDeleteClass">회원탈퇴</button>
-				      </div>
-				    </div>
-    </div>       
+<!--         페이징                  -->
+    	<div class="paginate">
+<!-- 			<a href="#" class="page"><img src="/resources/images/pageFirst.png" class="pagiImg"></a> -->
+			<a href="#" class="page"><img src="/resources/images/pagePre.png"class="pagiImg"></a>
+			<strong>1</strong>
+			<a href="#" class="page"><img src="/resources/images/pageNext1.png"class="pagiImg"></a>
+		</div>    
+    </div>   
 </body> 
 </html>

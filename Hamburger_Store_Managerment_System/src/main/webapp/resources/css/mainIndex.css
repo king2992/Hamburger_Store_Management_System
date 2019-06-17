@@ -92,7 +92,9 @@ textarea{resize: none;}
     background-color: transparent;
     border: 0;
 }
-
+.dropdown-item:hover {
+	background:#f3b644de !important;
+}
 *{margin: 0; padding: 0; box-sizing: border-box;}
 body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
 ul li{list-style-type: none;}

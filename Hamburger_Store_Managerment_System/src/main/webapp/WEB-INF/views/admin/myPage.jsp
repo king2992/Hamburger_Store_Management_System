@@ -135,7 +135,7 @@
                                  <td>
                                			<c:choose>
 										<c:when test="${admin.authstatus eq 'y_auth' }">
-											<p>본인 인증 완료 된 계정입니다. </p>
+											<p class="emailPP">본인 인증 완료 된 계정입니다. </p>
 										</c:when>
 										<c:otherwise>
 											<p class="emailP">본인 인증을 진행해주세요.</p>
@@ -150,13 +150,13 @@
                                     	사업자 <br>등록번호
                                 </td>
                                  <td>
-                                 <div class="register">등록상태 : 
+                                 <div class="register">등록상태: 
                                  <c:choose>
                                  <c:when test ="${admin.businessStatus eq 'n_auth'}">
-                                 <p style="color: red; font-size:14px;" id="notAuth">미등록</p>
+                                 <p style="color: red; font-size:14px; margin-left:3px;" id="notAuth">미등록</p>
                                  </c:when>
                                  <c:otherwise>
-                                 <p style="color: green; font-size:14px;" id="checkAuth">등록</p>
+                                 <p style="color: green; font-size:14px; margin-left:3px;"" id="checkAuth">등록</p>
                                  </c:otherwise>
                                  </c:choose> 
                                  </div>

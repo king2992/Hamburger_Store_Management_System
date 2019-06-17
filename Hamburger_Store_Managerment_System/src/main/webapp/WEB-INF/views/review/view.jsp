@@ -58,6 +58,7 @@ ${view.title}</title>
     margin-left:15px;
 }
 .replyBtn{text-align: center; width:86px !important; vertical-align: bottom;}
+
 </style>
 </head>
 <body>

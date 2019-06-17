@@ -2,7 +2,7 @@
     background-color: #e7ebed;
 } */
 
-/* 상단 메뉴 수정 */
+/* �긽�떒 硫붾돱 �닔�젙 */
 /* .layout-topheader {
     height: 125px;
 } */
@@ -134,7 +134,7 @@ ul,p{margin:0; padding:0;}
     color: white;
 }
 
-/* 바디 영역 레이아웃 */
+/* 諛붾뵒 �쁺�뿭 �젅�씠�븘�썐 */
 
 .layout-body {
    /*  height: 843px; */
@@ -171,7 +171,7 @@ ul,p{margin:0; padding:0;}
 }
 
 
-/* 좌측 컨텐츠 영역 */
+/* 醫뚯륫 而⑦뀗痢� �쁺�뿭 */
 .content_subject img {
    /*  width: 50px; */
     height: 50px;
@@ -242,7 +242,7 @@ ul,p{margin:0; padding:0;}
 }
 
 
-/* 우측 메뉴 영역 */
+/* �슦痢� 硫붾돱 �쁺�뿭 */
 
 .rightmenu_nav {
     width: 50%;
@@ -541,7 +541,7 @@ ul {
 .paginationSub{list-style: none; text-align: center; margin:0 auto;}
 
 /*
- *    스터디 게시판
+ *    �뒪�꽣�뵒 寃뚯떆�뙋
 */
 
 .study_listwarp {
@@ -776,7 +776,7 @@ ul {
 
 
 /*
- *         글 보기 뷰
+ *         湲� 蹂닿린 酉�
 */
 
 .content_warp {
@@ -957,7 +957,6 @@ ul {
     margin-top: 30px;
     padding: 10px 20px 10px 20px;
 }
-
 .comment_content {
     height: auto;
     border-top: 1px solid #ccc;
@@ -965,7 +964,6 @@ ul {
    padding-top:20px;
    padding-left: 8px;
    line-height: 30px;
-   
 }
 .comment_content a{cursor: pointer; margin-left: 10px; }
 
@@ -1115,7 +1113,7 @@ ul {
 
 
 /* 
- * 스터디룸 게시글 뷰 
+ * �뒪�꽣�뵒猷� 寃뚯떆湲� 酉� 
  */
 
 .content_room {
@@ -1251,7 +1249,7 @@ ul {
 
 
 /*
- *   그룹 리스트 뷰
+ *   洹몃９ 由ъ뒪�듃 酉�
 */
 
 .content_group {
@@ -1337,7 +1335,7 @@ ul {
 
 
 /*
- *  스터디 그룹 뷰
+ *  �뒪�꽣�뵒 洹몃９ 酉�
 */
 
 .group_warp {
