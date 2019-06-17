@@ -1,0 +1,352 @@
+-- --------------------------------------------------------
+-- 호스트:                          127.0.0.1
+-- 서버 버전:                        5.6.42-log - MySQL Community Server (GPL)
+-- 서버 OS:                        Win64
+-- HeidiSQL 버전:                  9.5.0.5196
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- m_sa 데이터베이스 구조 내보내기
+CREATE DATABASE IF NOT EXISTS `m_sa` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
+USE `m_sa`;
+
+-- 테이블 m_sa.admin 구조 내보내기
+CREATE TABLE IF NOT EXISTS `admin` (
+  `admin_id` varchar(50) COLLATE utf8_bin NOT NULL,
+  `admin_password` varchar(100) COLLATE utf8_bin NOT NULL,
+  `admin_phone` varchar(50) COLLATE utf8_bin NOT NULL,
+  `admin_email` varchar(50) COLLATE utf8_bin NOT NULL,
+  `authkey` varchar(100) COLLATE utf8_bin NOT NULL,
+  `authstatus` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT 'n_auth',
+  `admin_name` varchar(10) COLLATE utf8_bin NOT NULL,
+  `business_status` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT 'n_auth',
+  `business_num` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='관리자\r\n';
+
+-- 테이블 데이터 m_sa.admin:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` (`admin_id`, `admin_password`, `admin_phone`, `admin_email`, `authkey`, `authstatus`, `admin_name`, `business_status`, `business_num`) VALUES
+	('admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '010-5456-0801', 'king2992@naver.com', '5xdzU7Uw7Z2rQs4UD3GmVWNU1ofPJnuyy7evbDdBzvBZGc6xKa', 'y_auth', '이진우', 'y_auth', '123123451234567');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+
+-- 테이블 m_sa.bank 구조 내보내기
+CREATE TABLE IF NOT EXISTS `bank` (
+  `card_num` varchar(50) NOT NULL COMMENT '카드번호',
+  `user_name` varchar(50) NOT NULL COMMENT '유저이름',
+  `user_id` varchar(50) NOT NULL COMMENT '유저아이디',
+  `validity` varchar(50) NOT NULL COMMENT '유효기간',
+  `rr_num` varchar(50) NOT NULL COMMENT '주민등록번호',
+  `user_address` varchar(100) NOT NULL COMMENT '주소',
+  `user_phone` varchar(50) NOT NULL COMMENT '전화번호',
+  `acc_num` varchar(50) NOT NULL COMMENT '계좌번호',
+  `bank_name` varchar(50) NOT NULL COMMENT '은행명',
+  `security_code` int(11) NOT NULL COMMENT '보안코드',
+  `card_pw` varchar(50) NOT NULL COMMENT '카드비밀번호',
+  PRIMARY KEY (`card_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='은행';
+
+-- 테이블 데이터 m_sa.bank:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `bank` DISABLE KEYS */;
+INSERT INTO `bank` (`card_num`, `user_name`, `user_id`, `validity`, `rr_num`, `user_address`, `user_phone`, `acc_num`, `bank_name`, `security_code`, `card_pw`) VALUES
+	('1234-5678-1234-5678', '이진우', 'user', '12/08', '000000', '우리집', '01054560801', '123-567', '신한은행', 159, '1234');
+/*!40000 ALTER TABLE `bank` ENABLE KEYS */;
+
+-- 테이블 m_sa.board_file 구조 내보내기
+CREATE TABLE IF NOT EXISTS `board_file` (
+  `file_name` varchar(150) NOT NULL COMMENT '파일이름',
+  `reg_date` datetime NOT NULL COMMENT '등록일자',
+  `number` int(11) NOT NULL COMMENT '글번호',
+  PRIMARY KEY (`file_name`),
+  KEY `FK_review_TO_board_file` (`number`),
+  CONSTRAINT `FK_review_TO_board_file` FOREIGN KEY (`number`) REFERENCES `review` (`number`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='보드_파일';
+
+-- 테이블 데이터 m_sa.board_file:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `board_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `board_file` ENABLE KEYS */;
+
+-- 테이블 m_sa.business_num_check 구조 내보내기
+CREATE TABLE IF NOT EXISTS `business_num_check` (
+  `business_num` varchar(50) COLLATE utf8_bin NOT NULL,
+  `store_name` varchar(50) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='사업자등록번호';
+
+-- 테이블 데이터 m_sa.business_num_check:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `business_num_check` DISABLE KEYS */;
+INSERT INTO `business_num_check` (`business_num`, `store_name`) VALUES
+	('123-12345-1234567', '대전보건대 맘스터치');
+/*!40000 ALTER TABLE `business_num_check` ENABLE KEYS */;
+
+-- 테이블 m_sa.comment 구조 내보내기
+CREATE TABLE IF NOT EXISTS `comment` (
+  `co_number` int(11) NOT NULL AUTO_INCREMENT COMMENT '댓글번호',
+  `content` varchar(1000) NOT NULL COMMENT '댓글내용',
+  `co_date` datetime NOT NULL COMMENT '댓글일자',
+  `co_group` int(11) NOT NULL COMMENT '대댓글번호',
+  `co_ord` int(11) NOT NULL COMMENT '대댓글순서',
+  `co_depth` int(11) NOT NULL COMMENT '대댓글깊이',
+  `user_id` varchar(40) NOT NULL COMMENT '아이디',
+  `number` int(11) NOT NULL COMMENT '글번호',
+  PRIMARY KEY (`co_number`),
+  KEY `FK_review_TO_comment` (`number`),
+  CONSTRAINT `FK_review_TO_comment` FOREIGN KEY (`number`) REFERENCES `review` (`number`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='댓글';
+
+-- 테이블 데이터 m_sa.comment:~2 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` (`co_number`, `content`, `co_date`, `co_group`, `co_ord`, `co_depth`, `user_id`, `number`) VALUES
+	(39, '댓글입니다', '2019-06-12 10:48:00', 1, 0, 0, 'user', 32),
+	(40, '댓글입니다 2', '2019-06-12 10:48:32', 40, 0, 0, 'user', 32);
+/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+
+-- 테이블 m_sa.like_to 구조 내보내기
+CREATE TABLE IF NOT EXISTS `like_to` (
+  `like_no` int(11) NOT NULL AUTO_INCREMENT COMMENT '추천번호',
+  `like_check` int(11) NOT NULL DEFAULT '0' COMMENT '추천상태',
+  `user_id` varchar(40) NOT NULL COMMENT '아이디',
+  `number` int(11) NOT NULL COMMENT '글번호',
+  PRIMARY KEY (`like_no`),
+  KEY `FK_review_TO_like_to` (`number`),
+  CONSTRAINT `FK_review_TO_like_to` FOREIGN KEY (`number`) REFERENCES `review` (`number`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8 COMMENT='추천';
+
+-- 테이블 데이터 m_sa.like_to:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `like_to` DISABLE KEYS */;
+INSERT INTO `like_to` (`like_no`, `like_check`, `user_id`, `number`) VALUES
+	(118, 1, 'user', 26);
+/*!40000 ALTER TABLE `like_to` ENABLE KEYS */;
+
+-- 테이블 m_sa.menu 구조 내보내기
+CREATE TABLE IF NOT EXISTS `menu` (
+  `menu_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '메뉴번호',
+  `menu_name` varchar(50) NOT NULL COMMENT '메뉴이름',
+  `menu_price` varchar(50) NOT NULL COMMENT '메뉴가격',
+  `menu_category` varchar(50) NOT NULL COMMENT '메뉴카테고리',
+  `menu_img` varchar(255) NOT NULL COMMENT '메뉴이미지',
+  `data_id` varchar(30) NOT NULL COMMENT '메뉴유니크아이디',
+  PRIMARY KEY (`menu_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='메뉴';
+
+-- 테이블 데이터 m_sa.menu:~7 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` (`menu_id`, `menu_name`, `menu_price`, `menu_category`, `menu_img`, `data_id`) VALUES
+	(2, '마실라치킨', '15000', 'chicken', 'JjimHatDagGangJung.jpg', '마실라치킨'),
+	(3, '양념치킨', '18000', 'chicken', 'jjimHatDag.jpg', '치킨'),
+	(4, '싸이버거', '3800', 'burger', '20170412442355.jpg', '버거'),
+	(7, '감자튀김', '1500', 'side', '1413.png_860.png', '감자튀김'),
+	(9, '불고기버거', '3800', 'burger', '20181026165774.jpg', '버거2'),
+	(10, '후라이드치킨', '14000', 'chicken', 'JjimHatDagGangJung.jpg', '후라이드치킨'),
+	(11, '콜라', '1500', 'drink', 'coke.jpg', '콜라');
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+
+-- 테이블 m_sa.menu_info 구조 내보내기
+CREATE TABLE IF NOT EXISTS `menu_info` (
+  `menu_id` int(11) DEFAULT NULL,
+  `menu_introduce` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `menu_kcal` varchar(15) COLLATE utf8_bin DEFAULT NULL,
+  KEY `FK_menu_info_menu` (`menu_id`),
+  CONSTRAINT `FK_menu_info_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='메뉴 정보';
+
+-- 테이블 데이터 m_sa.menu_info:~2 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `menu_info` DISABLE KEYS */;
+INSERT INTO `menu_info` (`menu_id`, `menu_introduce`, `menu_kcal`) VALUES
+	(2, ' 치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛치킨 개 꿀맛', '680'),
+	(3, '양념치킨 개꿀맛양념치킨 개꿀맛양념치킨 개꿀맛양념치킨 개꿀맛양념치킨 개꿀맛', '720');
+/*!40000 ALTER TABLE `menu_info` ENABLE KEYS */;
+
+-- 테이블 m_sa.orders 구조 내보내기
+CREATE TABLE IF NOT EXISTS `orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '주문번호',
+  `reg_date` varchar(50) NOT NULL COMMENT '주문일',
+  `reg_time` varchar(50) NOT NULL COMMENT '주문시간',
+  `pay_total` int(11) NOT NULL COMMENT '주문금액',
+  `status` varchar(50) NOT NULL DEFAULT 'Ready' COMMENT '주문상태',
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='포스주문내역';
+
+-- 테이블 데이터 m_sa.orders:~6 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` (`order_id`, `reg_date`, `reg_time`, `pay_total`, `status`) VALUES
+	(33, '2019-06-11', '10:48:44', 45900, 'Ready'),
+	(34, '2019-06-12', '10:53:25', 33000, 'Ready'),
+	(35, '2019-06-12', '10:53:28', 48000, 'Ready'),
+	(36, '2019-06-12', '10:53:31', 47000, 'Complete'),
+	(37, '2019-06-12', '10:56:52', 15000, 'Ready'),
+	(38, '2019-06-16', '17:12:30', 15000, 'Ready');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+
+-- 테이블 m_sa.orders_menu_list 구조 내보내기
+CREATE TABLE IF NOT EXISTS `orders_menu_list` (
+  `order_id` int(11) NOT NULL COMMENT '주문번호',
+  `menu_name` varchar(50) NOT NULL COMMENT '메뉴이름',
+  `menu_cnt` varchar(10) NOT NULL COMMENT '수량',
+  KEY `FK_orders_TO_orders_menu_list` (`order_id`),
+  CONSTRAINT `FK_orders_TO_orders_menu_list` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='포스예약리스트';
+
+-- 테이블 데이터 m_sa.orders_menu_list:~16 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `orders_menu_list` DISABLE KEYS */;
+INSERT INTO `orders_menu_list` (`order_id`, `menu_name`, `menu_cnt`) VALUES
+	(33, '감자튀김', '3'),
+	(33, '마실라치킨', '2'),
+	(33, '버거-L-SET', '1'),
+	(33, '감자튀김', 'SET'),
+	(33, '콜라', 'SET'),
+	(33, '버거2', '1'),
+	(33, '버거2', '1'),
+	(34, '마실라치킨', '1'),
+	(34, '양념치킨', '1'),
+	(35, '양념치킨', '1'),
+	(35, '마실라치킨', '2'),
+	(36, '후라이드치킨', '1'),
+	(36, '양념치킨', '1'),
+	(36, '마실라치킨', '1'),
+	(37, '마실라치킨', '1'),
+	(38, '마실라치킨', '1');
+/*!40000 ALTER TABLE `orders_menu_list` ENABLE KEYS */;
+
+-- 테이블 m_sa.review 구조 내보내기
+CREATE TABLE IF NOT EXISTS `review` (
+  `number` int(11) NOT NULL AUTO_INCREMENT COMMENT '글번호',
+  `title` varchar(255) NOT NULL COMMENT '제목',
+  `contents` varchar(2000) NOT NULL COMMENT '내용',
+  `date` datetime NOT NULL COMMENT '작성일',
+  `ref` int(11) NOT NULL COMMENT '조회',
+  `group_num` int(11) NOT NULL COMMENT '답글번호',
+  `group_ord` int(11) NOT NULL COMMENT '답글순서',
+  `group_depth` int(11) NOT NULL COMMENT '답글깊이',
+  `user_id` varchar(40) NOT NULL COMMENT '아이디',
+  `like_cnt` int(11) NOT NULL COMMENT '추천갯수',
+  PRIMARY KEY (`number`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='커뮤니티';
+
+-- 테이블 데이터 m_sa.review:~8 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `review` DISABLE KEYS */;
+INSERT INTO `review` (`number`, `title`, `contents`, `date`, `ref`, `group_num`, `group_ord`, `group_depth`, `user_id`, `like_cnt`) VALUES
+	(18, '안녕하세요', '<p>안녕하세요~!</p>', '2019-06-04 11:30:55', 820, 18, 0, 0, 'psj0735', 1),
+	(26, '2조 발표', '<p>내</p>', '2019-06-11 17:23:14', 10, 19, 0, 0, 'user', 1),
+	(27, '두번쨰 글', '<p>ㅎ</p>', '2019-06-12 10:46:03', 2, 27, 0, 0, 'user', 0),
+	(28, '세 번째 글', '<p>ㅎ</p>', '2019-06-12 10:46:13', 0, 28, 0, 0, 'user', 0),
+	(29, '네 번째 글', '<p>ㅎ</p>', '2019-06-12 10:46:25', 0, 29, 0, 0, 'user', 0),
+	(30, '다섯 번째 글', '<p>ㅎ</p>', '2019-06-12 10:46:41', 0, 30, 0, 0, 'user', 0),
+	(31, '여섯 번째 글', '<p>ㅎ</p>', '2019-06-12 10:46:48', 0, 31, 0, 0, 'user', 0),
+	(32, '일곱 번째 글', '<p>ㅎ</p>', '2019-06-12 10:46:56', 2, 32, 0, 0, 'user', 0);
+/*!40000 ALTER TABLE `review` ENABLE KEYS */;
+
+-- 테이블 m_sa.set_side_drink 구조 내보내기
+CREATE TABLE IF NOT EXISTS `set_side_drink` (
+  `sd_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '사이드메뉴번호',
+  `menu_name` varchar(50) NOT NULL COMMENT '사이드메뉴이름',
+  `menu_price` varchar(50) NOT NULL COMMENT '사이드메뉴가격',
+  `menu_img` varchar(200) NOT NULL COMMENT '메뉴이미지',
+  `menu_category` varchar(50) NOT NULL COMMENT '메뉴카테고리',
+  `data_id` varchar(50) NOT NULL COMMENT '유니크아이디',
+  PRIMARY KEY (`sd_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='세트사이드음료';
+
+-- 테이블 데이터 m_sa.set_side_drink:~5 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `set_side_drink` DISABLE KEYS */;
+INSERT INTO `set_side_drink` (`sd_id`, `menu_name`, `menu_price`, `menu_img`, `menu_category`, `data_id`) VALUES
+	(1, '감자튀김', '0', '1413.png_860.png', 'setSide', '감자튀김(사이드)'),
+	(2, '콜라', '0', '20150223992319.jpg', 'setDrink', '콜라'),
+	(3, '사이다', '500', '20180416547805.jpg', 'setDrink', '사이다(사이드)'),
+	(4, '치즈스틱', '700', '20180903730621.jpg', 'setSide', '치즈스틱'),
+	(5, '양념감자', '500', 'yangNyumGamja.jpg', 'setSide', '양념감자');
+/*!40000 ALTER TABLE `set_side_drink` ENABLE KEYS */;
+
+-- 테이블 m_sa.takeout_reserved_list 구조 내보내기
+CREATE TABLE IF NOT EXISTS `takeout_reserved_list` (
+  `takeout_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '티켓번호',
+  `user_id` varchar(40) NOT NULL COMMENT '아이디',
+  `total_price` int(11) NOT NULL COMMENT '토탈가격',
+  `reserved_date` date NOT NULL COMMENT '예약일',
+  `reserved_time` varchar(100) NOT NULL COMMENT '예약시간',
+  `reserved_name` varchar(50) NOT NULL COMMENT '예약자명',
+  `reserved_phone` varchar(50) NOT NULL COMMENT '예약자전화번호',
+  `status` varchar(50) NOT NULL DEFAULT 'Ready' COMMENT '주문상태',
+  `frc_name` varchar(50) NOT NULL COMMENT '가맹점',
+  PRIMARY KEY (`takeout_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='예매,예약';
+
+-- 테이블 데이터 m_sa.takeout_reserved_list:~3 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `takeout_reserved_list` DISABLE KEYS */;
+INSERT INTO `takeout_reserved_list` (`takeout_id`, `user_id`, `total_price`, `reserved_date`, `reserved_time`, `reserved_name`, `reserved_phone`, `status`, `frc_name`) VALUES
+	(6, 'psj0735', 35400, '2019-06-19', '17시00분', '박수진', '01023030735', 'Ready', '맘스터치 대전보건대점'),
+	(7, 'psj0735', 35400, '2019-06-27', '13시55분', '박수진', '01023030735', 'Ready', '롯데리아 대전터미널점'),
+	(12, 'user', 5800, '2019-06-15', '13시25분', '이진우', '010-5456-0801', 'Ready', '맘스터치 대전보건대점');
+/*!40000 ALTER TABLE `takeout_reserved_list` ENABLE KEYS */;
+
+-- 테이블 m_sa.takeout_reserved_menu 구조 내보내기
+CREATE TABLE IF NOT EXISTS `takeout_reserved_menu` (
+  `takeout_id` int(11) NOT NULL COMMENT '티켓번호',
+  `menu_name` varchar(150) NOT NULL COMMENT '메뉴명',
+  `menu_cnt` int(11) NOT NULL COMMENT '수량',
+  KEY `FK_takeout_reserved_list_TO_takeout_reserved_menu` (`takeout_id`),
+  CONSTRAINT `FK_takeout_reserved_list_TO_takeout_reserved_menu` FOREIGN KEY (`takeout_id`) REFERENCES `takeout_reserved_list` (`takeout_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='테이크아웃예약메';
+
+-- 테이블 데이터 m_sa.takeout_reserved_menu:~9 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `takeout_reserved_menu` DISABLE KEYS */;
+INSERT INTO `takeout_reserved_menu` (`takeout_id`, `menu_name`, `menu_cnt`) VALUES
+	(6, '마실라치킨', 1),
+	(6, '콜라', 2),
+	(6, '치킨', 1),
+	(7, '마실라치킨', 1),
+	(7, '치킨', 1),
+	(7, '콜라', 2),
+	(12, '싸이버거 세트', 1),
+	(12, '감자튀김', 1),
+	(12, '콜라', 1);
+/*!40000 ALTER TABLE `takeout_reserved_menu` ENABLE KEYS */;
+
+-- 테이블 m_sa.user 구조 내보내기
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` varchar(40) NOT NULL COMMENT '아이디',
+  `user_password` varchar(255) NOT NULL COMMENT '비밀번호',
+  `user_phone` varchar(40) NOT NULL COMMENT '전화번호',
+  `user_name` varchar(40) NOT NULL COMMENT '이름',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='회원';
+
+-- 테이블 데이터 m_sa.user:~10 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`user_id`, `user_password`, `user_phone`, `user_name`) VALUES
+	('123123123', 'c704db3ac74a03428eefa36eae373105364f0eda219d6015c0ef2e8b4056c1f5', '0101234123', '123'),
+	('12323232', '1718c24b10aeb8099e3fc44960ab6949ab76a267352459f203ea1036bec382c2', '01012341234', '이진우'),
+	('123232323', '1718c24b10aeb8099e3fc44960ab6949ab76a267352459f203ea1036bec382c2', '01012341234', '이진우'),
+	('1234', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '0101231234', '123'),
+	('12345', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', '0101231234', '이진우'),
+	('dlwlsdn801', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '01054560801', '이진우'),
+	('gjdydwjw', 'ada6e1ef23f4b59bdd03315046e2aef0d1dcb605a0b20a62015e63401b96c3d5', '01012340735', '허용진'),
+	('king2992', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', '0101231234', '이진우'),
+	('psj0735', 'ada6e1ef23f4b59bdd03315046e2aef0d1dcb605a0b20a62015e63401b96c3d5', '01023030735', '박수진'),
+	('user', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '01054560801', '이진우');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+-- 테이블 m_sa.user_pay_card 구조 내보내기
+CREATE TABLE IF NOT EXISTS `user_pay_card` (
+  `card_num` varchar(50) NOT NULL COMMENT '카드번호',
+  `validity` varchar(50) NOT NULL COMMENT '유효기간',
+  `card_pw` varchar(50) NOT NULL COMMENT '카드비밀번호',
+  `user_id` varchar(50) NOT NULL COMMENT '유저아이디',
+  `bank_name` varchar(50) NOT NULL COMMENT '은행명',
+  `security_code` int(11) NOT NULL COMMENT '보안코드',
+  KEY `FK_bank_TO_user_pay_card` (`card_num`),
+  CONSTRAINT `FK_bank_TO_user_pay_card` FOREIGN KEY (`card_num`) REFERENCES `bank` (`card_num`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='회원_결제_카드';
+
+-- 테이블 데이터 m_sa.user_pay_card:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `user_pay_card` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_pay_card` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
