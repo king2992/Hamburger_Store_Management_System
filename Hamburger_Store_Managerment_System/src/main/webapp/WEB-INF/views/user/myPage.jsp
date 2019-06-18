@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 <title>마이페이지</title>
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/mypage.css">
 <link rel="shortcut icon" href="${path}/user/myPage">
-<link rel="stylesheet" href="/resources/css/header.css">
+<link href="/resources/css/header.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/personalInfomationChange.js"></script>
 <script type="text/javascript" src="/resources/js/myWritten.js"></script>
@@ -118,39 +119,50 @@
     </head>
     <body>
          <header class="header">
-              	<nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-                  	<a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
-                      <ul>
-                      		<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about/aboutUs">About Us</a></li>
-                      		<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/menuIntroduce/menuList">Menu</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
-                       </ul>
-                       <ul class="nav navbar-nav menu-infobtn">
-                			<li class="dropdown">
-		                    <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
-		                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
-		                    </a>
-		                    <div class="dropdown-menu menu-dropmenu">
-		                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
-		                            <c:choose>
-		                  <c:when test="${sessionScope.user eq null }">
-		          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
-		          </c:when>
-		          <c:otherwise>
-		              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
-		            </c:otherwise>
-		          </c:choose>
-		             <c:choose>
-				          <c:when test="${sessionScope.user ne null }">
-				            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
-				          </c:when>
-		          	</c:choose>
-		                    </div>
-		                	</li>
-           			</ul>
-            	</nav>
-        </header>
+                    <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
+                     <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" class="msa"></a>
+                        <ul>
+                            
+                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
+                            
+            				<li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/about/aboutAs">Kiosk</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                       
+                        </ul>
+                          <ul class="nav navbar-nav menu-infobtn">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
+                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+                    </a>
+                    <div class="dropdown-menu menu-dropmenu">
+                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+          <c:choose>
+	           <c:when test="${sessionScope.user eq null && sessionScope.admin eq null}"> <!-- 사용자 로그인 -->
+	      		    <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a>
+	          </c:when>
+          	  <c:when test="${sessionScope.user ne null }">
+              		<a class="dropdown-item modal_open modal_menu" href="/user/userLogout">User-LogOut</a><!-- 사용자 로그아웃 -->
+              </c:when>
+              <c:when test="${sessionScope.admin ne null}"> 
+              		<a class="dropdown-item modal_open modal_menu" href="/admin/adminLogout">Admin-LogOut</a>
+              </c:when>
+          </c:choose>
+          
+          <c:choose>
+          <c:when test="${sessionScope.user ne null }">
+            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">User-My-Page</a>
+          </c:when>
+          <c:when test="${sessionScope.admin ne null }">
+          <a class="dropdown-item modal_open modal_menu" href="/admin/myPage">Admin-My-Page</a>
+          </c:when>
+          </c:choose>
+                    </div>
+                </li>
+            </ul>
+                    </nav>
+                </header>
         <div class="MyPage_box">
             <div class="MyPage">
                <h1>My Page</h1>  
@@ -264,7 +276,7 @@
 								<c:forEach items="${myWrittenList}" var="list">
                             <tr>
                                 <th><button type="button" class="boardMove" data-number="${list.number}">게시글 이동</button></th>
-                                <th>${list.date}</th>
+                                <th><fmt:formatDate value="${list.date}" pattern="yyyy-MM-dd"/></th>
                                 <th class="title">${list.title}</th>
                                 <th><button type="button" class="boardDelete"  data-number="${list.number}" id="boardDel">게시글 삭제</button></th>
                             </tr>
