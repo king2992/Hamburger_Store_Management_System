@@ -10,14 +10,15 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="shourtcut icon" href="${path}/pos/posmanagement">
 <link href="/resources/css/pos.css" type="text/css" rel="stylesheet">
-<link href="/resources/css/header.css" rel="stylesheet" type="text/css">
+<!-- <link href="/resources/css/header.css" rel="stylesheet" type="text/css"> -->
 <link rel="stylesheet" href="/resources/css/mainR.css">
-<link rel="stylesheet" href="/resources/css/sub.css"> 
+ <link rel="stylesheet" href="/resources/css/sub.css"> 
+    <link href="/resources/css/mainIndex.css" rel="stylesheet" type="text/css">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css"> 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="sweetalert2.all.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css">  -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> -->
+<!-- <script src="sweetalert2.all.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
  <script type="text/javascript" src="/resources/js/posmanagement.js"></script>
 <style> 
 /*     .active { 
@@ -90,6 +91,34 @@
 .largeSizeSelect > p{margin-top: 60px; font-size:20px; text-align:center; font-weight:600;}
 .normalSizeSelect > p{margin-top: 60px; font-size:20px; text-align:center; font-weight:600;}
 </style>
+<script type="text/javascript">
+        	$(document).on("click",".dropdown",function(){
+        		if($(".dropdown-menu").css('display') == 'block')
+        			$(".dropdown-menu").css('display','none');
+        		else
+        			$(".dropdown-menu").css('display', 'block');
+        	});
+        	window.onload = function(){
+        		console.log("${sessionScope.card}");
+        	}
+        
+        </script>
+  <script type="text/javascript">
+        $(document).ready(function(){
+        	$(".nav-admin").hide();
+    		var adminId = "${sessionScope.admin}";
+    		if(adminId != null){
+    			$.ajax({
+    				data : {"adminId":adminId},
+    				url : "/admin/authConfirm",
+    				success : function(data){
+    					if(data.authstatus == "y_auth" && data.businessStatus == "y_auth"){
+    						$(".nav-admin").show();
+    					}
+    				}
+    			})	
+    		}});
+        </script>
 	<script>
 	$(document).ready(function(){
 		   var fileTarget = $('.filebox .upload-hidden');
@@ -206,17 +235,28 @@ $(document).on('click','#cancel',function(){
 	$(".modal").hide();
 })
 </script>
+<style type="text/css">
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+}
+</style>
 </head>
 <body>
-	<div id="container">
-			<header class="header">
+         <header class="header"  style="line-height: inherit;">
                     <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
-                     <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" class="msa"></a>
+                     <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" class="msa" style="margin-top: 11px"></a>
                         <ul>
                             
                           <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
                             
-            				<li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/about/aboutAs">Kiosk</a></li>
+            				<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about/aboutUs">About Us</a></li>
                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
@@ -227,7 +267,7 @@ $(document).on('click','#cancel',function(){
                     <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
                         <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
                     </a>
-                    <div class="dropdown-menu menu-dropmenu">
+                    <div class="dropdown-menu menu-dropmenu" style="left:-87px; margin-top:27px;">
                         <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
           <c:choose>
 	           <c:when test="${sessionScope.user eq null && sessionScope.admin eq null}"> <!-- 사용자 로그인 -->
@@ -254,6 +294,7 @@ $(document).on('click','#cancel',function(){
             </ul>
                     </nav>
                 </header>
+	<div id="container">
 		<div class="margin">
 			<div style="width: 100%; height: 100%;">
 				<section class="left-section">
@@ -294,8 +335,8 @@ $(document).on('click','#cancel',function(){
 					</div>
 					<div class="crud-width">
 						<ul class="crud">
-							<li onclick="menuRemove()"  ><a href="#"  data-tooltip-text="상품을 선택 후 눌러주세요.">지정취소</a></li>
-							<li onclick="allRemove()"  ><a href="#" data-tooltip-text="전체 상품을 취소합니다.">전체취소</a></li>
+							<li onclick="menuRemove()"  ><a href="#"  data-tooltip-text="상품을 선택 후 눌러주세요." class="cancel">지정취소</a></li>
+							<li onclick="allRemove()"  ><a href="#" data-tooltip-text="전체 상품을 취소합니다." class="cancel">전체취소</a></li>
 							<!-- <li>수정입력</li> -->
 							<li onclick="menuCntUp()"  style="cursor:pointer;" data-tooltip-text="상품을 선택 후 눌러주세요. ">+</li>
 							<li onclick="menuCntDown()"   style="cursor:pointer;" data-tooltip-text="상품을 선택 후 눌러주세요.">-</li>
@@ -486,6 +527,7 @@ $(document).on('click','#cancel',function(){
         </form> 
     </div> 
 </div>
+<!-- 세트 모달 -->
 <div class="burgerOrSet"> 
     <div class="burgerOrSet-content">
     	<div class="setSelect">
@@ -509,7 +551,7 @@ $(document).on('click','#cancel',function(){
 			<c:forEach var="item" items="${setSide}">
 			<ul class="setSideUl">
 				<li class="setSideItem">${item.menuName}</li>
-				<li class="setSideAddPrice">추가금액 : <p class="setSidePrice" style="display:inline-block; font-weight:600;"> ${item.menuPrice}원</p></li>
+				<li class="setSideAddPrice">추가금액 : <p class="setSidePrice" style="display:inline-block; font-weight:600;"> ${item.menuPrice}</p></li>
 			</ul>
 			</c:forEach>
 		</c:when>
@@ -534,7 +576,7 @@ $(document).on('click','#cancel',function(){
 			<c:forEach var="item" items="${setDrink}">
 			<ul class="setDrinkUl">
 				<li class="setDrinkItem">${item.menuName}</li>
-				<li class="setDrinkAddPrice">추가금액 : <p class="setDrinkPrice" style="display:inline-block; font-weight:600;">${item.menuPrice}원</p></li>
+				<li class="setDrinkAddPrice">추가금액 : <p class="setDrinkPrice" style="display:inline-block; font-weight:600;">${item.menuPrice}</p></li>
 			</ul>
 			</c:forEach>
 		</c:when>

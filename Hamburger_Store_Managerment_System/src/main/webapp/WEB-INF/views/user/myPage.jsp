@@ -115,6 +115,7 @@
             .navi ul {margin:0 0 0 90px;}
             .menu-icon {margin-left:-12px;}
             html a:hover{text-decoration:none !important;}
+            .msa {position: relative; bottom: 7px;}
         </style>
     </head>
     <body>
@@ -125,7 +126,7 @@
                             
                           <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
                             
-            				<li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/about/aboutAs">Kiosk</a></li>
+            				<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about/aboutUs">About Us</a></li>
                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
