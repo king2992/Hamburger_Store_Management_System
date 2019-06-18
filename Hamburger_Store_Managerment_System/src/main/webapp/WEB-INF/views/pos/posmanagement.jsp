@@ -19,7 +19,7 @@
 <script src="sweetalert2.all.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="/resources/js/posmanagement.js"></script>
-<style>
+<style> 
 /*     .active { 
     background-color: #EC5538 ;
     color: #fff;
