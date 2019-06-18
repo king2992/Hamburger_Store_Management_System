@@ -145,11 +145,15 @@ $(document).ready(function(){
 // 주문 내역
 // + = .p_btn
 // - = .m_btn
-// x = .menu_del  
+// x = .menu_del
+  
          $('.tab_cont li img,.set_wrap li img').on('click', function() {
+        
             var menuname = $(this).data('menuname');
             var price = $(this).data('price');
             var cnt = $('#menuname'+menuname+'').siblings('.td2').children('.cnt'+menuname+'').text();
+            
+                  
 // 이미지 클릭 시 수량 증가 중복방지
             if($("#menuname"+menuname+"").length == 1){
                var a = Number(cnt) + 1;
@@ -157,17 +161,26 @@ $(document).ready(function(){
                b = Number(a) * Number(price);
                $('#menuname'+menuname+'').siblings('.td2').children('.cnt'+menuname+'').text(a);
                $('#menuname'+menuname+'').siblings('.listPrice').children('.spanPrice').text(b);
+               $('#order'+menuname+'').siblings('.td2').children('.orderCnt'+menuname+'').text(a);
+               $('#order'+menuname+'').siblings('.orderListPrice').children('.orderPrice'+menuname).text(b);
                totalPrice();
                return;
             } else {
             $('.table_tr2').append(
                   '<tr class="order_list">'+
-                  '<td id="menuname'+menuname+'">'+menuname+'</td>'+
+                  '<td id="menuname'+menuname+'" class="menunames">'+menuname+'</td>'+
                   '<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
-                  '<td class="listPrice"><span class="spanPrice">'+price+'</span><button class="menu_del">삭제</button>'+'</td>'+
+                  '<td class="listPrice"><span class="spanPrice prices">'+price+'</span><button class="menu_del">삭제</button>'+'</td>'+
                   '</tr>');
+            $('.order_tbody').append(
+                    '<tr class="order_list">'+
+                    '<td id="order'+menuname+'" class="menunames">'+menuname+'</td>'+
+                    '<td class="td2">'+'&nbsp;<span class="orderCnt'+menuname+'">1</span>&nbsp;'+'</td>'+
+                    '<td class="orderListPrice"><span class="orderPrice'+menuname+'">'+price+'</span>'+'</td>'+
+                    '</tr>');
             totalPrice();
             }
+            
          });
 // 주문 내역 삭제
       $(document).on('click', '.menu_del', function(){
@@ -178,6 +191,8 @@ $(document).ready(function(){
 // 수량 +
       $(document).on('click','.p_btn', function(){
          var item = $(this).siblings("span").text();
+         var menuName = $(this).parent().siblings(".menunames").text();
+         console.log(menuName);
          if (item < 50){
             item ++;
          } else {(item > 10)
@@ -185,10 +200,12 @@ $(document).ready(function(){
          }
          var tot = item;
          $(this).siblings("span").text(tot);
+         $(".orderCnt"+menuName).text(tot);
          
 // 수량 증가 시 금액
          var price = $('.tab_cont li img').data('price');
          var sum = item * price;
+         $(".orderPrice"+menuName).text(sum);
          var priceItem = $(this).parent().siblings(".listPrice");
             priceItem.html("<span class='spanPrice'>"+sum +"</span>"+"<button class='menu_del'>삭제</button>");
             totalPrice();
@@ -196,14 +213,19 @@ $(document).ready(function(){
 // 수량 -
       $(document).on('click','.m_btn', function(){
          var item = $(this).siblings("span").text();
+         var menuName = $(this).parent().siblings(".menunames").text();
+         console.log(menuName);
          if(item > 1 ){
             item --;
          }
          var tot = item;
          $(this).siblings("span").text(tot);
+         $(".orderCnt"+menuName).text(tot);
+         
 // 수량 감소 시 금액
          var price = $('.tab_cont li img').data('price');
          var minus = item * price;
+         $(".orderPrice"+menuName).text(minus);
          var priceItem = $(this).parent().siblings('.listPrice');
          priceItem.html("<span class='spanPrice'>"+minus +"</span>"+"<button class='menu_del'>삭제</button>");
          
@@ -218,6 +240,7 @@ $(document).ready(function(){
             total = Number(total) + Number(tot);
          });
          $('#total_price').text(total);
+         $("#orderPayMent").text(total);
       };
          $('#hide').hide();
             $('.modal_set li').click(function(){
@@ -337,6 +360,8 @@ $(document).ready(function(){
          $('.choice_check3 td').on('click',function(event){
             var back = $('.payment_table').css('opacity');
             console.log(back);
+            var pText = $(this).find("p").text();
+            $("#payMentKinds").text(pText);
             if (back == 1){
             $(this).find('img:nth-child(2)').show(event);
             var img = $(this).index();
@@ -361,4 +386,15 @@ $(document).ready(function(){
                	$('.tab_cont img').removeClass('zoomOutDown');
         	}, 1000);
          });
+//결제 완료
+         $('.check_btn').click(function(){
+        	 payment();
+        	 setTimeout(function(){
+        	 window.location.reload();
+        	 },3000);
+         });
+         function fnMove(seq){
+        	 var offset = $(".ad" + seq).offset();
+             $('html, body').animate({scrollTop : offset.top}, 400);
+         };
 });

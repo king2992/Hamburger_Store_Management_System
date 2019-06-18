@@ -130,11 +130,11 @@
        <div id="footer-div2">
         <ul class="side_img">
            <li><a href="/"><img src="${path}/resources/kiosk/images/home.png"></a><p>Home</p></li>
-           <li><img src="${path}/resources/kiosk/images/seach.png"><p>크게</p></li> 
-           <li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li>
-        </ul>
+           <li><a href="${path}/review/reviewList"><img src="${path}/resources/kiosk/images/community.png"></a><p>게시판</p></li>  
+		   <li><a href="${path}/store/storeFind"><img src="${path}/resources/kiosk/images/Out.png"></a><p>예약하기</p></li>
+		</ul>
      <button class="order_cancel_btn" onclick="cancel();">결제취소</button>
-     <button class="swiper-button-next" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4); opacity:1;">결제하기</button>
+     <button class="swiper-button-next" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4); opacity:1;" onclick="fnMove('2')">결제하기</button>
   </div> 
       </div>
    </div>
@@ -143,11 +143,11 @@
 </div>
 
 
-<div class="swiper-slide">
+<div class="swiper-slide" >
 
  <div class="swiper-wrapper">
  <!-- 카테고리 이미지 영역    -->
-   
+ <!-- <a id="top"></a> -->  
  <div class="ad">
  <img class="mySlides" src="${path}/resources/images/carousel1.jpg" width="1024px">
  <img class="mySlides" src="${path}/resources/images/carousel2.jpg" width="1024px">
@@ -170,14 +170,6 @@
          
          </tbody>
       </table>
-      <table class="ordertable">
-         <thead>
-            <tr>
-               <th>주문금액</th>
-               <th>1000</th>
-            </tr>
-         </thead>
-      </table>
       <table class="paykind">
          <thead>
             <tr>
@@ -187,8 +179,8 @@
          </thead>
          <tbody>
             <tr>
-               <td>현금</td>
-               <td>1000</td>
+               <td id="payMentKinds"> - </td>
+               <td id="orderPayMent"></td>
             </tr>
          </tbody>
       </table>
@@ -229,9 +221,9 @@
          </thead>
          <tbody>
             <tr class="choice_check3">
-               <td style="border-right:1px solid #c0c0c0;"><a href="#pay" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"></a><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p>신용/체크<br>카드</p></td>
-               <td style="border-right:1px solid #c0c0c0;"><a href="#mobile_div" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/mobile.png"></a><img class="v_img7" src="${path}/resources/kiosk/images/v.png"><p>모바일<br>(pay)</p></td>
-               <td><a href="#bus_card" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/card_.png"></a><img class="v_img8" src="${path}/resources/kiosk/images/v.png"><p>교통카드</p></td>
+               <td style="border-right:1px solid #c0c0c0;"><a href="#pay" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/check_card.png"></a><img class="v_img6" src="${path}/resources/kiosk/images/v.png"><p id="sinyoungCheck">신용/체크<br>카드</p></td>
+               <td style="border-right:1px solid #c0c0c0;"><a href="#mobile_div" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/mobile.png"></a><img class="v_img7" src="${path}/resources/kiosk/images/v.png"><p id="mobilePay">모바일<br>(pay)</p></td>
+               <td><a href="#bus_card" rel="modal:open"><img id="img_icon" src="${path}/resources/kiosk/images/card_.png"></a><img class="v_img8" src="${path}/resources/kiosk/images/v.png"><p id="trafficCard">교통카드</p></td>
             </tr>
          </tbody>
       </table>
@@ -241,8 +233,8 @@
   <div class="footer_div">
         <ul class="side_img">
            <li><a href="/"><img src="${path}/resources/kiosk/images/home.png"></a><p>Home</p></li>
-           <li><img src="${path}/resources/kiosk/images/seach.png"><p>크게</p></li> 
-           <li><img src="${path}/resources/kiosk/images/return.png"><p>직원호출</p></li>
+           <li><a href="${path}/store/storeFind"><img src="${path}/resources/kiosk/images/Out.png"></a><p>예약하기</p></li>
+           <li><a href="${path}/review/reviewList"><img src="${path}/resources/kiosk/images/community.png"></a><p>게시판</p></li> 
         </ul>
      <button class="order_cancel_btn" onclick="cancel();">결제취소</button>
      <button class="swiper-button-prev" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4);">추가주문</button>
@@ -254,7 +246,6 @@
    </div>
    </div>
    </div>
-
 <!--    모달 부분 -->
 <div id="ex1" class="modal">
    <h2><span class="modal_span">세트로 드시겠어요?</span></h2>
@@ -311,6 +302,7 @@
    <div class="text_div">그림과 같이 카드를 넣어주세요<br/>(IC칩이 단말기에 투입되도록 넣어주세요)</div>
    <div class="pay_img"><img class="wallet" src="${path}/resources/kiosk/images/pay_1.jpg"></div>
    <div class="pay_gif"><img class="wallet" src="${path}/resources/kiosk/images/card.gif"></div>
+   <button type="button" class="check_btn">확인</button>
    <a href="" rel="modal:close"><button type="button" class="pay_btn">취소</button></a>
 </div>   
 <!-- 모바일 결제 -->
@@ -319,6 +311,7 @@
    <div class="text_div">그림과 같이 바코드를 찍어주세요</div>
    <div class="pay_img"><img class="wallet" src="${path}/resources/kiosk/images/pay_2.jpg"></div>
    <div class="pay_gif"><img class="wallet" src="${path}/resources/kiosk/images/mobile_pay.gif"></div>
+   <button type="button" class="check_btn">확인</button>
    <a href="" rel="modal:close"><button type="button" class="pay_btn">취소</button></a>
 </div>
 <!-- 교통카드결제 Modal -->
@@ -327,6 +320,7 @@
    <div class="text_div">그림과 같이 카드를 넣어주세요</div>
    <div class="pay_img"><img class="wallet" src="${path}/resources/kiosk/images/pay_3.jpg"></div>
    <div class="pay_gif"><img class="wallet" src="${path}/resources/kiosk/images/jj1JW.gif"></div>
+   <button type="button" class="check_btn">확인</button>
    <a href="" rel="modal:close"><button type="button" class="pay_btn">취소</button></a>
 </div>   
 </body>

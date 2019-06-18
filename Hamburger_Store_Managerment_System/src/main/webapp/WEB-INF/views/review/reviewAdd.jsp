@@ -71,16 +71,11 @@ html{font-size: 14px !important;}
                     <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
                      <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" class="msa" style="position: relative; bottom: 10px; left: -50px;"></a>
                         <ul>
-                            
-                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
-                            
-            
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
-                       
                         </ul>
                           <ul class="nav navbar-nav menu-infobtn" style="right:0;">
                 <li class="dropdown">

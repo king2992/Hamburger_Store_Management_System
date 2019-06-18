@@ -1,4 +1,9 @@
- var typingBool = false;
+
+$(document).on("click","#button",function(){
+	$('.memberContainer').fadeOut(); 
+/*	$('.mainContainer').css('display','block');
+	$('.mainContainer').css('opacity','1');*/
+	var typingBool = false;
 
     var typingIdx=0;
 
@@ -49,6 +54,8 @@ if(typingBool2==false){ // 타이핑이 진행되지 않았다면
          clearInterval(tyInt2); //끝나면 반복종료 
        } 
      };
+});
+
 
 
 

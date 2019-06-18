@@ -1,8 +1,9 @@
 *{margin: 0; padding: 0; box-sizing: border-box;}
 @font-face { font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal; }
 *{font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal;}
-body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background: url(/resources/images/main10.jpg) no-repeat center;
-    background-size: cover;}
+body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+/* background: url(/resources/images/main10.jpg) no-repeat center; */
+    background-size: cover; }
 ul li{list-style-type: none;}
 a { text-decoration-line: none; color: rgba(255,255,255,.5);}
 #container{width: 100%; min-width: 1024px;}
@@ -101,5 +102,7 @@ text-align:center;
     margin-left:100%;
     max-width:50%;
     margin-bottom: 300px;    
-   
 }
+
+
+

@@ -69,8 +69,8 @@
 	})
 </script>
 <style>
-.dropdown {cursor: pointer;}
-.dropdown-menu > a{color:#16181b; font-size: 15px !important; height:32px; line-height: 32px; c}
+.dropdown {cursor: pointer; margin-left: 135px !important;}
+.dropdown-menu > a{color:#16181b; font-size: 15px !important; height:32px; line-height: 32px; }
 .dropdown-menu > a:hover{background-color:#ffc107 !important;}
 .dropdown-toggle:hover, .dropdown-toggle:focus{background-color: transparent !important; color:black;}
 .nav>li>a:hover, .nav>li>a:focus{background: transparent !important;}
