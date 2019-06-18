@@ -42,6 +42,22 @@
         	}
         
         </script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+        	$(".nav-admin").hide();
+    		var adminId = "${sessionScope.admin}";
+    		if(adminId != null){
+    			$.ajax({
+    				data : {"adminId":adminId},
+    				url : "/admin/authConfirm",
+    				success : function(data){
+    					if(data.authstatus == "y_auth" && data.businessStatus == "y_auth"){
+    						$(".nav-admin").show();
+    					}
+    				}
+    			})	
+    		}});
+        </script>
 <style type="text/css">
 .mainContent{
   transition: all .3s linear;
@@ -69,10 +85,10 @@ display: none;
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
                             
-                            <!-- <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/user/about">About Us</a></li>
+                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/user/about">About Us</a></li>
                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
-                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li> -->
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
                         </ul>
                        <ul class="nav navbar-nav menu-infobtn">
                          <li class="dropdown">
@@ -143,29 +159,29 @@ display: none;
           <div class="card1">
             <img src="/resources/images/jjw.jpg" alt="">
             <h3>조 재 원</h3>
-            <p></p>
+            <p>앉으나 서나 형들 생각 <br>막내 조 재 원</p>
           </div>
           
           <div class="card2">
             <img src="/resources/images/sj.jpg" alt="Eiffel Tower">
             <h3>박 수 진</h3>
-            <p></p>
+            <p>뛰는 조원들 위에 <br>나는 박 수 진 </p>
           </div>
           
           <div class="card3">
             <img src="/resources/images/jw.jpg" alt="">
             <h3>이 진 우</h3>
-            <p>조선에 이순신이 있다면  우리는 <BR> 이진우가 있다. </p>
+            <p>조선에 이순신이 있다면  <BR>우리는 이진우가 있다. </p>
           </div>
           <div class="card4">
             <img src="/resources/images/jh.jpg" alt="">
             <h3>원 정 희</h3>
-            <p>막판에 열심히 하는 척 한 <br>원정희</p>
+            <p>모든 정보는 페북에 있다! <br> 페북스타 원 정 희</p>
           </div>
           <div class="card5">
             <img src="/resources/images/wh.jpg" alt="">
             <h3>주 우 형</h3>
-            <p></p>
+            <p>교수님도 인정했다! <br> 개발자 주 우 형</p>
           </div>
           <div class="btnWrap">
           <button id="button">start</button>

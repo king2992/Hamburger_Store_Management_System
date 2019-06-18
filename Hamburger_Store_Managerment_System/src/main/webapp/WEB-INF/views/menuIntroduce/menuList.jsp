@@ -97,7 +97,7 @@
 <!--      사이드바      -->
             <div class="aside">                    
                      <ul id="tab_btn">
-                         <li id="setMenu"><button type="button" class="aside_item" >세트메뉴</button></li>
+                         <li id="setMenu"><button type="button" class="aside_item" >치킨메뉴</button></li>
                         <li id="burgerMenu"><button type="button" class="aside_item"  >버거메뉴</button></li>
                         <li id="sideMenu"><button type="button" class="aside_item"  >사이드메뉴</button></li>
                         <li id="drinkMenu"><button type="button" class="aside_item"  >음료메뉴</button></li>
@@ -106,7 +106,7 @@
 <!--            큰 div-->
             <div id="contents">
             <div class="setMenu">
-                <h3>세트메뉴</h3>
+                <h3>치킨메뉴</h3>
                 <ul class="flex">
               <c:choose>
 		<c:when test="${setList.size() > 0}">
