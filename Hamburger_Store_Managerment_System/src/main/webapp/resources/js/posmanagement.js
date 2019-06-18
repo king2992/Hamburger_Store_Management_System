@@ -128,24 +128,31 @@ $(document).ready(function() {
 	$(document).on('click', '#setSideSelect', function() { 
 		$(".sizeSelect").show(); // 세트 사이드 리스트를 보여준다
 		$(".setSelect").hide(); // 세트인지 버거인지 선택하는 영역은 숨긴다
-		var menuName = $(".burgerOrSet").attr("data-menuname"); //진행중인 메뉴 이름 가져오기
+		var menuName = $(".burgerOrSet").attr("data-menuname");//세트 진행 중인 놈에 메뉴 이름
+		
 		var menuId = $(".order-group").length;
 		$("#"+menuName+""+menuId+"").text(menuName + "-SET").attr("id", menuName +"SET" + menuId);// 진행중인 메뉴에서 세트 클릭시 아이디에 세트 추가
 		
 		$(".burgerOrSet").data("setitem", "-SET");
 	});
 	//라지 사이즈 선택 했을 때
-	$(document).on("click",".largeSizeSelect", function(){
+	$(document).on("click", ".largeSizeSelect", function(){
 		$(".sizeSelect").hide();$(".setSideList").show();//라지 선택 시 사이즈 선택 창 닫고 세트 선택 창 오픈
 		$(".burgerOrSet").data("menusize", "-L");//라지사이즈 라는 상태
-		var menuName = $(".burgerOrSet").data("menuname");//세트 진행 중인 놈에 메뉴 이름
-		var menuPrice = $("#"+menuName+""+menuId+"").siblings(".item-price").text();//세트 진행 중인 놈에 메뉴 가격
-		var largePrice = 800; // 라지 사이즈는 800원 추가
-		largePrice = largePrice + Number(menuPrice);// 라지 사이즈는 800원 추가
-		$("#"+menuName+""+menuId+"").siblings(".item-price").text(largePrice);//추가 한 금액 표시
-		var setItem = $(".burgerOrSet").data("setitem");
 		var menuId = $(".order-group").length;
-		$("#"+menuName+"SET"+menuId+"").text(menuName + "-L" + setItem);
+		var menuName = $(".burgerOrSet").attr("data-menuname");//세트 진행 중인 놈에 메뉴 이름
+		
+		console.log(menuName);
+		var menuPrice = $("#"+menuName+"SET"+menuId).siblings(".item-price").text();//세트 진행 중인 놈에 메뉴 가격
+		console.log(menuPrice);
+		console.log(menuId);
+		var largePrice = 800; // 라지 사이즈는 800원 추가
+		largePrice = Number(largePrice) + Number(menuPrice);// 라지 사이즈는 800원 추가
+		$("#"+menuName+"SET"+menuId).siblings(".item-price").text(largePrice);//추가 한 금액 표시
+		var setItem = $(".burgerOrSet").data("setitem");
+		
+		
+		$("#"+menuName+'SET'+menuId+"").text(menuName + "-L" + setItem);
 	});
 	//노말 사이즈 선택 했을 때
 	$(document).on("click",".normalSizeSelect", function(){
