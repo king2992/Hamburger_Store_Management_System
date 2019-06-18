@@ -10,6 +10,7 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="shourtcut icon" href="${path}/pos/posmanagement">
 <link href="/resources/css/pos.css" type="text/css" rel="stylesheet">
+<link href="/resources/css/header.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="/resources/css/mainR.css">
 <link rel="stylesheet" href="/resources/css/sub.css"> 
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
@@ -208,44 +209,51 @@ $(document).on('click','#cancel',function(){
 </head>
 <body>
 	<div id="container">
-			<nav class="navbar navbar-expand-sm navbar-dark fixed-top1 layout-menu">
-			<!-- Brand -->
-			<a class="navbar-brand menu-title" href='<c:url value="/"/>'> <span
-				class="menu-pre">store</span><span class="menu-last">management</span>
-			</a>
-			<!-- Links -->
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/pos/posmanagement"/>'> <i class="fa fa-home menu-icon"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/pos/reservedList"/>'> <i
-						class="fa fa-edit menu-icon"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href='<c:url value="/study/list"/>'> <i
-						class="fas fa-book menu-icon"></i>
-				</a></li>
-			</ul>
-			<div id="chat_box" style = "color : white;"></div>
-			<ul class="nav navbar-nav menu-infobtn">
-				<li class="dropdown"><a href="#"
-					class="dropdown-toggle menu-dropicon" data-toggle="dropdown"
-					role="button" aria-haspopup="true" aria-expaneded="false"> <i
-						class="fa fa-cog fa-spin fa-fw menu-icon"></i>
-				</a>
-					<div class="dropdown-menu menu-dropmenu">
-						<a class="dropdown-item modal_open modal_menu" data="modifyModal"
-							href="#">정보수정</a> <a class="dropdown-item modal_open modal_menu"
-							data="passModal" href="#">비밀번호변경</a> <a
-							class="dropdown-item modal_open modal_menu" data="logoutModal"
-							href="<c:url value='/user/userLogout'/>">로그아웃</a> <a
-							class="dropdown-item modal_open modal_menu" data="secessionModal"
-							href="#">회원탈퇴</a>
-					</div></li>
-			</ul>
-		</nav>
-	
+			<header class="header">
+                    <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
+                     <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" class="msa"></a>
+                        <ul>
+                            
+                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
+                            
+            				<li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/about/aboutAs">Kiosk</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
+                       
+                        </ul>
+                          <ul class="nav navbar-nav menu-infobtn">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
+                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+                    </a>
+                    <div class="dropdown-menu menu-dropmenu">
+                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
+          <c:choose>
+	           <c:when test="${sessionScope.user eq null && sessionScope.admin eq null}"> <!-- 사용자 로그인 -->
+	      		    <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a>
+	          </c:when>
+          	  <c:when test="${sessionScope.user ne null }">
+              		<a class="dropdown-item modal_open modal_menu" href="/user/userLogout">User-LogOut</a><!-- 사용자 로그아웃 -->
+              </c:when>
+              <c:when test="${sessionScope.admin ne null}"> 
+              		<a class="dropdown-item modal_open modal_menu" href="/admin/adminLogout">Admin-LogOut</a>
+              </c:when>
+          </c:choose>
+          
+          <c:choose>
+          <c:when test="${sessionScope.user ne null }">
+            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">User-My-Page</a>
+          </c:when>
+          <c:when test="${sessionScope.admin ne null }">
+          <a class="dropdown-item modal_open modal_menu" href="/admin/myPage">Admin-My-Page</a>
+          </c:when>
+          </c:choose>
+                    </div>
+                </li>
+            </ul>
+                    </nav>
+                </header>
 		<div class="margin">
 			<div style="width: 100%; height: 100%;">
 				<section class="left-section">
