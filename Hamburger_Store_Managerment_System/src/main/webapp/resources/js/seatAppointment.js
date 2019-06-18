@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    selectable: true,
 	    header: {
 	      right: 'prev,next today'  
-	    },
+	    }, 
 			     dateClick: function(info) {
 			    	 
 			     $("#dateInnerHTML").text(info.dateStr); // 날짜 선택 시 하단에 선택 한 날짜 출력
