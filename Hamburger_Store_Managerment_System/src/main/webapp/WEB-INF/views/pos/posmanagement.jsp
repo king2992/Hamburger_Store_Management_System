@@ -253,14 +253,7 @@ $(document).on('click','#cancel',function(){
                     <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
                      <a href="/" class="navbar-brand js-scroll-trigger" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" class="msa" style="margin-top: 11px"></a>
                         <ul>
-                            
-                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
-                            
-            				<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about/aboutUs">About Us</a></li>
-                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
-                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
-                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
-                       
+            				<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/reservedList">주문관리</a></li>
                         </ul>
                           <ul class="nav navbar-nav menu-infobtn">
                 <li class="dropdown">

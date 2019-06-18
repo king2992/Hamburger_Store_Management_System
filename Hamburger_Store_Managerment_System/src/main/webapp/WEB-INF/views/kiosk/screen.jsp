@@ -128,18 +128,12 @@
                </tbody>
          </table>
        <div id="footer-div2">
-        <ul class="side_img">
-           <li><a href="/"><img src="${path}/resources/kiosk/images/home.png"></a><p>Home</p></li>
-           <li><a href="${path}/review/reviewList"><img src="${path}/resources/kiosk/images/community.png"></a><p>게시판</p></li>  
-		   <li><a href="${path}/store/storeFind"><img src="${path}/resources/kiosk/images/Out.png"></a><p>예약하기</p></li>
-		</ul>
-     <button class="order_cancel_btn" onclick="cancel();">결제취소</button>
-     <button class="swiper-button-next" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4); opacity:1;" onclick="fnMove('2')">결제하기</button>
+     <button class="order_cancel_btn" onclick="paymentCancel()">결제취소</button>
+     <button class="swiper-button-next" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4); opacity:1;">결제하기</button>
   </div> 
       </div>
    </div>
   </div>
-     <div class="swiper-button-next" id="next_div"><p>다<br>음</p></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
 </div>
 
 
@@ -147,7 +141,6 @@
 
  <div class="swiper-wrapper">
  <!-- 카테고리 이미지 영역    -->
- <!-- <a id="top"></a> -->  
  <div class="ad">
  <img class="mySlides" src="${path}/resources/images/carousel1.jpg" width="1024px">
  <img class="mySlides" src="${path}/resources/images/carousel2.jpg" width="1024px">
@@ -231,11 +224,6 @@
   </div>
 <!-- 결제 footer -->
   <div class="footer_div">
-        <ul class="side_img">
-           <li><a href="/"><img src="${path}/resources/kiosk/images/home.png"></a><p>Home</p></li>
-           <li><a href="${path}/store/storeFind"><img src="${path}/resources/kiosk/images/Out.png"></a><p>예약하기</p></li>
-           <li><a href="${path}/review/reviewList"><img src="${path}/resources/kiosk/images/community.png"></a><p>게시판</p></li> 
-        </ul>
      <button class="order_cancel_btn" onclick="cancel();">결제취소</button>
      <button class="swiper-button-prev" id="order_add_btn" style="background:rgba(255, 0, 0, 0.4);">추가주문</button>
   </div>
@@ -322,6 +310,39 @@
    <div class="pay_gif"><img class="wallet" src="${path}/resources/kiosk/images/jj1JW.gif"></div>
    <button type="button" class="check_btn">확인</button>
    <a href="" rel="modal:close"><button type="button" class="pay_btn">취소</button></a>
-</div>   
+</div>
+<!-- 영수증 -->
+	<div class="documentPopup">
+		<div class="documentCenter">
+		<h2>[ 영수증 ]</h2>
+			<ul style="list-style: none;" class="documentUl">
+				<li><span>[ 발행일 ]</span><span id="documentTimeCheck"></span></li>
+			</ul>
+			<table class="menuTable">
+				<thead>
+					<tr>
+						<th>메뉴명</th>
+						<th>수 량</th>
+						<th>금 액</th>
+					</tr>
+				</thead>
+				<tbody class="documentTable">
+				
+				</tbody>
+			</table>
+			<table class="totalTable">
+			<thead>
+				<tr>
+					<th style="letter-spacing: 5px;">합계 금액</th>
+					 <th></th>
+					<th><span id="documentPayment"></span></th>
+				</tr>
+				</thead>
+			</table>
+			<div class="documentBtnCenter">
+				<button id="" type="button" class="documentClose">출력</button>
+			</div>
+	</div>
+	</div>
 </body>
 </html>

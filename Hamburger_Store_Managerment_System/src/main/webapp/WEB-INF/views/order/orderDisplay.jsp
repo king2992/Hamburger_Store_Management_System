@@ -61,7 +61,7 @@ ul li{list-style: none; display:inline-block;}
 	<ul id="orderListCenter">
 		<li id="orderListHead">
 			<h1>준비 완료 | Ready</h1>
-			<p>영수증 상단의 주문번호를 확안하세요.</p>
+			<p>영수증 상단의 주문번호를 확인하세요.</p>
 			<ul id="orderListFinish">
 				<c:choose>
 					<c:when test="${successList.size() > 0 }">

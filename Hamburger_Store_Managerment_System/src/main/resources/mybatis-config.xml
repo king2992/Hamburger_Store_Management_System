@@ -33,5 +33,6 @@
 		<mapper resource="mybatis/Pos.xml" />
 		<mapper resource="mybatis/TakeOutReservedList.xml" />
 		<mapper resource="mybatis/MenuIntroduce.xml" />
+		<mapper resource="mybatis/Kiosk.xml" />
 	</mappers>
 </configuration>

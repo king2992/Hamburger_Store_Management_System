@@ -3,12 +3,13 @@
  */
 
 // 주문 결제 완료 alert
+  
 function payment() {
    let timerInterval
    Swal.fire({
      title: '주문 결제 중 입니다~',
      html: '잠시만  기다려주세요~ <strong></strong>',
-     timer: 2000,
+     timer: 1500,
      onBeforeOpen: () => {
        Swal.showLoading()
        timerInterval = setInterval(() => {
@@ -24,7 +25,6 @@ function payment() {
      if (
        result.dismiss === Swal.DismissReason.timer
      ) {
-       console.log('주문 결제가 완료 되었습니다.')
      }
    });
 // swal() 생성
@@ -169,18 +169,17 @@ $(document).ready(function(){
             $('.table_tr2').append(
                   '<tr class="order_list">'+
                   '<td id="menuname'+menuname+'" class="menunames">'+menuname+'</td>'+
-                  '<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+'">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
+                  '<td class="td2">'+'<button class="p_btn">+</button>'+'&nbsp;<span class="cnt'+menuname+' menuCnt">1</span>&nbsp;'+'<button class="m_btn">-</button>'+'</td>'+
                   '<td class="listPrice"><span class="spanPrice prices">'+price+'</span><button class="menu_del">삭제</button>'+'</td>'+
                   '</tr>');
             $('.order_tbody').append(
                     '<tr class="order_list">'+
-                    '<td id="order'+menuname+'" class="menunames">'+menuname+'</td>'+
+                    '<td id="order'+menuname+'" class="menunames2">'+menuname+'</td>'+
                     '<td class="td2">'+'&nbsp;<span class="orderCnt'+menuname+'">1</span>&nbsp;'+'</td>'+
                     '<td class="orderListPrice"><span class="orderPrice'+menuname+'">'+price+'</span>'+'</td>'+
                     '</tr>');
             totalPrice();
             }
-            
          });
 // 주문 내역 삭제
       $(document).on('click', '.menu_del', function(){
@@ -228,7 +227,6 @@ $(document).ready(function(){
          $(".orderPrice"+menuName).text(minus);
          var priceItem = $(this).parent().siblings('.listPrice');
          priceItem.html("<span class='spanPrice'>"+minus +"</span>"+"<button class='menu_del'>삭제</button>");
-         
          var total = priceItem;
          totalPrice();
       });
@@ -387,14 +385,129 @@ $(document).ready(function(){
         	}, 1000);
          });
 //결제 완료
+         var menuNameArray = [];
+         var menuCntArray = [];
+         var menuPriceArray = [];
          $('.check_btn').click(function(){
-        	 payment();
-        	 setTimeout(function(){
-        	 window.location.reload();
-        	 },3000);
+        	 $(".modalPay").hide();
+        	var payTotal = $("#orderPayMent").text();
+        	$(".menunames").each(function(){
+        		var menuName = $(this).text();
+        		menuNameArray.push(menuName);
+        	});
+        	$(".menuCnt").each(function(){
+        		var menuCnt = $(this).text();
+        		menuCntArray.push(menuCnt);
+        	});
+        	$(".spanPrice").each(function(){
+        		var menuPrice = $(this).text();
+        		menuPriceArray.push(menuPrice);
+        	})
+        	var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+			var hours = today.getHours();
+			var minute = today.getMinutes();
+			var seconds = today.getSeconds();
+			
+			if(dd<10) {
+			    dd='0'+dd
+			} 
+			if(mm<10) {
+			    mm='0'+mm
+			} 
+			today = yyyy+'/'+mm+'/'+dd ;
+			nowDate = hours + "시" + minute + "분" + seconds + "초";
+			
+        	$.ajax({
+        		url : "/kiosk/orders",
+        		data : {"payTotal":payTotal},
+        		success : function(data){
+        			$.ajax({
+        				url : "/kiosk/menuAdd",
+        				data : {"menuNameArray" : menuNameArray, "menuCntArray" : menuCntArray},
+        				success : function(data){
+        					payment();
+        					var receipt = "";
+        					for(var i = 0 ; i < menuNameArray.length; i ++){
+				        		receipt = "<tr>" +
+												"<td>" + menuNameArray[i] + "</td>" +
+												"<td>" + menuCntArray[i] + "</td>" +
+												"<td>" + menuPriceArray[i] + "</td>" +
+										  "</tr>";
+				        		$(".documentTable").append(receipt);
+        					}
+        					var totalPrice = $("#total_price").text();
+        					$("#documentPayment").text(totalPrice);
+        					$("#documentTimeCheck").text(today+" "+nowDate);
+        					 setTimeout(function(){
+        			        	 $(".documentPopup").show();$(".documentCenter").show();
+        					 },2500);
+        				}
+        			})
+        		}
+        	})
          });
-         function fnMove(seq){
-        	 var offset = $(".ad" + seq).offset();
-             $('html, body').animate({scrollTop : offset.top}, 400);
-         };
+         $(document).on("click",".documentClose",function(){
+        	 $(".documentPopup").hide();$(".documentCenter").hide();
+        		 receiptPrint();	 
+         });
+// 스크롤 현재 위치         
+         $(window).scroll(function(){
+        	 var scrollValue = $(document).scrollTop();
+        	 console.log(scrollValue);
+         });
+// 스크롤 위치 이동         
+ 		$('#order_add_btn').click(function(){
+			var offset = $('.order_div').offset();
+			$('html').animate({scrollTop : offset.top}, 0);
+		});
+// 결제 취소  
+ 		$('.order_cancel_btn').click(function(){
+ 			paymentCancel();
+ 			setTimeout(function(){
+	        	 window.location.reload();
+			 },3000);
+ 		})
 });
+function receiptPrint() {
+	   let timerInterval
+	   Swal.fire({
+	     title: '영수증 출력중입니다~',
+	     html: '잠시만  기다려주세요~ <strong></strong>',
+	     timer: 1200,
+	     onBeforeOpen: () => {
+	       Swal.showLoading()
+	       timerInterval = setInterval(() => {
+	         Swal.getContent().querySelector('strong')
+	           .textContent = Swal.getTimerLeft()
+	       }, 100) 
+	     },
+	     onClose: () => {
+	       clearInterval(timerInterval)
+	       receiptPrintSwal();
+	     }
+	   }).then((result) => {
+	     if (
+	       result.dismiss === Swal.DismissReason.timer
+	     ) {
+	       console.log('주문 결제가 완료 되었습니다.')
+	     }
+	   });
+	// swal() 생성
+	   function receiptPrintSwal() {
+	   Swal.fire({
+	      
+	        position: 'center',
+	        type: 'success',
+	        title: '출력이 완료 되었습니다.<br>감사합니다.',
+	        showConfirmButton: false,
+	        timer: 1500
+	      });
+	   setTimeout(function(){
+		   window.location.reload();   
+	   }, 1300);
+	   
+	   }
+	}

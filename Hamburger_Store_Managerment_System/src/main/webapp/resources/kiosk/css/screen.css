@@ -295,8 +295,8 @@ nav ul li:first-child { border-left:none; }
 .ad{width: 100%;  position: absolute; top: 0; text-align: center;}
 .footer_div { background:#fff; width:1024px; height:100px; position:relative; top:10px; }
 .footer_div button {width:250px; height:70px; position:relative; top:15px; display:inline-block; font-size:20pt; border-radius: 12px; outline:0; border:none; }
-.order_cancel_btn {position:relative; left:77px; cursor:pointer; box-shadow:3px 3px 3px 3px gray;}
-#order_add_btn {position:relative; left:130px; cursor:pointer; box-shadow:3px 3px 3px 3px gray;}
+.order_cancel_btn {position:relative; left:224px; cursor:pointer; box-shadow:3px 3px 3px 3px gray;}
+#order_add_btn {position:relative; left:280px; cursor:pointer; box-shadow:3px 3px 3px 3px gray;}
 .side_img {float:left; text-align: center;}
 .side_img li {display:inline-block;  position: relative; top: 20px; left:60px; margin-right:50px;}
 .side_img p{margin-top: -40px;}
@@ -388,3 +388,83 @@ nav ul li:first-child { border-left:none; }
 .order_list_div ul li{display: inline-block;}
 .order_list_div ul li:nth-child(2){float: right;}
 .check_btn {background:#98FB98; width:200px; height:100px; font-size:20pt; font-weight:bold; margin-top:10px; float:left; position:relative; left:30px; bottom:11px; border-radius:12px; outline:0; border:none; cursor:pointer; box-shadow: 3px 3px 3px 3px gray;}
+.documentPopup{
+		  display: none;   /* Hidden by default */
+ 	
+ 	position: fixed;  /* Stay in place */
+	 z-index: 10000;  /* Sit on top */
+	 left: 0; 
+	 top: 0;  
+	 width: 100%;  /* Full width */
+	  height: 100%; */ /* Full height */
+	 /* overflow: auto;   *//* Enable scroll if needed */
+	 background-color: rgb(0, 0, 0); /* Fallback color */
+	 background-color: rgba(0, 0, 0, 0.4);  /* Black w/ opacity */
+/* 	 position:absolute; */
+	 margin:0 auto;
+}
+.documentCenter{
+ 	  	background-color: #fefefe;
+    margin: 10% auto;  
+	padding: 25px;
+	border: 1px solid #888;
+/* 	height:40px; */
+/* 	min-width:40px; */
+	/* width:100%; */
+	width: 685px; 
+	 border-radius: 10px;
+	 transition: opacity .5s, top .5s;
+	  box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
+	  
+	/*  transform: translate(-50%, -50%); */
+}
+.documentCenter h2{text-align: center; margin-top: 20px;}
+.documentUl{margin-top:30px;}
+.menuTable  {width:90%; text-align: center; margin-left: 40px; border-bottom:2px dotted #555555;}
+.menuTable thead {width:100%; border-top:2px dotted #555555; border-bottom:2px dotted #555555;}
+.menuTable thead th{width:30%; padding: 6px; letter-spacing:5px; }
+.totalTable  {width:90%;  margin-left: 40px; text-align: justify; margin-bottom: 40px;}
+.totalTable thead {width:100%; border-bottom:2px dotted #555555;}
+.totalTable thead th{width:30%; padding: 6px; text-align: center;}
+.documentUl > li > span:nth-child(1){font-weight: 600; font-size: 17px; width: 100px; margin-right: 10px;}
+.documentBtnCenter{width:246px; margin: 0 auto;}
+.documentBtnCenter button{
+
+background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:45px;
+  font-size:20px;
+  padding:0 2em;
+  border-radius:5px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  position:relative;
+  left: 50px;
+}
+.documentBtnCenter button:hover {
+	background:#fff;
+  color:#1AAB8A;
+}
+.documentBtnCenter button:before,.documentBtnCenter button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.documentBtnCenter button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.documentBtnCenter button:hover:before,.documentBtnCenter button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}

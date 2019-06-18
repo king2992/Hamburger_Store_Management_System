@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kiosk">
+	
+	<insert id="orders" parameterType="map">
+		INSERT INTO orders(reg_date, pay_total)
+		VALUES(#{regDate}, #{payTotal}) 
+	</insert>
+	
+	<insert id="orderMenuAdd" parameterType="map">
+		<selectKey resultType="int" keyProperty="orderId" order="BEFORE">
+			select max(order_id) from orders
+		</selectKey>
+		insert into orders_menu_list(order_id,menu_name, menu_cnt)
+		values (#{orderId}, #{menuName}, #{menuCnt})
+	</insert>
+	
+</mapper>
