@@ -83,7 +83,7 @@ ${view.title}</title>
         <div class="layout-topheader"></div>
 
 <header class="header">
-                    <nav class="navi navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                    <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
                      <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
                       <ul style="margin-left: 113px;">
                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/about">About Us</a></li>
@@ -102,7 +102,7 @@ ${view.title}</title>
                               <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
                           </a>
                           <div class="dropdown-menu menu-dropmenu">
-                              <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="/user/">SignUp</a>
+                              <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="/">Home</a>
                                   <c:choose>
                         <c:when test="${sessionScope.user eq null }">
                 <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
@@ -113,7 +113,7 @@ ${view.title}</title>
                 </c:choose>
                    <c:choose>
                       <c:when test="${sessionScope.user ne null }">
-                        <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+                        <a class="dropdown-item modal_open modal_menu" href="${path}/user/myPage">My Page</a>
                       </c:when>
                    </c:choose>
                           </div>

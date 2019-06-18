@@ -9,6 +9,7 @@
 <title>About Us</title>
 <link href="/resources/css/header.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>   
+<link rel="shortcut icon" href="${path}/about/aboutUs">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"> 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.32.2/dist/sweetalert2.min.css">

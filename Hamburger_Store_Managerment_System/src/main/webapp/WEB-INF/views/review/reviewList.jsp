@@ -144,7 +144,7 @@
                               <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
                           </a>
                           <div class="dropdown-menu menu-dropmenu">
-                              <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="/user/">SignUp</a>
+                              <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="/">Home</a>
                                   <c:choose>
                         <c:when test="${sessionScope.user eq null }">
                 <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
@@ -155,7 +155,7 @@
                 </c:choose>
                    <c:choose>
                       <c:when test="${sessionScope.user ne null }">
-                        <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+                        <a class="dropdown-item modal_open modal_menu" href="${path}/user/myPage">My Page</a>
                       </c:when>
                    </c:choose>
                           </div>

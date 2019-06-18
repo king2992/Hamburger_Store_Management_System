@@ -5,28 +5,28 @@
 
         // DOM
         this.carousel = document.querySelector(this.config.selector);
-        this.container = this.carousel.querySelector('.carousel-item-container');
-        this.item = this.carousel.querySelector('.carousel-item');
-        this.items = this.carousel.querySelectorAll('.carousel-item');
-        this.prev = this.carousel.querySelector('.prev');
-        this.next = this.carousel.querySelector('.next');
+//        this.container = this.carousel.querySelector('.carousel-item-container');
+//        this.item = this.carousel.querySelector('.carousel-item');
+//        this.items = this.carousel.querySelectorAll('.carousel-item');
+//        this.prev = this.carousel.querySelector('.prev');
+//        this.next = this.carousel.querySelector('.next');
 
         // 캐러셀 아이템의 width
-        this.itemWidth = this.item.offsetWidth;
+//        this.itemWidth = this.item.offsetWidth;
         // 캐러셀 아이템의 height
-        this.itemHeight = this.item.offsetHeight;
+//        this.itemHeight = this.item.offsetHeight;
         // 캐러셀 아이템의 개수
-        this.itemLength = this.items.length;
-
-        // 캐러셀 이동 거리
-        this.offset = 0;
-        // 현재 표시 중인 캐러셀 아이템
-        this.currentItem = 1;
-        // transition 진행 상태
-        this.isTransiting = false;
-
-        this.init();
-        this.attachEvent();
+//        this.itemLength = this.items.length;
+//
+//        // 캐러셀 이동 거리
+//        this.offset = 0;
+//        // 현재 표시 중인 캐러셀 아이템
+//        this.currentItem = 1;
+//        // transition 진행 상태
+//        this.isTransiting = false;
+//
+//        this.init();
+//        this.attachEvent();
       }
 
       static mergeConfig(config) {

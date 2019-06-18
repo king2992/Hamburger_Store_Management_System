@@ -139,10 +139,8 @@ html{font-size: 14px !important;}
     </div>
 </div>
 <input class="add btn btn-primary boardBtn" id="btnUpdate" type="submit" style="float: right; margin:0 0 20px 10px; width: 70px; height: 35px;" value="수정">
-<!--  <button class="btn btn-primary boardBtn" id="board_wrtiebtn">등록</button> -->
  <a href="${path}/review/reviewList"><button class="btn btn-danger boardBtn"  id="board_wrtiebtn">취소</button></a>
  </form>
-
 </div>
 <script type="text/javascript" src="/resources/lightbox/js/lightbox.js"></script>
 </div>
