@@ -290,7 +290,6 @@ a.animated-button.victoria-one:after {
 
 </style>
 <script type="text/javascript">
-<script>
 /* Demo purposes only */
 $(".hover").mouseleave(
 function () {
@@ -299,51 +298,75 @@ $(this).removeClass("hover");
 );
 
 </script>
+<script type="text/javascript">
+        	$(document).on("click",".dropdown",function(){
+        		if($(".dropdown-menu").css('display') == 'block')
+        			$(".dropdown-menu").css('display','none');
+        		else
+        			$(".dropdown-menu").css('display', 'block');
+        	});
+        	window.onload = function(){
+        		console.log("${sessionScope.card}");
+        	}
+  </script>
+  <script type="text/javascript">
+        $(document).ready(function(){
+        	$(".nav-admin").hide();
+    		var adminId = "${sessionScope.admin}";
+    		if(adminId != null){
+    			$.ajax({
+    				data : {"adminId":adminId},
+    				url : "/admin/authConfirm",
+    				success : function(data){
+    					if(data.authstatus == "y_auth" && data.businessStatus == "y_auth"){
+    						$(".nav-admin").show();
+    					}
+    				}
+    			})	
+    		}});
+        </script>
 </head>
 <body>
 
 	<div id="container">
 		       <header class="header">
-		      
-                    <nav class="navi navbar navbar-expand-lg navbar-light" id="mainNav">
+                    <nav class="navi navbar navbar-expand-lg navbar-light " id="mainNav">
                      <a href="/" class="navbar-brand js-scroll-trigger msa" style="color:rgba(255,255,255,0.5)"><img src="/resources/images/m-sa.png" style="padding-bottom: 18px;"></a>
-                        <ul>
-                            
-                          <!--   <li class="nav-item"> <a class="nav-link js-scroll-trigger" id="triggerup" href="#">SignUp</a></li> -->
-                            
-                                
-                             <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/include/header">header</a></li> -->
+                      <ul style="margin-left: 80px;">
+                           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/about">About Us</a></li>
+                           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/menuIntroduce/menuList">Menu</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/review/reviewList">Community</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/store/storeFind">Takeout</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
-                       
+                            
+                             <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/user/about">About Us</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/kiosk/screen">Kiosk</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/pos/posmanagement">Pos</a></li>
+                            <li class="nav-item nav-admin"><a class="nav-link js-scroll-trigger" href="/order/orderDisplay">Display</a></li>
                         </ul>
-                          <ul class="nav navbar-nav menu-infobtn">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
-                        <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
-                    </a>
-                    <div class="dropdown-menu menu-dropmenu" style="left: -93px;">
-                        <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="#">SignUp</a>
-                            <c:choose>
-                  <c:when test="${sessionScope.user eq null }">
-          <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
-          </c:when>
-          <c:otherwise>
-              <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
-            </c:otherwise>
-          </c:choose>
-                          <c:choose>
-          <c:when test="${sessionScope.user ne null }">
-            <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
-          </c:when>
-          </c:choose>
-                    </div>
-                </li>
-            </ul>
-                    </nav>
+                       <ul class="nav navbar-nav menu-infobtn" style="margin-bottom: 14px;">
+                         <li class="dropdown" style="margin-left: 125px;">
+                          <a href="#" class="dropdown-toggle menu-dropicon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expaneded="false">
+                              <i class="fa fa-cog fa-spin fa-fw menu-icon"></i>
+                          </a>
+                          <div class="dropdown-menu menu-dropmenu" style="left: -92px; margin-top: 16px;">
+                              <a class="dropdown-item modal_open modal_menu" data="modifyModal" id="triggerup" href="/user/">SignUp</a>
+                                  <c:choose>
+                        <c:when test="${sessionScope.user eq null }">
+                <a class="dropdown-item modal_open modal_menu" href="#"  id="trigger">Login</a> 
+                </c:when>
+                <c:otherwise>
+                    <a class="dropdown-item modal_open modal_menu" href="/user/userLogout">LogOut</a>
+                  </c:otherwise>
+                </c:choose>
+                   <c:choose>
+                      <c:when test="${sessionScope.user ne null }">
+                        <a class="dropdown-item modal_open modal_menu" href="/user/myPage">My Page</a>
+                      </c:when>
+                   </c:choose>
+                          </div>
+                         </li>
+                    </ul>
+               </nav>
                 </header>
            <div class="inline">
          <div class="div">
